@@ -3,6 +3,7 @@ import './App.css';
 import AccountLayout from "./Containers/AccountLayout";
 import HomePage from "./Containers/HomePage";
 import HelpPage from "./Components/HelpPage";
+import SignUp from "./Containers/SignUp";
 import {BrowserRouter as Router,
         Switch, 
         Route, 
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/" component={HomePage}/>
           <Route  path="/account/" component={AccountLayout}/>
           <Route  path="/help/" component={HelpPage}/>
+          <Route  path="/signup/" component={SignUp}/>
           {/* TODO: add routes to the other pages */}
         </Switch>
       </Router>
