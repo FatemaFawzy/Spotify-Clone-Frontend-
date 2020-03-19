@@ -1,0 +1,29 @@
+.bottom
+{
+	background: #0a0a0a;
+}
+.Logo:hover
+{
+	color:white;
+	text-decoration: none;
+}
+
+
+.linksHover
+{
+	color: white;
+}
+
+.linksHover:hover
+{
+	color: #1ed760;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+.imgSize
+{
+	height: 18px;
+	margin-left: 10px;
+
+}

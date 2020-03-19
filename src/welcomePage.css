@@ -1,0 +1,51 @@
+.ground
+{
+	background: rgba(26, 22, 22, 0.7);
+	height:8%;
+}
+
+.Logo
+{
+	color:#ffffff;
+	font-size:35px;
+	font-family: 'Oleo Script', cursive;
+	margin:auto;
+}
+.navbar-dark .navbar-nav .nav-link {
+	color: white;
+	font-weight: bold;
+	font-size: 14px;
+	padding-right: .8rem;
+    padding-left: .8rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+	
+}
+
+.navbar-dark .navbar-nav .nav-link:hover
+{
+	color: #1ed760;
+	text-decoration: none;
+}
+
+.back
+{
+	padding-top: 45%;
+	color: white;
+	height:980px;
+}
+body
+{
+    background: url("./images/home.png");
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.title
+{
+	font-size: 4rem;
+	font-family: 'Bree Serif';
+}
+
+
+
+

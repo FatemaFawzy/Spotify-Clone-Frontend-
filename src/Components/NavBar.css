@@ -1,0 +1,41 @@
+.NavbarBack
+{
+	background-color: black;
+    height:8%;
+}
+
+.LogoTop
+{
+	color:#ffffff;
+	font-size:35px;
+    font-family: 'Oleo Script', cursive;
+    margin-left: 6%;
+}
+.navbar-dark .navbar-nav .nav-link {
+	color: white;
+    font-weight: bold;
+    font-size: 14px;
+    padding-right: .8rem;
+    padding-left: .8rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    
+}
+
+.navbar-dark .navbar-nav .nav-link:hover
+{
+	color:#1ed760;
+	text-decoration: none;
+}
+
+.navbar-expand-lg .navbar-collapse
+{   
+    margin-right: 6%;
+}
+
+.userImg{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; 
+    background-color:#1d1e1f;
+}

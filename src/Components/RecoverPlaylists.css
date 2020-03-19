@@ -1,0 +1,23 @@
+.contentLayout
+{
+    margin: 0 15px;
+    padding: 40px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+}
+
+.pageTitle
+{
+    margin:13px 0px;
+    font-size: 20px;
+    color: #1DB954;
+    font-weight: 400;
+}
+.content
+{
+    font-size: 14px;
+}
+
+@media (min-width: 1200px){
+.contentLayout {
+    padding: 40px;
+}}
