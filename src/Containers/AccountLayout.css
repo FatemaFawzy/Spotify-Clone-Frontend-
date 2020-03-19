@@ -17,11 +17,13 @@
     }
 }
 
-<<<<<<< HEAD
+
     .row{
         margin-left: 18%;
         margin-right: 18%;
-=======
+
+    }
+    
 /* Extra small devices (phones, 700px and down) */
 @media only screen and (max-width: 700px) {   
     
@@ -30,7 +32,7 @@
     padding-left: 0%;
     padding-right: 0%;
 
->>>>>>> ff996aaeff1af6562d07dfff375bd4a23d95416e
+
 
 }
 }

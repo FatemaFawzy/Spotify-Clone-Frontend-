@@ -3,11 +3,11 @@ import './App.css';
 import AccountLayout from "./Containers/AccountLayout";
 // import HomePage from "./Containers/HomePage";
 import HelpPage from "./Components/HelpPage";
-<<<<<<< HEAD
+
 import welcomePage from "./welcomePage";
-=======
+
 import SignUp from "./Containers/SignUp";
->>>>>>> ff996aaeff1af6562d07dfff375bd4a23d95416e
+
 import {BrowserRouter as Router,
         Switch, 
         Route, 
