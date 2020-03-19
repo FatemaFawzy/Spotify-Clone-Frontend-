@@ -2,7 +2,7 @@
 	font-family: Circular, Helvetica, Arial, sans-serif, Ruble;
 	background: #F8F8F8;
 }
-#EditProfileH1 {
+.EditProfileBody #EditProfileH1 {
 	font-size: 26px;
     margin: .5em 0;
     color: #1DB954;
@@ -12,34 +12,34 @@
     border-bottom: 1px solid #EFEFEF;
 }
 
-.EditProfileBox {
+.EditProfileBody .EditProfileBox {
 	background-color: #FFF;
 	padding: 19px 30px;
 	overflow: hidden;
 }
 
-.subtitle {
+.EditProfileBody .subtitle {
 	color: #919496;
     font-weight: 400;
 }
 
 /*code of spinner from: https://css-tricks.com/snippets/css/turn-off-number-input-spinners/ */
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
+.EditProfileBody input[type=number]::-webkit-inner-spin-button, 
+.EditProfileBody input[type=number]::-webkit-outer-spin-button { 
   	-webkit-appearance: none; 
   	-moz-appearance: none;
   	margin: 0; 
 }
 
 /*code idea from: https://stackoverflow.com/questions/611482/change-color-and-appearance-of-drop-down-arrow*/
-#month {
+.EditProfileBody #month {
     -webkit-appearance: none;
   	-moz-appearance: none;
   	background: url(https://static.thenounproject.com/png/1270386-200.png) no-repeat center right;
   	background-size: contain;
 }
 
-#saveProfile {
+.EditProfileBody #saveProfile {
 	max-width: 290px;
 	min-width: 160px;
 	height: 30px;
@@ -55,11 +55,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 }
 
-#saveProfile:hover {
+.EditProfileBody #saveProfile:hover {
 	background: #1ED760;
 }
 
-#cancel {
+.EditProfileBody #cancel {
 	color:black ;
 	font-size:12px;
 	letter-spacing: 2px;
@@ -69,7 +69,7 @@ input[type=number]::-webkit-outer-spin-button {
 	float: right;
 }
 
-#cancel:hover {
+.EditProfileBody #cancel:hover {
 	text-decoration-line: none;
 	color: #333232;
 }
