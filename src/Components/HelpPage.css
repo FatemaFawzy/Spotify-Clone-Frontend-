@@ -1,0 +1,378 @@
+.help-class{
+    color: white;
+}
+
+.help-header{
+
+    background-image: linear-gradient(rgb(47,66,155), rgb(49,73,184));
+    padding-top: 4%;
+    padding-bottom: 4%;
+    
+}
+.help-header h1{
+
+    display: block;
+    font-weight: 700;
+    font-size: 300%;
+    text-align: center;
+}
+.help-header h5{
+
+letter-spacing: -0.02rem;
+display: block;
+font-size: 105%;
+margin-top: -0.6rem;
+}
+.help-header p{
+color:rgb(194,218,220);
+font-size: 90%;
+
+}
+.side-text-help{
+    text-align: center;
+}
+.search-help-field{
+
+    display: block;
+    margin: 0 auto;
+    padding-left: 15px;
+    height: 50px;
+    border-radius: 10px;
+    width: 70%;
+    margin-top: 3%;
+    margin-bottom: 6%;
+    border: none;
+}
+
+
+
+  input::-webkit-input-placeholder {
+      color: black;
+      font-weight: 500;
+      font-size: 1.1rem;
+  }
+
+  input:focus::-webkit-input-placeholder {
+    color:rgb(49,73,184);
+    font-weight: 500;
+    font-size: 1.1rem;
+    opacity: 1; 
+  }
+
+  input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+.front-nav-item{
+
+    margin-top: 5%;
+    color: black;
+    
+font-weight: 640;
+}
+.front-nav-item h4{
+
+margin-bottom: 15%;
+}
+.front-nav-item p{
+
+    color:rgb(45,70,190);
+    font-size: 120%;
+}
+
+
+
+.front-nav{
+
+    background-color: rgb(239,239,239);
+    padding-bottom: 5%;
+}
+.visit-com-help{
+
+    background-color: white;
+    text-align: center;
+    color: black;
+    padding-top: 6%;
+    padding-bottom: 3%;
+}
+.visit-com-help h1{
+    margin-bottom: 5%;
+    font-weight: 700;
+    font-size: 4rem;
+}
+
+.visit-com-help p{
+    margin-bottom: 5%;
+    font-weight: 500;
+    font-size: 110%;
+
+
+}
+
+.help-class button{
+
+    display: block;
+    margin: 0 auto;
+    margin-top: 5%;
+    color: white;
+    font-weight: 500;
+    padding: 1.2% 5%;
+    border-radius: 40px;
+    border: none;
+    background-color: rgb(45,70,185);
+    outline: none;
+    letter-spacing: 0.1rem;
+}
+.help-class button:hover{
+
+    background-color: rgb(26, 41, 104);
+    outline: none;
+}
+
+.help-class button:focus{
+
+    outline: none;
+}
+
+
+.features-how-use{
+    background-color: rgb(241,58,53);
+    padding-top: 7%;
+    padding-bottom: 7%;
+    text-align: center;
+}
+
+.features-how-use hr{
+    background-color: white;
+    opacity: 0.5;
+    margin-top: -2%;
+    margin-bottom: 5%;
+}
+
+.features-how-use .row{
+    text-align: left;
+}
+
+.features-how-use h1{
+
+    font-size: 350%;
+    font-weight: 700;
+    
+}
+
+.features-how-use p{
+
+    margin-top: 10%;
+    
+}
+
+
+.carousel-iphones .slide {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 3;
+    bottom: 0;
+    left: 5;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s,opacity .4s ease-out .6s;
+    z-index: 3;
+    width: 300px;
+    height: 460px;
+    margin-top: 65px;
+
+}
+
+.carousel-iphones .slide.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.carousel-iphones .iphone-device{
+    background-image: url("https://i.pinimg.com/564x/72/d2/2d/72d22d413fd3a4e4ca426045fccb14eb.jpg");
+    background-repeat: no-repeat,no-repeat;
+    display: inline-block;
+    background-size: 100%,96.25%;
+    max-width: none;
+    box-sizing: content-box;
+    width: 300px;
+    height: 400px;
+    padding: 60px 16px;
+    position: relative;
+    right: 0;
+    z-index: 1;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.carousel-exist{
+    background-color: white;
+    padding-top: 5%;
+}
+
+.video-info-container p{
+
+    text-align: left;
+    color: rgb(34,35,38);
+    font-weight: 600;
+    font-size: 110%;
+}
+
+.video-info-container h3{
+
+    color: black;
+    text-align: left;
+    font-weight: 700;
+    font-size: 250%;
+    margin-bottom: 5%;
+    margin-top: -60%;
+}
+
+.carousel-indicators li {
+    left: -25%;
+    position: relative;
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: -100%;
+    background-color: black;
+    box-shadow: inset 100px 100px 100px 100px rgb(44, 44, 44);  
+}
+
+.carousel-indicators .active {
+    background-color:black;
+    box-shadow: inset 100px 100px 100px 100px black; 
+}
+
+.carousel-control-next-icon
+{
+    display: none;
+    visibility: hidden;
+}
+
+.carousel-control-prev-icon
+{
+    display: none;
+    visibility: hidden;
+    
+}
+
+.carousel-control-next-icon::after{
+    content: ">";
+    color: black;
+    font-size: 300%;
+    font-weight: 500;
+  }
+  .carousel-control-prev-icon::after{
+    content: "<";
+    color: black;
+    font-size: 300%;
+    font-weight: 500;
+  }
+
+
+
+
+  .carousel-iphones{
+      text-align: right;
+  }
+
+  .get-spotify-sugg{
+
+    text-align: center;
+    padding-bottom: 5%;
+    padding-top: 7%;
+    background-color: rgb(239,239,239);
+    color: black;
+  }
+
+  .get-spotify-sugg p{
+
+    margin-top: 5%;
+    margin-bottom: 4%;
+    color: rgb(34,35,38);
+    font-weight: 600;
+    font-size: 110%;
+
+  }
+  .get-spotify-sugg h1{
+
+    color: rgb(34,35,38);
+
+    font-weight: 700;
+    font-size: 350%;
+
+
+  }
+
+
+  @media only screen and (max-width: 1100px) {
+    .carousel-indicators li {
+        left: -15%;
+ 
+    }
+
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+    
+    .help-header h1{
+        font-size: 200%;
+
+    }
+
+    .search-help-field{
+
+        width: 100%;
+    }
+
+    .visit-com-help h1{
+        font-size: 2rem;
+    }
+
+    .hidden-sm{
+        display: none;
+    }
+
+    .video-info-container p{
+
+        color: black;
+        text-align: center;
+    }
+    
+    .video-info-container h3{
+        text-align: center;
+    }
+    .carousel-indicators li {
+        left: 0;
+    }
+    .carousel-control-next-icon
+    {
+        display: block;
+        visibility: visible;
+    }
+
+    .carousel-control-prev-icon
+    {
+        display: block;
+        visibility: visible;
+    }
+
+    .get-spotify-sugg h1{
+
+        font-size: 230%;
+    
+    
+      }
+
+}
+
+
+
+
+  
+  
+  

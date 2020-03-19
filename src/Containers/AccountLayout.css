@@ -1,27 +1,32 @@
 .content-wrapper {
 
-    background-color: hsl(226, 29%, 24%);
+    background-color: rgb(27,38,59);
     color: black;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {    .row{
-    margin-left: 0%;
-    margin-right: 0%;
-
-
-}}
-
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+@media only screen and (max-width: 950px) {
 
-    .row{
-        margin-left: 5%;
-        margin-right: 5%;
+    .content-wrapper{
+        padding-left: 2%;
+        padding-right: 2%;
 
 
     }
+}
+
+/* Extra small devices (phones, 700px and down) */
+@media only screen and (max-width: 700px) {   
+    
+    
+    .content-wrapper{
+    padding-left: 0%;
+    padding-right: 0%;
+
+
+}
 }
 
 
