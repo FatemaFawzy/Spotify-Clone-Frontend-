@@ -1,0 +1,122 @@
+.SignUpBody {
+	font-family: Circular, Helvetica, Arial, sans-serif;
+	font-size: .9375em;
+	color: #88898c;
+	background: white;
+}
+
+.SignUpBody #logo a{
+	background: url(https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Black.png) transparent no-repeat center center;
+	width: 100%;
+    height: 38px;
+    background-size: contain;
+    display: block;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.SignUpBody .SignUpBox {
+	box-sizing: border-box;
+	max-width: 400px;
+	padding: 0;
+}
+
+.SignUpBody h2 {
+	padding-top: 10px;
+	color: #1c1c1f;
+    font-size: 18px;
+	text-align: center;
+	font-weight: 900;
+    line-height: 1.2;
+    text-rendering: optimizelegibility;
+}
+
+.SignUpBody .input-field {
+	padding: 0 0.75em;
+	height: 48px;
+	width: 400px;
+	margin: 16px auto;
+	font-size: .9375em;
+
+}
+
+.SignUpBody label {
+	margin: 0;
+}
+
+/*code of spinner from: https://css-tricks.com/snippets/css/turn-off-number-input-spinners/ */
+.SignUpBody input[type=number]::-webkit-inner-spin-button, 
+.SignUpBody input[type=number]::-webkit-outer-spin-button { 
+  	-webkit-appearance: none; 
+  	-moz-appearance: none;
+  	margin: 0; 
+}
+
+/*code idea from: https://stackoverflow.com/questions/611482/change-color-and-appearance-of-drop-down-arrow*/
+.SignUpBody .dropdown {
+    -webkit-appearance: none;
+  	-moz-appearance: none;
+  	background: url(https://static.thenounproject.com/png/1270386-200.png) no-repeat center right;
+  	background-size: contain;
+}
+
+.SignUpBody .birthDateSignUp {
+	color: #88898c;
+	font-size: .9375em;
+	height: 48px;
+	padding: 0 0.75em;
+}
+
+
+.SignUpBody #signUpButton {
+	width: 320px;
+	height: 50px;
+	margin: 16px auto;
+	background:#1DB954;
+	border:none;
+	text-align: center;
+	font-size:14px;
+	letter-spacing: 2px;
+	line-height: 3;
+	font-weight: 700;
+
+}
+
+.SignUpBody p {
+	font-size: .75em;
+	text-align: center;	
+	color: black;
+	margin: 1em 0;
+}
+
+.SignUpBody #signUpButton:hover {
+	background: #1ED760;
+}
+
+.SignUpBody #signUpButton +p{
+	font-size: .9375em;
+	font-weight: 400;
+	color: black;
+}
+
+.SignUpBody p a {
+	color:#1DB954 ;
+}
+
+.SignUpBody p a:hover {
+	text-decoration-line: none;
+	color: #1ED760;
+}
+
+.SignUpBody .emptyInput {
+	color: red;
+	text-align: left;
+	color: #bd3200;
+	font-size: .9375em;
+	padding:0;
+	margin:0;
+}
+
+.SignUpBody ::-webkit-input-placeholder {
+	font-size: 100% !important;
+  }

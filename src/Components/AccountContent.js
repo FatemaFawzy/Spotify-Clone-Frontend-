@@ -1,10 +1,10 @@
 import React from "react";
 import "./AccountContent.css";
 import OverviewContent from "./OverviewContent.js";
-import ProfileContent from "./ProfileContent.js";
 import SetPasswordContent from "./SetPasswordContent.js";
 import RecoverPlaylists from "./RecoverPlaylists";
 import {Route , Switch, Redirect} from "react-router-dom";
+import EditProfile from "./EditProfile.js";
 
 
 const AccountContent= (props) => (
@@ -14,7 +14,7 @@ const AccountContent= (props) => (
             <Switch>
                 {/* <NavBar/> */}
                 <Route path="/account/overview/" component={OverviewContent}/>
-                <Route path="/account/profile/" component={ProfileContent}/>
+                <Route path="/account/profile/" component={EditProfile}/>
                 <Route path="/account/set-device-password/" component={SetPasswordContent}/>
                 <Route path="/account/recover-playlists/" component={RecoverPlaylists}/>
 
