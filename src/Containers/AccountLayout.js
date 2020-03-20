@@ -18,7 +18,7 @@ class AccountLayout extends Component {
             {/* Display the Navbar Component here */}
             <NavBar/>
             <Router>
-            <div className="content-wrapper ">
+            <div className="content-wrapper d-flex justify-content-center">
 
                     <div className="row no-gutters container ">
                         <div className="col-sm-3 hidden-xs">

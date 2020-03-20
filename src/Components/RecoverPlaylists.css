@@ -1,20 +1,22 @@
-.contentLayout
+.recoverPlaylists
 {
-    margin: 0 15px;
-    padding: 40px;
+    margin: 0 2%;
+    padding: 30px;
     font-family: Circular, Helvetica, Arial, sans-serif;
+    margin-bottom: 30%;
+   
 }
 
 .recoverPlaylists .pageTitle
 {
     margin:13px 0px;
-    font-size: 20px;
+    font-size: 26px;
     color: #1DB954;
     font-weight: 400;
 }
 .recoverPlaylists .content
 {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 @media (min-width: 75px) and (max-width: 1200px){
@@ -29,15 +31,11 @@
  }
 }
 
-.recoverPlaylists
-{
-    margin-bottom: 8%;
-}
 .recoverPlaylists .tableTitles
 {
     
     border-bottom-width: 1px;
-    font-size: 12px;
+    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #C1C3C6;

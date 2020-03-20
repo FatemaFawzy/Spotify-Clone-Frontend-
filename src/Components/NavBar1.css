@@ -6,24 +6,23 @@
 
 .NavBar1 .ground
 {
-	background: rgba(26, 22, 22, 0.7);
+	background: rgba(94, 61, 61, 0.9);
 	height:8%;	
 }
 
 .NavBar1 .LogoTop
 {
 	color:#ffffff;
-	font-size:25px;	
+	font-size:30px;	
+	font-weight: bold;
+	margin-left: 2.5%;
 }
 
-.NavBar1 .navbar-expand-sm .navbar-collapse {
-    margin-right: 8%;
-}
 
 .NavBar1 .navbar-dark .navbar-nav .nav-link {
 	color: white;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 16px;
 	padding-right: .8rem;
     padding-left: .8rem;
     padding-top: 1rem;
@@ -35,12 +34,6 @@
 {
 	color: #1ed760;
 	text-decoration: none;
-}
-
-
-.navbar-dark .navbar-brand
-{
-margin-left: 7.5%;
 }
 
 

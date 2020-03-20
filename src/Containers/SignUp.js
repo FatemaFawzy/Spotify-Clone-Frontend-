@@ -94,7 +94,7 @@ render() {
 
         </form>
 
-        <p> Already have an account? <a href="#"> Log in </a> </p>
+        <p> Already have an account? <a href="/logIn"> Log in </a> </p>
     </div>
 
 </div>
