@@ -8,7 +8,6 @@ const InfoLine = (props) =>(
         <hr/>
     </div>
 
-
 )
 
 export default InfoLine

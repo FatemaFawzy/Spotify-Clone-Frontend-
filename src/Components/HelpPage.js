@@ -2,6 +2,8 @@ import React,{Component} from "react"
 import "./HelpPage.css"
 import Carousel from 'react-bootstrap/Carousel';
 import whitebackground from "../assets/whitebackground.jpg";
+import NavBar1 from './NavBar1';
+import Bottom from "./Bottom";
 
 
 var elements;
@@ -39,10 +41,11 @@ class HelpPage extends Component {
 
      render(){
 
-         return(
+        return(
 
     <div className="help-class">
-
+         <div className="helpNav" > <NavBar1/>
+         </div>
         {/* First block */}
             <div className="help-header">
             <div className="container">
@@ -245,7 +248,7 @@ class HelpPage extends Component {
                 </div>
             </div>   
 
-
+            <Bottom/>
     </div>
 );
 

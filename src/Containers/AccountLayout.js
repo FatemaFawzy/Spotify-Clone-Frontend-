@@ -18,9 +18,9 @@ class AccountLayout extends Component {
             {/* Display the Navbar Component here */}
             <NavBar/>
             <Router>
-            <div className="content-wrapper">
+            <div className="content-wrapper ">
 
-                    <div className="row no-gutters ">
+                    <div className="row no-gutters container ">
                         <div className="col-sm-3 hidden-xs">
 
                             <AccountSidebar image="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2617592195136976&height=300&width=300&ext=1586597311&hash=AeT69G6iOgUxz6VW"/>

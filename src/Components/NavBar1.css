@@ -1,0 +1,53 @@
+/* .NavBar1
+{
+  position: fixed; 
+  width: 100%;
+} */
+
+.NavBar1 .ground
+{
+	background: rgba(26, 22, 22, 0.7);
+	height:8%;	
+}
+
+.NavBar1 .LogoTop
+{
+	color:#ffffff;
+	font-size:25px;	
+}
+
+.NavBar1 .navbar-expand-sm .navbar-collapse {
+    margin-right: 8%;
+}
+
+.NavBar1 .navbar-dark .navbar-nav .nav-link {
+	color: white;
+	font-weight: bold;
+	font-size: 14px;
+	padding-right: .8rem;
+    padding-left: .8rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+	
+}
+
+.NavBar1 .navbar-dark .navbar-nav .nav-link:hover
+{
+	color: #1ed760;
+	text-decoration: none;
+}
+
+
+.navbar-dark .navbar-brand
+{
+margin-left: 7.5%;
+}
+
+
+@media (min-width: 75px) and (max-width: 767.98px)
+ {
+	.NavBar1 .navbar-dark {
+	  background-color: black;
+	}
+  }
+

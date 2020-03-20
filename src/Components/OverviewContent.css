@@ -103,14 +103,14 @@ margin-bottom: 25px;
 
 }
 
-.info-tit{
+.ac-ov .info-tit{
 
     color:#6c6d70;
     float: left;
     text-align: left;
     width: 50%;
 }
-.acc-info
+.ac-ov .acc-info
 {
     margin-top:5%;
 }

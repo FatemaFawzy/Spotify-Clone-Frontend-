@@ -1,29 +1,41 @@
-.bottom
+.BottomBar 
 {
 	background: #0a0a0a;
+	color:white;
 }
-.Logo:hover
+
+.pt-4, .py-4 {
+    padding-top: 1.5rem!important;
+    padding-left: 13%;
+}
+
+.BottomBar .logo 
 {
 	color:white;
+	font-size:25px;
 	text-decoration: none;
 }
 
-
-.linksHover
+.BottomBar .linksHover
 {
 	color: white;
 }
 
-.linksHover:hover
+.BottomBar .linksHover:hover
 {
 	color: #1ed760;
 	background-color: transparent;
 	text-decoration: none;
 }
 
-.imgSize
+.BottomBar .imgSize
 {
 	height: 18px;
 	margin-left: 10px;
-
 }
+.BottomBar .language
+{
+	color:white;
+	font-size: 12px;
+}
+

@@ -1,49 +1,25 @@
-.ground
-{
-	background: rgba(26, 22, 22, 0.7);
-	height:8%;
-}
 
-.Logo
+.welcomePageBody .back
 {
-	color:#ffffff;
-	font-size:35px;
-	font-family: 'Oleo Script', cursive;
-	margin:auto;
-}
-.navbar-dark .navbar-nav .nav-link {
+	margin-top: 30%;
 	color: white;
-	font-weight: bold;
-	font-size: 14px;
-	padding-right: .8rem;
-    padding-left: .8rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-	
-}
-
-.navbar-dark .navbar-nav .nav-link:hover
-{
-	color: #1ed760;
-	text-decoration: none;
-}
-
-.back
-{
-	padding-top: 45%;
-	color: white;
-	height:980px;
+	margin-bottom: 30%;
 }
 body
 {
     background: url("./images/home.png");
-    font-family: 'Cormorant Garamond', serif;
 }
 
-.title
+.welcomePageBody h1
 {
 	font-size: 4rem;
-	font-family: 'Bree Serif';
+	margin: 2px;
+	
+}
+.welcomePageBody h3{
+	margin-top: 1%;
+	margin-bottom: 2%;
+	font-size: 18px;
 }
 
 

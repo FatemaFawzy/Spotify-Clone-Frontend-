@@ -2,8 +2,8 @@
 
     background-color: rgb(27,38,59);
     color: black;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 17%;
+    padding-right: 17%;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -16,8 +16,6 @@
 
     }
 }
-
-
     .row{
         margin-left: 18%;
         margin-right: 18%;

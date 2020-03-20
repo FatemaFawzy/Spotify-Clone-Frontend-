@@ -7,7 +7,7 @@ render() {
   return (
 <div className="SignUpBody">
         <div id= "logo" className="container-fluid border-bottom p-md-4 p-xs-1">
-        <a href="#" className="m-md-1 m-xs-4"></a> 
+        <a href="/" className="m-md-1 m-xs-4"></a> 
     </div>
 
     <div className="container text-left SignUpBox">
