@@ -4,10 +4,12 @@ import AccountLayout from "./Containers/AccountLayout";
 import HelpPage from "./Components/HelpPage";
 import welcomePage from "./welcomePage";
 import SignUp from "./Containers/SignUp";
+import login from "./Containers/login"
 import {BrowserRouter as Router,
         Switch, 
         Route, 
        } from "react-router-dom";
+// import { Container } from 'react-bootstrap/lib/Tab';
 
        
 function App() {
@@ -24,7 +26,7 @@ function App() {
           <Route  path="/help/" component={HelpPage}/>
           <Route  path="/signup/" component={SignUp}/>
           {/* <Route  path="/premium/" component={Premium}/> */}
-          {/* <Route  path="/logIn/" component={Login}/> */}
+          <Route  path="/logIn/" component={login}/> 
 
           {/* TODO: add routes to the other pages */}
         </Switch>
