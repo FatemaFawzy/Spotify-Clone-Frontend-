@@ -103,7 +103,12 @@
     text-align: center;
     touch-action: manipulation;
 }
-
+.login #exampleInputEmail1::placeholder{
+    color:rgb(145, 148, 150);
+}
+.login #exampleInputPassword1::placeholder{
+    color:rgb(145, 148, 150);
+}
 
 .login h4{
     margin-top: 10px;
