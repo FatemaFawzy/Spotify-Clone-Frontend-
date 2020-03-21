@@ -49,13 +49,15 @@ render() {
                <br/>
               <hr style={{width: "450px", paddingLeft: "15px", paddingRight: "15px", paddingBottom: "10px", paddingTop: "15px"}}/>
        
-              <h4>Don't have an account?</h4>
+              <h4 className="DontHaveAccount">Don't have an account?</h4>
               <a id="SignupButton" className="ButtonS btn btn-block btn-apple" href="/signup" role="button">Sign up for spotify</a>
               
               <br/>
        
               <hr style={{width: "450px"}}/>
-       
+              
+              <p id="TermsAndCondition">If you click "Log in with Facebook" and are not a Spotify user, you will be registered and you agree to Spotify's <a href="#" className="GreenWords">Terms & Conditions</a> and <a href="#" className="GreenWords">Privacy Policy</a>.</p>
+
             </div>
        
     </div>
