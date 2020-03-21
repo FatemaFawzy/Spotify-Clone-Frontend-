@@ -23,7 +23,7 @@ class ForgotPassword extends Component {
 					<div  className= "d-flex justify-content-start pad" id="labelling"><label for="myText" className="mb-1"><strong>Email address or username</strong></label></div>
 					<div className= "d-flex justify-content-center"><input type="email" name="Email" required className="mb-3 mt-0 pt-1 pb-1" id="myText"/></div>
 					<div className="d-none justify-content-start red pad" id="emptyInput"><p>This field is required.</p></div>
-					<div className="d-flex justify-content-center"><a className="btn btn-success px-5 py-2 mt-4 padded" id="anchor"><Link to="/logIn/forgotpassword/success" className="buttonSpacing">SEND</Link></a></div>
+					<div className="d-flex justify-content-center"><Link to="/logIn/forgotpassword/success" className="buttonSpacing"><a className="btn btn-success px-5 py-2 mt-4 padded" id="anchor" role="button">SEND</a></Link></div>
 					<p className="text-center mb-0 black">If you still need help, contact <span className="green">Spotify Support.</span></p>
 				</form>
 			</div>
