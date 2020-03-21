@@ -23,19 +23,48 @@ class ForgotPassword extends Component {
 					<div  className= "d-flex justify-content-start pad" id="labelling"><label for="myText" className="mb-1"><strong>Email address or username</strong></label></div>
 					<div className= "d-flex justify-content-center"><input type="email" name="Email" required className="mb-3 mt-0 pt-1 pb-1" id="myText"/></div>
 					<div className="d-none justify-content-start red pad" id="emptyInput"><p>This field is required.</p></div>
-					<div className="d-flex justify-content-center"><Link to="/logIn/forgotpassword/success" className="buttonSpacing"><a className="btn btn-success px-5 py-2 mt-4 padded" id="anchor" role="button">SEND</a></Link></div>
+					<div className="d-flex justify-content-center"><Link to="/logIn/forgotpassword/success" className="buttonSpacing d-flex justify-content-center"><a className="btn btn-success px-5 py-2 mt-4 padded" id="anchor" role="button">SEND</a></Link></div>
 					<p className="text-center mb-0 black">If you still need help, contact <span className="green">Spotify Support.</span></p>
 				</form>
 			</div>
 	
 	
-			<Footer />
-	
-	
-	
-		</div>
-
-		);
+		<nav className="navbar navbar-dark blackBackground navbar-default navbar-expand black" id="bottomNav">
+        <div className="container">
+    
+            <div className="col-lg-6 align-items-end pt-4 pl-0">
+                <ul className=" nav navbar-nav mt-2 mt-lg-0">
+                    <div className="nav-item">
+                    <a className="nav-link" href="#">Legal</a>
+                    </div>
+                    <div className="nav-item">
+                    <a className="nav-link" href="#">Cookies</a>
+                    </div>
+                    <div className="nav-item">
+                    <a className="nav-link" href="#">About Ads</a>
+                    </div>
+                </ul>
+            </div>
+    
+            <div className="col-lg-6">
+                <div className="row ">
+                    <div className="col-12 d-flex  justify-content-end pb-1">
+                        <div className="nav-item">
+                            <a  href="#" className="bottomRight" id="Egypt">Egypt (English) <img src="http://icons.iconarchive.com/icons/custom-icon-design/all-country-flag/24/Egypt-Flag-icon.png"/></a>
+                            </div>
+                    </div>
+                    <div className="col-12 d-flex  justify-content-end pt-2">
+                            <div className="nav-item">
+                            <p className="bottomRight">© 2020 Spotify AB</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </nav>
+	</div>
+	);
 	}
 }
 
