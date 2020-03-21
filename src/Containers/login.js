@@ -1,5 +1,6 @@
 import React ,{ Component} from 'react';
 import './login.css';
+import {Link, Router } from "react-router-dom";
 
 
 class login extends Component{
@@ -41,7 +42,10 @@ render() {
                </form>
                 
                <br/>
-               <a className="PasswordForgot" href="#">Forgot your password?</a>  
+              
+               <Link to="/logIn/forgotpassword" className="PasswordForgot" >Forgot your password?</Link> 
+              
+               
                <br/>
               <hr style={{width: "450px", paddingLeft: "15px", paddingRight: "15px", paddingBottom: "10px", paddingTop: "15px"}}/>
        

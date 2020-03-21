@@ -1,0 +1,310 @@
+.Premium
+{
+    background:white;
+}
+.Premium #topSection
+{
+    background-color:#509bf5;
+    height:467px;
+    background-image: url(https://campaigns-test.scdn.co/images/premium_dancer.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 33%;
+    background-position-y: -50px;
+    padding-top:51px;
+}
+@media (min-width:1201px)
+{
+    .Premium #topSection
+    {
+        background-size: 38%;
+        background-position-y: 40x; 
+    }
+}
+@media (max-width:990px)
+{
+    .Premium #topSection
+    {
+        background-image: none;
+    }
+}
+@media (min-width:992px) and (max-width:1200px)
+{
+    .Premium #topSection
+    {
+        height: 562px;
+        background-size: 47%;
+        background-position-y: 50px; 
+    }
+}
+@media (min-width:768px) and (max-width:991px)
+{
+    .Premium #topSection
+    {
+        height: 562px;
+    }
+}
+@media (min-width:690px) and (max-width:768px)
+{
+    .Premium #topSection
+    {
+        height:340px;
+    }
+}
+@media (min-width:568px) and (max-width:690px)
+{
+    .Premium #topSection
+    {
+        height:396px;
+    }
+}
+@media (max-width:539px)
+{
+    .Premium #topSection
+    {
+        height:450px;
+    }
+}
+@media (max-width:770px)
+{
+    .Premium #getPremium
+    {
+        color:white;
+        font-size:35px;
+        font-weight:800;
+        padding-bottom: 50px;
+        padding-top:0px;
+        padding-left:0px;
+    }
+    .Premium #Price
+    {   
+        color:white;
+        font-size:24px;
+        font-weight: 600;
+        padding-bottom:55px;
+        padding-left:0px;
+    }
+    .Premium #Terms
+{
+    color:white;
+    font-size: 12px;
+    padding-left:0px;
+}
+.Premium .button
+{
+    padding-left:38%;
+    padding-right:38%;
+    padding-top:15px;
+    padding-bottom:15px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    margin-left:0px;
+    border-radius: 35px;
+      color: #fff;
+  background-color: #1db954;
+  border-color: #1db954;
+
+}
+.Premium .button:hover
+{
+  color: #fff;
+  background-color: #1ED760;
+  border-color: #1ED760;
+}
+.Premium .jumbotron
+{
+    padding-left:15px;
+    padding-right:15px;
+}
+.Premium #ovflow
+{
+    overflow:hidden;
+    white-space: nowrap;
+}
+}
+@media (min-width:771px)
+{
+    .Premium #getPremium
+{
+    color:white;
+    font-weight:800;
+    font-size: 65px;
+    padding-top:52px;
+    padding-left:80px;
+}
+.Premium #Price
+{
+    color:white;
+    font-size: 30px;
+    margin-top: 40px;
+    font-weight: 600;
+    padding-left:80px;
+}
+.Premium .button
+{
+    padding-left:45px;
+    padding-right:45px;
+    padding-top:15px;
+    padding-bottom:15px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top:55px;
+    margin-left:80px;
+    border-radius: 35px;
+      color: #fff;
+  background-color: #1db954;
+  border-color: #1db954;
+}
+.Premium .button:hover
+{
+  color: #fff;
+  background-color: #1ED760;
+  border-color: #1ED760;
+}
+.Premium #Terms
+{
+    color:white;
+    font-size: 12px;
+    padding-left:80px;
+}
+}
+
+.Premium .underline
+{
+    text-decoration: underline;
+}
+.Premium #question
+{
+    color:rgb(34,35,38); 
+    font-size: 45px;
+    font-weight:900;
+    text-align:center;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+}
+.Premium div div div h1
+{
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+.Premium .endCard
+{
+    max-width: 600px;
+    width:96%;
+    height:420px;
+    margin-top:170px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;
+    border-radius: 10px;
+}
+.Premium #last
+{
+    color: rgb(193, 195, 198);
+    font-size:12px;
+    margin-bottom:93px;
+    padding-bottom:0px;
+}
+.Premium .borderBottom1
+{
+    border-bottom: 1px solid rgb(212, 214, 213);  
+    padding-bottom:4px; 
+}
+.Premium .borderBottom2
+{
+    border-bottom: 1px solid rgb(212, 214, 213);
+    padding-bottom:1.85rem;
+}
+.Premium #bold
+{
+    font-weight:900;
+    font-size:32px;
+}
+.Premium h3{
+    font-size:24px;
+}
+.Premium #month
+{
+    font-size:16px;
+}
+.Premium .small
+{
+    font-size:12px;
+    color:#95a198;
+}
+.Premium .bigger
+{
+    padding-top:19px;
+    padding-bottom:17px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    cursor:pointer;
+    border-radius: 35px;
+      color: #fff;
+  background-color: #1db954;
+  border-color: #1db954;
+}
+.Premium .bigger:hover
+{
+    padding-top:20px;
+    padding-bottom:18px;
+    margin-left:-6px;
+    margin-right:-6px;
+    border-radius: 35px;
+    color: #fff;
+	background-color: #1ED760;
+	border-color: #1ED760;
+}
+@media (min-width:1200px)
+{
+    .Premium .removePad
+    {
+        text-align:center;
+    }
+}
+.Premium #bottomNav
+{
+	height:110px;
+	font-size:12px;
+}
+.Premium .bottomRight , .Premium .bottomRight:hover
+{
+	color:rgba(255, 255, 255, 0.5);
+	text-decoration: none;
+}
+.Premium #Egypt:hover
+{
+	color:#45ed6d;
+	text-decoration: none;
+}
+.Premium .navbar ul .nav-item .nav-link:hover
+{
+color:#45ed6d;
+}
+.Premium .jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: 0rem;
+}
+
+@media (min-width: 576px) {
+    .Premium .jumbotron {
+    padding: 4rem 2rem;
+  }
+}
+.Premium .black
+{
+	background-color: black;
+}

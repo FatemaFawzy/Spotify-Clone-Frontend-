@@ -1,11 +1,12 @@
 import React ,{ Component} from 'react';
 import './Premium.css';
+import NavBar1 from "../Components/NavBar1";
 
 class Premium extends Component{
 render() {
   return ( 
   <div className="Premium">
-
+      <NavBar1/>
     <div className="jumbotron" id="topSection">
         <h1 id="getPremium">Get Premium free for 1 month</h1>
         <h2 id="Price">Just EGP 49.99/month after. Cancel anytime.</h2>
@@ -17,7 +18,7 @@ render() {
 
     <div className="container">
         <div className="row justify-content-around">
-            <div className="col-xl-2 col-md-6 col-12 pb-md-5 mb-5 mb-md-0" style="  width:200px;">
+            <div className="col-xl-2 col-md-6 col-12 pb-md-5 mb-5 mb-md-0">
                <div className="row d-flex">
                     <div className=" col-4 col-xl-12">
                         <img className="card-img-top pb-lg-5" src="https://campaigns.scdn.co/images/benefit-1.png" alt=""/>
@@ -30,7 +31,7 @@ render() {
                   
             </div>
 
-            <div className="col-xl-2 col-md-6 col-12 pb-md-5 mb-5 mb-md-0" style="  width:200px;">
+            <div className="col-xl-2 col-md-6 col-12 pb-md-5 mb-5 mb-md-0">
                 <div className="row">
                     <div className=" col-4 col-xl-12">
                         <img className="card-img-top pb-lg-5" src="https://campaigns.scdn.co/images/benefit-2.png" alt=""/>
@@ -43,7 +44,7 @@ render() {
               
             </div>
 
-            <div className="col-xl-2 col-md-6 col-12 pb-md-5 mb-5 mb-md-0" style="  width:200px;">
+            <div className="col-xl-2 col-md-6 col-12 pb-md-5 mb-5 mb-md-0">
                 <div className="row">
                     <div className=" col-4 col-xl-12">
                         <img className="card-img-top pb-lg-5" src="https://campaigns.scdn.co/images/benefit-3.png" alt=""/>
@@ -55,7 +56,7 @@ render() {
                </div>
             </div>
 
-            <div className="col-xl-2 col-md-6 col-12 pb-md-5 mb-5 mb-md-0" style="width:200px;">
+            <div className="col-xl-2 col-md-6 col-12 pb-md-5 mb-5 mb-md-0">
                 <div className="row">
                     <div className=" col-4 col-xl-12">
                         <img className="card-img-top pb-lg-5" src="https://campaigns.scdn.co/images/benefit-4.png" alt=""/>
@@ -104,7 +105,7 @@ render() {
                 <div className="row ">
                     <div className="col-12 d-flex  justify-content-end pb-1">
                         <div className="nav-item">
-                            <a  href="#" className="bottomRight" id="Egypt">Egypt (English) <img src="eFlag.png"/></a>
+                            <a  href="#" className="bottomRight" id="Egypt">Egypt (English) <img src="http://icons.iconarchive.com/icons/custom-icon-design/all-country-flag/24/Egypt-Flag-icon.png"/></a>
                             </div>
                     </div>
                     <div className="col-12 d-flex  justify-content-end pt-2">

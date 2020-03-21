@@ -1,0 +1,63 @@
+.Success #topNav 
+{
+	height: 80px;
+}
+.Success #bottomNav
+{
+	height:110px;
+	font-size:12px;
+	position:fixed;
+bottom:0;
+width:100%;
+}
+.Success .blackBackground
+{
+	background-color: black;
+}
+.Success body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    line-height:1.5;
+}
+.Success html {
+    height: 100%;
+}
+.Success h1
+{
+	font-size: 2.75rem;
+	font-weight: 500;
+	padding-top:7.5%;
+
+}
+.Success #paragraph
+{
+	margin-left:15%;
+	margin-right:15%;
+	padding-bottom:20px;
+	font-size:1rem;
+
+}
+.Success .bottomRight , .Success .bottomRight:hover
+{
+	color:rgba(255, 255, 255, 0.5);
+	text-decoration: none;
+}
+
+.Success #Egypt:hover
+{
+	color:#45ed6d;
+	text-decoration: none;
+}
+.Success .navbar ul .nav-item .nav-link:hover
+{
+color:#45ed6d;
+}
+.Success{
+	background-color: white;
+}
+.Success #paragraph
+{
+	padding-bottom:270px;
+}
