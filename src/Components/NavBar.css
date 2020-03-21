@@ -8,12 +8,12 @@
 {
 	color:#ffffff;
 	font-size:25px;
-    margin-left:  7.5%;
+   
 }
 .NavBar .navbar-dark .navbar-nav .nav-link {
 	color: white;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     padding-right: .8rem;
     padding-left: .8rem;
     padding-top: 1rem;
@@ -27,10 +27,10 @@
 	text-decoration: none;
 }
 
-.NavBar .navbar-expand-md .navbar-collapse
+/* .NavBar .navbar-expand-md .navbar-collapse
 {   
     margin-right: 6%;
-}
+} */
 
 .NavBar .userImg{
     width: 40px;
@@ -48,7 +48,7 @@
 .NavBar .dropClass
 {
     text-align: center;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 1px;
     padding: 10px 30px;
     text-transform: uppercase;

@@ -7,7 +7,7 @@ function NavBar1 ()  {
     return(
 <section className="NavBar1">
 
-<nav className="navbar navbar-expand-md  navbar-dark  ground " >
+<nav className="navbar navbar-expand-md navbar-dark ground " >
   
   <div className="container ">
         <Link to="/" className="navbar-brand LogoTop" > <i className="fab fa-spotify"></i> Spotify </Link>

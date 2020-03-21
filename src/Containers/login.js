@@ -50,7 +50,7 @@ render() {
               <hr style={{width: "450px", paddingLeft: "15px", paddingRight: "15px", paddingBottom: "10px", paddingTop: "15px"}}/>
        
               <h4>Don't have an account?</h4>
-              <a id="SignupButton" className="ButtonS btn btn-block btn-apple" href="#" role="button">Sign up for spotify</a>
+              <a id="SignupButton" className="ButtonS btn btn-block btn-apple" href="/signup" role="button">Sign up for spotify</a>
               
               <br/>
        

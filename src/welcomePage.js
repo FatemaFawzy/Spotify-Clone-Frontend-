@@ -9,15 +9,16 @@ class welcomePage extends Component{
 	render() 
 	{
 		return(
-      <div>
-      <NavBar1/>
 		<div className="welcomePageBody">
+		<NavBar1/>
 			<div className="container">
 				<div className="row">
 	    			<div className="col-lg-12 text-center back ">
 	     		   		<h1> Music For Everyone. </h1>
 	      		   		<h3> Millions of songs. No credit card needed.</h3>
-	      		   		<Link to="/signup" className="btn btn-success rounded-pill pl-4 pr-4"> Get Spotify Free</Link>
+	      		   		<a href="/signup" id="buttonsign" className="btn btn-success rounded-pill text-center d-flex justify-content-center" onclick="checkInput()" >
+							 Get Spotify Free
+                </a> 
 	   				</div>
 	 			</div>
 			</div>
@@ -25,7 +26,6 @@ class welcomePage extends Component{
         <Bottom/>
       </div>
 
-    </div>
     </div>
 		)
 	}

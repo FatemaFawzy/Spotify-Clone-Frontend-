@@ -22,13 +22,13 @@ const DeletedPlaylists = {
 
 const RecoverPlaylists=()=>(
 
-<div className="contentLayout recoverPlaylists">
+<div className=" recoverPlaylists">
         
        <h2 className="pageTitle"> Recover playlists </h2>
        <hr/>
        <p className="content">Accidentally deleted a playlist? No worries, find the deleted playlist you'd like to recover below, then click RESTORE to recover it.</p>
        <div className="tableLayout">
-       <table class="table table-striped table-borderless">
+       <table className="table table-striped table-borderless">
               <thead>
               <tr className="tableTitles">
               <th scope="col">deleted</th>

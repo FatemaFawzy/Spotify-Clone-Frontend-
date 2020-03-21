@@ -1,25 +1,50 @@
 
 .welcomePageBody .back
 {
-	margin-top: 30%;
+	margin: 10% 1.25%;
+	padding: 250px 15px;
 	color: white;
-	margin-bottom: 30%;
 }
-body
+.welcomePageBody 
 {
-    background: url("./images/home.png");
+	background: url("./images/home.png");
+	Background-repeat: no-repeat; 
+	Background-size: cover; 
 }
 
 .welcomePageBody h1
 {
-	font-size: 4rem;
-	margin: 2px;
+	font-size: 80px;
+	margin-bottom: 2%;
 	
 }
 .welcomePageBody h3{
-	margin-top: 1%;
 	margin-bottom: 2%;
-	font-size: 18px;
+	font-size: 18px;	
+}
+/* .welcomePageBody .buttonsign
+{
+	margin-top: 16px;
+	padding: 1% 5%;
+	font-size: 14px;
+	font-weight: bold;
+} */
+
+.welcomePageBody #buttonsign {
+	width: 320px;
+	height: 50px;
+	margin: 16px auto;
+	background:#1DB954;
+	border:none;
+	text-align: center;
+	font-size:14px;
+	letter-spacing: 2px;
+	line-height: 3;
+	font-weight: 700;
+
+}
+.welcomePageBody #buttonsign:hover{
+background: #1ED760;
 }
 
 
