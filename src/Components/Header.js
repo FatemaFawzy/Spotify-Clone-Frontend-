@@ -7,8 +7,8 @@ const Header=()=>(
 	
     <div className="Header">
 
-    <nav className="navbar navbar-dark blackbg d-flex align-items-end" id="topNav">
-        <div id="navBrand" className="pl-md-5 pb-1 pt-0" >
+    <nav className="navbar navbar-dark black-background d-flex align-items-end" id="top-nav">
+        <div className="pl-md-5 pb-1 pt-0" >
             <a className="navbar-brand" href="#">
                 <img src={spotify} id="spotify"/>
             </a>
@@ -16,4 +16,4 @@ const Header=()=>(
     </nav>
 </div>
 );
-export default Header
+export default Header;

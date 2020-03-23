@@ -1,21 +1,20 @@
-.Footer #bottomNav
+.Footer #bottom-nav
 {
 	height:110px;
 	font-size:12px;
 	position:fixed;
-bottom:0;
-width:100%;
+	bottom:0;
+	width:100%;
 }
-.Footer .blackBackground
+.Footer .black-background
 {
 	background-color: black;
 }
-.Footer .bottomRight , .Footer .bottomRight:hover
+.Footer .bottom-right , .Footer .bottom-right:hover
 {
 	color:rgba(255, 255, 255, 0.5);
 	text-decoration: none;
 }
-
 .Footer #Egypt:hover
 {
 	color:#45ed6d;
@@ -23,5 +22,5 @@ width:100%;
 }
 .Footer .navbar ul .nav-item .nav-link:hover
 {
-color:#45ed6d;
+	color:#45ed6d;
 }
