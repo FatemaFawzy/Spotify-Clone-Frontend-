@@ -33,9 +33,7 @@ render() {
                    </div>
                    <div className="form-group form-check">
                        <div className="custom-control custom-checkbox">
-                            <input type="checkbox" className="custom-control-input" id="customCheck1" style={{boxShadow: "none"}} checked/>
-                           <label className="custom-control-label" for="customCheck1" >Remember me</label> 
-                           <button id="LOGINButton" type="submit" className="ButtonS btn btn-success">LOG IN</button>
+                            <button id="LOGINButton" type="submit" className="ButtonS btn btn-success">LOG IN</button>
                      </div>
                    </div>
                   

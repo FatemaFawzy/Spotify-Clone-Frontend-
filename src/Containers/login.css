@@ -57,31 +57,8 @@
     cursor: text;
 }
 
-.login .custom-control-label::before {
-        position: absolute;
-        top: .25rem;
-        left: -2.5rem;
-        display: block;
-        width: 1.5rem;
-        height: 1.5rem;
-        pointer-events: none;
-        content: "";
-        background-color: white;
-        border: #adb5bd solid 1px;
-        
-    }
-    *, ::after, ::before {
-        box-sizing: border-box;
-    }
-    .login .custom-control-label::after {
-        
-        position: absolute;
-        top: .25rem;
-        left: -2.5rem;
-        display: block;
-        width: 1.5rem;
-        height: 1.5rem;
-}
+
+    
 
 .login .PasswordForgot{
     display: block;
@@ -133,11 +110,7 @@
     color: white;
 }
 
-.login .custom-control-input:checked~.custom-control-label::before {
-    outline: 0;
-    box-shadow: none;
-    background-color: rgb(29, 185, 84);
-}
+
 .login #MissingEmail , #MissingPassword
 {
     color:red;
@@ -209,12 +182,4 @@
     padding-bottom:20px;
 }
 
-.login #TermsAndCondition{
-    font-size: 11.2px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 16.8px;
-    color:#c1c3c6;
-    width: 450px;
-}
+
