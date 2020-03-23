@@ -4,34 +4,36 @@ import './SetPasswordContent.css';
 const SetPasswordContent=()=>(
 
 <div class="SetPasswordContent">
-   <div className="container" >
-        <h1 className="header">Set device password</h1>
-        <p>To use Spotify on your devices, you need to set a separate password and log in with the username provided.</p>
-   </div>
-
-  <div className="container" style={{paddingTop: "30px", paddingBottom: "30px" ,paddingLeft: "19px",paddingRight: "19px", backgroundColor: "white"}}>
-  <form>
     
-    <div className="form-group">
-    <label for="exampleInputPassword1">Enter your current password:</label>
-    <input type="password" className="form-control" id="exampleInputPassword1"/>
-    </div>
-   
-    <div className="form-group">
-    
-    <label for="exampleInputPassword2">Enter your new password:</label>
-    <input type="password" className="form-control" id="exampleInputPassword2"/>
-   
+    <div className="container" >
+          <h1 className="header">Set device password</h1>
+          <p>To use Spotify on your devices, you need to set a separate password and log in with the username provided.</p>
     </div>
 
-  <button type="submit" className="ButtonGreen btn btn-success">Submit</button>
- </form>
+    <div className="container" id="container2">
+        <form>
+          
+            <div className="form-group">
+              <label for="password-input1">Enter your current password:</label>
+              <input type="password" className="form-control" id="password-input1"/>
+            </div>
+          
+            <div className="form-group">
+            
+              <label for="password-input2">Enter your new password:</label>
+              <input type="password" className="form-control" id="password-input2"/>
+          
+            </div>
+
+            <button type="submit" className="button-green btn btn-success">Submit</button>
+       
+        </form>
    
-  </div>
+    </div>
 
 </div>
 
 );
 
 
-export default SetPasswordContent
+export default SetPasswordContent;
