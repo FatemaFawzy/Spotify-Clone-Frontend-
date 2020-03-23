@@ -3,6 +3,7 @@
     background-color: rgb(27,38,59);
     color: black;
     padding: 0 15px;
+    min-height: 100vh;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -11,14 +12,11 @@
     .content-wrapper{
         padding-left: 2%;
         padding-right: 2%;
-
-
     }
 }
     .row{
         margin-left: 18%;
         margin-right: 18%;
-
     }
     
 /* Extra small devices (phones, 700px and down) */

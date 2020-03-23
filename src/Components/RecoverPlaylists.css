@@ -1,37 +1,37 @@
-.recoverPlaylists
+.recover-playlists
 {
     margin: 0 2%;
     padding: 30px;
     font-family: Circular, Helvetica, Arial, sans-serif;
-    margin-bottom: 30%;
-   
 }
 
-.recoverPlaylists .pageTitle
+.recover-playlists .page-title
 {
     margin:13px 0px;
     font-size: 26px;
     color: #1DB954;
     font-weight: 400;
 }
-.recoverPlaylists .content
+.recover-playlists .content
 {
     font-size: 16px;
 }
 
-@media (min-width: 75px) and (max-width: 1200px){
-.recoverPlaylists .contentLayout {
-    padding: 40px;
+@media (width: 75px) {
+.recover-playlists .content-layout {
+    padding: 20px;
+    width: 100%;
 }
 }
 
 @media (min-width: 75px) and (max-width: 1200px){
-    .recoverPlaylists .tableLayout {
+    .recover-playlists .table-layout {
         padding: 40px;
+        width: 100%;
  }
 }
 
-.recoverPlaylists .tableTitles
+.recover-playlists .table-titles
 {
     
     border-bottom-width: 1px;
@@ -43,20 +43,20 @@
     
 }
 
-.recoverPlaylists .tableLayout
+.recover-playlists .table-layout
 {
     padding:40px;
     margin-bottom: 10px;
     background: white;
     
 }
-.recoverPlaylists .Restore
+.recover-playlists .restore
 {
     color: #1DB954;
     text-decoration: none;
    
 }
-.recoverPlaylists .Restore:hover
+.recover-playlists .restore:hover
 {
     color: #1ed760;
     

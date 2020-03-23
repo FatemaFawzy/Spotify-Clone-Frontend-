@@ -42,10 +42,10 @@ class HelpPage extends Component {
      render(){
 
         return(
-
+ 
+         
     <div className="help-class">
-         <div className="helpNav" > <NavBar1/>
-         </div>
+         <NavBar1/>
         {/* First block */}
             <div className="help-header">
             <div className="container">

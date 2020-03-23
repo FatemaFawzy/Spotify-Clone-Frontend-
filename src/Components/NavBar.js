@@ -6,10 +6,10 @@ import {Link} from "react-router-dom";
 function NavBar()  {
 
             return(
-    <section className="NavBar">
-      <nav className="navbar navbar-expand-md navbar-dark NavbarBack " >
+    <section className="nav-bar">
+      <nav className="navbar navbar-expand-md navbar-dark navbar-back " >
         <div className="container">
-              <a href="/" className="navbar-brand LogoTop" > <i className="fab fa-spotify"></i> Spotify </a>
+              <a href="/" className="navbar-brand logo-top" > <i className="fab fa-spotify"></i> Spotify </a>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
@@ -25,15 +25,19 @@ function NavBar()  {
                         <li className="nav-item">
                           <Link to= "/help" className="nav-link help" > Help </Link>
                         </li>
+                        <li className="nav-item hidden-sm">
+                            <span className= "navbar-text pt-2 h3 font-weight-light mx-4 "> | </span>
+                        </li>
+            
                         <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="/account" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img className="userImg" alt="Profile" src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2617592195136976&height=300&width=300&ext=1586597311&hash=AeT69G6iOgUxz6VW" />
+                        <img className="user-img" alt="Profile" src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2617592195136976&height=300&width=300&ext=1586597311&hash=AeT69G6iOgUxz6VW" />
                          Profile
                         </a>
                     
-                        <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item dropClass" href="/account">Account</a>
-                        <a class="dropdown-item dropClass" href="/">Sign out</a>
+                        <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbar-dropdown">
+                        <a class="dropdown-item drop-class" href="/account">Account</a>
+                        <a class="dropdown-item drop-class" href="/">Sign out</a>
                         </div>
     
                      </li>

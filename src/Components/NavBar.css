@@ -1,16 +1,16 @@
-.NavBar .NavbarBack
+.nav-bar .navbar-back
 {
 	background-color: black;
     height:8%;
 }
 
-.NavBar .LogoTop
+.nav-bar .logo-top
 {
 	color:#ffffff;
 	font-size:25px;
    
 }
-.NavBar .navbar-dark .navbar-nav .nav-link {
+.nav-bar .navbar-dark .navbar-nav .nav-link {
 	color: white;
     font-weight: bold;
     font-size: 16px;
@@ -21,31 +21,27 @@
     
 }
 
-.NavBar .navbar-dark .navbar-nav .nav-link:hover
+.nav-bar .navbar-dark .navbar-nav .nav-link:hover
 {
 	color:#1ed760;
 	text-decoration: none;
 }
 
-/* .NavBar .navbar-expand-md .navbar-collapse
-{   
-    margin-right: 6%;
-} */
 
-.NavBar .userImg{
+.nav-bar .user-img{
     width: 40px;
     height: 40px;
     margin: -20px 12px -20px 0;
     border-radius: 50%; 
     background-color:#1d1e1f;
 }
-.NavBar .dropClass:hover
+.nav-bar .drop-class:hover
 {
     color:#1ed760;
     text-decoration: none;
     background-color: white;
 }
-.NavBar .dropClass
+.nav-bar .drop-class
 {
     text-align: center;
     font-size: 12px;
@@ -55,6 +51,7 @@
     font-weight: bold;
    
 }
+
 
 
 

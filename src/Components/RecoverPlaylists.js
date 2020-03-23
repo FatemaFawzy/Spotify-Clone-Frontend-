@@ -22,15 +22,15 @@ const DeletedPlaylists = {
 
 const RecoverPlaylists=()=>(
 
-<div className=" recoverPlaylists">
+<div className=" recover-playlists">
         
-       <h2 className="pageTitle"> Recover playlists </h2>
+       <h2 className="page-title"> Recover playlists </h2>
        <hr/>
        <p className="content">Accidentally deleted a playlist? No worries, find the deleted playlist you'd like to recover below, then click RESTORE to recover it.</p>
-       <div className="tableLayout">
+       <div className="table-layout">
        <table className="table table-striped table-borderless">
               <thead>
-              <tr className="tableTitles">
+              <tr className="table-titles">
               <th scope="col">deleted</th>
               <th scope="col">title</th>
               <th scope="col">songs</th>
@@ -42,13 +42,13 @@ const RecoverPlaylists=()=>(
               <td> {DeletedPlaylists.Playlist1.creatingDate}</td>
               <td> {DeletedPlaylists.Playlist1.title} </td>
               <td>{DeletedPlaylists.Playlist1.NumberOfSongs}</td>
-              <td> <a href="" className="Restore"> Restore </a></td>
+              <td> <a href="" className="restore"> Restore </a></td>
               </tr>
               <tr>
               <td> {DeletedPlaylists.Playlist2.creatingDate}</td>
               <td> {DeletedPlaylists.Playlist2.title} </td>
               <td>{DeletedPlaylists.Playlist2.NumberOfSongs}</td>
-              <td> <a href="" className="Restore"> Restore </a></td>
+              <td> <a href="" className="restore"> Restore </a></td>
               </tr>
               </tbody>
               </table>
