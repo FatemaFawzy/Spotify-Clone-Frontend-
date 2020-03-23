@@ -1,46 +1,46 @@
-.EditProfileBody {
+.edit-profile-body {
 	font-family: Circular, Helvetica, Arial, sans-serif, Ruble;
 	background: #F8F8F8;
 	
 }
-.EditProfileBody #EditProfileH1 {
+.edit-profile-body #edit-profile-h1 {
 	font-size: 26px;
-    margin: .5em 0;
-    color: #1DB954;
-    font-weight: 400;
-    padding: 13px 0;
-    margin: 48px 0 24px;
-    border-bottom: 1px solid #EFEFEF;
+  margin: .5em 0;
+  color: #1DB954;
+  font-weight: 400;
+  padding: 13px 0;
+  margin: 48px 0 24px;
+  border-bottom: 1px solid #EFEFEF;
 }
 
-.EditProfileBody .EditProfileBox {
+.edit-profile-body .edit-profile-box {
 	background-color: #FFF;
 	padding: 19px 30px;
 	overflow: hidden;
 }
 
-.EditProfileBody .subtitle {
+.edit-profile-body .subtitle {
 	color: #919496;
-    font-weight: 400;
+  font-weight: 400;
 }
 
 /*code of spinner from: https://css-tricks.com/snippets/css/turn-off-number-input-spinners/ */
-.EditProfileBody input[type=number]::-webkit-inner-spin-button, 
-.EditProfileBody input[type=number]::-webkit-outer-spin-button { 
-  	-webkit-appearance: none; 
-  	-moz-appearance: none;
-  	margin: 0; 
+.edit-profile-body input[type=number]::-webkit-inner-spin-button, 
+.edit-profile-body input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  margin: 0; 
 }
 
 /*code idea from: https://stackoverflow.com/questions/611482/change-color-and-appearance-of-drop-down-arrow*/
-.EditProfileBody #month {
-    -webkit-appearance: none;
-  	-moz-appearance: none;
-  	background: url(https://static.thenounproject.com/png/1270386-200.png) no-repeat center right;
-  	background-size: contain;
+.edit-profile-body #month {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url(https://static.thenounproject.com/png/1270386-200.png) no-repeat center right;
+  background-size: contain;
 }
 
-.EditProfileBody #saveProfile {
+.edit-profile-body #save-profile {
 	max-width: 290px;
 	min-width: 160px;
 	height: 30px;
@@ -52,15 +52,14 @@
 	font-weight: 700;
 	float: right;
 	line-height: 1;
-    padding: 10px 32px;
-
+  padding: 10px 32px;
 }
 
-.EditProfileBody #saveProfile:hover {
+.edit-profile-body #save-profile:hover {
 	background: #1ED760;
 }
 
-.EditProfileBody #cancel {
+.edit-profile-body #cancel {
 	color:black ;
 	font-size:12px;
 	letter-spacing: 2px;
@@ -70,7 +69,7 @@
 	float: right;
 }
 
-.EditProfileBody #cancel:hover {
+.edit-profile-body #cancel:hover {
 	text-decoration-line: none;
 	color: #333232;
 }

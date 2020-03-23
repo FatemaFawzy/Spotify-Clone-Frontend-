@@ -3,13 +3,13 @@ import "./EditProfile.css";
 
 const EditProfile=()=>(
 
-<div className="EditProfileBody">
+<div className="edit-profile-body">
 
   <div className="container">
 
-    <h1 id="EditProfileH1"> Edit Profile </h1>
+    <h1 id="edit-profile-h1"> Edit Profile </h1>
 
-    <div className="EditProfileBox col-12">
+    <div className="edit-profile-box col-12">
       <form>
 
         <div className="form-group">
@@ -24,8 +24,8 @@ const EditProfile=()=>(
 
         <div className="form-group">
 
-          <label for="genderOptions" className="subtitle"> Gender </label>
-          <div id="genderOptions">
+          <label for="gender-options" className="subtitle"> Gender </label>
+          <div id="gender-options">
 
             <div className="form-check form-check-inline">
               <input className="form-check-input" type="radio" name="gender" id="Male" value="Male"/>
@@ -42,8 +42,8 @@ const EditProfile=()=>(
         </div>
 
         <div className="form-group ">
-          <label for="editbirthDate" className="subtitle"> Date of birth </label>
-          <div className="row" id="editbirthDate">
+          <label for="edit-birth-date" className="subtitle"> Date of birth </label>
+          <div className="row" id="edit-birth-date">
 
             <div className="col-3 ">
               <input id="day" className=" form-control" type="number" placeholder="Day" max="31" min="1" maxlength="2" required/>
@@ -75,7 +75,7 @@ const EditProfile=()=>(
         </div>
 
         <div className="mt-5"> 
-          <button id="saveProfile" className="btn btn-success rounded-pill text-center d-flex justify-content-center ">
+          <button id="save-profile" className="btn btn-success rounded-pill text-center d-flex justify-content-center ">
                   SAVE PROFILE 
           </button>
           <a id="cancel" className="btn btn-sm btn-link " href="#"> CANCEL </a>
@@ -85,9 +85,9 @@ const EditProfile=()=>(
     </div>
 
   </div>
-  
+
 </div>
 
 );
 
-export default EditProfile
+export default EditProfile;
