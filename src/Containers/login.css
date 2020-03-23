@@ -218,14 +218,3 @@
     color:#c1c3c6;
     width: 450px;
 }
-
-.login .GreenWords{
-    text-decoration: none;
-    color: #1db954;
-    filter: brightness(100%);
-}
-
-.login .GreenWords:hover{
-    color: #1db954;
-    filter: brightness(120%);
-}
