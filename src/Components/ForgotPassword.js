@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 class ForgotPassword extends Component {
 render(){
 return(
-  <div className="ForgotPassword">
+  <div className="forgot-password">
     <Header />
     <div className="container">
       <h1 className="text-center"><strong>Password Reset</strong></h1>

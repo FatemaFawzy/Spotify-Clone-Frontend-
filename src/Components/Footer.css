@@ -1,25 +1,25 @@
-.Footer #bottom-nav
+.footer #bottom-nav
 {
 	height:110px;
 	font-size:12px;
 	bottom:0;
   width:100%;
 }
-.Footer .black-background
+.footer .black-background
 {
 	background-color: black;
 }
-.Footer .bottom-right , .Footer .bottom-right:hover
+.footer .bottom-right , .footer .bottom-right:hover
 {
 	color:rgba(255, 255, 255, 0.5);
 	text-decoration: none;
 }
-.Footer #egypt:hover
+.footer #egypt:hover
 {
 	color:#45ed6d;
 	text-decoration: none;
 }
-.Footer .navbar ul .nav-item .nav-link:hover
+.footer .navbar ul .nav-item .nav-link:hover
 {
   color:#45ed6d;
   text-decoration: none;

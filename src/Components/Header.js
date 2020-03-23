@@ -5,7 +5,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 import {Link} from "react-router-dom";
 
 const Header=()=>(
-<div className="Header">
+<div className="header">
   <nav className="navbar navbar-dark black-background d-flex align-items-end" id="top-nav">
     <div className="pl-md-5 pb-1 pt-0" >
       <Link to="/">

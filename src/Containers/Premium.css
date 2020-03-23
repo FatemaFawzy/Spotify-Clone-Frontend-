@@ -1,8 +1,8 @@
-.Premium
+.premium
 {
   background:white;
 }
-.Premium #top-section
+.premium #top-section
 {
   background-color:#509bf5;
   height:467px;
@@ -15,7 +15,7 @@
 }
 @media (min-width:1201px)
 {
-  .Premium #top-section
+  .premium #top-section
   {
     background-size: 38%;
     background-position-y: 40x; 
@@ -23,14 +23,14 @@
 }
 @media (max-width:990px)
 {
-  .Premium #top-section
+  .premium #top-section
   {
     background-image: none;
   }
 }
 @media (min-width:992px) and (max-width:1200px)
 {
-  .Premium #top-section
+  .premium #top-section
   {
     height: 562px;
     background-size: 47%;
@@ -39,35 +39,35 @@
 }
 @media (min-width:768px) and (max-width:991px)
 {
-  .Premium #top-section
+  .premium #top-section
   {
     height: 562px;
   }
 }
 @media (min-width:690px) and (max-width:768px)
 {
-  .Premium #top-section
+  .premium #top-section
   {
     height:340px;
   }
 }
 @media (min-width:568px) and (max-width:690px)
 {
-  .Premium #top-section
+  .premium #top-section
   {
     height:396px;
   }
 }
 @media (max-width:539px)
 {
-  .Premium #top-section
+  .premium #top-section
   {
     height:450px;
   }
 }
 @media (max-width:770px)
 {
-  .Premium #get-premium
+  .premium #get-premium
   {
     color:white;
     font-size:35px;
@@ -76,7 +76,7 @@
     padding-top:0px;
     padding-left:0px;
   }
-  .Premium #price
+  .premium #price
   {   
     color:white;
     font-size:24px;
@@ -84,13 +84,13 @@
     padding-bottom:55px;
     padding-left:0px;
   }
-  .Premium #terms
+  .premium #terms
   {
     color:white;
     font-size: 12px;
     padding-left:0px;
   }
-  .Premium .button
+  .premium .button
   {
     padding-left:38%;
     padding-right:38%;
@@ -108,18 +108,18 @@
     background-color: #1db954;
     border-color: #1db954;
   }
-  .Premium .button:hover
+  .premium .button:hover
   {
     color: #fff;
     background-color: #1ED760;
     border-color: #1ED760;
   }
-  .Premium .jumbotron
+  .premium .jumbotron
   {
     padding-left:15px;
     padding-right:15px;
   }
-  .Premium #ovflow
+  .premium #ovflow
   {
     overflow:hidden;
     white-space: nowrap;
@@ -127,7 +127,7 @@
 }
 @media (min-width:771px)
 {
-  .Premium #get-premium
+  .premium #get-premium
   {
     color:white;
     font-weight:800;
@@ -135,7 +135,7 @@
     padding-top:52px;
     padding-left:80px;
   }
-  .Premium #price
+  .premium #price
   {
     color:white;
     font-size: 30px;
@@ -143,7 +143,7 @@
     font-weight: 600;
     padding-left:80px;
   }
-  .Premium .button
+  .premium .button
   {
     padding-left:45px;
     padding-right:45px;
@@ -162,24 +162,24 @@
     background-color: #1db954;
     border-color: #1db954;
   }
-  .Premium .button:hover
+  .premium .button:hover
   {
     color: #fff;
     background-color: #1ED760;
     border-color: #1ED760;
   }
-  .Premium #terms
+  .premium #terms
   {
     color:white;
     font-size: 12px;
     padding-left:80px;
   }
 }
-.Premium .underline
+.premium .underline
 {
   text-decoration: underline;
 }
-.Premium #question
+.premium #question
 {
   color:rgb(34,35,38); 
   font-size: 45px;
@@ -188,13 +188,13 @@
   line-height: 1.3;
   letter-spacing: -0.015em;
 }
-.Premium div div div h1
+.premium div div div h1
 {
   font-weight: 700;
   margin-bottom: 10px;
   font-size: 16px;
 }
-.Premium .end-card
+.premium .end-card
 {
   max-width: 600px;
   width:96%;
@@ -203,42 +203,42 @@
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;
   border-radius: 10px;
 }
-.Premium #last
+.premium #last
 {
   color: rgb(193, 195, 198);
   font-size:12px;
   margin-bottom:93px;
   padding-bottom:0px;
 }
-.Premium .border-bottom1
+.premium .border-bottom1
 {
   border-bottom: 1px solid rgb(212, 214, 213);  
   padding-bottom:4px; 
 }
-.Premium .border-bottom2
+.premium .border-bottom2
 {
   border-bottom: 1px solid rgb(212, 214, 213);
   padding-bottom:1.85rem;
 }
-.Premium #bold
+.premium #bold
 {
   font-weight:900;
   font-size:32px;
 }
-.Premium h3
+.premium h3
 {
   font-size:24px;
 }
-.Premium #month
+.premium #month
 {
   font-size:16px;
 }
-.Premium .small
+.premium .small
 {
   font-size:12px;
   color:#95a198;
 }
-.Premium .bigger
+.premium .bigger
 {
   padding-top:19px;
   padding-bottom:17px;
@@ -254,7 +254,7 @@
   background-color: #1db954;
   border-color: #1db954;
 }
-.Premium .bigger:hover
+.premium .bigger:hover
 {
   padding-top:20px;
   padding-bottom:18px;
@@ -267,12 +267,12 @@
 }
 @media (min-width:1200px)
 {
-  .Premium .remove-pad
+  .premium .remove-pad
   {
     text-align:center;
   }
 }
-.Premium .jumbotron 
+.premium .jumbotron 
 {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
@@ -281,7 +281,7 @@
 }
 @media (min-width: 576px) 
 {
-  .Premium .jumbotron 
+  .premium .jumbotron 
   {
     padding: 4rem 2rem;
   }

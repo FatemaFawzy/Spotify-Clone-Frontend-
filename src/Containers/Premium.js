@@ -6,7 +6,7 @@ import Footer from "../Components/Footer";
 class Premium extends Component {
 render() {
 return ( 
-  <div className="Premium">
+  <div className="premium">
     <NavBar1/>
     <div className="jumbotron" id="top-section">
       <h1 id="get-premium">Get Premium free for 1 month</h1>

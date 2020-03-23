@@ -4,7 +4,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 import {Link} from "react-router-dom";
 
 const Footer=()=>(
-  <div className="Footer">
+  <div className="footer">
     <nav className="navbar navbar-dark black-background navbar-default navbar-expand black" id="bottom-nav">
       <div className="container">
 
