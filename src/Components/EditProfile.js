@@ -13,9 +13,10 @@ const EditProfile=()=>(
                 <div className="form-group">
 
                 <label for="email" className="subtitle">Email</label>
-                <input type="email" className="form-control" id="email" aria-describedby="emailHelp"/>
+                {/* <input type="email" className="form-control" id="email" aria-describedby="emailHelp"/>
+                 */}
+                <p id="email"> fatema123@gmail.com </p>
                 </div>
-
                 <div className="form-group">
 
                 <label for="userName" className="subtitle">Username</label>
