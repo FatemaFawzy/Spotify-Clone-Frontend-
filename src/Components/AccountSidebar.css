@@ -1,13 +1,13 @@
 .account-sidebar {
-    background-color:#1d1e1f;
-    height: 100%;
-    width: 100%;
-    font-size: 120%;
-    color: rgba(211, 211, 211, 0.849);
-    text-align: center;
+  background-color:#1d1e1f;
+  height: 100%;
+  width: 100%;
+  font-size: 120%;
+  color: rgba(211, 211, 211, 0.849);
+  text-align: center;
 }
 
-.user-img{
+.account-sidebar .user-img{
     width: 64px;
     height: 64px;
     margin : 30px auto;
@@ -15,42 +15,33 @@
     background-color:#1d1e1f;
 }
 
-img{
-    vertical-align: middle;
-
-}
-
-.side-items{
-    text-align: left;
+.account-sidebar .side-items{
+  text-align: left;
 }
 
 .side-items a{
-
-    border-top: 1px solid #131414;
-    color:lightgrey;
-    padding-left: 10%;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    text-decoration:none;
-    display: block;
-    height: 100%;
-    width: 100%;
+  border-top: 1px solid #131414;
+  color:lightgrey;
+  padding-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  text-decoration:none;
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .side-items :hover{
-    text-decoration:none;
-    color:lightgrey;
-    border-left: 5px solid rgb(9, 175, 98);
+  text-decoration:none;
+  color:lightgrey;
+  border-left: 5px solid rgb(9, 175, 98);
 }  
 
-
 .side-items a :hover{
-    border-left: none;
-
+  border-left: none;
 }
 
 .side-items a.active{
-
-    border-left: 5px solid rgb(9, 175, 98);
-    color: white;
+  border-left: 5px solid rgb(9, 175, 98);
+  color: white;
 }
