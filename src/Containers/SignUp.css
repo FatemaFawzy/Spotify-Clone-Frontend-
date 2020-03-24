@@ -1,37 +1,44 @@
-.SignUpBody {
+.signup-body {
 	font-family: Circular, Helvetica, Arial, sans-serif;
 	font-size: .9375em;
 	color: #88898c;
 	background: white;
 }
 
-.SignUpBody #logo a{
+.signup-body #logo a {
 	background: url(https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Black.png) transparent no-repeat center center;
 	width: 100%;
-    height: 38px;
-    background-size: contain;
-    display: block;
-    margin: 0 auto;
-    padding: 30px;
+  height: 38px;
+  background-size: contain;
+  display: block;
+	margin: 0 auto;
+	padding: 30px 0 30px;
 }
 
-.SignUpBody .SignUpBox {
+@media (max-width:769px) {
+	.signup-body #logo a {
+		padding: 20px 0 20px;
+		margin: 10px	
+	}
+}
+
+.signup-body .signup-box {
 	box-sizing: border-box;
 	max-width: 400px;
 	padding: 0;
 }
 
-.SignUpBody h2 {
+.signup-body h2 {
 	padding-top: 10px;
 	color: #1c1c1f;
-    font-size: 18px;
+  font-size: 18px;
 	text-align: center;
 	font-weight: 900;
-    line-height: 1.2;
-    text-rendering: optimizelegibility;
+  line-height: 1.2;
+  text-rendering: optimizelegibility;
 }
 
-.SignUpBody .input-field {
+.signup-body .input-field {
 	padding: 0 0.75em;
 	height: 48px;
 	width: 400px;
@@ -40,27 +47,27 @@
 
 }
 
-.SignUpBody label {
+.signup-body label {
 	margin: 0;
 }
 
 /*code of spinner from: https://css-tricks.com/snippets/css/turn-off-number-input-spinners/ */
-.SignUpBody input[type=number]::-webkit-inner-spin-button, 
-.SignUpBody input[type=number]::-webkit-outer-spin-button { 
-  	-webkit-appearance: none; 
-  	-moz-appearance: none;
-  	margin: 0; 
+.signup-body input[type=number]::-webkit-inner-spin-button, 
+.signup-body input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  margin: 0; 
 }
 
 /*code idea from: https://stackoverflow.com/questions/611482/change-color-and-appearance-of-drop-down-arrow*/
-.SignUpBody .dropdown {
-    -webkit-appearance: none;
-  	-moz-appearance: none;
-  	background: url(https://static.thenounproject.com/png/1270386-200.png) no-repeat center right;
-  	background-size: contain;
+.signup-body .dropdown {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url(https://static.thenounproject.com/png/1270386-200.png) no-repeat center right;
+  background-size: contain;
 }
 
-.SignUpBody .birthDateSignUp {
+.signup-body .birth-date-signup {
 	color: #88898c;
 	font-size: .9375em;
 	height: 48px;
@@ -68,7 +75,7 @@
 }
 
 
-.SignUpBody #signUpButton {
+.signup-body #signup-button {
 	width: 320px;
 	height: 50px;
 	margin: 16px auto;
@@ -79,36 +86,35 @@
 	letter-spacing: 2px;
 	line-height: 3;
 	font-weight: 700;
-
 }
 
-.SignUpBody p {
+.signup-body p {
 	font-size: .75em;
 	text-align: center;	
 	color: black;
 	margin: 1em 0;
 }
 
-.SignUpBody #signUpButton:hover {
+.signup-body #signup-button:hover {
 	background: #1ED760;
 }
 
-.SignUpBody #signUpButton +p{
+.signup-body #signup-button +p {
 	font-size: .9375em;
 	font-weight: 400;
 	color: black;
 }
 
-.SignUpBody p a {
-	color:#1DB954 ;
+.signup-body p a {
+	color:#1DB954;
 }
 
-.SignUpBody p a:hover {
+.signup-body p a:hover {
 	text-decoration-line: none;
 	color: #1ED760;
 }
 
-.SignUpBody .emptyInput {
+.signup-body .empty-input {
 	color: red;
 	text-align: left;
 	color: #bd3200;
@@ -117,6 +123,6 @@
 	margin:0;
 }
 
-.SignUpBody ::-webkit-input-placeholder {
+.signup-body ::-webkit-input-placeholder {
 	font-size: 100% !important;
   }

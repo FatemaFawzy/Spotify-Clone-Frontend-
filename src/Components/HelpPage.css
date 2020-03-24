@@ -1,5 +1,6 @@
 .help-class{
   color: white;
+  background-color: black;
 }
 
 .help-header{
@@ -331,10 +332,6 @@ input:focus, textarea:focus, select:focus{
   .get-spotify-sugg h1{
       font-size: 230%;
     }
-}
-
-.NavBar1 .ground .helpNav{
-  background-color: black;
 }
 
   

@@ -1,7 +1,8 @@
 .content-wrapper {
-  background-color: rgb(27,38,59);
-  color: black;
-  padding: 0 50px;
+    background-color: rgb(27,38,59);
+    color: black;
+    padding: 0 50px;
+    min-height: 100vh;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
