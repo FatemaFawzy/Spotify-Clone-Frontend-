@@ -1,6 +1,8 @@
 .premium
 {
   background:white;
+  position: absolute;
+  width:100%;
 }
 .premium #top-section
 {
