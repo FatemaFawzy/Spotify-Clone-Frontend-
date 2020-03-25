@@ -16,15 +16,15 @@ class SignUp extends Component{
       gender: null,
       accountType: null,
       errorMessages: {
-        email: "test",
-        confirmEmail: "test",
-        password: "test",
-        userame: "test",
-        day: "test",
-        month: "test",
-        year: "test",
-        gender: "test",
-        accountType: "test"
+        email: "",
+        confirmEmail: "",
+        password: "",
+        userame: "",
+        day: "",
+        month: "",
+        year: "",
+        gender: "",
+        accountType: ""
       }
     }
   };
@@ -32,12 +32,13 @@ class SignUp extends Component{
 // Check the validity of the form based on whether all error messages are empty or not
   formValidity = errorMessages => {
     let valid = true;
-    for (var i=0; i < errorMessages.length; i++)
-    {
-      if (errorMessages[i].value.length > 0)
-      valid = false;
-    }
 
+    Object.values(errorMessages).forEach(value => {
+      if(value.length > 0) {
+        valid = false;
+      }
+    });
+    
     return valid;
   };
 
@@ -60,7 +61,7 @@ class SignUp extends Component{
 
     switch (id) {
       case "password":
-        errorMessages.password= value.length < 6 && value.length >0 ? "Your password is too short" : "";
+        errorMessages.password= value.length===0 ? "Please enter your password." : "";
         break;
     }
 
