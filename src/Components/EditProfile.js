@@ -46,7 +46,7 @@ const EditProfile=()=>(
           <div className="row" id="edit-birth-date">
 
             <div className="col-3 ">
-              <input id="day" className=" form-control" type="number" placeholder="Day" max="31" min="1" maxlength="2" required/>
+              <input id="day" className=" form-control" type="number" placeholder="Day" max="31" min="1" maxLength="2" required/>
             </div>
 
             <div className="col-6">
@@ -68,7 +68,7 @@ const EditProfile=()=>(
             </div>
 
             <div className="col-3 ">
-              <input id="year" className="form-control" type="number" placeholder="Year" max="1999" min="1900" maxlength="4" required/>
+              <input id="year" className="form-control" type="number" placeholder="Year" max="1999" min="1900" maxLength="4" required/>
             </div>
 
           </div>
