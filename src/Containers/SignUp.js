@@ -37,6 +37,7 @@ class SignUp extends Component{
 // Check the validity of the form based on whether all error messages are empty or not 
   formValidity = () => {
     let valid = true;
+    
 
 // if the user submitted the form without writing anything in the inputs, it won't get submitted
 // because the initial length of the error messages = 1 (space)
@@ -63,13 +64,9 @@ class SignUp extends Component{
 
     if (this.formValidity(this.state)) {
       document.getElementById("signup-form").submit();
-      // for testing purposes
-      console.log(` 
-        submitting email: ${this.state.email}
-        submitting confirmEmail: ${this.state.confirmEmail}
-        submitting password: ${this.state.password}
-      `);
     }
+
+    // Check which inputs are empty and print an error message
     else {
       if ( email === null )
         errorMessages.email = "Please enter your email.";
@@ -119,9 +116,11 @@ class SignUp extends Component{
     // e.preventDefault();
     const { name, value }= e.target;
     let errorMessages= { ...this.state.errorMessages };
-
-    console.log("name",name);
-    console.log("value",value);
+    let emailTest= this.state.email;
+    let confirmEmailTest= this.state.confirmEmail;
+    
+    // console.log("name",name);
+    // console.log("value",value);
     switch (name) {
 
       case "email":
@@ -137,7 +136,7 @@ class SignUp extends Component{
         }
         break;
 
-      // TODO: Fix the matching emails problem because it's not working
+      // TODO: Fix the matching emails problem (state of confirmEmail is lagging)
       case "confirmEmail":
         if ( value.length === 0 ) {
           errorMessages.confirmEmail = "Please enter your email again.";
@@ -145,10 +144,11 @@ class SignUp extends Component{
         else if ( !emailFormat.test(value) ) {
           errorMessages.confirmEmail = "The email address you entered is invalid.";
         }
-        else if ( this.state.email != null 
-          && this.state.confirmEmail != null 
-          && this.state.email.value !== this.state.confirmEmail.value ) {
+        else if ( emailTest != null 
+          && confirmEmailTest != null 
+          && emailTest !== confirmEmailTest) {
           errorMessages.confirmEmail = "Email addresses don't match.";
+          console.log( "Email test: " + emailTest + ", confirm test :" + confirmEmailTest );
         }
         else {
           errorMessages.confirmEmail = "";
