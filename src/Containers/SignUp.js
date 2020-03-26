@@ -34,24 +34,30 @@ class SignUp extends Component{
     };
   }
 
-// Check the validity of the form based on whether all error messages are empty or not
+// Check the validity of the form based on whether all error messages are empty or not 
   formValidity = errorMessages => {
     let valid = true;
 
+// added value != null condition to fix the bug where the form gets submitted if inputs are empty
     Object.values(errorMessages).forEach(value => {
-      if( value != null && value.length > 0) {
+      if( value != null && value.length > 0 || value != null) {
         valid = false;
       }
+
     });
 
     return valid;
   };
 
+  // submit only if the form is valid -> all inputs are entered and correct
   handleSubmit =e => {
     e.preventDefault();
+    let errorMessages= { ...this.state.errorMessages };
+    const {email, confirmEmail, password, username, day, month, year, gender, accountType} = this.state;
 
     if (this.formValidity(this.state)) {
       document.getElementById("signup-form").submit();
+      // for testing purposes
       console.log(` 
         submitting email: ${this.state.email}
         submitting confirmEmail: ${this.state.confirmEmail}
@@ -59,11 +65,40 @@ class SignUp extends Component{
       `);
     }
     else {
-      console.log("ERROR");
+      if ( email === null )
+        errorMessages.email = "Please enter your email.";
+
+        if ( confirmEmail === null )
+        errorMessages.confirmEmail = "Please enter your email again.";
+
+        if ( password === null )
+        errorMessages.password = "Please enter your password.";
+
+        if ( username === null )
+        errorMessages.username = "What should we call you?";  
+        
+        if ( day === null )
+        errorMessages.day = "Please choose a day."; 
+
+        if ( month === null )
+        errorMessages.month = "Please choose a month."; 
+
+        if ( year === null )
+        errorMessages.year = "Please choose a year."; 
+
+        if ( gender === null )
+        errorMessages.gender = "Please select your gender."; 
+
+        if ( accountType === null )
+        errorMessages.accountType = "What type of account do you like?"; 
+      
+        this.setState( { errorMessages }, () => console.log(this.state) );
+        console.log("ERROR")
     }
 
   };
 
+  // Dynamic changes of error messages when the user types in the inputs
   handleChange =e => {
     e.preventDefault();
     const { name, value }= e.target;
@@ -117,7 +152,7 @@ class SignUp extends Component{
       
       case "username":
         if ( value.length === 0 ) {
-          errorMessages.username = "Please enter your username.";
+          errorMessages.username = "What should we call you?";
         }
         else {
           errorMessages.username = "";
@@ -128,7 +163,7 @@ class SignUp extends Component{
         if ( value.length === 0 ) {
           errorMessages.day = "Please choose a day.";
         }
-        else if ( value >31 ) {
+        else if ( value > 31 || value < 1 ) {
           errorMessages.day = "Please choose a valid day of the month.";
         }
         else {
@@ -136,26 +171,45 @@ class SignUp extends Component{
         }
         break;
 
-        case "month":
-          if ( value.length === 0 ) {
-            errorMessages.month = "Please choose a month.";
-          }
-          else {
-            errorMessages.month = "";
-          }
-          break;
+      case "month":
+        if ( value.length === 0 ) {
+          errorMessages.month = "Please choose a month.";
+        }
+        else {
+          errorMessages.month = "";
+        }
+        break;
 
-          case "year":
-            if ( value.length === 0 ) {
-              errorMessages.year = "Please choose a year.";
-            }
-            else if ( value > 2000 || value < 1990 ) {
-              errorMessages.year = "Please choose a valid year (1990-2000).";
-            }
-            else {
-              errorMessages.year = "";
-            }
-            break;
+      case "year":
+        if ( value.length === 0 ) {
+          errorMessages.year = "Please choose a year.";
+        }
+        else if ( value > 2000 || value < 1990 ) {
+          errorMessages.year = "Please choose a valid year (1990-2000).";
+        }
+        else {
+          errorMessages.year = "";
+        }
+        break;
+
+      // TODO: remove unneccessary part of gender changing. just check if it's empty on submission
+      case "gender":
+        if ( value.length === 0 ) {
+          errorMessages.gender = "Please select your gender.";
+        }
+        else {
+          errorMessages.gender = "";
+        }
+        break;  
+
+      case "accountType":
+        if ( value.length === 0 ) {
+          errorMessages.accountType = "What type of account do you like?";
+        }
+        else {
+          errorMessages.accountType = "";
+        }
+        break;              
 
       default:
         break;
