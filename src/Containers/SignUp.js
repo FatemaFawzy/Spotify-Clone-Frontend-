@@ -100,7 +100,7 @@ class SignUp extends Component{
 
   // Dynamic changes of error messages when the user types in the inputs
   handleChange =e => {
-    e.preventDefault();
+    // e.preventDefault();
     const { name, value }= e.target;
     let errorMessages= { ...this.state.errorMessages };
 
@@ -234,7 +234,7 @@ class SignUp extends Component{
 {/* <form  id="signup-form" action ="#" method ="post"> */}
 {/* I removed 'required' from inputs */}
 
-            <form  id="signup-form" >
+            <form  id="signup-form" noValidate>
 
               <input 
               name= "email" className="form-control input-field" type="email" placeholder="Email" onChange={this.handleChange}/> 
