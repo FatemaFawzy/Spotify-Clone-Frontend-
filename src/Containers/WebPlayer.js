@@ -4,6 +4,7 @@ import './WebPlayer.css';
 import {Switch, Route} from "react-router-dom";
 import HomePageSidebar from "../Components/HomePageSidebar"
 import SearchPage from '../SearchComponents/SearchPage';
+import YourLibrary  from './YourLibrary';
 
 
 
@@ -25,6 +26,7 @@ class WebPlayer extends Component {
           <Switch>
             <Route exact path="/webplayer/"/>
             <Route path="/webplayer/search" component={SearchPage}/>
+            <Route path="/webplayer/yourlibrary" component={YourLibrary}/>
 
           </Switch>
 
