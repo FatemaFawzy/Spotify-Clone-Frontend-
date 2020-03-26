@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import HomePageSidebar from './HomePageSidebar';
 import './NavBar1.css'
 import {Link } from "react-router-dom";
 
@@ -18,7 +19,7 @@ function NavBar1 ()  {
         <div className="collapse navbar-collapse " id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto justify-content-end  ">
                   <li className="nav-item ">
-                    <a href="/account" className="nav-link " > Web Player </a>
+                  <a href="#" className="nav-link">Web player</a>
                   </li>
                   <li className="nav-item">
                     <Link to="/premium" className="nav-link  " > Premium </Link>
