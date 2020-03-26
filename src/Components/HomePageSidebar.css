@@ -70,12 +70,12 @@ background-color: hsla(0,0%,100%,.3);
 .wrapper .sidebar ul li:hover{
   color: white;
   border-radius: 5px;
-  filter: brightness(120%);
+  /* filter: brightness(120%); */
 }
     
 .wrapper .sidebar ul li:hover a{
   color: white;
-  filter: brightness(120%);
+  /* filter: brightness(120%); */
 }
 
 .wrapper .sidebar ul #Playlist{
@@ -108,3 +108,12 @@ background-color: hsla(0,0%,100%,.3);
   background-color: #505050 ;
   border-radius: 0px;
 } 
+.wrapper .sidebar a.active{
+  color: white;
+  background-color:  rgb(40,40,40); 
+}
+
+.wrapper .sidebar a.active:hover a{
+  color: white;
+  background-color:  rgb(40,40,40); 
+}

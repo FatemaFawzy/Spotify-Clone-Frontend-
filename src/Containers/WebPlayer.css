@@ -1,0 +1,10 @@
+.web-player-class .content-web-player{
+  margin-left: 230px;
+  width: 100%;
+  background-color: rgb(18,18,18);
+}
+
+.web-player-class.side-bar-web-player{
+  float: left;
+  width: 230px;
+}

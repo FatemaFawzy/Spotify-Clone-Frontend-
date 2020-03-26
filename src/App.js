@@ -13,6 +13,7 @@ import {BrowserRouter as Router,
         Switch, 
         Route, 
        } from "react-router-dom";
+import WebPlayer from './Containers/WebPlayer';
 
 
        
@@ -30,6 +31,7 @@ function App() {
           <Route  path="/help/" component={HelpPage}/>
           <Route  path="/signup/" component={SignUp}/>
           <Route  path="/premium/" component={Premium}/>
+          <Route  path="/webplayer/" component={WebPlayer}/>
           <Route  exact path="/logIn/" component={login}/>
           <Route  exact path="/logIn/forgotpassword/" component={ForgotPassword}/>
           <Route path="/logIn/forgotpassword/success/" component={Success}/>
