@@ -93,8 +93,18 @@ class SignUp extends Component{
         errorMessages.accountType = "What type of account do you like?"; 
       
         this.setState( { errorMessages }, () => console.log(this.state) );
-        console.log("ERROR")
+        console.log("ERROR");
     }
+
+    // Check which input fields (except gender) have errors to give them a red border
+    // pair: [name, value]
+    Object.entries(errorMessages).forEach (pair => {
+      if ( pair[1] != null && pair[0] != "gender" && pair[1].length > 0) {
+        var fieldToBeChanged = document.getElementsByName( pair[0] );
+        fieldToBeChanged[0].style.borderColor= "#bd3200";
+        console.log (pair);
+      }
+    });
 
   };
 
@@ -111,6 +121,7 @@ class SignUp extends Component{
       case "email":
         if ( value.length === 0 ) {
           errorMessages.email = "Please enter your email.";
+
         }
         else if ( !emailFormat.test(value) ) {
           errorMessages.email = "The email address you entered is invalid.";
@@ -192,7 +203,6 @@ class SignUp extends Component{
         }
         break;
 
-      // TODO: remove unneccessary part of gender changing. just check if it's empty on submission
       case "gender":
         if ( value.length === 0 ) {
           errorMessages.gender = "Please select your gender.";
@@ -216,6 +226,21 @@ class SignUp extends Component{
     }
 
     this.setState({ errorMessages, [name]: value}, () => console.log(this.state) );
+    
+    // Check which input fields (except gender) have errors to give them a red border
+    // pair: [name, value]
+    Object.entries(errorMessages).forEach (pair => {
+      if ( pair[1] != null && pair[0] != "gender" && pair[1].length > 0) {
+        var fieldToBeChanged = document.getElementsByName( pair[0] );
+        fieldToBeChanged[0].style.borderColor= "#bd3200";
+        console.log (pair);
+      }
+      else if ( pair[1] != null && pair[0] != "gender" && pair[1].length === 0) {
+        var fieldToBeChanged = document.getElementsByName( pair[0] );
+        fieldToBeChanged[0].style.borderColor= "#ced4da";
+        console.log (pair);
+      }
+    })
   };
 
   render() {
