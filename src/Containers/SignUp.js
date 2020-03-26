@@ -123,6 +123,39 @@ class SignUp extends Component{
           errorMessages.username = "";
         }
         break;
+      
+      case "day":
+        if ( value.length === 0 ) {
+          errorMessages.day = "Please choose a day.";
+        }
+        else if ( value >31 ) {
+          errorMessages.day = "Please choose a valid day of the month.";
+        }
+        else {
+          errorMessages.day = "";
+        }
+        break;
+
+        case "month":
+          if ( value.length === 0 ) {
+            errorMessages.month = "Please choose a month.";
+          }
+          else {
+            errorMessages.month = "";
+          }
+          break;
+
+          case "year":
+            if ( value.length === 0 ) {
+              errorMessages.year = "Please choose a year.";
+            }
+            else if ( value > 2000 || value < 1990 ) {
+              errorMessages.year = "Please choose a valid year (1990-2000).";
+            }
+            else {
+              errorMessages.year = "";
+            }
+            break;
 
       default:
         break;
