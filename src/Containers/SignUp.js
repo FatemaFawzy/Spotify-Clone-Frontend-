@@ -3,7 +3,7 @@ import './SignUp.css';
 // import './signUpValidation.js';
 
 const emailFormat = RegExp(
-  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 );
 
 class SignUp extends Component{
@@ -24,7 +24,7 @@ class SignUp extends Component{
         email: "",
         confirmEmail: "",
         password: "",
-        userame: "",
+        username: "",
         day: "",
         month: "",
         year: "",
@@ -72,6 +72,37 @@ class SignUp extends Component{
     console.log("name",name);
     console.log("value",value);
     switch (name) {
+
+      case "email":
+        if ( value.length === 0 ) {
+          errorMessages.email = "Please enter your email.";
+        }
+        else if ( !emailFormat.test(value) ) {
+          errorMessages.email = "The email address you entered is invalid.";
+        }
+        else {
+          errorMessages.email = "";
+        }
+        break;
+
+      // TODO: Fix the matching emails problem because it's not working
+      case "confirmEmail":
+        if ( value.length === 0 ) {
+          errorMessages.confirmEmail = "Please enter your email again.";
+        }
+        else if ( !emailFormat.test(value) ) {
+          errorMessages.confirmEmail = "The email address you entered is invalid.";
+        }
+        else if ( this.state.email != null 
+          && this.state.confirmEmail != null 
+          && this.state.email.value !== this.state.confirmEmail.value ) {
+          errorMessages.confirmEmail = "Email addresses don't match.";
+        }
+        else {
+          errorMessages.confirmEmail = "";
+        }
+        break;
+
       case "password":
         if ( value.length === 0 ) {
           errorMessages.password = "Please enter your password.";
@@ -84,16 +115,15 @@ class SignUp extends Component{
         }
         break;
       
-      case "email":
+      case "username":
         if ( value.length === 0 ) {
-          errorMessages.email = "Please enter your email.";
-        }
-        else if ( !emailFormat.test(value) ) {
-          errorMessages.email = "The email address you entered is invalid.";
+          errorMessages.username = "Please enter your username.";
         }
         else {
-          errorMessages.email = "";
+          errorMessages.username = "";
         }
+        break;
+
       default:
         break;
     }
@@ -130,7 +160,7 @@ class SignUp extends Component{
               <p id="empty-password" className="empty-input"> {errorMessages.password} </p>
 
               <input name="username" className="form-control input-field" type="text" placeholder="What should we call you?" onChange={this.handleChange}/> 
-              <p id="empty-userame" className="empty-input pb-2"> {errorMessages.userame}</p>
+              <p id="empty-userame" className="empty-input pb-2"> {errorMessages.username}</p>
                   
               <div className="form-group">
 
