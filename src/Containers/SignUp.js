@@ -21,27 +21,33 @@ class SignUp extends Component{
       gender: null,
       accountType: null,
       errorMessages: {
-        email: "",
-        confirmEmail: "",
-        password: "",
-        username: "",
-        day: "",
-        month: "",
-        year: "",
-        gender: "",
-        accountType: ""
+        email: " ",
+        confirmEmail: " ",
+        password: " ",
+        username: " ",
+        day: " ",
+        month: " ",
+        year: " ",
+        gender: " ",
+        accountType: " "
       }
     };
   }
 
 // Check the validity of the form based on whether all error messages are empty or not 
-  formValidity = errorMessages => {
+  formValidity = () => {
     let valid = true;
 
-// added value != null condition to fix the bug where the form gets submitted if inputs are empty
-    Object.values(errorMessages).forEach(value => {
-      if( value != null && value.length > 0 || value != null) {
+// if the user submitted the form without writing anything in the inputs, it won't get submitted
+// because the initial length of the error messages = 1 (space)
+// the space gets removed only when the correct input is entered (length=0)
+    Object.values(this.state.errorMessages).forEach(val => {
+      if (val !== null && val.length === 0 ) {
+        valid = true;
+      }
+      else if ( val === null || val !== null && val.length > 0 ) {
         valid = false;
+        console.log ("value is "+val +"length is" +val.length);
       }
 
     });
@@ -99,7 +105,7 @@ class SignUp extends Component{
     // Check which input fields (except gender) have errors to give them a red border
     // pair: [name, value]
     Object.entries(errorMessages).forEach (pair => {
-      if ( pair[1] != null && pair[0] != "gender" && pair[1].length > 0) {
+      if ( pair[1] != null && pair[0] != "gender" && pair[1].length > 1) {
         var fieldToBeChanged = document.getElementsByName( pair[0] );
         fieldToBeChanged[0].style.borderColor= "#bd3200";
         console.log (pair);
@@ -230,7 +236,7 @@ class SignUp extends Component{
     // Check which input fields (except gender) have errors to give them a red border
     // pair: [name, value]
     Object.entries(errorMessages).forEach (pair => {
-      if ( pair[1] != null && pair[0] != "gender" && pair[1].length > 0) {
+      if ( pair[1] != null && pair[0] != "gender" && pair[1].length > 1) {
         var fieldToBeChanged = document.getElementsByName( pair[0] );
         fieldToBeChanged[0].style.borderColor= "#bd3200";
         console.log (pair);
@@ -242,6 +248,10 @@ class SignUp extends Component{
       }
     })
   };
+
+  // ---------------------------------------------------------------------------------------------------------------
+  // -----------------------------------------------HTML Content----------------------------------------------------
+  // ---------------------------------------------------------------------------------------------------------------
 
   render() {
     const { errorMessages } = this.state;
