@@ -2,6 +2,10 @@ import React ,{ Component} from 'react';
 import './SignUp.css';
 // import './signUpValidation.js';
 
+const emailFormat = RegExp(
+  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+);
+
 class SignUp extends Component{
   constructor(props){
     super(props);
@@ -69,7 +73,6 @@ class SignUp extends Component{
     console.log("value",value);
     switch (name) {
       case "password":
-        // errorMessages.password= value.length===0 ? "Please enter your password." : "";
         if ( value.length === 0 ) {
           errorMessages.password = "Please enter your password.";
         }
@@ -80,6 +83,17 @@ class SignUp extends Component{
           errorMessages.password = "";
         }
         break;
+      
+      case "email":
+        if ( value.length === 0 ) {
+          errorMessages.email = "Please enter your email.";
+        }
+        else if ( !emailFormat.test(value) ) {
+          errorMessages.email = "The email address you entered is invalid.";
+        }
+        else {
+          errorMessages.email = "";
+        }
       default:
         break;
     }
