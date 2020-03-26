@@ -4,14 +4,15 @@ import './SignUp.css';
 
 class SignUp extends Component{
   constructor(props){
-    super(props) 
+    super(props);
+
     this.state= {
       email: null,
       confirmEmail: null,
       password: null,
       username: null,
       day: null,
-      month: "Month",
+      month: null,
       year: null,
       gender: null,
       accountType: null,
@@ -26,27 +27,32 @@ class SignUp extends Component{
         gender: "",
         accountType: ""
       }
-    }
-  };
+    };
+  }
 
 // Check the validity of the form based on whether all error messages are empty or not
   formValidity = errorMessages => {
     let valid = true;
 
     Object.values(errorMessages).forEach(value => {
-      if(value.length > 0) {
+      if( value != null && value.length > 0) {
         valid = false;
       }
     });
-    
+
     return valid;
   };
 
   handleSubmit =e => {
     e.preventDefault();
 
-    if (this.formValidity(this.state.errorMessages)) {
-      console.log(` submitting password: ${this.state.password}`);
+    if (this.formValidity(this.state)) {
+      document.getElementById("signup-form").submit();
+      console.log(` 
+        submitting email: ${this.state.email}
+        submitting confirmEmail: ${this.state.confirmEmail}
+        submitting password: ${this.state.password}
+      `);
     }
     else {
       console.log("ERROR");
@@ -56,20 +62,33 @@ class SignUp extends Component{
 
   handleChange =e => {
     e.preventDefault();
-    const { id, value }= e.target;
-    let errorMessages= this.state.errorMessages;
+    const { name, value }= e.target;
+    let errorMessages= { ...this.state.errorMessages };
 
-    switch (id) {
+    console.log("name",name);
+    console.log("value",value);
+    switch (name) {
       case "password":
-        errorMessages.password= value.length===0 ? "Please enter your password." : "";
+        // errorMessages.password= value.length===0 ? "Please enter your password." : "";
+        if ( value.length === 0 ) {
+          errorMessages.password = "Please enter your password.";
+        }
+        else if (value.length < 6) {
+          errorMessages.password = "The password you entered is too short.";
+        }
+        else {
+          errorMessages.password = "";
+        }
+        break;
+      default:
         break;
     }
 
-    console.log("test");
-    this.setState({ errorMessages, [id]: value});
+    this.setState({ errorMessages, [name]: value}, () => console.log(this.state) );
   };
 
   render() {
+    const { errorMessages } = this.state;
     return (
       <div className="signup-body">
           <div id= "logo" className="container-fluid border-bottom p-md-4 p-s-2">
@@ -87,17 +106,17 @@ class SignUp extends Component{
             <form  id="signup-form" >
 
               <input 
-              id= "email" className="form-control input-field" type="email" placeholder="Email" onChange={this.handleChange}/> 
-              <p id="empty-email" className="empty-input"> {this.state.errorMessages.email}</p>
+              name= "email" className="form-control input-field" type="email" placeholder="Email" onChange={this.handleChange}/> 
+              <p id="empty-email" className="empty-input"> {errorMessages.email}</p>
 
-              <input id= "confirm-email" className="form-control input-field" type="email" placeholder="Confirm Email" onChange={this.handleChange}/> 
-              <p id="empty-confirm-email" className="empty-input"> {this.state.errorMessages.confirmEmail}</p>
+              <input name= "confirmEmail" className="form-control input-field" type="email" placeholder="Confirm Email" onChange={this.handleChange}/> 
+              <p id="empty-confirm-email" className="empty-input"> {errorMessages.confirmEmail}</p>
 
-              <input id="password" className="form-control input-field" type="Password" placeholder="Password" onChange={this.handleChange}/> 
-              <p id="empty-password" className="empty-input"> {this.state.errorMessages.password} </p>
+              <input name="password" className="form-control input-field" type="Password" placeholder="Password" onChange={this.handleChange}/> 
+              <p id="empty-password" className="empty-input"> {errorMessages.password} </p>
 
-              <input id="username" className="form-control input-field" type="text" placeholder="What should we call you?" onChange={this.handleChange}/> 
-              <p id="empty-userame" className="empty-input pb-2"> {this.state.errorMessages.userame}</p>
+              <input name="username" className="form-control input-field" type="text" placeholder="What should we call you?" onChange={this.handleChange}/> 
+              <p id="empty-userame" className="empty-input pb-2"> {errorMessages.userame}</p>
                   
               <div className="form-group">
 
@@ -105,63 +124,63 @@ class SignUp extends Component{
                 <div className="row" id="birth-date">
 
                   <div className="col-3">
-                    <input id="day" className=" form-control birth-date-signup" type="number" placeholder="Day" max="31" min="1" maxLength="2"/>
+                    <input name="day" className=" form-control birth-date-signup" type="number" placeholder="Day" max="31" min="1" maxLength="2" onChange={this.handleChange}/>
                   </div>
 
                   <div className="col-6">
-                    <select id="month" className="form-control birth-date-signup dropdown"> 
+                    <select name="month" className="form-control birth-date-signup dropdown" onChange={this.handleChange}> 
                       <option value=""> Month </option>
-                      <option> January </option>
-                      <option> February </option>
-                      <option> March </option>
-                      <option> April </option>
-                      <option> May </option>
-                      <option> June </option>
-                      <option> July </option>
-                      <option> August </option>
-                      <option> September </option>
-                      <option> October </option>
-                      <option> November </option>
-                      <option> December </option>
+                      <option value="January"> January </option>
+                      <option value="February"> February </option>
+                      <option value="March"> March </option>
+                      <option value="April"> April </option>
+                      <option value="May"> May </option>
+                      <option value="June"> June </option>
+                      <option value="July"> July </option>
+                      <option value="August"> August </option>
+                      <option value="September"> September </option>
+                      <option value="October"> October </option>
+                      <option value="November"> November </option>
+                      <option value="December"> December </option>
                     </select>
                   </div>
 
                   <div className="col-3 ">
-                    <input id="year" className="form-control birth-date-signup" type="number" placeholder="Year" max="1999" min="1900" maxLength="4"/>
+                    <input name="year" className="form-control birth-date-signup" type="number" placeholder="Year" max="1999" min="1900" maxLength="4" onChange={this.handleChange}/>
                   </div>
 
                 </div>
               </div>
 
-              <p id="empty-day" className="empty-input"> {this.state.errorMessages.day}</p>
-              <p id="empty-month" className="empty-input"> {this.state.errorMessages.month}</p>
-              <p id="empty-year" className="empty-input pb-2"> {this.state.errorMessages.year}</p>
+              <p id="empty-day" className="empty-input"> {errorMessages.day}</p>
+              <p id="empty-month" className="empty-input"> {errorMessages.month}</p>
+              <p id="empty-year" className="empty-input pb-2"> {errorMessages.year}</p>
 
               <div className="form-group">
 
                 <label htmlFor="gender-options"> Gender</label>
                 <div className="m-2" id="gender-options">
-                    <input name="gender" type="radio" value="male" /> Male   
-                    <input name="gender" type="radio" value="female" className="ml-3"/> Female
+                    <input name="gender" type="radio" value="male" onChange={this.handleChange}/> Male   
+                    <input name="gender" type="radio" value="female" className="ml-3" onChange={this.handleChange}/> Female
                 </div>
 
               </div>
           
-              <p id="empty-gender" className="empty-input pb-2"> {this.state.errorMessages.gender}</p>
+              <p id="empty-gender" className="empty-input pb-2"> {errorMessages.gender}</p>
 
               <div className="form-group">
 
                 <label htmlFor="account-type">What kind of account do you like?</label>
-                <div id="account-type">
-                  <select className="form-control birth-date-signup dropdown" > 
+                <div >
+                  <select className="form-control birth-date-signup dropdown" name="accountType" onChange={this.handleChange} > 
                     <option value=""> Choose from here </option>
-                    <option>Regular Account</option>
-                    <option>Premium Account</option>
-                    <option>Artist Account</option>
+                    <option value="Regular Account"> Regular Account</option>
+                    <option value="Premium Account"> Premium Account</option>
+                    <option value="Artist Account">Artist Account</option>
                   </select>
                 </div>
 
-                <p id="empty-account-type" className="empty-input pt-2"> {this.state.errorMessages.accountType}</p>
+                <p id="empty-account-type" className="empty-input pt-2"> {errorMessages.accountType}</p>
 
               </div>
 
