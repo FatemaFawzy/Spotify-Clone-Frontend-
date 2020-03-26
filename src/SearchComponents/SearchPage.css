@@ -1,0 +1,10 @@
+.search-page{
+
+    background-color: rgb(18,18,18);
+}
+
+.search-content-below-bar{
+
+    padding-top: 70px;
+    z-index: 0;
+}

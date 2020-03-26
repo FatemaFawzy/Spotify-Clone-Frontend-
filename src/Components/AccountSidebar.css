@@ -19,7 +19,7 @@
   text-align: left;
 }
 
-.side-items a{
+.account-sidebar .side-items a{
   border-top: 1px solid #131414;
   color:lightgrey;
   padding-left: 10%;
@@ -31,17 +31,17 @@
   width: 100%;
 }
 
-.side-items :hover{
+.account-sidebar .side-items :hover{
   text-decoration:none;
   color:lightgrey;
   border-left: 5px solid rgb(9, 175, 98);
 }  
 
-.side-items a :hover{
+.account-sidebar .side-items a :hover{
   border-left: none;
 }
 
-.side-items a.active{
+.account-sidebar .side-items a.active{
   border-left: 5px solid rgb(9, 175, 98);
   color: white;
 }

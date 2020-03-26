@@ -80,17 +80,25 @@
 }
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 550px) {
 
   .item-searched-class {
-  width: 60%;
+  width: 100%;
 }
 
+
+}
+
+@media only screen and (min-width: 550px) {
+
+  .item-searched-class {
+  width: 70%;
+}
 
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 670px) {
 
   .item-searched-class {
   width: 45%;
@@ -115,6 +123,8 @@
   .item-searched-class {
   width: 23%;
 }
+
+
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -124,4 +134,5 @@
   /* width: 200px; */
   width: 18%;
 }
+
 }

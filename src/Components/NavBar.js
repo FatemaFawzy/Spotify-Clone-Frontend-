@@ -17,7 +17,7 @@ function NavBar()  {
               <div className="collapse navbar-collapse  " id="navbarSupportedContent">
                 <ul className="navbar-nav ml-auto justify-content-end ">
                         <li className="nav-item">
-                          <Link to="/account" className="nav-link " > Web Player </Link>
+                          <Link to="/webplayer" className="nav-link " > Web Player </Link>
                         </li>
                         <li className="nav-item">
                           <Link to="/premium" className="nav-link " > Premium </Link>

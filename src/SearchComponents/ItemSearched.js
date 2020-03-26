@@ -1,27 +1,26 @@
-import React from "react";
-import "./ItemSearched.css";
+import React from "react"
+import  "./ItemSearched.css"
 
-const ItemSearched = (props) => {
+const ItemSearched =(props) =>{
 
-  const roundImgOrNot = props.roundimage ? "i-am-round-img" : "i-am-not";
+    const roundImgOrNot= props.roundimage?"i-am-round-img":"i-am-not";
+    
+    var actualName;
+    if(props.name.length>17){
+      actualName=props.name.slice(0,17) + "...";
+    }else{
+      actualName=props.name;
+    }
 
-  var actualName;
-  if (props.name.length > 17) {
-    actualName = props.name.slice(0, 17) + "...";
-  } else {
-    actualName = props.name;
-  }
+    return(
+        <div className="item-searched-class">
 
-  return (
-    <div className="item-searched-class">
+            <img src={props.image} id={roundImgOrNot} className="img-style-searched" />
+            <p>{actualName}</p>
+            <a href="#">{props.subname}</a>
+            <button><i class="fas fa-play"></i></button>
 
-      <img src={props.image} id={roundImgOrNot} className="img-style-searched" />
-      <p>{actualName}</p>
-      <a href="#">{props.subname}</a>
-      <button><i class="fas fa-play"></i></button>
-
-    </div>
-  )
+        </div>
+    )
 }
-
-export default ItemSearched;
+export default ItemSearched
