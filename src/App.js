@@ -7,6 +7,7 @@ import SignUp from "./Containers/SignUp";
 import login from "./Containers/login";
 import Premium from "./Containers/Premium";
 import ForgotPassword from "./Components/ForgotPassword";
+import HomePageSidebar from "./Components/HomePageSidebar";
 import Success from "./Components/Success";
 import {BrowserRouter as Router,
         Switch, 
