@@ -5,6 +5,7 @@ import {Switch, Route} from "react-router-dom";
 import HomePageSidebar from "../Components/HomePageSidebar"
 import SearchPage from '../SearchComponents/SearchPage';
 import YourLibrary  from './YourLibrary';
+import YourLibraryPlaylist  from './YourLibraryPlaylist';
 
 
 
