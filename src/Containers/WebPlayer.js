@@ -4,8 +4,8 @@ import './WebPlayer.css';
 import {Switch, Route} from "react-router-dom";
 import HomePageSidebar from "../Components/HomePageSidebar"
 import SearchPage from '../SearchComponents/SearchPage';
-import YourLibrary  from './YourLibrary';
-import YourLibraryPlaylist  from './YourLibraryPlaylist';
+import YourLibrary  from './YourLibraryPages/YourLibrary';
+import YourLibraryPlaylist  from './YourLibraryPages/YourLibraryPlaylist';
 
 
 

@@ -3,11 +3,11 @@ import {BrowserRouter as Router,
   Switch, 
   Route, 
  } from "react-router-dom";
-import HomePageSidebar from "../Components/HomePageSidebar"
+import HomePageSidebar from "../../Components/HomePageSidebar"
 import YourLibraryPlaylist from "./YourLibraryPlaylist";
 import YourLibraryArtist from "./YourLibraryArtist";
 import YourLibraryAlbum from "./YourLibraryAlbum";
-import YourLibraryNavbar from "../Components/YourLibraryNavbar";
+import YourLibraryNavbar from "../../Components/YourLibraryNavbar";
 
 
 class YourLibrary extends Component {

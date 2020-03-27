@@ -1,16 +1,16 @@
 import React ,{ Component} from 'react';
-import './YourLibraryArtist.css';
-import YourLibraryNavbar from "../Components/YourLibraryNavbar";
+import './YourLibraryAlbum.css';
+import YourLibraryNavbar from "../../Components/YourLibraryNavbar";
 
-class YourLibraryArtist extends Component {
+class YourLibraryAlbum extends Component {
 render() {
 return ( 
-  <div className="your-library-artist">
+  <div className="your-library-album">
     <div  className="content">
       <div className="your-library-scroller" id="your-library-scroller">
         <YourLibraryNavbar/>
         <div className="actual-content">
-        <div> Artist Content </div>
+        <div>Album Content </div>
         </div>
 
       </div>
@@ -19,4 +19,4 @@ return (
 );
 }
 }
-export default YourLibraryArtist;
+export default YourLibraryAlbum;
