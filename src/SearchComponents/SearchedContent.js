@@ -3,6 +3,7 @@ import ItemSearched from "./ItemSearched";
 import "./SearchedContent.css";
 import SearchContent from "./SearchContent";
 import {Link} from "react-router-dom";
+import SongSearched from "./SongSearched";
 
 const SearchedContent = ({songs,artists,albums,playlists,searchfieldvalue}) => {
 
@@ -13,22 +14,22 @@ const SearchedContent = ({songs,artists,albums,playlists,searchfieldvalue}) => {
   }
   else{
     var neededSongs;
-    if(songs.length>5){
-      neededSongs=songs.splice(0,5);
+    if(songs.length>3){
+      neededSongs=songs.splice(0,3);
     }
     else{
       neededSongs=songs;
     }
   const Songs =neededSongs.map( song => (
-    <ItemSearched
+    <SongSearched
          image={song.url}
          name={song.title}
          subname={song.title}
-         id={song.id}
+         key={song.id}
          />)
   )
-  RenderedSongs=(<div className="searched-category-block">
-    <a className="searched-category-title" href="#" >Songs</a>
+  RenderedSongs=(<div id="searched-category-block-song" className="searched-category-block">
+    <a id="searched-category-title-song" className="searched-category-title" href="#" >Songs</a>
     {Songs}
   </div>)
   }
@@ -52,7 +53,7 @@ const SearchedContent = ({songs,artists,albums,playlists,searchfieldvalue}) => {
         name={artist.title}
         subname={artist.title}
         roundimage={true}
-        id={artist.id}
+        key={artist.id}
         />)
  )
  RenderedArtists=(<div className="searched-category-block">
@@ -79,7 +80,7 @@ const SearchedContent = ({songs,artists,albums,playlists,searchfieldvalue}) => {
         image={album.url}
         name={album.title}
         subname={album.title}
-        id={album.id}
+        key={album.id}
         />)
  )
  RenderedAlbums=(<div className="searched-category-block">

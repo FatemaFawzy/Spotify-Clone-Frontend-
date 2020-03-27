@@ -1,12 +1,13 @@
 import React from "react";
 import BrowseItem from "./BrowseItem";
 import "./SearchContent.css";
+import "./SongSearched"
+import SongSearched from "./SongSearched";
 
 
 const SearchContent = () => (
 
     <div className="before-typed-search">
-
         <h2>Your top genres</h2>
 
         <BrowseItem 

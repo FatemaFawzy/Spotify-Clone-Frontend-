@@ -76,3 +76,11 @@
   text-decoration: underline;
   text-underline-position: under;
 }
+#searched-category-title-song{
+
+  margin-bottom: 12px;
+}
+
+#searched-category-block-song{
+  margin-top: -40px;
+}

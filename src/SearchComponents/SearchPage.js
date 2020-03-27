@@ -38,6 +38,7 @@ class SearchPage extends Component {
 
   OnCancelSearch = () => {
     this.setState({ searchfield: "" })
+    this.setState({ searchFocused:true })
   }
 
 
