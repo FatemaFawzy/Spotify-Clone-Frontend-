@@ -14,7 +14,8 @@ class ArtistProfile extends Component{
     this.state = {
       artistName: "Tom Odell",
       monthlyListeners: "5,006,400",
-      coverLink: "https://i.scdn.co/image/f84e55c8589b0c8bc0eefab69e9cca5d924e758e"
+      coverLink: "https://i.scdn.co/image/f84e55c8589b0c8bc0eefab69e9cca5d924e758e",
+
 
     }
   }
@@ -22,15 +23,23 @@ class ArtistProfile extends Component{
   handleSectionClick = e => {
     const {id} = e.target;
     var clickedOption= document.getElementById(id);
-    clickedOption.style.backgroundColor="#333";
+    // clickedOption.style.backgroundColor="#333";
 
-    var options =document.getElementsByClassName("artist-profile-sections");
+    // var options =document.getElementsByClassName("artist-profile-sections");
+    // for (var i = 0 ; i < options.length ; i++) {
+    //   if (options[i].id !== id){
+    //     options[i].style.backgroundColor="" ;
+    //   }
+    // }; 
+
+    clickedOption.classList.add("grey-background");
+
+    var options =document.getElementsByClassName("grey-background");
     for (var i = 0 ; i < options.length ; i++) {
       if (options[i].id !== id){
-        options[i].style.backgroundColor="";
+        options[i].classList.remove("grey-background");
       }
     }; 
-    
   }
 
   render() {
@@ -61,25 +70,26 @@ class ArtistProfile extends Component{
         </div>
 
         <div id="artist-profile-sections">
+          {/* TODO: change link when search is implemented */}  
 
-          <button id="overview" type="button" className="artist-profile-sections" 
-          data-toggle="button" aria-pressed="false" >
-            {/* TODO: change link when search is implemented */}
-            <Link to="/webplayer/likedsongs/"> Overview </Link> 
-            
-          </button>
+          {/* <a id="overview" type="button" className=" artist-profile-sections" 
+          role="button" href="/webplayer/likedsongs/" onClick={this.handleSectionClick}> Overview </a>
 
-          <button id="related-artists" type="button" className="artist-profile-sections" 
-          data-toggle="button" aria-pressed="false" >
+          <a id="related-artists" type="button" className=" artist-profile-sections" 
+          role="button" href="/webplayer/likedsongs/relatedartists/" onClick={this.handleSectionClick}> Related Artists </a>
 
-            <Link to="/webplayer/likedsongs/relatedartists/"> Related Artists </Link>
+          <a id="about" type="button" className=" artist-profile-sections" 
+          role="button" href="/webplayer/likedsongs/artistabout/" onClick={this.handleSectionClick}> About </a> */}
 
-          </button>
+          <Link to="/webplayer/likedsongs/" id="overview" className="artist-profile-sections grey-background" 
+          onClick={this.handleSectionClick}> Overview </Link>
+          
+          <Link to="/webplayer/likedsongs/relatedartists/" id="related-artists" className=" artist-profile-sections" 
+          onClick={this.handleSectionClick}> Related Artists </Link>
 
-          <button id="about" type="button" className="artist-profile-sections" 
-          data-toggle="button" aria-pressed="false" >
-            <Link to="/webplayer/likedsongs/artistabout/"> About </Link>
-          </button>
+          <Link to="/webplayer/likedsongs/artistabout/" id="about" className="artist-profile-sections" 
+          onClick={this.handleSectionClick}> About </Link> 
+
 
         </div>
 

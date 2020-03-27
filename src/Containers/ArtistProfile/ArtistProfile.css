@@ -111,3 +111,7 @@
   margin-right: 8px;
   outline: none;
 }
+
+.artist-profile-body .grey-background {
+  background-color: #333;
+}
