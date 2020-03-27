@@ -3,7 +3,7 @@ import "./YourLibraryNavbar.css";
 import {BrowserRouter as Router} from "react-router-dom";
 import {NavLink, Link} from "react-router-dom";
 
-const YourLibraryNavbar=()=>(
+const YourLibraryNavbar=(props)=>(
 <div className="your-library-nav">
   <nav className="navbar navbar-expand navbar-dark nav-bgblack navbar-default pb-4 no-gutters" id="main-nav">
     <div className="row" id="main-row">
@@ -43,7 +43,7 @@ const YourLibraryNavbar=()=>(
           <div className="btn-group">
             <button  id="user-button" type="button" className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div className="account-button">
-              <img  className="image" src="https://scontent.faly3-1.fna.fbcdn.net/v/t1.0-9/55551870_2158938997531927_3034631111746519040_n.jpg?_nc_cat=104&_nc_sid=85a577&_nc_eui2=AeGwe2-J_MT4EygifW-VfNvej1uF1cRNlvwiorJldSFzTIIpuVox357lEbAA-O4M3jEKKMKWI8PrCYFUvy0wVPf8XPOsIIRBGNPyiy7u7AH8Ug&_nc_ohc=V_GhBoRn94kAX_oH8FG&_nc_ht=scontent.faly3-1.fna&oh=2049561230477a31e5eb3fe1ea8f3a92&oe=5EA2F5F0" alt="User"/>
+              <img  className="image" src={props.image} alt="User"/>
               <p className="d-none d-xl-inline name">Mariam El Baz <i className="fas fa-sort-down"></i></p>
             </div>
             </button>
