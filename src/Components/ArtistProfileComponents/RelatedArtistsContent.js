@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./RelatedArtistsContent.css";
 
 class RelatedArtistsContent extends Component {
   render(){

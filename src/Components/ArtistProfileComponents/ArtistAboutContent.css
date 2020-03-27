@@ -1,0 +1,34 @@
+.artist-about-content {
+  background-color: #121212;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 32px 8px;
+  min-height: 400px;
+}
+
+.artist-about-content .row {
+
+  padding: 0 32px;
+  margin: 0;
+  max-width: 1955px;
+}
+
+.artist-about-content .title {
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: .015em;
+  font-weight: 700;
+  /* font-weight: var(--glue-font-weight-black); */
+  color: #fff;
+  margin-bottom: 1em;
+}
+
+.artist-about-content .paragraphs {
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: .015em;
+  font-weight: var(--glue-font-weight-normal);
+  color: #b3b3b3;
+  margin-bottom: 1em;
+  
+}

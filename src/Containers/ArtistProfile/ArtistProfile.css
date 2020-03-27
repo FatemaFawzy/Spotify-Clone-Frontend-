@@ -10,7 +10,6 @@
   padding: 0 32px;
   margin: 0;
   max-width: 1955px;
-  /* background-image: url("https://i.scdn.co/image/f84e55c8589b0c8bc0eefab69e9cca5d924e758e"); */
   position: relative;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -29,7 +28,7 @@
   letter-spacing: .16em;
   color: #fff;
   opacity: .6;
-  padding-top: 130px;
+  padding-top: 140px;
   display: block;
   margin-bottom: 1em;
 }
@@ -91,7 +90,6 @@
 
 .artist-profile-body #artist-profile-sections {
   margin-top: 16px;
-  margin-bottom: 30px;
 }
 
 .artist-profile-body .artist-profile-sections {
@@ -115,3 +113,4 @@
 .artist-profile-body .grey-background {
   background-color: #333;
 }
+
