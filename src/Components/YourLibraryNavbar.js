@@ -1,7 +1,7 @@
 import React from "react";
 import "./YourLibraryNavbar.css";
 import {BrowserRouter as Router} from "react-router-dom";
-import {NavLink} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 
 const YourLibraryNavbar=()=>(
 <div className="your-library-nav">
@@ -30,8 +30,8 @@ const YourLibraryNavbar=()=>(
             More
             </button>
             <div className="dropdown-menu dropdown-menu-right">
-              <button className="dropdown-item" type="button">Artists</button>
-              <button className="dropdown-item" type="button">Albums</button>
+            <NavLink to="/webplayer/yourlibrary/artist"><button className="dropdown-item" type="button">Artists</button></NavLink>
+            <NavLink to="/webplayer/yourlibrary/album"> <button className="dropdown-item" type="button">Albums</button></NavLink>
             </div>
           </div>
         </li> 
@@ -49,6 +49,7 @@ const YourLibraryNavbar=()=>(
             </button>
             <div className="dropdown-menu dropdown-menu-right">
               <button className="dropdown-item" type="button">Account</button>
+              
               <button className="dropdown-item" type="button">Log Out</button>
             </div>
           </div>
