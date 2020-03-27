@@ -12,7 +12,6 @@ const AccountContent= (props) => (
 
     <div className="account-content">
             <Switch>
-                {/* <NavBar/> */}
                 <Route path="/account/overview/" component={OverviewContent}/>
                 <Route path="/account/profile/" component={EditProfile}/>
                 <Route path="/account/set-device-password/" component={SetPasswordContent}/>

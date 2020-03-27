@@ -14,6 +14,7 @@ import {BrowserRouter as Router,
         Route, 
        } from "react-router-dom";
 import WebPlayer from './Containers/WebPlayer';
+import ArtistProfile from './Containers/ArtistProfile/ArtistProfile';
 
 
        
@@ -35,6 +36,9 @@ function App() {
           <Route  exact path="/logIn/" component={login}/>
           <Route  exact path="/logIn/forgotpassword/" component={ForgotPassword}/>
           <Route path="/logIn/forgotpassword/success/" component={Success}/>
+          {/* TODO: Change the route of artistprofile when search is implemented */}
+          <Route  path="/webplayer/likedsongs/" component={ArtistProfile}/>
+          
           
           {/* TODO: add routes to the other pages */}
         </Switch>

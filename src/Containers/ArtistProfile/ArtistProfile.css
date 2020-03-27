@@ -1,0 +1,113 @@
+.artist-profile-body {
+  background-color: #121212;
+  color: white;
+  margin: 0;
+  max-width: 1955px;
+}
+.artist-profile-body .artist-top-section{
+  background-color: #121212;
+  color: white;
+  padding: 0 32px;
+  margin: 0;
+  max-width: 1955px;
+  /* background-image: url("https://i.scdn.co/image/f84e55c8589b0c8bc0eefab69e9cca5d924e758e"); */
+  position: relative;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-size: cover;
+  background-position: 50%;
+  /* opacity: 0.5; */
+}
+
+.artist-profile-body .montly-listeners {
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: .015em;
+  font-weight: var(--glue-font-weight-normal);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: #fff;
+  opacity: .6;
+  padding-top: 130px;
+  display: block;
+  margin-bottom: 1em;
+}
+
+.artist-profile-body .artist-name {
+  font-size: 72px;
+  line-height: 82px;
+  letter-spacing: -.005em;
+  font-weight: var(--glue-font-weight-black);
+  color: #fff;
+}
+
+.artist-profile-body #buttons {
+  margin-top: 16px;
+  margin-bottom: 30px;
+  /* font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  text-transform: uppercase; */
+}
+
+.artist-profile-body #play-button {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+	background:#1DB954;
+	border:none;
+	text-align: center;
+	letter-spacing: 2px;
+  padding: 10px 36px;
+  margin-right: 15px;
+}
+
+.artist-profile-body #play-button:hover {
+  background: #1ED760;
+  padding: 12px 38px 10px 38px;
+}
+
+.artist-profile-body #follow-button {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 2px solid #fff;
+	text-align: center;
+	letter-spacing: 2px;
+  padding: 8px 34px;
+  
+}
+
+.artist-profile-body #follow-button:hover {
+  padding: 10px 36px 8px 36px;
+}
+
+.artist-profile-body #artist-profile-sections {
+  margin-top: 16px;
+  margin-bottom: 30px;
+}
+
+.artist-profile-body .artist-profile-sections {
+  font-size: 18px;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: .015em;
+  background-color: transparent;
+  color: #fff;
+  position: relative;
+  border: 0;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-right: 8px;
+  outline: none;
+}
