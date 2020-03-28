@@ -63,7 +63,10 @@
 	letter-spacing: 2px;
   padding: 10px 36px;
   margin-right: 15px;
+  outline: none;
+  box-shadow: none;
 }
+
 
 .artist-profile-body #play-button:hover {
   background: #1ED760;
@@ -81,7 +84,8 @@
 	text-align: center;
 	letter-spacing: 2px;
   padding: 8px 34px;
-  
+  outline: none;
+  box-shadow: none;
 }
 
 .artist-profile-body #follow-button:hover {
