@@ -1,10 +1,10 @@
 import React from "react";
-import "./YourLibraryNavbar.css";
+import "./HomePageNavbar.css";
 import {BrowserRouter as Router} from "react-router-dom";
 import {NavLink, Link} from "react-router-dom";
 
-const YourLibraryNavbar=(props)=>(
-<div className="your-library-nav">
+const HomePageNavbar=(props)=>(
+<div className="home-nav">
 
   <nav className="navbar navbar-expand navbar-dark nav-bgblack navbar-default pb-4 no-gutters " id="main-nav"   >
     
@@ -17,26 +17,7 @@ const YourLibraryNavbar=(props)=>(
         <li className="nav-item">
           <a className="nav-link icons"><i className="fas fa-chevron-circle-right icon-color fa-2x "></i></a>
         </li>
-        <li className="nav-item">
-          <NavLink to="/webplayer/yourlibrary"><a className="nav-link words">Playlists</a></NavLink>
-        </li>
-        <li className="nav-item d-none d-lg-inline">
-          <NavLink to="/webplayer/yourlibrary/artist"><a className="nav-link words">Artists</a></NavLink>
-        </li>
-        <li className="nav-item d-none d-lg-inline">     
-        <NavLink to="/webplayer/yourlibrary/album"><a className="nav-link words">Albums</a></NavLink>
-        </li>
-        <li className="nav-item dropdown d-inline d-lg-none">
-          <div className="btn-group">
-            <button  id="more-button" type="button" className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            More
-            </button>
-            <div className="dropdown-menu dropdown-menu-right">
-            <NavLink to="/webplayer/yourlibrary/artist"><button className="dropdown-item" type="button">Artists</button></NavLink>
-            <NavLink to="/webplayer/yourlibrary/album"> <button className="dropdown-item" type="button">Albums</button></NavLink>
-            </div>
-          </div>
-        </li> 
+        
         </ul>
         </div>
      
@@ -46,7 +27,7 @@ const YourLibraryNavbar=(props)=>(
             <button  id="user-button" type="button" className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div className="account-button">
               <img  className="image" src={props.image} alt="User"/>
-              <p className="d-none d-xl-inline name">Mariam El Baz <i className="fas fa-sort-down"></i></p>
+              <p className="d-none d-xl-inline name">Ali Halafawy <i className="fas fa-sort-down"></i></p>
             </div>
             </button>
             <div className="dropdown-menu dropdown-menu-right">
@@ -63,4 +44,4 @@ const YourLibraryNavbar=(props)=>(
   </div>
 
 );
-export default YourLibraryNavbar;
+export default HomePageNavbar;
