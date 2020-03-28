@@ -48,12 +48,19 @@
 {
   color:white;
 }
-.playlist-page .music-sign
+.playlist-page .music-sign:after
 {
-  content: \266A ; 
-  font-size: 16px;
+  content: "\266A" ; 
+  font-size: 20px;
   color:#b3b3b3;
-  cursor:default;
+  cursor: default;
+}
+.playlist-page  tr:hover .music-sign:after{
+  content: "\25B8" ; 
+  font-size: 20px;
+  color:white;
+  cursor: default;
+  
 }
 .playlist-page .song-content
 {

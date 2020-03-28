@@ -93,7 +93,7 @@ class PlaylistPage extends Component
           <tbody>
                                              {/* BornToDie */}
             <tr>
-              <th scope="row" className="music-sign d-flex justify-content-center">	&#9834; </th>
+              <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
                   <li>{this.SongInfo.BornToDie.SongName}</li>
@@ -105,7 +105,7 @@ class PlaylistPage extends Component
             </tr>
                                               {/* Love */}
               <tr>
-              <th scope="row" className="music-sign d-flex justify-content-center">	&#9834; </th>
+              <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
                   <li>{this.SongInfo.Love.SongName}</li>
@@ -117,7 +117,7 @@ class PlaylistPage extends Component
             </tr>
                                               {/* Summertime Sadness */}
             <tr>
-              <th scope="row" className="music-sign d-flex justify-content-center">	&#9834; </th>
+              <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
                   <li>{this.SongInfo.SummertimeSadness.SongName}</li>
@@ -131,7 +131,7 @@ class PlaylistPage extends Component
             
                                              {/* BornToDie */}
                                              <tr>
-              <th scope="row" className="music-sign d-flex justify-content-center">	&#9834; </th>
+              <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
                   <li>{this.SongInfo.BornToDie.SongName}</li>
@@ -143,7 +143,7 @@ class PlaylistPage extends Component
             </tr>
                                               {/* Love */}
               <tr>
-              <th scope="row" className="music-sign d-flex justify-content-center">	&#9834; </th>
+              <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
                   <li>{this.SongInfo.Love.SongName}</li>
@@ -155,7 +155,7 @@ class PlaylistPage extends Component
             </tr>
                                               {/* Summertime Sadness */}
             <tr>
-              <th scope="row" className="music-sign d-flex justify-content-center">	&#9834; </th>
+              <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
                   <li>{this.SongInfo.SummertimeSadness.SongName}</li>
@@ -169,7 +169,7 @@ class PlaylistPage extends Component
             
                                              {/* BornToDie */}
                                              <tr>
-              <th scope="row" className="music-sign d-flex justify-content-center">	&#9834; </th>
+              <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
                   <li>{this.SongInfo.BornToDie.SongName}</li>
@@ -181,7 +181,7 @@ class PlaylistPage extends Component
             </tr>
                                               {/* Love */}
               <tr>
-              <th scope="row" className="music-sign d-flex justify-content-center">	&#9834; </th>
+              <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
                   <li>{this.SongInfo.Love.SongName}</li>
@@ -193,7 +193,7 @@ class PlaylistPage extends Component
             </tr>
                                               {/* Summertime Sadness */}
             <tr>
-              <th scope="row" className="music-sign d-flex justify-content-center">	&#9834; </th>
+              <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
                   <li>{this.SongInfo.SummertimeSadness.SongName}</li>

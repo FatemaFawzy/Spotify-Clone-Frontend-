@@ -51,16 +51,17 @@
 .Album-page .music-sign:after
 {
   content: "\266A" ; 
-  font-size: 16px;
+  font-size: 20px;
   color:#b3b3b3;
   cursor: default;
 }
-/* .Album-page  tr:hover .music-sign:after{
+.Album-page  tr:hover .music-sign:after{
   content: "\25B8" ; 
-  font-size: 16px;
+  font-size: 20px;
   color:white;
-  cursor: default; 
-} */
+  cursor: default;
+  
+}
 .Album-page .song-content
 {
   width:800px;
@@ -88,7 +89,9 @@
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
-
+.table th{
+  width: 0px;
+}
 .Album-page .Menu{
   cursor: pointer;
   visibility: hidden;

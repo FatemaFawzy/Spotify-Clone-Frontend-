@@ -130,8 +130,8 @@ class AlbumPage extends Component
             </tr>
 
             
-                                            {/* Perfect */}
-                                            <tr>
+        {/* Perfect */}
+            <tr>
               <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
                 <td className="song-content">
                   <ul className="list-unstyled">
