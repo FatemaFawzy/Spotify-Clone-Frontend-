@@ -34,8 +34,8 @@ class SongSearched extends Component {
   render() {
 
     var actualName;
-    if (this.props.name.length > 100) {
-      actualName = this.props.name.slice(0, 100) + "...";
+    if (this.props.name.length > 20) {
+      actualName = this.props.name.slice(0, 20) + "...";
     } else {
       actualName = this.props.name;
     }

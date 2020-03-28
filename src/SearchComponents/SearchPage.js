@@ -5,6 +5,8 @@ import SearchedContent from "./SearchedContent";
 import Searchbar from "./Searchbar";
 import {Switch,Route,Redirect} from "react-router-dom";
 import ArtistsSearch from "./ArtistsSearch";
+import SongsSearch from "./SongsSearch";
+import AlbumsSearch from "./AlbumsSearch";
 
 
 
@@ -79,7 +81,15 @@ class SearchPage extends Component {
 
     <Route  path="/webplayer/search/artists/" render={ (props) => <ArtistsSearch {...props}
             searchfieldvalue={this.state.searchfield}
-            artists={this.state.artists} />}/>        
+            artists={this.state.artists} />}/>  
+
+    <Route  path="/webplayer/search/songs/" render={ (props) => <SongsSearch {...props}
+            searchfieldvalue={this.state.searchfield}
+            songs={this.state.songs} />}/> 
+
+    <Route  path="/webplayer/search/albums/" render={ (props) => <AlbumsSearch {...props}
+            searchfieldvalue={this.state.searchfield}
+            albums={this.state.albums} />}/>                      
 
     </Switch>
 

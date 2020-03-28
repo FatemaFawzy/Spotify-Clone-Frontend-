@@ -78,9 +78,32 @@
 }
 #searched-category-title-song{
 
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 #searched-category-block-song{
-  margin-top: -40px;
+  margin-top: -19px;
+}
+
+
+.searched-top-title{
+  color: white;
+  margin-left: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-top: 3%;
+  text-shadow: darkgray;
+  letter-spacing: -0.05rem;
+  font-size: 200%;
+  width: 100%;
+  display: table-header-group;
+}
+.searched-top-title span{
+  margin-left: 10px;
+  
+}
+
+
+.searched-top-container{
+  display: block;
 }
