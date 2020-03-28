@@ -7,6 +7,7 @@ import SearchPage from '../SearchComponents/SearchPage';
 import YourLibrary  from './YourLibraryPages/YourLibrary';
 import YourLibraryPlaylist  from './YourLibraryPages/YourLibraryPlaylist';
 import ArtistProfile from './ArtistProfile/ArtistProfile';
+import MusicBar from "../Components/MusicBar/MusicBar"
 
 
 
@@ -17,29 +18,33 @@ class WebPlayer extends Component {
     return (
       <div className ="web-player-class">
         
-      <div className="row mx-0 no-gutters">
+        <div className="row mx-0 no-gutters">
 
-        <div className="side-bar-web-player">
-          <HomePageSidebar/>
+          <div className="side-bar-web-player">
+            <HomePageSidebar/>
+          </div>
+
+          <div className="content-web-player">
+
+            <Switch>
+              <Route exact path="/webplayer/"/>
+              <Route path="/webplayer/search" component={SearchPage}/>
+              <Route path="/webplayer/yourlibrary" component={YourLibrary}/>
+
+              {/* TODO: change the directory. this is for testing only */}
+              <Route path="/webplayer/likedsongs" component={ArtistProfile}/>
+
+            </Switch>
+
+          </div>
+
+
         </div>
 
-        <div className="content-web-player">
-
-          <Switch>
-            <Route exact path="/webplayer/"/>
-            <Route path="/webplayer/search" component={SearchPage}/>
-            <Route path="/webplayer/yourlibrary" component={YourLibrary}/>
-
-            {/* TODO: change the directory. this is for testing only */}
-            <Route path="/webplayer/likedsongs" component={ArtistProfile}/>
-
-          </Switch>
-
-        </div>
-
-
-
-      </div>
+        <footer className="music-bar-footer">
+          <MusicBar></MusicBar>
+        </footer>
+        
       </div>
       
     );

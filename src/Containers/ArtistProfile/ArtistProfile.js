@@ -1,7 +1,7 @@
 import React ,{ Component} from 'react';
 import "./ArtistProfile.css";
 import {Link } from "react-router-dom";
-import ArtistProfileContent from "../../Components/ArtistProfileComponents/ArtistProfileContent"
+import ArtistProfileContent from "../../Components/ArtistProfile/ArtistProfileContent"
 // import Searchbar from "../../SearchComponents/Searchbar"
 // import ArtistNavbar from "./ArtistNavbar"
 

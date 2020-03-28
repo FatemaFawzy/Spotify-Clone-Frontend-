@@ -1,0 +1,112 @@
+.music-bar {
+  background-color: #282828;
+  color:white;
+  padding: 16px;
+  height: 90px;
+  
+}
+
+.music-bar .music-bar-inside {
+  height: 56px;
+}
+
+/* .music-bar .music-bar-left, .music-bar-middle, .music-bar-right{
+  border: 1px solid white;
+  height: 56px;
+} */
+
+/* ----------------Left-side-bar-------------------- */
+
+.music-bar .card {
+  height: 56px;
+  max-width: 100%;
+  background-color: #282828;
+  border: none;
+}
+
+.music-bar .card-body {
+  padding: 6px 15px;
+  max-width: 100px;
+}
+
+.music-bar .list-group {
+  list-style-type: none;
+}
+
+.music-bar .song-photo {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  width: 56px;
+  height: 56px;
+  /* margin-right: 10px; */
+  background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  float: left;
+}
+
+/* .music-bar .names {
+  height:50px;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  float: left;
+} */
+.music-bar .song-name, #song-name {
+  /* position: relative; */
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: .015em;
+  color: #fff;
+  text-align: left;
+  font-weight: 600;
+  padding-bottom: 1px;
+  width: 100%;
+}
+
+.music-bar .artist-name, #artist-name {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: .015em;
+  text-align: left;
+  color: #b3b3b3;
+  width: 100%;
+}
+
+.music-bar #song-name:hover {
+  text-decoration: none;
+  border-bottom: 1px solid white;
+}
+
+.music-bar #artist-name:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.music-bar #heart-button {
+  background-color: #282828;
+  border: none;
+  color: #b3b3b3;
+  float: left;
+  outline: none;
+  
+}
+
+.music-bar #heart-button:hover {
+  color: white;
+}
+
+
+/* TODO: Fix text overflow for titles that are too long */
+.music-bar .prevent-overflow {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  /* width: 350px; */
+}
