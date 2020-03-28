@@ -13,7 +13,7 @@ const ArtistsSearch = ({artists,searchfieldvalue}) => {
         name={artist.title}
         subname={artist.title}
         roundimage={true}
-        id={artist.id}
+        key={artist.id}
         />)
  )
 
