@@ -31,6 +31,9 @@
   font-weight: 600;
   z-index:20;
 }
+.item-searched-class a:hover{
+  color:gray;
+}
 
 .item-searched-class p{
   color:white;

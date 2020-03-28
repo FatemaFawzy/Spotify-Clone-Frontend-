@@ -10,7 +10,7 @@ const Searchbar = (props) => {
                 <div className="search-bar-sticky-top"> 
                 
                         <div className="search-box-container">
-                        <span className="search-search-icon"><i class="fas fa-search"></i> </span>
+                        <span className="search-search-icon"><i className="fas fa-search"></i> </span>
                         <input onFocus={props.searchFocus}
                                onBlur={props.searchBlur}
                                onChange={props.searchChange} 

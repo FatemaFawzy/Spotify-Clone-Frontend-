@@ -1,0 +1,183 @@
+.song-searched-class {
+  height: 75px;
+  margin-bottom: 10px;
+  background-color:rgb(18,18,18);
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-left: 12px;
+}
+
+.song-searched-class .img-style-song-searched{
+  border: none;
+  box-sizing: border-box;
+  width: 75px;
+  height: 100%;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  text-align: center;
+  display: block;
+  float: left;
+  margin-right: 15px;
+}
+
+.song-searched-class .song-searched-name{
+  color:white;
+  text-decoration: none;
+  font-size: 80%;
+  font-weight: 600;
+  z-index:20;
+  display: flex;
+  margin-top: 10px;
+  font-size: 100%;
+  font-weight: 650;
+}
+
+.song-searched-class .song-searched-subname{
+  color:rgb(216,216,216);
+  text-decoration: none;
+  font-size: 80%;
+  font-weight: 600;
+  z-index:20;
+  font-size: 96%;
+  font-weight: 600;
+  display: inline-block;
+  clear: both;
+}
+
+
+.name-image-song-searched button{
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  background-color: rgb(29,185,84);
+  padding: 5px;
+  color: white;
+  text-align: center;
+  display: none;
+  left: 18px;
+  top: 18px;
+
+}
+
+.name-image-song-searched button:focus{
+  outline: none;
+}
+
+.name-image-song-searched button:hover{
+  width: 42px;
+  height: 42px;
+  cursor: default;
+}
+
+.song-searched-class:hover button{
+  display: inline-block;
+}
+
+.song-searched-class:hover {
+  background-color:rgb(40,40,40);
+}
+
+.song-searched-class .song-searched-name:hover{
+  text-decoration: underline;
+}
+
+.song-searched-class .song-searched-subname:hover{
+  text-decoration: underline;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.song-searched-class .dropdown {
+  position: absolute;
+  right: 20px;
+  top: 23px;
+  display: none;
+  height: 40px;
+
+}
+
+/* Dropdown Button */
+.song-searched-class .dropbtn {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: rgb(40,40,40); 
+  color: white;
+  padding-bottom: 32px;
+  padding-right: 24px;
+  border: none;
+  letter-spacing: 1px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+
+
+.song-searched-class:hover .dropdown{
+  display: inline-block;
+}
+
+/* Dropdown button on hover & focus */
+.song-searched-class .dropbtn:hover, .dropbtn:focus {
+  background-color: rgb(18,18,18);;
+  outline: none;
+}
+
+
+/* Dropdown Content (Hidden by Default) */
+.song-searched-class .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(40,40,40);
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  right: 30px;
+  top:20px;
+  border-radius: 5px;
+}
+
+.song-searched-class .dropdown-content-show {
+  display: block;
+  position: absolute;
+  background-color: rgb(40,40,40);
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 20;
+  right: 30px;
+  top:20px;
+  border-radius: 5px;
+}
+
+/* Links inside the dropdown */
+.song-searched-class .dropdown-content-show a {
+  color: rgb(216,216,216);
+  font-weight: 600;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 80%;
+}
+
+.song-searched-class .name-image-song-searched{
+  float: left;
+}
+
+/* Change color of dropdown links on hover */
+.song-searched-class .dropdown-content-show a:hover {background-color: rgb(66, 66, 66);}
+
+#song-searched-active button{
+  display: inline-block;
+}
+
+#song-searched-active {
+  background-color:rgb(40,40,40);
+}
+
+#song-searched-active .dropdown{
+  display: inline-block;
+}
+
