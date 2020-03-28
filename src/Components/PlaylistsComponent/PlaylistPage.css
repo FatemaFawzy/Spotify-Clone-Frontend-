@@ -1,0 +1,127 @@
+.playlist-page
+{
+  background-color: rgb(18,18,18);
+  margin-top: 60px;
+  padding-top: 2em;
+  color:white;
+}
+
+.playlist-page .content-spacing {
+  padding: 0 32px;
+  margin: 0;
+  max-width: 1955px;
+}
+.playlist-page .card
+{
+  width: 320px;
+  height:320px;
+}
+
+.playlist-page .centered-content li{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.playlist-page .dot-menu {
+  /* content: '\2026'; */
+  font-size: 3em;
+  color:white;
+  
+}
+.playlist-page .like-song
+{
+  content: '\2665';
+  color:#1ed760;
+  font-size: 30px;
+  margin-right: 25px;
+  cursor: pointer;
+
+}
+.playlist-page .card-menu
+{
+  font-size: 26px;
+  cursor: pointer;
+
+}
+.playlist-page .table
+{
+  color:white;
+}
+.playlist-page .music-sign
+{
+  content: \266A ; 
+  font-size: 16px;
+  color:#b3b3b3;
+  cursor:default;
+}
+.playlist-page .song-content
+{
+  width:800px;
+  padding: 3px;
+}
+
+
+.playlist-page .song-info a
+{
+  color:#b3b3b3;
+  font-size:12px;
+  text-decoration: none;
+}
+.playlist-page .song-info a:hover
+{
+  color:white;
+  
+  text-decoration: underline;
+}
+.playlist-page tr:hover{
+  background-color: rgba(70, 66, 69,0.4);
+}
+.table td, .table th {
+  padding: 3px;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.playlist-page .Menu{
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.playlist-page  tr:hover .Menu{
+  visibility: visible;
+}
+
+
+.playlist-page .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.playlist-page .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+  
+}
+
+.playlist-page .dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.playlist-page .dropdown-content a:hover {
+  color:white;
+  background-color:rgb(51, 48, 50);
+  cursor:default;
+}
+
+.playlist-page .show {display: block;}
+

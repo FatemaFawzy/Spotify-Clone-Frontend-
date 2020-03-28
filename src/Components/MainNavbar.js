@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import HomePageSidebar from './HomePageSidebar';
-import './NavBar1.css'
+import './MainNavbar.css'
 import {Link } from "react-router-dom";
 
 
-function NavBar1 ()  {
+class MainNavbar extends Component {
+
+  render(){
     return(
 <section className="nav-bar1">
 
@@ -43,6 +45,7 @@ function NavBar1 ()  {
 </section>
     )
 }
+}
 
 
-export default NavBar1
+export default MainNavbar

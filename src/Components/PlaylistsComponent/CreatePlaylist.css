@@ -1,0 +1,97 @@
+#popup
+{
+  position: absolute;
+  top:0.5%;
+  left:50%;
+  transform:translate(-50%, 50%);
+  width:100%;
+ 
+  background-color:transparent;
+  visibility: hidden;
+  opacity:0;
+  transition:0.1s;
+  color:white;
+}
+
+#popup.active
+{
+  visibility: visible;
+  opacity:1;
+  transition:0.1s;
+}
+#blur.active
+{
+  filter:blur(30px);
+  pointer-events: none;
+  user-select: none;
+-webkit-filter: blur(30px);
+-moz-filter: blur(30px);
+-o-filter: blur(30px);
+-ms-filter: blur(30px);
+
+
+  
+
+}
+.create-playlist
+{
+  font-weight: 900;
+}
+.create-playlist .input_P
+{
+  background-color: #282828;
+  color: aliceblue;
+  padding: 1.5% 1.5%;
+}
+
+.create-playlist .form-control-lg {
+  height: 60px;
+  background-color: #282828;
+  font-size: 50px;
+  padding:0 0;
+  line-height: 0;
+  border:none;
+}
+
+.create-playlist input[type="text"]
+{
+    background: transparent;
+    color:white;
+    caret-color: #1ed760;
+}
+
+.create-playlist input::placeholder
+{
+  color:#b3b3b3;
+  font-size: 45px;
+}
+
+input[type="text"]:focus {   
+  border-color: #282828;
+  box-shadow: none;
+  outline: 0 none;
+
+}
+.create-playlist h2
+{
+  font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+}
+
+.create-playlist .close-button
+{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color:white;
+    font-size: 40px;
+}
+
+.create-playlist .close-button:focus {
+  box-shadow: none;
+}
+.create-playlist .close-button:hover {
+  color:rgba(245, 245, 245, 0.856);
+}
+

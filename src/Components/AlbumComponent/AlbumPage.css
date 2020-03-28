@@ -1,0 +1,133 @@
+.Album-page
+{
+  background-color: rgb(18,18,18);
+  margin-top: 60px;
+  padding-top: 2em;
+  color:white;
+}
+
+.Album-page .content-spacing {
+  padding: 0 32px;
+  margin: 0;
+  max-width: 1955px;
+}
+.Album-page .card
+{
+  width: 320px;
+  height:320px;
+}
+
+.Album-page .centered-content li{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.Album-page .dot-menu {
+  /* content: '\2026'; */
+  font-size: 3em;
+  color:white;
+  
+}
+.Album-page .like-song
+{
+  content: '\2665';
+  color:#1ed760;
+  font-size: 30px;
+  margin-right: 25px;
+  cursor: pointer;
+
+}
+.Album-page .card-menu
+{
+  font-size: 26px;
+  cursor: pointer;
+
+}
+.Album-page .table
+{
+  color:white;
+}
+.Album-page .music-sign:after
+{
+  content: "\266A" ; 
+  font-size: 16px;
+  color:#b3b3b3;
+  cursor: default;
+}
+/* .Album-page  tr:hover .music-sign:after{
+  content: "\25B8" ; 
+  font-size: 16px;
+  color:white;
+  cursor: default; 
+} */
+.Album-page .song-content
+{
+  width:800px;
+  padding: 3px;
+}
+
+.Album-page .song-info a
+{
+  color:#b3b3b3;
+  font-size:12px;
+  text-decoration: none;
+}
+.Album-page .song-info a:hover
+{
+  color:white;
+  
+  text-decoration: underline;
+}
+.Album-page tr:hover{
+  background-color: rgba(70, 66, 69,0.4);
+  
+}
+.table td, .table th {
+  padding: 3px;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.Album-page .Menu{
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.Album-page  tr:hover .Menu{
+  visibility: visible;
+}
+
+.Album-page .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.Album-page .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+  
+}
+
+.Album-page .dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.Album-page .dropdown-content a:hover {
+  color:white;
+  background-color:rgb(51, 48, 50);
+  cursor:default;
+}
+
+.Album-page .show {display: block;}
+
+

@@ -2,6 +2,7 @@
   margin-left: 230px;
   width: 100%;
   background-color: rgb(18,18,18);
+  min-height: 100vh;
 }
 
 .web-player-class.side-bar-web-player{
