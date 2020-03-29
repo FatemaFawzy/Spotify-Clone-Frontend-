@@ -50,12 +50,7 @@ const YourLibraryNavbar=(props)=>(
             </div>
             </button>
             <div className="dropdown-menu dropdown-menu-right">
-<<<<<<< HEAD
             <BrowserRouter forceRefresh={true}><Link to="/account"><button className="dropdown-item" type="button">Account</button></Link>   </BrowserRouter>
-=======
-            <button className="dropdown-item" type="button">Account</button>
-            
->>>>>>> 9337d923b82107e37d4ff5d8f8fcc7928ea2cf01
               <button className="dropdown-item" type="button">Log Out</button>
             </div>
           </div>
