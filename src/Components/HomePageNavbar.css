@@ -14,11 +14,14 @@
 }
 .home-nav #main-nav 
 {
+ padding-top:7px ;
   max-width: 1225.6px!important;
+  transition:0.4s;
   width: 100%!important;
-  position:relative !important;
+  position: relative!important;
  
 }
+
 
 .home-nav #main-nav .icons{
   background-color: #121212;
@@ -131,7 +134,7 @@
   left: auto;
   padding: 5px 0;
   margin: 2px 0 0;
-  background-color: #fff;
+  background-color: #333333;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .15);
   border-radius: 4px;
@@ -148,6 +151,10 @@
   color:white;
   text-decoration: none !important;
 }
+/* .home-nav .drpdown-item{
+  
+  text-decoration: none;
+} */
 
 .home-nav .dropdown-toggle::after { 
   content: none; 

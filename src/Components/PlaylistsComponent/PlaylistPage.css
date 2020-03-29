@@ -15,7 +15,62 @@
 {
   width: 320px;
   height:320px;
+  border:none;
 }
+/* /////////////// Play button ///////////////////// */
+.playlist-page figure {
+  background: #ddd;
+  height: 300px;
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.playlist-page figure .play {
+  width: 60px;
+  height: 60px;
+  background: none;
+  border: 2px solid white ;
+  border-radius: 100%;
+  margin: auto;
+  cursor: pointer;
+  position: absolute;
+  top: 136px;
+  left: 124px;
+}
+.playlist-page figure .play:focus {
+  outline: 0;
+  border: 2px solid white;
+  box-shadow:none;
+}
+
+.playlist-page figure .play::after {
+  content: '';
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  left: 4px;
+  border-style: solid;
+  border-width: 15px 0 15px 25px;
+  border-color:  transparent white;
+}
+
+.playlist-page figure{
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.playlist-page  li:hover figure{
+  visibility: visible;
+
+  
+}
+.playlist-page  li:hover img{
+  filter: brightness(0.35);
+  border:none;
+}
+
+/* ////////////////////////////////////////////// */
 
 .playlist-page .centered-content li{
   margin-top: 10px;
@@ -23,20 +78,20 @@
   justify-content: center;
 }
 
-.playlist-page .dot-menu {
-  /* content: '\2026'; */
-  font-size: 3em;
-  color:white;
-  
-}
-.playlist-page .like-song
+
+.playlist-page #like-song
 {
-  content: '\2665';
-  color:#1ed760;
   font-size: 30px;
   margin-right: 25px;
   cursor: pointer;
-
+  background-color: transparent;
+  border: none;
+  color: #b3b3b3;
+  float: left;
+  outline: none;
+}
+.playlist-page #like-song:hover{
+  color:white;
 }
 .playlist-page .card-menu
 {
@@ -100,23 +155,25 @@
 }
 
 
+/* ////////////////// DropDpwn //////////////////////// */
+
 .playlist-page .dropdown {
   position: relative;
   display: inline-block;
 }
-
-.playlist-page .dropdown-content {
+/*//////////////// DropMenuCard ///////////////////*/
+.playlist-page .card-dropdown-content {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  width: max-content;
   box-shadow: none;
   border-color: black;
   z-index: 1;
   
 }
 
-.playlist-page .dropdown-content a {
+.playlist-page .card-dropdown-content a {
   color: #B3B3B3;
   padding: 12px 16px;
   text-decoration: none;
@@ -124,11 +181,43 @@
   background-color:#282828;
   
 }
-.playlist-page .dropdown-content a:hover {
+.playlist-page .card-dropdown-content a:hover {
   color:white;
   background-color:rgb(51, 48, 50);
   cursor:default;
 }
 
-.playlist-page .show {display: block;}
+/*//////////////// DropMenuSong ///////////////////*/
+
+.playlist-page .song-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+  right:50%;
+  
+  
+}
+
+.playlist-page .song-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.playlist-page .song-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(51, 48, 50);
+  cursor:default;
+}
+
+.playlist-page .show {
+  display: block;
+  position: absolute;
+}
 

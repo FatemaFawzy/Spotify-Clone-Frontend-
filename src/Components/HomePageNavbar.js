@@ -1,13 +1,17 @@
 import React from "react";
 import "./HomePageNavbar.css";
+<<<<<<< HEAD
 import {BrowserRouter} from "react-router-dom";
+=======
+import {BrowserRouter } from "react-router-dom";
+>>>>>>> 9337d923b82107e37d4ff5d8f8fcc7928ea2cf01
 import {NavLink, Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
 
 const HomePageNavbar=(props)=>(
 <div className="home-nav">
 
-  <nav className="navbar navbar-expand navbar-dark nav-bgblack navbar-default pb-4 no-gutters " id="main-nav"   >
+  <nav className="navbar-fixed-top navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default pb-4 no-gutters " id="main-nav"   >
     
    
       <div className="d-flex justify-content-start">
@@ -22,7 +26,7 @@ const HomePageNavbar=(props)=>(
         </ul>
         </div>
      
-        <ul className="navbar-nav  ml-auto" id="button-selector">
+        <ul className=" navbar-nav  ml-auto" id="button-selector">
         <li className="d-flex justify-content-end">
           <div className="btn-group">
             <button  id="user-button" type="button" className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,9 +35,9 @@ const HomePageNavbar=(props)=>(
               <p className="d-none d-xl-inline name">Ali Halafawy <i className="fas fa-sort-down"></i></p>
             </div>
             </button>
-            <div className="dropdown-menu dropdown-menu-right">
-              <button className="dropdown-item" type="button">Account</button>
-            
+            <div  className="dropdown-menu dropdown-menu-right">
+             <BrowserRouter forceRefresh={true}><Link to="/account"><button className="dropdown-item" type="button">Account</button></Link></BrowserRouter> 
+              
               
               <button className="dropdown-item" type="button">Log Out</button>
             </div>
@@ -43,7 +47,8 @@ const HomePageNavbar=(props)=>(
     
      
   </nav>
-  </div>
+
+ </div>
 
 );
 export default withRouter(HomePageNavbar);
