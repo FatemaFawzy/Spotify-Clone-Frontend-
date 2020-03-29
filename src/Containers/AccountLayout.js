@@ -2,7 +2,7 @@ import React ,{ Component} from 'react';
 import "./AccountLayout.css";
 import AccountSidebar from "../Components/AccountSidebar";
 import AccountContent from "../Components/AccountContent";
-import NavBar from "../Components/NavBar";
+import LoginNavbar from "../Components/LoginNavbar";
 import Bottom from "../Components/Bottom";
 import "../Components/AccountContent";
 import {BrowserRouter as Router } from "react-router-dom";
@@ -15,7 +15,7 @@ class AccountLayout extends Component {
         return (
         <div>
             {/* Display the Navbar Component here */}
-            <NavBar/>
+            <LoginNavbar/>
             <div className="content-wrapper d-flex justify-content-center">
 
                     <div className="row no-gutters container-fluid">

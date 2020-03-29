@@ -1,9 +1,9 @@
 import React from "react";
-import "./NavBar.css";
+import "./LoginNavbar.css";
 import {Link} from "react-router-dom";
 
 
-function NavBar()  {
+function LoginNavbar()  {
 
             return(
     <section className="nav-bar">
@@ -49,4 +49,4 @@ function NavBar()  {
 </section>
         )
     }
-export default NavBar 
+export default LoginNavbar 

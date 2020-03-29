@@ -1,7 +1,7 @@
 import React ,{ Component} from 'react';
 import "./ArtistProfile.css";
 import {Link } from "react-router-dom";
-import ArtistProfileContent from "../../Components/ArtistProfileComponents/ArtistProfileContent"
+import ArtistProfileContent from "../../Components/ArtistProfile/ArtistProfileContent"
 // import Searchbar from "../../SearchComponents/Searchbar"
 // import ArtistNavbar from "./ArtistNavbar"
 
@@ -15,23 +15,42 @@ class ArtistProfile extends Component{
       artistName: "Tom Odell",
       monthlyListeners: "5,006,400",
       coverLink: "https://i.scdn.co/image/f84e55c8589b0c8bc0eefab69e9cca5d924e758e",
+      play: "play",
+      follow: "follow",
 
 
     }
   }
 
+  playArtist = e => {
+    const {id} = e.target;
+
+    if ( this.state.play === "play" ) {
+      this.setState({play: "pause"});
+    }
+    else if ( this.state.play === "pause" ) {
+      this.setState({play: "play"});
+    }
+
+  }
+
+  followArtist = e => {
+    const {id} = e.target;
+
+    if ( this.state.follow === "follow" ) {
+      this.setState({follow: "unfollow"});
+      document.getElementById(id).style.color="#1DB954";
+    }
+    else if ( this.state.follow === "unfollow" ) {
+      this.setState({follow: "follow"});
+      document.getElementById(id).style.color="white";
+    }
+
+  }
+
   handleSectionClick = e => {
     const {id} = e.target;
     var clickedOption= document.getElementById(id);
-    // clickedOption.style.backgroundColor="#333";
-
-    // var options =document.getElementsByClassName("artist-profile-sections");
-    // for (var i = 0 ; i < options.length ; i++) {
-    //   if (options[i].id !== id){
-    //     options[i].style.backgroundColor="" ;
-    //   }
-    // }; 
-
     clickedOption.classList.add("grey-background");
 
     var options =document.getElementsByClassName("grey-background");
@@ -60,12 +79,12 @@ class ArtistProfile extends Component{
         </div>
 
         <div id="buttons">
-          <button id="play-button" className="btn btn-success rounded-pill">
-            play 
+          <button id="play-button" className="btn btn-success rounded-pill" onClick={this.playArtist}>
+            {this.state.play} 
           </button>
 
-          <button id="follow-button" className="btn btn-success rounded-pill ">
-            follow
+          <button id="follow-button" className="btn btn-success rounded-pill " onClick={this.followArtist}>
+            {this.state.follow}
           </button>
         </div>
 

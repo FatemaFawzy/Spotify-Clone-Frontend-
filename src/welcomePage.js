@@ -2,7 +2,7 @@ import React ,{ Component} from 'react';
 import {Link } from "react-router-dom";
 import './welcomePage.css';
 import Bottom from "./Components/Bottom";
-import NavBar1 from "./Components/NavBar1";
+import MainNavbar from "./Components/MainNavbar";
 
 
 class welcomePage extends Component{
@@ -10,7 +10,7 @@ class welcomePage extends Component{
 	{
 		return(
 		<div className="welcome-page-body">
-		<NavBar1/>
+		<MainNavbar/>
 			<div className="container">
 				<div className="row">
 	    			<div className="col-lg-12 text-center back ">

@@ -1,13 +1,13 @@
 import React ,{ Component} from 'react';
 import './Premium.css';
-import NavBar1 from "../Components/NavBar1";
+import MainNavbar from "../Components/MainNavbar";
 import Footer from "../Components/Footer";
 
 class Premium extends Component {
 render() {
 return ( 
   <div className="premium">
-    <NavBar1/>
+    <MainNavbar/>
     <div className="jumbotron" id="top-section">
       <h1 id="get-premium">Get Premium free for 1 month</h1>
       <h2 id="price">Just EGP 49.99/month after. Cancel anytime.</h2>

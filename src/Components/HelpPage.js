@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./HelpPage.css";
 import Carousel from 'react-bootstrap/Carousel';
 import whitebackground from "../assets/whitebackground.jpg";
-import NavBar1 from './NavBar1';
+import MainNavbar from './MainNavbar';
 import Bottom from "./Bottom";
 import { Link } from "react-router-dom";
 
@@ -35,7 +35,7 @@ class HelpPage extends Component {
     return (
       <div className="help-class">
         <div className="helpNav" > 
-        <NavBar1 />
+        <MainNavbar />
         </div>
         {/* First block */}
         <div className="help-header">
