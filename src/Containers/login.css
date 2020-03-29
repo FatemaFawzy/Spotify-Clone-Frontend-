@@ -125,13 +125,13 @@
   color:rgb(145, 148, 150);
 }
 
-.login #email-password
+.login #password-input
 {
   border-radius: 0%;
   box-shadow: none;
 }
 
-.login #email-password::placeholder
+.login #password-input::placeholder
 {
   color:rgb(145, 148, 150);
 }

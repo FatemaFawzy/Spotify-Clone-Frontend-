@@ -19,7 +19,6 @@ class ForgotPassword extends Component {
    let inp = this.state.emailOrUsername;
    let emailOrUsernameError="";
    let proceed=true;
-  //  console.log(inp.length);
    if (inp.length === 0)
    {
      emailOrUsernameError = "This field is required.";
@@ -38,8 +37,8 @@ class ForgotPassword extends Component {
   let inp = this.state.emailOrUsername;
   inp = event.target.value;
   this.state.emailOrUsername = inp;
-  // console.log(inp.length);
-  // console.log(this.validate());
+  this.validate();
+
 
 };
 
