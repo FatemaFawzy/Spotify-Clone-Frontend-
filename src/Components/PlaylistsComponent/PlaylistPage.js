@@ -5,10 +5,15 @@ import ClickAwayListener from 'react-click-away-listener';
 
 class PlaylistPage extends Component
 {
-  DropMenu ()
+  DropMenuCard ()
   {
-    document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("DropMenuCard").classList.toggle("show");
   }
+  DropMenuSong()
+  {
+    document.getElementById("DropMenuSong").classList.toggle("show");
+  }
+
   ClickAway()
   {
     var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -20,6 +25,16 @@ class PlaylistPage extends Component
       }
     }
   }
+  likeSong = e => {
+    const {id} = e.target;
+    var heart=document.getElementById(id);
+    heart.classList.toggle("far");
+    heart.classList.toggle("fas");
+  }
+ 
+
+  
+
   state= { 
     playlistImage: "https://www.udiscovermusic.com/wp-content/uploads/2019/05/Lana-Del-Rey-Born-To-Die-album-cover-web-optimised-820.jpg",
     playlistname: "Born to die",
@@ -55,6 +70,7 @@ class PlaylistPage extends Component
     
 }
 
+
   render(){
   return(
   <div className="playlist-page">
@@ -65,20 +81,23 @@ class PlaylistPage extends Component
               <li>
               <div class="card ">
               <img src={this.state.playlistImage} class="card-img-top" alt=""/>
+              <figure ><button className="play"></button></figure>
               </div>
               </li>
+              
 
 					  <li> <h3> {this.state.playlistname} </h3> </li>
 					  <li> <h5> {this.state.playlistCreator} </h5></li>
             <li> <a href="#" className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> Play</a> </li>
             <li >
-              <span className="like-song"> 	&#9829;</span>
+            <button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> </button>
+             
               <ClickAwayListener onClickAway={this.ClickAway}>
               <div className="dropdown ">
-              <a onClick={this.DropMenu} className="d-flex justify-content-center font-weight-bolder card-menu" >•••</a>
-              <div id="myDropdown" class="dropdown-content ">
-                <a href="#">Add to playlist</a>
+              <a onClick={this.DropMenuCard} className="d-flex justify-content-center font-weight-bolder card-menu" >•••</a>
+              <div id="DropMenuCard" class="dropdown-content card-dropdown-content">
                 <a href="#">Save to library</a>
+                <a href="#">Delete</a>
               </div>
               </div>
               </ClickAwayListener>
@@ -100,7 +119,18 @@ class PlaylistPage extends Component
                   <li className="song-info"><a href='#'>{this.SongInfo.BornToDie.Singer} </a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>Born To Die </a></li>
                 </ul>
               </td>
-              <td className="d-flex justify-content-center" ><a className="Menu">•••</a></td>
+              <td  className="d-flex justify-content-center" >
+                  <ClickAwayListener onClickAway={this.ClickAway}>
+                  <div className="dropdown ">
+                  <a className="Menu" onClick={this.DropMenuSong}>•••</a>
+                  <div id="DropMenuSong" class=" dropdown-content song-dropdown-content">
+                    <a href="#">Add to your liked songs </a>
+                    <a href="#">Add to playlist</a>
+                    <a href="#">Remove from this playlis</a>
+                  </div>
+                  </div>
+                  </ClickAwayListener>
+              </td>
               <td className="duration">{this.SongInfo.BornToDie.Duration}</td>
             </tr>
                                               {/* Love */}

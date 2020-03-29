@@ -1,13 +1,11 @@
 .your-library-nav .nav-bgblack{
-  background-color:#121212!important;
+  background-color:#121212 !important;
   position: fixed !important;
 }
 .your-library-nav {
-  
-  width: 1300px!important;
-  width:80%!important;
+  overflow-x: hidden;
   font-family: 'Roboto', sans-serif;
-
+  background-color:#121212;
 }
 .your-library-nav .icon-color{
   color:#e6e6e6;
@@ -15,43 +13,21 @@
 }
 .your-library-nav #main-nav 
 {
-  max-width: 1300px!important;
-  width: 100%!important;
-  position:relative !important;
- 
-}
-.your-library-nav #main-row
-{
-  
+  width: 100%;
 
 }
-.your-library-nav #main-nav .icons{
-  background-color: #121212;
+.your-library-nav #main-nav .nav-link{
   color:#e6e6e6;
   font-weight:700;
-  padding: 0px 16px 0px 8px;
-  width:40px;
-  font-size: 18px;
-  line-height: 16px;
-  margin: 0 8px;
-  color: #fff;
-  position: relative;
-}
-.your-library-nav #main-nav .words
-{
-  font-size: 18px;
-  line-height: 16px;
-  font-weight: 700;
-  color: #fff;
-  position: relative;
-  border: 0;
-  display: inline-block;
-  text-decoration: none;
   padding: 8px 16px;
+
+  font-size: 18px;
+  line-height: 16px;
   margin: 0 8px;
-  cursor: pointer;
+  color: #fff;
+  position: relative;
 }
-.your-library-nav #main-nav .words:hover{
+.your-library-nav #main-nav .nav-link:hover{
   background-color: #333333;
   font-size: 18px;
   line-height: 16px;
@@ -97,32 +73,18 @@
   {
     width:120px;
   }
-  .your-library-nav #more-button{
-    margin-right: 450px;
-  }
-  .your-library-nav #button-selector{
-   display: none;
-  }
-}
-
-.your-library-nav #button-selector{
-  position:absolute !important;
-  right:20px !important;
 }
 .your-library-nav .image{
   width: 28px;
   height: 28px;
-  margin : 30px 0px;
+  margin : 30px auto;
   border-radius: 50%; 
   background-color:#1d1e1f;
 }
 .your-library-nav .name
 {
-  padding-right:5px;
   padding-left:5px;
   vertical-align: middle;
-  margin-top:0;
-  padding-top:0;
   margin-bottom:0px;
 }
 .your-library-nav .to-collapse
@@ -153,26 +115,7 @@
   color:white;
   text-decoration: none !important;
 }
-.your-library-nav #more-button
+.your-library-nav .more-button
 {
-  font-size: 18px;
-  line-height: 16px;
-  font-weight: 700;
-  color: #fff;
-  position: relative;
-  border: 0;
-  display: inline-block;
-  text-decoration: none;
-  padding: 8px 16px;
-  margin: 0 8px;
-  cursor: pointer;
-}
-.your-library-nav .dropdown-toggle::after { 
-  content: none; 
-} 
-.your-library-nav  #user-button
-{
-  border-radius: 30px;
-  padding:0;
-  background-color:rgba(0,0,0,.7);
+  width:200px;
 }
