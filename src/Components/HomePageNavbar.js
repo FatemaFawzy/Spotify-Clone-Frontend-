@@ -1,10 +1,6 @@
 import React from "react";
 import "./HomePageNavbar.css";
-<<<<<<< HEAD
-import {BrowserRouter} from "react-router-dom";
-=======
 import {BrowserRouter } from "react-router-dom";
->>>>>>> 9337d923b82107e37d4ff5d8f8fcc7928ea2cf01
 import {NavLink, Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
 
