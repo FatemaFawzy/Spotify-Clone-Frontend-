@@ -4,7 +4,7 @@
 }
 .your-library-nav {
   
-  width: 1300px!important;
+  width: 1130px!important;
   width:80%!important;
   font-family: 'Roboto', sans-serif;
 
@@ -15,15 +15,10 @@
 }
 .your-library-nav #main-nav 
 {
-  max-width: 1300px!important;
+  max-width: 1130px!important;
   width: 100%!important;
-  position:relative !important;
+  position: fixed !important;
  
-}
-.your-library-nav #main-row
-{
-  
-
 }
 .your-library-nav #main-nav .icons{
   background-color: #121212;
@@ -35,7 +30,7 @@
   line-height: 16px;
   margin: 0 8px;
   color: #fff;
-  position: relative;
+  /* position: fixed; */
 }
 .your-library-nav #main-nav .words
 {
@@ -78,7 +73,8 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  position: relative;
+  /* position: relative; */
+ 
 
 }
 @media (max-width:990px)
@@ -102,6 +98,9 @@
   }
   .your-library-nav #button-selector{
    display: none;
+  }
+  .your-library-nav #main-nav{
+    width:auto;
   }
 }
 

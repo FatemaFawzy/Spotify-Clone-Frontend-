@@ -1,16 +1,16 @@
 import React from "react";
 import "./YourLibraryNavbar.css";
-import {BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter,withRouter} from "react-router-dom";
 import {NavLink, Link} from "react-router-dom";
 
 const YourLibraryNavbar=(props)=>(
 <div className="your-library-nav">
 
-  <nav className="navbar navbar-expand navbar-dark nav-bgblack navbar-default pb-4 no-gutters " id="main-nav"   >
+  <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default pb-4 no-gutters" id="main-nav"   >
     
    
       <div className="d-flex justify-content-start">
-      <ul className="navbar-nav  mr-auto">
+      <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <a className="nav-link icons"><i className="fas fa-chevron-circle-left icon-color fa-2x"></i></a>
         </li>
@@ -24,7 +24,7 @@ const YourLibraryNavbar=(props)=>(
           <NavLink to="/webplayer/yourlibrary/artist"><a className="nav-link words">Artists</a></NavLink>
         </li>
         <li className="nav-item d-none d-lg-inline">     
-        <NavLink to="/webplayer/yourlibrary/album"><a className="nav-link words">Albums</a></NavLink>
+          <NavLink to="/webplayer/yourlibrary/album"><a className="nav-link words">Albums</a></NavLink>
         </li>
         <li className="nav-item dropdown d-inline d-lg-none">
           <div className="btn-group">
@@ -40,7 +40,7 @@ const YourLibraryNavbar=(props)=>(
         </ul>
         </div>
      
-        <ul className="navbar-nav  ml-auto" id="button-selector">
+        <ul className="navbar-nav  ml-auto justify-content-end" id="button-selector">
         <li className="d-flex justify-content-end">
           <div className="btn-group">
             <button  id="user-button" type="button" className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,8 +50,7 @@ const YourLibraryNavbar=(props)=>(
             </div>
             </button>
             <div className="dropdown-menu dropdown-menu-right">
-              <button className="dropdown-item" type="button">Account</button>
-              
+            <BrowserRouter forceRefresh={true}><Link to="/account"><button className="dropdown-item" type="button">Account</button></Link>   </BrowserRouter>
               <button className="dropdown-item" type="button">Log Out</button>
             </div>
           </div>
@@ -63,4 +62,4 @@ const YourLibraryNavbar=(props)=>(
   </div>
 
 );
-export default YourLibraryNavbar;
+export default withRouter(YourLibraryNavbar);

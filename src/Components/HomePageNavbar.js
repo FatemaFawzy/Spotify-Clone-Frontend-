@@ -1,7 +1,8 @@
 import React from "react";
 import "./HomePageNavbar.css";
-import {BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import {NavLink, Link} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 const HomePageNavbar=(props)=>(
 <div className="home-nav">
@@ -32,6 +33,7 @@ const HomePageNavbar=(props)=>(
             </button>
             <div className="dropdown-menu dropdown-menu-right">
               <button className="dropdown-item" type="button">Account</button>
+            
               
               <button className="dropdown-item" type="button">Log Out</button>
             </div>
@@ -44,4 +46,4 @@ const HomePageNavbar=(props)=>(
   </div>
 
 );
-export default HomePageNavbar;
+export default withRouter(HomePageNavbar);

@@ -12,6 +12,8 @@ import HomePage from './HomePage';
 import PlaylistPage from '../Components/PlaylistsComponent/PlaylistPage';
 import CreatePlaylist from '../Components/PlaylistsComponent/CreatePlaylist';
 import AlbumPage from '../Components/AlbumComponent/AlbumPage';
+import AccountLayout from '../Containers/AccountLayout';
+import welcomePage from '../welcomePage';
 
 
 
