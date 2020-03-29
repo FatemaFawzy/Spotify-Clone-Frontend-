@@ -50,8 +50,8 @@ const YourLibraryNavbar=(props)=>(
             </div>
             </button>
             <div className="dropdown-menu dropdown-menu-right">
-              <button className="dropdown-item" type="button">Account</button>
-              
+            <button className="dropdown-item" type="button">Account</button>
+            
               <button className="dropdown-item" type="button">Log Out</button>
             </div>
           </div>
