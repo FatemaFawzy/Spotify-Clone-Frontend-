@@ -2,6 +2,7 @@
 {
   background-color: rgb(18,18,18);
   margin-top: 60px;
+  margin-bottom: 90px;
   padding-top: 2em;
   color:white;
 }
@@ -35,8 +36,8 @@
   margin: auto;
   cursor: pointer;
   position: absolute;
-  top: 136px;
-  left: 124px;
+  top: 130px;
+  left: 135px;
 }
 .playlist-page figure .play:focus {
   outline: 0;
@@ -82,7 +83,7 @@
 .playlist-page #like-song
 {
   font-size: 30px;
-  margin-right: 25px;
+  margin-right: 55px;
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -93,12 +94,7 @@
 .playlist-page #like-song:hover{
   color:white;
 }
-.playlist-page .card-menu
-{
-  font-size: 26px;
-  cursor: pointer;
 
-}
 .playlist-page .table
 {
   color:white;
@@ -157,11 +153,24 @@
 
 /* ////////////////// DropDpwn //////////////////////// */
 
-.playlist-page .dropdown {
-  position: relative;
-  display: inline-block;
+.playlist-page .dropdown  {
+  position: absolute;
+  display: inline-flex;
+  
+  color:white;
+  text-decoration: none;
+}
+.playlist-page .dropdown a{
+  color:white;
+  text-decoration: none;
 }
 /*//////////////// DropMenuCard ///////////////////*/
+
+.playlist-page .card-menu{
+  margin-left: 35px;
+  font-size: 26px;
+  cursor: pointer;
+}
 .playlist-page .card-dropdown-content {
   display: none;
   position: absolute;
@@ -183,11 +192,18 @@
 }
 .playlist-page .card-dropdown-content a:hover {
   color:white;
-  background-color:rgb(51, 48, 50);
+  background-color:rgb(53, 53, 53);
   cursor:default;
+}
+.playlist-page .dropdown-menu.card-dropdown-content.show {
+  padding: 0;
 }
 
 /*//////////////// DropMenuSong ///////////////////*/
+
+.playlist-page .dropdown-menu.song-dropdown-content.show {
+  padding: 0;
+}
 
 .playlist-page .song-dropdown-content {
   display: none;
@@ -197,9 +213,6 @@
   box-shadow: none;
   border-color: black;
   z-index: 1;
-  right:50%;
-  
-  
 }
 
 .playlist-page .song-dropdown-content a {
@@ -212,7 +225,7 @@
 }
 .playlist-page .song-dropdown-content a:hover {
   color:white;
-  background-color:rgb(51, 48, 50);
+  background-color:rgb(53, 53, 53);
   cursor:default;
 }
 
@@ -221,3 +234,32 @@
   position: absolute;
 }
 
+/* //////////////////////// Page responsive ////////////////////////////////*/
+@media (max-width: 768px) {
+  .playlist-page .song-content{
+  width:280px;
+ }
+  }
+  
+  @media (min-width: 768px) and (max-width: 992px){
+    .playlist-page .song-content{
+      width:400px;
+   }
+  }
+
+  @media (min-width: 992px) and (max-width: 1200px){
+    .playlist-page .song-content{
+      width:580px;
+   }
+  }
+  
+  @media (min-width: 1200px) and (max-width: 1500px){
+    .playlist-page .song-content{
+      width:600px;
+   }
+  }
+   @media (min-width: 1500px){
+    .playlist-page .song-content{
+      width:800px;
+   }
+  }

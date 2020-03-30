@@ -1,24 +1,25 @@
-.Album-page
+.liked-songs-page
 {
   background-color: rgb(18,18,18);
   margin-top: 60px;
+  margin-bottom: 90px;
   padding-top: 2em;
   color:white;
 }
 
-.Album-page .content-spacing {
+.liked-songs-page .content-spacing {
   padding: 0 32px;
   margin: 0;
   max-width: 1955px;
 }
-.Album-page .card
+.liked-songs-page .card
 {
   width: 320px;
   height:320px;
   border:none;
 }
 /* /////////////// Play button ///////////////////// */
-.Album-page figure {
+.liked-songs-page figure {
   background: #ddd;
   height: 300px;
   display: -ms-flex;
@@ -26,7 +27,7 @@
   display: flex;
 }
 
-.Album-page figure .play {
+.liked-songs-page figure .play {
   width: 60px;
   height: 60px;
   background: none;
@@ -38,13 +39,13 @@
   top: 130px;
   left: 135px;
 }
-.Album-page figure .play:focus {
+.liked-songs-page figure .play:focus {
   outline: 0;
   border: 2px solid white;
   box-shadow:none;
 }
 
-.Album-page figure .play::after {
+.liked-songs-page figure .play::after {
   content: '';
   display: inline-block;
   position: relative;
@@ -55,34 +56,34 @@
   border-color:  transparent white;
 }
 
-.Album-page figure{
+.liked-songs-page figure{
   cursor: pointer;
   visibility: hidden;
 }
 
-.Album-page  li:hover figure{
+.liked-songs-page  li:hover figure{
   visibility: visible;
 
   
 }
-.Album-page  li:hover img{
+.liked-songs-page  li:hover img{
   filter: brightness(0.35);
   border:none;
 }
 
 /* ////////////////////////////////////////////// */
 
-
-.Album-page .centered-content li{
+.liked-songs-page .centered-content li{
   margin-top: 10px;
   display: flex;
   justify-content: center;
 }
 
-.Album-page #like-song
+
+.liked-songs-page #like-song
 {
   font-size: 30px;
-  margin-right: 55px;
+  margin-top: 10px;
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -90,125 +91,86 @@
   float: left;
   outline: none;
 }
-.Album-page #like-song:hover{
+.liked-songs-page #like-song:hover{
   color:white;
 }
-.Album-page .card-menu
-{
-  font-size: 26px;
-  cursor: pointer;
 
-}
-.Album-page .table
+.liked-songs-page .table
 {
   color:white;
 }
-.Album-page .music-sign:after
+.liked-songs-page .music-sign:after
 {
   content: "\266A" ; 
   font-size: 20px;
   color:#b3b3b3;
   cursor: default;
 }
-.Album-page  tr:hover .music-sign:after{
+.liked-songs-page  tr:hover .music-sign:after{
   content: "\25B8" ; 
   font-size: 20px;
   color:white;
   cursor: default;
   
 }
-.Album-page .song-content
+.liked-songs-page .song-content
 {
   width:800px;
   padding: 3px;
 }
 
-.Album-page .song-info a
+.liked-songs-page .song-info a
 {
   color:#b3b3b3;
   font-size:12px;
   text-decoration: none;
 }
-.Album-page .song-info a:hover
+.liked-songs-page .song-info a:hover
 {
   color:white;
   
   text-decoration: underline;
 }
-.Album-page tr:hover{
+.liked-songs-page tr:hover{
   background-color: rgba(70, 66, 69,0.4);
-  
 }
 .table td, .table th {
   padding: 3px;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
-.table th{
-  width: 0px;
-}
-.Album-page .Menu{
+
+.liked-songs-page .Menu{
   cursor: pointer;
   visibility: hidden;
 }
 
-.Album-page  tr:hover .Menu{
+.liked-songs-page  tr:hover .Menu{
   visibility: visible;
 }
+
+
 /* ////////////////// DropDpwn //////////////////////// */
-.Album-page .dropdown  {
+
+.liked-songs-page .dropdown  {
   position: absolute;
   display: inline-flex;
   
   color:white;
   text-decoration: none;
 }
-.Album-page .dropdown a{
+.liked-songs-page .dropdown a{
   color:white;
   text-decoration: none;
-}
-/*//////////////// DropMenuCard ///////////////////*/
-
-.Album-page .card-menu{
-  margin-left: 35px;
-  font-size: 26px;
-  cursor: pointer;
-}
-.Album-page .card-dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  width: max-content;
-  box-shadow: none;
-  border-color: black;
-  z-index: 1;
-  
-}
-
-.Album-page .card-dropdown-content a {
-  color: #B3B3B3;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  background-color:#282828;
-  
-}
-.Album-page .card-dropdown-content a:hover {
-  color:white;
-  background-color:rgb(53, 53, 53);
-  cursor:default;
-}
-.Album-page .dropdown-menu.card-dropdown-content.show {
-  padding: 0;
 }
 
 /*//////////////// DropMenuSong ///////////////////*/
 
-.Album-page .dropdown-menu.song-dropdown-content.show {
+.liked-songs-page .dropdown-menu.song-dropdown-content.show {
   padding: 0;
 }
 
-.Album-page .song-dropdown-content {
+.liked-songs-page .song-dropdown-content {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
@@ -218,7 +180,7 @@
   z-index: 1;
 }
 
-.Album-page .song-dropdown-content a {
+.liked-songs-page .song-dropdown-content a {
   color: #B3B3B3;
   padding: 12px 16px;
   text-decoration: none;
@@ -226,43 +188,43 @@
   background-color:#282828;
   
 }
-.Album-page .song-dropdown-content a:hover {
+.liked-songs-page .song-dropdown-content a:hover {
   color:white;
   background-color:rgb(53, 53, 53);
   cursor:default;
 }
 
-.Album-page .show {
+.liked-songs-page .show {
   display: block;
   position: absolute;
 }
 
 /* //////////////////////// Page responsive ////////////////////////////////*/
 @media (max-width: 768px) {
-  .Album-page .song-content{
+  .liked-songs-page .song-content{
   width:280px;
  }
   }
   
   @media (min-width: 768px) and (max-width: 992px){
-    .Album-page .song-content{
+    .liked-songs-page .song-content{
       width:400px;
    }
   }
 
   @media (min-width: 992px) and (max-width: 1200px){
-    .Album-page .song-content{
+    .liked-songs-page .song-content{
       width:580px;
    }
   }
   
   @media (min-width: 1200px) and (max-width: 1500px){
-    .Album-page .song-content{
+    .liked-songs-page .song-content{
       width:600px;
    }
   }
    @media (min-width: 1500px){
-    .Album-page .song-content{
+    .liked-songs-page .song-content{
       width:800px;
    }
   }
