@@ -8,7 +8,7 @@ const BrowseItem =(props) =>{
         backgroundColor: props.color
     };
 
-    const givenclass= props.special=="true"? "BrowseItem special-browse":"BrowseItem"; 
+    const givenclass= props.special==="true"? "BrowseItem special-browse":"BrowseItem"; 
     return(
         <div className={givenclass} style={style} >
 

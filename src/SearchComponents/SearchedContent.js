@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import SongSearched from "./SongSearched";
 import TopResultItem from "./TopResultItem";
 
-const SearchedContent = ({ songs, artists, albums, playlists, searchfieldvalue }) => {
+const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfieldvalue }) => {
 
   //For Songs
   var RenderedSongs;
@@ -22,6 +22,13 @@ const SearchedContent = ({ songs, artists, albums, playlists, searchfieldvalue }
       neededSongs = songs;
     }
     const Songs = neededSongs.map(song => (
+      // <SongSearched
+      //   image={song.image.url}
+      //   name={song.trackName}
+      //   subname=" "
+      //   key={song._id}
+      // />)
+
       <SongSearched
         image={song.url}
         name={song.title}
@@ -34,6 +41,51 @@ const SearchedContent = ({ songs, artists, albums, playlists, searchfieldvalue }
       {Songs}
     </div>)
   }
+
+  //for other elements
+  // const otheritems=[artists, albums];
+  // var RenderedItems=[];
+
+  // for(var i=0;i<otheritems.length;i++)
+  // {
+
+  // if (!otheritems[i].length) {
+  //   RenderedItems.push(null);
+  // }
+  // else {
+  //   var neededItems;
+  //   if (otheritems[i].length > 5) {
+  //     neededItems = otheritems[i].splice(0, 5);
+  //   }
+  //   else {
+  //     neededItems = otheritems[i];
+  //   }
+  //   const Items = neededItems.map(item => (
+  //     // <ItemSearched
+  //     //   image={artist.image.url}
+  //     //   name={artist.artistName}
+  //     //   subname="Artist"
+  //     //   roundimage={true}
+  //     //   key={artist._id}
+  //     // />)
+
+  //     <ItemSearched
+  //     image={item.url}
+  //     name={item.title}
+  //     subname="Artist"
+  //     roundimage={false}
+  //     key={item.id}
+  //   />)
+
+  //   )
+  //   RenderedItems.push(<div className="searched-category-block">
+  //     <Link to={("/webplayer/search/artists")} className="searched-category-title" >Artists</Link>
+  //     {/* +props.type.toLowerCase() */}
+  //     {Items}
+  //   </div>)
+  // }
+
+  // }
 
   //For Artists
   var RenderedArtists;
@@ -49,13 +101,23 @@ const SearchedContent = ({ songs, artists, albums, playlists, searchfieldvalue }
       neededArtists = artists;
     }
     const Artists = neededArtists.map(artist => (
+      // <ItemSearched
+      //   image={artist.image.url}
+      //   name={artist.artistName}
+      //   subname="Artist"
+      //   roundimage={true}
+      //   key={artist._id}
+      // />)
+
       <ItemSearched
         image={artist.url}
         name={artist.title}
-        subname={artist.title}
+        subname="Artist"
         roundimage={true}
         key={artist.id}
       />)
+
+
     )
     RenderedArtists = (<div className="searched-category-block">
       <Link to="/webplayer/search/artists/" className="searched-category-title" >Artists</Link>
@@ -77,10 +139,17 @@ const SearchedContent = ({ songs, artists, albums, playlists, searchfieldvalue }
       neededAlbums = albums;
     }
     const Albums = neededAlbums.map(album => (
+      // <ItemSearched
+      //   image={album.image.url}
+      //   name={album.albumName}
+      //   subname={album.artistName}
+      //   key={album._id}
+      // />)
+
       <ItemSearched
         image={album.url}
         name={album.title}
-        subname={album.title}
+        subname="Album"
         key={album.id}
       />)
     )
@@ -90,11 +159,80 @@ const SearchedContent = ({ songs, artists, albums, playlists, searchfieldvalue }
     </div>)
   }
 
+  //For Playlists
+  var RenderedPlaylists;
+  if (!playlists.length) {
+    RenderedPlaylists = null;
+  }
+  else {
+    var neededPlaylists;
+    if (playlists.length > 5) {
+      neededPlaylists = playlists.splice(0, 5);
+    }
+    else {
+      neededPlaylists = playlists;
+    }
+    const Playlists = neededPlaylists.map(playlist => (
+      // <ItemSearched
+      //   image={playlist.image.url}
+      //   name={playlist.playlistName}
+      //   subname={playlist.userName}
+      //   key={playlist._id}
+      // />)
+
+      <ItemSearched
+        image={playlist.url}
+        name={playlist.title}
+        subname="Playlist"
+        key={playlist.id}
+      />)
+    )
+    RenderedPlaylists = (<div className="searched-category-block">
+      <Link to="/webplayer/search/playlists/" className="searched-category-title" >Playlists</Link>
+      {Playlists}
+    </div>)
+  }
+
+
+  //For Profiles
+  var RenderedProfiles;
+  if (!profiles.length) {
+    RenderedProfiles = null;
+  }
+  else {
+    var neededProfiles;
+    if (playlists.length > 5) {
+      neededProfiles = profiles.splice(0, 5);
+    }
+    else {
+      neededProfiles = profiles;
+    }
+    const Profiles = neededProfiles.map(profile => (
+      // <ItemSearched
+      //   image={profile.image.url}
+      //   name={profile.userName}
+      //   subname="Profile"
+      //   key={profile._id}
+      // />)
+
+      <ItemSearched
+        image={profile.url}
+        name={profile.title}
+        subname="Profile"
+        key={profile.id}
+      />)
+    )
+    RenderedProfiles = (<div className="searched-category-block">
+      <Link to="/webplayer/search/profiles/" className="searched-category-title" >Profiles</Link>
+      {Profiles}
+    </div>)
+  }
+
   //For the top results
 
   var RenderedTopResult = (
     <div className="searched-top-container">
-     <h2 className="searched-top-title"> <span>Top result</span></h2>
+      <h2 className="searched-top-title"> <span>Top result</span></h2>
       <TopResultItem
         image="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSTqNIgQTD9ivrxROP-q28iXeLqCG-5XaZ2yX1safWcAf2GSLOe"
         name="Sia"
@@ -140,6 +278,11 @@ const SearchedContent = ({ songs, artists, albums, playlists, searchfieldvalue }
 
           {RenderedArtists}
           {RenderedAlbums}
+          {RenderedPlaylists}
+          {RenderedProfiles}
+
+          {/* {RenderedItems[0]}
+          {RenderedItems[1]} */}
 
         </div>
       );

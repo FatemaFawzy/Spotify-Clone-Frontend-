@@ -1,4 +1,4 @@
-.artist-typed-search {
+.result-typed-search {
   padding: 20px;
   background-color: rgb(18,18,18);
   display: table;
@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-.artist-typed-search h2{
+.result-typed-search h2{
   color: white;
   margin-left: 12px;
   font-weight: 700;
