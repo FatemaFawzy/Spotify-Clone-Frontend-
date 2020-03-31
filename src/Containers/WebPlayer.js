@@ -15,6 +15,7 @@ import AlbumPage from '../Components/AlbumComponent/AlbumPage';
 import AccountLayout from '../Containers/AccountLayout';
 import welcomePage from '../welcomePage';
 import OtherUser from './OtherUserPage/OtherUser';
+import LikedSongs from '../Components/LikedSongs/LikedSongs';
 
 
 
@@ -40,10 +41,11 @@ class WebPlayer extends Component {
             <Route path="/webplayer/HomePage" component={HomePage}/>
 
               {/* TODO: change the directory. this is for testing only */}
-              <Route path="/webplayer/likedsongs" component={ArtistProfile}/>
+              <Route path="/webplayer/likedsongs" component={LikedSongs}/>
               <Route path="/webplayer/album" component={AlbumPage}/>
               <Route path="/webplayer/playlist" component={PlaylistPage}/>
               <Route path="/webplayer/user" component={OtherUser}/>
+              <Route path="/webplayer/artistprofile" component={ArtistProfile}/>
 
             </Switch>
 

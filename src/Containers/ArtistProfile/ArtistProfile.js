@@ -100,13 +100,13 @@ class ArtistProfile extends Component{
           <a id="about" type="button" className=" artist-profile-sections" 
           role="button" href="/webplayer/likedsongs/artistabout/" onClick={this.handleSectionClick}> About </a> */}
 
-          <Link to="/webplayer/likedsongs/" id="overview" className="artist-profile-sections grey-background" 
+          <Link to="/webplayer/artistprofile/" id="overview" className="artist-profile-sections grey-background" 
           onClick={this.handleSectionClick}> Overview </Link>
           
-          <Link to="/webplayer/likedsongs/relatedartists/" id="related-artists" className=" artist-profile-sections" 
+          <Link to="/webplayer/artistprofile/relatedartists/" id="related-artists" className=" artist-profile-sections" 
           onClick={this.handleSectionClick}> Related Artists </Link>
 
-          <Link to="/webplayer/likedsongs/artistabout/" id="about" className="artist-profile-sections" 
+          <Link to="/webplayer/artistprofile/artistabout/" id="about" className="artist-profile-sections" 
           onClick={this.handleSectionClick}> About </Link> 
 
 

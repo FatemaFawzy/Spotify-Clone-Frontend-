@@ -12,7 +12,7 @@ class MusicBar extends Component {
       photoLink: "https://i.scdn.co/image/ab67616d00001e021917a0f3f4152622a040913f",
       // TODO: change the albumlink and artistprofile
       albumLink: "/webplayer/yourlibrary",
-      artistProfileLink: "/webplayer/likedsongs/",
+      artistProfileLink: "/webplayer/artistprofile/",
 
     
 
