@@ -10,11 +10,11 @@ const ArtistProfileContent= (props) => (
 
     <div className="artist-profile-content">
             <Switch>
-                <Route exact path="/webplayer/likedsongs/" component={ArtistOverviewContent}/>
+                <Route exact path="/webplayer/artistprofile/" component={ArtistOverviewContent}/>
                 {/* <Route path="/webplayer/search/artistprofile/overview/" component={ArtistOverviewContent}/> */}
-                <Route path="/webplayer/likedsongs/relatedartists/" component={RelatedArtistsContent}/>
+                <Route path="/webplayer/artistprofile/relatedartists/" component={RelatedArtistsContent}/>
                 {/* <Route path="/webplayer/search/artistprofile/artistabout/" component={ArtistAboutContent}/> */}
-                <Route path="/webplayer/likedsongs/artistabout/" component={ArtistAboutContent}/>
+                <Route path="/webplayer/artistprofile/artistabout/" component={ArtistAboutContent}/>
 
             </Switch>
 

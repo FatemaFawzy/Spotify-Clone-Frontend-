@@ -82,7 +82,7 @@ class LikedSongs extends Component
               <td className="song-content">
                 <ul className="list-unstyled">
                   <li>{song.SongName}</li>
-                  <li className="song-info"><a href='/webplayer/artistprofile'>{song.Singer} </a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>{song.AlbumName} </a></li>
+                  <li className="song-info"><a href='/webplayer/artistprofile/'>{song.Singer} </a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>{song.AlbumName} </a></li>
                 </ul>
               </td>
               <td>
