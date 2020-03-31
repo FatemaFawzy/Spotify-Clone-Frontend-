@@ -1,0 +1,35 @@
+.other-user-page-class{
+  background-color: rgb(18,18,18);
+  padding-bottom: 100px;
+  padding-left: 20px;
+  display: table;
+}
+
+.other-profile-pic-name{
+  text-align: center;
+  align-items: center;
+  color: white;
+  display: block;
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.other-profile-pic-class{
+  height: 200px;
+  width: 200px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgb(40,40,40);
+
+}
+.other-profile-name-class{
+
+  font-weight: 780;
+  text-shadow: rgb(12, 12, 12);
+  margin-top: 30px;
+  font-size: 36px;
+  filter: blur(3px);
+  filter: drop-shadow(5px 5px 5px rgb(26, 26, 26));
+
+
+}

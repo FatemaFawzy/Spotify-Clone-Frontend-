@@ -26,53 +26,53 @@ class SearchPage extends Component {
   OnSearchChange = (event) => {
     this.setState({ searchfield: event.target.value })
 
-    // if(event.target.value !==""){
-    // const url = "http://localhost:3000/Search?word=" + this.state.searchfield; // site that doesn’t send Access-Control-*
-    // fetch(url)
-    //   .then((response) => {
-
-    //     if(response.status === 400){
-    //       console.log("request failed");
-    //       throw new Error('Network response was not ok.');
-    //   }else{
-    //     return response.json();
-
-    //   }
-        
-    //   })
-    //   .then((data) => {
-    //     this.setState({songs:data.Tracks,
-    //                    artists:data.artists,
-    //                    albums:data.Albums,
-    //                    playlist:data.Playlists,
-    //                    profiles:data.Users })
-    //   })
-    //   .catch(function(error) {
-    //     console.log('There has been a problem with your fetch operation: ', 
-    //     error.message);
-    //    })
-
-    //   }
-
     if(event.target.value !==""){
-      const url = "https://jsonplaceholder.typicode.com/photos"; 
-      fetch(url)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          this.setState({songs:data,
-                         artists:data,
-                         albums:data,
-                         playlists:data,
-                         profiles:data})
-        })
-        .catch((error)=>{
-          console.log(error);
+    const url = "http://localhost:3000/Search?word=" + this.state.searchfield; // site that doesn’t send Access-Control-*
+    fetch(url)
+      .then((response) => {
 
-        })
+        if(response.status === 400){
+          console.log("request failed");
+          throw new Error('Network response was not ok.');
+      }else{
+        return response.json();
+
+      }
+        
+      })
+      .then((data) => {
+        this.setState({songs:data.Tracks,
+                       artists:data.Artists,
+                       albums:data.Albums,
+                       playlist:data.Playlists,
+                       profiles:data.Users })
+      })
+      .catch(function(error) {
+        console.log('There has been a problem with your fetch operation: ', 
+        error.message);
+       })
+
+      }
+
+    // if(event.target.value !==""){
+    //   const url = "https://jsonplaceholder.typicode.com/photos"; 
+    //   fetch(url)
+    //     .then((response) => {
+    //       return response.json();
+    //     })
+    //     .then((data) => {
+    //       this.setState({songs:data,
+    //                      artists:data,
+    //                      albums:data,
+    //                      playlists:data,
+    //                      profiles:data})
+    //     })
+    //     .catch((error)=>{
+    //       console.log(error);
+
+    //     })
   
-        }
+    //     }
   }
 
   OnCancelSearch = () => {

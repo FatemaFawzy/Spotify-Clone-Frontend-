@@ -22,19 +22,19 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededSongs = songs;
     }
     const Songs = neededSongs.map(song => (
-      // <SongSearched
-      //   image={song.image.url}
-      //   name={song.trackName}
-      //   subname=" "
-      //   key={song._id}
-      // />)
-
       <SongSearched
-        image={song.url}
-        name={song.title}
-        subname={song.title}
-        key={song.id}
+        image={song.image.url}
+        name={song.trackName}
+        subname=" "
+        key={song._id}
       />)
+
+      // <SongSearched
+      //   image={song.url}
+      //   name={song.title}
+      //   subname={song.title}
+      //   key={song.id}
+      // />)
     )
     RenderedSongs = (<div id="searched-category-block-song" className="searched-category-block">
       <Link to="/webplayer/search/songs/" id="searched-category-title-song" className="searched-category-title" >Songs</Link>
@@ -101,21 +101,21 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededArtists = artists;
     }
     const Artists = neededArtists.map(artist => (
-      // <ItemSearched
-      //   image={artist.image.url}
-      //   name={artist.artistName}
-      //   subname="Artist"
-      //   roundimage={true}
-      //   key={artist._id}
-      // />)
-
       <ItemSearched
-        image={artist.url}
-        name={artist.title}
+        image={artist.image.url}
+        name={artist.artistName}
         subname="Artist"
         roundimage={true}
-        key={artist.id}
+        key={artist._id}
       />)
+
+      // <ItemSearched
+      //   image={artist.url}
+      //   name={artist.title}
+      //   subname="Artist"
+      //   roundimage={true}
+      //   key={artist.id}
+      // />)
 
 
     )
@@ -139,19 +139,19 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededAlbums = albums;
     }
     const Albums = neededAlbums.map(album => (
-      // <ItemSearched
-      //   image={album.image.url}
-      //   name={album.albumName}
-      //   subname={album.artistName}
-      //   key={album._id}
-      // />)
-
       <ItemSearched
-        image={album.url}
-        name={album.title}
-        subname="Album"
-        key={album.id}
+        image={album.image.url}
+        name={album.albumName}
+        subname={album.artistName}
+        key={album._id}
       />)
+
+      // <ItemSearched
+      //   image={album.url}
+      //   name={album.title}
+      //   subname="Album"
+      //   key={album.id}
+      // />)
     )
     RenderedAlbums = (<div className="searched-category-block">
       <Link to="/webplayer/search/albums/" className="searched-category-title" >Albums</Link>
@@ -173,19 +173,19 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededPlaylists = playlists;
     }
     const Playlists = neededPlaylists.map(playlist => (
-      // <ItemSearched
-      //   image={playlist.image.url}
-      //   name={playlist.playlistName}
-      //   subname={playlist.userName}
-      //   key={playlist._id}
-      // />)
-
       <ItemSearched
-        image={playlist.url}
-        name={playlist.title}
-        subname="Playlist"
-        key={playlist.id}
+        image={playlist.image.url}
+        name={playlist.playlistName}
+        subname={playlist.userName}
+        key={playlist._id}
       />)
+
+      // <ItemSearched
+      //   image={playlist.url}
+      //   name={playlist.title}
+      //   subname="Playlist"
+      //   key={playlist.id}
+      // />)
     )
     RenderedPlaylists = (<div className="searched-category-block">
       <Link to="/webplayer/search/playlists/" className="searched-category-title" >Playlists</Link>
@@ -208,19 +208,19 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededProfiles = profiles;
     }
     const Profiles = neededProfiles.map(profile => (
-      // <ItemSearched
-      //   image={profile.image.url}
-      //   name={profile.userName}
-      //   subname="Profile"
-      //   key={profile._id}
-      // />)
-
       <ItemSearched
-        image={profile.url}
-        name={profile.title}
+        image={profile.image.url}
+        name={profile.userName}
         subname="Profile"
-        key={profile.id}
+        key={profile._id}
       />)
+
+      // <ItemSearched
+      //   image={profile.url}
+      //   name={profile.title}
+      //   subname="Profile"
+      //   key={profile.id}
+      // />)
     )
     RenderedProfiles = (<div className="searched-category-block">
       <Link to="/webplayer/search/profiles/" className="searched-category-title" >Profiles</Link>
