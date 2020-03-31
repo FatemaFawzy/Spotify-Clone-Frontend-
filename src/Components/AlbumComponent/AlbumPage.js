@@ -5,13 +5,13 @@ import ReactDOM from "react-dom"
 
 class AlbumPage extends Component
 {
-  toggle()
-  {
-    var blur=document.getElementById('blur');
-    blur.classList.toggle('active')
-    var popup=document.getElementById('popup');
-    popup.classList.toggle('active')
-  }
+  toggle_add_to_playlist()
+ {
+   var blur_add_to_playlist=document.getElementById ('blur-add-to-playlist');
+   blur_add_to_playlist.classList.toggle('activate')
+   var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
+   popup_add_to_playlist.classList.toggle('activate')
+ }
   
   DropMenuCard ()
   {
@@ -41,6 +41,9 @@ state=
       {id : 7, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
       {id : 8, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
       {id : 9, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+      {id : 1, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      {id : 2, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      {id : 3, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
       
     ],
 
@@ -80,7 +83,7 @@ state=
               </div>
               </div>
             </li>
-            <li> <div> {this.state.songsNumber} </div></li>
+            <li> <div style={{color:"#b3b3b3"}}> {this.state.songsNumber} </div></li>
 					</ul>
           </div>
 
@@ -104,7 +107,7 @@ state=
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
                   <div class="dropdown-menu song-dropdown-content dropdown-menu-right ">
                     <a class="dropdown-item drop-class" href="#">Add to your liked songs</a>
-                    <a class="dropdown-item drop-class" href="#">Add to playlist</a>
+                    <a class="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Add to playlist</a>
                   </div>
                 </div>
               </td>

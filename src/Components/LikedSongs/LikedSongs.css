@@ -6,6 +6,9 @@
   padding-top: 2em;
   color:white;
 }
+.liked-songs-page h3{
+  cursor: default;
+}
 
 .liked-songs-page .content-spacing {
   padding: 0 32px;
@@ -17,6 +20,7 @@
   width: 320px;
   height:320px;
   border:none;
+  
 }
 /* /////////////// Play button ///////////////////// */
 .liked-songs-page figure {

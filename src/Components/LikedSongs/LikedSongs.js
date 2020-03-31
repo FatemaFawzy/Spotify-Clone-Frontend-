@@ -3,6 +3,13 @@ import './LikedSongs.css';
   
 class LikedSongs extends Component
 {
+  toggle_add_to_playlist()
+  {
+    var blur_add_to_playlist=document.getElementById ('blur-add-to-playlist');
+    blur_add_to_playlist.classList.toggle('activate')
+    var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
+    popup_add_to_playlist.classList.toggle('activate')
+  }
   DropMenuCard ()
   {
     document.getElementById("DropMenuCard").classList.toggle("show");
@@ -90,7 +97,7 @@ class LikedSongs extends Component
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
                   <div class="dropdown-menu song-dropdown-content dropdown-menu-right ">
                     <a class="dropdown-item drop-class" href="#">Remove from your liked songs</a>
-                    <a class="dropdown-item drop-class" href="#">Add to playlist</a>
+                    <a class="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Add to playlist</a>
                   </div>
                 </div>
               </td>
