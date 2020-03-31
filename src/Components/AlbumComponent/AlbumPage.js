@@ -78,8 +78,8 @@ state=
               <div className="dropdown ">
               <a className="card-menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
               <div class="dropdown-menu card-dropdown-content ">
-              <a class="dropdown-item drop-class" href="#">Save To Library</a>
-              <a class="dropdown-item drop-class" href="#">Delete</a>
+              <a class="dropdown-item drop-class" href="#">Save To Your Library</a>
+              <a class="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Add To Playlist</a>
               </div>
               </div>
             </li>
