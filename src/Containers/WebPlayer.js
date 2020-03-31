@@ -17,6 +17,7 @@ import welcomePage from '../welcomePage';
 import OtherUser from './OtherUserPage/OtherUser';
 import LikedSongs from '../Components/LikedSongs/LikedSongs';
 import AddToPlaylist from '../Components/PlaylistsComponent/AddToPlaylist';
+import DeletePlaylist from '../Components/PlaylistsComponent/DeletePlaylist';
 
 
 
@@ -62,7 +63,8 @@ class WebPlayer extends Component {
         </div>
         <AddToPlaylist/>
         </div>
-        <CreatePlaylist/>
+        <CreatePlaylist/> 
+        <DeletePlaylist/>
       </div>
       
     );
