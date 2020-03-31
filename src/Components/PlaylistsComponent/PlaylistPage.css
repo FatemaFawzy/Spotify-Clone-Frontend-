@@ -18,6 +18,9 @@
   height:320px;
   border:none;
 }
+.playlist-page h3,h5{
+  cursor: default;
+}
 /* /////////////// Play button ///////////////////// */
 .playlist-page figure {
   background: #ddd;
