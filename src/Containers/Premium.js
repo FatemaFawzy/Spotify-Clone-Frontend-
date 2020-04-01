@@ -2,6 +2,7 @@ import React ,{ Component} from 'react';
 import './Premium.css';
 import MainNavbar from "../Components/MainNavbar";
 import Footer from "../Components/Footer";
+import {Link, Router } from "react-router-dom";
 
 class Premium extends Component {
 render() {
@@ -11,7 +12,7 @@ return (
     <div className="jumbotron" id="top-section">
       <h1 id="get-premium">Get Premium free for 1 month</h1>
       <h2 id="price">Just EGP 49.99/month after. Cancel anytime.</h2>
-      <div className="btn btn-success button"><span id="ovflow">Get Premium</span></div>
+      <Link to="/signup" className="btn btn-success button"><span id="ovflow">Get Premium</span></Link>
       <p className="pt-4" id="terms"><span className="underline">Terms and conditions apply.</span> 1 month free not available for users who have already tried Premium.</p>
     </div>
 
@@ -78,7 +79,7 @@ return (
         <p><i className="fas fa-check"></i><span className="pl-2">No ad interruptions</span></p>
         <p><i className="fas fa-check"></i><span className="pl-2">Reach new releases first</span></p>
         <p className="border-bottom2"><i className="fas fa-check"></i><span className="pl-2">View daily top picks</span></p>
-        <div className="btn btn-success bigger" >GET PREMIUM</div>
+        <Link to="/signup" className="btn btn-success bigger" >GET PREMIUM</Link>
       </div>
     </div>
 
