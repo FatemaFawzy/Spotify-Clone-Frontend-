@@ -16,7 +16,11 @@
   max-width: 1130px!important;
   width: 100%!important;
   position: fixed !important;
-
+  overflow: visible !important;
+}
+.your-library-nav .navbar-nav
+{
+  overflow: visible !important;
 }
 .your-library-nav #main-nav .icons{
   background-color: #121212;
@@ -88,6 +92,7 @@
   position:absolute !important;
   left:80%;
   margin-left:auto !important;
+  overflow: visible;
 }
 .your-library-nav .image{
   width: 28px;
@@ -105,6 +110,9 @@
 {
   color: white !important;
 }
+.your-library-nav .dropdown {
+  overflow: visible !important;
+}
 .your-library-nav .dropdown-menu
 {
   position: absolute;
@@ -115,6 +123,9 @@
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .15);
   border-radius: 4px;
+  visibility: visible;
+  overflow: visible  !important;
+
 }
 .your-library-nav .btn 
 {
@@ -136,6 +147,7 @@
   line-height: 20px;
   letter-spacing: .015em;
   padding-bottom:5px;
+  overflow: visible !important;
 }
 .your-library-nav .dropdown-item:hover{
   background-color: #525252 !important;

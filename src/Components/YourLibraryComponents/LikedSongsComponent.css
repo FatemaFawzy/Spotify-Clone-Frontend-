@@ -1,0 +1,65 @@
+.liked-songs-component {
+  padding: 20px;
+  float: left;
+  height: 270px;
+  margin: 12px;
+  margin-right: 0px;
+  background-color:rgb(37,37,37);
+  border-radius: 10px;
+  position: relative;
+  overflow:hidden;
+  display: block;
+  cursor: pointer;
+  width: 411px;
+  background-color: linear-gradient(149.46deg,#450af5,#8e8ee5 99.16%);
+  background-image: linear-gradient(149.46deg, rgb(69, 10, 245), rgb(142, 142, 229) 99.16%);
+}
+.liked-songs-component .liked-songs-title{
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 700;
+  letter-spacing: -.36px;
+  padding-bottom: 2px;
+  color: #fff;
+  padding-top:10px;
+}
+.liked-songs-component .number-of-liked-songs{
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff;
+  padding: 0;
+  margin-top: 4px;
+  white-space: normal;
+  overflow: hidden;
+  width:150px;
+}
+.liked-songs-component .most-recent
+{
+  color:#fff;
+  padding-top:35px;
+}
+.liked-songs-component .song-name{
+  color:#ccc1fa;
+}
+.liked-songs-component .bottom-right-button{
+  background-color: rgb(29,185,84);
+  color: white;
+  border-radius: 50%;
+  border: none;
+  width: 50px;
+  height: 50px;
+  margin-top:50px;
+  margin-left:50px;
+}
+.liked-songs-component .fas {
+  font-size:20px;
+}
+.liked-songs-component button{
+  display: none;
+}
+.liked-songs-component:hover button{
+  display: inline-block;
+}
