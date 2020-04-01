@@ -36,7 +36,7 @@ const YourLibraryNavbar=(props)=>(
         </li> 
         </ul>
     </div>
-      <ul className="navbar-nav container justify-content-end" id="button-selector">
+      <ul className="navbar-nav ml-auto d-flex d-none col-md-2 col-lg-3 col-xl-2" id="button-selector">
         <li>
           <div className="btn-group mr-4">
             <button type="button" className="btn dropdown-toggle account-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
