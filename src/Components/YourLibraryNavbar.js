@@ -5,17 +5,14 @@ import {NavLink, Link} from "react-router-dom";
 
 const YourLibraryNavbar=(props)=>(
 <div className="your-library-nav">
-
-  <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default pb-4 no-gutters" id="main-nav"   >
-    
-   
-      <div className="d-flex justify-content-start">
+  <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default no-gutters d-flex" id="main-nav"   >   
+    <div>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-          <a className="nav-link icons"><i className="fas fa-chevron-circle-left icon-color fa-2x"></i></a>
+          <a className="nav-link icons ml-4"><i className="fas fa-chevron-circle-left icon-color fa-2x"></i></a>
         </li>
         <li className="nav-item">
-          <a className="nav-link icons"><i className="fas fa-chevron-circle-right icon-color fa-2x "></i></a>
+          <a className="nav-link icons mr-4"><i className="fas fa-chevron-circle-right icon-color fa-2x "></i></a>
         </li>
         <li className="nav-item">
           <NavLink to="/webplayer/yourlibrary"><a className="nav-link words">Playlists</a></NavLink>
@@ -28,38 +25,33 @@ const YourLibraryNavbar=(props)=>(
         </li>
         <li className="nav-item dropdown d-inline d-lg-none">
           <div className="btn-group">
-            <button  id="more-button" type="button" className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button  id="more-button" type="button" className="btn dropdown-toggle words" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             More
             </button>
-            <div className="dropdown-menu dropdown-menu-right">
+            <div className="dropdown-menu dropdown-more">
             <NavLink to="/webplayer/yourlibrary/artist"><button className="dropdown-item" type="button">Artists</button></NavLink>
             <NavLink to="/webplayer/yourlibrary/album"> <button className="dropdown-item" type="button">Albums</button></NavLink>
             </div>
           </div>
         </li> 
         </ul>
-        </div>
-     
-        <ul className="navbar-nav  ml-auto justify-content-end" id="button-selector">
-        <li className="d-flex justify-content-end">
-          <div className="btn-group">
-            <button  id="user-button" type="button" className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div className="account-button">
+    </div>
+      <ul className="navbar-nav col d-flex justify-content-end" id="button-selector">
+        <li>
+          <div className="btn-group mr-4">
+            <button type="button" className="btn dropdown-toggle account-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img  className="image" src={props.image} alt="User"/>
-              <p className="d-none d-xl-inline name">Mariam El Baz <i className="fas fa-sort-down"></i></p>
-            </div>
+              <p className="name">Mariam El Baz</p>
             </button>
             <div className="dropdown-menu dropdown-menu-right">
-            <BrowserRouter forceRefresh={true}><Link to="/account"><button className="dropdown-item" type="button">Account</button></Link>   </BrowserRouter>
-              <button className="dropdown-item" type="button">Log Out</button>
+            <BrowserRouter forceRefresh={true}><Link to="/account" className="dropdown-item"><button className="dropdown-item white-words pl-4" type="button">Account</button></Link>   </BrowserRouter>
+            <BrowserRouter forceRefresh={true}><Link to="/account" className="dropdown-item"><button className="dropdown-item white-words border-on-top" type="button">Log Out</button></Link>   </BrowserRouter>
             </div>
           </div>
         </li>  
-      </ul>
+      </ul> 
     
-     
   </nav>
-  </div>
-
+</div>
 );
 export default withRouter(YourLibraryNavbar);

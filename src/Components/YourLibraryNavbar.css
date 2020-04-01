@@ -2,8 +2,7 @@
   background-color:#121212 !important;
   position: fixed !important;
 }
-.your-library-nav {
-  
+.your-library-nav { 
   width: 1130px!important;
   width:80%!important;
   font-family: 'Roboto', sans-serif;
@@ -13,39 +12,33 @@
   color:#e6e6e6;
   cursor:pointer;
 }
-.your-library-nav #main-nav 
-{
+.your-library-nav #main-nav {
   max-width: 1130px!important;
   width: 100%!important;
   position: fixed !important;
- 
 }
 .your-library-nav #main-nav .icons{
   background-color: #121212;
   color:#e6e6e6;
   font-weight:700;
-  padding: 8px 16px;
-
-  font-size: 18px;
+  font-size: 15px;
   line-height: 16px;
-  margin: 0 8px;
   color: #fff;
-  /* position: fixed; */
 }
-.your-library-nav #main-nav .nav-link:hover{
-  background-color: #333333;
+.your-library-nav .words {
   font-size: 18px;
   line-height: 16px;
   font-weight: 700;
-  color: #fff;
+  color: #fff !important;
   position: relative;
   border: 0;
   display: inline-block;
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 8px 16px !important;
   border-radius: 4px;
   margin: 0 8px;
-  cursor: pointer;
+  margin-top:8px;
+
 }
 .your-library-nav .account-button{
   border-radius: 23px;
@@ -59,45 +52,33 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  /* position: relative; */
- 
-
 }
 @media (max-width:990px)
 {
-  .your-library-nav .navbar-nav 
-  {
-    width:300px;
-    display:flex;
-  }
-  .your-library-nav .nav 
-  {
-    width:489px;
-    justify-content: start;
-  }
-  .your-library-nav .decrease-width
-  {
-    width:120px;
-  }
   .your-library-nav #more-button{
     margin-right: 450px;
   }
   .your-library-nav #button-selector{
    display: none;
   }
-  .your-library-nav #main-nav{
-    width:auto;
-  }
 }
 
 .your-library-nav #button-selector{
-  position:absolute !important;
+
   right:20px !important;
+  margin-left:40%;
+
+  position:relative;
+}
+.your-library-nav .row-width
+{
+  width:50%;
+  display: flex !important;
 }
 .your-library-nav .image{
   width: 28px;
   height: 28px;
-  margin : 30px auto;
+  /* margin : 0px auto; */
   border-radius: 50%; 
   background-color:#1d1e1f;
 }
@@ -107,35 +88,81 @@
   vertical-align: middle;
   margin-bottom:0px;
 }
-.your-library-nav .to-collapse
+.your-library-nav .dropdown-toggle:hover
 {
-  width:80px;
+  color: white !important;
 }
 .your-library-nav .dropdown-menu
 {
   position: absolute;
+  height: 78px;
   right: 0;
-  left: auto;
-  padding: 5px 0;
-  margin: 2px 0 0;
-  background-color: #fff;
+  /* left: auto; */
+  padding:0;
+  margin: 8px 0 0;
+  background-color: #282828;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .15);
   border-radius: 4px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
           box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 }
-.your-library-nav .dropdown-menu > li > a {
-  color: #000;
-  padding: 3px 20px;
-  line-height: 1.42857143;
+.your-library-nav .btn:focus{
+  outline: none !important;
+  border:none !important;
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0, 0, 0, .175);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0, 0, 0, .175);
 }
-.your-library-nav .decor,.your-library-nav .decor:hover
+.your-library-nav hr {
+  color:#a9a9a9;
+}
+.your-library-nav .dropdown-item
 {
-  color:white;
+  height: 40px !important;
+  padding:0;
+  text-align: left;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: .015em;
+  padding-bottom:5px;
+}
+.your-library-nav .dropdown-item:hover{
+  background-color: #525252 !important;
   text-decoration: none !important;
+  color:white;
+  border-radius: 4px;
+}
+.your-library-nav .dropdown-item:focus{
+  outline: none !important;
+  border:none !important;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px #525252,0 0 8px #525252;
+  box-shadow: inset 0 1px 1px #525252,0 0 8px #525252;
 }
 .your-library-nav .more-button
 {
   width:200px;
+}
+.your-library-nav .white-words {
+  color:#a9a9a9;
+}
+.your-library-nav .border-on-top
+{
+  border-top: 1px solid #404040;
+  padding-top:8px;
+  padding-left:24px;
+  height:35px !important;
+}
+.your-library-nav .btn 
+{
+  height:35px;
+}
+.your-library-nav .account-button:hover{
+  background-color:#282828 ;
+}
+.your-library-nav .dropdown-more
+{
+  width:10px !important;
 }
