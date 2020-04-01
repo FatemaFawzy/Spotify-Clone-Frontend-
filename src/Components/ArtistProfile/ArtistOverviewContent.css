@@ -61,6 +61,23 @@
   height: 50px !important;
 }
 
+/* .artist-overview-content .song-name {
+  max-width: 500px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 750px) {
+  .artist-overview-content .song-content {
+    width: 50px !important;
+    background-color: pink;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+} */
+
 .artist-overview-content .duration {
   opacity: 0.6;
 }
@@ -123,11 +140,16 @@
 .artist-overview-content .media-object {
   list-style: none;
   padding: 0;
-  margin-left: 0;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px !important;
   /* float: left; */
 }
 
+/* @media (max-width: 700px) {
+  .artist-overview-content .media-object {
+    margin: auto;
+  }
+} */
 
 

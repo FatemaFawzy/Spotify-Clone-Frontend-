@@ -62,7 +62,7 @@ class ArtistOverviewContent extends Component {
                 <td className="song-content pl-0 ml-0">
                   <span>
                     <img className="song-photo mr-3" src={song.SongPhoto}></img>
-                    {song.SongName}
+                    <span className="song-name"> {song.SongName} </span>
                   </span>
                 </td>
 
@@ -90,7 +90,7 @@ class ArtistOverviewContent extends Component {
           <div className="row ">
             {this.state.albumInfo.map((album,index)=>(   
                 <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
-                  <MediaObject image={album.albumPhoto} 
+                  <MediaObject className="media-object" image={album.albumPhoto} 
                   objectName={album.albumName} albumLink={album.albumLink}> </MediaObject>
                 </div>  
             ))}

@@ -2,9 +2,9 @@
   width: 100%;
   max-width: 220px;
   max-height: 260px;
-  margin-right: 0;
-  margin-left: 0;
-  padding: 0;
+  display: block;
+  /* margin: auto;
+  padding: 0; */
 }
 .media-object .container {
   position: relative;
@@ -47,6 +47,10 @@
   text-align: center;
   padding: 5px;
   color: white !important;
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%; */
 }
 
 .media-object .title:hover {
