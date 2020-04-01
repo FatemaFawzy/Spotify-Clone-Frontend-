@@ -16,6 +16,8 @@ import AccountLayout from '../Containers/AccountLayout';
 import welcomePage from '../welcomePage';
 import OtherUser from './OtherUserPage/OtherUser';
 import LikedSongs from '../Components/LikedSongs/LikedSongs';
+import AddToPlaylist from '../Components/PlaylistsComponent/AddToPlaylist';
+import DeletePlaylist from '../Components/PlaylistsComponent/DeletePlaylist';
 
 
 
@@ -26,6 +28,7 @@ class WebPlayer extends Component {
     return (
       <div className ="web-player-class">
         <div id="blur">
+        <div id="blur-add-to-playlist">
         <div className="row mx-0 no-gutters" >
 
           <div className="side-bar-web-player">
@@ -54,11 +57,14 @@ class WebPlayer extends Component {
 
         </div>
 
-        <footer className="music-bar-footer">
+        {/* <footer className="music-bar-footer">
           <MusicBar></MusicBar>
-        </footer>
+        </footer> */}
         </div>
-        <CreatePlaylist/>
+        <AddToPlaylist/>
+        </div>
+        <CreatePlaylist/> 
+        <DeletePlaylist/>
       </div>
       
     );

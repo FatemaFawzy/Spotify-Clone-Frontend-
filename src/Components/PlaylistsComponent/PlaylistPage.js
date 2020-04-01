@@ -1,5 +1,6 @@
 import React ,{ Component} from 'react';
 import './PlaylistPage.css';
+import DeletePlaylist from './DeletePlaylist';
   
 class PlaylistPage extends Component
 {
@@ -18,13 +19,7 @@ class PlaylistPage extends Component
     heart.classList.toggle("far");
     heart.classList.toggle("fas");
   }
-  playSong = e => {
-    const {id} = e.target;
-    var play=document.getElementById(id);
-    play.classList.toggle("play");
-    play.classList.toggle("far fa-pause-circle");
-  }
- 
+
   state= 
 { 
     SongInfo: [
@@ -48,7 +43,13 @@ class PlaylistPage extends Component
     playlistCreator: "Lana Del Rey",
     songsNumber: "32 Songs",   
 }
-
+toggle_add_to_playlist()
+{
+  var blur_add_to_playlist=document.getElementById('blur-add-to-playlist');
+  blur_add_to_playlist.classList.toggle('activate')
+  var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
+  popup_add_to_playlist.classList.toggle('activate')
+}
 
   render(){
   return(
@@ -76,12 +77,13 @@ class PlaylistPage extends Component
               <a className="card-menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
               <div class="dropdown-menu card-dropdown-content ">
               <a class="dropdown-item drop-class" href="#">Save To Library</a>
-              <a class="dropdown-item drop-class" href="#">Delete</a>
+              <a class="dropdown-item drop-class" data-toggle="modal" data-target="#delete" href="#">Delete</a>
+              
           </div>
 
           </div>
             </li>
-            <li > <div> {this.state.songsNumber}</div> </li>
+            <li > <div style={{color:"#b3b3b3"}}> {this.state.songsNumber}</div> </li>
 					</ul>
           </div>
 
@@ -103,7 +105,7 @@ class PlaylistPage extends Component
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
                   <div class="dropdown-menu song-dropdown-content dropdown-menu-right ">
                     <a class="dropdown-item drop-class" href="#">Add to your liked songs</a>
-                    <a class="dropdown-item drop-class" href="#">Add to playlist</a>
+                    <a class="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Add to playlist</a>
                     <a class="dropdown-item drop-class" href="#">Remove from this playlist</a>
                   </div>
                 </div>

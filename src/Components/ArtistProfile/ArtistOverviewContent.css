@@ -2,6 +2,132 @@
   background-color: #121212;
   margin-right: auto;
   margin-left: auto;
-  padding: 32px 8px;
+  padding: 16px 47px;
   min-height: 400px;
 }
+
+.artist-overview-content h1 {
+    font-size: 26px;
+    line-height: 1.6;
+    font-weight: 700;
+    letter-spacing: -.36px;
+    color: #fff;
+    margin: 16px 0;
+}
+
+
+/* ////////////////////Popular //////////////////// */
+
+.artist-overview-content .table
+{
+  color:white;
+  position: relative !important;
+}
+
+.artist-overview-content td, th{
+  vertical-align: middle !important;
+  padding: 5px !important;
+}
+
+.artist-overview-content tr:hover{
+  background-color: rgba(70, 66, 69,0.4);
+}
+
+.artist-overview-content .music-sign:after
+{
+  content: "\266A" ; 
+  font-size: 20px;
+  color:#b3b3b3;
+  cursor: default;
+}
+.artist-overview-content  tr:hover .music-sign:after{
+  content: "\25B8" ; 
+  font-size: 20px;
+  color:white;
+  cursor: default;
+  
+}
+.artist-overview-content .song-content
+{
+  width:1100px;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.artist-overview-content .song-photo {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.artist-overview-content .duration {
+  opacity: 0.6;
+}
+
+.artist-overview-content .song-menu {
+  vertical-align: middle !important;
+}
+/* ///////////////Popular- Dropdown////////// */
+
+.artist-overview-content .Menu{
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.artist-overview-content  tr:hover .Menu{
+  visibility: visible;
+}
+
+.artist-overview-content .dropdown  {
+  /* position: absolute; */
+  display: inline-block;
+  color:white;
+  text-decoration: none;
+}
+.artist-overview-content .dropdown a{
+  color:white;
+  text-decoration: none;
+}
+
+.artist-overview-content .dropdown-menu.song-dropdown-content.show {
+  padding: 0;
+}
+
+.artist-overview-content .song-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: max-content;
+  box-shadow: none;
+  border-color: black;
+  z-index: 1;
+}
+
+.artist-overview-content .song-dropdown-content a {
+  color: #B3B3B3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color:#282828;
+  
+}
+.artist-overview-content .song-dropdown-content a:hover {
+  color:white;
+  background-color:rgb(53, 53, 53);
+  cursor:default;
+}
+
+/* /////////Albums & Singles//////////// */
+
+.artist-overview-content .media-object {
+  list-style: none;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  /* float: left; */
+}
+
+
+
