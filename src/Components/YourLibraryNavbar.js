@@ -7,7 +7,7 @@ const YourLibraryNavbar=(props)=>(
 <div className="your-library-nav">
   <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default no-gutters d-flex" id="main-nav"   >   
     <div>
-      <ul className="navbar-nav mr-auto">
+      <ul className="navbar-nav mr-auto justify-content-start">
         <li className="nav-item">
           <a className="nav-link icons ml-4"><i className="fas fa-chevron-circle-left icon-color fa-2x"></i></a>
         </li>
@@ -36,7 +36,7 @@ const YourLibraryNavbar=(props)=>(
         </li> 
         </ul>
     </div>
-      <ul className="navbar-nav col d-flex justify-content-end" id="button-selector">
+      <ul className="navbar-nav container justify-content-end" id="button-selector">
         <li>
           <div className="btn-group mr-4">
             <button type="button" className="btn dropdown-toggle account-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,7 +45,7 @@ const YourLibraryNavbar=(props)=>(
             </button>
             <div className="dropdown-menu dropdown-menu-right">
             <BrowserRouter forceRefresh={true}><Link to="/account" className="dropdown-item"><button className="dropdown-item white-words pl-4" type="button">Account</button></Link>   </BrowserRouter>
-            <BrowserRouter forceRefresh={true}><Link to="/account" className="dropdown-item"><button className="dropdown-item white-words border-on-top" type="button">Log Out</button></Link>   </BrowserRouter>
+            <BrowserRouter forceRefresh={true}><Link to="/" className="dropdown-item"><button className="dropdown-item white-words border-on-top" type="button">Log Out</button></Link>   </BrowserRouter>
             </div>
           </div>
         </li>  

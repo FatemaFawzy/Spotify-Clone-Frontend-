@@ -66,9 +66,8 @@
 .your-library-nav #button-selector{
 
   right:20px !important;
-  margin-left:40%;
-
-  position:relative;
+  /* margin-left:40%; */
+  position:absolute !important;
 }
 .your-library-nav .row-width
 {
