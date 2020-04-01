@@ -24,20 +24,20 @@ class ArtistAboutContent extends Component {
       <div className="artist-about-content container-fluid">
         <div className="row">
 
-          <div className="col-8 p-0">
+          <div className="col-sm-12 col-md-8 p-0">
             <section className="mr-5">
               <h2 className="title"> Biography </h2>
               <p className="font-weight-bolder paragraphs"> {this.state.biography} </p>
             </section>
           </div>
 
-          <div className="col-4 p-0">
-            <section className="pl-4 pr-4">
+          <div className="col-sm-12 col-md-4 p-0">
+            <section className=" pr-4">
               <h2 className="title"> Associated Music Genres </h2>
               <div className="font-weight-bolder paragraphs">
-                <p> {this.state.musicgenres[0]} </p>
-                <p> {this.state.musicgenres[1]} </p>
-                <p> {this.state.musicgenres[2]} </p>
+                {this.state.musicgenres.map((genre,index)=> (
+                  <p> {genre} </p>
+                ))}
               </div>
             </section>
           </div>
