@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import "./OtherUser.css";
 import ItemSearched from "../../SearchComponents/ItemSearched";
+import {connect} from "react-redux";
 
 class OtherUser extends Component {
 
@@ -9,6 +10,7 @@ class OtherUser extends Component {
   }
 
   componentDidMount(){
+    console.log(this.props.profileID)
       const url = "https://jsonplaceholder.typicode.com/photos"; 
       fetch(url)
         .then((response) => {
@@ -58,7 +60,15 @@ class OtherUser extends Component {
 
 }
 
+const mapStateToProps = state => {
+
+  return {
+    profileID:state.selectedProfileID
+  };
+
+};
+
     
 
 
-export default OtherUser;
+export default connect(mapStateToProps)(OtherUser);

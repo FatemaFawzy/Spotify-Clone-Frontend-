@@ -4,6 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Provider} from "react-redux";
+import {createStore} from "redux";
+import reducer from "./Store/reducer";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(reducer);
+
+
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 serviceWorker.unregister();
