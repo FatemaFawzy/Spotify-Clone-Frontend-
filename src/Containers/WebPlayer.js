@@ -56,9 +56,9 @@ class WebPlayer extends Component {
 
         </div>
 
-        <footer className="music-bar-footer">
+        {/* <footer className="music-bar-footer">
           <MusicBar></MusicBar>
-        </footer>
+        </footer> */}
         </div>
         <AddToPlaylist/>
         </div>

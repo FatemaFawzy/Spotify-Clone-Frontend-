@@ -118,7 +118,16 @@
   cursor:default;
 }
 
-/* /////////Popular Music//////////// */
+/* /////////Albums & Singles//////////// */
+
+.artist-overview-content .media-object {
+  list-style: none;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  /* float: left; */
+}
 
 
 
