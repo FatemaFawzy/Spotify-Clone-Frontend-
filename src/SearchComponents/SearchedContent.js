@@ -1,10 +1,11 @@
 import React from "react";
-import ItemSearched from "./ItemSearched";
 import "./SearchedContent.css";
 import SearchContent from "./SearchContent";
 import { Link } from "react-router-dom";
 import SongSearched from "./SongSearched";
 import TopResultItem from "./TopResultItem";
+import GeneralItem from "../Containers/GeneralItem";
+import * as itemType from "../Constants/itemType";
 
 const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfieldvalue }) => {
 
@@ -61,7 +62,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
   //     neededItems = otheritems[i];
   //   }
   //   const Items = neededItems.map(item => (
-  //     // <ItemSearched
+  //     // <GeneralItem
   //     //   image={artist.image.url}
   //     //   name={artist.artistName}
   //     //   subname="Artist"
@@ -69,7 +70,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
   //     //   key={artist._id}
   //     // />)
 
-  //     <ItemSearched
+  //     <GeneralItem
   //     image={item.url}
   //     name={item.title}
   //     subname="Artist"
@@ -101,20 +102,24 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededArtists = artists;
     }
     const Artists = neededArtists.map(artist => (
-      // <ItemSearched
+      // <GeneralItem
       //   image={artist.image.url}
       //   name={artist.artistName}
       //   subname="Artist"
       //   roundimage={true}
       //   key={artist._id}
+      //   id={artist._id}
+      //   type={itemType.ARTIST}
       // />)
 
-      <ItemSearched
+      <GeneralItem
         image={artist.url}
         name={artist.title}
         subname="Artist"
         roundimage={true}
         key={artist.id}
+        id={artist.id}
+        type={itemType.ARTIST}
       />)
 
 
@@ -139,18 +144,22 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededAlbums = albums;
     }
     const Albums = neededAlbums.map(album => (
-      // <ItemSearched
+      // <GeneralItem
       //   image={album.image.url}
       //   name={album.albumName}
       //   subname={album.artistName}
       //   key={album._id}
+      //   id={album._id}
+      //   type={itemType.ALBUM}
       // />)
 
-      <ItemSearched
+      <GeneralItem
         image={album.url}
         name={album.title}
         subname="Album"
         key={album.id}
+        id={album.id}
+        type={itemType.ALBUM}
       />)
     )
     RenderedAlbums = (<div className="searched-category-block">
@@ -173,18 +182,22 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededPlaylists = playlists;
     }
     const Playlists = neededPlaylists.map(playlist => (
-      // <ItemSearched
+      // <GeneralItem
       //   image={playlist.image.url}
       //   name={playlist.playlistName}
       //   subname={playlist.userName}
       //   key={playlist._id}
+      //   id={playlist._id}
+      //   type={itemType.PLAYLIST}
       // />)
 
-      <ItemSearched
+      <GeneralItem
         image={playlist.url}
         name={playlist.title}
         subname="Playlist"
         key={playlist.id}
+        id={playlist.id}
+        type={itemType.PLAYLIST}
       />)
     )
     RenderedPlaylists = (<div className="searched-category-block">
@@ -208,18 +221,22 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededProfiles = profiles;
     }
     const Profiles = neededProfiles.map(profile => (
-      // <ItemSearched
+      // <GeneralItem
       //   image={profile.image.url}
       //   name={profile.userName}
       //   subname="Profile"
       //   key={profile._id}
+      //   id={profile._id}
+      //   type={itemType.PROFILE}
       // />)
 
-      <ItemSearched
+      <GeneralItem
         image={profile.url}
         name={profile.title}
         subname="Profile"
         key={profile.id}
+        id={profile.id}
+        type={itemType.PROFILE}
       />)
     )
     RenderedProfiles = (<div className="searched-category-block">

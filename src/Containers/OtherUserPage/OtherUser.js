@@ -1,6 +1,9 @@
 import React,{Component} from "react";
 import "./OtherUser.css";
-import ItemSearched from "../../SearchComponents/ItemSearched";
+import {connect} from "react-redux";
+import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
+import GeneralItem from "../../Containers/GeneralItem";
+import * as itemType from "../../Constants/itemType";
 
 class OtherUser extends Component {
 
@@ -9,6 +12,9 @@ class OtherUser extends Component {
   }
 
   componentDidMount(){
+
+    // TODO: I Should send a request to get the info related to the user with ID = this.props.profileID
+    console.log(this.props.profileID)
       const url = "https://jsonplaceholder.typicode.com/photos"; 
       fetch(url)
         .then((response) => {
@@ -30,12 +36,13 @@ class OtherUser extends Component {
 
     const RelatedItems=this.state.userRelated.map((item)=>{
       return(
-        <ItemSearched
+        <GeneralItem
         name={item.title}
         subname="whatever"
         image={item.url}
         key={item.id}
-        id={item.id}/>
+        id={item.id}
+        type={itemType.PLAYLIST}/>
       )
     })
     return(
@@ -43,8 +50,9 @@ class OtherUser extends Component {
         <div className="other-profile-pic-name">
           <img
             className="other-profile-pic-class"
-            src="https://lh3.googleusercontent.com/proxy/vKnYvvciLjZGOkZERtIBjUFznXRUrdw28Xsbkwjcru15ewO_7f8GyChTvLwtESUfTI99Duir2H461_fHiKg0q02gJS7IUAdanNbwYY5KHfvUJf1GykCdIN7dr3C33T6wqFZ4K97XRg"/>
-          <h2 className="other-profile-name-class">Whatever For Now</h2>
+            src={emptyprofilepic}
+            alt={emptyprofilepic}/>
+          <h2 className="other-profile-name-class">User With ID {this.props.profileID}</h2>
         </div>
 
       {RelatedItems}
@@ -58,7 +66,15 @@ class OtherUser extends Component {
 
 }
 
+const mapStateToProps = state => {
+
+  return {
+    profileID:state.selectedProfileID
+  };
+
+};
+
     
 
 
-export default OtherUser;
+export default connect(mapStateToProps)(OtherUser);
