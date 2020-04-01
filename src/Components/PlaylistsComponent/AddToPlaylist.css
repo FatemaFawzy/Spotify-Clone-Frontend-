@@ -1,27 +1,27 @@
-#popup
+#popup-add-to-playlist
 {
   position: absolute;
-  top: 8.5%;
-  left:50%;
-  transform:translate(-50%, 50%);
+  top: 1px;
   width:100%;
- 
+  /* height: 100%; */
   background-color:transparent;
   visibility: hidden;
   opacity:0;
   transition:0.1s;
   color:white;
+  min-height: 100hv;
 }
 
-#popup.active
+#popup-add-to-playlist.activate
 {
   visibility: visible;
   opacity:1;
   transition:0.1s;
+  
 }
-#blur.active
+#blur-add-to-playlist.activate
 {
-  z-index:999;
+  z-index:998;
   width:100%;
   height:100%;
   top:0;
@@ -29,6 +29,7 @@
   filter: brightness(0.1);
   pointer-events: none;
   user-select: none;
+  
 }
 .add-to-playlist
 {
@@ -58,3 +59,68 @@
   color:rgba(245, 245, 245, 0.856);
 }
 
+.add-to-playlist .image
+{
+  width: 300px;
+  height: 300px;
+  margin : 0 10px;
+}
+
+.add-to-playlist .name-of-song
+{
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+  margin-top: 10px;
+}
+.add-to-playlist .number-of-songs
+{
+  font-size: 14px;
+  line-height: 20px;
+  color:#b3b3b3;
+  margin-top: -15px;
+}
+.add-to-playlist .bar:after
+{
+  content: "\f001";
+  top:100px;
+}
+.add-to-playlist .bar {
+  background: #ddd;
+  height: 300px;
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.add-to-playlist .bar {
+  width: 60px;
+  height: 60px;
+  background: none;
+  margin: auto;
+  cursor: pointer;
+  position: absolute;
+  top: 36%;
+  left: 44%;
+  font-size: 55px;
+  visibility: hidden;
+}
+.add-to-playlist img:hover {
+  filter: brightness(0.35);
+  border:none;
+  visibility: visible;
+}
+.add-to-playlist .bar{
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.add-to-playlist  li:hover .bar{
+  visibility: visible;
+
+  
+}
+.add-to-playlist  li:hover img{
+  filter: brightness(0.35);
+  border:none;
+}

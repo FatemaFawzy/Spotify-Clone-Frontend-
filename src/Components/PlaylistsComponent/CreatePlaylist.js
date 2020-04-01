@@ -16,7 +16,7 @@ render()
 return (
   <div className="create-playlist" id="popup" >
         <div className="d-flex justify-content-center">
-            <button className="btn close-button "  onClick={this.toggle}> <i className="fas fa-times"></i> </button>
+            <button className="btn close-button" onClick={this.toggle} > <i className="fas fa-times"></i> </button>
         </div>
         <h2 className="d-flex justify-content-center mb-3" > Create new playlist</h2>
         <div className="input_P ">
@@ -34,7 +34,7 @@ return (
               <button className="btn btn-dark border border-light rounded-pill text-center px-5 py-2 mt-3 font-weight-bold" onClick={this.toggle}> Cancel</button>
               </div>
               <div className="col-6 d-flex justify-content-start">
-              <a href="/webplayer/playlist" className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> Create</a>
+              <a href="" className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> Create</a>
         
               </div>
             </div>
