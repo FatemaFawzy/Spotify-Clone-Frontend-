@@ -1,8 +1,7 @@
 import React from "react";
-import ItemSearched from "./ItemSearched";
 import "./AllSearchResults.css";
 import * as itemType from "../Constants/itemType";
-
+import GeneralItem from "../Containers/GeneralItem";
 
 const AllSearchResults = ({ results, type, searchfieldvalue }) => {
 
@@ -51,25 +50,28 @@ const AllSearchResults = ({ results, type, searchfieldvalue }) => {
     // }
 
     return (
-      <ItemSearched
+      <GeneralItem
         image={result.url}
         name={result.title}
         subname={result.title}
         roundimage={roundImgOrNot}
         key={result.id}
+        id={result.id}
+        type={type}
       />
 
-      // <ItemSearched
+      // <GeneralItem
       // image={result.image.url}
       // name={renderedName}
       // subname={renderedSubname}
       // roundimage={roundImgOrNot}
-      // key={result.id}
+      // key={result._id}
+      // id={result._id}
+      // type={type}
       // />
     )
   }
   )
-
 
   return (
 
@@ -78,8 +80,6 @@ const AllSearchResults = ({ results, type, searchfieldvalue }) => {
       {Results}
     </div>
   )
-
-
 
 }
 

@@ -46,7 +46,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SELECT_PROFILE:
       return {
         ...state,
-        selectedProfileID : 0
+        selectedProfileID : action.value
 
       };
       break;

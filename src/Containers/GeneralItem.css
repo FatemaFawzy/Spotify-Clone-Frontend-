@@ -1,4 +1,4 @@
-.item-searched-class {
+.item-general-outer-class {
   padding: 20px;
   float: left;
   height: 270px;
@@ -12,7 +12,7 @@
   cursor: pointer;
 }
 
-.item-searched-class .img-style-searched{
+.item-general-outer-class .img-style-item-general{
   border: none;
   box-sizing: border-box;
   width: 100%;
@@ -24,18 +24,18 @@
   display: block;
 }
 
-.item-searched-class a{
+.item-general-outer-class a{
   color:gray;
   text-decoration: none;
   font-size: 80%;
   font-weight: 600;
   z-index:20;
 }
-.item-searched-class a:hover{
+.item-general-outer-class a:hover{
   color:gray;
 }
 
-.item-searched-class p{
+.item-general-outer-class p{
   color:white;
   font-weight: 600;
   margin-top: 4px;
@@ -44,7 +44,7 @@
   z-index: 20;
 }
 
-.item-searched-class button{
+.item-general-outer-class button{
   width: 40px;
   height: 40px;
   border: none;
@@ -60,22 +60,22 @@
 
 }
 
-.item-searched-class button:focus{
+.item-general-outer-class button:focus{
   outline: none;
 }
 
-.item-searched-class button:hover{
+.item-general-outer-class button:hover{
   width: 42px;
   height: 42px;
   cursor: default;
 }
 
-.item-searched-class:hover button{
+.item-general-outer-class:hover button{
   display: inline-block;
 }
 
 
-#i-am-round-img{
+#i-am-round-img-general{
   border: none;
   height: 160px;
   width: 100%;
@@ -85,7 +85,7 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 550px) {
 
-  .item-searched-class {
+  .item-general-outer-class {
   width: 100%;
 }
 
@@ -94,7 +94,7 @@
 
 @media only screen and (min-width: 550px) {
 
-  .item-searched-class {
+  .item-general-outer-class {
   width: 70%;
 }
 
@@ -103,7 +103,7 @@
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 670px) {
 
-  .item-searched-class {
+  .item-general-outer-class {
   width: 45%;
 }
 
@@ -113,7 +113,7 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
 
-  .item-searched-class {
+  .item-general-outer-class {
   width: 30%;
 }
 
@@ -123,7 +123,7 @@
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 1000px) {
 
-  .item-searched-class {
+  .item-general-outer-class {
   width: 23%;
 }
 
@@ -133,7 +133,7 @@
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
 
-  .item-searched-class {
+  .item-general-outer-class {
   /* width: 200px; */
   width: 18%;
 }
