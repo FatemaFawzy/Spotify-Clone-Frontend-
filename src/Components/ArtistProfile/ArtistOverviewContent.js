@@ -13,6 +13,36 @@ class ArtistOverviewContent extends Component {
       {id : 4, SongName : "Grow Old With Me", Duration : "3:52", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
       {id : 5, SongName : "Summer Day", Duration : "4:15", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
     ],
+
+    albumInfo: [
+      {id : 6, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
+      albumLink: "/webplayer/album/"},
+      {id : 7, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
+      albumLink: "/webplayer/album/"},
+      {id : 8, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
+      albumLink: "/webplayer/album/"},
+      {id : 9, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
+      albumLink: "/webplayer/album/"},
+      {id : 10, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
+      albumLink: "/webplayer/album/"},
+      {id : 11, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
+      albumLink: "/webplayer/album/"},
+    ],
+
+    singlesInfo: [
+      {id : 6, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+      albumLink: "/webplayer/album/"},
+      {id : 7, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+      albumLink: "/webplayer/album/"},
+      {id : 8, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+      albumLink: "/webplayer/album/"},
+      {id : 9, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+      albumLink: "/webplayer/album/"},
+      {id : 10, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+      albumLink: "/webplayer/album/"},
+      {id : 11, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+      albumLink: "/webplayer/album/"},
+    ],
   }
 
   render(){
@@ -57,81 +87,26 @@ class ArtistOverviewContent extends Component {
 
         <section className="container p-0 m-0 ">
           <h1> Albums </h1>
-          <ul className="media-object d-flex">
-            <li> 
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8" 
-              objectName="Wrong Crowd (Deluxe)" albumLink="/webplayer/album/"> </MediaObject>
-            </li>
-            <li>
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60" 
-              objectName="Jubilee Road (Deluxe)" albumLink="/webplayer/album/"></MediaObject>
-            </li>
-            <li> 
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8" 
-              objectName="Wrong Crowd (Deluxe)" albumLink="/webplayer/album/"> </MediaObject>
-            </li>
-            <li>
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60" 
-              objectName="Jubilee Road (Deluxe)" albumLink="/webplayer/album/"></MediaObject>
-            </li>
-            <li> 
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8" 
-              objectName="Wrong Crowd (Deluxe)" albumLink="/webplayer/album/"> </MediaObject>
-            </li>
-          </ul>
+          <div className="row ">
+            {this.state.albumInfo.map((album,index)=>(   
+                <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
+                  <MediaObject image={album.albumPhoto} 
+                  objectName={album.albumName} albumLink={album.albumLink}> </MediaObject>
+                </div>  
+            ))}
+          </div>
         </section>
 
-        <section>
+        <section className="container m-0 p-0">
           <h1> Singles </h1>
-          <ul className="media-object d-flex">
-            <li> 
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9" 
-              objectName="If you wanna love somebody (Acoustic)" albumLink="/webplayer/album/"> </MediaObject>
-            </li>
-            <li>
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059" 
-              objectName="Another Love (Zwette Edit)" albumLink="/webplayer/album/"></MediaObject>
-            </li>
-            <li> 
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9" 
-              objectName="If you wanna love somebody (Acoustic)" albumLink="/webplayer/album/"> </MediaObject>
-            </li>
-            <li>
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059" 
-              objectName="Another Love (Zwette Edit)" albumLink="/webplayer/album/"></MediaObject>
-            </li>
-            <li> 
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9" 
-              objectName="If you wanna love somebody (Acoustic)" albumLink="/webplayer/album/"> </MediaObject>
-            </li>
-          </ul>
-
-          {/* <div className="row">
-            <div className="col-sm-12 col-md-4 col-lg-2"> 
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9" 
-              objectName="If you wanna love somebody (Acoustic)" albumLink="/webplayer/album/"> </MediaObject>
-            </div>
-            <div className="col-sm-12 col-md-4 col-lg-2">
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059" 
-              objectName="Another Love (Zwette Edit)" albumLink="/webplayer/album/"></MediaObject>
-            </div>
-            <div className="col-sm-12 col-md-4 col-lg-2"> 
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9" 
-              objectName="If you wanna love somebody (Acoustic)" albumLink="/webplayer/album/"> </MediaObject>
-            </div>
-            <div className="col-sm-12 col-md-4 col-lg-2">
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059" 
-              objectName="Another Love (Zwette Edit)" albumLink="/webplayer/album/"></MediaObject>
-            </div>
-            <div className="col-sm-12 col-md-4 col-lg-2">
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9" 
-              objectName="If you wanna love somebody (Acoustic)" albumLink="/webplayer/album/"> </MediaObject>
-            </div>
-            <div className="col-sm-12 col-md-4 col-lg-2">
-              <MediaObject image="https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059" 
-              objectName="Another Love (Zwette Edit)" albumLink="/webplayer/album/"></MediaObject>
-            </div>
-          </div> */}
+          <div className="row">
+            {this.state.singlesInfo.map((single,index)=>(   
+                <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
+                  <MediaObject image={single.singlePhoto} 
+                  objectName={single.singleName} albumLink={single.albumLink}> </MediaObject>
+                </div>  
+            ))}
+          </div>
 
         </section>        
           

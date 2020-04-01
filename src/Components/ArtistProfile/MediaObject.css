@@ -1,7 +1,10 @@
 .media-object {
-  width: 220px;
-  height: 250px;
-  margin: 0 10px;
+  width: 100%;
+  max-width: 220px;
+  max-height: 260px;
+  margin-right: 0;
+  margin-left: 0;
+  padding: 0;
 }
 .media-object .container {
   position: relative;
