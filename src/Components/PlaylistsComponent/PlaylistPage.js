@@ -1,5 +1,6 @@
 import React ,{ Component} from 'react';
 import './PlaylistPage.css';
+import DeletePlaylist from './DeletePlaylist';
   
 class PlaylistPage extends Component
 {
@@ -76,7 +77,8 @@ toggle_add_to_playlist()
               <a className="card-menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
               <div class="dropdown-menu card-dropdown-content ">
               <a class="dropdown-item drop-class" href="#">Save To Library</a>
-              <a class="dropdown-item drop-class" href="#">Delete</a>
+              <a class="dropdown-item drop-class" data-toggle="modal" data-target="#delete" href="#">Delete</a>
+              
           </div>
 
           </div>

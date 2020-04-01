@@ -1,0 +1,42 @@
+.delete-playlist .modal-dialog
+{
+  padding: 18% 0;
+}
+.delete-playlist #delete
+{
+  position: absolute;
+  width:100%;
+ 
+  background-color:rgba(0, 0, 0, 0.8);
+  color:white;
+}
+.delete-playlist .modal{
+  filter: brightness(1);
+}
+
+.delete-playlist
+{
+  font-weight: 900;
+}
+
+.delete-playlist h2
+{
+  font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.delete-playlist .close-button
+{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color:white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.delete-playlist .close-button:focus {
+  box-shadow: none;
+}

@@ -51,8 +51,8 @@ return (
            
             <div className="container-fluid row">
             {this.state.plalistInfo.map((playlist,index)=>( 
-                <div key={index} className="col-2">
-                     <li className="list-unstyled"> <img className="image"  src={playlist.PlalistImage} alt="" /> <span title="Add to playlist"><i class="fas bar"></i></span> </li>
+                <div key={index} className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                     <li className="list-unstyled d-flex justify-content-center"> <img className="image"  src={playlist.PlalistImage} alt="" /> <span title="Add to playlist"><i class="fas bar"></i></span> </li>
                      
                       <p className="name-of-song d-flex justify-content-center font-weight-normal"> {playlist.PlaylistName}</p>
                       <p className="number-of-songs d-flex justify-content-center font-weight-light">{playlist.SongsNumber} </p>
