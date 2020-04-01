@@ -43,6 +43,40 @@ class ArtistOverviewContent extends Component {
       {id : 11, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
       albumLink: "/webplayer/album/"},
     ],
+
+    showAlbums: "SHOW MORE",
+    showSingles: "SHOW MORE",
+  }
+
+
+  showMoreAlbums= e => {
+
+    if(this.state.showAlbums === "SHOW MORE") {
+      this.setState ({showAlbums: "SHOW LESS"});
+    }
+
+    else if(this.state.showAlbums === "SHOW LESS") {
+      this.setState ({showAlbums: "SHOW MORE"});
+    }
+
+    var icon= document.getElementById("albums-arrow");
+    icon.classList.toggle("fa-chevron-down");
+    icon.classList.toggle("fa-chevron-up");
+  }
+
+  showMoreSingles= e => {
+
+    if(this.state.showSingles === "SHOW MORE") {
+      this.setState ({showSingles: "SHOW LESS"});
+    }
+
+    else if(this.state.showSingles === "SHOW LESS") {
+      this.setState ({showSingles: "SHOW MORE"});
+    }
+
+    var icon= document.getElementById("singles-arrow");
+    icon.classList.toggle("fa-chevron-down");
+    icon.classList.toggle("fa-chevron-up");
   }
 
   render(){
@@ -87,7 +121,7 @@ class ArtistOverviewContent extends Component {
 
         <section className="container p-0 m-0 ">
           <h1> Albums </h1>
-          <div className="row ">
+          <div className="row">
             {this.state.albumInfo.map((album,index)=>(   
                 <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
                   <MediaObject className="media-object" image={album.albumPhoto} 
@@ -95,6 +129,18 @@ class ArtistOverviewContent extends Component {
                 </div>  
             ))}
           </div>
+
+          <div className="row justify-content-center">
+            <button className="btn show-more" type="button" data-toggle="collapse" data-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample" onClick={this.showMoreAlbums}> 
+                {this.state.showAlbums} <i id="albums-arrow" className="fas fa-chevron-down"></i> </button>
+            <div className="collapse" id="collapseExample">
+              <div >
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              </div>
+            </div>
+          </div>
+
         </section>
 
         <section className="container m-0 p-0">
@@ -106,6 +152,17 @@ class ArtistOverviewContent extends Component {
                   objectName={single.singleName} albumLink={single.albumLink}> </MediaObject>
                 </div>  
             ))}
+          </div>
+
+          <div className="row justify-content-center">
+            <button className="btn show-more" type="button" data-toggle="collapse" data-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample" onClick={this.showMoreSingles}> 
+                {this.state.showSingles} <i id="singles-arrow" className="fas fa-chevron-down"></i> </button>
+            <div className="collapse" id="collapseExample">
+              <div >
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              </div>
+            </div>
           </div>
 
         </section>        
