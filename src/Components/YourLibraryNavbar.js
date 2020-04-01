@@ -28,9 +28,9 @@ const YourLibraryNavbar=(props)=>(
             <button  id="more-button" type="button" className="btn dropdown-toggle words" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             More
             </button>
-            <div className="dropdown-menu dropdown-more">
-            <NavLink to="/webplayer/yourlibrary/artist"><button className="dropdown-item" type="button">Artists</button></NavLink>
-            <NavLink to="/webplayer/yourlibrary/album"> <button className="dropdown-item" type="button">Albums</button></NavLink>
+            <div className="dropdown-menu" id="width">
+            <NavLink to="/webplayer/yourlibrary/artist" className="dropdown-item" ><button className="dropdown-item white-words pl-2" type="button">Artists</button></NavLink>
+            <NavLink to="/webplayer/yourlibrary/album" className="dropdown-item" > <button className="dropdown-item white-words pl-2" type="button">Albums</button></NavLink>
             </div>
           </div>
         </li> 
