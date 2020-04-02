@@ -80,8 +80,9 @@ class ArtistOverviewContent extends Component {
   }
 
   render(){
+
     return (
-      <div className="artist-overview-content">
+      <div id="overview-body" className="artist-overview-content">
         
         <section>
           <h1> Popular </h1>
@@ -122,22 +123,38 @@ class ArtistOverviewContent extends Component {
         <section className="container p-0 m-0 ">
           <h1> Albums </h1>
           <div className="row">
-            {this.state.albumInfo.map((album,index)=>(   
-                <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
-                  <MediaObject className="media-object" image={album.albumPhoto} 
-                  objectName={album.albumName} albumLink={album.albumLink}> </MediaObject>
-                </div>  
-            ))}
+
+          {this.state.albumInfo.slice(0,3).map((album,index)=>(   
+            <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
+              <MediaObject className="media-object" image={album.albumPhoto} 
+              objectName={album.albumName} albumLink={album.albumLink}> </MediaObject>
+            </div>  
+          ))}
+
+          {this.state.albumInfo.slice(3,this.state.albumInfo.length).map((album,index)=>(   
+            <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2 hide-these"> 
+              <MediaObject className=" media-object" image={album.albumPhoto} 
+              objectName={album.albumName} albumLink={album.albumLink}> </MediaObject>
+            </div>  
+          ))}           
           </div>
 
+{/* Contents of show more drop down */}
           <div className="row justify-content-center">
-            <button className="btn show-more" type="button" data-toggle="collapse" data-target="#collapseExample"
+            <button id="show-more-album-btn"className="btn show-more mb-3" type="button" data-toggle="collapse" data-target="#collapseAlbums"
                 aria-expanded="false" aria-controls="collapseExample" onClick={this.showMoreAlbums}> 
                 {this.state.showAlbums} <i id="albums-arrow" className="fas fa-chevron-down"></i> </button>
-            <div className="collapse" id="collapseExample">
-              <div >
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            <div className="collapse" id="collapseAlbums">
+
+              <div className="row">
+              {this.state.albumInfo.slice(3,this.state.albumInfo.length).map((album,index)=>(   
+                  <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
+                    <MediaObject className="media-object" image={album.albumPhoto} 
+                    objectName={album.albumName} albumLink={album.albumLink}> </MediaObject>
+                  </div>  
+              ))}
               </div>
+
             </div>
           </div>
 
@@ -146,22 +163,35 @@ class ArtistOverviewContent extends Component {
         <section className="container m-0 p-0">
           <h1> Singles </h1>
           <div className="row">
-            {this.state.singlesInfo.map((single,index)=>(   
+            {this.state.singlesInfo.slice(0,3).map((single,index)=>(   
                 <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
                   <MediaObject image={single.singlePhoto} 
                   objectName={single.singleName} albumLink={single.albumLink}> </MediaObject>
                 </div>  
             ))}
-          </div>
 
+            {this.state.singlesInfo.slice(3,this.state.singlesInfo.length).map((single,index)=>(   
+                <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2 hide-these"> 
+                  <MediaObject image={single.singlePhoto} 
+                  objectName={single.singleName} albumLink={single.albumLink}> </MediaObject>
+                </div>  
+            ))}
+          </div>
+          
+{/* Contents of show more drop down */}
           <div className="row justify-content-center">
-            <button className="btn show-more" type="button" data-toggle="collapse" data-target="#collapseExample"
+            <button className="btn show-more mb-3" type="button" data-toggle="collapse" data-target="#collapseSingles"
                 aria-expanded="false" aria-controls="collapseExample" onClick={this.showMoreSingles}> 
                 {this.state.showSingles} <i id="singles-arrow" className="fas fa-chevron-down"></i> </button>
-            <div className="collapse" id="collapseExample">
-              <div >
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-              </div>
+            <div className="collapse" id="collapseSingles">
+              <div className="row">
+                {this.state.singlesInfo.slice(3,this.state.singlesInfo.length).map((single,index)=>(   
+                    <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
+                      <MediaObject image={single.singlePhoto} 
+                  objectName={single.singleName} albumLink={single.albumLink}> </MediaObject>
+                    </div>  
+                ))}
+                </div>
             </div>
           </div>
 

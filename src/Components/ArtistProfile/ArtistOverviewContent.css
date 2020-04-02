@@ -177,9 +177,13 @@
   font-size: 16px;
 }
 
-@media (max-width: 990px ) {
+@media (max-width: 991px ) {
   .artist-overview-content .show-more {
     visibility: visible;
+  }
+
+  .artist-overview-content .hide-these {
+    display: none;
   }
 }
 
