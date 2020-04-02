@@ -1,70 +1,81 @@
 .home-nav .nav-bgblack{
-  background-color:#121212!important;
+  background-color:#121212 !important;
   position: fixed !important;
 }
-
-.home-nav {
-  
+.home-nav { 
+  text-overflow: ellipsis;
+  width: 1130px!important;
+  width:80%!important;
   font-family: 'Roboto', sans-serif;
-
+  background-color:#121212;
 }
 .home-nav .icon-color{
   color:#e6e6e6;
   cursor:pointer;
-}
-.home-nav #main-nav 
-{
- padding-top:7px ;
-  max-width: 1225.6px!important;
-  transition:0.4s;
-  width: 100%!important;
-  position: relative!important;
- 
-}
 
+}
+.home-nav #upgradebtn{
+  text-decoration: none;
+  background-color: #121212;
+  color: white;
+  
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  border-radius: 500px;
+  line-height: 18px;
+  padding: 8px 34px;
+  /* text-align: center; */
+  /* width: 38px; */ 
+  
+}
+.home-nav #upgradebtn:hover{
+  
+  padding: 10px 36px;
+}
+/* .home-nav #upgradebtn:focus{
+  
+  border: none;
+} */
+.home-nav .over{
+  overflow: visible !important;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+}
+.home-nav #main-nav {
+  max-width: 1130px!important;
+  width: 100%!important;
+  position: fixed !important;
+  overflow: visible !important;
+  z-index:50;
+}
 
 .home-nav #main-nav .icons{
   background-color: #121212;
   color:#e6e6e6;
   font-weight:700;
-  padding: 0px 16px 0px 8px;
-  width:40px;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 16px;
-  margin: 0 8px;
   color: #fff;
-  position: relative;
 }
-.home-nav #main-nav .words
-{
+.home-nav .words {
   font-size: 18px;
   line-height: 16px;
   font-weight: 700;
-  color: #fff;
+  color: #fff !important;
   position: relative;
   border: 0;
   display: inline-block;
   text-decoration: none;
-  padding: 8px 16px;
-  margin: 0 8px;
-  cursor: pointer;
-}
-.home-nav #main-nav .words:hover{
-  background-color: #333333;
-  font-size: 18px;
-  line-height: 16px;
-  font-weight: 700;
-  color: #fff;
-  position: relative;
-  border: 0;
-  display: inline-block;
-  text-decoration: none;
-  padding: 8px 16px;
+  padding: 8px 16px !important;
   border-radius: 4px;
   margin: 0 8px;
-  cursor: pointer;
+  margin-top:8px;
 }
 .home-nav .account-button{
+  
+  margin-left: 15px;
+  /* padding-top: 5px; */
   border-radius: 23px;
   height: 32px;
   padding: 4px;
@@ -76,92 +87,158 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  position: relative;
-
 }
 @media (max-width:990px)
 {
-  .home-nav .navbar-nav 
-  {
-    width:300px;
-    display:flex;
-  }
-  .home-nav .nav 
-  {
-    width:489px;
-    justify-content: start;
-  }
-  .home-nav .decrease-width
-  {
-    width:120px;
-  }
   .home-nav #more-button{
+    margin-top:6px;
     margin-right: 450px;
   }
   .home-nav #button-selector{
-   display: none;
+   display: none !important;
   }
+}
+@media (max-width:1278px)
+{
+  .home-nav .name
+  {
+    display: none !important;
+  }
+  .home-nav #button-selector 
+  {
+   padding-left:80px;
+  }
+  .home-nav .dropdown-menu {
+    max-width: 100px;
+    min-width: 100px;
+  }
+  .home-nav .dropdown-toggle::after { 
+    content: none; 
+  } 
 }
 
 .home-nav #button-selector{
-  position:absolute !important;
+
   right:20px !important;
+  position:absolute !important;
+  left:80%;
+  margin-left:auto !important;
+  /* overflow: visible !important; */
+}
+.home-nav .button{
+  /* overflow: visible !important; */
 }
 .home-nav .image{
   width: 28px;
   height: 28px;
-  margin : 30px 0px;
   border-radius: 50%; 
   background-color:#1d1e1f;
 }
 .home-nav .name
 {
-  padding-right:5px;
   padding-left:5px;
   vertical-align: middle;
-  margin-top:0;
-  padding-top:0;
   margin-bottom:0px;
 }
-.home-nav .to-collapse
+.home-nav .dropdown-toggle:hover
 {
-  width:80px;
+  color: white !important;
+}
+.home-nav .dropdown {
+  /* overflow: visible !important; */
 }
 .home-nav .dropdown-menu
 {
   position: absolute;
   right: 0;
-  left: auto;
-  padding: 5px 0;
-  margin: 2px 0 0;
-  background-color: #333333;
+  padding:0;
+  margin: 8px 0 0;
+  background-color: #282828;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .15);
   border-radius: 4px;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-}
-.home-nav .dropdown-menu > li > a {
-  color: #000;
-  padding: 3px 20px;
-  line-height: 1.42857143;
-}
-.home-nav .decor,.home-nav .decor:hover
-{
-  color:white;
-  text-decoration: none !important;
-}
-/* .home-nav .drpdown-item{
-  
-  text-decoration: none;
-} */
+  visibility: visible;
+  /* overflow: visible  !important; */
 
-.home-nav .dropdown-toggle::after { 
-  content: none; 
-} 
-.home-nav  #user-button
+}
+.home-nav .btn 
 {
-  border-radius: 30px;
+  height:35px;
+}
+.home-nav .btn:focus{
+  outline: none !important;
+  border:none !important;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0, 0, 0, .175);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0, 0, 0, .175);
+}
+.home-nav .dropdown-item
+{
+  height: 40px !important;
   padding:0;
-  background-color:rgba(0,0,0,.7);
+  text-align: left;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: .015em;
+  padding-bottom:5px;
+  /* overflow: visible !important; */
+}
+.home-nav .dropdown-item:hover{
+  background-color: #525252 !important;
+  text-decoration: none !important;
+  color:white;
+  border-radius: 4px;
+}
+.home-nav .dropdown-item:focus{
+  outline: none !important;
+  border:none !important;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px #525252,0 0 8px #525252;
+  box-shadow: inset 0 1px 1px #525252,0 0 8px #525252;
+}
+.home-nav .white-words {
+  color:#a9a9a9;
+}
+.home-nav .border-on-top
+{
+  border-top: 1px solid #404040;
+  padding-top:8px;
+  padding-left:24px;
+  height:35px !important;
+}
+.home-nav .account-button:hover{
+  background-color:#282828 ;
+}
+.home-nav #width
+{
+  max-width:100px;
+  min-width: 100px;
+}
+.home-nav .grey-box {
+  background-color:#333333;
+}
+@media (max-width:1065px)
+{
+  .home-nav #button-selector
+  {
+    margin-right:40px;
+  }
+}
+@media (max-width:1250px)
+{
+  .home-nav #button-selector 
+  {
+    margin-right:40px;
+    padding-left: 30px;
+  }
+}
+@media (max-width:1325px)
+{
+  .home-nav #button-selector
+  {
+    margin-right:40px;
+  }
+}
+.home-nav .no-box {
+  background:none;
 }
