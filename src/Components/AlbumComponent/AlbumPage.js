@@ -3,7 +3,7 @@ import './AlbumPage.css';
 import {Link} from "react-router-dom";
 import ReactDOM from "react-dom"
 import MediaButton from '../Media/MediaButton';
-// import ReactSnackBar from "react-js-snackbar";
+import ReactSnackBar from "react-js-snackbar";
 
 
 class AlbumPage extends Component
@@ -59,7 +59,17 @@ state=
     ShowingAdd: false,
     ShowSave: false,
     ShowingSave: false,
+    playAlbum: "Play"
     
+}
+playButton = e => {
+  const {id} = e.target;
+  if ( this.state.playAlbum === "Play" ) {
+    this.setState({playAlbum: "Pause"});
+  }
+  else if ( this.state.playAlbum === "Pause" ) {
+    this.setState({playAlbum: "Play"});
+  }
 }
 show = e => {
   var check = e.target.id;
@@ -94,7 +104,7 @@ else if (check=="SAVE"){
 					  <li> <h3> {this.state.AlbumName} </h3> </li>
 					  <li> <h5> {this.state.Artist} </h5> </li>
             
-            <li> <a href="#" className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> Play</a> </li>
+            <li> <a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playAlbum}</a> </li>
             <li >
               <button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> </button>
               <div className="dropdown ">
@@ -140,13 +150,13 @@ else if (check=="SAVE"){
             </tbody>
           </table>
 
-          {/* <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowAdd}>
+          <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowAdd}>
                       Added To Your Liked Songs
           </ReactSnackBar>
 
           <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowSave}>
                       Saved To Your Library
-          </ReactSnackBar> */}
+          </ReactSnackBar>
            </div> 
           </div>
       </div>

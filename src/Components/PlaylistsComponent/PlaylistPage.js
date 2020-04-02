@@ -2,7 +2,7 @@ import React ,{ Component} from 'react';
 import './PlaylistPage.css';
 import DeletePlaylist from './DeletePlaylist';
 import MediaButton from '../Media/MediaButton';
-// import ReactSnackBar from "react-js-snackbar";
+import ReactSnackBar from "react-js-snackbar";
 import './SnackBar.css';
 
 class PlaylistPage extends Component
@@ -33,6 +33,7 @@ class PlaylistPage extends Component
       ShowingAdd: false,
       ShowRemove: false,
       ShowingRemove: false,
+      playplaylist: "Play",
   }
   DropMenuCard ()
   {
@@ -55,6 +56,16 @@ class PlaylistPage extends Component
   blur_add_to_playlist.classList.toggle('activate')
   var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
   popup_add_to_playlist.classList.toggle('activate')
+}
+
+playButton = e => {
+  const {id} = e.target;
+  if ( this.state.playplaylist === "Play" ) {
+    this.setState({playplaylist: "Pause"});
+  }
+  else if ( this.state.playplaylist === "Pause" ) {
+    this.setState({playplaylist: "Play"});
+  }
 }
 
 show = e => {
@@ -88,7 +99,7 @@ else if (check=="REMOVE"){
 					  <li> <h3> {this.state.playlistname} </h3> </li>
 					  <li> <h5> {this.state.playlistCreator} </h5></li>
             <li >
-               <a href="#" className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold Visible"> Play</a>
+               <a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playplaylist}</a>
             </li>
             <li  className="d-flex justify-content-around">
             <button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> </button>
@@ -97,7 +108,7 @@ else if (check=="REMOVE"){
           <div className="dropdown ">
               <a className="card-menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
               <div class="dropdown-menu card-dropdown-content ">
-              <a class="dropdown-item drop-class" href="#">Save To Library</a>
+              <a class="dropdown-item drop-class" href="#">Edit Playlist</a>
               <a class="dropdown-item drop-class" data-toggle="modal" data-target="#delete" href="#">Delete</a>
               
           </div>
@@ -138,13 +149,13 @@ else if (check=="REMOVE"){
              
       </tbody>
     </table>
-    {/* <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowAdd}>
+    <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowAdd}>
                       Added To Your Liked Songs
     </ReactSnackBar>
 
     <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowRemove}>
                       Removed From This Playlist
-    </ReactSnackBar> */}
+    </ReactSnackBar>
       </div> 
       </div>
       </div>
