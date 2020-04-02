@@ -4,12 +4,7 @@ import "./MediaObject.css";
 class MediaObject extends Component {
   constructor(props){
     super(props);
-
-    this.state = {
-      // image: "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
-      // objectName: "Wrong Crowd (Deluxe)",
-      // albumLink: "/webplayer/album/"
-    }
+    // this.play= this.play.bind(this);
   }
 
   play = e => {

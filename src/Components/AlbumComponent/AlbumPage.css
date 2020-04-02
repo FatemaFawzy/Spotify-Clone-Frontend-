@@ -1,87 +1,32 @@
-.Album-page
+.album-page
 {
   background-color: rgb(18,18,18);
   margin-top: 60px;
   margin-bottom: 90px;
   padding-top: 2em;
   color:white;
-  
+
 }
 
-.Album-page .content-spacing {
+.album-page .content-spacing {
   padding: 0 32px;
   margin: 0;
   max-width: 1955px;
 }
-.Album-page .card
+.album-page .card
 {
   width: 320px;
   height:320px;
   border:none;
 }
-/* /////////////// Play button ///////////////////// */
-.Album-page figure {
-  background: #ddd;
-  height: 300px;
-  display: -ms-flex;
-  display: -webkit-flex;
-  display: flex;
-}
 
-.Album-page figure .play {
-  width: 60px;
-  height: 60px;
-  background: none;
-  border: 2px solid white ;
-  border-radius: 100%;
-  margin: auto;
-  cursor: pointer;
-  position: absolute;
-  top: 130px;
-  left: 135px;
-}
-.Album-page figure .play:focus {
-  outline: 0;
-  border: 2px solid white;
-  box-shadow:none;
-}
-
-.Album-page figure .play::after {
-  content: '';
-  display: inline-block;
-  position: relative;
-  top: 2px;
-  left: 4px;
-  border-style: solid;
-  border-width: 15px 0 15px 25px;
-  border-color:  transparent white;
-}
-
-.Album-page figure{
-  cursor: pointer;
-  visibility: hidden;
-}
-
-.Album-page  li:hover figure{
-  visibility: visible;
-
-  
-}
-.Album-page  li:hover img{
-  filter: brightness(0.35);
-  border:none;
-}
-
-/* ////////////////////////////////////////////// */
-
-
-.Album-page .centered-content li{
+.album-page .centered-content li{
   margin-top: 10px;
   display: flex;
   justify-content: center;
 }
 
-.Album-page #like-song
+.album-page #like-song
 {
   font-size: 30px;
   margin-right: 55px;
@@ -92,91 +37,92 @@
   float: left;
   outline: none;
 }
-.Album-page #like-song:hover{
+.album-page #like-song:hover{
   color:white;
 }
-.Album-page .card-menu
-{
-  font-size: 26px;
-  cursor: pointer;
 
-}
-.Album-page .table
+.album-page .table
 {
   color:white;
 }
-.Album-page .music-sign:after
+
+.album-page .music-sign:after
 {
   content: "\266A" ; 
   font-size: 20px;
   color:#b3b3b3;
   cursor: default;
 }
-.Album-page  tr:hover .music-sign:after{
+.album-page  tr:hover .music-sign:after{
   content: "\25B8" ; 
   font-size: 20px;
   color:white;
   cursor: default;
   
 }
-.Album-page .song-content
+.album-page .song-content
 {
   width:800px;
   padding: 3px;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.Album-page .song-info a
+
+.album-page .song-info a
 {
   color:#b3b3b3;
   font-size:12px;
   text-decoration: none;
 }
-.Album-page .song-info a:hover
+.album-page .song-info a:hover
 {
   color:white;
   
   text-decoration: underline;
 }
-.Album-page tr:hover{
+.album-page tr:hover{
   background-color: rgba(70, 66, 69,0.4);
   
 }
-.table td, .table th {
-  padding: 3px;
+.album-page td, th {
+  padding: 5px;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
 .table th{
   width: 0px;
 }
-.Album-page .Menu{
+.album-page .Menu{
   cursor: pointer;
   visibility: hidden;
 }
 
-.Album-page  tr:hover .Menu{
+.album-page  tr:hover .Menu{
   visibility: visible;
 }
 /* ////////////////// DropDpwn //////////////////////// */
-.Album-page .dropdown  {
+.album-page .dropdown  {
   position: absolute;
   display: inline-flex;
   
   color:white;
   text-decoration: none;
 }
-.Album-page .dropdown a{
+.album-page .dropdown a{
   color:white;
   text-decoration: none;
 }
 /*//////////////// DropMenuCard ///////////////////*/
 
-.Album-page .card-menu{
+.album-page .card-menu{
   margin-left: 35px;
   font-size: 26px;
   cursor: pointer;
 }
-.Album-page .card-dropdown-content {
+.album-page .card-dropdown-content {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
@@ -187,7 +133,7 @@
   
 }
 
-.Album-page .card-dropdown-content a {
+.album-page .card-dropdown-content a {
   color: #B3B3B3;
   padding: 12px 16px;
   text-decoration: none;
@@ -195,22 +141,22 @@
   background-color:#282828;
   
 }
-.Album-page .card-dropdown-content a:hover {
+.album-page .card-dropdown-content a:hover {
   color:white;
   background-color:rgb(53, 53, 53);
   cursor:default;
 }
-.Album-page .dropdown-menu.card-dropdown-content.show {
+.album-page .dropdown-menu.card-dropdown-content.show {
   padding: 0;
 }
 
 /*//////////////// DropMenuSong ///////////////////*/
 
-.Album-page .dropdown-menu.song-dropdown-content.show {
+.album-page .dropdown-menu.song-dropdown-content.show {
   padding: 0;
 }
 
-.Album-page .song-dropdown-content {
+.album-page .song-dropdown-content {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
@@ -220,7 +166,7 @@
   z-index: 1;
 }
 
-.Album-page .song-dropdown-content a {
+.album-page .song-dropdown-content a {
   color: #B3B3B3;
   padding: 12px 16px;
   text-decoration: none;
@@ -228,43 +174,43 @@
   background-color:#282828;
   
 }
-.Album-page .song-dropdown-content a:hover {
+.album-page .song-dropdown-content a:hover {
   color:white;
   background-color:rgb(53, 53, 53);
   cursor:default;
 }
 
-.Album-page .show {
+.album-page .show {
   display: block;
   position: absolute;
 }
 
 /* //////////////////////// Page responsive ////////////////////////////////*/
 @media (max-width: 768px) {
-  .Album-page .song-content{
+  .album-page .song-content{
   width:280px;
  }
   }
   
   @media (min-width: 768px) and (max-width: 992px){
-    .Album-page .song-content{
+    .album-page .song-content{
       width:400px;
    }
   }
 
   @media (min-width: 992px) and (max-width: 1200px){
-    .Album-page .song-content{
+    .album-page .song-content{
       width:580px;
    }
   }
   
   @media (min-width: 1200px) and (max-width: 1500px){
-    .Album-page .song-content{
+    .album-page .song-content{
       width:600px;
    }
   }
    @media (min-width: 1500px){
-    .Album-page .song-content{
+    .album-page .song-content{
       width:800px;
    }
   }

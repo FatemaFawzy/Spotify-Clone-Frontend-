@@ -1,8 +1,34 @@
 import React ,{ Component} from 'react';
 import './LikedSongs.css';
+import MediaButton from '../Media/MediaButton';
+import ReactSnackBar from "react-js-snackbar";
   
 class LikedSongs extends Component
 {
+  state= 
+  { 
+      SongInfo: [
+        {id : 1, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
+        {id : 2, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
+        {id : 3, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
+        {id : 4, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
+        {id : 5, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
+        {id : 6, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
+        {id : 7, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
+        {id : 8, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
+        {id : 9, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
+        {id : 10, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
+        {id : 11, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
+        {id : 12, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
+        
+      ],
+      LikedSongsImage: "https://uploads-ssl.webflow.com/5e36e6f21212670638c0d63c/5e39d85cee05be53d238681a_likedSongs.png",
+      songsNumber: "32 Songs",   
+      ShowRemove: false,
+      ShowingRemove: false,
+      playLikedSongs: "Play"
+  }
+  
   toggle_add_to_playlist()
   {
     var blur_add_to_playlist=document.getElementById ('blur-add-to-playlist');
@@ -25,35 +51,26 @@ class LikedSongs extends Component
     heart.classList.toggle("far");
     heart.classList.toggle("fas");
   }
-  playSong = e => {
+  playButton = e => {
     const {id} = e.target;
-    var play=document.getElementById(id);
-    play.classList.toggle("play");
-    play.classList.toggle("far fa-pause-circle");
+    if ( this.state.playLikedSongs === "Play" ) {
+      this.setState({playLikedSongs: "Pause"});
+    }
+    else if ( this.state.playLikedSongs === "Pause" ) {
+      this.setState({playLikedSongs: "Play"});
+    }
   }
- 
-
-
-  state= 
-{ 
-    SongInfo: [
-      {id : 1, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
-      {id : 2, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
-      {id : 3, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
-      {id : 4, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
-      {id : 5, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
-      {id : 6, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
-      {id : 7, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
-      {id : 8, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
-      {id : 9, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
-      {id : 10, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
-      {id : 11, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
-      {id : 12, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
-      
-    ],
-
-    songsNumber: "32 Songs",   
-}
+  
+show = e => {
+  var check = e.target.id;
+  if (check=="REMOVE"){
+  this.setState({ ShowRemove: true, ShowingRemove: true });
+  setTimeout(() => {
+    this.setState({ ShowRemove: false, ShowingRemove: false });
+  }, 2000); 
+  return; 
+  }
+};
 
 
   render(){
@@ -63,14 +80,9 @@ class LikedSongs extends Component
         <div className="row" >
           <div className="col-xs-12  col-lg-5 col-xl-4 d-flex justify-content-center " style={{display:"table"}}>
              <ul className="list-unstyled centered-content">
-              <li>
-              <div class="card ">
-              <img src="https://uploads-ssl.webflow.com/5e36e6f21212670638c0d63c/5e39d85cee05be53d238681a_likedSongs.png" class="card-img-top" alt=""/>
-              <figure ><button onClick={this.playSong} className="play"></button></figure>
-              </div>
-              </li>
+              <MediaButton image={this.state.LikedSongsImage}/>
 					  <li> <h3> Liked Songs </h3> </li>
-            <li> <a href="#" className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> Play</a> </li>
+            <li> <a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playLikedSongs}</a> </li>
             <li  className="">
             <button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> </button>
              
@@ -80,7 +92,7 @@ class LikedSongs extends Component
           </div>
 
         <div className="col-xs-12  col-lg-7 col-xl-8">
-        <table class="table table-borderless">
+        <table className="table table-borderless">
           <tbody>
                                              {/* Display likd songs */}
            {this.state.SongInfo.map((song,index)=>(
@@ -95,9 +107,9 @@ class LikedSongs extends Component
               <td>
                 <div className="dropdown ">
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
-                  <div class="dropdown-menu song-dropdown-content dropdown-menu-right ">
-                    <a class="dropdown-item drop-class" href="#">Remove from your liked songs</a>
-                    <a class="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Add to playlist</a>
+                  <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
+                    <a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Remove from your liked songs</a>
+                    <a className="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Add to playlist</a>
                   </div>
                 </div>
               </td>
@@ -107,6 +119,9 @@ class LikedSongs extends Component
              
       </tbody>
     </table>
+    <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowRemove}>
+                      Removed From Your Liked Songs
+    </ReactSnackBar>
       </div> 
       </div>
       </div>

@@ -1,0 +1,31 @@
+.component-block{
+  padding-left: 32px;
+  padding-right: 32px;
+  display: block;
+  width: 1226px;
+  height: 357.8px;
+  margin-bottom: 10px;
+}
+
+.component-block .header{
+  padding-left: 12px;
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  padding-top: 14px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.component-block .header-description{
+  padding-left: 12px;
+  padding-top: 10px;
+  color: rgb(179, 179, 179);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+
+/* .component-block .header:hover{
+text-decoration: underline;
+} */

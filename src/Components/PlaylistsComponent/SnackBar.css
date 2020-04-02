@@ -1,0 +1,26 @@
+.dWIApO {
+  background-color: rgb(35, 168, 81);
+  max-width: max-content !important;
+}
+.cHykBG {
+  padding: 3px 0 !important;
+  padding-left: 2px;
+}
+.fa-spotify:before {
+  content: "\f1bc";
+  font-size: 45px;
+  margin: 40px 0;
+}
+.eWkWwl {
+
+background-color: rgb(35, 168, 81) !important;
+bottom: 95px !important;
+animation: expand 0.5s 0.5s,stay 99999999995s 1s !important;
+
+}
+.equdlk { 
+background-color: rgb(35, 168, 81) !important;
+bottom: 95px !important;
+animation: collapse 0.5s 0.5s,stay 0.5 1s !important;
+
+}

@@ -1,9 +1,8 @@
 import React ,{ Component} from 'react';
 import "./ArtistProfile.css";
 import {Link } from "react-router-dom";
-import ArtistProfileContent from "../../Components/ArtistProfile/ArtistProfileContent"
-// import Searchbar from "../../SearchComponents/Searchbar"
-// import ArtistNavbar from "./ArtistNavbar"
+import ArtistProfileContent from "../../Components/ArtistProfile/ArtistProfileContent";
+import HomePageNavbar from "..//../Components/HomePageNavbar";
 
 
 class ArtistProfile extends Component{
@@ -64,10 +63,7 @@ class ArtistProfile extends Component{
   render() {
   return (
     <div className="artist-profile-body">
-      {/* <div>
-      <Searchbar/>
-      </div> */}
-
+      
       <div className="container  artist-top-section " style={{ backgroundImage: `url(${this.state.coverLink})` }}>
       
         <div className="montly-listeners">
