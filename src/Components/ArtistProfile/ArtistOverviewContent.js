@@ -141,9 +141,6 @@ class ArtistOverviewContent extends Component {
 
 {/* Contents of show more drop down */}
           <div className="row justify-content-center">
-            <button id="show-more-album-btn"className="btn show-more mb-3" type="button" data-toggle="collapse" data-target="#collapseAlbums"
-                aria-expanded="false" aria-controls="collapseExample" onClick={this.showMoreAlbums}> 
-                {this.state.showAlbums} <i id="albums-arrow" className="fas fa-chevron-down"></i> </button>
             <div className="collapse" id="collapseAlbums">
 
               <div className="row">
@@ -156,6 +153,12 @@ class ArtistOverviewContent extends Component {
               </div>
 
             </div>
+
+            <button id="show-more-album-btn"className="btn show-more mb-3" type="button" data-toggle="collapse" data-target="#collapseAlbums"
+                aria-expanded="false" aria-controls="collapseExample" onClick={this.showMoreAlbums}> 
+                {this.state.showAlbums} <i id="albums-arrow" className="fas fa-chevron-down"></i> 
+            </button>
+
           </div>
 
         </section>
@@ -180,9 +183,7 @@ class ArtistOverviewContent extends Component {
           
 {/* Contents of show more drop down */}
           <div className="row justify-content-center">
-            <button className="btn show-more mb-3" type="button" data-toggle="collapse" data-target="#collapseSingles"
-                aria-expanded="false" aria-controls="collapseExample" onClick={this.showMoreSingles}> 
-                {this.state.showSingles} <i id="singles-arrow" className="fas fa-chevron-down"></i> </button>
+
             <div className="collapse" id="collapseSingles">
               <div className="row">
                 {this.state.singlesInfo.slice(3,this.state.singlesInfo.length).map((single,index)=>(   
@@ -193,6 +194,12 @@ class ArtistOverviewContent extends Component {
                 ))}
                 </div>
             </div>
+
+            <button className="btn show-more mb-3" type="button" data-toggle="collapse" data-target="#collapseSingles"
+                aria-expanded="false" aria-controls="collapseExample" onClick={this.showMoreSingles}> 
+                {this.state.showSingles} <i id="singles-arrow" className="fas fa-chevron-down"></i> 
+            </button>
+            
           </div>
 
         </section>        
