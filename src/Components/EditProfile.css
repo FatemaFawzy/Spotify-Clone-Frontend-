@@ -33,11 +33,20 @@
 }
 
 /*code idea from: https://stackoverflow.com/questions/611482/change-color-and-appearance-of-drop-down-arrow*/
-.edit-profile-body #month {
+.edit-profile-body #month, #day, #gender{
   -webkit-appearance: none;
   -moz-appearance: none;
   background: url(https://static.thenounproject.com/png/1270386-200.png) no-repeat center right;
   background-size: contain;
+}
+
+.edit-profile-body .empty-input {
+	color: red;
+	text-align: left;
+	color: #bd3200;
+	font-size: .9375em;
+	padding:0;
+	margin:0;
 }
 
 .edit-profile-body #save-profile {
