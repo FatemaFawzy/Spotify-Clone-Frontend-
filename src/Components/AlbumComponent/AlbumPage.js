@@ -3,7 +3,7 @@ import './AlbumPage.css';
 import {Link} from "react-router-dom";
 import ReactDOM from "react-dom"
 import MediaButton from '../Media/MediaButton';
-// import ReactSnackBar from "react-js-snackbar";
+import ReactSnackBar from "react-js-snackbar";
 
 
 class AlbumPage extends Component
@@ -140,13 +140,13 @@ else if (check=="SAVE"){
             </tbody>
           </table>
 
-          {/* <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowAdd}>
+          <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowAdd}>
                       Added To Your Liked Songs
           </ReactSnackBar>
 
           <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowSave}>
                       Saved To Your Library
-          </ReactSnackBar> */}
+          </ReactSnackBar>
            </div> 
           </div>
       </div>

@@ -1,7 +1,7 @@
 import React ,{ Component} from 'react';
 import './LikedSongs.css';
 import MediaButton from '../Media/MediaButton';
-// import ReactSnackBar from "react-js-snackbar";
+import ReactSnackBar from "react-js-snackbar";
   
 class LikedSongs extends Component
 {
@@ -109,9 +109,9 @@ show = e => {
              
       </tbody>
     </table>
-    {/* <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowRemove}>
+    <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowRemove}>
                       Removed From Your Liked Songs
-    </ReactSnackBar> */}
+    </ReactSnackBar>
       </div> 
       </div>
       </div>
