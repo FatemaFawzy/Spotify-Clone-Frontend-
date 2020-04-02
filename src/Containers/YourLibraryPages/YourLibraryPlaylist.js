@@ -20,7 +20,7 @@ return (
       
         <div className="actual-content">
         <h1 className="playlist-header">Playlists</h1>
-        <LikedSongsComponent/>
+        <LikedSongsComponent {...this.props}/>
 
         <GeneralItem
         image={this.state.playlistImages[0]}

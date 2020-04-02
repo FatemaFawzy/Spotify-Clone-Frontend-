@@ -63,3 +63,31 @@
 .liked-songs-component:hover button{
   display: inline-block;
 }
+@media (max-width:1068px)
+{
+  .liked-songs-component{
+  width:47%;
+
+  }
+}
+@media (max-width:1000px)
+{
+  .liked-songs-component{
+  width:62%;
+
+  }
+}
+@media (max-width:831px)
+{
+  .liked-songs-component{
+  width:94%;
+
+  }
+}
+@media (max-width:664px)
+{
+  .liked-songs-component{
+  min-width:70%;
+
+  }
+}

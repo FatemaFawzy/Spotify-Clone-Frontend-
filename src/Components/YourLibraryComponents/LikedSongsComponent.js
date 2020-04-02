@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import React ,{ Component} from 'react';
 
 class LikedSongsComponent extends Component {
+  
   constructor(props){
     super(props);
 
@@ -14,9 +15,13 @@ class LikedSongsComponent extends Component {
       mostRecentSongsName: ["Blinding Lights","Don't Start Now", "X Bitch","Roses","Mona Lisa","River Of Tears"]
      }
   }
+ 
+  handleClick = () => {
+    this.props.history.push("/webplayer/likedsongs/");
+  } 
 render() {
 return ( 
-  <div className="liked-songs-component">
+  <div className="liked-songs-component" onClick={this.handleClick}>
     <p className="most-recent">
     {this.state.mostRecentSongsArtist[0]} <span className="song-name">{this.state.mostRecentSongsName[0]} ● </span> 
     {this.state.mostRecentSongsArtist[1]} <span className="song-name">{this.state.mostRecentSongsName[1]} ● </span>
