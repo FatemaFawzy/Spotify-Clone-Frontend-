@@ -12,6 +12,7 @@
 .your-library-nav .icon-color{
   color:#e6e6e6;
   cursor:pointer;
+
 }
 .your-library-nav .over{
   overflow: visible !important;
@@ -23,12 +24,8 @@
   width: 100%!important;
   position: fixed !important;
   overflow: visible !important;
-  /*  */
 }
-.your-library-nav .navbar-nav
-{
-  /* overflow: visible !important; */
-}
+
 .your-library-nav #main-nav .icons{
   background-color: #121212;
   color:#e6e6e6;
