@@ -20,12 +20,14 @@ class SearchPage extends Component {
     albums: [],
     playlists:[],
     profiles:[],
+    loading:false,
   }
   
   
   
   OnSearchChange = (event) => {
     this.setState({ searchfield: event.target.value })
+    this.setState({loading:true});
 
     // if(event.target.value !==""){
     // const url = "http://localhost:3000/Search?word=" + this.state.searchfield; // site that doesn’t send Access-Control-*
@@ -60,6 +62,7 @@ class SearchPage extends Component {
       fetch(url)
         .then((response) => {
           return response.json();
+          
         })
         .then((data) => {
           this.setState({songs:data,
@@ -67,6 +70,7 @@ class SearchPage extends Component {
                          albums:data,
                          playlists:data,
                          profiles:data})
+          this.setState({loading:false});
         })
         .catch((error)=>{
           console.log(error);
@@ -116,7 +120,8 @@ class SearchPage extends Component {
             albums={this.state.albums}
             playlists={this.state.playlists}
             profiles={this.state.profiles}
-            searchfieldvalue={this.state.searchfield} />}/>
+            searchfieldvalue={this.state.searchfield}
+            loading={this.state.loading} />}/>
 
     <Route  path="/webplayer/search/artists/" render={ (props) => <AllSearchResults {...props}
             searchfieldvalue={this.state.searchfield}
@@ -156,7 +161,8 @@ class SearchPage extends Component {
         albums={this.state.albums}
         playlists={this.state.playlists}
         profiles={this.state.profiles}
-        searchfieldvalue={this.state.searchfield} />}/>
+        searchfieldvalue={this.state.searchfield}
+        loading={this.state.loading} />}/>
 <Redirect to="/webplayer/search/"/>        
 
 </Switch>

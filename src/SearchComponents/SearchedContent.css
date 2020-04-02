@@ -24,7 +24,7 @@
   width: 100%;
   vertical-align: middle; 
   display: flexbox;
-  height:75vh;
+  height:100vh;
   /* padding: 24%;
   padding-left: auto;
   padding-right: auto; */
@@ -107,3 +107,15 @@
 .searched-top-container{
   display: block;
 }
+
+.search-spinner-loading{
+
+  text-align: center;
+  display: block;
+  padding: auto auto;
+  font-size: 800%;
+  color: rgb(37,37,37);
+
+}
+
+

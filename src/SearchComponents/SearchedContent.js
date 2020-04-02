@@ -7,7 +7,7 @@ import TopResultItem from "./TopResultItem";
 import GeneralItem from "../Containers/GeneralItem";
 import * as itemType from "../Constants/itemType";
 
-const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfieldvalue }) => {
+const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfieldvalue, loading }) => {
 
   //For Songs
   var RenderedSongs;
@@ -267,6 +267,18 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
     return <SearchContent />
   }
   else {
+
+    if(loading){
+      return (
+        <div className="search-spinner-loading">
+          <i className="fa fa-refresh fa-spin"></i>
+      </div>
+      );
+
+    }
+    else{
+
+    
     const noResultsfound = 'No results found for "' + searchfieldvalue + '"';
     if (!songs.length && !artists.length && !albums.length) {
       return (
@@ -304,6 +316,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
         </div>
       );
     }
+  }
   }
 
 }
