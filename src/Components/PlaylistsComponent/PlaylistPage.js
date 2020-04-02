@@ -2,7 +2,7 @@ import React ,{ Component} from 'react';
 import './PlaylistPage.css';
 import DeletePlaylist from './DeletePlaylist';
 import MediaButton from '../Media/MediaButton';
-import ReactSnackBar from "react-js-snackbar";
+// import ReactSnackBar from "react-js-snackbar";
 import './SnackBar.css';
 
 class PlaylistPage extends Component
@@ -138,13 +138,13 @@ else if (check=="REMOVE"){
              
       </tbody>
     </table>
-    <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowAdd}>
+    {/* <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowAdd}>
                       Added To Your Liked Songs
     </ReactSnackBar>
 
     <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowRemove}>
                       Removed From This Playlist
-    </ReactSnackBar>
+    </ReactSnackBar> */}
       </div> 
       </div>
       </div>
