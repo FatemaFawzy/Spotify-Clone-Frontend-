@@ -16,8 +16,6 @@ class YourLibraryPlaylist extends Component {
 render() {
 return ( 
   <div className="your-library-playlist">
-
-      
         <div className="actual-content">
         <h1 className="playlist-header">Playlists</h1>
         <LikedSongsComponent {...this.props}/>
