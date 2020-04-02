@@ -1,9 +1,34 @@
-import React from "react";
+import React, { Component } from "react";
 import "./YourLibraryNavbar.css";
 import {BrowserRouter,withRouter} from "react-router-dom";
 import {NavLink, Link} from "react-router-dom";
+import { render } from "@testing-library/react";
 
-const YourLibraryNavbar=(props)=>(
+export class YourLibraryNavbar extends Component{
+  constructor(props){
+    super(props); 
+    this.props={
+      image:"",
+      name:""
+    }
+  }
+  handleArtistClick = () => {
+    document.querySelector("#artists-button").classList.add("grey-box");
+    document.querySelector("#playlists-button").classList.remove("grey-box");
+    document.querySelector("#albums-button").classList.remove("grey-box");
+  };
+  handleAlbumClick = () => {
+    document.querySelector("#albums-button").classList.add("grey-box");
+    document.querySelector("#playlists-button").classList.remove("grey-box");
+    document.querySelector("#artists-button").classList.remove("grey-box");
+  };
+  handlePlaylistClick = () => {
+    document.querySelector("#playlists-button").classList.add("grey-box");
+    document.querySelector("#albums-button").classList.remove("grey-box");
+    document.querySelector("#artists-button").classList.remove("grey-box");
+  };
+  render() {
+  return (
 <div className="your-library-nav">
   <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default no-gutters d-flex" id="main-nav"   >   
     <div>
@@ -15,13 +40,13 @@ const YourLibraryNavbar=(props)=>(
           <a className="nav-link icons mr-4"><i className="fas fa-chevron-circle-right icon-color fa-2x "></i></a>
         </li>
         <li className="nav-item">
-          <NavLink to="/webplayer/yourlibrary"><a className="nav-link words">Playlists</a></NavLink>
+          <NavLink to="/webplayer/yourlibrary"><a className="nav-link words grey-box" id="playlists-button" onClick={this.handlePlaylistClick}>Playlists</a></NavLink>
         </li>
         <li className="nav-item d-none d-lg-inline">
-          <NavLink to="/webplayer/yourlibrary/artist"><a className="nav-link words">Artists</a></NavLink>
+          <NavLink to="/webplayer/yourlibrary/artist"><a className="nav-link words" onClick={this.handleArtistClick} id="artists-button">Artists</a></NavLink>
         </li>
         <li className="nav-item d-none d-lg-inline">     
-          <NavLink to="/webplayer/yourlibrary/album"><a className="nav-link words">Albums</a></NavLink>
+          <NavLink to="/webplayer/yourlibrary/album"><a className="nav-link words" onClick={this.handleAlbumClick} id="albums-button">Albums</a></NavLink>
         </li>
         <li className="nav-item dropdown d-inline d-lg-none">
           <div className="btn-group">
@@ -40,8 +65,8 @@ const YourLibraryNavbar=(props)=>(
         <li>
           <div className="over btn-group mr-4 "  >
             <button type="button" className="btn dropdown-toggle account-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img  className="image" src={props.image} alt="User"/>
-              <p className="name">Mariam El Baz</p>
+              <img  className="image" src={this.props.image} alt="User"/>
+              <p className="name">{this.props.name}</p>
             </button>
             <div className="over dropdown-menu dropdown-menu-right">
             <BrowserRouter forceRefresh={true}><Link to="/account" className="over dropdown-item"><button className="dropdown-item white-words pl-4" type="button">Account</button></Link>   </BrowserRouter>
@@ -54,4 +79,7 @@ const YourLibraryNavbar=(props)=>(
   </nav>
 </div>
 );
+  }
+}
+
 export default withRouter(YourLibraryNavbar);

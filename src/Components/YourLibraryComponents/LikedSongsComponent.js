@@ -17,8 +17,6 @@ class LikedSongsComponent extends Component {
   }
  
   handleClick = () => {
-    // const {history} = this.props;
-   
     this.props.history.push("/webplayer/likedsongs/");
   } 
 render() {

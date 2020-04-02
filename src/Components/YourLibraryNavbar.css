@@ -190,6 +190,9 @@
   max-width:100px;
   min-width: 100px;
 }
+.your-library-nav .grey-box {
+  background-color:#333333;
+}
 @media (max-width:1065px)
 {
   .your-library-nav #button-selector
