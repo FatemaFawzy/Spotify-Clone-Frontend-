@@ -7,8 +7,6 @@ import {BrowserRouter as Router,
 import HomePageNavbar from "../Components/HomePageNavbar";
 import GeneralItem from "./GeneralItem";
 import ComponentBlock from "../Components/HomePageComponents/ComponentBlock"
-import AlbumsBlock from '../Components/HomePageComponents/AlbumsBlock';
-import ArtistBlock from '../Components/HomePageComponents/ArtistBlock';
 import * as itemType from "../Constants/itemType";
 
 
@@ -16,9 +14,9 @@ class HomePage extends Component {
   constructor(props){
     super(props);
     this.state = {
-     recentlyPlayed:[{type: itemType.ARTIST , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
+     recentlyPlayed:[{type: "SONG" , title: "Meek Mill", subtitle: "SONG", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
      {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "ARTIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
      {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}] , 
     
      madeforyou: [{type: "PLAYLIST" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
