@@ -24,6 +24,7 @@
   width: 100%!important;
   position: fixed !important;
   overflow: visible !important;
+  z-index:50;
 }
 
 .your-library-nav #main-nav .icons{
@@ -211,4 +212,7 @@
   {
     margin-right:40px;
   }
+}
+.your-library-nav .no-box {
+  background:none;
 }

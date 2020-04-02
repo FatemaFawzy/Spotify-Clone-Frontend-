@@ -11,32 +11,34 @@ export class YourLibraryNavbar extends Component{
     super(props); 
     this.props={
       image:"",
-      name:""
+      name:"",
+      type:""
     }
   }
+
   // handleBackButton = () => {
   //   // let history = useHistory()
   //   // history.goBack();
   // };
-  handleArtistClick = () => {
-    document.querySelector("#artists-button").classList.add("grey-box");
-    document.querySelector("#playlists-button").classList.remove("grey-box");
-    document.querySelector("#albums-button").classList.remove("grey-box");
-    this.props.history.push("/webplayer/yourlibrary/artist");
-  };
-  handleAlbumClick = () => {
-    document.querySelector("#albums-button").classList.add("grey-box");
-    document.querySelector("#playlists-button").classList.remove("grey-box");
-    document.querySelector("#artists-button").classList.remove("grey-box");
-    this.props.history.push("/webplayer/yourlibrary/album");
-  };
-  handlePlaylistClick = () => {
-    document.querySelector("#playlists-button").classList.add("grey-box");
-    document.querySelector("#albums-button").classList.remove("grey-box");
-    document.querySelector("#artists-button").classList.remove("grey-box");
-    this.props.history.push("/webplayer/yourlibrary/");
-  };
-  render() {
+  // handleArtistClick = () => {
+  //   document.querySelector("#artists-button").classList.add("grey-box");
+  //   document.querySelector("#playlists-button").classList.remove("grey-box");
+  //   document.querySelector("#albums-button").classList.remove("grey-box");
+  //   this.props.history.push("/webplayer/yourlibrary/artist");
+  // };
+  // handleAlbumClick = () => {
+  //   document.querySelector("#albums-button").classList.add("grey-box");
+  //   document.querySelector("#playlists-button").classList.remove("grey-box");
+  //   document.querySelector("#artists-button").classList.remove("grey-box");
+  //   this.props.history.push("/webplayer/yourlibrary/album");
+  // };
+  // handlePlaylistClick = () => {
+  //   document.querySelector("#playlists-button").classList.add("grey-box");
+  //   document.querySelector("#albums-button").classList.remove("grey-box");
+  //   document.querySelector("#artists-button").classList.remove("grey-box");
+  //   this.props.history.push("/webplayer/yourlibrary/");
+  // };
+  render(){
   return (
 <div className="your-library-nav">
   <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default no-gutters d-flex" id="main-nav"   >   
@@ -49,13 +51,13 @@ export class YourLibraryNavbar extends Component{
           <a className="nav-link icons mr-4"><i className="fas fa-chevron-circle-right icon-color fa-2x "></i></a>
         </li>
         <li className="nav-item">
-          <NavLink to="/webplayer/yourlibrary"><a className="nav-link words grey-box" id="playlists-button" onClick={this.handlePlaylistClick}>Playlists</a></NavLink>
+          <NavLink to="/webplayer/yourlibrary"><a id="playlists-button" className={this.props.type== "Playlists" ? 'grey-box nav-link words' : 'no-box nav-link words'}>Playlists</a></NavLink>
         </li>
         <li className="nav-item d-none d-lg-inline">
-          <NavLink to="/webplayer/yourlibrary/artist"><a className="nav-link words" onClick={this.handleArtistClick} id="artists-button">Artists</a></NavLink>
+          <NavLink to="/webplayer/yourlibrary/artist"><a id="artists-button" className={this.props.type== "Artists" ? 'grey-box nav-link words' : 'no-box nav-link words'}>Artists</a></NavLink>
         </li>
         <li className="nav-item d-none d-lg-inline">     
-          <NavLink to="/webplayer/yourlibrary/album"><a className="nav-link words" onClick={this.handleAlbumClick} id="albums-button">Albums</a></NavLink>
+          <NavLink to="/webplayer/yourlibrary/album"><a id="albums-button" className={this.props.type== "Albums" ? 'grey-box nav-link words' : 'no-box nav-link words'}>Albums</a></NavLink>
         </li>
         <li className="nav-item dropdown d-inline d-lg-none">
           <div className="btn-group">
