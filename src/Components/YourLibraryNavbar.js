@@ -3,6 +3,8 @@ import "./YourLibraryNavbar.css";
 import {BrowserRouter,withRouter} from "react-router-dom";
 import {NavLink, Link} from "react-router-dom";
 import { render } from "@testing-library/react";
+import {useHistory} from "react-router-dom";
+
 
 export class YourLibraryNavbar extends Component{
   constructor(props){
@@ -12,20 +14,27 @@ export class YourLibraryNavbar extends Component{
       name:""
     }
   }
+  // handleBackButton = () => {
+  //   // let history = useHistory()
+  //   // history.goBack();
+  // };
   handleArtistClick = () => {
     document.querySelector("#artists-button").classList.add("grey-box");
     document.querySelector("#playlists-button").classList.remove("grey-box");
     document.querySelector("#albums-button").classList.remove("grey-box");
+    this.props.history.push("/webplayer/yourlibrary/artist");
   };
   handleAlbumClick = () => {
     document.querySelector("#albums-button").classList.add("grey-box");
     document.querySelector("#playlists-button").classList.remove("grey-box");
     document.querySelector("#artists-button").classList.remove("grey-box");
+    this.props.history.push("/webplayer/yourlibrary/album");
   };
   handlePlaylistClick = () => {
     document.querySelector("#playlists-button").classList.add("grey-box");
     document.querySelector("#albums-button").classList.remove("grey-box");
     document.querySelector("#artists-button").classList.remove("grey-box");
+    this.props.history.push("/webplayer/yourlibrary/");
   };
   render() {
   return (
@@ -54,8 +63,8 @@ export class YourLibraryNavbar extends Component{
             More
             </button>
             <div className="dropdown-menu" id="width">
-            <NavLink to="/webplayer/yourlibrary/artist" className="dropdown-item" ><button className="dropdown-item white-words pl-2" type="button">Artists</button></NavLink>
-            <NavLink to="/webplayer/yourlibrary/album" className="dropdown-item" > <button className="dropdown-item white-words pl-2" type="button">Albums</button></NavLink>
+            <NavLink to="/webplayer/yourlibrary/artist" className="dropdown-item" ><button className="dropdown-item white-words pl-2" type="button" onClick={this.handleArtistClick} >Artists</button></NavLink>
+            <NavLink to="/webplayer/yourlibrary/album" className="dropdown-item" > <button className="dropdown-item white-words pl-2" type="button" onClick={this.handleAlbumClick}>Albums</button></NavLink>
             </div>
           </div>
         </li> 
