@@ -3,14 +3,16 @@
   max-width: max-content !important;
 }
 .cHykBG {
-  padding: 3px 0 !important;
-  padding-left: 2px;
+  margin-top: -24px;
+  background-color: transparent !important;
+  
 }
-.fa-spotify:before {
+.gpVDQc {
   content: "\f1bc";
-  font-size: 45px;
-  margin: 40px 0;
+  font-size: 45px !important;
+  margin: 40px 0 !important;
 }
+
 .eWkWwl {
 
 background-color: rgb(35, 168, 81) !important;
