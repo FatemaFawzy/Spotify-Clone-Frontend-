@@ -2,21 +2,21 @@ import React,{Component} from 'react';
 import './WebPlayer.css';
 // import SearchPage from "./SearchPage";
 import {Switch, Route} from "react-router-dom";
-import HomePageSidebar from "../Components/HomePageSidebar"
-import SearchPage from '../SearchComponents/SearchPage';
-import YourLibrary  from './YourLibraryPages/YourLibrary';
-import YourLibraryPlaylist  from './YourLibraryPages/YourLibraryPlaylist';
-import ArtistProfile from './ArtistProfile/ArtistProfile';
-import MusicBar from "../Components/MusicBar/MusicBar"
-import HomePage from './HomePage';
-import PlaylistPage from '../Components/PlaylistsComponent/PlaylistPage';
-import CreatePlaylist from '../Components/PlaylistsComponent/CreatePlaylist';
-import AlbumPage from '../Components/AlbumComponent/AlbumPage';
-import AccountLayout from '../Containers/AccountLayout';
-import welcomePage from '../Containers/WelcomePage/welcomePage';
-import OtherUser from './OtherUserPage/OtherUser';
-import LikedSongs from '../Components/LikedSongs/LikedSongs';
-import AddToPlaylist from '../Components/PlaylistsComponent/AddToPlaylist';
+import HomePageSidebar from "../../Components/HomePageSidebar"
+import SearchPage from '../../SearchComponents/SearchPage';
+import YourLibrary  from '../YourLibraryPages/YourLibrary';
+import YourLibraryPlaylist  from '../YourLibraryPages/YourLibraryPlaylist';
+import ArtistProfile from '../ArtistProfile/ArtistProfile';
+import MusicBar from "../../Components/MusicBar/MusicBar"
+import HomePage from '../HomePage/HomePage';
+import PlaylistPage from '../../Components/PlaylistsComponent/PlaylistPage';
+import CreatePlaylist from '../../Components/PlaylistsComponent/CreatePlaylist';
+import AlbumPage from '../../Components/AlbumComponent/AlbumPage';
+import AccountLayout from '../AccountLayout';
+import welcomePage from '../WelcomePage/welcomePage';
+import OtherUser from '../OtherUserPage/OtherUser';
+import LikedSongs from '../../Components/LikedSongs/LikedSongs';
+import AddToPlaylist from '../../Components/PlaylistsComponent/AddToPlaylist';
 
 
 

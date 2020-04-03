@@ -5,7 +5,7 @@ import HelpPage from "./Components/HelpPage";
 import welcomePage from "./Containers/WelcomePage/welcomePage";
 import SignUp from "./Containers/SignUp/SignUp";
 import login from "./Containers/Login/login";
-import Premium from "./Containers/Premium";
+import Premium from "./Containers/PremiumBenefits/Premium";
 import ForgotPassword from "./Components/ForgotPassword";
 import HomePageSidebar from "./Components/HomePageSidebar";
 import Success from "./Components/Success";
@@ -13,7 +13,7 @@ import {BrowserRouter as Router,
         Switch, 
         Route, 
        } from "react-router-dom";
-import WebPlayer from './Containers/WebPlayer';
+import WebPlayer from './Containers/WebPlayer/WebPlayer';
 import ArtistProfile from './Containers/ArtistProfile/ArtistProfile';
 
 
