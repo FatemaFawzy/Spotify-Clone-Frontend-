@@ -1,10 +1,8 @@
-import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
-import React from "react";
-import { withRouter } from 'react-router-dom'
+
+
 export let forwardStack = [];
 export let backwardStack = [];
-export let currentURL = '/Webplayer/HomePage';
+export let currentURL = '';
 
 
 // this also works with react-router-native

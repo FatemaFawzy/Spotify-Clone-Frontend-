@@ -14,23 +14,29 @@
   cursor:pointer;
 
 }
+.home-nav #ul-upgrade{
+  margin-left: 600px;
+  list-style: none;
+}
 .home-nav #upgradebtn{
   text-decoration: none;
   background-color: #121212;
   color: white;
   
+  outline: none;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.76px;
   border-radius: 500px;
   line-height: 18px;
   padding: 8px 34px;
+  margin-top: 15px;
   /* text-align: center; */
   /* width: 38px; */ 
   
 }
 .home-nav #upgradebtn:hover{
-  
+  margin-top: 15px;
   padding: 10px 36px;
 }
 /* .home-nav #upgradebtn:focus{
@@ -48,6 +54,7 @@
   position: fixed !important;
   overflow: visible !important;
   z-index:50;
+  height: 70px;
 }
 
 .home-nav #main-nav .icons{
@@ -97,6 +104,7 @@
   .home-nav #button-selector{
    display: none !important;
   }
+  
 }
 @media (max-width:1278px)
 {
@@ -115,6 +123,9 @@
   .home-nav .dropdown-toggle::after { 
     content: none; 
   } 
+  .home-nav #ul-upgrade{
+    margin-left: 630px !important;
+  }
 }
 
 .home-nav #button-selector{
@@ -224,6 +235,7 @@
     margin-right:40px;
   }
 }
+
 @media (max-width:1250px)
 {
   .home-nav #button-selector 
@@ -231,6 +243,10 @@
     margin-right:40px;
     padding-left: 30px;
   }
+  .home-nav #ul-upgrade{
+    margin-left: 600px !important;
+  }
+
 }
 @media (max-width:1325px)
 {
@@ -238,7 +254,24 @@
   {
     margin-right:40px;
   }
+  .home-nav #ul-upgrade{
+    margin-left: 550px;
+  }
 }
 .home-nav .no-box {
   background:none;
+}
+@media (max-width:1200px)
+{
+  .home-nav #ul-upgrade
+  {
+    margin-left: 500px !important;
+  }
+}
+@media (max-width:1140px)
+{
+  .home-nav #ul-upgrade
+  {
+    display: none;
+  }
 }

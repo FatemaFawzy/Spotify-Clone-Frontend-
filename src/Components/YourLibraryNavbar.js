@@ -47,11 +47,11 @@ export class YourLibraryNavbar extends Component{
   <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default no-gutters d-flex" id="main-nav"   >   
     <div>
       <ul className="navbar-nav mr-auto justify-content-start">
-        <li className="nav-item">
-          <a className="nav-link icons ml-4" onClick={() => { History.goBackward(); this.props.history.push(History.currentURL) ; console.log(History.currentURL)}}><i className="fas fa-chevron-circle-left icon-color fa-2x"></i></a>
+        <li className="nav-item" onClick={() => { History.goBackward(); this.props.history.push(History.currentURL)}}>
+          <a className="nav-link icons ml-4" ><i className="fas fa-chevron-circle-left icon-color fa-2x"></i></a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link icons mr-4"  onClick={goForward}><i className="fas fa-chevron-circle-right icon-color fa-2x "></i></a>
+        <li className="nav-item" onClick={() => { History.goBackward(); this.props.history.push(History.currentURL)}}>
+          <a className="nav-link icons mr-4"   ><i className="fas fa-chevron-circle-right icon-color fa-2x "></i></a>
         </li>
         <li className="nav-item">
           <NavLink to="/webplayer/yourlibrary"><a id="playlists-button" className={this.props.type== "Playlists" ? 'grey-box nav-link words' : 'no-box nav-link words'}>Playlists</a></NavLink>

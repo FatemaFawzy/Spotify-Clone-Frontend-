@@ -13,6 +13,7 @@ export class HomePageNavbar extends Component{
     this.props={
       image:"",
       name:"",
+      accountType:""
      
     }
   }
@@ -28,17 +29,20 @@ export class HomePageNavbar extends Component{
   <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default no-gutters d-flex" id="main-nav"   >   
     <div>
       <ul className="navbar-nav mr-auto justify-content-start">
-        <li className="nav-item">
-          <a className="nav-link icons ml-4"  onClick={() => { History.goBackward(); this.props.history.push(History.currentURL) ; console.log(History.currentURL)}}><i className="fas fa-chevron-circle-left icon-color fa-2x"></i></a>
+        <li className="nav-item" onClick={() => { History.goBackward(); this.props.history.push(History.currentURL)}}>
+          <a className="nav-link icons ml-4"  ><i className="fas fa-chevron-circle-left icon-color fa-2x"></i></a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link icons mr-4" onClick={() => {History.goForward(); this.props.history.push(History.currentURL); console.log(History.currentURL)}}><i className="fas fa-chevron-circle-right icon-color fa-2x "></i></a>
+        <li className="nav-item" onClick={() => {History.goForward(); this.props.history.push(History.currentURL)}}>
+          <a className="nav-link icons mr-4" ><i className="fas fa-chevron-circle-right icon-color fa-2x "></i></a>
         </li>
         
         </ul>
     </div>
+    <ul id="ul-upgrade" className={this.props.accountType == "premium" ? 'd-none' : ''}>
+    <li><Link to="/premium"><button id="upgradebtn">UPGRADE</button></Link></li>
+    </ul>
       <ul className="navbar-nav ml-auto d-flex d-none col-md-2 col-lg-3 col-xl-2" id="button-selector">
-       <button id="upgradebtn">UPGRADE</button> 
+       
         
         <li>
          <div className="over btn-group mr-4 "  >
