@@ -19,6 +19,11 @@ export class YourLibraryNavbar extends Component{
       moreButtonName:""
     }
   }
+  // toggleArrow = () => {
+  //   document.querySelector("#arrow").classList.toggle("fa-caret-up")
+  //   document.querySelector("#arrow").classList.toggle("fa-caret-down");
+  //   console.log(document.querySelector("#arrow").classList);
+  // } 
 render(){
   return (
 <div className="your-library-nav">
@@ -36,7 +41,8 @@ render(){
         </li>
         <li className="nav-item dropdown d-inline d-lg-none">
           <div className="btn-group">
-            <button  id="more-button" type="button" className={this.props.type == "Playlists" ? "btn dropdown-toggle words" : "btn dropdown-toggle words grey-box"} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button
+            id="more-button" type="button" className={this.props.type == "Playlists" ? "btn dropdown-toggle words" : "btn dropdown-toggle words grey-box"} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {this.props.moreButtonName}
             </button>
             <div className="dropdown-menu" id="width">

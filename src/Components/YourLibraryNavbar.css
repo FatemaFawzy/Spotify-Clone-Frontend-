@@ -88,6 +88,7 @@
   }
   .your-library-nav  #right-drop-down .dropdown-toggle::after { 
     content: none; 
+    
   } 
 }
 
@@ -155,7 +156,6 @@
   line-height: 20px;
   letter-spacing: .015em;
   padding-bottom:5px;
-  /* overflow: visible !important; */
 }
 .your-library-nav .dropdown-item:hover{
   background-color: #525252 !important;
@@ -222,4 +222,8 @@
 .your-library-nav .blue-words
 {
   color:#437fc7; 
+}
+.your-library-nav #width{
+  margin-left: 10px;
+  border-radius: 4px !important;
 }
