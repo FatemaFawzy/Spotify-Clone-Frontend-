@@ -1,12 +1,15 @@
 import React, { Component } from "react"
 import "./SongSearched.css"
 import ReactDOM from "react-dom"
+import ReactSnackBar from "react-js-snackbar";
+import '../Components/PlaylistsComponent/SnackBar.css';
 
 class SongSearched extends Component {
   state = {
     dropContentClass: "dropdown-content",
     songSearchedIdActive: "",
-    playing: false
+    playing: false,
+    showAdd: false,
   }
 
   componentWillMount() {
@@ -19,9 +22,8 @@ class SongSearched extends Component {
 
   handleClickoutside = event => {
     if ((!event.target.matches('.dropbtn') || !ReactDOM.findDOMNode(this).contains(event.target))) {
-      if(!this.state.playing)
-      {
-        this.setState({songSearchedIdActive: ""})
+      if (!this.state.playing) {
+        this.setState({ songSearchedIdActive: "" })
       }
       this.setState({ dropContentClass: "dropdown-content" })
     }
@@ -29,6 +31,13 @@ class SongSearched extends Component {
     // if(!ReactDOM.findDOMNode(this).contains(e.target)) {
     //   // the click was outside your component, so handle closing here
     // }
+  }
+
+  OnAddedToLiked = (event) => {
+    this.setState({ showAdd: true });
+    setTimeout(() => {
+      this.setState({ showAdd: false});
+    }, 2000);
   }
 
   render() {
@@ -40,7 +49,7 @@ class SongSearched extends Component {
       actualName = this.props.name;
     }
 
-    var PlayPause=this.state.playing?<i class="fas fa-pause"></i>:<i class="fas fa-play"></i>;
+    var PlayPause = this.state.playing ? <i class="fas fa-pause"></i> : <i class="fas fa-play"></i>;
 
     return (
       <div className="song-searched-class" id={this.state.songSearchedIdActive}>
@@ -50,31 +59,34 @@ class SongSearched extends Component {
           <a className="song-searched-name" href="#">{actualName}</a>
           <a className="song-searched-subname" href="#">{this.props.subname}</a>
           <button
-          onClick={(event)=>{
-           
-            //TODO: also check later on that their isn't any other song playing
-            if(!this.state.playing)
-            {
-              this.setState({songSearchedIdActive:"song-searched-active"})
-            }
+            onClick={(event) => {
 
-            this.setState((prevstate,event)=>({playing:prevstate.playing?false:true}))
+              //TODO: also check later on that their isn't any other song playing
+              if (!this.state.playing) {
+                this.setState({ songSearchedIdActive: "song-searched-active" })
+              }
 
-          }}>{PlayPause}</button>
+              this.setState((prevstate, event) => ({ playing: prevstate.playing ? false : true }))
+
+            }}>{PlayPause}</button>
         </div>
         {/* dropdown */}
         <div className="dropdown">
           <button onClick={(event) => {
 
-            this.setState({ dropContentClass:"dropdown-content-show"})
-            this.setState({songSearchedIdActive:"song-searched-active"})
-            
+            this.setState({ dropContentClass: "dropdown-content-show" })
+            this.setState({ songSearchedIdActive: "song-searched-active" })
+
           }} className="dropbtn">...</button>
           <div id="myDropdown" className={this.state.dropContentClass}>
-            <a href="#">Save to your liked songs</a>
+            <a className="drop-down-option-song-search" onClick={this.OnAddedToLiked} >Save to your liked songs</a>
             <a href="#">Add to playlist</a>
           </div>
         </div>
+
+        <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.showAdd}>
+          Added To Your Liked Songs
+        </ReactSnackBar>
 
       </div>
     )

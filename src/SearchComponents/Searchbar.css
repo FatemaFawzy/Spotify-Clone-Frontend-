@@ -17,28 +17,27 @@
     display: block;
     border: none;
     padding:17px;padding-left:55px;
+    padding-right: 45px;
     background-repeat:no-repeat;
     background-position:left center;
     z-index: 11;
     position: relative;
 }
 
-
 .search-search-icon{
-
     z-index: 12;
     float: left;
     font-size: 150%;
     position: absolute;
-    margin-top: 3px;
+    margin-top: 2px;
     margin-left: 10px;
     color: rgb(99, 97, 97);
 }
-.search-cancel-icon{
 
+.search-cancel-icon{
     color: rgb(99, 97, 97);
     position: absolute;
-    margin-top: -37px;
+    margin-top: -40px;
     z-index: 12;
     background-color: transparent;
     border: none;
@@ -81,7 +80,7 @@
   }
 
   /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
 
   .search-bar-sticky-top ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     visibility: hidden;

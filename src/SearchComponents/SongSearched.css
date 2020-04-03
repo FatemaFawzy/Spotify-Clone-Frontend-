@@ -171,7 +171,11 @@
 }
 
 /* Change color of dropdown links on hover */
-.song-searched-class .dropdown-content-show a:hover {background-color: rgb(66, 66, 66);}
+.song-searched-class .dropdown-content-show a:hover {
+  background-color: rgb(66, 66, 66);
+  cursor: pointer;
+  color: white;
+}
 
 #song-searched-active button{
   display: inline-block;
