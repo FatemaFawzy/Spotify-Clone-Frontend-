@@ -126,14 +126,14 @@ class ArtistOverviewContent extends Component {
 
           {this.state.albumInfo.slice(0,3).map((album,index)=>(   
             <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
-              <MediaObject className="media-object" image={album.albumPhoto} 
+              <MediaObject key={index} image={album.albumPhoto} 
               objectName={album.albumName} albumLink={album.albumLink}> </MediaObject>
             </div>  
           ))}
 
           {this.state.albumInfo.slice(3,this.state.albumInfo.length).map((album,index)=>(   
             <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2 hide-these"> 
-              <MediaObject className=" media-object" image={album.albumPhoto} 
+              <MediaObject key={index} image={album.albumPhoto} 
               objectName={album.albumName} albumLink={album.albumLink}> </MediaObject>
             </div>  
           ))}           
@@ -146,7 +146,7 @@ class ArtistOverviewContent extends Component {
               <div className="row">
               {this.state.albumInfo.slice(3,this.state.albumInfo.length).map((album,index)=>(   
                   <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
-                    <MediaObject className="media-object" image={album.albumPhoto} 
+                    <MediaObject key={index} image={album.albumPhoto} 
                     objectName={album.albumName} albumLink={album.albumLink}> </MediaObject>
                   </div>  
               ))}
@@ -168,14 +168,14 @@ class ArtistOverviewContent extends Component {
           <div className="row">
             {this.state.singlesInfo.slice(0,3).map((single,index)=>(   
                 <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
-                  <MediaObject image={single.singlePhoto} 
+                  <MediaObject key={index} image={single.singlePhoto} 
                   objectName={single.singleName} albumLink={single.albumLink}> </MediaObject>
                 </div>  
             ))}
 
             {this.state.singlesInfo.slice(3,this.state.singlesInfo.length).map((single,index)=>(   
                 <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2 hide-these"> 
-                  <MediaObject image={single.singlePhoto} 
+                  <MediaObject key={index} image={single.singlePhoto} 
                   objectName={single.singleName} albumLink={single.albumLink}> </MediaObject>
                 </div>  
             ))}
@@ -188,7 +188,7 @@ class ArtistOverviewContent extends Component {
               <div className="row">
                 {this.state.singlesInfo.slice(3,this.state.singlesInfo.length).map((single,index)=>(   
                     <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
-                      <MediaObject image={single.singlePhoto} 
+                      <MediaObject key={index} image={single.singlePhoto} 
                   objectName={single.singleName} albumLink={single.albumLink}> </MediaObject>
                     </div>  
                 ))}
