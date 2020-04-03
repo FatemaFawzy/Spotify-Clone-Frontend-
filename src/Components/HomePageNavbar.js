@@ -1,50 +1,67 @@
-import React from "react";
+import React, { Component } from "react";
 import "./HomePageNavbar.css";
-import {BrowserRouter } from "react-router-dom";
+import {BrowserRouter,withRouter} from "react-router-dom";
 import {NavLink, Link} from "react-router-dom";
-import {withRouter} from "react-router-dom";
+import { render } from "@testing-library/react";
+import {useHistory} from "react-router-dom";
+import * as History from "../HelperFunctions/History";
 
-const HomePageNavbar=(props)=>(
+
+export class HomePageNavbar extends Component{
+  constructor(props){
+    super(props); 
+    this.props={
+      image:"",
+      name:"",
+      accountType:""
+     
+    }
+  }
+
+  // handleBackButton = () => {
+  //   // let history = useHistory()
+  //   // history.goBack();
+  // };
+  
+  render(){
+  return (
 <div className="home-nav">
-
-  <nav className="navbar-fixed-top navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default pb-4 no-gutters " id="main-nav"   >
-    
-   
-      <div className="d-flex justify-content-start">
-      <ul className="navbar-nav  mr-auto">
-        <li className="nav-item">
-          <a className="nav-link icons"><i className="fas fa-chevron-circle-left icon-color fa-2x"></i></a>
+  <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default no-gutters d-flex" id="main-nav"   >   
+    <div>
+      <ul className="navbar-nav mr-auto justify-content-start">
+        <li className="nav-item" onClick={() => { History.goBackward(); this.props.history.push(History.currentURL)}}>
+          <a className="nav-link icons ml-4"  ><i className="fas fa-chevron-circle-left icon-color fa-2x"></i></a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link icons"><i className="fas fa-chevron-circle-right icon-color fa-2x "></i></a>
+        <li className="nav-item" onClick={() => {History.goForward(); this.props.history.push(History.currentURL)}}>
+          <a className="nav-link icons mr-4" ><i className="fas fa-chevron-circle-right icon-color fa-2x "></i></a>
         </li>
         
         </ul>
-        </div>
-     
-        <ul className=" navbar-nav  ml-auto" id="button-selector">
-        <li className="d-flex justify-content-end">
-          <div className="btn-group">
-            <button  id="user-button" type="button" className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div className="account-button">
-              <img  className="image" src={props.image} alt="User"/>
-              <p className="d-none d-xl-inline name">Ali Halafawy <i className="fas fa-sort-down"></i></p>
-            </div>
+    </div>
+    <ul id="ul-upgrade" className={this.props.accountType == "premium" ? 'd-none' : ''}>
+    <li><Link to="/premium"><button id="upgradebtn">UPGRADE</button></Link></li>
+    </ul>
+      <ul className="navbar-nav ml-auto d-flex d-none col-md-2 col-lg-3 col-xl-2" id="button-selector">
+       
+        
+        <li>
+         <div className="over btn-group mr-4 "  >
+            <button type="button" className="btn dropdown-toggle account-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img  className="image" src={this.props.image} alt="User"/>
+              <p className="name">{this.props.name}</p>
             </button>
-            <div  className="dropdown-menu dropdown-menu-right">
-             <BrowserRouter forceRefresh={true}><Link to="/account"><button className="dropdown-item" type="button">Account</button></Link></BrowserRouter> 
-              
-              
-              <button className="dropdown-item" type="button">Log Out</button>
+            <div className="over dropdown-menu dropdown-menu-right">
+            <BrowserRouter forceRefresh={true}><Link to="/account" className="over dropdown-item"><button className="dropdown-item white-words pl-4" type="button">Account</button></Link>   </BrowserRouter>
+            <BrowserRouter forceRefresh={true}><Link to="/" className="over dropdown-item"><button className="dropdown-item white-words border-on-top" type="button">Log Out</button></Link>   </BrowserRouter>
             </div>
           </div>
         </li>  
-      </ul>
+      </ul> 
     
-     
   </nav>
-
- </div>
-
+</div>
 );
+  }
+}
+
 export default withRouter(HomePageNavbar);
