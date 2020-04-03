@@ -1,9 +1,10 @@
 import React ,{ Component} from 'react';
 import './PlaylistPage.css';
 import DeletePlaylist from './DeletePlaylist';
-import MediaButton from '../Media/MediaButton';
+import CardMedia from '../Media/CardMedia';
 import ReactSnackBar from "react-js-snackbar";
 import './SnackBar.css';
+import HomePageNavbar from '../HomePageNavbar';
 
 class PlaylistPage extends Component
 {
@@ -88,12 +89,16 @@ else if (check=="REMOVE"){
 
   render(){
   return(
+    <div>
   <div className="playlist-page">
+  <HomePageNavbar accountType="regular" name="Ali Halafawy" color="black"
+        image="https://scontent.fcai3-1.fna.fbcdn.net/v/t1.0-9/19397029_10210794027939033_5811382860033366804_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_eui2=AeHEhGNHMDc070CTQv4WD5FK-tEUbysbE-HFFkFOk7OxsfeTak6rLywRWjbRlCDjWmzjtl79NUg2XF9AsJX_0QE9j0LnqnOoo_ADLnnZUnidEA&_nc_ohc=QgP5sx3F3dsAX-nzFSx&_nc_ht=scontent.fcai3-1.fna&oh=86cb020fb7ea1a4e8c69aaaf075680d5&oe=5EA58791"/>
+     
       <div className="content-spacing">
         <div className="row" >
           <div className="col-xs-12  col-lg-5 col-xl-4 d-flex justify-content-center " style={{display:"table"}}>
              <ul className="list-unstyled centered-content">
-             <MediaButton image={this.state.playlistImage} />
+            <CardMedia image={this.state.playlistImage} /> 
               
 
 					  <li> <h3> {this.state.playlistname} </h3> </li>
@@ -161,6 +166,8 @@ else if (check=="REMOVE"){
       </div>
       <DeletePlaylist />
     </div>
+    </div>
+    
   )
 }
 }

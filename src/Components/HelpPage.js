@@ -35,7 +35,7 @@ class HelpPage extends Component {
     return (
       <div className="help-class">
         <div className="helpNav" > 
-        <MainNavbar />
+        <MainNavbar color="black" position="relative" IsLoggedIn="false" />
         </div>
         {/* First block */}
         <div className="help-header">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import "./MediaButton.css";
+import "./CardMedia.css";
 
-class MediaButton extends Component {
+class CardMedia extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -26,4 +26,4 @@ class MediaButton extends Component {
     );
   }
 }
-export default MediaButton;
+export default CardMedia;

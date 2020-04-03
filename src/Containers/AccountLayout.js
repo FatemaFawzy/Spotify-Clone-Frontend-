@@ -2,10 +2,10 @@ import React ,{ Component} from 'react';
 import "./AccountLayout.css";
 import AccountSidebar from "../Components/AccountSidebar";
 import AccountContent from "../Components/AccountContent";
-import LoginNavbar from "../Components/LoginNavbar";
 import Bottom from "../Components/Bottom";
 import "../Components/AccountContent";
 import {BrowserRouter as Router } from "react-router-dom";
+import MainNavbar from '../Components/MainNavbar';
 // import { Container } from 'react-bootstrap/lib/Tab';
 
 class AccountLayout extends Component {
@@ -15,7 +15,7 @@ class AccountLayout extends Component {
         return (
         <div>
             {/* Display the Navbar Component here */}
-            <LoginNavbar/>
+            <MainNavbar IsLoggedIn="true" position="relative" color="black"  />
             <div className="content-wrapper d-flex justify-content-center">
 
                     <div className="row no-gutters container-fluid">
