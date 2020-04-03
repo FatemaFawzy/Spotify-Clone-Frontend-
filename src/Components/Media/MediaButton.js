@@ -9,14 +9,6 @@ class MediaButton extends Component {
     }
   }
 
-  // playPauseSong = e => {
-  //   const {id} = e.target;
-  //   var play=document.getElementById(id);
-  //   play.classList.toggle("fa-pause-circle");
-  //   play.classList.toggle("fa-play-circle");
-
-  // }
-
   render(){
     var PlayPause = this.state.playing ? <i class="far fa-pause-circle"></i> : <i class="far fa-play-circle"></i>;
     return (

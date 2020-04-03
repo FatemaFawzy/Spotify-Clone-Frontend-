@@ -4,6 +4,7 @@ import "./EditProfile.css";
 class EditProfile extends Component {
   constructor(props){
     super(props);
+    var handleChange = this.handleChange.bind(this);
 
     // Year dropdown idea from -> https://stackoverflow.com/questions/49679501/how-to-create-list-of-years-in-the-dropdown-using-react-js-jsx
     const year = (new Date()).getFullYear();
@@ -24,32 +25,38 @@ class EditProfile extends Component {
   }
 
   handleChange =e => {
+    
     const {id, value}= e.target;
+    let birthDate= { ...this.state.birthDate };  
 
     switch (id) {
       case "userName":
+        this.setState({username: value}, () => {console.log(this.state)});
+
         if ( value.length === 0 ) {
           this.setState({usernameErrorMessage: "You must specify your username" }) ;
           document.getElementById(id).style.borderColor= "#bd3200";
         }
         else {
-          this.setState({usernameErrorMessage: "", username: value});
+          this.setState({usernameErrorMessage: ""});
           document.getElementById(id).style.borderColor= "#ced4da";
         }
         break;
       case "gender":
-        this.setState({gender: value});
+        this.setState({gender: value}, () => {console.log(this.state)});
         break;
       case "day":
-        this.setState({birthDate: { day: value}});
+        birthDate.day=value;
         break;
       case "month":
-        this.setState({birthDate: { month: value}});
+        birthDate.month=value;
         break;
       case "year":
-        this.setState({birthDate: { year: value}});
+        birthDate.year=value;
         break;                
     }
+    this.setState({birthDate}, () => console.log(this.state) );
+
   }
   
   handleSubmit = e => {
@@ -58,6 +65,7 @@ class EditProfile extends Component {
       document.getElementById("edit-profile-form").submit();
     }
   }
+  
   render(){
     return(
       <div className="edit-profile-body">
@@ -77,14 +85,14 @@ class EditProfile extends Component {
               <div className="form-group">
                 <label for="userName" className="subtitle">Username</label>
                 <input type="text" className="form-control" id="userName" aria-describedby="emailHelp"
-                value={this.state.username} onChange={this.handleChange}/>
+                defaultValue={this.state.username} onChange={this.handleChange}/>
                 <p id="userNameError" className="empty-input p-2"> {this.state.usernameErrorMessage}</p>
               </div>
 
               <div className="form-group">
 
                 <label for="gender" className="subtitle"> Gender </label>
-                    <select id="gender" className="form-control" value= {this.state.gender} onChange={this.handleChange}> 
+                    <select id="gender" className="form-control" defaultValue= {this.state.gender} onChange={this.handleChange}> 
                       <option value="Male"> Male </option>
                       <option value="Female"> Female </option>
                     </select>
@@ -96,7 +104,7 @@ class EditProfile extends Component {
                 <div className="row" id="edit-birth-date">
 
                   <div className="col-3 ">
-                    <select id="day" className="form-control" value= {this.state.birthDate.day} onChange={this.handleChange}> 
+                    <select id="day" className="form-control" defaultValue= {this.state.birthDate.day} onChange={this.handleChange}> 
                       <option value="01"> 01 </option>
                       <option value="02"> 02 </option>
                       <option value="03"> 03 </option>
@@ -133,7 +141,7 @@ class EditProfile extends Component {
                   </div>
 
                   <div className="col-6">
-                    <select id="month" className="form-control" value= {this.state.birthDate.month} onChange={this.handleChange}> 
+                    <select id="month" className="form-control" defaultValue= {this.state.birthDate.month} onChange={this.handleChange}> 
                       <option value="January"> January </option>
                       <option value="February"> February </option>
                       <option value="March"> March </option>
@@ -150,7 +158,7 @@ class EditProfile extends Component {
                   </div>
 
                   <div className="col-3 ">
-                    <select id="year" className="form-control" value= {this.state.birthDate.year} onChange={this.handleChange}>
+                    <select id="year" className="form-control" defaultValue= {this.state.birthDate.year} onChange={this.handleChange}>
                       {
                         this.years.map((year, index) => {
                           return <option key={`year${index}`} value={year}>{year}</option>
