@@ -1,5 +1,5 @@
 import React from 'react';
-import SignUp from '../Containers/SignUp';
+import SignUp from '../Containers/SignUp/SignUp';
 import { shallow } from 'enzyme';
 
 // 1. Test suite

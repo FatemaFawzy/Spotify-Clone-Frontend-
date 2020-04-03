@@ -173,8 +173,8 @@ class SignUp extends Component{
         if ( value.length === 0 ) {
           errorMessages.year = "Please choose a year.";
         }
-        else if ( value > 2000 || value < 1990 ) {
-          errorMessages.year = "Please choose a valid year (1990-2000).";
+        else if ( value > 2020 || value < 1990 ) {
+          errorMessages.year = "Please choose a valid year (1990-2020).";
         }
         else {
           errorMessages.year = "";

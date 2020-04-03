@@ -8,7 +8,7 @@ class EditProfile extends Component {
 
     // Year dropdown idea from -> https://stackoverflow.com/questions/49679501/how-to-create-list-of-years-in-the-dropdown-using-react-js-jsx
     const year = (new Date()).getFullYear();
-    this.years = Array.from(new Array(120),(val, index) => year - index);
+    this.years = Array.from(new Array(121),(val, index) => year - index);
 
     this.state = {
       email: "fatema123@gmail.com",

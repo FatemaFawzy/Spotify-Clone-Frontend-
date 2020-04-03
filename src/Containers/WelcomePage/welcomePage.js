@@ -1,8 +1,8 @@
 import React ,{ Component} from 'react';
 import {Link } from "react-router-dom";
 import './welcomePage.css';
-import Bottom from "./Components/Bottom";
-import MainNavbar from "./Components/MainNavbar";
+import Bottom from "../../Components/Bottom";
+import MainNavbar from "../../Components/MainNavbar";
 
 
 class welcomePage extends Component{
