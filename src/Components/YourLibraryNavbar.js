@@ -40,8 +40,16 @@ render(){
             {this.props.moreButtonName}
             </button>
             <div className="dropdown-menu" id="width">
-            <NavLink to="/webplayer/yourlibrary/artist" className="dropdown-item" ><button className="dropdown-item white-words pl-2 item-click" type="button" >Artists</button></NavLink>
-            <NavLink to="/webplayer/yourlibrary/album" className="dropdown-item" > <button className="dropdown-item white-words pl-2 item-click" type="button">Albums</button></NavLink>
+            <NavLink to="/webplayer/yourlibrary/artist" className="dropdown-item">
+              <button className={this.props.type == "Artists" ? "dropdown-item white-words pl-2 item-click blue-words" : "dropdown-item white-words pl-2 item-click"} type="button">
+                Artists
+              </button>
+            </NavLink>
+            <NavLink to="/webplayer/yourlibrary/album" className="dropdown-item">
+              <button className={this.props.type == "Albums" ? "dropdown-item white-words pl-2 item-click blue-words" : "dropdown-item white-words pl-2 item-click"} type="button">
+                Albums
+              </button>
+            </NavLink>
             </div>
           </div>
         </li> 
