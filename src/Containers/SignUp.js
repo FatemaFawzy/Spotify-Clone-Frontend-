@@ -1,6 +1,5 @@
 import React ,{ Component} from 'react';
 import './SignUp.css';
-// import './signUpValidation.js';
 
 const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -12,7 +11,6 @@ class SignUp extends Component{
 
     this.state= {
       email: null,
-      confirmEmail: null,
       password: null,
       username: null,
       day: null,
@@ -22,7 +20,6 @@ class SignUp extends Component{
       accountType: null,
       errorMessages: {
         email: " ",
-        confirmEmail: " ",
         password: " ",
         username: " ",
         day: " ",
@@ -60,7 +57,7 @@ class SignUp extends Component{
   handleSubmit =e => {
     e.preventDefault();
     let errorMessages= { ...this.state.errorMessages };
-    const {email, confirmEmail, password, username, day, month, year, gender, accountType} = this.state;
+    const {email,  password, username, day, month, year, gender, accountType} = this.state;
 
     if (this.formValidity(this.state)) {
       document.getElementById("signup-form").submit();
@@ -70,9 +67,6 @@ class SignUp extends Component{
     else {
       if ( email === null )
         errorMessages.email = "Please enter your email.";
-
-        if ( confirmEmail === null )
-        errorMessages.confirmEmail = "Please enter your email again.";
 
         if ( password === null )
         errorMessages.password = "Please enter your password.";
@@ -115,12 +109,9 @@ class SignUp extends Component{
   handleChange =e => {
     // e.preventDefault();
     const { name, value }= e.target;
-    let errorMessages= { ...this.state.errorMessages };
-    let emailTest= this.state.email;
-    let confirmEmailTest= this.state.confirmEmail;
-    
-    // console.log("name",name);
-    // console.log("value",value);
+    let errorMessages= { ...this.state.errorMessages };  
+    this.setState({ [name]: value}, () => console.log(this.state) );
+
     switch (name) {
 
       case "email":
@@ -133,25 +124,6 @@ class SignUp extends Component{
         }
         else {
           errorMessages.email = "";
-        }
-        break;
-
-      // TODO: Fix the matching emails problem (state of confirmEmail is lagging)
-      case "confirmEmail":
-        if ( value.length === 0 ) {
-          errorMessages.confirmEmail = "Please enter your email again.";
-        }
-        else if ( !emailFormat.test(value) ) {
-          errorMessages.confirmEmail = "The email address you entered is invalid.";
-        }
-        else if ( emailTest != null 
-          && confirmEmailTest != null 
-          && emailTest !== confirmEmailTest) {
-          errorMessages.confirmEmail = "Email addresses don't match.";
-          console.log( "Email test: " + emailTest + ", confirm test :" + confirmEmailTest );
-        }
-        else {
-          errorMessages.confirmEmail = "";
         }
         break;
 
@@ -231,7 +203,7 @@ class SignUp extends Component{
         break;
     }
 
-    this.setState({ errorMessages, [name]: value}, () => console.log(this.state) );
+    this.setState({ errorMessages}, () => console.log(this.state) );
     
     // Check which input fields (except gender) have errors to give them a red border
     // pair: [name, value]
@@ -274,9 +246,6 @@ class SignUp extends Component{
               <input 
               name= "email" className="form-control input-field" type="email" placeholder="Email" onChange={this.handleChange}/> 
               <p id="empty-email" className="empty-input"> {errorMessages.email}</p>
-
-              <input name= "confirmEmail" className="form-control input-field" type="email" placeholder="Confirm Email" onChange={this.handleChange}/> 
-              <p id="empty-confirm-email" className="empty-input"> {errorMessages.confirmEmail}</p>
 
               <input name="password" className="form-control input-field" type="Password" placeholder="Password" onChange={this.handleChange}/> 
               <p id="empty-password" className="empty-input"> {errorMessages.password} </p>
