@@ -7,7 +7,7 @@ import TopResultItem from "./TopResultItem";
 import GeneralItem from "../Containers/GeneralItem";
 import * as itemType from "../Constants/itemType";
 
-const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfieldvalue }) => {
+const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfieldvalue, loading }) => {
 
   //For Songs
   var RenderedSongs;
@@ -267,12 +267,26 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
     return <SearchContent />
   }
   else {
-    const noResultsfound = 'No results found for "' + searchfieldvalue + '"';
-    if (!songs.length && !artists.length && !albums.length) {
+
+    if(loading){
       return (
+        <div className="search-spinner-loading">
+          <i className="fa fa-refresh fa-spin"></i>
+      </div>
+      );
+
+    }
+    else{
+
+    
+    const noResultsfound = 'No results found for "' + searchfieldvalue + '"';
+    if (!songs.length && !artists.length && !albums.length && !playlists.length && !profiles.length) {
+      return (
+        <div className="no-results-found-container">
         <div className="no-results-found">
           <h1>{noResultsfound}</h1>
           <p>Please make sure your words are spelled correctly or use less or different keywords.</p>
+        </div>
         </div>
       )
     }
@@ -293,10 +307,14 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
 
           </div>
 
+          <div className="rest-of-search-rendered">
+
           {RenderedArtists}
           {RenderedAlbums}
           {RenderedPlaylists}
           {RenderedProfiles}
+
+          </div>
 
           {/* {RenderedItems[0]}
           {RenderedItems[1]} */}
@@ -304,6 +322,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
         </div>
       );
     }
+  }
   }
 
 }

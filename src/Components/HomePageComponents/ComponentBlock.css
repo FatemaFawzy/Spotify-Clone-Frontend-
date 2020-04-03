@@ -1,10 +1,11 @@
 .component-block{
   padding-left: 32px;
   padding-right: 32px;
+
   display: block;
-  width: 1226px;
-  height: 357.8px; 
-  margin-bottom: 10px;
+  /* width: 1226px;
+  height: 357.8px;  */
+  margin-bottom: 300px;
 }
 
 .component-block .header{
@@ -24,7 +25,16 @@
   font-weight: 600;
   margin-bottom: 0;
 }
-
+@media (max-width:999px){
+  .component-block{
+    margin-bottom: 580px;
+  }
+}
+@media (max-width:668px){
+  .component-block{
+    margin-bottom: 1200px;
+  }
+}
 
 /* .component-block .header:hover{
 text-decoration: underline;
