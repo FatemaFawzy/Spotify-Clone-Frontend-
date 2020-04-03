@@ -26,7 +26,7 @@ export class HomePageNavbar extends Component{
   render(){
   return (
 <div className="home-nav">
-  <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default no-gutters d-flex" id="main-nav"   >   
+  <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default no-gutters d-flex" id="main-nav"  style={{backgroundColor: this.props.color}} >   
     <div>
       <ul className="navbar-nav mr-auto justify-content-start">
         <li className="nav-item" onClick={() => { History.goBackward(); this.props.history.push(History.currentURL)}}>
