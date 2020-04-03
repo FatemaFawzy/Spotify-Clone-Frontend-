@@ -86,7 +86,7 @@
     max-width: 100px;
     min-width: 100px;
   }
-  .your-library-nav .dropdown-toggle::after { 
+  .your-library-nav  #right-drop-down .dropdown-toggle::after { 
     content: none; 
   } 
 }
@@ -215,4 +215,11 @@
 }
 .your-library-nav .no-box {
   background:none;
+}
+.your-library-nav .item-click{
+  background-color:#282828 ;
+}
+.your-library-nav .item-click:focus
+{
+  color:#437fc7; 
 }

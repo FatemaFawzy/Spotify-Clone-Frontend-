@@ -15,45 +15,17 @@ export class YourLibraryNavbar extends Component{
     this.props={
       image:"",
       name:"",
-      type:""
+      type:"",
+      moreButtonName:""
     }
   }
-
-  // handleBackButton = () => {
-  //   // let history = useHistory()
-  //   // history.goBack();
-  // };
-  // handleArtistClick = () => {
-  //   document.querySelector("#artists-button").classList.add("grey-box");
-  //   document.querySelector("#playlists-button").classList.remove("grey-box");
-  //   document.querySelector("#albums-button").classList.remove("grey-box");
-  //   this.props.history.push("/webplayer/yourlibrary/artist");
-  // };
-  // handleAlbumClick = () => {
-  //   document.querySelector("#albums-button").classList.add("grey-box");
-  //   document.querySelector("#playlists-button").classList.remove("grey-box");
-  //   document.querySelector("#artists-button").classList.remove("grey-box");
-  //   this.props.history.push("/webplayer/yourlibrary/album");
-  // };
-  // handlePlaylistClick = () => {
-  //   document.querySelector("#playlists-button").classList.add("grey-box");
-  //   document.querySelector("#albums-button").classList.remove("grey-box");
-  //   document.querySelector("#artists-button").classList.remove("grey-box");
-  //   this.props.history.push("/webplayer/yourlibrary/");
-  // };
-  render(){
+render(){
   return (
 <div className="your-library-nav">
   <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default no-gutters d-flex" id="main-nav"   >   
     <div>
       <ul className="navbar-nav mr-auto justify-content-start">
-        <li className="nav-item">
-          <a className="nav-link icons ml-4" onClick={() => { History.goBackward(); this.props.history.push(History.currentURL) ; console.log(History.currentURL)}}><i className="fas fa-chevron-circle-left icon-color fa-2x"></i></a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link icons mr-4"  onClick={goForward}><i className="fas fa-chevron-circle-right icon-color fa-2x "></i></a>
-        </li>
-        <li className="nav-item">
+        <li className="nav-item pl-3">
           <NavLink to="/webplayer/yourlibrary"><a id="playlists-button" className={this.props.type== "Playlists" ? 'grey-box nav-link words' : 'no-box nav-link words'}>Playlists</a></NavLink>
         </li>
         <li className="nav-item d-none d-lg-inline">
@@ -64,12 +36,12 @@ export class YourLibraryNavbar extends Component{
         </li>
         <li className="nav-item dropdown d-inline d-lg-none">
           <div className="btn-group">
-            <button  id="more-button" type="button" className="btn dropdown-toggle words" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            More
+            <button  id="more-button" type="button" className={this.props.type == "Playlists" ? "btn dropdown-toggle words" : "btn dropdown-toggle words grey-box"} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {this.props.moreButtonName}
             </button>
             <div className="dropdown-menu" id="width">
-            <NavLink to="/webplayer/yourlibrary/artist" className="dropdown-item" ><button className="dropdown-item white-words pl-2" type="button" onClick={this.handleArtistClick} >Artists</button></NavLink>
-            <NavLink to="/webplayer/yourlibrary/album" className="dropdown-item" > <button className="dropdown-item white-words pl-2" type="button" onClick={this.handleAlbumClick}>Albums</button></NavLink>
+            <NavLink to="/webplayer/yourlibrary/artist" className="dropdown-item" ><button className="dropdown-item white-words pl-2 item-click" type="button" >Artists</button></NavLink>
+            <NavLink to="/webplayer/yourlibrary/album" className="dropdown-item" > <button className="dropdown-item white-words pl-2 item-click" type="button">Albums</button></NavLink>
             </div>
           </div>
         </li> 
@@ -77,7 +49,7 @@ export class YourLibraryNavbar extends Component{
     </div>
       <ul className="navbar-nav ml-auto d-flex d-none col-md-2 col-lg-3 col-xl-2" id="button-selector">
         <li>
-          <div className="over btn-group mr-4 "  >
+          <div className="over btn-group mr-4 " id="right-drop-down"  >
             <button type="button" className="btn dropdown-toggle account-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img  className="image" src={this.props.image} alt="User"/>
               <p className="name">{this.props.name}</p>
