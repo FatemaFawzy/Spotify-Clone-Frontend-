@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import AccountLayout from "./Containers/AccountLayout";
+import AccountLayout from "./Containers/UserAccountProfile/AccountLayout";
 import HelpPage from "./Components/HelpPage";
 import welcomePage from "./Containers/WelcomePage/welcomePage";
 import SignUp from "./Containers/SignUp/SignUp";

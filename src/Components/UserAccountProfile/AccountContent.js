@@ -1,10 +1,10 @@
 import React from "react";
 import "./AccountContent.css";
-import OverviewContent from "./OverviewContent.js";
-import SetPasswordContent from "./SetPasswordContent.js";
-import RecoverPlaylists from "./RecoverPlaylists";
+import OverviewContent from "./Overview/OverviewContent.js";
+import SetPasswordContent from "./SetPassword/SetPasswordContent.js";
+import RecoverPlaylists from "./RecoverPlaylists/RecoverPlaylists";
 import {Route , Switch, Redirect} from "react-router-dom";
-import EditProfile from "./EditProfile.js";
+import EditProfile from "./EditProfile/EditProfile.js";
 
 
 const AccountContent= (props) => (
