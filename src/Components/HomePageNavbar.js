@@ -27,7 +27,7 @@ export class HomePageNavbar extends Component{
   return (
 <div className="home-nav">
   <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default no-gutters d-flex" id="main-nav"  style={{backgroundColor: this.props.color}} >   
-    <div>
+    {/* <div>
       <ul className="navbar-nav mr-auto justify-content-start">
         <li className="nav-item" onClick={() => { History.goBackward(); this.props.history.push(History.currentURL)}}>
           <a className="nav-link icons ml-4"  ><i className="fas fa-chevron-circle-left icon-color fa-2x"></i></a>
@@ -37,7 +37,7 @@ export class HomePageNavbar extends Component{
         </li>
         
         </ul>
-    </div>
+    </div> */}
     <ul id="ul-upgrade" className={this.props.accountType == "premium" ? 'd-none' : ''}>
     <li><Link to="/premium"><button id="upgradebtn">UPGRADE</button></Link></li>
     </ul>

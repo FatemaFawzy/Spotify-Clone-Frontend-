@@ -7,7 +7,7 @@
   width: 1130px!important;
   width:80%!important;
   font-family: 'Roboto', sans-serif;
-  background-color:#121212;
+  background-color:#121212 !important;
 }
 .home-nav .icon-color{
   color:#e6e6e6;
@@ -15,7 +15,7 @@
 
 }
 .home-nav #ul-upgrade{
-  margin-left: 600px;
+  margin-left: 740px;
   list-style: none;
 }
 .home-nav #upgradebtn{
@@ -124,7 +124,7 @@
     content: none; 
   } 
   .home-nav #ul-upgrade{
-    margin-left: 630px !important;
+    margin-left: 780px !important;
   }
 }
 
@@ -244,7 +244,7 @@
     padding-left: 30px;
   }
   .home-nav #ul-upgrade{
-    margin-left: 600px !important;
+    margin-left: 730px !important;
   }
 
 }
@@ -255,17 +255,17 @@
     margin-right:40px;
   }
   .home-nav #ul-upgrade{
-    margin-left: 550px;
+    margin-left: 700px;
   }
 }
 .home-nav .no-box {
   background:none;
 }
-@media (max-width:1200px)
+@media (max-width:1199px)
 {
   .home-nav #ul-upgrade
   {
-    margin-left: 500px !important;
+    margin-left: 640px !important;
   }
 }
 @media (max-width:1140px)
