@@ -2,12 +2,13 @@
   /* background-color:#121212 !important; */
   position: fixed !important;
 }
+
 .home-nav { 
   text-overflow: ellipsis;
   width: 1130px!important;
   width:80%!important;
   font-family: 'Roboto', sans-serif;
-  background-color:#121212 !important;
+  background-color:red !important;
 }
 .home-nav .icon-color{
   color:#e6e6e6;
@@ -20,7 +21,7 @@
 }
 .home-nav #upgradebtn{
   text-decoration: none;
-  background-color: #121212;
+  background-color: transparent;
   color: white;
   
   outline: none;
