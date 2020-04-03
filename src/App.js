@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 import AccountLayout from "./Containers/UserAccountProfile/AccountLayout";
-import HelpPage from "./Components/HelpPage";
+import HelpPage from "./Components/HelpPage/HelpPage";
 import welcomePage from "./Containers/WelcomePage/welcomePage";
 import SignUp from "./Containers/SignUp/SignUp";
 import login from "./Containers/Login/login";
 import Premium from "./Containers/PremiumBenefits/Premium";
-import ForgotPassword from "./Components/ForgotPassword";
-import HomePageSidebar from "./Components/HomePageSidebar";
-import Success from "./Components/Success";
+import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
+import HomePageSidebar from "./Components/HomePage/HomePageSidebar";
+import Success from "./Components/ForgotPassword/Success";
 import {BrowserRouter as Router,
         Switch, 
         Route, 

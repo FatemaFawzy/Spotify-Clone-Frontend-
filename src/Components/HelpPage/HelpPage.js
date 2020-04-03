@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./HelpPage.css";
 import Carousel from 'react-bootstrap/Carousel';
-import whitebackground from "../assets/whitebackground.jpg";
-import MainNavbar from './MainNavbar';
-import Bottom from "./Bottom";
+import whitebackground from "../../assets/whitebackground.jpg";
+import MainNavbar from '../WelcomeRelated/MainNavbar';
+import Bottom from "../WelcomeRelated/Bottom";
 import { Link } from "react-router-dom";
 
 var elements;

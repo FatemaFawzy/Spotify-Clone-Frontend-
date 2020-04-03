@@ -1,7 +1,7 @@
 import React from "react";
 import "./OverviewContent.css"
 import {Link} from "react-router-dom"
-import InfoLine from "../../InfoLine"
+import InfoLine from "../InfoLine"
 
 const currentuser={
     "User":

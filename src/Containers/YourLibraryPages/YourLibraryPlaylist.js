@@ -1,6 +1,6 @@
 import React ,{ Component} from 'react';
 import './YourLibraryPlaylist.css';
-import YourLibraryNavbar from "../../Components/YourLibraryNavbar";
+import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
 import GeneralItem from "../../Containers/GeneralItem";
 import LikedSongsComponent from '../../Components/YourLibraryComponents/LikedSongsComponent';
 

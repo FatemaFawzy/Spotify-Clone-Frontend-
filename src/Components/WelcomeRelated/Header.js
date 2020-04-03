@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css";
-import spotify from "../assets/yarab.png";
+import spotify from "../../assets/yarab.png";
 import {BrowserRouter as Router} from "react-router-dom";
 import {Link} from "react-router-dom";
 

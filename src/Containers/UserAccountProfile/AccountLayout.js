@@ -2,10 +2,10 @@ import React ,{ Component} from 'react';
 import "./AccountLayout.css";
 import AccountSidebar from "../../Components/UserAccountProfile/AccountSidebar";
 import AccountContent from "../../Components/UserAccountProfile/AccountContent";
-import Bottom from "../../Components/Bottom";
+import Bottom from "../../Components/WelcomeRelated/Bottom";
 import "../../Components/UserAccountProfile/AccountContent";
 import {BrowserRouter as Router } from "react-router-dom";
-import MainNavbar from '../../Components/MainNavbar';
+import MainNavbar from '../../Components/WelcomeRelated/MainNavbar';
 // import { Container } from 'react-bootstrap/lib/Tab';
 
 class AccountLayout extends Component {

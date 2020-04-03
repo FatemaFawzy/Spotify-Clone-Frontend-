@@ -1,7 +1,7 @@
 import React ,{ Component} from 'react';
 import './LikedSongs.css';
 import ReactSnackBar from "react-js-snackbar";
-import HomePageNavbar from '../HomePageNavbar';
+import HomePageNavbar from '../HomePage/HomePageNavbar';
 import CardMedia from '../Media/CardMedia';
   
 class LikedSongs extends Component

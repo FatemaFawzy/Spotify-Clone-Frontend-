@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import HomePageSidebar from './HomePageSidebar';
+import HomePageSidebar from '../HomePage/HomePageSidebar';
 import './MainNavbar.css'
 import {Link } from "react-router-dom";
 

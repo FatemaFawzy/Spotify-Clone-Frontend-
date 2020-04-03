@@ -4,7 +4,7 @@ import DeletePlaylist from './DeletePlaylist';
 import CardMedia from '../Media/CardMedia';
 import ReactSnackBar from "react-js-snackbar";
 import './SnackBar.css';
-import HomePageNavbar from '../HomePageNavbar';
+import HomePageNavbar from '../HomePage/HomePageNavbar';
 
 class PlaylistPage extends Component
 {

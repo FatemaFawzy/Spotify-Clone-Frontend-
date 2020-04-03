@@ -4,7 +4,7 @@ import {BrowserRouter as Router,
   Route, 
  } from "react-router-dom";
  import './HomePage.css';
-import HomePageNavbar from "../../Components/HomePageNavbar";
+import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
 import GeneralItem from "../GeneralItem";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";

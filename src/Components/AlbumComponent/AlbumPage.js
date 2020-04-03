@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import ReactDOM from "react-dom"
 import CardMedia from '../Media/CardMedia';
 import ReactSnackBar from "react-js-snackbar";
-import HomePageNavbar from '../HomePageNavbar';
+import HomePageNavbar from '../HomePage/HomePageNavbar';
 
 
 class AlbumPage extends Component

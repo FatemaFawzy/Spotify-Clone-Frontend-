@@ -1,7 +1,7 @@
 import React ,{ Component} from 'react';
 import './Premium.css';
-import MainNavbar from "../../Components/MainNavbar";
-import Footer from "../../Components/Footer";
+import MainNavbar from "../../Components/WelcomeRelated/MainNavbar";
+import Footer from "../../Components/WelcomeRelated/Footer";
 import {Link, Router } from "react-router-dom";
 
 class Premium extends Component {

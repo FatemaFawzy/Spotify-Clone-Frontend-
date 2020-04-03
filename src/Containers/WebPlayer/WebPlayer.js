@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import './WebPlayer.css';
 // import SearchPage from "./SearchPage";
 import {Switch, Route} from "react-router-dom";
-import HomePageSidebar from "../../Components/HomePageSidebar"
+import HomePageSidebar from "../../Components/HomePage/HomePageSidebar"
 import SearchPage from '../../SearchComponents/SearchPage';
 import YourLibrary  from '../YourLibraryPages/YourLibrary';
 import YourLibraryPlaylist  from '../YourLibraryPages/YourLibraryPlaylist';
