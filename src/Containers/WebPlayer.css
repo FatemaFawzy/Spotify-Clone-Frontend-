@@ -4,6 +4,9 @@
   background-color: rgb(18,18,18);
   min-height: 100vh;
 }
+body{
+  background-color: rgb(18,18,18) !important;
+}
 
 .web-player-class.side-bar-web-player{
   float: left;

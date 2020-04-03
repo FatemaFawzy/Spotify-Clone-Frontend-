@@ -114,7 +114,7 @@ class SearchPage extends Component {
 
     <Switch>
 
-    <Route exact path="/webplayer/search/" render={ (props) => <SearchedContent {...props}  
+    <Route  exact path="/webplayer/search/" render={ (props) => <SearchedContent {...props}  
             songs={this.state.songs}
             artists={this.state.artists}
             albums={this.state.albums}

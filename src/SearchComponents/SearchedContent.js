@@ -280,11 +280,13 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
 
     
     const noResultsfound = 'No results found for "' + searchfieldvalue + '"';
-    if (!songs.length && !artists.length && !albums.length) {
+    if (!songs.length && !artists.length && !albums.length && !playlists.length && !profiles.length) {
       return (
+        <div className="no-results-found-container">
         <div className="no-results-found">
           <h1>{noResultsfound}</h1>
           <p>Please make sure your words are spelled correctly or use less or different keywords.</p>
+        </div>
         </div>
       )
     }
@@ -305,10 +307,14 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
 
           </div>
 
+          <div className="rest-of-search-rendered">
+
           {RenderedArtists}
           {RenderedAlbums}
           {RenderedPlaylists}
           {RenderedProfiles}
+
+          </div>
 
           {/* {RenderedItems[0]}
           {RenderedItems[1]} */}

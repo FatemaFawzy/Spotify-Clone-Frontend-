@@ -17,6 +17,7 @@
     display: block;
     border: none;
     padding:17px;padding-left:55px;
+    padding-right: 45px;
     background-repeat:no-repeat;
     background-position:left center;
     z-index: 11;
@@ -79,7 +80,7 @@
   }
 
   /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
 
   .search-bar-sticky-top ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     visibility: hidden;
