@@ -1,19 +1,19 @@
 .liked-songs-page
 {
   background-color: rgb(18,18,18);
-  margin-top: 60px;
-  margin-bottom: 90px;
-  padding-top: 2em;
   color:white;
-}
-.liked-songs-page h3{
-  cursor: default;
+  overflow: hidden;
 }
 
 .liked-songs-page .content-spacing {
   padding: 0 32px;
-  margin: 0;
   max-width: 1955px;
+  margin-top: 70px;
+  margin-bottom: 90px;
+  padding-top: 2em;
+}
+.liked-songs-page h3{
+  cursor: default;
 }
 
 .liked-songs-page .centered-content li{

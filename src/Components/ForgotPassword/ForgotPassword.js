@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./ForgotPassword.css";
-import Header from  "./Header";
-import Footer from "./Footer";
+import Header from  "../WelcomeRelated/Header";
+import Footer from "../WelcomeRelated/Footer";
 import {BrowserRouter as Router, Redirect} from "react-router-dom";
 import {Link} from "react-router-dom";
 

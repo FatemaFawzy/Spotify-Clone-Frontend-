@@ -1,8 +1,8 @@
 import React ,{ Component} from 'react';
 import './HomePageSidebar.css';
 import { NavLink } from "react-router-dom";
-import CreatePlaylist from '../Components/PlaylistsComponent/CreatePlaylist';
-import { addNewURL } from '../HelperFunctions/History';
+import CreatePlaylist from '../PlaylistsComponent/CreatePlaylist';
+import { addNewURL } from '../../HelperFunctions/History';
  
 
 class HomePageSidebar extends Component{

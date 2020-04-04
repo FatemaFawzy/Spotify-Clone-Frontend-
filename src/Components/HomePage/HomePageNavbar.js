@@ -4,7 +4,7 @@ import {BrowserRouter,withRouter} from "react-router-dom";
 import {NavLink, Link} from "react-router-dom";
 import { render } from "@testing-library/react";
 import {useHistory} from "react-router-dom";
-import * as History from "../HelperFunctions/History";
+import * as History from "../../HelperFunctions/History";
 
 
 export class HomePageNavbar extends Component{
