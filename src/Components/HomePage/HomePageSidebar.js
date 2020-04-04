@@ -1,6 +1,6 @@
 import React ,{ Component} from 'react';
 import './HomePageSidebar.css';
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import CreatePlaylist from '../PlaylistsComponent/CreatePlaylist';
 import { addNewURL } from '../../HelperFunctions/History';
  
@@ -21,7 +21,7 @@ render() {
       
       <div className="sidebar">
         
-        <img className="logo"  src="https://i.ya-webdesign.com/images/itunes-logo-white-png-1.png" alt="logo"/>
+        <Link to="/webplayer/HomePage"><img className="logo"  src="https://i.ya-webdesign.com/images/itunes-logo-white-png-1.png" alt="logo"/></Link>
         
           <ul>
               <li><NavLink  onClick={addNewURL("/webplayer/HomePage")} className="List" to="/webplayer/HomePage/"><i className="fas fa-home"></i>Home</NavLink></li>
