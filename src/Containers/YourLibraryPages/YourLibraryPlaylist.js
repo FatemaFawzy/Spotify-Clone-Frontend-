@@ -1,7 +1,7 @@
 import React ,{ Component} from 'react';
 import './YourLibraryPlaylist.css';
 import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
-import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
+import GeneralItem from "../GenericComponenets/GeneralItem";
 import LikedSongsComponent from '../../Components/YourLibraryComponents/LikedSongsComponent';
 
 class YourLibraryPlaylist extends Component {

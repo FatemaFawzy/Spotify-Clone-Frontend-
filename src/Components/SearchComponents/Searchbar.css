@@ -54,7 +54,7 @@
 }
 
 .search-box-container{
-    margin-left: 100px;
+    margin-left: 20px;
     display: block;
     float: left;
     z-index: 15;
@@ -73,6 +73,17 @@
     font-size: 15px;
 }
 
+.drop-down-in-search{
+  display: inline-block;
+  z-index: 100;
+  position: absolute;
+  right:240px;
+}
+
+
+
+
+
 
 
 .search-bar-sticky-top input:focus::placeholder {
@@ -88,6 +99,31 @@
 
 .search-search-box{
   width: 200px;
+  }
+
+  .drop-down-in-search .name{
+    display: none;
+
+  
+
+  }
+  
+}
+
+@media only screen and (max-width: 600px) {
+
+  .search-bar-sticky-top ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    visibility: hidden;
+  }
+
+.search-search-box{
+  width: 130px;
+  }
+
+  .drop-down-in-search .name{
+    display: none;
+
+
   }
   
 

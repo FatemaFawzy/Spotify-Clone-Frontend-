@@ -64,7 +64,7 @@ render(){
     </div>
       <ul className="navbar-nav ml-auto d-flex d-none col-md-2 col-lg-3 col-xl-2" id="button-selector">
         <li>
-        <DropDownMenu name={this.props.name} image={this.props.image}/>
+        <DropDownMenu/>
         </li>  
       </ul> 
     

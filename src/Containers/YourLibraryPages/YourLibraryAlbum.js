@@ -1,6 +1,6 @@
 import React ,{ Component} from 'react';
 import './YourLibraryAlbum.css';
-import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
+import GeneralItem from "../GenericComponenets/GeneralItem";
 import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
 
 
