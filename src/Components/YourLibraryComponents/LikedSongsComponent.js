@@ -4,6 +4,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 import {Link} from "react-router-dom";
 import React ,{ Component} from 'react';
 
+
 class LikedSongsComponent extends Component {
   
   constructor(props){
@@ -11,10 +12,45 @@ class LikedSongsComponent extends Component {
 
     this.state = {
       totalLiked: "60",
-      mostRecentSongsArtist: ["The Weeknd","Dua Lipa","21 Savage","Saint JHN","Wiz Khalifa","Eric Clapton"],
-      mostRecentSongsName: ["Blinding Lights","Don't Start Now", "X Bitch","Roses","Mona Lisa","River Of Tears"]
-     }
+      recentlyLiked:[{artist:"Drake", song:"God's Plan"},
+                     {artist:"Rihanna", song:"Work"},
+                     {artist:"21 Savage", song:"X Bitch"},
+                     {artist:"Saint JHN", song:"Roses"},
+                     {artist:"The Weeknd", song:"Blinding Lights"},
+                     {artist:"21 Savage", song:"asmr"},
+                     {artist:"Saint JHN", song:"I Heard You Got Too Lit Last Night"}
+                   ],
+      string:'',
+    }
   }
+    componentDidMount(){
+        // var x = "";
+       //     for (var i=0; i< this.state.recentlyLiked.length; i++)
+      // {
+      //   x += this.state.recentlyLiked[i].artist + " ● " + this.state.recentlyLiked[i].song + " ";
+      // }
+       
+      // if (x.length > 150)
+      // {
+      //   x = x.slice(0,149) + "...";
+      // }
+      const stringofsongs = this.state.recentlyLiked.map(item =>{
+        return(
+          <span>
+            <span>
+              {item.artist + " "}
+            </span>
+            <span className="song-name">
+            ● 
+            </span>
+            <span className="song-name">
+              {" " +item.song  + " "}
+            </span>
+          </span>
+        )
+      }) 
+      this.setState({string:stringofsongs});
+    };
  
   handleClick = () => {
     this.props.history.push("/webplayer/likedsongs/");
@@ -23,12 +59,7 @@ render() {
 return ( 
   <div className="liked-songs-component" onClick={this.handleClick}>
     <p className="most-recent">
-    {this.state.mostRecentSongsArtist[0]} <span className="song-name">{this.state.mostRecentSongsName[0]} ● </span> 
-    {this.state.mostRecentSongsArtist[1]} <span className="song-name">{this.state.mostRecentSongsName[1]} ● </span>
-    {this.state.mostRecentSongsArtist[2]} <span className="song-name">{this.state.mostRecentSongsName[2]} ● </span>
-    {this.state.mostRecentSongsArtist[3]} <span className="song-name">{this.state.mostRecentSongsName[3]} ● </span> 
-    {this.state.mostRecentSongsArtist[4]} <span className="song-name">{this.state.mostRecentSongsName[4]} ● </span> 
-    {this.state.mostRecentSongsArtist[5]} <span className="song-name">{this.state.mostRecentSongsName[5]}</span>
+    {this.state.string}
     </p>
     <div className="row">
     <div className="col-8">
