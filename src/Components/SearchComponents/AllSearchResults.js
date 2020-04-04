@@ -1,6 +1,6 @@
 import React from "react";
 import "./AllSearchResults.css";
-import * as itemType from "../Constants/itemType";
+import * as itemType from "../../Constants/itemType";
 import GeneralItem from "../Containers/GeneralItem";
 
 const AllSearchResults = ({ results, type, searchfieldvalue }) => {
