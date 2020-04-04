@@ -1,21 +1,25 @@
-// import React from 'react';
-// import RelatedArtistsContent from '../Components/ArtistProfile/RelatedArtistsContent';
-// import { shallow } from 'enzyme';
+import RelatedArtistsContent from '../Components/ArtistProfile/RelatedArtistsContent';
+import React from "react";
+import {shallow, configure} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+configure({adapter: new Adapter()});
 
-// describe("[UNIT] Testing the RelatedArtistsContent component", () => {
-//   let wrapper;
+describe("[UNIT] Testing the RelatedArtistsContent component", () => {
+  let wrapper;
 
-//   beforeEach(() => {
-//     wrapper = shallow(<RelatedArtistsContent/>);
-//   });
+  beforeEach(() => {
+    wrapper = shallow(<RelatedArtistsContent/>);
+  });
 
-//   describe("Testing RelatedArtistsContent redering", () => { 
+  describe("Testing RelatedArtistsContent redering", () => { 
 
-//     it('displays the header of the page', () => {
-//       expect(wrapper.find("GeneralItem").text()).toContain("Popular");    
-//     });
+    it("It should have an Artist subname in the cards", ()=>{
+  
+      const text= wrapper.find("Artist");
+      expect(text);
+    })
 
-//   });
+  });
 
   
-// });
+});
