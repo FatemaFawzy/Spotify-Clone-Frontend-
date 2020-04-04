@@ -1,24 +1,48 @@
-.home-nav .nav-bgblack{
- 
-  position: fixed !important;
+.home-nav{
+  display: block;
+  width: 100%;
+  height: 60px;
+  background-color: rgb(18,18,18);
+  position: fixed;
+  z-index: 10;
+  padding: 10px;
 }
 
-.home-nav { 
-  text-overflow: ellipsis;
-  width: 1130px!important;
-  width:80%!important;
-  font-family: 'Roboto', sans-serif;
-  background-color:red !important;
+.home-nav-nabar{
+  display: block;
+  float: left;
+  z-index: 15;
+  position: relative;
 }
-.home-nav .icon-color{
-  color:#e6e6e6;
-  cursor:pointer;
+
+
+.home-nav .drop-down{
+  display: inline-block;
+  z-index: 100;
+  position: absolute;
+  right:240px;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 800px) {
+.home-nav .drop-down .name{
+  display: none;
+}
 
 }
+
+@media only screen and (max-width: 600px) {
+
+.home-nav .drop-down .name{
+  display: none;
+}
+}
+
 .home-nav #ul-upgrade{
-  /* margin-left: 240px;  */
+ 
   list-style: none;
 }
+
 .home-nav #upgradebtn{
   text-decoration: none;
   background-color: transparent;
@@ -31,224 +55,21 @@
   border-radius: 500px;
   line-height: 18px;
   padding: 8px 34px;
-  margin-top: 15px;  
+   
 }
 .home-nav #upgradebtn:hover{
-  margin-top: 15px;
   padding: 10px 36px;
-}
-
-.home-nav .over{
-  overflow: visible !important;
-  overflow-x: visible !important;
-  overflow-y: visible !important;
-}
-.home-nav #main-nav {
-  max-width: 1130px!important;
-  width: 100%!important;
-  position: fixed !important;
-  overflow: visible !important;
-  z-index:50;
-  height: 70px;
-}
-
-.home-nav #main-nav .icons{
-  background-color: #121212;
-  color:#e6e6e6;
-  font-weight:700;
-  font-size: 15px;
-  line-height: 16px;
-  color: #fff;
-}
-.home-nav .words {
-  font-size: 18px;
-  line-height: 16px;
-  font-weight: 700;
-  color: #fff !important;
-  position: relative;
-  border: 0;
-  display: inline-block;
-  text-decoration: none;
-  padding: 8px 16px !important;
-  border-radius: 4px;
-  margin: 0 8px;
-  margin-top:8px;
-}
-.home-nav .account-button{
-  
-  margin-left: 15px;
-  height: 32px;
-  padding: 4px;
-  color: #fff;
-  background-color:rgba(0,0,0,.7);
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: .015em;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-@media (max-width:990px)
-{
-  .home-nav #more-button{
-    margin-top:6px;
-    margin-right: 450px;
-  }
-  .home-nav #button-selector{
-   display: none !important;
-  }
-  
-}
-@media (max-width:1327px)
-{
-  .home-nav .name
-  {
-    display: none !important;
-  }
-  .home-nav #button-selector 
-  {
-   padding-left:80px;
-  }
-  .home-nav .dropdown-menu {
-    max-width: 100px;
-    min-width: 100px;
-  }
-  .home-nav .dropdown-toggle::after { 
-    content: none; 
-  } 
-  
-}
-
-.home-nav #button-selector{
-
-  right:20px !important;
-  position:absolute !important;
-  left:80%;
-  margin-left:auto !important;
-}
-
-.home-nav .image{
-  width: 28px;
-  height: 28px;
-  border-radius: 50%; 
-  background-color:#1d1e1f;
-}
-.home-nav .name
-{
-  padding-left:5px;
-  vertical-align: middle;
-  margin-bottom:0px;
-}
-.home-nav .dropdown-toggle:hover
-{
-  color: white !important;
-}
-
-.home-nav .dropdown-menu
-{
-  position: absolute;
-  right: 0;
-  padding:0;
-  margin: 8px 0 0;
-  background-color: #282828;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, .15);
-  border-radius: 4px;
-  visibility: visible;
-}
-.home-nav .btn 
-{
-  height:35px;
-}
-.home-nav .btn:focus{
-  outline: none !important;
-  border:none !important;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0, 0, 0, .175);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0, 0, 0, .175);
-}
-.home-nav .dropdown-item
-{
-  height: 40px !important;
-  padding:0;
-  text-align: left;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: .015em;
-  padding-bottom:5px;
-}
-.home-nav .dropdown-item:hover{
-  background-color: #525252 !important;
-  text-decoration: none !important;
-  color:white;
-  border-radius: 4px;
-}
-.home-nav .dropdown-item:focus{
-  outline: none !important;
-  border:none !important;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px #525252,0 0 8px #525252;
-  box-shadow: inset 0 1px 1px #525252,0 0 8px #525252;
-}
-.home-nav .white-words {
-  color:#a9a9a9;
-}
-.home-nav .border-on-top
-{
-  border-top: 1px solid #404040;
-  padding-top:8px;
-  padding-left:24px;
-  height:35px !important;
-}
-.home-nav .account-button:hover{
-  background-color:#282828 ;
-}
-.home-nav #width
-{
-  max-width:100px;
-  min-width: 100px;
-}
-.home-nav .grey-box {
-  background-color:#333333;
-}
-@media (max-width:1065px)
-{
-  .home-nav #button-selector
-  {
-    margin-right:40px;
-  }
-}
-
-@media (max-width:1250px)
-{
-  .home-nav #button-selector 
-  {
-    margin-right:40px;
-    padding-left: 30px;
-  }
- 
-
-}
-@media (max-width:1365px)
-{
-  .home-nav #button-selector
-  {
-    margin-right:40px;
-  }
- 
-.home-nav .no-box {
-  background:none;
-}
 }
 
 @media (max-width:580px)
 {
   .home-nav #upgradebtn{
-  padding: 5px 25px;
-  font-size: 10px;
+    margin-top: 2px;
+    padding: 5px 25px;
+    font-size: 10px;
   }
   .home-nav #upgradebtn:hover{
     padding: 6px 27px;
     font-size: 10px;
-    }
-}
+  }
+} 
