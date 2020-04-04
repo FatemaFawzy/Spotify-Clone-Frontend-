@@ -35,7 +35,7 @@ class YourLibraryAlbum extends Component {
         name={item.name}
         subname={item.description}
         id={item.id}
-        type="PLAYLIST"
+        type="ALBUM"
       />
       )
     }
