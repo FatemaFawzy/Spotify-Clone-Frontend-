@@ -13,7 +13,7 @@ describe("[UNIT] Testing the SignUp component", () => {
   })
 
   describe("Component redering", () => {    
-    // 4. Our unit test, checking if the initial value is 0
+    // 4. Our unit test
     it('displays the header of the page', () => {
       expect(wrapper.find("h2").text()).toContain("Sign up with your email address")    
     })

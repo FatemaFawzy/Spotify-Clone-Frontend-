@@ -30,17 +30,17 @@ class ArtistOverviewContent extends Component {
     ],
 
     singlesInfo: [
-      {id : 6, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+      {id : 12, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
       albumLink: "/webplayer/album/"},
-      {id : 7, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+      {id : 13, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
       albumLink: "/webplayer/album/"},
-      {id : 8, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+      {id : 14, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
       albumLink: "/webplayer/album/"},
-      {id : 9, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+      {id : 15, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
       albumLink: "/webplayer/album/"},
-      {id : 10, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+      {id : 16, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
       albumLink: "/webplayer/album/"},
-      {id : 11, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+      {id : 17, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
       albumLink: "/webplayer/album/"},
     ],
 
@@ -85,7 +85,7 @@ class ArtistOverviewContent extends Component {
       <div id="overview-body" className="artist-overview-content">
         
         <section>
-          <h1> Popular </h1>
+          <h1 id="popular-h1"> Popular </h1>
 
           <table class="table table-borderless d-flex">
             <tbody>
