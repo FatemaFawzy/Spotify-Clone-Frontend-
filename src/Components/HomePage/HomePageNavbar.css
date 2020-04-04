@@ -1,5 +1,5 @@
 .home-nav .nav-bgblack{
-  /* background-color:#121212 !important; */
+ 
   position: fixed !important;
 }
 
@@ -16,7 +16,7 @@
 
 }
 .home-nav #ul-upgrade{
-  margin-left: 740px;
+  /* margin-left: 240px;  */
   list-style: none;
 }
 .home-nav #upgradebtn{
@@ -31,19 +31,13 @@
   border-radius: 500px;
   line-height: 18px;
   padding: 8px 34px;
-  margin-top: 15px;
-  /* text-align: center; */
-  /* width: 38px; */ 
-  
+  margin-top: 15px;  
 }
 .home-nav #upgradebtn:hover{
   margin-top: 15px;
   padding: 10px 36px;
 }
-/* .home-nav #upgradebtn:focus{
-  
-  border: none;
-} */
+
 .home-nav .over{
   overflow: visible !important;
   overflow-x: visible !important;
@@ -83,8 +77,6 @@
 .home-nav .account-button{
   
   margin-left: 15px;
-  /* padding-top: 5px; */
-  border-radius: 23px;
   height: 32px;
   padding: 4px;
   color: #fff;
@@ -107,7 +99,7 @@
   }
   
 }
-@media (max-width:1278px)
+@media (max-width:1327px)
 {
   .home-nav .name
   {
@@ -124,9 +116,7 @@
   .home-nav .dropdown-toggle::after { 
     content: none; 
   } 
-  .home-nav #ul-upgrade{
-    margin-left: 780px !important;
-  }
+  
 }
 
 .home-nav #button-selector{
@@ -135,11 +125,8 @@
   position:absolute !important;
   left:80%;
   margin-left:auto !important;
-  /* overflow: visible !important; */
 }
-.home-nav .button{
-  /* overflow: visible !important; */
-}
+
 .home-nav .image{
   width: 28px;
   height: 28px;
@@ -156,9 +143,7 @@
 {
   color: white !important;
 }
-.home-nav .dropdown {
-  /* overflow: visible !important; */
-}
+
 .home-nav .dropdown-menu
 {
   position: absolute;
@@ -170,8 +155,6 @@
   border: 1px solid rgba(0, 0, 0, .15);
   border-radius: 4px;
   visibility: visible;
-  /* overflow: visible  !important; */
-
 }
 .home-nav .btn 
 {
@@ -193,7 +176,6 @@
   line-height: 20px;
   letter-spacing: .015em;
   padding-bottom:5px;
-  /* overflow: visible !important; */
 }
 .home-nav .dropdown-item:hover{
   background-color: #525252 !important;
@@ -244,35 +226,29 @@
     margin-right:40px;
     padding-left: 30px;
   }
-  .home-nav #ul-upgrade{
-    margin-left: 730px !important;
-  }
+ 
 
 }
-@media (max-width:1325px)
+@media (max-width:1365px)
 {
   .home-nav #button-selector
   {
     margin-right:40px;
   }
-  .home-nav #ul-upgrade{
-    margin-left: 700px;
-  }
-}
+ 
 .home-nav .no-box {
   background:none;
 }
-@media (max-width:1199px)
-{
-  .home-nav #ul-upgrade
-  {
-    margin-left: 640px !important;
-  }
 }
-@media (max-width:1140px)
+
+@media (max-width:580px)
 {
-  .home-nav #ul-upgrade
-  {
-    display: none;
+  .home-nav #upgradebtn{
+  padding: 5px 25px;
+  font-size: 10px;
   }
+  .home-nav #upgradebtn:hover{
+    padding: 6px 27px;
+    font-size: 10px;
+    }
 }
