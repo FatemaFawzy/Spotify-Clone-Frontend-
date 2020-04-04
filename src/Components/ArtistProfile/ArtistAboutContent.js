@@ -26,7 +26,7 @@ class ArtistAboutContent extends Component {
 
           <div className="col-sm-12 col-md-8 p-0">
             <section className="mr-5">
-              <h2 className="title"> Biography </h2>
+              <h2 className="title" id="biography"> Biography </h2>
               <p className="font-weight-bolder paragraphs"> {this.state.biography} </p>
             </section>
           </div>

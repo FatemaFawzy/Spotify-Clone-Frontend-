@@ -4,24 +4,27 @@ import "./MediaObject.css";
 class MediaObject extends Component {
   constructor(props){
     super(props);
-    // this.play= this.play.bind(this);
+    this.referefence= React.createRef();
+    this.state = {
+      playing: false,
+    }
   }
 
-  play = e => {
-    const {id} = e.target;
-    var heart=document.getElementById(id);
-    heart.classList.toggle("fa-pause-circle");
-    heart.classList.toggle("fa-play-circle");
-  }
+// TODO: handle the case to play only 1 song at a time (play/pause icon)
 
   render(){
+
+    var PlayPause = this.state.playing ? <i class="far fa-pause-circle"></i> : <i class="far fa-play-circle"></i>;
+
     return (
       <div className="media-object">
 
         <div className="container">
           <img src= {this.props.image} className="displayed-image"></img>
           <div className="middle">
-            <div className="far fa-play-circle" id="play-object" onClick={this.play}></div>
+            <div onClick={(event) => {
+              this.setState((prevstate, event) => ({ playing: prevstate.playing ? false : true }))
+              }}> {PlayPause} </div>
           </div>
         </div>
 

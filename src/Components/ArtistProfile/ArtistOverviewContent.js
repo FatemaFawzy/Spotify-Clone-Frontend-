@@ -30,17 +30,17 @@ class ArtistOverviewContent extends Component {
     ],
 
     singlesInfo: [
-      {id : 6, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+      {id : 12, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
       albumLink: "/webplayer/album/"},
-      {id : 7, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+      {id : 13, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
       albumLink: "/webplayer/album/"},
-      {id : 8, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+      {id : 14, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
       albumLink: "/webplayer/album/"},
-      {id : 9, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+      {id : 15, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
       albumLink: "/webplayer/album/"},
-      {id : 10, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+      {id : 16, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
       albumLink: "/webplayer/album/"},
-      {id : 11, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+      {id : 17, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
       albumLink: "/webplayer/album/"},
     ],
 
@@ -85,7 +85,7 @@ class ArtistOverviewContent extends Component {
       <div id="overview-body" className="artist-overview-content">
         
         <section>
-          <h1> Popular </h1>
+          <h1 id="popular-h1"> Popular </h1>
 
           <table class="table table-borderless d-flex">
             <tbody>
@@ -126,14 +126,14 @@ class ArtistOverviewContent extends Component {
 
           {this.state.albumInfo.slice(0,3).map((album,index)=>(   
             <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
-              <MediaObject className="media-object" image={album.albumPhoto} 
+              <MediaObject key={index} image={album.albumPhoto} 
               objectName={album.albumName} albumLink={album.albumLink}> </MediaObject>
             </div>  
           ))}
 
           {this.state.albumInfo.slice(3,this.state.albumInfo.length).map((album,index)=>(   
             <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2 hide-these"> 
-              <MediaObject className=" media-object" image={album.albumPhoto} 
+              <MediaObject key={index} image={album.albumPhoto} 
               objectName={album.albumName} albumLink={album.albumLink}> </MediaObject>
             </div>  
           ))}           
@@ -146,7 +146,7 @@ class ArtistOverviewContent extends Component {
               <div className="row">
               {this.state.albumInfo.slice(3,this.state.albumInfo.length).map((album,index)=>(   
                   <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
-                    <MediaObject className="media-object" image={album.albumPhoto} 
+                    <MediaObject key={index} image={album.albumPhoto} 
                     objectName={album.albumName} albumLink={album.albumLink}> </MediaObject>
                   </div>  
               ))}
@@ -168,14 +168,14 @@ class ArtistOverviewContent extends Component {
           <div className="row">
             {this.state.singlesInfo.slice(0,3).map((single,index)=>(   
                 <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
-                  <MediaObject image={single.singlePhoto} 
+                  <MediaObject key={index} image={single.singlePhoto} 
                   objectName={single.singleName} albumLink={single.albumLink}> </MediaObject>
                 </div>  
             ))}
 
             {this.state.singlesInfo.slice(3,this.state.singlesInfo.length).map((single,index)=>(   
                 <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2 hide-these"> 
-                  <MediaObject image={single.singlePhoto} 
+                  <MediaObject key={index} image={single.singlePhoto} 
                   objectName={single.singleName} albumLink={single.albumLink}> </MediaObject>
                 </div>  
             ))}
@@ -188,7 +188,7 @@ class ArtistOverviewContent extends Component {
               <div className="row">
                 {this.state.singlesInfo.slice(3,this.state.singlesInfo.length).map((single,index)=>(   
                     <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
-                      <MediaObject image={single.singlePhoto} 
+                      <MediaObject key={index} image={single.singlePhoto} 
                   objectName={single.singleName} albumLink={single.albumLink}> </MediaObject>
                     </div>  
                 ))}
