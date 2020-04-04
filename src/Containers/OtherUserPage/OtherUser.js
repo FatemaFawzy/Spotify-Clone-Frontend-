@@ -2,7 +2,7 @@ import React,{Component} from "react";
 import "./OtherUser.css";
 import {connect} from "react-redux";
 import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
-import GeneralItem from "../../Containers/GeneralItem";
+import GeneralItem from "../GenericComponenets/GeneralItem";
 import * as itemType from "../../Constants/itemType";
 
 class OtherUser extends Component {
@@ -14,7 +14,7 @@ class OtherUser extends Component {
   componentDidMount(){
 
     // TODO: I Should send a request to get the info related to the user with ID = this.props.profileID
-    console.log(this.props.profileID)
+
       const url = "https://jsonplaceholder.typicode.com/photos"; 
       fetch(url)
         .then((response) => {

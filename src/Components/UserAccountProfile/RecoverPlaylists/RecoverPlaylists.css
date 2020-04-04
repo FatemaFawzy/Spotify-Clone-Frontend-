@@ -1,0 +1,63 @@
+.recover-playlists
+{
+    margin: 0 2%;
+    padding: 30px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+}
+
+.recover-playlists .page-title
+{
+    margin:13px 0px;
+    font-size: 26px;
+    color: #1DB954;
+    font-weight: 400;
+}
+.recover-playlists .content
+{
+    font-size: 16px;
+}
+
+@media (width: 75px) {
+.recover-playlists .content-layout {
+    padding: 20px;
+    width: 100%;
+}
+}
+
+@media (min-width: 75px) and (max-width: 1200px){
+    .recover-playlists .table-layout {
+        padding: 40px;
+        width: 100%;
+ }
+}
+
+.recover-playlists .table-titles
+{
+    
+    border-bottom-width: 1px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #C1C3C6;
+    border-top-color: transparent;
+    
+}
+
+.recover-playlists .table-layout
+{
+    padding:40px;
+    margin-bottom: 10px;
+    background: white;
+    
+}
+.recover-playlists .restore
+{
+    color: #1DB954;
+    text-decoration: none;
+   
+}
+.recover-playlists .restore:hover
+{
+    color: #1ed760;
+    
+}

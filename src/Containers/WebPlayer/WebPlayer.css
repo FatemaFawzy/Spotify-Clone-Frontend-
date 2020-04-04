@@ -1,0 +1,22 @@
+.web-player-class .content-web-player{
+  margin-left: 230px;
+  width: 100%;
+  background-color: rgb(18,18,18);
+  min-height: 100vh;
+}
+body{
+  background-color: rgb(18,18,18) !important;
+}
+
+.web-player-class.side-bar-web-player{
+  float: left;
+  width: 230px;
+}
+
+.web-player-class .music-bar-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #282828;
+}

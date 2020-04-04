@@ -1,0 +1,52 @@
+.bottom-bar 
+{
+	background: #0a0a0a;
+	color:white;
+    bottom: 0;
+    left: 0;
+	right: 0;
+	margin-bottom: 0px; 
+	position: relative;
+	
+}
+
+
+
+.bottom-bar .logo 
+{
+	color:white;
+	font-size:25px;
+	text-decoration: none;
+}
+
+.bottom-bar .links-hover
+{
+	color: white;
+}
+
+.bottom-bar .links-hover:hover
+{
+	color: #1ed760;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+.bottom-bar .img-size
+{
+	height: 18px;
+	margin-left: 10px;
+}
+.bottom-bar .language
+{
+	color:white;
+	font-size: 12px;
+	margin-right: 2.5%;
+}
+.bottom-bar .face-logo
+{
+	color:white;
+	font-size:25px;
+	text-decoration: none;
+	
+}
+

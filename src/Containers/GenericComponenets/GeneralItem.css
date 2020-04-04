@@ -1,0 +1,141 @@
+.item-general-outer-class {
+  padding: 20px;
+  float: left;
+  height: 270px;
+  margin: 12px;
+  margin-right: 0px;
+  background-color:rgb(37,37,37);
+  border-radius: 10px;
+  position: relative;
+  overflow:hidden;
+  display: block;
+  cursor: pointer;
+}
+
+.item-general-outer-class .img-style-item-general{
+  border: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 160px;
+  bottom: 0;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  text-align: center;
+  display: block;
+}
+
+.item-general-outer-class a{
+  color:gray;
+  text-decoration: none;
+  font-size: 80%;
+  font-weight: 600;
+  z-index:20;
+}
+.item-general-outer-class a:hover{
+  color:gray;
+}
+
+.item-general-outer-class p{
+  color:white;
+  font-weight: 600;
+  margin-top: 4px;
+  margin-bottom: -0.5px;
+  font-size: 100%;
+  z-index: 20;
+}
+
+.item-general-outer-class button{
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  background-color: rgb(29,185,84);
+  padding: 5px;
+  color: white;
+  text-align: center;
+  display: none;
+  right: 20px;
+  bottom: 20px;
+
+}
+
+.item-general-outer-class button:focus{
+  outline: none;
+}
+
+.item-general-outer-class button:hover{
+  width: 42px;
+  height: 42px;
+  cursor: default;
+}
+
+.item-general-outer-class:hover button{
+  display: inline-block;
+}
+
+
+#i-am-round-img-general{
+  border: none;
+  height: 160px;
+  width: 100%;
+  border-radius: 50%;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 550px) {
+
+  .item-general-outer-class {
+  width: 100%;
+}
+
+
+}
+
+@media only screen and (min-width: 550px) {
+
+  .item-general-outer-class {
+  width: 70%;
+}
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 670px) {
+
+  .item-general-outer-class {
+  width: 45%;
+}
+
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+  .item-general-outer-class {
+  width: 30%;
+}
+
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 1000px) {
+
+  .item-general-outer-class {
+  width: 23%;
+}
+
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+  .item-general-outer-class {
+  /* width: 200px; */
+  width: 18%;
+}
+
+}

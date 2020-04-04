@@ -1,0 +1,139 @@
+
+.BrowseItem {
+    padding: 0 15px;
+    padding-top: 5px;
+    float: left;
+    height: 200px;
+    margin: 12px;
+    margin-right: 0px;
+    background-color:black;
+    border-radius: 10px;
+    position: relative;
+    overflow:hidden;
+    display: block;
+  }
+
+  .BrowseItem .img-style {
+    right: 0;
+    -webkit-transform: rotate(25deg) translate(18%,-2%);
+    transform: rotate(25deg) translate(18%,-2%);
+    box-sizing: border-box;
+    vertical-align: baseline;
+
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+.BrowseItem .head-style{
+
+  color:white;
+  font-weight: 700;
+  text-shadow: rgb(54, 54, 54);
+}
+
+.special-browse{
+
+  width: 35%;
+  float: none;
+  margin-bottom: 5%;
+
+}
+
+.special-browse .head-style{
+
+  color:white;
+  font-weight: 700;
+  font-size: 300%;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 550px) {
+
+  .BrowseItem {
+    width: 100%;
+  }
+
+  .special-browse{
+
+    width: 100%;
+  }
+
+}
+
+@media only screen and (min-width: 550px) {
+
+  .BrowseItem {
+    width: 70%;
+  }
+
+  .special-browse{
+
+    width: 100%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 670px) {
+
+  .BrowseItem {
+    width: 45%;
+  }
+
+  .special-browse{
+
+    width: 90%;
+  }
+  
+
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+  .BrowseItem {
+    width: 30%;
+  }
+
+  .special-browse{
+
+    width: 60%;
+  }
+  
+
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 1000px) {
+
+  .BrowseItem {
+    width: 23%;
+  }
+
+  .special-browse{
+
+    width: 46%;
+  }
+  
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+  .BrowseItem {
+    /* width: 200px; */
+    width: 18%;
+  }
+
+  .special-browse{
+
+    width: 36%;
+  }
+  
+
+}

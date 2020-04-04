@@ -1,0 +1,132 @@
+.search-bar-sticky-top{
+
+
+    display: block;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(18,18,18);
+    position: fixed;
+    z-index: 10;
+    padding: 10px;
+}
+
+.search-search-box{
+    width: 370px;
+    height: 40px;
+    border-radius: 50px;
+    display: block;
+    border: none;
+    padding:17px;padding-left:55px;
+    padding-right: 45px;
+    background-repeat:no-repeat;
+    background-position:left center;
+    z-index: 11;
+    position: relative;
+}
+
+.search-search-icon{
+    z-index: 12;
+    float: left;
+    font-size: 150%;
+    position: absolute;
+    margin-top: 2px;
+    margin-left: 10px;
+    color: rgb(99, 97, 97);
+}
+
+.search-cancel-icon{
+    color: rgb(99, 97, 97);
+    position: absolute;
+    margin-top: -40px;
+    z-index: 12;
+    background-color: transparent;
+    border: none;
+    font-size: 150%;
+    visibility: visible;
+    right: 10px;
+}
+
+.cancelx-invisible{
+    visibility: hidden;
+}
+.search-cancel-icon:focus{
+    outline: none;
+}
+
+.search-box-container{
+    margin-left: 20px;
+    display: block;
+    float: left;
+    z-index: 15;
+    position: relative;
+}
+
+.search-search-box:focus{
+    outline: none;
+
+}
+
+
+.search-bar-sticky-top ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-weight: 500;
+    opacity: 1; /* Firefox */
+    font-size: 15px;
+}
+
+.drop-down-in-search{
+  display: inline-block;
+  z-index: 100;
+  position: absolute;
+  right:240px;
+}
+
+
+
+
+
+
+
+.search-bar-sticky-top input:focus::placeholder {
+    color: transparent;
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 800px) {
+
+  .search-bar-sticky-top ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    visibility: hidden;
+  }
+
+.search-search-box{
+  width: 200px;
+  }
+
+  .drop-down-in-search .name{
+    display: none;
+
+  
+
+  }
+  
+}
+
+@media only screen and (max-width: 600px) {
+
+  .search-bar-sticky-top ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    visibility: hidden;
+  }
+
+.search-search-box{
+  width: 130px;
+  }
+
+  .drop-down-in-search .name{
+    display: none;
+
+
+  }
+  
+
+
+
+}

@@ -7,6 +7,7 @@ const initialState = {
   selectedSongID: null,
   selectedPlaylistID: null,
   selectedProfileID: null,
+  userID:1,
 }
 
 const reducer = (state = initialState, action) => {

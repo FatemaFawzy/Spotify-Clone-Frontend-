@@ -2,7 +2,7 @@ import React ,{ Component} from 'react';
 import "./ArtistProfile.css";
 import {Link } from "react-router-dom";
 import ArtistProfileContent from "../../Components/ArtistProfile/ArtistProfileContent";
-import HomePageNavbar from "..//../Components/HomePageNavbar";
+import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
 
 
 class ArtistProfile extends Component{

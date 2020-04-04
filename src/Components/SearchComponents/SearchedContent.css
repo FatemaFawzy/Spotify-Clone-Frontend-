@@ -1,0 +1,144 @@
+.after-typed-search {
+  padding: 20px;
+  background-color: rgb(18,18,18);
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.after-typed-search h2{
+
+  color: white;
+  margin-left: 12px;
+  font-weight: 700;
+  margin-bottom: 1%;
+  margin-top: 2%;
+  text-shadow: darkgray;
+  letter-spacing: -0.05rem;
+  clear: left;
+
+}
+.no-results-found{
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 200px;
+}
+
+.no-results-found-container{
+  width:100%;
+  color: white;
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  top:0px;
+  left:230px;
+  padding-right: 260px;
+}
+
+.no-results-found-container::-webkit-scrollbar {
+  display: none !important;
+  width: 0px;  
+  background: transparent;
+  visibility: hidden;
+}
+ 
+
+.no-results-found h1{
+  display: block;
+  margin: auto auto;
+  font-weight: 700;
+  font-size: 180%;
+  float: none;
+  text-shadow: rgb(95, 95, 95);
+  text-align: center;
+  
+}
+
+.no-results-found p{
+  display: block;
+  margin: auto auto;
+  font-weight: 500;
+  text-shadow: rgb(95, 95, 95);
+  text-align: center;
+  margin-top: 2%;
+  font-size: 92%;
+}
+
+.searched-category-block{
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.searched-category-title{
+  display: block;
+  color: white;
+  margin-left: 12px;
+  font-weight: 700;
+  margin-bottom: 1%;
+  margin-top: 3%;
+  text-shadow: darkgray;
+  letter-spacing: -0.05rem;
+  clear: left;
+  font-size: 200%;
+}
+
+.searched-category-title:hover{
+  color: white;
+  text-decoration: underline;
+  text-underline-position: under;
+}
+#searched-category-title-song{
+
+  margin-bottom: 10px;
+}
+
+#searched-category-block-song{
+  margin-top: -19px;
+}
+
+
+.searched-top-title{
+  color: white;
+  margin-left: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-top: 3%;
+  text-shadow: darkgray;
+  letter-spacing: -0.05rem;
+  font-size: 200%;
+  width: 100%;
+  display: table-header-group;
+}
+.searched-top-title span{
+  margin-left: 10px;
+  
+}
+
+
+.searched-top-container{
+  display: block;
+}
+
+.search-spinner-loading{
+
+  text-align: center;
+  display: block;
+  padding: auto auto;
+  font-size: 800%;
+  color: rgb(37,37,37);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 100px;
+
+}
+
+.rest-of-search-rendered{
+  display: table;
+}
+
+
