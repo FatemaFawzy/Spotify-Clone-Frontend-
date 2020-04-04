@@ -4,8 +4,8 @@ import SearchContent from "./SearchContent";
 import { Link } from "react-router-dom";
 import SongSearched from "./SongSearched";
 import TopResultItem from "./TopResultItem";
-import GeneralItem from "../Containers/GeneralItem";
-import * as itemType from "../Constants/itemType";
+import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
+import * as itemType from "../../Constants/itemType";
 
 const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfieldvalue, loading }) => {
 

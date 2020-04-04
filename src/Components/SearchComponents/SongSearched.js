@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import "./SongSearched.css"
 import ReactDOM from "react-dom"
 import ReactSnackBar from "react-js-snackbar";
-import '../Components/PlaylistsComponent/SnackBar.css';
+import '../../Components/PlaylistsComponent/SnackBar.css';
 
 class SongSearched extends Component {
   state = {

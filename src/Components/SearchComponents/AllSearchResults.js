@@ -1,7 +1,7 @@
 import React from "react";
 import "./AllSearchResults.css";
 import * as itemType from "../../Constants/itemType";
-import GeneralItem from "../Containers/GeneralItem";
+import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
 
 const AllSearchResults = ({ results, type, searchfieldvalue }) => {
 

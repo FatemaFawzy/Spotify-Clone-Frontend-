@@ -5,7 +5,7 @@ import SearchedContent from "./SearchedContent";
 import Searchbar from "./Searchbar";
 import {Switch,Route,Redirect} from "react-router-dom";
 import AllSearchResults from "./AllSearchResults";
-import * as itemType from "../Constants/itemType";
+import * as itemType from "../../Constants/itemType";
 
 
 

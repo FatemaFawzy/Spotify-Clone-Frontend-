@@ -2,7 +2,7 @@ import React,{Component} from "react";
 import "./OtherUser.css";
 import {connect} from "react-redux";
 import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
-import GeneralItem from "../../Containers/GeneralItem";
+import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
 import * as itemType from "../../Constants/itemType";
 
 class OtherUser extends Component {

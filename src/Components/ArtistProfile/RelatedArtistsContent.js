@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./RelatedArtistsContent.css";
-import "../../Containers/GeneralItem";
-import GeneralItem from '../../Containers/GeneralItem';
+import "../../Containers/GenericComponenets/GeneralItem";
+import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
 
 class RelatedArtistsContent extends Component {
 

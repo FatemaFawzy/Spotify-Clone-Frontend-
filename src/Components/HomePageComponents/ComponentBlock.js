@@ -3,7 +3,7 @@ import "./ComponentBlock.css";
 import {BrowserRouter as Router} from "react-router-dom";
 import {Link} from "react-router-dom";
 import React ,{ Component} from 'react';
-import GeneralItem from "../../Containers/GeneralItem";
+import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
 import * as itemType from "../../Constants/itemType";
 
 
