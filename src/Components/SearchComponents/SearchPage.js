@@ -6,6 +6,7 @@ import Searchbar from "./Searchbar";
 import {Switch,Route,Redirect} from "react-router-dom";
 import AllSearchResults from "./AllSearchResults";
 import * as itemType from "../../Constants/itemType";
+import DropDownMenu from "../../Containers/GenericComponenets/DropDownMenu";
 
 
 
@@ -181,6 +182,8 @@ class SearchPage extends Component {
           searchFocus={this.OnSearchFocus}
           searchBlur={this.OnSearchBlur}
           isXvisible={Xvisible} />
+
+          
 
           {actualSearchPage}
 

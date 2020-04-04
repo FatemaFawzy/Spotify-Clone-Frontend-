@@ -1,5 +1,6 @@
 import React from "react";
 import "./Searchbar.css"
+import DropDownMenu from "../../Containers/GenericComponenets/DropDownMenu";
 
 const Searchbar = (props) => {
 
@@ -19,6 +20,14 @@ const Searchbar = (props) => {
                                placeholder="Search for Artists, Songs, or Albums"/> 
                         <button onClick={props.cancelSearch} className={styleX}><i class="fas fa-times"></i></button>
                         </div>
+
+                        <div className="drop-down-in-search">
+
+                        <DropDownMenu/>
+
+                        </div>
+
+                        
                 
                 </div>
 
