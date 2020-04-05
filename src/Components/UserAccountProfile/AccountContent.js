@@ -7,14 +7,18 @@ import {Route , Switch, Redirect} from "react-router-dom";
 import EditProfile from "./EditProfile/EditProfile.js";
 
 
-const AccountContent= (props) => (
+const AccountContent= ({info}) => (
 
 
     <div className="account-content">
             <Switch>
-                <Route path="/account/overview/" component={OverviewContent}/>
-                <Route path="/account/profile/" component={EditProfile}/>
-                <Route path="/account/set-device-password/" component={SetPasswordContent}/>
+
+                <Route path="/account/overview/" render=  { (props) => <OverviewContent {...props}
+                        passedInfo={info}/>}/>
+                <Route path="/account/profile/" render=  { (props) => <EditProfile {...props}
+                        passedInfo={info}/>}/>
+                <Route path="/account/set-device-password/" render=  { (props) => <SetPasswordContent {...props}
+                        passedToken={info}/>}/>
                 <Route path="/account/recover-playlists/" component={RecoverPlaylists}/>
 
                 <Redirect to = "/account/overview/"/>

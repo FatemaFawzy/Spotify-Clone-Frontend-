@@ -11,11 +11,13 @@ const currentuser={
       "totalfollowers" : 306565,
       "isactive": true,
       "ispremium":false,
+      "username" : "Jadams",
+      "birthdate" : "10/12/200",
+      "gender": "male"
         },
     
-    "username" : "Jadams",
-    "fname" : "John",
-    "lname" : "Adams"
+    
+
     }
 
 const OverviewContent=()=>(
@@ -25,11 +27,10 @@ const OverviewContent=()=>(
         <h1><strong>Account overview</strong></h1>
         <h3 style={{marginTop:"5%"}}><strong>Profile</strong></h3>
 
-        <InfoLine title="Country" info="EG"/>
         <InfoLine title="Email" info={currentuser.User.email}/>
-        <InfoLine title="Username" info={currentuser.username}/>
-        <InfoLine title="First Name" info={currentuser.fname}/>
-        <InfoLine title="Last Name" info={currentuser.lname}/>
+        <InfoLine title="Username" info={currentuser.User.username}/>
+        <InfoLine title="Gender" info={currentuser.User.gender}/>
+        <InfoLine title="Birthdate" info={currentuser.User.birthdate}/>
         <Link to="/account/profile" className="ep-bt">EDIT PROFILE</Link>
 
         <h3 style={{marginTop:"5%"}}><strong>Your plan</strong></h3>

@@ -7,8 +7,32 @@ import "../../Components/UserAccountProfile/AccountContent";
 import {BrowserRouter as Router } from "react-router-dom";
 import MainNavbar from '../../Components/WelcomeRelated/MainNavbar';
 // import { Container } from 'react-bootstrap/lib/Tab';
+import {connect} from "react-redux";
 
 class AccountLayout extends Component {
+
+  state={
+
+    userInfo: {},
+  }
+
+  componentDidMount(){
+
+    const url = "https://jsonplaceholder.typicode.com/photos/1"; 
+      fetch(url)
+        .then((response) => {
+          return response.json();
+          
+        })
+        .then((data) => {
+          this.setState({userInfo:data})
+        })
+        .catch((error)=>{
+          console.log(error);
+
+        })
+
+  }
 
     render()
     {
@@ -21,11 +45,11 @@ class AccountLayout extends Component {
                     <div className="row no-gutters container-fluid">
 
                         <div className="col-sm-3">
-                            <AccountSidebar image="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2617592195136976&height=300&width=300&ext=1586597311&hash=AeT69G6iOgUxz6VW"/>
+                            <AccountSidebar image={this.state.userInfo.url}/>
                         </div>
 
                         <div className="col-sm-9">
-                           < AccountContent/>
+                           < AccountContent info={this.state.userInfo}/>
                         </div>   
 
                     </div>
@@ -39,4 +63,15 @@ class AccountLayout extends Component {
 
 }
 
-export default AccountLayout
+const mapStateToProps = state => {
+
+  return {
+    userID : state.userID,
+    userToken : state.userToken
+    //now you have access to the userID as this.props.userID inside the class component.
+    //now you have access to the userID as this.props.userID inside the class component.
+  };
+
+};
+
+export default connect(mapStateToProps)(AccountLayout)
