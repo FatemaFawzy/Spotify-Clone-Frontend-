@@ -20,10 +20,17 @@ class EditProfile extends Component {
         year: "1998",
       },
       usernameErrorMessage: "",
+      savedChanges: false,
     }
     
   }
 
+  componentDidMount() {
+    if (this.savedChanges) {
+      document.getElementById("saved-changes").classList.remove("hide");
+    }
+    else document.getElementById("saved-changes").classList.add("hide");
+  }
   handleChange =e => {
     
     const {id, value}= e.target;
@@ -63,6 +70,7 @@ class EditProfile extends Component {
     e.preventDefault();
     if (this.state.usernameErrorMessage === "") {
       document.getElementById("edit-profile-form").submit();
+      this.setState({savedChanges: true}, () => console.log(this.state) );
     }
   }
   
@@ -71,6 +79,8 @@ class EditProfile extends Component {
       <div className="edit-profile-body">
 
         <div className="container">
+          
+          <h1 id="saved-changes"> Your changes have been saved </h1>
 
           <h1 id="edit-profile-h1"> Edit Profile </h1>
 
