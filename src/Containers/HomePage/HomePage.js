@@ -8,47 +8,159 @@ import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
 import GeneralItem from "../GenericComponenets/GeneralItem";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
+import {connect} from "react-redux";
+
 
 
 class HomePage extends Component {
   constructor(props){
     super(props);
     this.state = {
-     recentlyPlayed:[{type: "SONG" , title: "Meek Mill", subtitle: "SONG", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
-     {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}] , 
-    
-     madeforyou: [{type: "PLAYLIST" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
-     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}],  
-    
-     yourplaylists: [{type: "PLAYLIST" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
-     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}],  
-    
-     popularalbums: [{type: "ALBUM" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
-     {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}],  
-    
-     newreleases: [{type: "SONG" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
-     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}], 
-    
-     popularartists: [{type: "ARTIST" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
-     {type: "ARTIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "ARTIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "ARTIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}]
-    
+     recentlyPlayed:[],    
+     madeforyou:[],
+     yourplaylists: [],
+     popularalbums:[],
+     newreleases:[],
+     popularartists:[],
     
     }
     
   }
   
+  componentDidMount() {
+
+    //Make a request with this.props.userID
+    //assume this is the returned data
+
+    // const url = "https://jsonplaceholder.typicode.com/photos"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({recentlyPlayed:data.slice(0,5)})
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+
+    const recentlyPlayedarray=[{type: "SONG" , title: "Meek Mill", subtitle: "SONG", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
+    {type: "ALBUM" , title: "Mileyyy", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+    {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+    {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}]; 
+    
+    this.setState({recentlyPlayed:recentlyPlayedarray});
+
+    //Make a request with this.props.userID
+    //assume this is the returned data
+
+    // const url = "https://jsonplaceholder.typicode.com/photos"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({madeforyou:data.slice(0,5)})
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+    
+    const madeforyouarray= [{type: "PLAYLIST" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}];  
+    
+    this.setState({madeforyou:madeforyouarray});
+
+    //Make a request with this.props.userID
+    //assume this is the returned data
+
+    // const url = "https://jsonplaceholder.typicode.com/photos"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({yourplaylists:data.slice(0,5)})
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+    
+     const yourplaylistsarray= [{type: "PLAYLIST" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}]; 
+    
+    this.setState({yourplaylists:yourplaylistsarray});
+
+    //Make a request with this.props.userID
+    //assume this is the returned data
+
+    // const url = "https://jsonplaceholder.typicode.com/photos"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({popularalbums:data.slice(0,5)})
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+    
+    const popularalbumsarray= [{type: "ALBUM" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
+     {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+     {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+     {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}];  
+    
+    this.setState({popularalbums:popularalbumsarray});
+
+    //Make a request with this.props.userID
+    //assume this is the returned data
+
+    // const url = "https://jsonplaceholder.typicode.com/photos"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({newreleases:data.slice(0,5)})
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+    
+    const newreleasesarray= [{type: "SONG" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
+     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}];
+    
+    this.setState({newreleases:newreleasesarray});
+
+    //Make a request with this.props.userID
+    //assume this is the returned data
+
+    // const url = "https://jsonplaceholder.typicode.com/photos"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({popularartists:data.slice(0,5)})
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+    
+    const popularartistsarray= [{type: "ARTIST" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
+     {type: "ARTIST" , title: "Darke", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+     {type: "ARTIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+     {type: "ARTIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}];
+    
+    this.setState({popularartists:popularartistsarray});
+  }
 
   render(){
     return (
@@ -77,5 +189,12 @@ class HomePage extends Component {
   
 }
 
-export default HomePage;
+const mapStateToProps = state => {
+
+  return {
+    userID:state.userID
+  };
+
+};
+export default connect(mapStateToProps)(HomePage);
 
