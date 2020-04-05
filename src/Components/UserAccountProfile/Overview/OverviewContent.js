@@ -1,36 +1,20 @@
 import React from "react";
-import "./OverviewContent.css"
-import {Link} from "react-router-dom"
-import InfoLine from "../InfoLine"
+import "./OverviewContent.css";
+import {Link} from "react-router-dom";
+import InfoLine from "../InfoLine";
 
-const currentuser={
-    "User":
-        {
-      "id" : "0OdUWJ0sBjDrqHygGUXeCF",
-      "email": "abc@gmail.com",
-      "totalfollowers" : 306565,
-      "isactive": true,
-      "ispremium":false,
-      "username" : "Jadams",
-      "birthdate" : "10/12/200",
-      "gender": "male"
-        },
-    
-    
-
-    }
-
-const OverviewContent=()=>(
+const OverviewContent=({passedInfo})=>(
 
 <div className="ac-ov">
 
         <h1><strong>Account overview</strong></h1>
         <h3 style={{marginTop:"5%"}}><strong>Profile</strong></h3>
 
-        <InfoLine title="Email" info={currentuser.User.email}/>
-        <InfoLine title="Username" info={currentuser.User.username}/>
-        <InfoLine title="Gender" info={currentuser.User.gender}/>
-        <InfoLine title="Birthdate" info={currentuser.User.birthdate}/>
+        <InfoLine title="Email" info={passedInfo.email}/>
+        <InfoLine title="Username" info={passedInfo.userName}/>
+        <InfoLine title="Gender" info={passedInfo.gender}/>
+        <InfoLine title="Birthdate" info={passedInfo.birthDate}/>
+
         <Link to="/account/profile" className="ep-bt">EDIT PROFILE</Link>
 
         <h3 style={{marginTop:"5%"}}><strong>Your plan</strong></h3>

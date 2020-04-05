@@ -7,7 +7,7 @@ import {Route , Switch, Redirect} from "react-router-dom";
 import EditProfile from "./EditProfile/EditProfile.js";
 
 
-const AccountContent= ({info}) => (
+const AccountContent= ({info,token}) => (
 
 
     <div className="account-content">
@@ -18,7 +18,7 @@ const AccountContent= ({info}) => (
                 <Route path="/account/profile/" render=  { (props) => <EditProfile {...props}
                         passedInfo={info}/>}/>
                 <Route path="/account/set-device-password/" render=  { (props) => <SetPasswordContent {...props}
-                        passedToken={info}/>}/>
+                        passedToken={token}/>}/>
                 <Route path="/account/recover-playlists/" component={RecoverPlaylists}/>
 
                 <Redirect to = "/account/overview/"/>

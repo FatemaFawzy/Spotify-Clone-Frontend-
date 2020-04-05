@@ -24,7 +24,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
     }
     const Songs = neededSongs.map(song => (
       // <SongSearched
-      //   image={song.image.url}
+      //   image={song.imagePath}
       //   name={song.trackName}
       //   subname={song.artistName}
       //   key={song._id}
@@ -103,7 +103,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
     }
     const Artists = neededArtists.map(artist => (
       // <GeneralItem
-      //   image={artist.image.url}
+      //   image={artist.imagePath}
       //   name={artist.artistName}
       //   subname="Artist"
       //   roundimage={true}
@@ -145,7 +145,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
     }
     const Albums = neededAlbums.map(album => (
       // <GeneralItem
-      //   image={album.image.url}
+      //   image={album.imagePath}
       //   name={album.albumName}
       //   subname={album.artistName}
       //   key={album._id}
@@ -183,7 +183,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
     }
     const Playlists = neededPlaylists.map(playlist => (
       // <GeneralItem
-      //   image={playlist.image.url}
+      //   image={playlist.imagePath}
       //   name={playlist.playlistName}
       //   subname={playlist.userName}
       //   key={playlist._id}
@@ -222,7 +222,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
     }
     const Profiles = neededProfiles.map(profile => (
       // <GeneralItem
-      //   image={profile.image.url}
+      //   image={profile.imagePath}
       //   name={profile.userName}
       //   subname="Profile"
       //   key={profile._id}

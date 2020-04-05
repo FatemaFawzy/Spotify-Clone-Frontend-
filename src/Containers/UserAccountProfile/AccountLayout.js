@@ -13,24 +13,37 @@ class AccountLayout extends Component {
 
   state={
 
-    userInfo: {},
+    userInfo: {
+      "_id": "5e8a4e476ee6170338bf1a9b",
+      "userName": "ranime",
+      "email": "ranimemohamed8@gmail.com",
+      "password": "$2b$10$tZ9A05CzdvX9AodV6Q/aZOt/8bIIJT78rN3Ax1txwfkY8MJujc4ZK",
+      "gender": "F",
+      "birthDate": "1999-05-30T00:00:00.000Z",
+      "__v": 0,
+      "likedAlbums": [],
+      "likedTracks": [],
+      "imagePath": "defaultuser.png",
+      "isActive": true,
+      "isPremium": false
+  },
   }
 
   componentDidMount(){
 
-    const url = "https://jsonplaceholder.typicode.com/photos/1"; 
-      fetch(url)
-        .then((response) => {
-          return response.json();
+    // const url = "https://jsonplaceholder.typicode.com/photos/1"; 
+    //   fetch(url)
+    //     .then((response) => {
+    //       return response.json();
           
-        })
-        .then((data) => {
-          this.setState({userInfo:data})
-        })
-        .catch((error)=>{
-          console.log(error);
+    //     })
+    //     .then((data) => {
+    //       this.setState({userInfo:data})
+    //     })
+    //     .catch((error)=>{
+    //       console.log(error);
 
-        })
+    //     })
 
   }
 
@@ -45,11 +58,11 @@ class AccountLayout extends Component {
                     <div className="row no-gutters container-fluid">
 
                         <div className="col-sm-3">
-                            <AccountSidebar image={this.state.userInfo.url}/>
+                            <AccountSidebar image={this.state.userInfo.imagePath}/>
                         </div>
 
                         <div className="col-sm-9">
-                           < AccountContent info={this.state.userInfo}/>
+                           < AccountContent info={this.state.userInfo} token={this.props.userToken}/>
                         </div>   
 
                     </div>
@@ -69,7 +82,7 @@ const mapStateToProps = state => {
     userID : state.userID,
     userToken : state.userToken
     //now you have access to the userID as this.props.userID inside the class component.
-    //now you have access to the userID as this.props.userID inside the class component.
+    //now you have access to the userToken as this.props.userToken inside the class component.
   };
 
 };

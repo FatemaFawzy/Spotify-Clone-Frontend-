@@ -61,7 +61,7 @@ const AllSearchResults = ({ results, type, searchfieldvalue }) => {
       />
 
       // <GeneralItem
-      // image={result.image.url}
+      // image={result.imagePath}
       // name={renderedName}
       // subname={renderedSubname}
       // roundimage={roundImgOrNot}
