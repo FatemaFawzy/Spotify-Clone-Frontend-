@@ -52,13 +52,34 @@ class CreateNewPassword extends Component {
  clickSubmit = event => {
   let newPassword = this.state.newPassword;
   event.preventDefault();
-  // console.log(emailOrUsername.length);
   if(this.validate()){
      this.setState({initialState});
-    //  console.log(emailOrUsername.length);
      var clr= document.querySelector("#action-form");
      clr.reset();
      this.props.history.push('/logIn/forgotpassword/newpassword/passwordisnew');
+
+    // const requestOptions = {
+    //   method: "PATCH",
+    //   body: JSON.stringify({ newPassword: this.state.newPassword})
+    // };
+    // const url = window.location.href; 
+    // fetch(url,requestOptions)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     if (data.message == "Password has been reset successfully")
+    //     {
+    //      this.props.history.push('/logIn/forgotpassword/newpassword/passwordisnew');
+    //     }
+    //     else if (data.message == "Reset Failed")
+    //     {
+    //        newPasswordError = "Failed to reset password.";
+    //     }
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
     
   }
 

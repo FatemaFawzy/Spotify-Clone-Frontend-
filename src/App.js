@@ -38,7 +38,6 @@ function App() {
           <Route  path="/webplayer/" component={WebPlayer}/>
           <Route  exact path="/logIn/" component={login}/>
           <Route  exact path="/logIn/forgotpassword/" component={ForgotPassword}/>
-          <Route path="/logIn/forgotpassword/newpassword/success/" component={Success}/>
           <Route path="/logIn/forgotpassword/success/" component={Success}/>
           <Route path="/signup/emailsent/" component={EmailSent}/>
           <Route  exact path="/logIn/forgotpassword/newpassword" component={CreateNewPassword}/>
