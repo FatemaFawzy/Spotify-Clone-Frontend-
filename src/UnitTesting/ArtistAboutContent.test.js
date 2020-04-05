@@ -1,10 +1,13 @@
 import React from 'react';
 import ArtistAboutContent from '../Components/ArtistProfile/ArtistAboutContent';
-import { shallow } from 'enzyme';
+import { shallow, configure } from 'enzyme';
+import Adapter from "enzyme-adapter-react-16";
+configure({adapter: new Adapter()});
 
 describe("[UNIT] Testing the ArtistAboutContent component", () => {
-  let wrapper;
 
+  let wrapper;
+  
   beforeEach(() => {
     wrapper = shallow(<ArtistAboutContent/>);
   });

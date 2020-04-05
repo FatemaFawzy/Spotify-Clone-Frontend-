@@ -1,13 +1,15 @@
-import React from "react";
+import React, {Component} from "react";
 import {Route , Switch, Redirect} from "react-router-dom";
 import ArtistOverviewContent from "./ArtistOverviewContent";
 import RelatedArtistsContent from "./RelatedArtistsContent";
 import ArtistAboutContent from "./ArtistAboutContent";
 
 
-const ArtistProfileContent= (props) => (
-
-
+class ArtistProfileContent extends Component {
+  
+  render ()
+    {
+      return (
     <div className="artist-profile-content">
             <Switch>
                 <Route exact path="/webplayer/artistprofile/" component={ArtistOverviewContent}/>
@@ -21,7 +23,7 @@ const ArtistProfileContent= (props) => (
     </div>
 
 
-
-);
+)}
+};
 
 export default ArtistProfileContent;

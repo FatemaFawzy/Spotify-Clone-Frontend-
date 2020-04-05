@@ -34,7 +34,7 @@ class YourLibraryArtist extends Component {
         subname={item.description}
         roundimage= "true"
         id={item.id}
-        type="PLAYLIST"
+        type="ARTIST"
       />
       )
     }

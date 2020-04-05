@@ -17,9 +17,26 @@ class ArtistProfile extends Component{
       play: "play",
       follow: "follow",
 
-
+      artistInfo: {},
     }
   }
+
+  // componentDidMount() {
+    
+  //   const url = "https://4fc8197d-fdda-4eae-9c8e-b9c68250a7d2.mock.pstmn.io/api/Artists/"; 
+  //   fetch(url)
+  //     .then((response) => {
+  //       return response.json();
+        
+  //     })
+  //     .then((data) => {
+  //       this.setState({artistInfo: data});
+  //     })
+  //     .catch((error)=>{
+  //       console.log(error);
+
+  //     })
+  // }
 
   playArtist = e => {
     const {id} = e.target;

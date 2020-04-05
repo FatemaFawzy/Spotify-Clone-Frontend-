@@ -99,7 +99,7 @@ background-color: hsla(0,0%,100%,.3);
 }
 .wrapper .my-playlists {
   font-weight: 300;
-  height: 280px;
+  height: 262px;
   overflow-y: auto !important;
   scrollbar-width: thin;
 }

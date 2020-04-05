@@ -27,26 +27,31 @@ export class YourLibraryNavbar extends Component{
   // } 
 render(){
   return (
-<div className="your-library-nav">
-  <nav className="navbar navbar-nav navbar-expand navbar-dark nav-bgblack navbar-default no-gutters d-flex" id="main-nav"   >   
-    <div>
-      <ul className="navbar-nav mr-auto justify-content-start">
-        <li className="nav-item pl-3">
-          <NavLink to="/webplayer/yourlibrary"><a id="playlists-button" className={this.props.type== "Playlists" ? 'grey-box nav-link words' : 'no-box nav-link words'}>Playlists</a></NavLink>
-        </li>
-        <li className="nav-item d-none d-lg-inline">
-          <NavLink to="/webplayer/yourlibrary/artist"><a id="artists-button" className={this.props.type== "Artists" ? 'grey-box nav-link words' : 'no-box nav-link words'}>Artists</a></NavLink>
-        </li>
-        <li className="nav-item d-none d-lg-inline">     
-          <NavLink to="/webplayer/yourlibrary/album"><a id="albums-button" className={this.props.type== "Albums" ? 'grey-box nav-link words' : 'no-box nav-link words'}>Albums</a></NavLink>
-        </li>
-        <li className="nav-item dropdown d-inline d-lg-none">
+    <div className="your-library-nav"  style={{backgroundColor: this.props.color}}> 
+                              
+    <div className="left-side">  
+    <ul className=" ">
+        <span className="playlists-left-button">
+          <NavLink to="/webplayer/yourlibrary"><a id="playlists-button" className={this.props.type== "Playlists" ? 'grey-box words' : 'no-box words'}>Playlists</a></NavLink>
+        </span>
+        <span className="d-none d-lg-inline">
+          <NavLink to="/webplayer/yourlibrary/artist"><a id="artists-button" className={this.props.type== "Artists" ? 'grey-box words' : 'no-box words'}>Artists</a></NavLink>
+        </span>
+        <span className="d-none d-lg-inline">     
+          <NavLink to="/webplayer/yourlibrary/album"><a id="albums-button" className={this.props.type== "Albums" ? 'grey-box words' : 'no-box words'}>Albums</a></NavLink>
+        </span>
+        <span className="dropdown d-inline d-lg-none">
           <div className="btn-group">
             <button
             id="more-button" type="button" className={this.props.type == "Playlists" ? "btn dropdown-toggle words" : "btn dropdown-toggle words grey-box"} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {this.props.moreButtonName}
             </button>
-            <div className="dropdown-menu" id="width">
+            <div className="dropdown-menu">
+            <NavLink to="/webplayer/yourlibrary" className="dropdown-item playlists-in-menu">
+              <button id="playlists-in-menu" className={this.props.type == "Playlists" ? "dropdown-item white-words pl-2 item-click blue-words" : "dropdown-item white-words pl-2 item-click"} type="button">
+                Playlists
+              </button>
+            </NavLink>
             <NavLink to="/webplayer/yourlibrary/artist" className="dropdown-item">
               <button className={this.props.type == "Artists" ? "dropdown-item white-words pl-2 item-click blue-words" : "dropdown-item white-words pl-2 item-click"} type="button">
                 Artists
@@ -59,17 +64,18 @@ render(){
             </NavLink>
             </div>
           </div>
-        </li> 
+        </span> 
         </ul>
     </div>
-      <ul className="navbar-nav ml-auto d-flex d-none col-md-2 col-lg-3 col-xl-2" id="button-selector">
-        <li>
-        <DropDownMenu/>
-        </li>  
-      </ul> 
     
-  </nav>
-</div>
+    <div className="drop-down-in-search">
+
+      <DropDownMenu/>
+
+    </div>
+
+
+  </div>
 );
   }
 }
