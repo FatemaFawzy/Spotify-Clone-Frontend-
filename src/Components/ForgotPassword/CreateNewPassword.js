@@ -58,7 +58,7 @@ class CreateNewPassword extends Component {
     //  console.log(emailOrUsername.length);
      var clr= document.querySelector("#action-form");
      clr.reset();
-     this.props.history.push('/logIn/forgotpassword/newpassword/success');
+     this.props.history.push('/logIn/forgotpassword/newpassword/passwordisnew');
     
   }
 
