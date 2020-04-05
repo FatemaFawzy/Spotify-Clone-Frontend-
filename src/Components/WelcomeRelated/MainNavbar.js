@@ -2,18 +2,21 @@ import React, { Component } from "react";
 import HomePageSidebar from '../HomePage/HomePageSidebar';
 import './MainNavbar.css'
 import {Link } from "react-router-dom";
-
+import {connect} from 'react-redux';
+import * as actionTypes from "../../Store/actions";
 
 class MainNavbar extends Component {
   constructor(props){
     super(props); 
     this.props={
       image:"",
-      IsLoggedIn:""
      
     }
   }
-  render(){
+  
+  render()
+  {
+
     return(
 <section className="nav-bar1" style={{position:this.props.position}}>
 
@@ -40,7 +43,7 @@ class MainNavbar extends Component {
                     <span className= "navbar-text pt-2 h3 font-weight-light mx-4"> | </span>
                   </li>
 
-                  <ul id="profile" className={this.props.IsLoggedIn == "true" ? 'list-unstyled' : ' d-none'}>
+                  <ul id="profile" className={this.props.logging == true ? 'list-unstyled' : ' d-none'}>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="/account" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img className="user-img" alt="Profile" src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2617592195136976&height=300&width=300&ext=1586597311&hash=AeT69G6iOgUxz6VW" />
@@ -49,18 +52,18 @@ class MainNavbar extends Component {
                     
                         <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbar-dropdown">
                         <a class="dropdown-item drop-class" href="/account">Account</a>
-                        <a class="dropdown-item drop-class" href="/">Sign out</a>
+                        <a onClick={this.props.onSignOut} class="dropdown-item drop-class" href="/">Sign out</a>
                         </div>
     
                     </li>
                   </ul>
 
-                  <ul  className={this.props.IsLoggedIn == "true" ? 'list-unstyled d-none' : 'list-unstyled'}>
+                  <ul  className={this.props.logging == true ? 'd-none' : 'list-unstyled'}>
                     <li className="nav-item">
                         <Link to="/signup" className="nav-link " > Sign up </Link>
                     </li>
                   </ul>
-                  <ul className={this.props.IsLoggedIn == "true" ? 'list-unstyled d-none' : 'list-unstyled'}>
+                  <ul className={this.props.logging == true ? 'd-none' : 'list-unstyled'}>
                     <li className="nav-item">
                         <Link to="/logIn" className="nav-link " > Log in </Link>
                     </li>
@@ -74,5 +77,16 @@ class MainNavbar extends Component {
 }
 }
 
+const mapStateToProps = state =>{
+  return{
+    logging: state.loggenIn
 
-export default MainNavbar
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSignOut : () => dispatch ({type: actionTypes.ON_SIGNOUT}),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(MainNavbar);

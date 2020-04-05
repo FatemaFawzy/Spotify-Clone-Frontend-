@@ -1,6 +1,8 @@
 import React ,{ Component} from 'react';
 import './login.css';
 import {Link, Router } from "react-router-dom";
+import {connect} from "react-redux";
+import * as actionTypes from "../../Store/actions";
 
 const initialState = {
   emailOrUsername: "",
@@ -88,6 +90,11 @@ handlePassword = event => {
     //  console.log(emailOrUsername.length);
      var clr= document.querySelector("#login-form");
      clr.reset();
+     let returnedData={
+      id: 1,
+      token:"9494985sjhbhd64c"
+    }
+     this.props.onSignIn(returnedData.id,returnedData.token);
      this.props.history.push('/account/');
     
   }
@@ -153,5 +160,10 @@ render() {
 );
 }
 } 
+const mapDispatchToProps = dispatch => {
+  return {
+    onSignIn : (userID,userToken) => dispatch ({type: actionTypes.ON_SIGNIN, payload: {id: userID , token: userToken} }),
+  };
+};
 
-export default login;
+export default connect(null, mapDispatchToProps)(login);

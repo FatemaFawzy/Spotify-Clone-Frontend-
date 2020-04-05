@@ -8,7 +8,27 @@ class YourLibraryAlbum extends Component {
   constructor(props){
     super(props);
     this.state = {
-      albumArray:[{image:"https://i.scdn.co/image/ab67616d0000b2735132ca4fc74bf9ef23ffe1a8",
+      albumArray:[],
+      total:""
+    }
+  }
+  componentDidMount() {
+     //Make a request with this.props.userID
+    //assume this is the returned data
+
+    // const url = "https://jsonplaceholder.typicode.com/photos"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({playlists:data.slice(0,10)})
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+
+    const albumArray=[{image:"https://i.scdn.co/image/ab67616d0000b2735132ca4fc74bf9ef23ffe1a8",
                   name:"Championship",
                   artist:"Meek Mill",
                   id:"1"},
@@ -23,17 +43,14 @@ class YourLibraryAlbum extends Component {
                   {image:"https://i.scdn.co/image/ab67616d0000b27313b3e37318a0c247b550bccd",
                   name:"X",
                   artist:"Ed Sheeran",
-                  id:"4"}],
-      total:""
-    }
-  }
-  componentDidMount() {
-    const albums = this.state.albumArray.map(item => {
+                  id:"4"}];
+
+    const albums = albumArray.map(item => {
       return (
         <GeneralItem
         image={item.image}
         name={item.name}
-        subname={item.description}
+        subname={item.artist}
         id={item.id}
         type="ALBUM"
       />

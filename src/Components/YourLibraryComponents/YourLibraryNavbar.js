@@ -68,13 +68,11 @@ render(){
         </ul>
     </div>
     
-    <div className="drop-down-in-search">
+    <div className="drop-down">
 
       <DropDownMenu/>
 
     </div>
-
-
   </div>
 );
   }

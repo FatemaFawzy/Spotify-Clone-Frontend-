@@ -9,7 +9,7 @@ const initialState = {
   selectedProfileID: null,
   userID: null,
   userToken: null,
-  loggenIn: false
+  loggenIn: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -63,7 +63,24 @@ const reducer = (state = initialState, action) => {
         loggenIn: true
       };
       break;
+      
+    case actionTypes.ON_SIGNIN:
+      console.log(action.payload.id);
+      return {
+        ...state,
+        userID: action.payload.id,
+        userToken: action.payload.token,
+        loggenIn: true
+      };
+      break;
 
+    case actionTypes.ON_SIGNOUT:
+      return {
+        ...state,
+        loggenIn: false
+        };
+      break;
+      
     default:
       return state;
       break;
