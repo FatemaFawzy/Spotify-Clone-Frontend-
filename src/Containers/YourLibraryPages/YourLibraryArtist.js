@@ -2,36 +2,52 @@ import React ,{ Component} from 'react';
 import './YourLibraryArtist.css';
 import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
 import GeneralItem from "../GenericComponenets/GeneralItem";
+import {connect} from "react-redux";
 
 class YourLibraryArtist extends Component {
   constructor(props){
     super(props);
     this.state = {
-      artistArray:[
-        {image:"https://i.scdn.co/image/1fc2f537d678d701d7d143a8fd4f0c2f29fbde22",
-        name:"Rihanna",
-        id:"1"},
-        {image:"https://i.scdn.co/image/cfd6e47fbe4446750ec209dfa37bc919cb55c86f",
-        name:"21 Savage",
-        id:"2"},
-        {image:"https://i.scdn.co/image/ab67616d0000b27353789eb3f891f59bde5755aa",
-        name:"Hassan Shakoush",
-        id:"3"},
-        {image:"https://i.scdn.co/image/012ecd119617ac24ab56620ace4b81735b172686",
-        name:"Drake",
-        id:"4"},
-        ],
+      artistArray:[],
         total:""
 
     }
   }
   componentDidMount() {
-    const artists = this.state.artistArray.map(item => {
+     //Make a request with this.props.userID
+    //assume this is the returned data
+
+    // const url = "https://jsonplaceholder.typicode.com/photos"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({playlists:data.slice(0,10)})
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+    const artistArray = [
+      {image:"https://i.scdn.co/image/1fc2f537d678d701d7d143a8fd4f0c2f29fbde22",
+      name:"Rihanna",
+      id:"1"},
+      {image:"https://i.scdn.co/image/cfd6e47fbe4446750ec209dfa37bc919cb55c86f",
+      name:"21 Savage",
+      id:"2"},
+      {image:"https://i.scdn.co/image/ab67616d0000b27353789eb3f891f59bde5755aa",
+      name:"Hassan Shakoush",
+      id:"3"},
+      {image:"https://i.scdn.co/image/012ecd119617ac24ab56620ace4b81735b172686",
+      name:"Drake",
+      id:"4"},
+      ];
+    const artists = artistArray.map(item => {
       return (
         <GeneralItem
         image={item.image}
         name={item.name}
-        subname={item.description}
+        subname="Artist"
         roundimage= "true"
         id={item.id}
         type="ARTIST"
@@ -53,4 +69,11 @@ return (
 );
 }
 }
-export default YourLibraryArtist;
+const mapStateToProps = state => {
+
+  return {
+    userID:state.userID
+  };
+
+};
+export default connect(mapStateToProps)(YourLibraryArtist);

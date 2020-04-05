@@ -15,6 +15,7 @@ import {BrowserRouter as Router,
        } from "react-router-dom";
 import WebPlayer from './Containers/WebPlayer/WebPlayer';
 import ArtistProfile from './Containers/ArtistProfile/ArtistProfile';
+import CreateNewPassword from "./Components/ForgotPassword/CreateNewPassword";
 
 
        
@@ -35,7 +36,8 @@ function App() {
           <Route  path="/webplayer/" component={WebPlayer}/>
           <Route  exact path="/logIn/" component={login}/>
           <Route  exact path="/logIn/forgotpassword/" component={ForgotPassword}/>
-          <Route path="/logIn/forgotpassword/success/" component={Success}/>
+          <Route  exact path="/logIn/forgotpassword/newpassword" component={CreateNewPassword}/>
+          <Route path="/logIn/forgotpassword//newpasword/success/" component={Success}/>
           {/* TODO: Change the route of artistprofile when search is implemented */}
           <Route  path="/webplayer/likedsongs/" component={ArtistProfile}/>
           
