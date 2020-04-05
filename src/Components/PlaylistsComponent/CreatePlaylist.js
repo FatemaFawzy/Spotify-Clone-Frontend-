@@ -11,6 +11,26 @@ class CreatePlaylist extends Component{
    popup.classList.toggle('active')
  }
 
+createNewPlaylist = (e) =>{
+  e.preventDefault();
+  var NewPlaylistName = document.getElementById('new-playlist-name').value; 
+  // const url = "";    
+  //     fetch(url,{
+  //       method:"POST",
+  //       headers:{
+  //         'Content-type':'application/json'
+  //       },
+  //       body: JSON.stringify({
+  //         playlistName: NewPlaylistName,
+  //         privacy: false
+  //       })
+  //     })
+  //     .then((res) => res.json())
+  //     .then((data) =>console.log(data))
+  //     .catch((err)=>console.log(err))
+    console.log(NewPlaylistName)
+    this.toggle()
+}
 render()
 {
 return (
@@ -21,9 +41,9 @@ return (
         <h2 className="d-flex justify-content-center mb-3" > Create new playlist</h2>
         <div className="input_P ">
       <form >
-          <div class="form-group container ">
+          <div class="form-group container">
           <label for="new-playlist-name">Playlist Name</label>
-          <input autoComplete="off" placeholder="New Playlist" type="text" className="form-control form-control-lg "  id="new-playlist-name"/>
+          <input autoComplete="off" onfocus="this.value=''" placeholder="New Playlist" type="text" className="form-control form-control-lg "  id="new-playlist-name"/>
           </div>
       
           </form>
@@ -34,7 +54,7 @@ return (
               <button className="btn btn-dark border border-light rounded-pill text-center px-5 py-2 mt-3 font-weight-bold" onClick={this.toggle}> Cancel</button>
               </div>
               <div className="col-6 d-flex justify-content-start">
-              <a href="" className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> Create</a>
+              <a href="" onClick={this.createNewPlaylist} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> Create</a>
         
               </div>
             </div>
