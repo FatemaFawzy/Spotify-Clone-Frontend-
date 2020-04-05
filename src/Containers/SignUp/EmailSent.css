@@ -1,0 +1,30 @@
+.email-sent html 
+{
+  height: 100%;
+}
+
+.email-sent h1
+{
+	font-size: 2.75rem;
+	font-weight: 500;
+	padding-top:7.5%;
+}
+
+.email-sent #paragraph
+{
+	margin-left:15%;
+	margin-right:15%;
+	padding-bottom:20px;
+	font-size:1rem;
+}
+
+.email-sent
+{
+  background-color: white;
+  height: 700px;
+}
+
+.email-sent #paragraph
+{
+	padding-bottom:270px;
+}
