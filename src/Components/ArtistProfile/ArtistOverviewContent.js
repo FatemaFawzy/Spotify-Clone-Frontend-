@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./ArtistOverviewContent.css";
 import "./MediaObject";
 import MediaObject from './MediaObject';
+import {connect} from "react-redux";
 
 class ArtistOverviewContent extends Component {
 
@@ -209,4 +210,14 @@ class ArtistOverviewContent extends Component {
     );
   }
 }
-export default ArtistOverviewContent;
+
+const mapStateToProps = state => {
+
+  return {
+    userID : state.userID
+    //now you have access to the userID as this.props.userID inside the class component.
+  };
+
+};
+
+export default connect(mapStateToProps)(ArtistOverviewContent);

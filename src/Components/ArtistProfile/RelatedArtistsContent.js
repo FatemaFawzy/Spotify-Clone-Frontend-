@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./RelatedArtistsContent.css";
 import "../../Containers/GenericComponenets/GeneralItem";
 import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
+import {connect} from "react-redux";
 
 class RelatedArtistsContent extends Component {
 
@@ -38,5 +39,15 @@ class RelatedArtistsContent extends Component {
     );
   }
 }
-export default RelatedArtistsContent;
+
+const mapStateToProps = state => {
+
+  return {
+    userID : state.userID
+    //now you have access to the userID as this.props.userID inside the class component.
+  };
+
+};
+
+export default connect(mapStateToProps)(RelatedArtistsContent);
 

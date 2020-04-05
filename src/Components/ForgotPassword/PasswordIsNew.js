@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import './Success.css';
+import './PasswordIsNew.css';
 import Header from '../WelcomeRelated/Header';
 import Footer from '../WelcomeRelated/Footer';
 
-class Success extends Component {
+class PasswordIsNew extends Component {
 render(){
 return (
-  <div className="Success">
+  <div className="password-is-new">
     <Header />
     <div className="container">
       <h1 className="text-center"><strong>Password Reset</strong></h1>
-      <p className="text-center" style={{fontWeight:"500"}} id="paragraph">A message has been sent to you by email with a link to reset your current password.</p>
+      <p className="text-center" style={{fontWeight:"500"}} id="paragraph">Your password has been successfully reset.</p>
     </div>
     <Footer />
   </div>
 );
 }
 }
-export default Success;
+export default PasswordIsNew;
