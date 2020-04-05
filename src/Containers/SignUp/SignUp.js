@@ -2,6 +2,7 @@ import React ,{ Component} from 'react';
 import './SignUp.css';
 import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
+import {BASEURL} from "../../Constants/baseURL";
 
 const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -60,32 +61,42 @@ class SignUp extends Component{
     e.preventDefault();
     let errorMessages= { ...this.state.errorMessages };
     const {email,  password, username, day, month, year, gender, accountType} = this.state;
+    var isPremium= false;
+    console.log(this.state);
 
+    if( accountType=== "Premium Account") {
+      isPremium= true;
+    }
     if (this.formValidity(this.state)) {
       // document.getElementById("signup-form").submit();
 
       //we should send the request here to submit
       //if the request is successful, we get back the userID and the userToken
+       
 
-      // const url = "put the correct url here"; 
-      // fetch(url)
-      //   .then((response) => {
-      //     return response.json();
-      //   })
-      //   .then((data) => {
-      //     this.setState({userRelated:data.slice(0,10)})
-      //   })
-      //   .catch((error)=>{
-      //     console.log(error);
-      //   })
+      var url = BASEURL+"/api/users/signup?userName="+username+
+      "&email="+email+"&isPremium="+isPremium+"&password="+password+"&day="+day+"&month="+month+"&year="+year+"&gender="+gender;
+      console.log(url);
+      //   const requestOptions = {
+      //     method: 'POST',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify({ title: 'React POST Request Example' })
+      // };
+      // fetch('https://jsonplaceholder.typicode.com/posts', requestOptions)
+      //     .then(response => response.json())
+      //     .then(data => this.setState({ postId: data.id }));
 
-      //Now assume the reuquest is successful the following lines should be put after the .then in the commented code
 
-      let returnedData={
-        id: 1,
-        token:"9494985sjhbhd64c"
-      }
-      this.props.onSignUp(returnedData.id,returnedData.token);
+
+
+
+      // //Now assume the reuquest is successful the following lines should be put after the .then in the commented code
+
+      // let returnedData={
+      //   id: 1,
+      //   token:"9494985sjhbhd64c"
+      // }
+      // this.props.onSignUp(returnedData.id,returnedData.token);
       this.props.history.replace("/signup/emailsent/");
 
     }
@@ -238,12 +249,12 @@ class SignUp extends Component{
       if ( pair[1] != null && pair[0] != "gender" && pair[1].length > 1) {
         var fieldToBeChanged = document.getElementsByName( pair[0] );
         fieldToBeChanged[0].style.borderColor= "#bd3200";
-        console.log (pair);
+        // console.log (pair);
       }
       else if ( pair[1] != null && pair[0] != "gender" && pair[1].length === 0) {
         var fieldToBeChanged = document.getElementsByName( pair[0] );
         fieldToBeChanged[0].style.borderColor= "#ced4da";
-        console.log (pair);
+        // console.log (pair);
       }
     })
   };

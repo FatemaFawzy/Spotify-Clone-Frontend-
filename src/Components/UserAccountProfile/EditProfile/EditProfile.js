@@ -13,10 +13,10 @@ class EditProfile extends Component {
     this.state = {
       email: "fatema123@gmail.com",
       username: "Fatema Fawzy",
-      gender: "Female",
+      gender: "F",
       birthDate: {
         day: "20",
-        month: "September",
+        month: "09",
         year: "1998",
       },
       usernameErrorMessage: "",
@@ -160,7 +160,7 @@ class EditProfile extends Component {
                       <option value="06"> June </option>
                       <option value="07"> July </option>
                       <option value="08"> August </option>
-                      <option value="08"> September </option>
+                      <option value="09"> September </option>
                       <option value="10"> October </option>
                       <option value="11"> November </option>
                       <option value="12"> December </option>
