@@ -22,16 +22,19 @@ class CreateNewPassword extends Component {
    if (inp.length === 0)
    {
      newPasswordError = "This field is required.";
+     document.querySelector("#my-text").classList.add("red-border");
      this.setState({newPasswordError});
      proceed = false;
    }
    else if (inp.length < 6) {
     newPasswordError = "Password is too short";
+    document.querySelector("#my-text").classList.add("red-border");
     this.setState({newPasswordError});
     proceed = false;
    }
    else {
    newPasswordError = "";
+   document.querySelector("#my-text").classList.remove("red-border");
    this.setState({inp, newPasswordError});
    proceed = true;
    }
@@ -43,7 +46,6 @@ class CreateNewPassword extends Component {
   inp = event.target.value;
   this.state.newPassword = inp;
   this.validate();
-
 
 };
 

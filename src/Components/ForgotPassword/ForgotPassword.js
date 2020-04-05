@@ -27,11 +27,13 @@ class ForgotPassword extends Component {
    {
      emailError = "This field is required.";
      this.setState({emailError});
+     document.querySelector("#my-text").classList.add("red-border");
      proceed = false;
    }
    else {
    emailError = "";
    this.setState({inp, emailError});
+   document.querySelector("#my-text").classList.remove("red-border");
    proceed = true;
    }
    return proceed;
@@ -55,10 +57,12 @@ class ForgotPassword extends Component {
   if (!emailFormat.test(email) && email.length !== 0)
   {
    emailError = "The email address you entered is invalid.";
+   document.querySelector("#my-text").classList.add("red-border");
    this.setState({emailError});
   }
   else if(this.validate()){
      this.setState({initialState});
+     document.querySelector("#my-text").classList.remove("red-border");
     //  console.log(email.length);
      var clr= document.querySelector("#action-form");
      clr.reset();
