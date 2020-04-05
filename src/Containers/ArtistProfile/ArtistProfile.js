@@ -3,6 +3,7 @@ import "./ArtistProfile.css";
 import {Link } from "react-router-dom";
 import ArtistProfileContent from "../../Components/ArtistProfile/ArtistProfileContent";
 import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
+import {connect} from "react-redux";
 
 
 class ArtistProfile extends Component{
@@ -137,4 +138,13 @@ class ArtistProfile extends Component{
  };
 };
 
-export default ArtistProfile;
+const mapStateToProps = state => {
+
+  return {
+    userID : state.userID
+    //now you have access to the userID as this.props.userID inside the class component.
+  };
+
+};
+
+export default connect(mapStateToProps)(ArtistProfile);
