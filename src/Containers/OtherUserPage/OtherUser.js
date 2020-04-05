@@ -5,7 +5,7 @@ import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
 import GeneralItem from "../GenericComponenets/GeneralItem";
 import * as itemType from "../../Constants/itemType";
 
-class OtherUser extends Component {
+export class OtherUser extends Component {
 
   state={
     userRelated:[],

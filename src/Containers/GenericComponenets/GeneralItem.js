@@ -5,7 +5,7 @@ import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
 
-class GeneralItem extends Component {
+export class GeneralItem extends Component {
 
   handleClick = () => {
 
@@ -59,7 +59,7 @@ class GeneralItem extends Component {
 
     const roundImgOrNot = this.props.roundimage ? "i-am-round-img-general" : "i-am-general-not-round";
 
-    var actualName;
+     var actualName;
     if (this.props.name.length > 17) {
       actualName = this.props.name.slice(0, 17) + "...";
     } else {

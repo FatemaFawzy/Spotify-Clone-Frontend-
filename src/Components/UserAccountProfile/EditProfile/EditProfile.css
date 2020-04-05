@@ -3,6 +3,19 @@
 	background: #F8F8F8;
 	
 }
+.edit-profile-body .hide {
+  display: none;
+}
+
+.edit-profile-body #saved-changes {
+	font-size: 12px;
+  margin: .5em 0;
+  background-color: #1DB954;
+  color: white;
+  font-weight: 400;
+  padding: 13px 13px;
+  border-bottom: 1px solid #EFEFEF;
+}
 .edit-profile-body #edit-profile-h1 {
 	font-size: 26px;
   margin: .5em 0;

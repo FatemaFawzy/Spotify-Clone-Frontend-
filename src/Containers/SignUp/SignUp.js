@@ -1,5 +1,7 @@
 import React ,{ Component} from 'react';
 import './SignUp.css';
+import {connect} from "react-redux";
+import * as actionTypes from "../../Store/actions";
 
 const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -60,7 +62,32 @@ class SignUp extends Component{
     const {email,  password, username, day, month, year, gender, accountType} = this.state;
 
     if (this.formValidity(this.state)) {
-      document.getElementById("signup-form").submit();
+      // document.getElementById("signup-form").submit();
+
+      //we should send the request here to submit
+      //if the request is successful, we get back the userID and the userToken
+
+      // const url = "put the correct url here"; 
+      // fetch(url)
+      //   .then((response) => {
+      //     return response.json();
+      //   })
+      //   .then((data) => {
+      //     this.setState({userRelated:data.slice(0,10)})
+      //   })
+      //   .catch((error)=>{
+      //     console.log(error);
+      //   })
+
+      //Now assume the reuquest is successful the following lines should be put after the .then in the commented code
+
+      let returnedData={
+        id: 1,
+        token:"9494985sjhbhd64c"
+      }
+      this.props.onSignUp(returnedData.id,returnedData.token);
+      this.props.history.replace("/account");
+
     }
 
     // Check which inputs are empty and print an error message
@@ -265,18 +292,18 @@ class SignUp extends Component{
                   <div className="col-6">
                     <select name="month" className="form-control birth-date-signup dropdown" onChange={this.handleChange}> 
                       <option value=""> Month </option>
-                      <option value="January"> January </option>
-                      <option value="February"> February </option>
-                      <option value="March"> March </option>
-                      <option value="April"> April </option>
-                      <option value="May"> May </option>
-                      <option value="June"> June </option>
-                      <option value="July"> July </option>
-                      <option value="August"> August </option>
-                      <option value="September"> September </option>
-                      <option value="October"> October </option>
-                      <option value="November"> November </option>
-                      <option value="December"> December </option>
+                      <option value="01"> January </option>
+                      <option value="02"> February </option>
+                      <option value="03"> March </option>
+                      <option value="04"> April </option>
+                      <option value="05"> May </option>
+                      <option value="06"> June </option>
+                      <option value="07"> July </option>
+                      <option value="08"> August </option>
+                      <option value="08"> September </option>
+                      <option value="10"> October </option>
+                      <option value="11"> November </option>
+                      <option value="12"> December </option>
                     </select>
                   </div>
 
@@ -295,8 +322,8 @@ class SignUp extends Component{
 
                 <label htmlFor="gender-options"> Gender</label>
                 <div className="m-2" id="gender-options">
-                    <input name="gender" type="radio" value="male" onChange={this.handleChange}/> Male   
-                    <input name="gender" type="radio" value="female" className="ml-3" onChange={this.handleChange}/> Female
+                    <input name="gender" type="radio" value="M" onChange={this.handleChange}/> Male   
+                    <input name="gender" type="radio" value="F" className="ml-3" onChange={this.handleChange}/> Female
                 </div>
 
               </div>
@@ -334,7 +361,13 @@ class SignUp extends Component{
   }
 } 
 
-export default SignUp;
+const mapDispatchToProps = dispatch => {
+  return {
+    onSignUp : (userID,userToken) => dispatch ({type: actionTypes.ON_SIGNUP, payload: {id: userID , token: userToken} }),
+  };
+};
+
+export default connect(null,mapDispatchToProps)(SignUp);
 
 // Form validation made with the help of the video from
 // https://www.youtube.com/watch?v=4CeTFW4agRw
