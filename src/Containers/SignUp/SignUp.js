@@ -86,7 +86,7 @@ class SignUp extends Component{
         token:"9494985sjhbhd64c"
       }
       this.props.onSignUp(returnedData.id,returnedData.token);
-      this.props.history.replace("/account");
+      this.props.history.replace("/signup/emailsent/");
 
     }
 

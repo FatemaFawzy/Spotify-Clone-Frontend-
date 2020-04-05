@@ -80,7 +80,7 @@ class EditProfile extends Component {
 
         <div className="container">
           
-          <h1 id="saved-changes"> Your changes have been saved </h1>
+          <h1 id="saved-changes" className="hide"> Your changes have been saved </h1>
 
           <h1 id="edit-profile-h1"> Edit Profile </h1>
 
