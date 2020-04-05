@@ -93,8 +93,8 @@ class EditProfile extends Component {
 
                 <label for="gender" className="subtitle"> Gender </label>
                     <select id="gender" className="form-control" defaultValue= {this.state.gender} onChange={this.handleChange}> 
-                      <option value="Male"> Male </option>
-                      <option value="Female"> Female </option>
+                      <option value="M"> Male </option>
+                      <option value="F"> Female </option>
                     </select>
 
               </div>
@@ -142,18 +142,18 @@ class EditProfile extends Component {
 
                   <div className="col-6">
                     <select id="month" className="form-control" defaultValue= {this.state.birthDate.month} onChange={this.handleChange}> 
-                      <option value="January"> January </option>
-                      <option value="February"> February </option>
-                      <option value="March"> March </option>
-                      <option value="April"> April </option>
-                      <option value="May"> May </option>
-                      <option value="June"> June </option>
-                      <option value="July"> July </option>
-                      <option value="August"> August </option>
-                      <option value="September"> September </option>
-                      <option value="October"> October </option>
-                      <option value="November"> November </option>
-                      <option value="December"> December </option>
+                      <option value="01"> January </option>
+                      <option value="02"> February </option>
+                      <option value="03"> March </option>
+                      <option value="04"> April </option>
+                      <option value="05"> May </option>
+                      <option value="06"> June </option>
+                      <option value="07"> July </option>
+                      <option value="08"> August </option>
+                      <option value="08"> September </option>
+                      <option value="10"> October </option>
+                      <option value="11"> November </option>
+                      <option value="12"> December </option>
                     </select>
                   </div>
 
