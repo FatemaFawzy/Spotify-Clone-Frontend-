@@ -15,6 +15,7 @@ import {BrowserRouter as Router,
        } from "react-router-dom";
 import WebPlayer from './Containers/WebPlayer/WebPlayer';
 import ArtistProfile from './Containers/ArtistProfile/ArtistProfile';
+import EmailSent from './Containers/SignUp/EmailSent';
 import CreateNewPassword from "./Components/ForgotPassword/CreateNewPassword";
 
 
@@ -31,11 +32,13 @@ function App() {
           <Route exact path="/" component={welcomePage}/>
           <Route  path="/account/" component={AccountLayout}/>
           <Route  path="/help/" component={HelpPage}/>
-          <Route  path="/signup/" component={SignUp}/>
+          <Route  exact path="/signup/" component={SignUp}/>
           <Route  path="/premium/" component={Premium}/>
           <Route  path="/webplayer/" component={WebPlayer}/>
           <Route  exact path="/logIn/" component={login}/>
           <Route  exact path="/logIn/forgotpassword/" component={ForgotPassword}/>
+          <Route path="/logIn/forgotpassword/success/" component={Success}/>
+          <Route path="/signup/emailsent/" component={EmailSent}/>
           <Route  exact path="/logIn/forgotpassword/newpassword" component={CreateNewPassword}/>
           <Route path="/logIn/forgotpassword/newpassword/success/" component={Success}/>
           {/* TODO: Change the route of artistprofile when search is implemented */}
