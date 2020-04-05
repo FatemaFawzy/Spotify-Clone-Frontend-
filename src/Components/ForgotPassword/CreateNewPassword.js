@@ -6,8 +6,8 @@ import {BrowserRouter as Router, Redirect} from "react-router-dom";
 import {Link} from "react-router-dom";
 
 const initialState = {
-  emailOrUsername: "",
-  emailOrUsernameError: ""
+  newPassword: "",
+  newPasswordError: ""
 }
 class CreateNewPassword extends Component {
   constructor(props){
@@ -16,34 +16,34 @@ class CreateNewPassword extends Component {
   }
 
  validate = () => {
-   let inp = this.state.emailOrUsername;
-   let emailOrUsernameError="";
+   let inp = this.state.newPassword;
+   let newPasswordError="";
    let proceed=true;
    if (inp.length === 0)
    {
-     emailOrUsernameError = "This field is required.";
-     this.setState({emailOrUsernameError});
+     newPasswordError = "This field is required.";
+     this.setState({newPasswordError});
      proceed = false;
    }
    else {
-   emailOrUsernameError = "";
-   this.setState({inp, emailOrUsernameError});
+   newPasswordError = "";
+   this.setState({inp, newPasswordError});
    proceed = true;
    }
    return proceed;
  };
 
  handleChange = event => {
-  let inp = this.state.emailOrUsername;
+  let inp = this.state.newPassword;
   inp = event.target.value;
-  this.state.emailOrUsername = inp;
+  this.state.newPassword = inp;
   this.validate();
 
 
 };
 
  clickSubmit = event => {
-  let emailOrUsername = this.state.emailOrUsername;
+  let newPassword = this.state.newPassword;
   event.preventDefault();
   // console.log(emailOrUsername.length);
   if(this.validate()){
