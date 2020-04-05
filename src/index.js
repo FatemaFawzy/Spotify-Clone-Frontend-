@@ -7,9 +7,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Provider} from "react-redux";
 import {createStore} from "redux";
 import reducer from "./Store/reducer";
+import {loadState , saveState } from "./Store/localStorage";
 
-const store = createStore(reducer);
+const persistedState = loadState();
 
+const store = createStore(reducer, persistedState );
+store.subscribe( () =>{
+  saveState(store.getState());
+});
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 serviceWorker.unregister();
