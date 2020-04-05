@@ -1,5 +1,7 @@
 import React ,{ Component} from 'react';
 import './SignUp.css';
+import {connect} from "react-redux";
+import * as actionTypes from "../../Store/actions";
 
 const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -60,7 +62,32 @@ class SignUp extends Component{
     const {email,  password, username, day, month, year, gender, accountType} = this.state;
 
     if (this.formValidity(this.state)) {
-      document.getElementById("signup-form").submit();
+      // document.getElementById("signup-form").submit();
+
+      //we should send the request here to submit
+      //if the request is successful, we get back the userID and the userToken
+
+      // const url = "put the correct url here"; 
+      // fetch(url)
+      //   .then((response) => {
+      //     return response.json();
+      //   })
+      //   .then((data) => {
+      //     this.setState({userRelated:data.slice(0,10)})
+      //   })
+      //   .catch((error)=>{
+      //     console.log(error);
+      //   })
+
+      //Now assume the reuquest is successful the following lines should be put after the .then in the commented code
+
+      let returnedData={
+        id: 1,
+        token:"9494985sjhbhd64c"
+      }
+      this.props.onSignUp(returnedData.id,returnedData.token);
+      this.props.history.replace("/account");
+
     }
 
     // Check which inputs are empty and print an error message
@@ -334,7 +361,13 @@ class SignUp extends Component{
   }
 } 
 
-export default SignUp;
+const mapDispatchToProps = dispatch => {
+  return {
+    onSignUp : (userID,userToken) => dispatch ({type: actionTypes.ON_SIGNUP, payload: {id: userID , token: userToken} }),
+  };
+};
+
+export default connect(null,mapDispatchToProps)(SignUp);
 
 // Form validation made with the help of the video from
 // https://www.youtube.com/watch?v=4CeTFW4agRw
