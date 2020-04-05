@@ -25,6 +25,11 @@ class CreateNewPassword extends Component {
      this.setState({newPasswordError});
      proceed = false;
    }
+   else if (inp.length < 6) {
+    newPasswordError = "Password is too short";
+    this.setState({newPasswordError});
+    proceed = false;
+   }
    else {
    newPasswordError = "";
    this.setState({inp, newPasswordError});
