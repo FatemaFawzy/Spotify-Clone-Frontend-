@@ -11,8 +11,8 @@ const initialState = {
 }
 class CreateNewPassword extends Component {
   constructor(props){
-    super(props);
- this.state = initialState;
+  super(props);
+  this.state = initialState;
   }
 
  validate = () => {
