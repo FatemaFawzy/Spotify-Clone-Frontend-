@@ -13,10 +13,10 @@ class EditProfile extends Component {
     this.state = {
       email: "fatema123@gmail.com",
       username: "Fatema Fawzy",
-      gender: "Female",
+      gender: "F",
       birthDate: {
         day: "20",
-        month: "September",
+        month: "09",
         year: "1998",
       },
       usernameErrorMessage: "",
@@ -69,9 +69,27 @@ class EditProfile extends Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.usernameErrorMessage === "") {
-      document.getElementById("edit-profile-form").submit();
+    //document.getElementById("edit-profile-form").submit();
       this.setState({savedChanges: true}, () => console.log(this.state) );
-    }
+
+    // const requestOptions = {
+    //     method:"PATCH",
+    //     headers:{ 'Authorization' : "validtoken"}
+    // }
+    // console.log(requestOptions.headers);
+    // const url =
+    // "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/api/users/me/editprofile?userName="+ this.state.username + "&day=" + this.state.birthDate.day + "&month=" + this.state.birthDate.month + "&year=" + this.state.year + "&gender=" + this.state.gender; 
+    // fetch(url,requestOptions)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data);  
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+     }
   }
   
   render(){
@@ -160,7 +178,7 @@ class EditProfile extends Component {
                       <option value="06"> June </option>
                       <option value="07"> July </option>
                       <option value="08"> August </option>
-                      <option value="08"> September </option>
+                      <option value="09"> September </option>
                       <option value="10"> October </option>
                       <option value="11"> November </option>
                       <option value="12"> December </option>
