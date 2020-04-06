@@ -83,7 +83,7 @@ class EditProfile extends Component {
     //     headers:{ 'Authorization' : "validtoken"}
     // }
     // console.log(requestOptions.headers);
-    // const url = baseURL + "api/users/me/editprofile?userName="+ this.state.username + "&day=" + this.state.birthDate.day + "&month=" + this.state.birthDate.month + "&year=" + this.state.year + "&gender=" + this.state.gender; 
+    // const url = baseURL + "/users/me/editprofile?userName="+ this.state.username + "&day=" + this.state.birthDate.day + "&month=" + this.state.birthDate.month + "&year=" + this.state.year + "&gender=" + this.state.gender; 
     // fetch(url,requestOptions)
     //   .then((response) => {
     //     return response.json();

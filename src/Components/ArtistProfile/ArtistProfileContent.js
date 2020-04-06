@@ -20,7 +20,7 @@ class ArtistProfileContent extends Component {
                         id={this.props.artistID}
                         />}/>
                 {/* <Route path="/webplayer/search/artistprofile/overview/" component={ArtistOverviewContent}/> */}
-                <Route path="/webplayer/artistprofile/relatedartists/" render=  { (props) => <ArtistOverviewContent {...props}
+                <Route path="/webplayer/artistprofile/relatedartists/" render=  { (props) => <RelatedArtistsContent {...props}
                         id={this.props.artistID}
                         />}/>
                 {/* <Route path="/webplayer/search/artistprofile/artistabout/" component={ArtistAboutContent}/> */}

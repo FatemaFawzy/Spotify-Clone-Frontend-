@@ -69,20 +69,31 @@ class SignUp extends Component{
     }
     if (this.formValidity(this.state)) {
 
-      const url = BASEURL+"/api/users/signup?userName="+username+"&email="+email+"&isPremium="+isPremium+"&password="+password+"&day="+day+"&month="+month+"&year="+year+"&gender="+gender;
-      console.log(url);
-      const requestOptions = {
-        method: 'POST',  
-      };
-      fetch(url, requestOptions)
-          .then(response => response.json())
-          .then(data => console.log(data))
-          .catch((error)=> {console.log(error)});
+      // const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/api/users/signup";
+      // console.log(url);
+      // const requestOptions = {
+      //   method: 'POST',  
+      //   body: JSON.stringify({
+      //     userName : username,
+      //     email: email,
+      //     isPremium: isPremium,
+      //     password: password,
+      //     day: day,
+      //     month: month,
+      //     year: year,
+      //     gender: gender,
+      //   })
+      //   }
+      //   console.log(requestOptions)
+      //   fetch(url, requestOptions)
+      //   .then(response => response.json())
+      //   .then(data => console.log(data))
+      //   .catch((error)=> {console.log(error)});
 
-      this.props.history.replace("/signup/emailsent/");
+    this.props.history.replace("/signup/emailsent/");
+      
 
-    }
-
+      }
     // Check which inputs are empty and print an error message
     else {
       if ( email === null )
