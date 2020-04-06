@@ -15,8 +15,8 @@ class EditProfile extends Component {
       username: props.passedInfo.userName,
       gender: props.passedInfo.gender,
       birthDate: {
-        day: props.passedInfo.birthDate.slice(8,2),
-        month: props.passedInfo.birthDate.slice(5,2),
+        day: props.passedInfo.birthDate.slice(8,10),
+        month: props.passedInfo.birthDate.slice(5,7),
         year: props.passedInfo.birthDate.slice(0,4),
       },
       usernameErrorMessage: "",
@@ -160,7 +160,7 @@ class EditProfile extends Component {
                       <option value="06"> June </option>
                       <option value="07"> July </option>
                       <option value="08"> August </option>
-                      <option value="08"> September </option>
+                      <option value="09"> September </option>
                       <option value="10"> October </option>
                       <option value="11"> November </option>
                       <option value="12"> December </option>

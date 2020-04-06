@@ -8,6 +8,7 @@ import {BrowserRouter as Router } from "react-router-dom";
 import MainNavbar from '../../Components/WelcomeRelated/MainNavbar';
 // import { Container } from 'react-bootstrap/lib/Tab';
 import {connect} from "react-redux";
+import {BASEURL} from "../../Constants/baseURL";
 
 class AccountLayout extends Component {
 
@@ -31,19 +32,23 @@ class AccountLayout extends Component {
 
   componentDidMount(){
 
-    // const url = "https://jsonplaceholder.typicode.com/photos/1"; 
-    //   fetch(url)
-    //     .then((response) => {
-    //       return response.json();
+    const url = BASEURL;
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'x-auth': 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s' },
+    };
+      fetch(url,requestOptions)
+        .then((response) => {
+          return response.json();
           
-    //     })
-    //     .then((data) => {
-    //       this.setState({userInfo:data})
-    //     })
-    //     .catch((error)=>{
-    //       console.log(error);
+        })
+        .then((data) => {
+          this.setState({userInfo:data})
+        })
+        .catch((error)=>{
+          console.log(error);
 
-    //     })
+        })
 
   }
 

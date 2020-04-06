@@ -6,7 +6,7 @@ import Searchbar from "./Searchbar";
 import {Switch,Route,Redirect} from "react-router-dom";
 import AllSearchResults from "./AllSearchResults";
 import * as itemType from "../../Constants/itemType";
-import DropDownMenu from "../../Containers/GenericComponenets/DropDownMenu";
+import {BASEURL} from "../../Constants/baseURL";
 
 
 
@@ -30,55 +30,95 @@ class SearchPage extends Component {
     this.setState({ searchfield: event.target.value })
     this.setState({loading:true});
 
-    // if(event.target.value !==""){
-    // const url = "http://localhost:3000/Search?word=" + this.state.searchfield; // site that doesn’t send Access-Control-*
-    // fetch(url)
-    //   .then((response) => {
-
-    //     if(response.status === 400){
-    //       console.log("request failed");
-    //       throw new Error('Network response was not ok.');
-    //   }else{
-    //     return response.json();
-
-    //   }
-        
-    //   })
-    //   .then((data) => {
-    //     this.setState({songs:data.Tracks,
-    //                    artists:data.Artists,
-    //                    albums:data.Albums,
-    //                    playlist:data.Playlists,
-    //                    profiles:data.Users })
-    //   })
-    //   .catch(function(error) {
-    //     console.log('There has been a problem with your fetch operation: ', 
-    //     error.message);
-    //    })
-
-    //   }
-
     if(event.target.value !==""){
-      const url = "https://jsonplaceholder.typicode.com/photos"; 
-      fetch(url)
-        .then((response) => {
-          return response.json();
-          
-        })
-        .then((data) => {
-          this.setState({songs:data,
-                         artists:data,
-                         albums:data,
-                         playlists:data,
-                         profiles:data})
-          this.setState({loading:false});
-        })
-        .catch((error)=>{
-          console.log(error);
+    const url = BASEURL + "Search?word=" + this.state.searchfield; 
+    // const url = "http://localhost:3001/" + "Search?word=" + this.state.searchfield;
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'x-auth': 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s' },
+  };
 
-        })
+  try{
+    fetch(url,requestOptions)
+      .then((response) => {
+        if(response.status === 400){
+          console.log("request failed");
+          throw new Error('Network response was not ok.');
+      }
+      else if(response.status === 403)
+      {
+        console.log("request failed");
+          throw new Error('Network response was not ok.');
+
+      }
+      else if(response.status === 401)
+      {
+        console.log("request failed");
+          throw new Error('Network response was not ok.');
+      }
+      else if(response.status === 404)
+      {
+        console.log("request failed");
+          throw new Error('Network response was not ok.');
+
+      }
+      else if(response.status === 500)
+      {
+        console.log("request failed");
+          throw new Error('Network response was not ok.');
+
+      }
+      else
+      {
+        return response.json();
+
+      }
+        
+      })
+      .then((data) => {
+        this.setState({songs:data.Tracks,
+                       artists:data.Artists,
+                       albums:data.Albums,
+                       playlist:data.Playlists,
+                       profiles:data.Users })
+        this.setState({loading:false});
+      })
+      .catch(function(error) {
+        console.log('There has been a problem with your fetch operation: ', 
+        error.message);
+       })
+
+       }
+    catch(error){
+      console(error);
+    }
+
+
+      }
+   
+
+    
+    // if(event.target.value !==""){
+    //   const url = "https://jsonplaceholder.typicode.com/photos"; 
+    //   fetch(url)
+    //     .then((response) => {
+    //       return response.json();
+          
+    //     })
+    //     .then((data) => {
+    //       this.setState({songs:data,
+    //                      artists:data,
+    //                      albums:data,
+    //                      playlists:data,
+    //                      profiles:data})
+    //       this.setState({loading:false});
+    //     })
+    //     .catch((error)=>{
+    //       console.log(error);
+
+    //     })
   
-        }
+    //     }
   }
 
   OnCancelSearch = () => {
