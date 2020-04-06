@@ -83,7 +83,7 @@ handlePassword = event => {
 };
 
  clickSubmit = event => {
-  let incorrect = this.state.incorrectData
+  let incorrectData = "";
   let email = this.state.email;
   let emailError = this.state.emailError;
   let password = this.state.password;
@@ -104,38 +104,46 @@ handlePassword = event => {
      clr.reset();
      let returnedData={
       id: 1,
-      token:"9494985sjhbhd64c"
+      token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk"
     }
-      this.props.onSignIn(returnedData.id,returnedData.token);
-      // this.props.history.push('/account/');
-    //  const requestOptions = {
-    //     method:"POST",
-    //  }
-    //   var url = 'http://52.14.190.202:8000/api/users/login?email='+this.state.email+'&password='+this.state.password ; 
-    //   fetch(url,requestOptions)
-    //     .then((response) => {
-    //       return response.json();
-    //     })
-    //     .then((data) => {
-    //       console.log(data);
-    //       if (data == "Successful login")
-    //       {
-    //         this.props.history.push('/account/');
-    //       }
-    //       else if (data == "Either email or passwrod is incorrect")
-    //       {
-    //         document.querySelector(".incorrect").classList.remove("d-none");
-    //         incorrect = "Incorrect username or password.";
-    //       }
-    //       // else if (data == "Please go to your inbox and click the link to activate your Email.")
-    //       // {
-    //       //   document.querySelector(".incorrect").classList.remove("d-none");
-    //       //  this.state.incorrectData = "Please go to your inbox and click the link to activate your Email."; 
-    //       // }
-    //     })
-    //     .catch((error)=>{
-    //       console.log(error);
-    //     })
+     this.props.onSignIn(returnedData.token);
+     
+     
+     const requestOptions = {
+        method:"POST",
+        body:JSON.stringify({email: this.state.email, password: this.state.password})
+     }
+     console.log(requestOptions.body);
+      var url = 'http://52.14.190.202:8000/users/login' ; 
+      fetch(url,requestOptions)
+        .then((response) => {
+          // var headers= response.headers
+          // console.log(response.json());
+          // console.log(headers);
+          return response.json();
+          
+        })
+        .then((data) => {
+          console.log(data);
+          if (data == "Successful login")
+          {
+            this.props.history.push('/account/');
+          }
+          else if (data == "Either email or passwrod is incorrect")
+          {
+            document.querySelector(".incorrect").classList.remove("d-none");
+            incorrectData = "Incorrect username or password.";
+            this.setState({incorrectData});
+          }
+          // else if (data == "Please go to your inbox and click the link to activate your Email.")
+          // {
+          //   document.querySelector(".incorrect").classList.remove("d-none");
+          //  this.state.incorrectData = "Please go to your inbox and click the link to activate your Email."; 
+          // }
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
   }
 
 
