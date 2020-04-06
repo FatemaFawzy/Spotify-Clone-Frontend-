@@ -22,17 +22,21 @@ class ArtistProfile extends Component{
 
   componentDidMount() {
     
-    const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/" + "api/Artist/" +"123"; 
-    // const url = BASEURL + "api/Artists/" + this.props.selectedArtistID; 
+    // const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/" + "api/Artist/" +"123"; 
+    const url = BASEURL + "Artists/" + this.props.selectedArtistID; 
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
+    };
     
-    fetch(url)
+    fetch(url,requestOptions)
       .then((response) => {
         return response.json();
         
       })
       .then((data) => {
-        this.setState({artistInfo: data});
-        // console.log(this.state.artistInfo);
+        this.setState({artistInfo: data.artist});
+        console.log(this.state.artistInfo);
       })
       .catch((error)=>{
         console.log(error);
