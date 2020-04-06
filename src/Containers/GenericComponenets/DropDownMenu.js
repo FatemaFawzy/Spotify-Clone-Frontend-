@@ -3,6 +3,8 @@ import './DropDownMenu.css';
 import { BrowserRouter, withRouter } from "react-router-dom";
 import { NavLink, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import {BASEURL} from "../../Constants/baseURL";
+import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
 
 class DropDownMenu extends Component {
   state = {
@@ -13,24 +15,30 @@ class DropDownMenu extends Component {
   componentDidMount() {
     //make a request with the this.props.userID to get the name and pic of the user
 
-    const url = "https://jsonplaceholder.typicode.com/photos/" + this.props.userID;
-    fetch(url)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
+      const url = BASEURL +"users/me";
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'x-auth': this.props.userToken },
+    };
+      fetch(url,requestOptions)
+        .then((response) => {
+          return response.json();
+          
+        })
+        .then((data) => {
+          console.log(data)
+          if (data.userName > 15) {
+            this.setState({ username: data.userName.slice(0, 15) + "..." });
+          }
+          else {
+            this.setState({ username: data.userName });
+          }
+          this.setState({ userimage: data.imagePath });
+        })
+        .catch((error)=>{
+          console.log(error);
 
-        if (data.title.length > 15) {
-          this.setState({ username: data.title.slice(0, 15) + "..." });
-        }
-        else {
-          this.setState({ username: data.title });
-        }
-        this.setState({ userimage: data.url });
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+        })
 
 
   }
@@ -39,7 +47,7 @@ class DropDownMenu extends Component {
       <div className="drop-down-menu">
         <div className="over btn-group mr-4 " id="right-drop-down"  >
           <button type="button" className="btn dropdown-toggle account-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img className="image" src={this.state.userimage} alt="User" />
+            <img className="image" src={this.state.userimage} alt=".." />
             <p className="name">{this.state.username}</p>
           </button>
           <div className="over dropdown-menu dropdown-menu-right">
@@ -55,7 +63,8 @@ class DropDownMenu extends Component {
 const mapStateToProps = state => {
 
   return {
-    userID: state.userID
+    userID: state.userID,
+    userToken: state.userToken
   };
 
 };
