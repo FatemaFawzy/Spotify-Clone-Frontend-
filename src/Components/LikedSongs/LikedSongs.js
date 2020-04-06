@@ -3,6 +3,8 @@ import './LikedSongs.css';
 import ReactSnackBar from "react-js-snackbar";
 import HomePageNavbar from '../HomePage/HomePageNavbar';
 import CardMedia from '../Media/CardMedia';
+import {BASEURL} from "../../Constants/baseURL";
+import {connect} from 'react-redux';
   
 class LikedSongs extends Component
 {
@@ -27,9 +29,47 @@ class LikedSongs extends Component
       songsNumber: "32 Songs",   
       ShowRemove: false,
       ShowingRemove: false,
-      playLikedSongs: "Play"
+      playLikedSongs: "Play",
+      TracksID: [],
+      LikedTracks:[]
   }
-  
+  componentDidMount()
+  {
+    //  const url = BASEURL +"tracks/like/me";
+    //  const requestOptions = {
+    //       method: 'GET',  
+    //       headers: {'x-auth': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk" },  
+    //     };
+    //     fetch(url,requestOptions)
+    //         .then((response) => {
+    //           return response.json();    
+    //         })
+    //         .then((data) => {
+    //           console.log(data)
+    //           this.setState({ TracksID: data});
+    //           this.getLikedTrackes()
+    //         })
+    //         .catch((error)=>{
+    //           console.log(error);
+    
+    //         })       
+  }
+
+getLikedTrackes=()=>{
+    //console.log(this.state.TracksID)
+    // const url = BASEURL +"tracks";
+    //  const requestOptions = {
+    //       method: 'POST',  
+    //       body : JSON.stringify({
+    //         id:this.TracksID
+    //       })
+    //     };
+    //     fetch(url,requestOptions)
+    //       .then(response => response.json())
+    //         .then(data => this.setState({LikedSongs:data.tracks}))
+    //           .catch((error)=> {console.log(error)})
+  }
+
   toggle_add_to_playlist()
   {
     var blur_add_to_playlist=document.getElementById ('blur-add-to-playlist');
@@ -46,12 +86,6 @@ class LikedSongs extends Component
     document.getElementById("DropMenuSong").classList.toggle("show");
   }
 
-  likeSong = e => {
-    const {id} = e.target;
-    var heart=document.getElementById(id);
-    heart.classList.toggle("far");
-    heart.classList.toggle("fas");
-  }
   playButton = e => {
     const {id} = e.target;
     if ( this.state.playLikedSongs === "Play" ) {
@@ -74,8 +108,9 @@ show = e => {
 };
 
 
-  render(){
+  render(){ 
   return(
+    
   <div className="liked-songs-page">
     <HomePageNavbar accountType="regular" name="Ali Halafawy" color="black"
         image="https://scontent.fcai3-1.fna.fbcdn.net/v/t1.0-9/19397029_10210794027939033_5811382860033366804_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_eui2=AeHEhGNHMDc070CTQv4WD5FK-tEUbysbE-HFFkFOk7OxsfeTak6rLywRWjbRlCDjWmzjtl79NUg2XF9AsJX_0QE9j0LnqnOoo_ADLnnZUnidEA&_nc_ohc=QgP5sx3F3dsAX-nzFSx&_nc_ht=scontent.fcai3-1.fna&oh=86cb020fb7ea1a4e8c69aaaf075680d5&oe=5EA58791"/>
@@ -87,10 +122,6 @@ show = e => {
               <CardMedia image={this.state.LikedSongsImage}/>
 					  <li> <h3> Liked Songs </h3> </li>
             <li> <a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playLikedSongs}</a> </li>
-            <li  className="">
-            <button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> </button>
-             
-            </li>
             <li > <div> {this.state.songsNumber}</div> </li>
 					</ul>
           </div>
@@ -133,5 +164,10 @@ show = e => {
   )
 }
 }
+const mapStateToProps = state =>{
+  return{
+    userToken: state.userToken,
+  };
+};
 
-export default LikedSongs;
+export default connect(mapStateToProps) (LikedSongs);

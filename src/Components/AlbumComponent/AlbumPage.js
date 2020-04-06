@@ -5,6 +5,8 @@ import ReactDOM from "react-dom"
 import CardMedia from '../Media/CardMedia';
 import ReactSnackBar from "react-js-snackbar";
 import HomePageNavbar from '../HomePage/HomePageNavbar';
+import {BASEURL} from "../../Constants/baseURL";
+import {connect} from 'react-redux';
 
 
 class AlbumPage extends Component
@@ -57,8 +59,25 @@ class AlbumPage extends Component
   likeSong = r => {
     const {id} = r.target;
     var heart=document.getElementById(id);
+    var url=""
+    if( heart.classList.contains("far")){
+    url = BASEURL+"album/like/id="+this.props.AlbumID;
+    }
+    else if(heart.classList.contains("fas")){
+    url = BASEURL+"album/unlike/id="+ this.props.AlbumID;
+    }
     heart.classList.toggle("far");
     heart.classList.toggle("fas");
+    
+    console.log(url);
+    // const requestOptions = {
+    //   method: 'POST',  
+    //   headers: {'x-auth': this.props.userToken }, 
+    // };
+    // fetch(url, requestOptions)
+    //     .then(response => response.json())
+    //     .then(data => console.log(data))
+    //     .catch((error)=> {console.log(error)});
   }
 
 
@@ -167,5 +186,11 @@ else if (check=="SAVE"){
   )
 }
 }
+const mapStateToProps = state =>{
+  return{
+    userToken: state.userToken,
+    AlbumID: state.selectedAlbumID,
+  };
+};
 
-export default AlbumPage;
+export default connect(mapStateToProps) (AlbumPage);
