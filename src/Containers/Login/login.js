@@ -106,8 +106,8 @@ handlePassword = event => {
       id: 1,
       token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk"
     }
-      this.props.onSignIn(returnedData.id,returnedData.token);
-      // this.props.history.push('/account/');
+      this.props.onSignIn(returnedData.token);
+    // this.props.history.push('/account/');
     //  const requestOptions = {
     //     method:"POST",
     //  }

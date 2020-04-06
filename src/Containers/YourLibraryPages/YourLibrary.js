@@ -21,7 +21,6 @@ class YourLibrary extends Component {
         
         <div className="all-your-library-content">
 
-
           <Switch>
             <Route exact path="/webplayer/yourlibrary/" component={YourLibraryPlaylist} />
             <Route path="/webplayer/yourlibrary/artist" component={YourLibraryArtist} />
@@ -30,9 +29,8 @@ class YourLibrary extends Component {
 
         </div>
 
-
       </div>
-
+      
     );
 
 

@@ -20,7 +20,7 @@ class MediaObject extends Component {
       <div className="media-object">
 
         <div className="container">
-          <img src= {this.props.image} className="displayed-image"></img>
+          <img src= {this.props.image} className="displayed-image" alt=""></img>
           <div className="middle">
             <div onClick={(event) => {
               this.setState((prevstate, event) => ({ playing: prevstate.playing ? false : true }))

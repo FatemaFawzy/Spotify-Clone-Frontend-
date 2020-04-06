@@ -37,7 +37,7 @@ class RelatedArtistsContent extends Component {
       })
       .then((data) => {
         // this.setState({artistInfo: data});
-         console.log(data);
+        //  console.log(data);
       })
       .catch((error)=>{
         console.log(error);

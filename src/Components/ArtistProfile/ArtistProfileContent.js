@@ -12,9 +12,6 @@ class ArtistProfileContent extends Component {
       return (
     <div className="artist-profile-content">
             <Switch>
-
-              
-
            
                 <Route exact path="/webplayer/artistprofile/" render=  { (props) => <ArtistOverviewContent {...props}
                         id={this.props.artistID}

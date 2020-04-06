@@ -26,7 +26,6 @@ class DropDownMenu extends Component {
           
         })
         .then((data) => {
-          console.log(data)
           if (data.userName > 15) {
             this.setState({ username: data.userName.slice(0, 15) + "..." });
           }
