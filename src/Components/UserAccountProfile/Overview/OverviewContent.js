@@ -13,7 +13,7 @@ const OverviewContent=({passedInfo})=>(
         <InfoLine title="Email" info={passedInfo.email}/>
         <InfoLine title="Username" info={passedInfo.userName}/>
         <InfoLine title="Gender" info={passedInfo.gender}/>
-        <InfoLine title="Birthdate" info={passedInfo.birthDate}/>
+        <InfoLine title="Birthdate" info={passedInfo.birthDate.slice(0,10)}/>
 
         <Link to="/account/profile" className="ep-bt">EDIT PROFILE</Link>
 
