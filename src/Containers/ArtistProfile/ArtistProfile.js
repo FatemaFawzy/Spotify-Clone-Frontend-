@@ -36,7 +36,6 @@ class ArtistProfile extends Component{
       })
       .then((data) => {
         this.setState({artistInfo: data.artist});
-        console.log(this.state.artistInfo);
       })
       .catch((error)=>{
         console.log(error);
@@ -136,7 +135,7 @@ class ArtistProfile extends Component{
 
       </div>
 
-      <ArtistProfileContent info={this.state.artistInfo} artistID="123"/>
+      <ArtistProfileContent info={this.state.artistInfo} artistID={this.props.selectedArtistID}/>
 
     </div>
   )

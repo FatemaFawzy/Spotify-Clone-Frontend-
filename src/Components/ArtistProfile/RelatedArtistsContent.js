@@ -3,6 +3,7 @@ import "./RelatedArtistsContent.css";
 import "../../Containers/GenericComponenets/GeneralItem";
 import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
 import {connect} from "react-redux";
+import {BASEURL} from "../../Constants/baseURL";
 
 class RelatedArtistsContent extends Component {
 
@@ -24,20 +25,24 @@ class RelatedArtistsContent extends Component {
   componentDidMount() {
     
     console.log("heyyyyyyyyyyyyy")
-    const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/" + "users/artists/related?artistId=" + "123"; 
+    console.log(this.props.id)
+    const url = BASEURL + "users/artists/related";
+    console.log(url)
 
     const requestOptions = {
       method: 'GET',
-      headers: { 'Authorization': 'x-auth' },
+      headers: { 'x-auth': JSON.parse(`"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk"`) , 'artistId' : JSON.parse(`"5e8a701954fe752c1498f723"`) },
     }
+
     fetch(url,requestOptions)
       .then((response) => {
+        console.log(response)
         return response.json();
         
       })
       .then((data) => {
-        // this.setState({artistInfo: data});
-        //  console.log(data);
+        this.setState({artistInfo: data});
+         console.log(data);
       })
       .catch((error)=>{
         console.log(error);
@@ -67,8 +72,8 @@ class RelatedArtistsContent extends Component {
 const mapStateToProps = state => {
 
   return {
-    userID : state.userID
-    //now you have access to the userID as this.props.userID inside the class component.
+    userToken : state.userToken
+    //now you have access to the userToken as this.props.userToken inside the class component.
   };
 
 };
