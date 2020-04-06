@@ -23,19 +23,19 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededSongs = songs;
     }
     const Songs = neededSongs.map(song => (
-      // <SongSearched
-      //   image={song.image.url}
-      //   name={song.trackName}
-      //   subname={song.artistName}
-      //   key={song._id}
-      // />)
-
       <SongSearched
-        image={song.url}
-        name={song.title}
-        subname={song.title}
-        key={song.id}
+        image={song.imagePath}
+        name={song.trackName}
+        subname={song.artistName}
+        key={song._id}
       />)
+
+      // <SongSearched
+      //   image={song.url}
+      //   name={song.title}
+      //   subname={song.title}
+      //   key={song.id}
+      // />)
     )
     RenderedSongs = (<div id="searched-category-block-song" className="searched-category-block">
       <Link to="/webplayer/search/songs/" id="searched-category-title-song" className="searched-category-title" >Songs</Link>
@@ -102,25 +102,25 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededArtists = artists;
     }
     const Artists = neededArtists.map(artist => (
-      // <GeneralItem
-      //   image={artist.image.url}
-      //   name={artist.artistName}
-      //   subname="Artist"
-      //   roundimage={true}
-      //   key={artist._id}
-      //   id={artist._id}
-      //   type={itemType.ARTIST}
-      // />)
-
       <GeneralItem
-        image={artist.url}
-        name={artist.title}
+        image={artist.imagePath}
+        name={artist.artistName}
         subname="Artist"
         roundimage={true}
-        key={artist.id}
-        id={artist.id}
+        key={artist._id}
+        id={artist._id}
         type={itemType.ARTIST}
       />)
+
+      // <GeneralItem
+      //   image={artist.url}
+      //   name={artist.title}
+      //   subname="Artist"
+      //   roundimage={true}
+      //   key={artist.id}
+      //   id={artist.id}
+      //   type={itemType.ARTIST}
+      // />)
 
 
     )
@@ -144,23 +144,23 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededAlbums = albums;
     }
     const Albums = neededAlbums.map(album => (
-      // <GeneralItem
-      //   image={album.image.url}
-      //   name={album.albumName}
-      //   subname={album.artistName}
-      //   key={album._id}
-      //   id={album._id}
-      //   type={itemType.ALBUM}
-      // />)
-
       <GeneralItem
-        image={album.url}
-        name={album.title}
-        subname="Album"
-        key={album.id}
-        id={album.id}
+        image={album.imagePath}
+        name={album.albumName}
+        subname={album.artistName}
+        key={album._id}
+        id={album._id}
         type={itemType.ALBUM}
       />)
+
+      // <GeneralItem
+      //   image={album.url}
+      //   name={album.title}
+      //   subname="Album"
+      //   key={album.id}
+      //   id={album.id}
+      //   type={itemType.ALBUM}
+      // />)
     )
     RenderedAlbums = (<div className="searched-category-block">
       <Link to="/webplayer/search/albums/" className="searched-category-title" >Albums</Link>
@@ -182,23 +182,23 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededPlaylists = playlists;
     }
     const Playlists = neededPlaylists.map(playlist => (
-      // <GeneralItem
-      //   image={playlist.image.url}
-      //   name={playlist.playlistName}
-      //   subname={playlist.userName}
-      //   key={playlist._id}
-      //   id={playlist._id}
-      //   type={itemType.PLAYLIST}
-      // />)
-
       <GeneralItem
-        image={playlist.url}
-        name={playlist.title}
-        subname="Playlist"
-        key={playlist.id}
-        id={playlist.id}
+        image={playlist.imagePath}
+        name={playlist.playlistName}
+        subname={playlist.userName}
+        key={playlist._id}
+        id={playlist._id}
         type={itemType.PLAYLIST}
       />)
+
+      // <GeneralItem
+      //   image={playlist.url}
+      //   name={playlist.title}
+      //   subname="Playlist"
+      //   key={playlist.id}
+      //   id={playlist.id}
+      //   type={itemType.PLAYLIST}
+      // />)
     )
     RenderedPlaylists = (<div className="searched-category-block">
       <Link to="/webplayer/search/playlists/" className="searched-category-title" >Playlists</Link>
@@ -221,23 +221,23 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       neededProfiles = profiles;
     }
     const Profiles = neededProfiles.map(profile => (
-      // <GeneralItem
-      //   image={profile.image.url}
-      //   name={profile.userName}
-      //   subname="Profile"
-      //   key={profile._id}
-      //   id={profile._id}
-      //   type={itemType.PROFILE}
-      // />)
-
       <GeneralItem
-        image={profile.url}
-        name={profile.title}
+        image={profile.imagePath}
+        name={profile.userName}
         subname="Profile"
-        key={profile.id}
-        id={profile.id}
+        key={profile._id}
+        id={profile._id}
         type={itemType.PROFILE}
       />)
+
+      // <GeneralItem
+      //   image={profile.url}
+      //   name={profile.title}
+      //   subname="Profile"
+      //   key={profile.id}
+      //   id={profile.id}
+      //   type={itemType.PROFILE}
+      // />)
     )
     RenderedProfiles = (<div className="searched-category-block">
       <Link to="/webplayer/search/profiles/" className="searched-category-title" >Profiles</Link>
@@ -246,15 +246,23 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
   }
 
   //For the top results
+  let topResultName="";
+  let topResultType="";
+  let topResultImage= "";
 
+  if(songs.length){
+    topResultName=songs[0].trackName;
+    topResultType="song";
+    topResultImage=songs[0].imagePath;
+  }
   var RenderedTopResult = (
     <div className="searched-top-container">
       <h2 className="searched-top-title"> <span>Top result</span></h2>
       <TopResultItem
-        image="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSTqNIgQTD9ivrxROP-q28iXeLqCG-5XaZ2yX1safWcAf2GSLOe"
-        name="Sia"
-        subname=""
-        type="artist" />
+        image={topResultImage}
+        name={topResultName}
+        subname={topResultType}
+        type={topResultType} />
     </div>
 
 

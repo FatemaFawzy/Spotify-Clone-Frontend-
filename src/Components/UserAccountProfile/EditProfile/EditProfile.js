@@ -11,13 +11,13 @@ class EditProfile extends Component {
     this.years = Array.from(new Array(121),(val, index) => year - index);
 
     this.state = {
-      email: "fatema123@gmail.com",
-      username: "Fatema Fawzy",
-      gender: "F",
+      email: props.passedInfo.email,
+      username: props.passedInfo.userName,
+      gender: props.passedInfo.gender,
       birthDate: {
-        day: "20",
-        month: "09",
-        year: "1998",
+        day: props.passedInfo.birthDate.slice(8,10),
+        month: props.passedInfo.birthDate.slice(5,7),
+        year: props.passedInfo.birthDate.slice(0,4),
       },
       usernameErrorMessage: "",
       savedChanges: false,
