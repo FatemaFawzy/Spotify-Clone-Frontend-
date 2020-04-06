@@ -22,7 +22,7 @@ class YourLibraryAlbum extends Component {
     //     return response.json();
     //   })
     //   .then((data) => {
-    //     this.setState({playlists:data.slice(0,10)})
+    //     this.setState({albumArray:data.slice(0,10)})
     //   })
     //   .catch((error)=>{
     //     console.log(error);
