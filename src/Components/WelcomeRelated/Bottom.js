@@ -1,8 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Bottom.css";
-import {NavLink} from "react-router-dom";
-import {Link} from "react-router-dom";
-
 function Bottom() {
 		return(
 			<footer className="bottom-bar page-footer pt-4 ">
