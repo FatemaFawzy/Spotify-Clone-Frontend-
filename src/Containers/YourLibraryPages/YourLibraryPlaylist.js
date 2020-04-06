@@ -12,7 +12,7 @@ class YourLibraryPlaylist extends Component {
     total:"",
     }
   }
-  componentDidMount() {
+componentDidMount() {
 
     //Make a request with this.props.userID
     //assume this is the returned data

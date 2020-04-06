@@ -14,7 +14,7 @@ const BrowseItem =(props) =>{
 
             <h3 className="head-style">{props.header}</h3>
 
-            <img src={props.image} className="img-style" />
+            <img src={props.image} className="img-style" alt="" />
 
         </div>
     )

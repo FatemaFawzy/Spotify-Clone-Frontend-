@@ -15,7 +15,7 @@ class CardMedia extends Component {
       <div className="play-pause">
 
         <div className="container">
-          <img src= {this.props.image} className="card-image"></img>
+          <img src= {this.props.image} className="card-image" alt=""></img>
           <div className="middle">
             <div onClick={(event) => {
                 this.setState((prevstate, event) => ({ playing: prevstate.playing ? false : true }))

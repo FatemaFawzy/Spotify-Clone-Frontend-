@@ -67,30 +67,30 @@ class ForgotPassword extends Component {
         method:"POST",
         body:JSON.stringify({email: email})
       }
-      // console.log(requestOptions.body);
-      // var url = 'http://52.14.190.202:8000/users/forgot'; 
-      // fetch(url,requestOptions)
-      //   .then((response) => {
-      //     return response.json();
-      //   })
-      //   .then((data) => {
-      //     console.log(data);
-      //     if (data.message === "Email Sent Successfully")
-      //     {
-      //       this.props.history.push('/logIn/forgotpassword/newpassword');
-      //     }
-      //     else if (data.message == "Email Cannot be sent a problem while sending email")
-      //     {
-      //       this.state.emailError = "Your request cannot be performed. Please try again later.";
-      //     }
-      //     else if (data.message == "Email not found")
-      //     {
-      //      this.state.emailError = "The email you entered does not exist in the Spotify server."  
-      //     }
-      //   })
-      //   .catch((error)=>{
-      //     console.log(error);
-      //   })
+      console.log(requestOptions.body);
+      var url = 'http://52.14.190.202:8000/users/forgot'; 
+      fetch(url,requestOptions)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          if (data.message === "Email Sent Successfully")
+          {
+            this.props.history.push('/logIn/forgotpassword/newpassword');
+          }
+          else if (data.message == "Email Cannot be sent a problem while sending email")
+          {
+            this.state.emailError = "Your request cannot be performed. Please try again later.";
+          }
+          else if (data.message == "Email not found")
+          {
+           this.state.emailError = "The email you entered does not exist in the Spotify server."  
+          }
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
 
     }
   };
