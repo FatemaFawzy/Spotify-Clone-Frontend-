@@ -3,9 +3,17 @@ import './HomePageSidebar.css';
 import { NavLink, Link } from "react-router-dom";
 import CreatePlaylist from '../PlaylistsComponent/CreatePlaylist';
 import { addNewURL } from '../../HelperFunctions/History';
+import {connect} from "react-redux";
  
 
 class HomePageSidebar extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+    playlistArray:[],
+    total:"",
+    }
+  }
   toggle()
   {
     var blur=document.getElementById('blur');
@@ -14,29 +22,6 @@ class HomePageSidebar extends Component{
     popup.classList.toggle('active')
   }
   componentDidMount() {
-    //   //   const playlistArray=
-    //   //   [
-    //   //     {image:"https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba",
-    //   //     name:"Mood Booster",
-    //   //     description:"Ride on dem swings",
-    //   //     id:"1"},
-    //   //     {image:"https://i.scdn.co/image/ab67706f0000000262822373d6fce52feea1501c",
-    //   //     name:"Pop PunkFaves",
-    //   //     description:"Your favorite punks.",
-    //   //     id:"2"},
-    //   //     {image:"https://i.pinimg.com/474x/75/28/e7/7528e70aef7cf03be7a5fb13a163f476.jpg",
-    //   //     name:"Today's Top Hits",
-    //   //     description:"Drake is on top of the Hot 100!",
-    //   //     id:"3"},
-    //   //     {image:"https://pl.scdn.co/images/pl/default/2d5e3dba500f5a4f87581eaf7e294089806b6ba9",
-    //   //     name:"Comfort Zone",
-    //   //     description:"Chilled songs that you are familiar with - no surprises!",
-    //   //     id:"4"},
-    //   //     {image:"https://i.scdn.co/image/ab67706f00000002b6b079ea1e8f5af584d7a897",
-    //   //     name:"Hip Hop Drive",
-    //   //     description:"Hey there homie..",
-    //   //     id:"5"}
-    //   // ];
     
     const requestOptions = {
       method:"GET",
@@ -52,26 +37,24 @@ class HomePageSidebar extends Component{
         console.log(data.playlist);
         if(data.playlist)
         {
-        const playlists = data.playlist.map(item => {
+          
+        const list = data.playlist.map(item => {
           return (
-            <GeneralItem
-            image= {BASEURL + "Images/" + item.imagePath}
-            name={item.playlistName}
-            subname="HEY"
-            id={item._id}
-            type="PLAYLIST"
-          />
+            <li className="List2">{item.playlistName}</li>
           )
         }
+        
         )
-        this.setState({total:playlists});
+        console.log(list);
+        this.setState({total:list});
+        console.log(this.state.total);
       }
     
       })
       .catch((error)=>{
         console.log(error);
       })
-      console.log(this.state.playlistArray.playlists);
+      
     }
 
 render() {
@@ -92,22 +75,7 @@ render() {
               <li><NavLink  onClick={addNewURL("/webplayer/likedsongs")} className="List2" to="/webplayer/likedsongs/"><i className="fas fa-heart fa-2x" aria-hidden="true"></i>Liked Songs</NavLink></li>
               <hr/>
               <div id="my-playlist" className="my-playlists">
-                <li><a className="List2" href="/webplayer/playlist">Born To die</a></li>
-                <li><a className="List2" href="/webplayer/album">Perfect</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
+                {this.state.total}
               </div>
           </ul> 
       </div>
@@ -117,5 +85,11 @@ render() {
 );
 }
 } 
+const mapStateToProps = state => {
 
-export default HomePageSidebar;
+  return {
+    userID:state.userID
+  };
+
+};
+export default connect(mapStateToProps)(HomePageSidebar);
