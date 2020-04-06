@@ -21,7 +21,7 @@ return (
         <h2 className="d-flex justify-content-center mb-3" > Create new playlist</h2>
         <div className="input_P ">
       <form >
-          <div class="form-group container ">
+          <div className="form-group container ">
           <label for="new-playlist-name">Playlist Name</label>
           <input autoComplete="off" placeholder="New Playlist" type="text" className="form-control form-control-lg "  id="new-playlist-name"/>
           </div>

@@ -20,7 +20,7 @@ const TopResultItem =(props) =>{
             <h3>{actualName}</h3>
             <a href="#">{props.subname}</a>
             <div className="top-type-search-display"><span>{props.type}</span></div>
-            <button><i class="fas fa-play"></i></button>
+            <button><i className="fas fa-play"></i></button>
 
         </div>
 

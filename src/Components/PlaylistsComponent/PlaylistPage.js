@@ -112,9 +112,9 @@ else if (check=="REMOVE"){
             
           <div className="dropdown ">
               <a className="card-menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
-              <div class="dropdown-menu card-dropdown-content ">
-              <a class="dropdown-item drop-class" href="#">Edit Playlist</a>
-              <a class="dropdown-item drop-class" data-toggle="modal" data-target="#delete" href="#">Delete</a>
+              <div className="dropdown-menu card-dropdown-content ">
+              <a className="dropdown-item drop-class" href="#">Edit Playlist</a>
+              <a className="dropdown-item drop-class" data-toggle="modal" data-target="#delete" href="#">Delete</a>
               
           </div>
 
@@ -125,7 +125,7 @@ else if (check=="REMOVE"){
           </div>
 
         <div className="col-xs-12  col-lg-7 col-xl-8">
-        <table class="table table-borderless">
+        <table className="table table-borderless">
           <tbody>
                                              {/* Display Songs */}
            {this.state.SongInfo.map((song,index)=>(
@@ -140,11 +140,11 @@ else if (check=="REMOVE"){
               <td>
                 <div className="dropdown ">
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
-                  <div class="dropdown-menu song-dropdown-content dropdown-menu-right ">
-                    <a class="dropdown-item drop-class" href="#" id="ADD" value="ShowAdd" onClick={this.show} >Add to your liked songs</a>
+                  <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
+                    <a className="dropdown-item drop-class" href="#" id="ADD" value="ShowAdd" onClick={this.show} >Add to your liked songs</a>
                     
-                    <a class="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Add to playlist</a>
-                    <a class="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show} href="#">Remove from this playlist</a>
+                    <a className="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Add to playlist</a>
+                    <a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show} href="#">Remove from this playlist</a>
                   </div>
                 </div>
               </td>
@@ -154,11 +154,11 @@ else if (check=="REMOVE"){
              
       </tbody>
     </table>
-    <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowAdd}>
+    <ReactSnackBar Icon={<span className="fab fa-spotify"></span>} Show={this.state.ShowAdd}>
                       Added To Your Liked Songs
     </ReactSnackBar>
 
-    <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.ShowRemove}>
+    <ReactSnackBar Icon={<span className="fab fa-spotify"></span>} Show={this.state.ShowRemove}>
                       Removed From This Playlist
     </ReactSnackBar>
       </div> 

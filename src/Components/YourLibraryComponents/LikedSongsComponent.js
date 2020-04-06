@@ -67,7 +67,7 @@ return (
     <p className="number-of-liked-songs col no-gutters">{this.state.totalLiked} liked songs</p>
     </div>
     <div className="col-4">
-    <button className="bottom-right-button col"><i class="fas fa-play"></i></button>
+    <button className="bottom-right-button col"><i className="fas fa-play"></i></button>
     </div>
     </div>
   </div>

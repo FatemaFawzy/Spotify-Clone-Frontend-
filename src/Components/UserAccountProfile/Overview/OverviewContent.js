@@ -48,13 +48,13 @@ const OverviewContent=()=>(
 
         <Link to="/premium" className="ep-bt">JOIN PREMIUM</Link>
         
-        <h4><strong>Sign out everywhere</strong></h4>
+        {/* <h4><strong>Sign out everywhere</strong></h4>
         <br/>
         <p>Sign out wherever you have Spotify open, including the web, mobile, desktop or any other devices.</p>
 
         <p className="accnote">Note: This doesn’t include partner devices, such as Sonos and PlayStation. For more information about logging out (or unlinking) Spotify from a partner device, check the device’s manufacturer guide.</p>
         
-        <Link className="ep-bt">SIGN OUT EVERYWHERE</Link>
+        <Link className="ep-bt">SIGN OUT EVERYWHERE</Link> */}
 </div>
 
 );

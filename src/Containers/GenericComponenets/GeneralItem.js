@@ -72,7 +72,7 @@ export class GeneralItem extends Component {
         <img src={this.props.image} id={roundImgOrNot} className="img-style-item-general" />
         <p>{actualName}</p>
         <a href="#">{this.props.subname}</a>
-        <button><i class="fas fa-play"></i></button>
+        <button><i className="fas fa-play"></i></button>
 
       </div>
     )
