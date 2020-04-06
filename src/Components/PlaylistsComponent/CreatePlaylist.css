@@ -85,11 +85,7 @@
   font-size: 48px;
   font-weight: 900;
 }
-@media (max-width: 550px){
-  .create-playlist h2{
-    font-size: 40px;
- }
-}
+
 
 .create-playlist .close-button
 {
