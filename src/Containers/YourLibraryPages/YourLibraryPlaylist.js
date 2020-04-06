@@ -4,6 +4,7 @@ import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibrar
 import GeneralItem from "../GenericComponenets/GeneralItem";
 import LikedSongsComponent from '../../Components/YourLibraryComponents/LikedSongsComponent';
 import {connect} from "react-redux";
+import {BASEURL} from "../../Constants/baseURL";
 class YourLibraryPlaylist extends Component {
   constructor(props){
     super(props);
@@ -13,54 +14,51 @@ class YourLibraryPlaylist extends Component {
     }
   }
 componentDidMount() {
+//   //   const playlistArray=
+//   //   [
+//   //     {image:"https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba",
+//   //     name:"Mood Booster",
+//   //     description:"Ride on dem swings",
+//   //     id:"1"},
+//   //     {image:"https://i.scdn.co/image/ab67706f0000000262822373d6fce52feea1501c",
+//   //     name:"Pop PunkFaves",
+//   //     description:"Your favorite punks.",
+//   //     id:"2"},
+//   //     {image:"https://i.pinimg.com/474x/75/28/e7/7528e70aef7cf03be7a5fb13a163f476.jpg",
+//   //     name:"Today's Top Hits",
+//   //     description:"Drake is on top of the Hot 100!",
+//   //     id:"3"},
+//   //     {image:"https://pl.scdn.co/images/pl/default/2d5e3dba500f5a4f87581eaf7e294089806b6ba9",
+//   //     name:"Comfort Zone",
+//   //     description:"Chilled songs that you are familiar with - no surprises!",
+//   //     id:"4"},
+//   //     {image:"https://i.scdn.co/image/ab67706f00000002b6b079ea1e8f5af584d7a897",
+//   //     name:"Hip Hop Drive",
+//   //     description:"Hey there homie..",
+//   //     id:"5"}
+//   // ];
 
-    //Make a request with this.props.userID
-    //assume this is the returned data
+const requestOptions = {
+  method:"GET",
+  headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
+}
 
-    // const url = "https://jsonplaceholder.typicode.com/photos"; 
-    // fetch(url)
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     this.setState({playlistArray:data.slice(0,10)})
-    //   })
-    //   .catch((error)=>{
-    //     console.log(error);
-    //   })
-
-    const playlistArray=
-    [
-      {image:"https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba",
-      name:"Mood Booster",
-      description:"Ride on dem swings",
-      id:"1"},
-      {image:"https://i.scdn.co/image/ab67706f0000000262822373d6fce52feea1501c",
-      name:"Pop PunkFaves",
-      description:"Your favorite punks.",
-      id:"2"},
-      {image:"https://i.pinimg.com/474x/75/28/e7/7528e70aef7cf03be7a5fb13a163f476.jpg",
-      name:"Today's Top Hits",
-      description:"Drake is on top of the Hot 100!",
-      id:"3"},
-      {image:"https://pl.scdn.co/images/pl/default/2d5e3dba500f5a4f87581eaf7e294089806b6ba9",
-      name:"Comfort Zone",
-      description:"Chilled songs that you are familiar with - no surprises!",
-      id:"4"},
-      {image:"https://i.scdn.co/image/ab67706f00000002b6b079ea1e8f5af584d7a897",
-      name:"Hip Hop Drive",
-      description:"Hey there homie..",
-      id:"5"}
-  ];
-
-    
-    const playlists = playlistArray.map(item => {
+const url = "http://52.14.190.202:8000/playlists/me"; 
+fetch(url,requestOptions)
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data.playlist);
+    if(data.playlist)
+    {
+    const playlists = data.playlist.map(item => {
       return (
         <GeneralItem
-        image={item.image}
-        name={item.name}
-        subname={item.description}
-        id={item.id}
+        image= {BASEURL + "Images/" + item.imagePath}
+        name={item.playlistName}
+        subname="HEY"
+        id={item._id}
         type="PLAYLIST"
       />
       )
@@ -68,6 +66,13 @@ componentDidMount() {
     )
     this.setState({total:playlists});
   }
+
+  })
+  .catch((error)=>{
+    console.log(error);
+  })
+  console.log(this.state.playlistArray.playlists);
+}
 render() {
 return ( 
   <div className="your-library-playlist">
