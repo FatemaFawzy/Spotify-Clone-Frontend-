@@ -61,11 +61,12 @@ class ForgotPassword extends Component {
     else if(this.validate())
     {
       this.setState({initialState});
-      let email = this.state.email;
+     const {email}=this.state;
       document.querySelector("#my-text").classList.remove("red-border");
       const requestOptions = {
         method:"POST",
-        body:JSON.stringify({email: email})
+        headers: {'Content-Type':  'application/json'},
+        body: JSON.stringify({ email: email })
       }
       console.log(requestOptions.body);
       var url = 'http://52.14.190.202:8000/users/forgot'; 
@@ -77,7 +78,7 @@ class ForgotPassword extends Component {
           console.log(data);
           if (data.message === "Email Sent Successfully")
           {
-            this.props.history.push('/logIn/forgotpassword/newpassword');
+            this.props.history.push('/logIn/forgotpassword/success');
           }
           else if (data.message == "Email Cannot be sent a problem while sending email")
           {

@@ -17,16 +17,19 @@ createNewPlaylist = (e) =>{
   e.preventDefault();
   var NewPlaylistName = document.getElementById('new-playlist-name').value; 
   var Privacy=false;
-  const url = BASEURL+ "/playlists?playlistName="+NewPlaylistName+"&privacy="+Privacy;    
+  const url = BASEURL+ "playlists/?playlistName="+NewPlaylistName+"&privacy="+Privacy;    
   console.log(url);
-  // const requestOptions = {
-  //   method: 'POST', 
-  //   headers: {'x-auth': this.props.userToken },  
-  // };    
-  //    fetch(url,requestOptions)
-  //     .then((res) => res.json())
-  //     .then((data) =>console.log(data))
-  //     .catch((err)=>console.log(err))
+  const requestOptions = {
+    method: 'POST', 
+    headers: {'x-auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
+    'Content-Type': 'application/json' }, 
+    body: JSON.stringify({ playlistName: NewPlaylistName, privacy: Privacy }) ,
+
+  };    
+     fetch(url,requestOptions)
+      .then((res) => res.json())
+      .then((data) =>console.log(data))
+      .catch((err)=>console.log(err))
     console.log(NewPlaylistName)
     this.toggle()
 }

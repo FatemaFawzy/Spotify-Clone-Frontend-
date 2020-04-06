@@ -3,9 +3,17 @@ import './HomePageSidebar.css';
 import { NavLink, Link } from "react-router-dom";
 import CreatePlaylist from '../PlaylistsComponent/CreatePlaylist';
 import { addNewURL } from '../../HelperFunctions/History';
+import {connect} from "react-redux";
  
 
 class HomePageSidebar extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+    playlistArray:[],
+    total:"",
+    }
+  }
   toggle()
   {
     var blur=document.getElementById('blur');
@@ -13,6 +21,41 @@ class HomePageSidebar extends Component{
     var popup=document.getElementById('popup');
     popup.classList.toggle('active')
   }
+  componentDidMount() {
+    
+    const requestOptions = {
+      method:"GET",
+      headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
+    }
+    
+    const url = "http://52.14.190.202:8000/playlists/me"; 
+    fetch(url,requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data.playlist);
+        if(data.playlist)
+        {
+          
+        const list = data.playlist.map(item => {
+          return (
+            <li className="List2">{item.playlistName}</li>
+          )
+        }
+        
+        )
+        console.log(list);
+        this.setState({total:list});
+        console.log(this.state.total);
+      }
+    
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+      
+    }
 
 render() {
  return (
@@ -32,22 +75,7 @@ render() {
               <li><NavLink  onClick={addNewURL("/webplayer/likedsongs")} className="List2" to="/webplayer/likedsongs/"><i className="fas fa-heart fa-2x" aria-hidden="true"></i>Liked Songs</NavLink></li>
               <hr/>
               <div id="my-playlist" className="my-playlists">
-                <li><a className="List2" href="/webplayer/playlist">Born To die</a></li>
-                <li><a className="List2" href="/webplayer/album">Perfect</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
+                {this.state.total}
               </div>
           </ul> 
       </div>
@@ -57,5 +85,11 @@ render() {
 );
 }
 } 
+const mapStateToProps = state => {
 
-export default HomePageSidebar;
+  return {
+    userID:state.userID
+  };
+
+};
+export default connect(mapStateToProps)(HomePageSidebar);

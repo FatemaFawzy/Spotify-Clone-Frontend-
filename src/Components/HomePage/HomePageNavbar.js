@@ -33,7 +33,7 @@ export class HomePageNavbar extends Component{
                               
               <div className="home-nav-nabar">
               
-                <div>
+                <div className="collapse-drop">
                   <CollapseDropDown />
                 </div>
                   

@@ -60,6 +60,7 @@ class CreateNewPassword extends Component {
 
     // const requestOptions = {
     //   method: "PATCH",
+    //   headers: {'Content-Type':  'application/json'},
     //   body: JSON.stringify({ newPassword: this.state.newPassword})
     // };
     // const url = window.location.href; 

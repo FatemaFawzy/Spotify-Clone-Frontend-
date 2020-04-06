@@ -8,14 +8,17 @@
   padding: 10px;
 }
 
-.home-nav-nabar{
+.home-nav .home-nav-nabar{
   display: block;
   float: left;
   z-index: 15;
   position: relative;
+  width: 100%;
 }
 
-
+.home-nav .collapse-drop{
+  width: 100%;
+}
 
 
 .home-nav .drop-down{
