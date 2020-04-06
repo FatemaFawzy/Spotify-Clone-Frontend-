@@ -17,6 +17,12 @@
   display: inline-block;
   float: left;
 }
+.your-library-nav{
+  width:100%;
+}
+.your-library-nav .yourlibrary{
+  width: 100%;
+}
 .your-library-nav .account-button{
   border-radius: 23px;
   height: 32px;
@@ -197,8 +203,8 @@
   .your-library-nav .drop-down{
     right: 10px;
   }
-  .your-library-nav .btn-group {
-    padding-bottom: 20px !important;
-    top: 0 !important;
+  .your-library-nav #more-button {
+    margin-bottom: 15px !important;
+    
   }
 }
