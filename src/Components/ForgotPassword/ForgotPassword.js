@@ -62,12 +62,11 @@ class ForgotPassword extends Component {
     {
       this.setState({initialState});
       document.querySelector("#my-text").classList.remove("red-border");
-      this.props.history.push('/logIn/forgotpassword/newpassword');  
       // const requestOptions = {
       //   method:"POST",
-      //   body:JSON.stringify({email: this.state.email})
+      //   body:JSON.stringify({email: this.email.state})
       // }
-      // var url = baseURL + '/users/forgot'; 
+      // var url = 'http://52.14.190.202:8000/users/forgot'; 
       // fetch(url,requestOptions)
       //   .then((response) => {
       //     return response.json();
@@ -82,7 +81,7 @@ class ForgotPassword extends Component {
       //     {
       //       this.state.emailError = "Your request cannot be performed. Please try again later.";
       //     }
-      //     else if (data.message == "User not found")
+      //     else if (data.message == "Email not found")
       //     {
       //      this.state.emailError = "The email you entered does not exist in the Spotify server."  
       //     }
@@ -90,6 +89,7 @@ class ForgotPassword extends Component {
       //   .catch((error)=>{
       //     console.log(error);
       //   })
+
     }
   };
 

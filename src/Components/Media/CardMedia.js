@@ -10,7 +10,7 @@ class CardMedia extends Component {
   }
 
   render(){
-    var PlayPause = this.state.playing ? <i class="far fa-pause-circle"></i> : <i class="far fa-play-circle"></i>;
+    var PlayPause = this.state.playing ? <i className="far fa-pause-circle"></i> : <i className="far fa-play-circle"></i>;
     return (
       <div className="play-pause">
 

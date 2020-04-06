@@ -68,35 +68,17 @@ class SignUp extends Component{
       isPremium= true;
     }
     if (this.formValidity(this.state)) {
-      // document.getElementById("signup-form").submit();
 
-      //we should send the request here to submit
-      //if the request is successful, we get back the userID and the userToken
-       
-
-      var url = BASEURL+"/api/users/signup?userName="+username+
-      "&email="+email+"&isPremium="+isPremium+"&password="+password+"&day="+day+"&month="+month+"&year="+year+"&gender="+gender;
+      const url = BASEURL+"/api/users/signup?userName="+username+"&email="+email+"&isPremium="+isPremium+"&password="+password+"&day="+day+"&month="+month+"&year="+year+"&gender="+gender;
       console.log(url);
-      //   const requestOptions = {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify({ title: 'React POST Request Example' })
-      // };
-      // fetch('https://jsonplaceholder.typicode.com/posts', requestOptions)
-      //     .then(response => response.json())
-      //     .then(data => this.setState({ postId: data.id }));
+      const requestOptions = {
+        method: 'POST',  
+      };
+      fetch(url, requestOptions)
+          .then(response => response.json())
+          .then(data => console.log(data))
+          .catch((error)=> {console.log(error)});
 
-
-
-
-
-      // //Now assume the reuquest is successful the following lines should be put after the .then in the commented code
-
-      // let returnedData={
-      //   id: 1,
-      //   token:"9494985sjhbhd64c"
-      // }
-      // this.props.onSignUp(returnedData.id,returnedData.token);
       this.props.history.replace("/signup/emailsent/");
 
     }
@@ -311,7 +293,7 @@ class SignUp extends Component{
                       <option value="06"> June </option>
                       <option value="07"> July </option>
                       <option value="08"> August </option>
-                      <option value="08"> September </option>
+                      <option value="09"> September </option>
                       <option value="10"> October </option>
                       <option value="11"> November </option>
                       <option value="12"> December </option>

@@ -88,7 +88,7 @@ class ArtistOverviewContent extends Component {
         <section>
           <h1 id="popular-h1"> Popular </h1>
 
-          <table class="table table-borderless d-flex">
+          <table className="table table-borderless d-flex">
             <tbody>
               {/* Display Songs */}
               {this.state.SongInfo.map((song,index)=>(
@@ -105,9 +105,9 @@ class ArtistOverviewContent extends Component {
                 <td>
                   <div className="dropdown ">
                     <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
-                    <div class="dropdown-menu song-dropdown-content dropdown-menu-right ">
-                      <a class="dropdown-item drop-class" href="#">Add to your liked songs</a>
-                      <a class="dropdown-item drop-class" href="#">Add to playlist</a>
+                    <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
+                      <a className="dropdown-item drop-class" href="#">Add to your liked songs</a>
+                      <a className="dropdown-item drop-class" href="#">Add to playlist</a>
                     </div>
                   </div>
                 </td>

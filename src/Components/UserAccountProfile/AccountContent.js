@@ -19,7 +19,7 @@ const AccountContent= ({info,token}) => (
                         passedInfo={info}/>}/>
                 <Route path="/account/set-device-password/" render=  { (props) => <SetPasswordContent {...props}
                         passedToken={token}/>}/>
-                <Route path="/account/recover-playlists/" component={RecoverPlaylists}/>
+                {/* <Route path="/account/recover-playlists/" component={RecoverPlaylists}/> */}
 
                 <Redirect to = "/account/overview/"/>
 

@@ -91,3 +91,55 @@
 
   }
 }
+@media (max-width:645px)
+{
+  .liked-songs-component .bottom-right-button
+  {
+    margin-bottom: 90px;
+    margin-top:20px;
+    margin-right:10px;
+  }
+  .liked-songs-component .most-recent
+  {
+    padding-top:25px;
+  }
+}
+@media (max-width:567px)
+{
+  .liked-songs-component .most-recent
+  {
+    padding-top:15px;
+    font-size: 16px;
+  }
+  .liked-songs-component .number-of-liked-songs
+  {
+    margin-bottom:25px;
+    margin-top:0px;
+    font-size:13px;
+  }
+  .liked-songs-component .liked-songs-title
+  {
+    font-size:19px;
+  }
+  .liked-songs-component p:nth-of-type(1)
+  {
+    margin-bottom:5px;
+    font-size:16px;
+  }
+}
+@media (max-width:530px)
+{
+  .liked-songs-component p:nth-of-type(1)
+  {
+    margin-bottom:2px;
+    font-size:14px;
+  }
+  .liked-songs-component
+  {
+    width: 230px;
+  }
+  .liked-songs-component .bottom-right-button
+  {
+    margin-left:0;
+  }
+}

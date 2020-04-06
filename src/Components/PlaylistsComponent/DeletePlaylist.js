@@ -5,8 +5,8 @@ class DeletePlaylist extends Component{
 render(){
   return(
 <div className="delete-playlist ">
-<div id="delete" class="modal fade" role="dialog">
-<div class="modal-dialog modal-xl  ">
+<div id="delete" className="modal fade" role="dialog">
+<div className="modal-dialog modal-xl  ">
 
 
 <div className="d-flex justify-content-center">

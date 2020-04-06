@@ -18,7 +18,7 @@ const Searchbar = (props) => {
                                value={props.searchfieldvalue} 
                                className="search-search-box" 
                                placeholder="Search for Artists, Songs, or Albums"/> 
-                        <button onClick={props.cancelSearch} className={styleX}><i class="fas fa-times"></i></button>
+                        <button onClick={props.cancelSearch} className={styleX}><i className="fas fa-times"></i></button>
                         </div>
 
                         <div className="drop-down-in-search">

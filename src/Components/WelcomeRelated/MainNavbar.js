@@ -8,7 +8,7 @@ import * as actionTypes from "../../Store/actions";
 class MainNavbar extends Component {
   constructor(props){
     super(props); 
-    this.props={
+    this.state={
       image:"",
      
     }
@@ -50,9 +50,9 @@ class MainNavbar extends Component {
                          Profile
                         </a>
                     
-                        <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbar-dropdown">
-                        <a class="dropdown-item drop-class" href="/account">Account</a>
-                        <a onClick={this.props.onSignOut} class="dropdown-item drop-class" href="/">Sign out</a>
+                        <div className="dropdown-menu dropdown-menu-right " aria-labelledby="navbar-dropdown">
+                        <a className="dropdown-item drop-class" href="/account">Account</a>
+                        <a onClick={this.props.onSignOut} className="dropdown-item drop-class" href="/">Sign out</a>
                         </div>
     
                     </li>
