@@ -31,6 +31,7 @@ render(){
     <div className="your-library-nav"  style={{backgroundColor: this.props.color}}> 
                               
      
+     <div className="yourlibrary">
         
         <div className="collapse-drop">
           <CollapseDropDown />
@@ -72,7 +73,7 @@ render(){
         </span> 
         
     </div>
-    
+    </div> 
     <div className="drop-down">
 
       <DropDownMenu/>
