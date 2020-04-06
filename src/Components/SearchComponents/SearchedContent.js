@@ -6,6 +6,7 @@ import SongSearched from "./SongSearched";
 import TopResultItem from "./TopResultItem";
 import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
 import * as itemType from "../../Constants/itemType";
+import {BASEURL} from "../../Constants/baseURL";
 
 const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfieldvalue, loading }) => {
 
@@ -24,7 +25,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
     }
     const Songs = neededSongs.map(song => (
       <SongSearched
-        image={song.imagePath}
+        image={BASEURL+"Images/"+ song.imagePath}
         name={song.trackName}
         subname={song.artistName}
         key={song._id}
@@ -103,7 +104,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
     }
     const Artists = neededArtists.map(artist => (
       <GeneralItem
-        image={artist.imagePath}
+        image={BASEURL+"Images/"+ artist.imagePath}
         name={artist.artistName}
         subname="Artist"
         roundimage={true}
@@ -145,7 +146,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
     }
     const Albums = neededAlbums.map(album => (
       <GeneralItem
-        image={album.imagePath}
+        image={BASEURL+"Images/"+ album.imagePath}
         name={album.albumName}
         subname={album.artistName}
         key={album._id}
@@ -183,7 +184,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
     }
     const Playlists = neededPlaylists.map(playlist => (
       <GeneralItem
-        image={playlist.imagePath}
+        image={BASEURL+"Images/"+ playlist.imagePath}
         name={playlist.playlistName}
         subname={playlist.userName}
         key={playlist._id}
@@ -222,7 +223,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
     }
     const Profiles = neededProfiles.map(profile => (
       <GeneralItem
-        image={profile.imagePath}
+        image={BASEURL+"Images/"+ profile.imagePath}
         name={profile.userName}
         subname="Profile"
         key={profile._id}
@@ -253,7 +254,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
   if(songs.length){
     topResultName=songs[0].trackName;
     topResultType="song";
-    topResultImage=songs[0].imagePath;
+    topResultImage=BASEURL+"Images/"+ songs[0].imagePath;
   }
   var RenderedTopResult = (
     <div className="searched-top-container">

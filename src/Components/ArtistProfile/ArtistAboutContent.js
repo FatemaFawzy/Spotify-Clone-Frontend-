@@ -22,7 +22,6 @@ class ArtistAboutContent extends Component {
   render(){
     let displayedGenres;
     if(this.props.genres){
-      console.log(this.props.genres)
        displayedGenres=( <div className="font-weight-bolder paragraphs">
       {this.props.genres.map((genre,index)=> (
         <p> {genre} </p>

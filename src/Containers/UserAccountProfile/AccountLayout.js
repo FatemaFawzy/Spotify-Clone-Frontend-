@@ -67,7 +67,7 @@ class AccountLayout extends Component {
                     <div className="row no-gutters container-fluid">
 
                         <div className="col-sm-3">
-                            <AccountSidebar image={this.state.userInfo.imagePath}/>
+                            <AccountSidebar image={BASEURL + "Images/" + this.state.userInfo.imagePath}/>
                         </div>
 
                         <div className="col-sm-9">

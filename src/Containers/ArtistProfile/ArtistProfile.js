@@ -132,7 +132,7 @@ class ArtistProfile extends Component{
 
       </div>
 
-      <ArtistProfileContent info={this.state.artistInfo}/>
+      <ArtistProfileContent info={this.state.artistInfo} artistID="123"/>
 
     </div>
   )
