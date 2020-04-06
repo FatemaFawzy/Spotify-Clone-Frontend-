@@ -5,6 +5,8 @@ import CardMedia from '../Media/CardMedia';
 import ReactSnackBar from "react-js-snackbar";
 import './SnackBar.css';
 import HomePageNavbar from '../HomePage/HomePageNavbar';
+import {BASEURL} from "../../Constants/baseURL";
+import {connect} from 'react-redux';
 
 class PlaylistPage extends Component
 {
@@ -26,7 +28,6 @@ class PlaylistPage extends Component
         {id : 12, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
         
       ],
-  
       playlistImage: "https://www.udiscovermusic.com/wp-content/uploads/2019/05/Lana-Del-Rey-Born-To-Die-album-cover-web-optimised-820.jpg",
       playlistname: "Born to die",
       playlistCreator: "Lana Del Rey",
@@ -39,8 +40,9 @@ class PlaylistPage extends Component
   }
     
   //   async componentDidMount() {
-  //     const url="";
-  //     const response = await fetch(url);
+  //     const url=BASEURL+ "";
+
+  //     const response = await fetch(url,({method:"GET"}));
   //     const data = await response.blob();
   //     var image=URL.createObjectURL(data)
   //     console.log(image)
@@ -59,15 +61,37 @@ class PlaylistPage extends Component
   likeSong = e => {
     const {id} = e.target;
     var heart=document.getElementById(id);
+    var url=""
+    if( heart.classList.contains("far")){
+    url = BASEURL+"playlists/like/id="+this.props.PlaylistID;
+    }
+    else if(heart.classList.contains("fas")){
+    url = BASEURL+"playlists/unlike/id="+this.props.PlaylistID;
+    }
     heart.classList.toggle("far");
     heart.classList.toggle("fas");
+    
+    console.log(url);
+  //   const requestOptions = {
+  //     method: 'POST',  
+  //     headers: {'x-auth': this.props.userToken },  
+  //   };
+  //   fetch(url, requestOptions)
+  //       .then(response => response.json())
+  //       .then(data => console.log(data))
+  //       .catch((error)=> {console.log(error)});
   }
+
   toggle_add_to_playlist()
 {
   var blur_add_to_playlist=document.getElementById('blur-add-to-playlist');
+  if (blur_add_to_playlist!=null){
   blur_add_to_playlist.classList.toggle('activate')
+  }
   var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
+  if (popup_add_to_playlist!=null){
   popup_add_to_playlist.classList.toggle('activate')
+}
 }
 
 playButton = e => {
@@ -182,5 +206,11 @@ else if (check=="REMOVE"){
   )
 }
 }
+const mapStateToProps = state =>{
+  return{
+    userToken: state.userToken,
+    PlaylistID: state.selectedPlaylistID,
+  };
+};
 
-export default PlaylistPage;
+export default connect(mapStateToProps) (PlaylistPage);

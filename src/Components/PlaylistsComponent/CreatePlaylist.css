@@ -11,6 +11,7 @@
   opacity:0;
   transition:0.1s;
   color:white;
+  min-width: 100vh;
 }
 
 #popup.active
@@ -63,13 +64,15 @@
   font-size: 45px;
   
 }
+.create-playlist input:focus::placeholder
+{
+ color: #282828;
+}
 
-
-input[type="text"]:focus {   
+.create-playlist input[type="text"]:focus {   
   border-color: #282828;
   box-shadow: none;
   outline: 0 none;
-  
 
 }
 .create-playlist h2
