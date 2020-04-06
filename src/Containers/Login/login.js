@@ -84,7 +84,7 @@ handlePassword = event => {
 };
 
  clickSubmit = event => {
-  let incorrect = this.state.incorrectData
+  let incorrectData = "";
   let email = this.state.email;
   let emailError = this.state.emailError;
   let password = this.state.password;

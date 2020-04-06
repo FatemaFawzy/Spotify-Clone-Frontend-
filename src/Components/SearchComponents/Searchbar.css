@@ -1,13 +1,17 @@
 .search-bar-sticky-top{
 
 
-    display: block;
+    display: inline-block;
     width: 100%;
     height: 60px;
     background-color: rgb(18,18,18);
     position: fixed;
     z-index: 10;
     padding: 10px;
+}
+.search-bar-sticky-top .collapse-drop{
+  float: left;
+  display: inline-block;
 }
 
 .search-search-box{
@@ -129,4 +133,12 @@
 
 
 
+}
+
+@media (max-width: 500px)
+{
+  
+  .search-bar-sticky-top .drop-down-in-search{
+    right: 10px;
+  }
 }

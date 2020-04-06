@@ -36,7 +36,13 @@
     font-size: 40px;
     cursor: pointer;
 }
+.delete-playlist .close-button:hover{
+  color:white;
+}
 
 .delete-playlist .close-button:focus {
   box-shadow: none;
+}
+.delete-playlist .modal-content{
+  background-color: transparent !important ;
 }

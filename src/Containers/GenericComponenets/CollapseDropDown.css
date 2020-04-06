@@ -1,0 +1,44 @@
+.Collapse-drop-down #dropdownMenuButton{
+  list-style-type: none !important;
+  width: 50px;
+  background-color: #121212;
+  outline: none !important;
+}
+.Collapse-drop-down .dropdown{
+  /* width:100%; */
+}
+.Collapse-drop-down li{
+  display: inline-block;
+
+}
+.Collapse-drop-down .dropdown-menu{
+  background-color: black;
+  width: 100%;
+}
+
+
+
+.Collapse-drop-down .dropdown-item{
+  background-color: black;
+  color: #b3b3b3;
+  border-bottom: 0.5px solid #b3b3b3;
+  height: 40px;
+  text-decoration: none !important;
+  width: 100%;
+}
+.Collapse-drop-down a:hover{
+  text-decoration: none !important;
+}
+
+.Collapse-drop-down .dropdown-item:hover{
+  background-color: #282828 !important;
+  color: white;
+  text-decoration: none !important;
+}
+
+@media (min-width: 501px)
+{
+  .Collapse-drop-down .home-drop{
+    display: none;
+  }
+} 

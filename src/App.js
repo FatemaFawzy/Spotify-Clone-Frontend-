@@ -7,7 +7,6 @@ import SignUp from "./Containers/SignUp/SignUp";
 import login from "./Containers/Login/login";
 import Premium from "./Containers/PremiumBenefits/Premium";
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
-import HomePageSidebar from "./Components/HomePage/HomePageSidebar";
 import Success from "./Components/ForgotPassword/Success";
 import {BrowserRouter as Router,
         Switch, 
@@ -40,7 +39,7 @@ function App() {
           <Route  exact path="/logIn/forgotpassword/" component={ForgotPassword}/>
           <Route path="/logIn/forgotpassword/success/" component={Success}/>
           <Route path="/signup/emailsent/" component={EmailSent}/>
-          <Route  exact path="/logIn/forgotpassword/newpassword" component={CreateNewPassword}/>
+          <Route  exact path="http://52.14.190.202:8000/users/reset" component={CreateNewPassword}/>
           <Route path="/logIn/forgotpassword/newpassword/passwordisnew/" component={PasswordIsNew}/>
           
           {/* TODO: Change the route of artistprofile when search is implemented */}

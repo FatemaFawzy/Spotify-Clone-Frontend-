@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
 .wrapper{
-  
+  zoom:100%;
   background-color: rgb(37, 34, 34);
   margin: 0;
   padding: 0;
@@ -118,5 +118,11 @@ background-color: hsla(0,0%,100%,.3);
   background-color:  rgb(40,40,40); 
 }
 
+@media (max-width: 500px)
+{
+  .wrapper{
+    display: none;
+  }
+}
 
 
