@@ -35,7 +35,7 @@ class ArtistProfile extends Component{
         
       })
       .then((data) => {
-        this.setState({artistInfo: data.artist});
+        this.setState({artistInfo: data.artist, coverLink: BASEURL+"/Images/"+data.imagePath});
         console.log(this.state.artistInfo);
       })
       .catch((error)=>{
@@ -87,13 +87,12 @@ class ArtistProfile extends Component{
   return (
     <div className="artist-profile-body">
 
-       <HomePageNavbar accountType="regular" name="Ali Halafawy" color="rgba(77,67,61,0.4)"
-        image={this.state.artistInfo.imagePath}/>
+       <HomePageNavbar color="rgba(77,67,61,0.4)"/>
      
-      <div className="container  artist-top-section " style={{ backgroundImage: `url(${this.state.coverLink})` }}>
+      <div className="container  artist-top-section " style={{ backgroundImage: `url(https://static.wixstatic.com/media/13a4a7_93009681d85f450e97640bc48592963d~mv2_d_2633_1542_s_2.jpeg/v1/fill/w_1600,h_937,al_c,q_90/file.jpg)` }}>
 
         <div className="montly-listeners">
-          {this.state.monthlyListeners} monthly listeners
+          Total number of ratings: {this.state.artistInfo.rating} 
         </div>
 
         <div>
