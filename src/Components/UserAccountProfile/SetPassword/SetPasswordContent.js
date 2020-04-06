@@ -84,6 +84,10 @@ class SetPasswordContent extends Component{
     // console.log(email.length);
     this.validateCurrent();
     this.validateNew();
+    if (this.validateCurrent() && this.validateNew())
+    {
+      document.querySelector("#success").classList.remove("d-none");
+    }
   };
 
 render() {
@@ -92,21 +96,21 @@ render() {
       <div className="SetPasswordContent">
           
         <div className="container" >
-          <h1 className="header">Set device newPassword</h1>
-          <p>To use Spotify on your devices, you need to set a separate newPassword and log in with the username provided.</p>
+          <h1 className="header">Set device Password</h1>
+          <p>To use Spotify on your devices, you need to set a separate password and log in with the username provided.</p>
         </div>
 
         <div className="container" id="container2">
           <form>
 
             <div className="form-group">
-              <label for="newPassword-input1">Enter your current newPassword:</label>
+              <label for="newPassword-input1">Enter your current password:</label>
               <input type="newPassword" className="form-control" id="newPassword-input1" onChange={this.handleCurrent}/>
               <p  id="missing-current">{this.state.currentError}</p>
             </div>
 
             <div className="form-group">
-              <label for="newPassword-input2">Enter your new newPassword:</label>
+              <label for="newPassword-input2">Enter your new password:</label>
               <input type="newPassword" className="form-control" id="newPassword-input2" onChange={this.handleNew}/>
               <p  id="missing-new">{this.state.newPasswordError}</p>
             </div>
@@ -115,6 +119,8 @@ render() {
 
           </form>
         </div>
+
+        <p id="success" className="d-none">Your password has been changed.</p>
 
       </div>
 

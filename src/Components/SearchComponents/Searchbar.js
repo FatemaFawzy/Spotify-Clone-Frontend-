@@ -1,7 +1,7 @@
 import React from "react";
 import "./Searchbar.css"
 import DropDownMenu from "../../Containers/GenericComponenets/DropDownMenu";
-
+import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown"
 const Searchbar = (props) => {
 
         var styleX=props.isXvisible? "search-cancel-icon":"search-cancel-icon cancelx-invisible";
@@ -9,7 +9,10 @@ const Searchbar = (props) => {
         return(
 
                 <div className="search-bar-sticky-top"> 
-                
+                     <div className="collapse-drop">
+                       <CollapseDropDown />
+                     
+                      </div>
                         <div className="search-box-container">
                         <span className="search-search-icon"><i className="fas fa-search"></i> </span>
                         <input onFocus={props.searchFocus}
@@ -20,7 +23,7 @@ const Searchbar = (props) => {
                                placeholder="Search for Artists, Songs, or Albums"/> 
                         <button onClick={props.cancelSearch} className={styleX}><i className="fas fa-times"></i></button>
                         </div>
-
+                     
                         <div className="drop-down-in-search">
 
                         <DropDownMenu/>

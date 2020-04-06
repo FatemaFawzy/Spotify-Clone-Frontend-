@@ -6,6 +6,8 @@ import { render } from "@testing-library/react";
 import {useHistory} from "react-router-dom";
 import * as History from "../../HelperFunctions/History";
 import DropDownMenu from "../../Containers/GenericComponenets/DropDownMenu";
+import COllapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
+import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
 
 
 export class HomePageNavbar extends Component{
@@ -31,9 +33,15 @@ export class HomePageNavbar extends Component{
                               
               <div className="home-nav-nabar">
               
-                <ul id="ul-upgrade" className={this.props.accountType == "premium" ? 'd-none' : ''}>
-                  <li><Link to="/premium"><button id="upgradebtn">UPGRADE</button></Link></li>
-                </ul>
+                <div>
+                  <CollapseDropDown />
+                </div>
+                  
+                
+                  <div id="ul-upgrade" className={this.props.accountType == "premium" ? 'd-none' : ''}>
+                  <Link to="/premium"><button id="upgradebtn">UPGRADE</button></Link>
+                  </div>
+                
               </div>
               
               <div className="drop-down">
