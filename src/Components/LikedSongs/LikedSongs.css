@@ -115,7 +115,6 @@
 
 .liked-songs-page .song-dropdown-content {
   display: none;
-  position: absolute;
   background-color: #f1f1f1;
   width: max-content;
   box-shadow: none;
@@ -139,7 +138,6 @@
 
 .liked-songs-page .show {
   display: block;
-  position: absolute;
 }
 
 /* //////////////////////// Page responsive ////////////////////////////////*/

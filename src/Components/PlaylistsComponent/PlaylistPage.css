@@ -9,7 +9,7 @@
 .playlist-page .content-spacing {
   padding: 0 32px;
   margin: 0;
-  max-width: 1955px;
+  width: 100%;
   margin-top: 70px;
   margin-bottom: 90px;
   padding-top: 2em;
@@ -154,7 +154,6 @@
 
 .playlist-page .song-dropdown-content {
   display: none;
-  position: absolute;
   background-color: #f1f1f1;
   width: max-content;
   box-shadow: none;
@@ -178,7 +177,6 @@
 
 .playlist-page .show {
   display: block;
-  position: absolute;
 }
 
 /* //////////////////////// Page responsive ////////////////////////////////*/
