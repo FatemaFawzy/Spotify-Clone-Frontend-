@@ -16,9 +16,9 @@ const TopResultItem =(props) =>{
         
         <div className="top-item-searched-class">
 
-            <img src={props.image} id={roundImgOrNot} className="img-style-top-searched" />
+            <img src={props.image} id={roundImgOrNot} className="img-style-top-searched" alt=""/>
             <h3>{actualName}</h3>
-            <a href="#">{props.subname}</a>
+            <a>{props.subname}</a>
             <div className="top-type-search-display"><span>{props.type}</span></div>
             <button><i className="fas fa-play"></i></button>
 
