@@ -7,6 +7,7 @@ import {useHistory} from "react-router-dom";
 import { goBackward, goForward } from "../../HelperFunctions/History";
 import * as History from "../../HelperFunctions/History";
 import DropDownMenu from '../../Containers/GenericComponenets/DropDownMenu';
+import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
 
 
 
@@ -29,8 +30,12 @@ render(){
   return (
     <div className="your-library-nav"  style={{backgroundColor: this.props.color}}> 
                               
-    <div className="left-side">  
-    <ul className=" ">
+     
+        
+        <div className="collapse-drop">
+          <CollapseDropDown />
+        </div>
+        <div className="left-side"> 
         <span className="playlists-left-button">
           <NavLink to="/webplayer/yourlibrary"><a id="playlists-button" className={this.props.type== "Playlists" ? 'grey-box words' : 'no-box words'}>Playlists</a></NavLink>
         </span>
@@ -65,7 +70,7 @@ render(){
             </div>
           </div>
         </span> 
-        </ul>
+        
     </div>
     
     <div className="drop-down">

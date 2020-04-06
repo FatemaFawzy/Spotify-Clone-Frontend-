@@ -1,5 +1,7 @@
 import React ,{ Component} from 'react';
 import'./CreatePlaylist.css';
+import {BASEURL} from "../../Constants/baseURL";
+import {connect} from 'react-redux';
 
 class CreatePlaylist extends Component{
  
@@ -14,17 +16,14 @@ class CreatePlaylist extends Component{
 createNewPlaylist = (e) =>{
   e.preventDefault();
   var NewPlaylistName = document.getElementById('new-playlist-name').value; 
-  // const url = "";    
-  //     fetch(url,{
-  //       method:"POST",
-  //       headers:{
-  //         'Content-type':'application/json'
-  //       },
-  //       body: JSON.stringify({
-  //         playlistName: NewPlaylistName,
-  //         privacy: false
-  //       })
-  //     })
+  var Privacy=false;
+  const url = BASEURL+ "/playlists?playlistName="+NewPlaylistName+"&privacy="+Privacy;    
+  console.log(url);
+  // const requestOptions = {
+  //   method: 'POST', 
+  //   headers: {'x-auth': this.props.userToken },  
+  // };    
+  //    fetch(url,requestOptions)
   //     .then((res) => res.json())
   //     .then((data) =>console.log(data))
   //     .catch((err)=>console.log(err))
@@ -64,5 +63,10 @@ return (
 )
 }
 }
+const mapStateToProps = state =>{
+  return{
+    userToken: state.userToken
+  };
+};
 
-export default CreatePlaylist
+export default connect(mapStateToProps) (CreatePlaylist)

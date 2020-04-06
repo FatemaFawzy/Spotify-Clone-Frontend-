@@ -16,6 +16,8 @@
 }
 
 
+
+
 .home-nav .drop-down{
   display: inline-block;
   z-index: 100;
@@ -43,6 +45,7 @@
   list-style: none;
 }
 
+
 .home-nav #upgradebtn{
   text-decoration: none;
   background-color: transparent;
@@ -61,6 +64,7 @@
   padding: 10px 36px;
 }
 
+
 @media (max-width:580px)
 {
   .home-nav #upgradebtn{
@@ -73,3 +77,14 @@
     font-size: 10px;
   }
 } 
+
+ 
+@media (max-width: 500px)
+{
+  .home-nav #upgradebtn{
+    display: none;
+  }
+  .home-nav .drop-down{
+    right: 10px;
+  }
+}

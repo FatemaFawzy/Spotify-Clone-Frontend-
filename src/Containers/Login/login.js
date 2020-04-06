@@ -83,7 +83,7 @@ handlePassword = event => {
 };
 
  clickSubmit = event => {
-  let incorrect = this.state.incorrectData
+  let incorrectData = "";
   let email = this.state.email;
   let emailError = this.state.emailError;
   let password = this.state.password;
@@ -106,6 +106,47 @@ handlePassword = event => {
       id: 1,
       token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk"
     }
+<<<<<<< HEAD
+     this.props.onSignIn(returnedData.token);
+     
+     
+     const requestOptions = {
+        method:"POST",
+        headers: {'Content-Type':  'application/json'},
+        body:JSON.stringify({email: this.state.email, password: this.state.password})
+     }
+     console.log(requestOptions.body);
+      var url = 'http://52.14.190.202:8000/users/login' ; 
+      fetch(url,requestOptions)
+        .then((response) => {
+          // var headers= response.headers
+          // console.log(response.json());
+          // console.log(headers);
+          return response.json();
+          
+        })
+        .then((data) => {
+          console.log(data);
+          if (data == "Successful login")
+          {
+            this.props.history.push('/account/');
+          }
+          else if (data == "Either email or passwrod is incorrect")
+          {
+            document.querySelector(".incorrect").classList.remove("d-none");
+            incorrectData = "Incorrect username or password.";
+            this.setState({incorrectData});
+          }
+          // else if (data == "Please go to your inbox and click the link to activate your Email.")
+          // {
+          //   document.querySelector(".incorrect").classList.remove("d-none");
+          //  this.state.incorrectData = "Please go to your inbox and click the link to activate your Email."; 
+          // }
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
+=======
       this.props.onSignIn(returnedData.token);
     // this.props.history.push('/account/');
     //  const requestOptions = {
@@ -136,6 +177,7 @@ handlePassword = event => {
     //     .catch((error)=>{
     //       console.log(error);
     //     })
+>>>>>>> 4b42c16e3eb38afc096a201d7e6f74deb7399560
   }
 
 
