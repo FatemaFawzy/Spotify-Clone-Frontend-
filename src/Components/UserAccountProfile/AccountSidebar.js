@@ -30,9 +30,9 @@ const AccountSidebar = (props) => (
       </NavLink>
 
       {/* Recover playlists*/}
-      <NavLink to="/account/recover-playlists" >
+      {/* <NavLink to="/account/recover-playlists" >
         <i className="fas fa-redo"> &ensp; Recover playlists </i>
-      </NavLink>
+      </NavLink> */}
 
     </div>
 

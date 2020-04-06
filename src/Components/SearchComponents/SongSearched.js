@@ -49,7 +49,7 @@ class SongSearched extends Component {
       actualName = this.props.name;
     }
 
-    var PlayPause = this.state.playing ? <i class="fas fa-pause"></i> : <i class="fas fa-play"></i>;
+    var PlayPause = this.state.playing ? <i className="fas fa-pause"></i> : <i className="fas fa-play"></i>;
 
     return (
       <div className="song-searched-class" id={this.state.songSearchedIdActive}>
@@ -84,7 +84,7 @@ class SongSearched extends Component {
           </div>
         </div>
 
-        <ReactSnackBar Icon={<span class="fab fa-spotify"></span>} Show={this.state.showAdd}>
+        <ReactSnackBar Icon={<span className="fab fa-spotify"></span>} Show={this.state.showAdd}>
           Added To Your Liked Songs
         </ReactSnackBar>
 

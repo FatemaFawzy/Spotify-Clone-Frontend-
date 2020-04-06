@@ -3,7 +3,7 @@ import './SetPasswordContent.css';
 
 const SetPasswordContent=()=>(
 
-<div class="SetPasswordContent">
+<div className="SetPasswordContent">
     
   <div className="container" >
     <h1 className="header">Set device password</h1>
