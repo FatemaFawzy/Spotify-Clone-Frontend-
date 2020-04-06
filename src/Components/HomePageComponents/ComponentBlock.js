@@ -1,77 +1,103 @@
-
 import "./ComponentBlock.css";
 import {BrowserRouter as Router} from "react-router-dom";
 import {Link} from "react-router-dom";
 import React ,{ Component} from 'react';
 import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
 import * as itemType from "../../Constants/itemType";
+import {BASEURL} from "../../Constants/baseURL";
 
 
-  const ComponentBlock = ({details,ComponentName,description}) => {
-    
-    var num=0;
-    let renderedName = "";
-    let renderedSubname = "";
-    let roundImgOrNot = false;
-    
-    const Results = details.map(result => {
-      
-      switch (details[num].type) {
-        case itemType.SONG:
-          roundImgOrNot=false;
-          break;
-  
-        case itemType.ARTIST:
-          roundImgOrNot=true;
-          break;
-  
-        case itemType.ALBUM:
-          roundImgOrNot=false;
-          break;
-  
-        case itemType.PLAYLIST:
-          roundImgOrNot=false;
-          break;
-  
-        
-  
-        default:
-          renderedName = "";
-          renderedSubname = "";
-          roundImgOrNot=false;
-          break;
-      }
-      
-      num++;
-    
-      return (
-        <GeneralItem
-          image={result.url}
-          name={result.title}
-          subname={result.subtitle}
-          roundimage={roundImgOrNot}
-          key={result.id}
-          id={result.id}
-          type={result.type}
-        />
-       
-    )
-      }
-    )
-    
-  
-    
 
-return ( 
+class ComponentBlock extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      Results:[]
+    }  
+  }
+render()
+{ 
+  let final;
+  switch (this.props.type)
+  {  
+    case "artists":
+      if (this.props.details.artists)
+      {
+        final =this.props.details.artists.map(result => {
+        return (
+          <GeneralItem
+            image={ BASEURL + "Images/" + result.imagePath}
+            name={result.artistName}
+            subname="ARTIST"
+            roundimage
+            key={result._id}
+            id={result._id}
+            type="ARTIST"
+          />     
+          )    
+          })
+        }
+    break;
+
+      case "playlists":
+        if (this.props.details.playlists){
+          final =this.props.details.playlists.map(result => {
+             return (
+               <GeneralItem
+                 image={ BASEURL + "Images/" + result.imagePath}
+                 name={result.artistName}
+                 subname={result.playlistDescription}
+                 key={result._id}
+                 id={result._id}
+                 type="PLAYLIST"
+               />     
+               )    
+               })
+             }
+      break;
+
+      case "songs":
+        if (this.props.details.songs){
+          final =this.props.details.songs.map(result => {
+             return (
+               <GeneralItem 
+                 image={ BASEURL + "Images/" + result.imagePath}
+                 name={result.songName}
+                 subname={result.artistName}
+                 key={result._id}
+                 id={result._id}
+                 type="SONG"
+               />     
+               )    
+               })
+             }
+      break;
+
+      case "albums":
+        if (this.props.details.albums){
+          final =this.props.details.albums.map(result => {
+             return (
+               <GeneralItem
+                 image={ BASEURL + "Images/" + result.imagePath}
+                 name={result.albumName}
+                 subname={result.artistName}
+                 key={result._id}
+                 id={result._id}
+                 type="ALBUM"
+               />     
+               )    
+               })
+             }
+      break;
+  }
+return( 
   <div className="component-block">
-    <h1 className="header">{ComponentName}</h1>
-    <p className="header-description">{description}</p>
-
-    {Results}
-   
+    <h1 className="header">{this.props.ComponentName}</h1>
+    <p className="header-description">{this.props.description}</p>
+    {final}  
   </div>
-)
+    )
+  }
 }
-
 
 export default ComponentBlock;

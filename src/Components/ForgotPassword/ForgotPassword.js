@@ -61,11 +61,13 @@ class ForgotPassword extends Component {
     else if(this.validate())
     {
       this.setState({initialState});
+      let email = this.state.email;
       document.querySelector("#my-text").classList.remove("red-border");
-      // const requestOptions = {
-      //   method:"POST",
-      //   body:JSON.stringify({email: this.email.state})
-      // }
+      const requestOptions = {
+        method:"POST",
+        body:JSON.stringify({email: email})
+      }
+      // console.log(requestOptions.body);
       // var url = 'http://52.14.190.202:8000/users/forgot'; 
       // fetch(url,requestOptions)
       //   .then((response) => {
