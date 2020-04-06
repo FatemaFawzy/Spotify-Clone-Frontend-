@@ -2,6 +2,7 @@ import React from "react";
 import "./AllSearchResults.css";
 import * as itemType from "../../Constants/itemType";
 import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
+import {BASEURL} from "../../Constants/baseURL";
 
 const AllSearchResults = ({ results, type, searchfieldvalue }) => {
 
@@ -61,7 +62,7 @@ const AllSearchResults = ({ results, type, searchfieldvalue }) => {
       // />
 
       <GeneralItem
-      image={result.imagePath}
+      image={BASEURL+"Images/"+ result.imagePath}
       name={renderedName}
       subname={renderedSubname}
       roundimage={roundImgOrNot}

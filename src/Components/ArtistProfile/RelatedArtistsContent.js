@@ -21,6 +21,30 @@ class RelatedArtistsContent extends Component {
     ],
   }
 
+  componentDidMount() {
+    
+    console.log("heyyyyyyyyyyyyy")
+    const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/" + "users/artists/related?artistId=" + "123"; 
+
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'Authorization': 'x-auth' },
+    }
+    fetch(url,requestOptions)
+      .then((response) => {
+        return response.json();
+        
+      })
+      .then((data) => {
+        // this.setState({artistInfo: data});
+        //  console.log(data);
+      })
+      .catch((error)=>{
+        console.log(error);
+
+      })
+  }
+
   render(){
     return (
       <div className="related-artists-content">

@@ -4,6 +4,7 @@ import {Link } from "react-router-dom";
 import ArtistProfileContent from "../../Components/ArtistProfile/ArtistProfileContent";
 import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
 import {connect} from "react-redux";
+import {BASEURL} from "../../Constants/baseURL";
 
 
 class ArtistProfile extends Component{
@@ -12,32 +13,36 @@ class ArtistProfile extends Component{
     super(props);
 
     this.state = {
-      artistName: "Tom Odell",
-      monthlyListeners: "5,006,400",
-      coverLink: "https://i.scdn.co/image/f84e55c8589b0c8bc0eefab69e9cca5d924e758e",
+      artistInfo:{},
       play: "play",
       follow: "follow",
-
-      artistInfo: {},
-    }
+      coverLink: "https://ak8.picdn.net/shutterstock/videos/31469038/thumb/1.jpg",
   }
+}
 
-  // componentDidMount() {
+  componentDidMount() {
     
-  //   const url = "https://4fc8197d-fdda-4eae-9c8e-b9c68250a7d2.mock.pstmn.io/api/Artists/"; 
-  //   fetch(url)
-  //     .then((response) => {
-  //       return response.json();
+    // const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/" + "api/Artist/" +"123"; 
+    const url = BASEURL + "Artists/" + this.props.selectedArtistID; 
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
+    };
+    
+    fetch(url,requestOptions)
+      .then((response) => {
+        return response.json();
         
-  //     })
-  //     .then((data) => {
-  //       this.setState({artistInfo: data});
-  //     })
-  //     .catch((error)=>{
-  //       console.log(error);
+      })
+      .then((data) => {
+        this.setState({artistInfo: data.artist});
+        console.log(this.state.artistInfo);
+      })
+      .catch((error)=>{
+        console.log(error);
 
-  //     })
-  // }
+      })
+  }
 
   playArtist = e => {
     const {id} = e.target;
@@ -83,7 +88,7 @@ class ArtistProfile extends Component{
     <div className="artist-profile-body">
 
        <HomePageNavbar accountType="regular" name="Ali Halafawy" color="rgba(77,67,61,0.4)"
-        image="https://scontent.fcai3-1.fna.fbcdn.net/v/t1.0-9/19397029_10210794027939033_5811382860033366804_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_eui2=AeHEhGNHMDc070CTQv4WD5FK-tEUbysbE-HFFkFOk7OxsfeTak6rLywRWjbRlCDjWmzjtl79NUg2XF9AsJX_0QE9j0LnqnOoo_ADLnnZUnidEA&_nc_ohc=QgP5sx3F3dsAX-nzFSx&_nc_ht=scontent.fcai3-1.fna&oh=86cb020fb7ea1a4e8c69aaaf075680d5&oe=5EA58791"/>
+        image={this.state.artistInfo.imagePath}/>
      
       <div className="container  artist-top-section " style={{ backgroundImage: `url(${this.state.coverLink})` }}>
 
@@ -92,7 +97,7 @@ class ArtistProfile extends Component{
         </div>
 
         <div>
-          <h1 className="artist-name font-weight-bolder"> {this.state.artistName} </h1>
+          <h1 className="artist-name font-weight-bolder"> {this.state.artistInfo.artistName} </h1>
         </div>
 
         <div id="buttons">
@@ -131,7 +136,7 @@ class ArtistProfile extends Component{
 
       </div>
 
-      <ArtistProfileContent/>
+      <ArtistProfileContent info={this.state.artistInfo} artistID="123"/>
 
     </div>
   )
@@ -141,8 +146,8 @@ class ArtistProfile extends Component{
 const mapStateToProps = state => {
 
   return {
-    userID : state.userID
-    //now you have access to the userID as this.props.userID inside the class component.
+    selectedArtistID : state.selectedArtistID
+    //now you have access to the selectedArtistID as this.props.selectedArtistID inside the class component.
   };
 
 };

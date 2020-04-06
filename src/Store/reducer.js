@@ -17,7 +17,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SELECT_ARTIST:
       return {
         ...state,
-        selectedArtistID: 0
+        selectedArtistID: action.value
 
       };
       break;
@@ -25,7 +25,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SELECT_ALBUM:
       return {
         ...state,
-        selectedAlbumID: 0
+        selectedAlbumID: action.value
 
       };
       break;
@@ -33,7 +33,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SELECT_SONG:
       return {
         ...state,
-        selectedSongID: 0
+        selectedSongID: action.value
 
       };
       break;
@@ -41,7 +41,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SELECT_PLAYLIST:
       return {
         ...state,
-        selectedPlaylistID: 0
+        selectedPlaylistID: action.value
 
       };
       break;

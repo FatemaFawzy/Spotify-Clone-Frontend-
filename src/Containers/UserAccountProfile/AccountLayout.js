@@ -14,28 +14,31 @@ class AccountLayout extends Component {
 
   state={
 
-    userInfo: {
-      "_id": "5e8a4e476ee6170338bf1a9b",
-      "userName": "ranime",
-      "email": "ranimemohamed8@gmail.com",
-      "password": "$2b$10$tZ9A05CzdvX9AodV6Q/aZOt/8bIIJT78rN3Ax1txwfkY8MJujc4ZK",
-      "gender": "F",
-      "birthDate": "1999-05-30T00:00:00.000Z",
-      "__v": 0,
-      "likedAlbums": [],
-      "likedTracks": [],
-      "imagePath": "defaultuser.png",
-      "isActive": true,
-      "isPremium": false
-  },
+    userInfo:{},
+
+  //   userInfo: {
+  //     "_id": "5e8a4e476ee6170338bf1a9b",
+  //     "userName": "ranime",
+  //     "email": "ranimemohamed8@gmail.com",
+  //     "password": "$2b$10$tZ9A05CzdvX9AodV6Q/aZOt/8bIIJT78rN3Ax1txwfkY8MJujc4ZK",
+  //     "gender": "F",
+  //     "birthDate": "1999-05-30T00:00:00.000Z",
+  //     "__v": 0,
+  //     "likedAlbums": [],
+  //     "likedTracks": [],
+  //     "imagePath": "defaultuser.png",
+  //     "isActive": true,
+  //     "isPremium": false
+  // },
   }
 
   componentDidMount(){
+    console.log(this.props.userToken)
 
-    const url = BASEURL;
+    const url = BASEURL +"users/me";
     const requestOptions = {
       method: 'GET',
-      headers: { 'x-auth': 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s' },
+      headers: { 'x-auth': this.props.userToken },
     };
       fetch(url,requestOptions)
         .then((response) => {
@@ -44,6 +47,7 @@ class AccountLayout extends Component {
         })
         .then((data) => {
           this.setState({userInfo:data})
+          console.log(data);
         })
         .catch((error)=>{
           console.log(error);
@@ -63,7 +67,7 @@ class AccountLayout extends Component {
                     <div className="row no-gutters container-fluid">
 
                         <div className="col-sm-3">
-                            <AccountSidebar image={this.state.userInfo.imagePath}/>
+                            <AccountSidebar image={BASEURL + "Images/" + this.state.userInfo.imagePath}/>
                         </div>
 
                         <div className="col-sm-9">

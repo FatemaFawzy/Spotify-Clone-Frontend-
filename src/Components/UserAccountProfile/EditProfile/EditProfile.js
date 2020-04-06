@@ -9,15 +9,15 @@ class EditProfile extends Component {
     // Year dropdown idea from -> https://stackoverflow.com/questions/49679501/how-to-create-list-of-years-in-the-dropdown-using-react-js-jsx
     const year = (new Date()).getFullYear();
     this.years = Array.from(new Array(121),(val, index) => year - index);
-
+    
     this.state = {
       email: props.passedInfo.email,
       username: props.passedInfo.userName,
       gender: props.passedInfo.gender,
       birthDate: {
-        day: props.passedInfo.birthDate.slice(8,10),
-        month: props.passedInfo.birthDate.slice(5,7),
-        year: props.passedInfo.birthDate.slice(0,4),
+        day: "",
+        month: "",
+        year: "",
       },
       usernameErrorMessage: "",
       savedChanges: false,
@@ -26,6 +26,12 @@ class EditProfile extends Component {
   }
 
   componentDidMount() {
+
+    if(this.props.passedInfo.birthDate){
+      this.setState({day:this.props.passedInfo.birthDate.slice(8,10)});
+      this.setState({month:this.props.passedInfo.birthDate.slice(5,7)});
+      this.setState({year:this.props.passedInfo.birthDate.slice(0,4)});
+    }
     if (this.savedChanges) {
       document.getElementById("saved-changes").classList.remove("hide");
     }

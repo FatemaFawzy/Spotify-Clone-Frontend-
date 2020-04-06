@@ -49,7 +49,6 @@ class ArtistOverviewContent extends Component {
     showSingles: "SHOW MORE",
   }
 
-
   showMoreAlbums= e => {
 
     if(this.state.showAlbums === "SHOW MORE") {

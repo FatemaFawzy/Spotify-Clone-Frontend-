@@ -12,11 +12,18 @@ class ArtistProfileContent extends Component {
       return (
     <div className="artist-profile-content">
             <Switch>
-                <Route exact path="/webplayer/artistprofile/" component={ArtistOverviewContent}/>
+           
+                <Route exact path="/webplayer/artistprofile/" render=  { (props) => <ArtistOverviewContent {...props}
+                        id={this.props.artistID}
+                        />}/>
                 {/* <Route path="/webplayer/search/artistprofile/overview/" component={ArtistOverviewContent}/> */}
-                <Route path="/webplayer/artistprofile/relatedartists/" component={RelatedArtistsContent}/>
+                <Route path="/webplayer/artistprofile/relatedartists/" render=  { (props) => <RelatedArtistsContent {...props}
+                        id={this.props.artistID}
+                        />}/>
                 {/* <Route path="/webplayer/search/artistprofile/artistabout/" component={ArtistAboutContent}/> */}
-                <Route path="/webplayer/artistprofile/artistabout/" component={ArtistAboutContent}/>
+                <Route path="/webplayer/artistprofile/artistabout/"  render=  { (props) => <ArtistAboutContent {...props}
+                        bio={this.props.info.about}
+                        genres={this.props.info.genres}/>}/>
 
             </Switch>
 
