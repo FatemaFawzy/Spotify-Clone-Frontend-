@@ -43,8 +43,7 @@ class HomePageSidebar extends Component{
         const list = data.playlist.map(item => {
           return (
             <li onClick={()=>{
-
-              this.props.history.push("/webplayer/playlist/");
+              this.props.history.push("/webplayer/playlist/" + item._id );
               this.props.onPlaylistClicked(item._id);
               // window.location.reload(true);
             }} className="List2">{item.playlistName}</li>

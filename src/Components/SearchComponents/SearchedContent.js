@@ -30,6 +30,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
         subname={song.artistName}
         key={song._id}
         id={song._id}
+        artistid={song.artistId}
       />)
 
       // <SongSearched

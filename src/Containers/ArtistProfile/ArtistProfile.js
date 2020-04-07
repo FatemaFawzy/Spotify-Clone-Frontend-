@@ -21,7 +21,9 @@ class ArtistProfile extends Component{
 }
 
   componentDidMount() {
+    console.log(this.props.match.url)
     // Get the basic artist info
+    // this.props.history.replace("/webplayer/artistprofile/" + this.props.selectedArtistID ) 
 
     // const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/" + "api/Artist/" +"123"; 
     var url = BASEURL + "Artists/" + this.props.selectedArtistID; 
@@ -122,15 +124,15 @@ class ArtistProfile extends Component{
           <a id="about" type="button" className=" artist-profile-sections" 
           role="button" href="/webplayer/likedsongs/artistabout/" onClick={this.handleSectionClick}> About </a> */}
 
-          <NavLink to="/webplayer/artistprofile/overview/" id="overview" 
+          <NavLink to={this.props.match.url + "/overview/"} id="overview" 
           className="artist-profile-sections" 
           onClick={this.handleSectionClick}> Overview </NavLink>
           
-          <NavLink to="/webplayer/artistprofile/relatedartists/" id="related-artists" 
+          <NavLink to={this.props.match.url + "/relatedartists/"} id="related-artists" 
           className=" artist-profile-sections" 
           onClick={this.handleSectionClick}> Related Artists </NavLink>
 
-          <NavLink to="/webplayer/artistprofile/artistabout/" id="about" 
+          <NavLink to={this.props.match.url + "/artistabout/"} id="about" 
           className="artist-profile-sections" 
           onClick={this.handleSectionClick}> About </NavLink> 
 

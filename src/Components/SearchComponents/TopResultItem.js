@@ -25,35 +25,35 @@ const TopResultItem =(props) =>{
           switch (props.type) {
             case itemType.SONG:
         
-              props.history.push("/webplayer/album/");
+              props.history.push("/webplayer/album/" + props.id );
               props.onSongClicked(props.id);
         
               break;
         
             case itemType.ARTIST:
         
-              props.history.push("/webplayer/artistprofile/");
+              props.history.push("/webplayer/artistprofile/" + props.id );
               props.onArtistClicked(props.id);
         
               break;
         
             case itemType.ALBUM:
         
-              props.history.push("/webplayer/album/");
+              props.history.push("/webplayer/album/" + props.id );
               props.onAlbumClicked(props.id);
         
               break;
         
             case itemType.PLAYLIST:
         
-              props.history.push("/webplayer/playlist/");
+              props.history.push("/webplayer/playlist/" + props.id );
               props.onPlaylistClicked(props.id);
         
               break;
         
             case itemType.PROFILE:
         
-              props.history.push("/webplayer/user/");
+              props.history.push("/webplayer/user/" + props.name);
               props.onProfileClicked(props.id);
         
               break;

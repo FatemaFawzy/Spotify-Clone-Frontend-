@@ -60,9 +60,9 @@ class SongSearched extends Component {
         <div className="name-image-song-searched">
           <img src={this.props.image} className="img-style-song-searched" />
           <Link onClick={ ()=>{this.props.onSongClicked(this.props.id);} 
-          } to="/webplayer/album/" className="song-searched-name" >{actualName}</Link>
-          <Link onClick={ ()=>{this.props.onArtistClicked(this.props.id);}
-          }  to="/webplayer/artistprofile/" className="song-searched-subname">{this.props.subname}</Link>
+          } to={"/webplayer/album/" + this.props.id} className="song-searched-name" >{actualName}</Link>
+          <Link onClick={ ()=>{this.props.onArtistClicked(this.props.artistid);}
+          }  to={"/webplayer/artistprofile/" + this.props.artistid} className="song-searched-subname">{this.props.subname}</Link>
           <button
             onClick={(event) => {
 
@@ -70,7 +70,6 @@ class SongSearched extends Component {
               if (!this.state.playing) {
                 this.setState({ songSearchedIdActive: "song-searched-active" })
               }
-
               this.setState((prevstate, event) => ({ playing: prevstate.playing ? false : true }))
 
             }}>{PlayPause}</button>

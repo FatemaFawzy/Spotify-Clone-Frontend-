@@ -12,7 +12,7 @@ export class GeneralItem extends Component {
     switch (this.props.type) {
       case itemType.SONG:
 
-        this.props.history.push("/webplayer/album/");
+        this.props.history.push("/webplayer/album/" + this.props.id);
         this.props.onSongClicked(this.props.id);
         window.location.reload(true);
 
@@ -20,7 +20,8 @@ export class GeneralItem extends Component {
 
       case itemType.ARTIST:
 
-        this.props.history.push("/webplayer/artistprofile/");
+        this.props.history.push("/webplayer/artistprofile/" + this.props.id);
+        console.log("/webplayer/artistprofile/" + this.props.id)
         this.props.onArtistClicked(this.props.id);
         window.location.reload(true);
 
@@ -28,7 +29,7 @@ export class GeneralItem extends Component {
 
       case itemType.ALBUM:
 
-        this.props.history.push("/webplayer/album/");
+        this.props.history.push("/webplayer/album/" + this.props.id);
         this.props.onAlbumClicked(this.props.id);
         window.location.reload(true);
 
@@ -36,7 +37,7 @@ export class GeneralItem extends Component {
 
       case itemType.PLAYLIST:
 
-        this.props.history.push("/webplayer/playlist/");
+        this.props.history.push("/webplayer/playlist/" + this.props.id );
         this.props.onPlaylistClicked(this.props.id);
         window.location.reload(true);
 
@@ -44,7 +45,7 @@ export class GeneralItem extends Component {
 
       case itemType.PROFILE:
 
-        this.props.history.push("/webplayer/user/");
+        this.props.history.push("/webplayer/user/" + this.props.name);
         this.props.onProfileClicked(this.props.id);
         window.location.reload(true);
 

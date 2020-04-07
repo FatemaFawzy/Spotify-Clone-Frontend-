@@ -25,10 +25,7 @@ class RelatedArtistsContent extends Component {
 
   componentDidMount() {
     
-    console.log("heyyyyyyyyyyyyy")
-    console.log(this.props.id)
     const url = BASEURL + "users/artists/related";
-    console.log(url)
 
     // const requestOptions = {
     //   method: 'GET',
@@ -63,7 +60,7 @@ class RelatedArtistsContent extends Component {
 
             {this.state.artistInfo.map((artist,index)=>(   
                 <div > 
-                  <GeneralItem className="genral-item" image={artist.artistPhoto}
+                  <GeneralItem className="genral-item" image={ BASEURL + "Images/" +artist.imagePath}
                   name={artist.artistName} subname="Artist" type={itemType.ARTIST} roundimage="1" id={artist._id} key={artist._id}></GeneralItem>
                 </div>  
             ))}
