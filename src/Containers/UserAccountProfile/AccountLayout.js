@@ -33,7 +33,7 @@ class AccountLayout extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props.userToken)
+  
 
     const url = BASEURL +"users/me";
     const requestOptions = {

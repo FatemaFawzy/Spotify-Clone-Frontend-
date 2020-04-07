@@ -10,6 +10,9 @@ import {connect} from 'react-redux';
 
 class PlaylistPage extends Component
 {
+  constructor(props){
+    super(props);
+  }
   
   state= 
   { 
@@ -29,25 +32,53 @@ class PlaylistPage extends Component
         
       ],
       playlistImage: "https://www.udiscovermusic.com/wp-content/uploads/2019/05/Lana-Del-Rey-Born-To-Die-album-cover-web-optimised-820.jpg",
-      playlistname: "Born to die",
-      playlistCreator: "Lana Del Rey",
-      songsNumber: "32 Songs",  
+      // playlistname: "Born to die",
+      // playlistCreator: "Lana Del Rey",
+      songsNumber: "",  
       ShowAdd: false,
       ShowingAdd: false,
       ShowRemove: false,
       ShowingRemove: false,
       playplaylist: "Play",
+      playlistInfo:{},
   }
-    
-  //   async componentDidMount() {
-  //     const url=BASEURL+ "";
+  componentDidMount() {
 
-  //     const response = await fetch(url,({method:"GET"}));
-  //     const data = await response.blob();
-  //     var image=URL.createObjectURL(data)
-  //     console.log(image)
-  //     this.setState({ playlistImage: image })
-  // }
+    var url =BASEURL+ "playlists/me?id="+this.props.PlaylistID; 
+    const requestOptions = {
+      method:"GET",
+      headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
+    }
+    
+    fetch(url,requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        var lengthOfplaylists = Object.keys(data.playlist).length;
+        var selectedPlaylist=""
+        for(var i=0;i<lengthOfplaylists;i++){
+          if(this.props.PlaylistID==data.playlist[i]._id){
+            selectedPlaylist=data.playlist[i]
+          }
+        }
+        var tracksCount = Object.keys(selectedPlaylist.tracks).length;
+        // for(var i=0 ; i<tracksCount;i++){
+          
+        // }
+        console.log(this.props.PlaylistID)
+        this.setState({
+        playlistInfo: selectedPlaylist,
+        playlistImage: "http://52.14.190.202:8000/images/"+selectedPlaylist.imagePath,
+        songsNumber: tracksCount + " Songs"
+      });
+        console.log(this.state.playlistInfo);
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+      
+    }
 
   DropMenuCard ()
   {
@@ -63,23 +94,26 @@ class PlaylistPage extends Component
     var heart=document.getElementById(id);
     var url=""
     if( heart.classList.contains("far")){
-    url = BASEURL+"playlists/like/id="+this.props.PlaylistID;
+    url = BASEURL+"playlists/like/?id="+"5e8a701954fe752c1498f730";
     }
     else if(heart.classList.contains("fas")){
-    url = BASEURL+"playlists/unlike/id="+this.props.PlaylistID;
+    url = BASEURL+"playlists/unlike/?id="+"5e8a701954fe752c1498f730";
     }
     heart.classList.toggle("far");
     heart.classList.toggle("fas");
     
     console.log(url);
-  //   const requestOptions = {
-  //     method: 'POST',  
-  //     headers: {'x-auth': this.props.userToken },  
-  //   };
-  //   fetch(url, requestOptions)
-  //       .then(response => response.json())
-  //       .then(data => console.log(data))
-  //       .catch((error)=> {console.log(error)});
+    const requestOptions = {
+      method: 'POST',  
+      headers: {'x-auth':  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
+      'Content-Type': 'application/json' }, 
+      body: JSON.stringify({ id: "5e8a701954fe752c1498f730"}) ,
+ 
+    };
+    fetch(url, requestOptions)
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error)=> {console.log(error)});
   }
 
   toggle_add_to_playlist()
@@ -136,8 +170,8 @@ else if (check=="REMOVE"){
             <CardMedia image={this.state.playlistImage} /> 
               
 
-					  <li> <h3> {this.state.playlistname} </h3> </li>
-					  <li> <h5> {this.state.playlistCreator} </h5></li>
+					  <li> <h3> {this.state.playlistInfo.playlistName} </h3> </li>
+					  <li> <h5> {this.state.playlistInfo.userId} </h5></li>
             <li >
                <a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playplaylist}</a>
             </li>
@@ -199,7 +233,7 @@ else if (check=="REMOVE"){
       </div> 
       </div>
       </div>
-      <DeletePlaylist />
+      <DeletePlaylist delete={this.state.playlistInfo.playlistName} />
     </div>
     </div>
     
