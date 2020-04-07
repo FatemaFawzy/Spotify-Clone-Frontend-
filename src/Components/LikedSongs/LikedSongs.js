@@ -30,44 +30,51 @@ class LikedSongs extends Component
       ShowRemove: false,
       ShowingRemove: false,
       playLikedSongs: "Play",
-      TracksID: [],
-      LikedTracks:[]
+      TracksID: {},
+      LikedTracks:{}
   }
   componentDidMount()
   {
-    //  const url = BASEURL +"tracks/like/me";
-    //  const requestOptions = {
-    //       method: 'GET',  
-    //       headers: {'x-auth': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk" },  
-    //     };
-    //     fetch(url,requestOptions)
-    //         .then((response) => {
-    //           return response.json();    
-    //         })
-    //         .then((data) => {
-    //           console.log(data)
-    //           this.setState({ TracksID: data});
-    //           this.getLikedTrackes()
-    //         })
-    //         .catch((error)=>{
-    //           console.log(error);
+     const url = BASEURL +"tracks/like/me";
+     const requestOptions = {
+          method: 'GET',  
+          headers: {'x-auth': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk",
+        'Content-Type': 'application/json' },  
+        };
+        fetch(url,requestOptions)
+            .then((response) => {
+              return response.json();    
+            })
+            .then((data) => {
+
+              this.setState({ TracksID: data});
+              console.log(this.state.TracksID)
+              this.getLikedTrackes()
+            })
+            .catch((error)=>{
+              console.log(error);
     
-    //         })       
+            })       
   }
 
-getLikedTrackes=()=>{
-    //console.log(this.state.TracksID)
-    // const url = BASEURL +"tracks";
-    //  const requestOptions = {
-    //       method: 'POST',  
-    //       body : JSON.stringify({
-    //         id:this.TracksID
-    //       })
-    //     };
-    //     fetch(url,requestOptions)
-    //       .then(response => response.json())
-    //         .then(data => this.setState({LikedSongs:data.tracks}))
-    //           .catch((error)=> {console.log(error)})
+getLikedTrackes () {
+    var url =BASEURL+ "tracks"; 
+      const requestOptions = {
+        method:"POST",
+        headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
+        'Content-Type': 'application/json'},
+        body: JSON.stringify({id: this.state.TracksID})
+    };
+      fetch(url,requestOptions)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) =>{ 
+          console.log(data);
+          this.setState({LikedSongs:data.tracks})
+          console.log(this.state.LikedSongs)
+        })
+        .catch((err)=>console.log(err))
   }
 
   toggle_add_to_playlist()
@@ -151,6 +158,29 @@ show = e => {
               <td className="duration">{song.Duration}</td>
             </tr>
             ))} 
+
+                                        {/* Display likd songs when data is correct */}
+           {/* {this.state.LikedSongs.map((song,index)=>(
+            <tr key={index}>
+              <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
+              <td className="song-content">
+                <ul className="list-unstyled">
+                  <li>{song.trackName}</li>
+                  <li className="song-info"><a href='/webplayer/artistprofile/'>{song.artistId} </a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>{song.AlbumName} </a></li>
+                </ul>
+              </td>
+              <td>
+                <div className="dropdown ">
+                <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
+                  <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
+                    <a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Remove from your liked songs</a>
+                    <a className="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Add to playlist</a>
+                  </div>
+                </div>
+              </td>
+              <td className="duration">{song.duration}</td>
+            </tr>
+            ))}  */}
              
       </tbody>
     </table>
