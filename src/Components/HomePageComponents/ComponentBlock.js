@@ -19,9 +19,9 @@ render()
   switch (this.props.type)
   {  
     case "artists":
-      if (this.props.details.artists)
+      if (this.props.details)
       {
-        final =this.props.details.artists.map(result => {
+        final =this.props.details.map(result => {
         return (
           <GeneralItem
             image={ BASEURL + "Images/" + result.imagePath}

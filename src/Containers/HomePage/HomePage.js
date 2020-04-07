@@ -149,7 +149,13 @@ class HomePage extends Component {
         return response.json();
       })
       .then((data) => {
-        this.setState({popularartists:data})
+        if ((data.artists.length)>5)
+        {
+        this.setState({popularartists:data.artists.slice(0,5)})
+        }
+        else{
+        this.setState({popularartists:data.artists})
+        }
       })
       .catch((error)=>{
         console.log(error);
