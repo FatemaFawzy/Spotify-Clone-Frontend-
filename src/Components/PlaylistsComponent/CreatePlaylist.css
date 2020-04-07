@@ -11,7 +11,11 @@
   opacity:0;
   transition:0.1s;
   color:white;
-  min-width: 100vh;
+}
+@media (max-width: 550px){
+  #popup{
+    width:95%;
+ }
 }
 
 #popup.active
@@ -81,6 +85,7 @@
   font-size: 48px;
   font-weight: 900;
 }
+
 
 .create-playlist .close-button
 {
