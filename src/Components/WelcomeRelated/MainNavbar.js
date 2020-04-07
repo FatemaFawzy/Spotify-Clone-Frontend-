@@ -4,6 +4,7 @@ import './MainNavbar.css'
 import {Link } from "react-router-dom";
 import {connect} from 'react-redux';
 import * as actionTypes from "../../Store/actions";
+import {BASEURL} from "../../Constants/baseURL";
 
 class MainNavbar extends Component {
   constructor(props){
@@ -11,6 +12,35 @@ class MainNavbar extends Component {
     this.state={
       image:"",
      
+    }
+  }
+
+  componentDidMount(){
+
+    if(this.props.loggenIn){
+
+      const url = BASEURL +"users/me";
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'x-auth': this.props.userToken },
+    };
+      fetch(url,requestOptions)
+        .then((response) => {
+          return response.json();
+          
+        })
+        .then((data) => {
+          this.setState({image:data.imagePath})
+          console.log(data.imagePath);
+        })
+        .catch((error)=>{
+          console.log(error);
+
+        })
+
+
+
+
     }
   }
   
@@ -46,7 +76,8 @@ class MainNavbar extends Component {
                   <ul id="profile" className={this.props.logging == true ? 'list-unstyled' : ' d-none'}>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="/account" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img className="user-img" alt="Profile" src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2617592195136976&height=300&width=300&ext=1586597311&hash=AeT69G6iOgUxz6VW" />
+                        {/* <img className="user-img" alt=".." src={ BASEURL + "Images/" +this.state.image} /> */}
+                        <img className="user-img" alt=".." src={ BASEURL + "Images/" +this.state.image} />
                          Profile
                         </a>
                     
@@ -79,7 +110,8 @@ class MainNavbar extends Component {
 
 const mapStateToProps = state =>{
   return{
-    logging: state.loggenIn
+    logging: state.loggenIn,
+    userToken: state.userToken
 
   };
 };

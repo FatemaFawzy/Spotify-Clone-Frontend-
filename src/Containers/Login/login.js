@@ -10,7 +10,7 @@ const initialState = {
   emailError: "",
   password: "",
   passwordError:"",
-  incorrectData:""
+  incorrectData:"",
 }
 
 const emailFormat = RegExp(
@@ -103,18 +103,13 @@ handlePassword = event => {
     //  console.log(email.length);
     //  var clr= document.querySelector("#login-form");
     //  clr.reset();
-    //  let returnedData={
-    //   id: 1,
-    //   token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk"
-    // }
-    //   this.props.onSignIn(returnedData.token);
+     let returnedData={
+      id: 1,
+      token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjOTk1MDE0NGQ5NDA0MzliNDU4NTkiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2Mjc4MjQ3fQ.oC1SvSyACTq3GxB-GNOgXOCvsBKY-VzDZErnyDROgsE"
+    }
+      this.props.onSignIn(returnedData.token);
       // this.props.history.push('/account/');
-     const requestOptions = {
-        method:"POST",
-        headers: { 'x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'}
-      }
-      console.log(this.state.email + this.state.password)
-      const url = BASEURL + "users/login?email=" + this.state.email + "&password=" +this.state.password ; 
+     
 
 
     // const requestOptions = {
@@ -124,12 +119,27 @@ handlePassword = event => {
     //     }
     //     console.log(this.state.email + this.state.password)
     //     const url = BASEURL + "users/login"; 
-      
-      
-      
+
+    // headers: { 'Access-Control-Expose-Headers': 'x-auth','Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
+     // body: JSON.stringify({ email: "ayaelsackaan.1999@gmail.com" ,password: "111" }) 
+    const requestOptions = {
+      method:"POST",
+      headers: { 'Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
+      body: JSON.stringify({ email: this.state.email ,password: this.state.password })
+    }
+    // console.log(this.state.email + this.state.password)
+    const url = BASEURL + "users/login"
       fetch(url,requestOptions)
         .then((response) => {
-          return response.headers.get('x-auth');
+          console.log(response.status)
+          if(response.status===401){
+            console.log("incorrect username or password")
+          }
+          else if(response.status===200){
+            console.log("response is ok")
+            // return response.headers.get("x-auth")
+            return response.headers.Headers
+          }
         })
         .then((data) => {
           console.log(data);
