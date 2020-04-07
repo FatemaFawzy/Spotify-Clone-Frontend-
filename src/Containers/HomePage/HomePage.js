@@ -1,11 +1,6 @@
 import React,{Component} from 'react';
-import {BrowserRouter as Router,
-  Switch, 
-  Route, 
- } from "react-router-dom";
  import './HomePage.css';
 import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
-import GeneralItem from "../GenericComponenets/GeneralItem";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
@@ -97,25 +92,31 @@ class HomePage extends Component {
 
     //Make a request with this.props.userID
     //assume this is the returned data
+    // const requestOptions={
+    //   method:"GET",
+    //   headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+    // }
 
-    // const url = "https://jsonplaceholder.typicode.com/photos"; 
-    // fetch(url)
+    // const url1 = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/albums/homepage/popular"; 
+    // fetch(url1,requestOptions)
     //   .then((response) => {
     //     return response.json();
     //   })
     //   .then((data) => {
-    //     this.setState({popularalbums:data.slice(0,5)})
+    //     console.log(data);
+    //     this.setState({popularalbums:data});
+    //     console.log(this.state.popularalbums);
     //   })
     //   .catch((error)=>{
     //     console.log(error);
     //   })
     
-    const popularalbumsarray= [{type: "ALBUM" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
-     {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}];  
+    // const popularalbumsarray= [{type: "ALBUM" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
+    //  {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+    //  {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+    //  {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}];  
     
-    this.setState({popularalbums:popularalbumsarray});
+    // this.setState({popularalbums:popularalbumsarray});
 
     //Make a request with this.props.userID
     //assume this is the returned data
@@ -170,7 +171,7 @@ class HomePage extends Component {
               <ComponentBlock type="albums" ComponentName="Popular albums" description="" details={this.state.popularalbums}/>
               <ComponentBlock type="songs" ComponentName="Popular new releases" description=""  details={this.state.newreleases}/> */}
               <ComponentBlock type="artists" ComponentName="Popular artists" details={this.state.popularartists}/>
-              
+              <ComponentBlock type="albums" ComponentName="Popular albums" description="" details={this.state.popularalbums}/>
             </div>
           
       </div>

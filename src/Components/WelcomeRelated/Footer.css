@@ -25,3 +25,7 @@
   color:#45ed6d;
   text-decoration: none;
 }
+.footer #no-underline
+{
+  text-decoration: none;
+}

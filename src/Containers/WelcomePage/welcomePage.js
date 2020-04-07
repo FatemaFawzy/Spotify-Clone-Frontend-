@@ -1,5 +1,4 @@
 import React ,{ Component} from 'react';
-import {Link } from "react-router-dom";
 import './welcomePage.css';
 import Bottom from "../../Components/WelcomeRelated/Bottom";
 import MainNavbar from "../../Components/WelcomeRelated/MainNavbar";

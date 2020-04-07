@@ -133,6 +133,7 @@ handlePassword = event => {
           console.log(response.status)
           if(response.status===401){
             console.log("incorrect username or password")
+            return "icorrect";
           }
           else if(response.status===200){
             console.log("response is ok")
@@ -142,8 +143,20 @@ handlePassword = event => {
         .then((data) => {
           console.log(data);
 
-          this.props.onSignIn(data);
-          this.props.history.replace('/account/');
+          if(data==="icorrect"){
+
+            ////put a message to the user that either the email or password is incorrect.
+            ////////////////////////////////////////////
+            // PUT A MESSAGE IN THE INTERFACE
+            console.log("incorrect username or password")
+
+          }
+          else{
+            this.props.onSignIn(data);
+            this.props.history.replace('/account/');
+          }
+
+         
          
         })
         .catch((error)=>{

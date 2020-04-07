@@ -11,13 +11,13 @@ const Footer=()=>(
         <div className="col-lg-6 align-items-end pt-4 pl-0">
           <ul className=" nav navbar-nav mt-2 mt-lg-0">
             <div className="nav-item">
-              <Link to="/help"><a className="nav-link">Help</a></Link>
+              <Link to="/help" id="no-underline"><span className="nav-link">Help</span></Link>
             </div>
             <div className="nav-item">
-              <Link to="/login"><a className="nav-link">Login</a></Link>
+              <Link to="/login" id="no-underline"><span className="nav-link">Login</span></Link>
             </div>
             <div className="nav-item">
-              <Link to="/signup"><a className="nav-link">SignUp</a></Link>
+              <Link to="/signup" id="no-underline"><span className="nav-link">SignUp</span></Link>
             </div>
           </ul>
         </div>
@@ -26,7 +26,7 @@ const Footer=()=>(
           <div className="row ">
             <div className="col-12 d-flex  justify-content-end pb-1">
               <div className="nav-item">
-                <a  href="#" className="bottom-right" id="egypt">Egypt (English) <img src="http://icons.iconarchive.com/icons/custom-icon-design/all-country-flag/24/Egypt-Flag-icon.png"/></a>
+                <span  className="bottom-right" id="egypt">Egypt (English) <img src="http://icons.iconarchive.com/icons/custom-icon-design/all-country-flag/24/Egypt-Flag-icon.png"/></span>
               </div>
             </div>
             <div className="col-12 d-flex  justify-content-end pt-2">

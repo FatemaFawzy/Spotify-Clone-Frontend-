@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './CollapseDropDown.css';
-import { BrowserRouter, withRouter } from "react-router-dom";
 import { NavLink, Link } from "react-router-dom";
 
 class CollapseDropDown extends Component {
