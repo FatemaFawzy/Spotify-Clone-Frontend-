@@ -145,9 +145,9 @@ handlePassword = event => {
 
           if(data==="icorrect"){
 
-            ////put a message to the user that either the email or password is incorrect.
-            ////////////////////////////////////////////
-            // PUT A MESSAGE IN THE INTERFACE
+            document.querySelector(".incorrect").classList.remove("d-none");
+            incorrectData= "Incorrect username or password."
+            this.setState({incorrectData});
             console.log("incorrect username or password")
 
           }
