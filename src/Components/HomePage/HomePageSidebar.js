@@ -5,9 +5,17 @@ import CreatePlaylist from '../PlaylistsComponent/CreatePlaylist';
 import { addNewURL } from '../../HelperFunctions/History';
 import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
 import {BASEURL} from "../../Constants/baseURL";
+import {connect} from "react-redux";
  
 
 class HomePageSidebar extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+    playlistArray:[],
+    total:"",
+    }
+  }
   toggle()
   {
     var blur=document.getElementById('blur');
@@ -95,22 +103,7 @@ render() {
               <li><NavLink  onClick={addNewURL("/webplayer/likedsongs")} className="List2" to="/webplayer/likedsongs/"><i className="fas fa-heart fa-2x" aria-hidden="true"></i>Liked Songs</NavLink></li>
               <hr/>
               <div id="my-playlist" className="my-playlists">
-                <li><a className="List2" href="/webplayer/playlist">Born To die</a></li>
-                <li><a className="List2" href="/webplayer/album">Perfect</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
-                <li><a className="List2" href="#">Ali</a></li>
+                {this.state.total}
               </div>
           </ul> 
       </div>
@@ -120,5 +113,11 @@ render() {
 );
 }
 } 
+const mapStateToProps = state => {
 
-export default HomePageSidebar;
+  return {
+    userID:state.userID
+  };
+
+};
+export default connect(mapStateToProps)(HomePageSidebar);

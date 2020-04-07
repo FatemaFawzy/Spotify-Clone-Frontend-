@@ -21,26 +21,28 @@ class ArtistProfile extends Component{
 }
 
   componentDidMount() {
-    
+    // Get the basic artist info
+
     // const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/" + "api/Artist/" +"123"; 
-    const url = BASEURL + "Artists/" + this.props.selectedArtistID; 
-    const requestOptions = {
+    var url = BASEURL + "Artists/" + this.props.selectedArtistID; 
+    var requestOptions = {
       method: 'GET',
       headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
     };
     
     fetch(url,requestOptions)
-      .then((response) => {
-        return response.json();
-        
-      })
+      .then((response) => { return response.json()})
       .then((data) => {
-        this.setState({artistInfo: data.artist});
+        this.setState({
+        artistInfo: data.artist,
+        coverLink: "http://52.14.190.202:8000/images/"+data.artist.imagePath
+      });
+        console.log(this.state.artistInfo);
       })
-      .catch((error)=>{
-        console.log(error);
+      .catch((error)=>{console.log(error);
 
       })
+
   }
 
   playArtist = e => {
@@ -86,13 +88,12 @@ class ArtistProfile extends Component{
   return (
     <div className="artist-profile-body">
 
-       <HomePageNavbar accountType="regular" name="Ali Halafawy" color="rgba(77,67,61,0.4)"
-        image={this.state.artistInfo.imagePath}/>
+       <HomePageNavbar color="rgba(77,67,61,0.4)"/>
      
       <div className="container  artist-top-section " style={{ backgroundImage: `url(${this.state.coverLink})` }}>
 
         <div className="montly-listeners">
-          {this.state.monthlyListeners} monthly listeners
+          Average rating: {this.state.artistInfo.rating}/5
         </div>
 
         <div>

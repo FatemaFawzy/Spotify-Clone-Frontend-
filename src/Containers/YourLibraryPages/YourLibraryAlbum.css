@@ -28,7 +28,7 @@
   width:100%;
 }
 
-.your-library-album #your-library-scroller::-webkit-scrollbar-thumb {
+/* .your-library-album #your-library-scroller::-webkit-scrollbar-thumb {
   background-color: #505050;
   border-radius: 0px;
 } 
@@ -44,7 +44,7 @@
   float:right;
   overflow-y: auto !important;
   background-color: #121212;
-}
+} */
 .your-library-album .album-header
 {
   font-size: 28px;
@@ -54,4 +54,13 @@
   color: #fff;
   margin: 8px 0;
   padding-left:16px;
+}
+
+@media only screen and (max-width: 500px)
+{
+  .your-library-album .actual-content
+{
+  padding-left: 5px !important;
+  padding-right: 0px !important;
+}
 }
