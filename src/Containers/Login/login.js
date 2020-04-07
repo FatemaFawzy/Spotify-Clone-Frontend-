@@ -103,12 +103,11 @@ handlePassword = event => {
     //  console.log(email.length);
     //  var clr= document.querySelector("#login-form");
     //  clr.reset();
-     let returnedData={
-      id: 1,
-      token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjOTk1MDE0NGQ5NDA0MzliNDU4NTkiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2Mjc4MjQ3fQ.oC1SvSyACTq3GxB-GNOgXOCvsBKY-VzDZErnyDROgsE"
-    }
-      this.props.onSignIn(returnedData.token);
-      // this.props.history.push('/account/');
+    //  let returnedData={
+    //   id: 1,
+    //   token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjOTk1MDE0NGQ5NDA0MzliNDU4NTkiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2Mjc4MjQ3fQ.oC1SvSyACTq3GxB-GNOgXOCvsBKY-VzDZErnyDROgsE"
+    // }
+
      
 
 
@@ -137,26 +136,15 @@ handlePassword = event => {
           }
           else if(response.status===200){
             console.log("response is ok")
-            // return response.headers.get("x-auth")
-            return response.headers.Headers
+            return response.headers.get("x-auth")
           }
         })
         .then((data) => {
           console.log(data);
-          if (data == "Successful login")
-          {
-            this.props.history.replace('/account/');
-          }
-          else if (data == "Either email or passwrod is incorrect")
-          {
-            document.querySelector(".incorrect").classList.remove("d-none");
-            // incorrect = "Incorrect username or password.";
-          }
-          // else if (data == "Please go to your inbox and click the link to activate your Email.")
-          // {
-          //   document.querySelector(".incorrect").classList.remove("d-none");
-          //  this.state.incorrectData = "Please go to your inbox and click the link to activate your Email."; 
-          // }
+
+          this.props.onSignIn(data);
+          this.props.history.replace('/account/');
+         
         })
         .catch((error)=>{
           console.log(error);
