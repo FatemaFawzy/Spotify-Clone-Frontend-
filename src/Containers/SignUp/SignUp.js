@@ -77,17 +77,17 @@ class SignUp extends Component{
         body: JSON.stringify({
           userName : username,
           email: email,
-          isPremium: isPremium,
+          isPremium: false,
           password: password,
           day: day,
           month: month,
           year: year,
-          gender: gender,
+          gender: gender
         })
         }
         console.log(requestOptions)
         fetch(url, requestOptions)
-        .then(response => response.json())
+        .then(response => response.text())
         .then(data => console.log(data))
         .catch((error)=> {console.log(error)});
 
