@@ -21,27 +21,28 @@ class ArtistProfile extends Component{
 }
 
   componentDidMount() {
-    
+    // Get the basic artist info
+
     // const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/" + "api/Artist/" +"123"; 
-    const url = BASEURL + "Artists/" + this.props.selectedArtistID; 
-    const requestOptions = {
+    var url = BASEURL + "Artists/" + this.props.selectedArtistID; 
+    var requestOptions = {
       method: 'GET',
       headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
     };
     
     fetch(url,requestOptions)
-      .then((response) => {
-        return response.json();
-        
-      })
+      .then((response) => { return response.json()})
       .then((data) => {
-        this.setState({artistInfo: data.artist, coverLink: BASEURL+"/Images/"+data.imagePath});
+        this.setState({
+        artistInfo: data.artist,
+        coverLink: "http://52.14.190.202:8000/images/"+data.artist.imagePath
+      });
         console.log(this.state.artistInfo);
       })
-      .catch((error)=>{
-        console.log(error);
+      .catch((error)=>{console.log(error);
 
       })
+
   }
 
   playArtist = e => {
@@ -89,10 +90,10 @@ class ArtistProfile extends Component{
 
        <HomePageNavbar color="rgba(77,67,61,0.4)"/>
      
-      <div className="container  artist-top-section " style={{ backgroundImage: `url(https://static.wixstatic.com/media/13a4a7_93009681d85f450e97640bc48592963d~mv2_d_2633_1542_s_2.jpeg/v1/fill/w_1600,h_937,al_c,q_90/file.jpg)` }}>
+      <div className="container  artist-top-section " style={{ backgroundImage: `url(${this.state.coverLink})` }}>
 
         <div className="montly-listeners">
-          Total number of ratings: {this.state.artistInfo.rating} 
+          Average rating: {this.state.artistInfo.rating}/5
         </div>
 
         <div>
