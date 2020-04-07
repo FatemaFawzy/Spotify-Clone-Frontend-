@@ -17,9 +17,9 @@ class EditProfile extends Component {
       username: props.passedInfo.userName,
       gender: props.passedInfo.gender,
       birthDate: {
-        day: props.passedInfo.birthDate.slice(8,10),
-        month: props.passedInfo.birthDate.slice(5,7),
-        year: props.passedInfo.birthDate.slice(0,4),
+        day: props.passedInfo.birthDate? props.passedInfo.birthDate.slice(8,10): "",
+        month: props.passedInfo.birthDate? props.passedInfo.birthDate.slice(5,7): "",
+        year: props.passedInfo.birthDate? props.passedInfo.birthDate.slice(0,4): "",
       },
       usernameErrorMessage: "",
       savedChanges: false,
