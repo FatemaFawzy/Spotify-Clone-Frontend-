@@ -2,6 +2,7 @@ import React ,{ Component} from 'react';
 import'./CreatePlaylist.css';
 import {BASEURL} from "../../Constants/baseURL";
 import {connect} from 'react-redux';
+import {withRouter} from "react-router-dom";
 
 class CreatePlaylist extends Component{
  
@@ -33,9 +34,10 @@ createNewPlaylist = (e) =>{
         console.log(data)
         this.toggle()
         window.location.reload(true);
+        this.props.history.replace("/webplayer/playlist" + data.playlistId)
       })
       .catch((err)=>console.log(err))
-    
+       
     
     
 }
@@ -74,8 +76,9 @@ return (
 }
 const mapStateToProps = state =>{
   return{
-    userToken: state.userToken
+    userToken: state.userToken,
+    playlistId: state.selectedPlaylistId
   };
 };
 
-export default connect(mapStateToProps) (CreatePlaylist)
+export default connect(mapStateToProps)  (withRouter(CreatePlaylist));
