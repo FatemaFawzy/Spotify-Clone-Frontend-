@@ -78,7 +78,7 @@ class EditProfile extends Component {
     e.preventDefault();
     if (this.state.usernameErrorMessage === "") {
     //document.getElementById("edit-profile-form").submit();
-      this.setState({savedChanges: true}, () => console.log(this.state) );
+      // this.setState({savedChanges: true}, () => console.log(this.state) );
 
     const requestOptions = {
         method:"PATCH",
@@ -99,7 +99,9 @@ class EditProfile extends Component {
     console.log(requestOptions.headers);
     const url = BASEURL + "users/me/editprofile"; 
     fetch(url,requestOptions)
-      .then((response) => {console.log(response); return response.text()})
+      .then((response) => {
+        console.log(response); 
+        return response.text()})
       .then((data) => {
         console.log(data);  
       })
