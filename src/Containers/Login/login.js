@@ -146,7 +146,7 @@ handlePassword = event => {
           if(data==="icorrect"){
 
             document.querySelector(".incorrect").classList.remove("d-none");
-            incorrectData= "Incorrect username or password."
+            incorrectData= "Incorrect username or password.";
             this.setState({incorrectData});
             console.log("incorrect username or password")
 
