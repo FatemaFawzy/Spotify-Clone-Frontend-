@@ -1,6 +1,6 @@
 import React ,{ Component} from 'react';
 import "./ArtistProfile.css";
-import {Link } from "react-router-dom";
+import {NavLink } from "react-router-dom";
 import ArtistProfileContent from "../../Components/ArtistProfile/ArtistProfileContent";
 import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
 import {connect} from "react-redux";
@@ -71,18 +71,18 @@ class ArtistProfile extends Component{
 
   }
 
-  handleSectionClick = e => {
-    const {id} = e.target;
-    var clickedOption= document.getElementById(id);
-    clickedOption.classList.add("grey-background");
+  // handleSectionClick = e => {
+  //   const {id} = e.target;
+  //   var clickedOption= document.getElementById(id);
+  //   clickedOption.classList.add("grey-background");
 
-    var options =document.getElementsByClassName("grey-background");
-    for (var i = 0 ; i < options.length ; i++) {
-      if (options[i].id !== id){
-        options[i].classList.remove("grey-background");
-      }
-    }; 
-  }
+  //   var options =document.getElementsByClassName("grey-background");
+  //   for (var i = 0 ; i < options.length ; i++) {
+  //     if (options[i].id !== id){
+  //       options[i].classList.remove("grey-background");
+  //     }
+  //   }; 
+  // }
 
   render() {
   return (
@@ -122,14 +122,17 @@ class ArtistProfile extends Component{
           <a id="about" type="button" className=" artist-profile-sections" 
           role="button" href="/webplayer/likedsongs/artistabout/" onClick={this.handleSectionClick}> About </a> */}
 
-          <Link to="/webplayer/artistprofile/" id="overview" className="artist-profile-sections grey-background" 
-          onClick={this.handleSectionClick}> Overview </Link>
+          <NavLink to="/webplayer/artistprofile/overview/" id="overview" 
+          className="artist-profile-sections" 
+          onClick={this.handleSectionClick}> Overview </NavLink>
           
-          <Link to="/webplayer/artistprofile/relatedartists/" id="related-artists" className=" artist-profile-sections" 
-          onClick={this.handleSectionClick}> Related Artists </Link>
+          <NavLink to="/webplayer/artistprofile/relatedartists/" id="related-artists" 
+          className=" artist-profile-sections" 
+          onClick={this.handleSectionClick}> Related Artists </NavLink>
 
-          <Link to="/webplayer/artistprofile/artistabout/" id="about" className="artist-profile-sections" 
-          onClick={this.handleSectionClick}> About </Link> 
+          <NavLink to="/webplayer/artistprofile/artistabout/" id="about" 
+          className="artist-profile-sections" 
+          onClick={this.handleSectionClick}> About </NavLink> 
 
 
         </div>

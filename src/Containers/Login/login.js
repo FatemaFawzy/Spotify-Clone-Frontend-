@@ -111,13 +111,12 @@ handlePassword = event => {
       // this.props.history.push('/account/');
      const requestOptions = {
         method:"POST",
-        headers: { 'x-auth' : "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s"}
+        headers: { 'x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'}
       }
       const url = BASEURL + "users/login?email=" + this.state.email + "&password=" +this.state.password ; 
       fetch(url,requestOptions)
         .then((response) => {
-          console.log(response);
-          return response.json();
+          return response.headers.get('x-auth');
         })
         .then((data) => {
           console.log(data);

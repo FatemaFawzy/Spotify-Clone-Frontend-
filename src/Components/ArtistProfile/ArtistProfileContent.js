@@ -13,7 +13,7 @@ class ArtistProfileContent extends Component {
     <div className="artist-profile-content">
             <Switch>
            
-                <Route exact path="/webplayer/artistprofile/" render=  { (props) => <ArtistOverviewContent {...props}
+                <Route exact path="/webplayer/artistprofile/overview/" render=  { (props) => <ArtistOverviewContent {...props}
                         id={this.props.artistID}
                         />}/>
                 {/* <Route path="/webplayer/search/artistprofile/overview/" component={ArtistOverviewContent}/> */}
@@ -24,6 +24,8 @@ class ArtistProfileContent extends Component {
                 <Route path="/webplayer/artistprofile/artistabout/"  render=  { (props) => <ArtistAboutContent {...props}
                         bio={this.props.info.about}
                         genres={this.props.info.genres}/>}/>
+
+                <Redirect to="/webplayer/artistprofile/overview/" />
 
             </Switch>
 

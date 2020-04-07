@@ -31,8 +31,8 @@ class SearchPage extends Component {
     this.setState({loading:true});
 
     if(event.target.value !==""){
-    const url = BASEURL + "Search?word=" + this.state.searchfield; 
-    // const url = "http://localhost:3001/" + "Search?word=" + this.state.searchfield;
+    const url = BASEURL + "Search?word=" + event.target.value; 
+    // const url = "http://localhost:3001/" + "Search?word=" + event.target.value;
     const requestOptions = {
       method: 'GET',
       headers: { 'x-auth': 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s' },
