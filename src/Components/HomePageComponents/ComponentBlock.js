@@ -78,7 +78,7 @@ render()
                <GeneralItem
                  image={ BASEURL + "Images/" + result.imagePath}
                  name={result.albumName}
-                 subname={result.artistName}
+                 subname="ARTIST NAME"
                  key={result._id}
                  id={result._id}
                  type="ALBUM"

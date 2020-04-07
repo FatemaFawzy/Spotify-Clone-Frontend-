@@ -90,33 +90,33 @@ console.log(this.state.arrayOfIDs);
       //     })
         
       
-      // var x = "";
-      // for (var i=0; i< this.state.recentlyLiked.length; i++)
-      // {
-      //   x += this.state.recentlyLiked[i].artist + " ● " + this.state.recentlyLiked[i].song + " ";
-      // }
-      //  console.log(x);
-      // if (x.length > 150)
-      // {
-      //   x = x.slice(0,149) + "...";
-      // }
-      // console.log(x);
-      // const stringofsongs = this.state.recentlyLiked.map(item =>{
-      //   return(
-      //     <span>
-      //       <span>
-      //         {item.artist + " "}
-      //       </span>
-      //       <span className="song-name">
-      //       ● 
-      //       </span>
-      //       <span className="song-name">
-      //         {" " +item.song  + " "}
-      //       </span>
-      //     </span>
-      //   )
-      // }) 
-      // this.setState({string:stringofsongs});
+      var x = "";
+      for (var i=0; i< this.state.recentlyLiked.length; i++)
+      {
+        x += this.state.recentlyLiked[i].artist + " ● " + this.state.recentlyLiked[i].song + " ";
+      }
+       console.log(x);
+      if (x.length > 150)
+      {
+        x = x.slice(0,149) + "...";
+      }
+      console.log(x);
+      const stringofsongs = this.state.recentlyLiked.map(item =>{
+        return(
+          <span>
+            <span>
+              {item.artist + " "}
+            </span>
+            <span className="song-name">
+            ● 
+            </span>
+            <span className="song-name">
+              {" " +item.song  + " "}
+            </span>
+          </span>
+        )
+      }) 
+      this.setState({string:stringofsongs});
     };
  
   handleClick = () => {

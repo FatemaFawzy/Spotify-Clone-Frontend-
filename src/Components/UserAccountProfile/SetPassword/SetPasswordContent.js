@@ -86,30 +86,30 @@ class SetPasswordContent extends Component{
     this.validateNew();
     if (this.validateCurrent() && this.validateNew())
     {
-      // const {current,newPassword}=this.state;
+      const {current,newPassword}=this.state;
 
-      // const requestOptions = {
-      //     method:"PUT",
-      //     headers:{'Content-Type':  'application/json','x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjOTk1MDE0NGQ5NDA0MzliNDU4NTkiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2Mjc4MjQ3fQ.oC1SvSyACTq3GxB-GNOgXOCvsBKY-VzDZErnyDROgsE'},
-      //     body:JSON.stringify({oldPassword:current,newPassword:newPassword})
-      //   }
-      //   const url = "http://52.14.190.202:8000/changepassword"; 
-      //   fetch(url,requestOptions)
-      //     .then((response) => {
-      //       return response.text();
-      //     })
-      //     .then((data) => {
-      //      console.log(data);
-      //      if(data == "Password has been changed successfully"){
+      const requestOptions = {
+          method:"PUT",
+          headers:{'Content-Type':  'application/json','x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjOTk1MDE0NGQ5NDA0MzliNDU4NTkiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2Mjc4MjQ3fQ.oC1SvSyACTq3GxB-GNOgXOCvsBKY-VzDZErnyDROgsE'},
+          body:JSON.stringify({oldPassword:current,newPassword:newPassword})
+        }
+        const url = "http://52.14.190.202:8000/changepassword"; 
+        fetch(url,requestOptions)
+          .then((response) => {
+            return response.text();
+          })
+          .then((data) => {
+           console.log(data);
+           if(data == "Password has been changed successfully"){
            document.querySelector("#success").classList.remove("d-none");
-          //  }
-          //  else if (data == "Password is incorrect"){
-          //    currentError = "You've entered an incorrect password."
-          //  }
-          // })
-          // .catch((error)=>{
-          //   console.log(error);
-          // })
+           }
+           else if (data == "Password is incorrect"){
+             currentError = "You've entered an incorrect password."
+           }
+          })
+          .catch((error)=>{
+            console.log(error);
+          })
     }
   };
 

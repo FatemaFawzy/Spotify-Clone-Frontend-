@@ -1,6 +1,6 @@
 import React ,{ Component} from 'react';
 import './login.css';
-import {Link} from "react-router-dom";
+import {Link, Router } from "react-router-dom";
 import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
 import {BASEURL} from "../../Constants/baseURL";
@@ -69,7 +69,7 @@ class login extends Component{
  handleEmail = event => {
   let email = this.state.email;
   email = event.target.value;
-  this.setState({email});
+  this.state.email = email;
   this.validateEmail();
   
 
@@ -77,7 +77,7 @@ class login extends Component{
 handlePassword = event => {
   let pass = this.state.password;
   pass = event.target.value;
-  this.setState({password:pass});
+  this.state.password = pass;
   this.validatePassword();
   
 
