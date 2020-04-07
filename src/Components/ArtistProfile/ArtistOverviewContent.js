@@ -53,23 +53,23 @@ class ArtistOverviewContent extends Component {
 
   componentDidMount(){
       // get artist's popular tracks
-      var url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/tracks/top?artistId=123"; 
+      // var url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/tracks/top?artistId=123"; 
 
-      var requestOptions = {
-        method: 'GET',
-        headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
-      };
+      // var requestOptions = {
+      //   method: 'GET',
+      //   headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
+      // };
       
-      fetch(url,requestOptions)
-        .then((response) => { return response.json()})
-        .then((data) => {
-          this.setState({
-          SongInfo: data.popularTracks});
-          console.log(this.state.SongInfo);
-        })
-        .catch((error)=>{console.log(error);
+      // fetch(url,requestOptions)
+      //   .then((response) => { return response.json()})
+      //   .then((data) => {
+      //     this.setState({
+      //     SongInfo: data.popularTracks});
+      //     console.log(this.state.SongInfo);
+      //   })
+      //   .catch((error)=>{console.log(error);
   
-        })
+      //   })
 
   }
   
