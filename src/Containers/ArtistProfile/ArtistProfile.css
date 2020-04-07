@@ -115,7 +115,16 @@
   outline: none;
 }
 
-.artist-profile-body .grey-background {
+/* .artist-profile-body .grey-background {
   background-color: #333;
+} */
+
+@media (max-width: 500px){
+  .artist-profile-body .artist-top-section{
+    width: 100% !important;
+  }
 }
 
+#artist-profile-sections a.active{
+  background-color: #333;
+}

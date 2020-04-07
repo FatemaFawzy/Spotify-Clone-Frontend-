@@ -3,20 +3,22 @@ import "./RelatedArtistsContent.css";
 import "../../Containers/GenericComponenets/GeneralItem";
 import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
 import {connect} from "react-redux";
+import {BASEURL} from "../../Constants/baseURL";
+import * as itemType from "../../Constants/itemType";
 
 class RelatedArtistsContent extends Component {
 
   state = {
     artistInfo: [
-      {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
-      {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
-      {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
-      {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
-      {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
-      {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
-      {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
-      {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
-      {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
+      // {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
+      // {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
+      // {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
+      // {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
+      // {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
+      // {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
+      // {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
+      // {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
+      // {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
 
     ],
   }
@@ -24,20 +26,29 @@ class RelatedArtistsContent extends Component {
   componentDidMount() {
     
     console.log("heyyyyyyyyyyyyy")
-    const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/" + "users/artists/related?artistId=" + "123"; 
+    console.log(this.props.id)
+    const url = BASEURL + "users/artists/related";
+    console.log(url)
+
+    // const requestOptions = {
+    //   method: 'GET',
+    //   headers: { 'x-auth':"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk" , 'artistId' : "5e8a701954fe752c1498f723" },
+    // }
 
     const requestOptions = {
-      method: 'GET',
-      headers: { 'Authorization': 'x-auth' },
-    }
+        method: 'GET',
+        headers: { 'x-auth': this.props.userToken , 'artistId' : this.props.id },
+      }
+
     fetch(url,requestOptions)
       .then((response) => {
+        console.log(response)
         return response.json();
         
       })
       .then((data) => {
-        // this.setState({artistInfo: data});
-        //  console.log(data);
+        this.setState({artistInfo: data});
+         console.log(data);
       })
       .catch((error)=>{
         console.log(error);
@@ -47,12 +58,13 @@ class RelatedArtistsContent extends Component {
 
   render(){
     return (
+
       <div className="related-artists-content">
 
             {this.state.artistInfo.map((artist,index)=>(   
                 <div > 
                   <GeneralItem className="genral-item" image={artist.artistPhoto}
-                  name={artist.artistName} subname="Artist" type="ARTIST" roundimage="1"></GeneralItem>
+                  name={artist.artistName} subname="Artist" type={itemType.ARTIST} roundimage="1" id={artist._id} key={artist._id}></GeneralItem>
                 </div>  
             ))}
 
@@ -67,8 +79,8 @@ class RelatedArtistsContent extends Component {
 const mapStateToProps = state => {
 
   return {
-    userID : state.userID
-    //now you have access to the userID as this.props.userID inside the class component.
+    userToken : state.userToken
+    //now you have access to the userToken as this.props.userToken inside the class component.
   };
 
 };

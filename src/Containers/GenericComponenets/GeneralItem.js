@@ -14,6 +14,7 @@ export class GeneralItem extends Component {
 
         this.props.history.push("/webplayer/album/");
         this.props.onSongClicked(this.props.id);
+        window.location.reload(true);
 
         break;
 
@@ -21,6 +22,7 @@ export class GeneralItem extends Component {
 
         this.props.history.push("/webplayer/artistprofile/");
         this.props.onArtistClicked(this.props.id);
+        window.location.reload(true);
 
         break;
 
@@ -28,6 +30,7 @@ export class GeneralItem extends Component {
 
         this.props.history.push("/webplayer/album/");
         this.props.onAlbumClicked(this.props.id);
+        window.location.reload(true);
 
         break;
 
@@ -35,6 +38,7 @@ export class GeneralItem extends Component {
 
         this.props.history.push("/webplayer/playlist/");
         this.props.onPlaylistClicked(this.props.id);
+        window.location.reload(true);
 
         break;
 
@@ -42,12 +46,14 @@ export class GeneralItem extends Component {
 
         this.props.history.push("/webplayer/user/");
         this.props.onProfileClicked(this.props.id);
+        window.location.reload(true);
 
         break;
 
       default:
 
         this.props.history.push("/webplayer/");
+        window.location.reload(true);
 
         break;
     }

@@ -3,6 +3,9 @@ import "./SongSearched.css"
 import ReactDOM from "react-dom"
 import ReactSnackBar from "react-js-snackbar";
 import '../../Components/PlaylistsComponent/SnackBar.css';
+import { Link } from "react-router-dom";
+import {connect} from "react-redux";
+import * as actionTypes from "../../Store/actions";
 
 class SongSearched extends Component {
   state = {
@@ -56,8 +59,10 @@ class SongSearched extends Component {
 
         <div className="name-image-song-searched">
           <img src={this.props.image} className="img-style-song-searched" />
-          <a className="song-searched-name" href="#">{actualName}</a>
-          <a className="song-searched-subname" href="#">{this.props.subname}</a>
+          <Link onClick={ ()=>{this.props.onSongClicked(this.props.id);} 
+          } to="/webplayer/album/" className="song-searched-name" >{actualName}</Link>
+          <Link onClick={ ()=>{this.props.onArtistClicked(this.props.id);}
+          }  to="/webplayer/artistprofile/" className="song-searched-subname">{this.props.subname}</Link>
           <button
             onClick={(event) => {
 
@@ -97,4 +102,14 @@ class SongSearched extends Component {
 
 
 }
-export default SongSearched;
+const mapDispatchToProps = dispatch => {
+
+  return {
+
+    onSongClicked : (itemID) => dispatch ({type: actionTypes.SELECT_SONG , value: itemID}),
+    onArtistClicked : (itemID) => dispatch ({type: actionTypes.SELECT_ARTIST , value: itemID}),
+
+  };
+
+};
+export default connect(null,mapDispatchToProps)(SongSearched);

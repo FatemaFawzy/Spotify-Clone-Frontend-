@@ -3,17 +3,19 @@ import "./ArtistOverviewContent.css";
 import "./MediaObject";
 import MediaObject from './MediaObject';
 import {connect} from "react-redux";
+import { BASEURL } from '../../Constants/baseURL';
 
 class ArtistOverviewContent extends Component {
 
   state= { 
-    SongInfo: [
-      {id : 1, SongName : "Another Love (Zwette Edit)",Duration : "3:52", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-      {id : 2, SongName : "Heal", Duration : "4:15", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-      {id : 3, SongName : "True Colors", Duration : "2:58", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-      {id : 4, SongName : "Grow Old With Me", Duration : "3:52", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-      {id : 5, SongName : "Summer Day", Duration : "4:15", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-    ],
+    SongInfo:[],
+    // SongInfo: [
+    //   {id : 1, SongName : "Another Love (Zwette Edit)",Duration : "3:52", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    //   {id : 2, SongName : "Heal", Duration : "4:15", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    //   {id : 3, SongName : "True Colors", Duration : "2:58", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    //   {id : 4, SongName : "Grow Old With Me", Duration : "3:52", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    //   {id : 5, SongName : "Summer Day", Duration : "4:15", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    // ],
 
     albumInfo: [
       {id : 6, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
@@ -49,6 +51,28 @@ class ArtistOverviewContent extends Component {
     showSingles: "SHOW MORE",
   }
 
+  componentDidMount(){
+      // get artist's popular tracks
+      // var url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/tracks/top?artistId=123"; 
+
+      // var requestOptions = {
+      //   method: 'GET',
+      //   headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
+      // };
+      
+      // fetch(url,requestOptions)
+      //   .then((response) => { return response.json()})
+      //   .then((data) => {
+      //     this.setState({
+      //     SongInfo: data.popularTracks});
+      //     console.log(this.state.SongInfo);
+      //   })
+      //   .catch((error)=>{console.log(error);
+  
+      //   })
+
+  }
+  
   showMoreAlbums= e => {
 
     if(this.state.showAlbums === "SHOW MORE") {
@@ -96,8 +120,8 @@ class ArtistOverviewContent extends Component {
 
                 <td className="song-content pl-0 ml-0">
                   <span>
-                    <img className="song-photo mr-3" src={song.SongPhoto}></img>
-                    <span className="song-name"> {song.SongName} </span>
+                    <img className="song-photo mr-3" src={`http://52.14.190.202:8000/images/${song.trackImage}`}></img>
+                    <span className="song-name"> {song.trackName} </span>
                   </span>
                 </td>
 
@@ -111,7 +135,7 @@ class ArtistOverviewContent extends Component {
                   </div>
                 </td>
 
-                <td className="duration"> {song.Duration}</td>
+                <td className="duration"> {song.duration}</td>
               </tr>
               ))} 
               

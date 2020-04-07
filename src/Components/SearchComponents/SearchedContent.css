@@ -138,6 +138,48 @@
 
 }
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 500px) {
+
+  .search-spinner-loading{
+    left: 0px;
+    text-align: center;
+    margin-left: 0px;
+  }
+
+  .no-results-found-container{
+
+    padding-right: 0px;
+    margin-left: 0px;
+    text-align: center;
+    margin-left: -220px;
+    margin-right: 10px;
+  }
+
+  .no-results-found h1{
+    display: block;
+    margin: auto auto;
+    font-weight: 700;
+    font-size: 180%;
+    float: none;
+    text-shadow: rgb(95, 95, 95);
+    text-align: left;
+    
+  }
+  
+  .no-results-found p{
+    display: block;
+    margin: auto auto;
+    font-weight: 500;
+    text-shadow: rgb(95, 95, 95);
+    text-align: left;
+    font-size: 92%;
+  }
+
+
+
+}
+
 /* .rest-of-search-rendered{
   display: table;
 } */

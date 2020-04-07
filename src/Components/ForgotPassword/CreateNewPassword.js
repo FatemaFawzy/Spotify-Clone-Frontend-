@@ -82,7 +82,7 @@ class CreateNewPassword extends Component {
     //     console.log(error);
     //   })
     
-  }
+   }
 
  };
 

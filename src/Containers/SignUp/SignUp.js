@@ -69,20 +69,32 @@ class SignUp extends Component{
     }
     if (this.formValidity(this.state)) {
 
-      const url = BASEURL+"/api/users/signup?userName="+username+"&email="+email+"&isPremium="+isPremium+"&password="+password+"&day="+day+"&month="+month+"&year="+year+"&gender="+gender;
+      const url = BASEURL+"users/signup";
       console.log(url);
       const requestOptions = {
         method: 'POST',  
-      };
-      fetch(url, requestOptions)
-          .then(response => response.json())
-          .then(data => console.log(data))
-          .catch((error)=> {console.log(error)});
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userName : username,
+          email: email,
+          isPremium: isPremium,
+          password: password,
+          day: day,
+          month: month,
+          year: year,
+          gender: gender,
+        })
+        }
+        console.log(requestOptions)
+        fetch(url, requestOptions)
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error)=> {console.log(error)});
 
-      this.props.history.replace("/signup/emailsent/");
+    // this.props.history.replace("/signup/emailsent/");
+      
 
-    }
-
+      }
     // Check which inputs are empty and print an error message
     else {
       if ( email === null )

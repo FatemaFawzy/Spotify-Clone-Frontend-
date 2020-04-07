@@ -29,6 +29,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
         name={song.trackName}
         subname={song.artistName}
         key={song._id}
+        id={song._id}
       />)
 
       // <SongSearched
@@ -249,12 +250,14 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
   //For the top results
   let topResultName="";
   let topResultType="";
-  let topResultImage= "";
+  let topResultImage= ""
+  let topID="";
 
   if(songs.length){
     topResultName=songs[0].trackName;
-    topResultType="song";
+    topResultType=itemType.SONG;
     topResultImage=BASEURL+"Images/"+ songs[0].imagePath;
+    topID=songs[0]._id;
   }
   var RenderedTopResult = (
     <div className="searched-top-container">
@@ -263,7 +266,9 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
         image={topResultImage}
         name={topResultName}
         subname={topResultType}
-        type={topResultType} />
+        type={topResultType}
+        id={topID} />
+        
     </div>
 
 

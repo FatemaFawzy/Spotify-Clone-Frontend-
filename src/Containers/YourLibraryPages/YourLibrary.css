@@ -6,3 +6,6 @@
   
 
 }
+.your-library-class::-webkit-scrollbar {
+  display: none !important;
+}
