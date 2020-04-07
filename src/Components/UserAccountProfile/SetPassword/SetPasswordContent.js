@@ -1,7 +1,8 @@
 import React,{Component} from "react";
 import './SetPasswordContent.css';
 import {Link, Router } from "react-router-dom";
-// import {connect} from "react-redux";
+import {connect} from "react-redux";
+import {BASEURL} from "../../../Constants/baseURL";
 
 
 
@@ -150,4 +151,14 @@ render() {
 );
   }
   }
-export default SetPasswordContent;
+
+  const mapStateToProps = state => {
+
+    return {
+      userToken : state.userToken
+      //now you have access to the userToken as this.props.userToken inside the class component.
+    };
+  
+  };
+  
+export default connect(mapStateToProps)(SetPasswordContent);

@@ -38,32 +38,54 @@ render()
     break;
 
       case "playlists":
-        if (this.props.details.playlists){
-          final =this.props.details.playlists.map(result => {
+        // if (this.props.details.playlists){ to be used later all comments
+       // final =this.props.details.playlists.map(result => {
+        if (this.props.details){
+        final =this.props.details.map(result => {
              return (
-               <GeneralItem
-                 image={ BASEURL + "Images/" + result.imagePath}
-                 name={result.artistName}
-                 subname={result.playlistDescription}
-                 key={result._id}
-                 id={result._id}
+              //  <GeneralItem
+              //    image={ BASEURL + "Images/" + result.imagePath}
+              //    name={result.artistName}
+              //    subname={result.playlistDescription}
+              //    key={result._id}
+              //    id={result._id}
+              //    type="PLAYLIST"
+              //  />
+              <GeneralItem
+                 image={result.url}
+                 name={result.title}
+                 subname={result.subtitle}
+                 key={result.id}
+                 id={result.id}
                  type="PLAYLIST"
-               />     
+               />          
                )    
+
                })
              }
       break;
 
       case "songs":
-        if (this.props.details.songs){
-          final =this.props.details.songs.map(result => {
+        // if (this.props.details.songs){
+        //   final =this.props.details.songs.map(result => {
+          if (this.props.details){
+            final =this.props.details.map(result => {
+            
              return (
-               <GeneralItem 
-                 image={ BASEURL + "Images/" + result.imagePath}
-                 name={result.songName}
-                 subname={result.artistName}
-                 key={result._id}
-                 id={result._id}
+              //  <GeneralItem 
+              //    image={ BASEURL + "Images/" + result.imagePath}
+              //    name={result.songName}
+              //    subname={result.artistName}
+              //    key={result._id}
+              //    id={result._id}
+              //    type="SONG"
+              //  />     
+              <GeneralItem 
+                 image={ result.url}
+                 name={result.title}
+                 subname={result.subtitle}
+                 key={result.id}
+                 id={result.id}
                  type="SONG"
                />     
                )    
@@ -92,8 +114,12 @@ render()
   }
 return( 
   <div className="component-block">
+    <div className="container">
     <h1 className="header">{this.props.ComponentName}</h1>
+    <a id="see-all">{this.props.excess ? "SEE ALL" : ""}</a>
+    </div>
     <p className="header-description">{this.props.description}</p>
+    
     {final}  
   </div>
     )
