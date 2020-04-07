@@ -20,7 +20,7 @@
 }
 .your-library-playlist
 {
-  overflow-x: hidden;
+  overflow-x:hidden;
   background-color:#121212;
   height:100%;
   position:fixed;

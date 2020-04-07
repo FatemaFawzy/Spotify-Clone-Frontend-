@@ -9,9 +9,9 @@ const Header=()=>(
   <nav className="navbar navbar-dark black-background d-flex align-items-end" id="top-nav">
     <div className="pl-md-5 pb-1 pt-0" >
       <Link to="/">
-        <a className="navbar-brand" href="#">
+        <div className="navbar-brand" href="#">
           <img src={spotify} id="spotify"/>
-        </a>
+        </div>
       </Link>
     </div>
   </nav>
