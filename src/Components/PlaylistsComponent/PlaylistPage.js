@@ -29,7 +29,7 @@ class PlaylistPage extends Component
       //   {id : 12, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
         
       // ],
-      playlistImage: "https://www.udiscovermusic.com/wp-content/uploads/2019/05/Lana-Del-Rey-Born-To-Die-album-cover-web-optimised-820.jpg",
+      playlistImage: "https://i.ibb.co/Q89hfcW/single-bar-note.jpg",
       // playlistname: "Born to die",
       // playlistCreator: "Lana Del Rey",
       songsNumber: "",  
@@ -40,7 +40,7 @@ class PlaylistPage extends Component
       playplaylist: "Play",
       playlistInfo:{},
       ArtistNames:[],
-      playlistTracks: []
+      playlistTracks:[]
   }
   componentDidMount() {
 
@@ -66,7 +66,7 @@ class PlaylistPage extends Component
         console.log(this.props.PlaylistID)
         this.setState({
         playlistInfo: selectedPlaylist,
-        // playlistImage: "http://52.14.190.202:8000/images/"+selectedPlaylist.imagePath,
+        playlistImage: "http://52.14.190.202:8000/Images/"+selectedPlaylist.imagePath,
         songsNumber: tracksCount,
         playlistTracks: selectedPlaylist.tracks,
       });
