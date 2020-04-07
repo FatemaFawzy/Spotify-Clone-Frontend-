@@ -91,7 +91,7 @@ class SetPasswordContent extends Component{
 
       const requestOptions = {
           method:"PUT",
-          headers:{'Content-Type':  'application/json','x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjOTk1MDE0NGQ5NDA0MzliNDU4NTkiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2Mjc4MjQ3fQ.oC1SvSyACTq3GxB-GNOgXOCvsBKY-VzDZErnyDROgsE'},
+          headers:{'Content-Type':  'application/json','x-auth':this.props.userToken},
           body:JSON.stringify({oldPassword:current,newPassword:newPassword})
         }
         const url = "http://52.14.190.202:8000/changepassword"; 
