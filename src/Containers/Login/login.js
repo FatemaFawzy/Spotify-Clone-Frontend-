@@ -128,7 +128,7 @@ handlePassword = event => {
           else if (data == "Either email or passwrod is incorrect")
           {
             document.querySelector(".incorrect").classList.remove("d-none");
-            incorrect = "Incorrect username or password.";
+            // incorrect = "Incorrect username or password.";
           }
           // else if (data == "Please go to your inbox and click the link to activate your Email.")
           // {

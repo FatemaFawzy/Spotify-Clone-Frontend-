@@ -3,6 +3,8 @@ import './HomePageSidebar.css';
 import { NavLink, Link } from "react-router-dom";
 import CreatePlaylist from '../PlaylistsComponent/CreatePlaylist';
 import { addNewURL } from '../../HelperFunctions/History';
+import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
+import {BASEURL} from "../../Constants/baseURL";
  
 
 class HomePageSidebar extends Component{
@@ -13,7 +15,7 @@ class HomePageSidebar extends Component{
     var popup=document.getElementById('popup');
     popup.classList.toggle('active')
   }
-  componentDidMount() {
+  // componentDidMount() {
     //   //   const playlistArray=
     //   //   [
     //   //     {image:"https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba",
@@ -38,41 +40,42 @@ class HomePageSidebar extends Component{
     //   //     id:"5"}
     //   // ];
     
-    const requestOptions = {
-      method:"GET",
-      headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
-    }
     
-    const url = "http://52.14.190.202:8000/playlists/me"; 
-    fetch(url,requestOptions)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data.playlist);
-        if(data.playlist)
-        {
-        const playlists = data.playlist.map(item => {
-          return (
-            <GeneralItem
-            image= {BASEURL + "Images/" + item.imagePath}
-            name={item.playlistName}
-            subname="HEY"
-            id={item._id}
-            type="PLAYLIST"
-          />
-          )
-        }
-        )
-        this.setState({total:playlists});
-      }
+    // const requestOptions = {
+    //   method:"GET",
+    //   headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
+    // }
     
-      })
-      .catch((error)=>{
-        console.log(error);
-      })
-      console.log(this.state.playlistArray.playlists);
-    }
+    // const url = "http://52.14.190.202:8000/playlists/me"; 
+    // fetch(url,requestOptions)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data.playlist);
+    //     if(data.playlist)
+    //     {
+    //     const playlists = data.playlist.map(item => {
+    //       return (
+    //         <GeneralItem
+    //         image= {BASEURL + "Images/" + item.imagePath}
+    //         name={item.playlistName}
+    //         subname="HEY"
+    //         id={item._id}
+    //         type="PLAYLIST"
+    //       />
+    //       )
+    //     }
+    //     )
+    //     this.setState({total:playlists});
+    //   }
+    
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+    //   console.log(this.state.playlistArray.playlists);
+    // }
 
 render() {
  return (
