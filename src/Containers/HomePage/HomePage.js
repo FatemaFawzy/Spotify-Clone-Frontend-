@@ -1,11 +1,6 @@
 import React,{Component} from 'react';
-import {BrowserRouter as Router,
-  Switch, 
-  Route, 
- } from "react-router-dom";
  import './HomePage.css';
 import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
-import GeneralItem from "../GenericComponenets/GeneralItem";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";

@@ -1,9 +1,7 @@
 import "./ComponentBlock.css";
-import {BrowserRouter as Router} from "react-router-dom";
-import {Link} from "react-router-dom";
 import React ,{ Component} from 'react';
 import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
-import * as itemType from "../../Constants/itemType";
+// import * as itemType from "../../Constants/itemType";
 import {BASEURL} from "../../Constants/baseURL";
 
 
@@ -89,6 +87,8 @@ render()
                })
              }
       break;
+      default:
+        break;
   }
 return( 
   <div className="component-block">

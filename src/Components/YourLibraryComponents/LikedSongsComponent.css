@@ -143,3 +143,13 @@
     margin-left:0;
   }
 }
+@media (max-width:500px)
+{
+  .liked-songs-component
+  {
+    width:91%;
+  }
+  .liked-songs-component .liked-songs-title{
+    font-size:20px;
+  }
+}

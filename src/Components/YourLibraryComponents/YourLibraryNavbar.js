@@ -18,7 +18,8 @@ export class YourLibraryNavbar extends Component{
       image:"",
       name:"",
       type:"",
-      moreButtonName:""
+      moreButtonName:"",
+      navBackground:""
     }
   }
   // toggleArrow = () => {
@@ -26,9 +27,15 @@ export class YourLibraryNavbar extends Component{
   //   document.querySelector("#arrow").classList.toggle("fa-caret-down");
   //   console.log(document.querySelector("#arrow").classList);
   // } 
+  // componentDidMount() {
+  //   document.addEventListener('scroll',() => {
+  //     const backgroundcolor = window.scrollY > 20 ? "rgba(0,0,0,0.5)": "rgb(18,18,18)";
+  //     this.setState({navBackground:backgroundcolor});
+  //   })
+  // }
 render(){
   return (
-    <div className="your-library-nav"  style={{backgroundColor: this.props.color}}> 
+    <div className="your-library-nav"> 
                               
      
      <div className="yourlibrary">
