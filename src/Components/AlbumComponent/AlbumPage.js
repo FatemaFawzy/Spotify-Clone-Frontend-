@@ -16,19 +16,19 @@ class AlbumPage extends Component
   }
   state= 
 { 
-    // SongInfo: [
-    //   {id : 1, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
-    //   {id : 2, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
-    //   {id : 3, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
-    //   {id : 4, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
-    //   {id : 5, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
-    //   {id : 6, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
-    //   {id : 7, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
-    //   {id : 8, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
-    //   {id : 9, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+    SongInfo: [
+      {id : 1, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      {id : 2, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      {id : 3, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+      {id : 4, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      {id : 5, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      {id : 6, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+      {id : 7, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      {id : 8, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      {id : 9, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
       
       
-    // ],
+    ],
 
     AlbumImage: "https://i1.sndcdn.com/artworks-000240088107-9s5wcs-t500x500.jpg",
     AlbumName: "Perfect",
