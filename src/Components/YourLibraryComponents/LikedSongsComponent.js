@@ -26,40 +26,62 @@ class LikedSongsComponent extends Component {
   }
  
     componentDidMount(){
-      
-      // let final;
-      // const requestOptions = {
-      //   method:"GET",
-      //   headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
-      // }
-      // const url = "http://52.14.190.202:8000/tracks/like/me"; 
-      // fetch(url,requestOptions)
-      //   .then((response) => {
-      //     return response.json();
-      //   })
-      //   .then((data) => {
-      //     console.log(data);
-      //    this.setState({arrayOfIDs:data})
-      //   //  console.log(this.state.arrayOfIDs);
-      //   })
-      //   .catch((error)=>{
-      //     console.log(error);
-      //   })
 
-      //   const requestOptions1 = {
-      //     method:"GET",
-      //     headers:{'Content-Type':'application/json'},
-      //     body: JSON.stringify({id: arrayOfIDs})
-      //   }
-      //   const url = "http://52.14.190.202:8000/tracks"; 
-      //   fetch(url,requestOptions1)
+      const requestOptions = {
+        method:"GET",
+        headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
+      }
+      const url = "http://52.14.190.202:8000/tracks/like/me"; 
+      fetch(url,requestOptions)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+         console.log(data);
+         this.setState({arrayOfIDs:data})
+         console.log(this.state.arrayOfIDs);
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
+
+console.log(this.state.arrayOfIDs);
+
+        const requestOptions1 = {
+          method:"POST",
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({id: this.state.arrayOfIDs})
+        }
+        const url1 = "http://52.14.190.202:8000/tracks"; 
+        fetch(url1,requestOptions1)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            console.log("songs");
+            console.log(data.tracks);
+           this.setState({recentlyLiked:data.tracks})
+           console.log(this.state.recentlyLiked);
+          //  console.log(this.state.arrayOfIDs);
+          })
+          .catch((error)=>{
+            console.log(error);
+          })
+
+
+      //     const requestOptions2 = {
+      //       method:"POST",
+      //       headers:{'Content-Type':'application/json'},
+      //     }
+      //     const url2 = "http://52.14.190.202:8000/artists/"+ recentlyLiked.artistId;
+      //   fetch(url2,requestOptions2)
       //     .then((response) => {
       //       return response.json();
       //     })
       //     .then((data) => {
       //       console.log("songs");
-      //       console.log(data);
-      //      this.setState({recentlyLiked:data})
+      //       console.log(data.tracks);
+      //      this.setState({recentlyLiked:data.tracks})
       //      console.log(this.state.recentlyLiked);
       //     //  console.log(this.state.arrayOfIDs);
       //     })
@@ -68,17 +90,17 @@ class LikedSongsComponent extends Component {
       //     })
         
       
-      // var x = "";
-      // for (var i=0; i< this.state.recentlyLiked.length; i++)
-      // {
-      //   x += this.state.recentlyLiked[i].artist + " ● " + this.state.recentlyLiked[i].song + " ";
-      // }
-      //  console.log(x);
-      // if (x.length > 150)
-      // {
-      //   x = x.slice(0,149) + "...";
-      // }
-      // console.log(x);
+      var x = "";
+      for (var i=0; i< this.state.recentlyLiked.length; i++)
+      {
+        x += this.state.recentlyLiked[i].artist + " ● " + this.state.recentlyLiked[i].song + " ";
+      }
+       console.log(x);
+      if (x.length > 150)
+      {
+        x = x.slice(0,149) + "...";
+      }
+      console.log(x);
       const stringofsongs = this.state.recentlyLiked.map(item =>{
         return(
           <span>

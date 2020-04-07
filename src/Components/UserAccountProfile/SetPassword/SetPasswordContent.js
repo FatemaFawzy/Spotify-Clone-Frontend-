@@ -1,7 +1,8 @@
 import React,{Component} from "react";
 import './SetPasswordContent.css';
 import {Link, Router } from "react-router-dom";
-// import {connect} from "react-redux";
+import {connect} from "react-redux";
+import {BASEURL} from "../../../Constants/baseURL";
 
 
 
@@ -86,7 +87,30 @@ class SetPasswordContent extends Component{
     this.validateNew();
     if (this.validateCurrent() && this.validateNew())
     {
-      document.querySelector("#success").classList.remove("d-none");
+      const {current,newPassword}=this.state;
+
+      const requestOptions = {
+          method:"PUT",
+          headers:{'Content-Type':  'application/json','x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjOTk1MDE0NGQ5NDA0MzliNDU4NTkiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2Mjc4MjQ3fQ.oC1SvSyACTq3GxB-GNOgXOCvsBKY-VzDZErnyDROgsE'},
+          body:JSON.stringify({oldPassword:current,newPassword:newPassword})
+        }
+        const url = "http://52.14.190.202:8000/changepassword"; 
+        fetch(url,requestOptions)
+          .then((response) => {
+            return response.text();
+          })
+          .then((data) => {
+           console.log(data);
+           if(data == "Password has been changed successfully"){
+           document.querySelector("#success").classList.remove("d-none");
+           }
+           else if (data == "Password is incorrect"){
+             currentError = "You've entered an incorrect password."
+           }
+          })
+          .catch((error)=>{
+            console.log(error);
+          })
     }
   };
 
@@ -105,13 +129,13 @@ render() {
 
             <div className="form-group">
               <label for="newPassword-input1">Enter your current password:</label>
-              <input type="newPassword" className="form-control" id="newPassword-input1" onChange={this.handleCurrent}/>
+              <input type="password" className="form-control" id="newPassword-input1" onChange={this.handleCurrent}/>
               <p  id="missing-current">{this.state.currentError}</p>
             </div>
 
             <div className="form-group">
               <label for="newPassword-input2">Enter your new password:</label>
-              <input type="newPassword" className="form-control" id="newPassword-input2" onChange={this.handleNew}/>
+              <input type="password" className="form-control" id="newPassword-input2" onChange={this.handleNew}/>
               <p  id="missing-new">{this.state.newPasswordError}</p>
             </div>
 
@@ -127,4 +151,14 @@ render() {
 );
   }
   }
-export default SetPasswordContent;
+
+  const mapStateToProps = state => {
+
+    return {
+      userToken : state.userToken
+      //now you have access to the userToken as this.props.userToken inside the class component.
+    };
+  
+  };
+  
+export default connect(mapStateToProps)(SetPasswordContent);

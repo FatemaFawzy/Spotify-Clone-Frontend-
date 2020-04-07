@@ -1,9 +1,7 @@
 import "./ComponentBlock.css";
-import {BrowserRouter as Router} from "react-router-dom";
-import {Link} from "react-router-dom";
 import React ,{ Component} from 'react';
 import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
-import * as itemType from "../../Constants/itemType";
+// import * as itemType from "../../Constants/itemType";
 import {BASEURL} from "../../Constants/baseURL";
 
 
@@ -102,7 +100,7 @@ render()
                <GeneralItem
                  image={ BASEURL + "Images/" + result.imagePath}
                  name={result.albumName}
-                 subname={result.artistName}
+                 subname="ARTIST NAME"
                  key={result._id}
                  id={result._id}
                  type="ALBUM"
@@ -111,6 +109,8 @@ render()
                })
              }
       break;
+      default:
+        break;
   }
 return( 
   <div className="component-block">

@@ -115,7 +115,6 @@
 }
 
 .signup-body .empty-input {
-	color: red;
 	text-align: left;
 	color: #bd3200;
 	font-size: .9375em;
@@ -125,4 +124,11 @@
 
 .signup-body ::-webkit-input-placeholder {
 	font-size: 100% !important;
+  }
+
+  .signup-body .already-exists {
+    color: #bd3200;
+    font-size: 15px;
+    padding-top:10px;
+    margin:0;
   }

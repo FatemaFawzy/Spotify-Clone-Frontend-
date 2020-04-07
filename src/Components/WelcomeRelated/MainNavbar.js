@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import HomePageSidebar from '../HomePage/HomePageSidebar';
 import './MainNavbar.css'
 import {Link } from "react-router-dom";
 import {connect} from 'react-redux';
@@ -17,7 +16,7 @@ class MainNavbar extends Component {
 
   componentDidMount(){
 
-    if(this.props.loggenIn){
+    if(this.props.logging){
 
       const url = BASEURL +"users/me";
     const requestOptions = {

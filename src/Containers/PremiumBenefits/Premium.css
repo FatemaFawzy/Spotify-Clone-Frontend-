@@ -53,6 +53,20 @@
     height:340px;
   }
 }
+@media(min-width:1000px) and (max-width:1185px)
+{
+  .premium #get-premium
+  {
+    font-size:45px !important;
+  }
+}
+@media(min-width:790px) and (max-width:1000px)
+{
+  .premium #get-premium
+  {
+    font-size:50px !important;
+  }
+}
 @media (min-width:568px) and (max-width:690px)
 {
   .premium #top-section
@@ -72,18 +86,19 @@
   .premium #get-premium
   {
     color:white;
-    font-size:35px;
+    font-size:30px;
     font-weight:800;
-    padding-bottom: 50px;
+    margin-top:30px;
+    padding-bottom: 30px;
     padding-top:0px;
     padding-left:0px;
   }
   .premium #price
   {   
     color:white;
-    font-size:24px;
+    font-size:20px;
     font-weight: 600;
-    padding-bottom:55px;
+    padding-bottom:20px;
     padding-left:0px;
   }
   .premium #terms
@@ -91,6 +106,7 @@
     color:white;
     font-size: 12px;
     padding-left:0px;
+    padding-top:10px;
   }
   .premium .button
   {
@@ -109,6 +125,7 @@
     color: #fff;
     background-color: #1db954;
     border-color: #1db954;
+    margin-bottom:25px;
   }
   .premium .button:hover
   {
@@ -286,5 +303,70 @@
   .premium .jumbotron 
   {
     padding: 4rem 2rem;
+  }
+}
+
+@media (max-width:490px)
+{
+  .premium .button
+  {
+    padding-left:35%;
+    padding-right:35%;
+    padding-top:15px;
+    padding-bottom:15px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    margin-left:0px;
+    border-radius: 35px;
+    color: #fff;
+    background-color: #1db954;
+    border-color: #1db954;
+  }
+}
+@media (max-width:416px)
+{
+  .premium .button
+  {
+    padding-left:33%;
+    padding-right:33%;
+    padding-top:15px;
+    padding-bottom:15px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    margin-left:0px;
+    border-radius: 35px;
+    color: #fff;
+    background-color: #1db954;
+    border-color: #1db954;
+  }
+}
+
+@media (max-width:375px)
+{
+  .premium .button
+  {
+    padding-left:30%;
+    padding-right:30%;
+    padding-top:15px;
+    padding-bottom:15px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    margin-left:0px;
+    border-radius: 35px;
+    color: #fff;
+    background-color: #1db954;
+    border-color: #1db954;
   }
 }
