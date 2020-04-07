@@ -107,13 +107,19 @@ handlePassword = event => {
       token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk"
     }
       this.props.onSignIn(returnedData.token);
-    // this.props.history.push('/account/');
+    //  this.props.history.push('/account/');
+  const {email,password} = this.state;
     //  const requestOptions = {
     //     method:"POST",
+    //     headers: {'Content-Type':  'application/json', 
+    //               'x-auth':'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
+    //     body: JSON.stringify({email: email, password:password})
     //  }
-    //   var url = 'http://52.14.190.202:8000/api/users/login?email='+this.state.email+'&password='+this.state.password ; 
+    //   var url = 'http://52.14.190.202:8000/users/login' ; 
     //   fetch(url,requestOptions)
     //     .then((response) => {
+    //       console.log(response.headers);
+    //       //this.props.onSignIn(response.headers);
     //       return response.json();
     //     })
     //     .then((data) => {
@@ -125,7 +131,8 @@ handlePassword = event => {
     //       else if (data == "Either email or passwrod is incorrect")
     //       {
     //         document.querySelector(".incorrect").classList.remove("d-none");
-    //         incorrect = "Incorrect username or password.";
+    //         incorrectData = "Incorrect username or password.";
+    //         this.setState({incorrectData});
     //       }
     //       // else if (data == "Please go to your inbox and click the link to activate your Email.")
     //       // {

@@ -21,19 +21,64 @@ class LikedSongsComponent extends Component {
                      {artist:"Saint JHN", song:"I Heard You Got Too Lit Last Night"}
                    ],
       string:'',
+      arrayOfIDs:[]
     }
   }
+ 
     componentDidMount(){
-        // var x = "";
-       //     for (var i=0; i< this.state.recentlyLiked.length; i++)
+      
+      // let final;
+      // const requestOptions = {
+      //   method:"GET",
+      //   headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
+      // }
+      // const url = "http://52.14.190.202:8000/tracks/like/me"; 
+      // fetch(url,requestOptions)
+      //   .then((response) => {
+      //     return response.json();
+      //   })
+      //   .then((data) => {
+      //     console.log(data);
+      //    this.setState({arrayOfIDs:data})
+      //   //  console.log(this.state.arrayOfIDs);
+      //   })
+      //   .catch((error)=>{
+      //     console.log(error);
+      //   })
+
+      //   const requestOptions1 = {
+      //     method:"GET",
+      //     headers:{'Content-Type':'application/json'},
+      //     body: JSON.stringify({id: arrayOfIDs})
+      //   }
+      //   const url = "http://52.14.190.202:8000/tracks"; 
+      //   fetch(url,requestOptions1)
+      //     .then((response) => {
+      //       return response.json();
+      //     })
+      //     .then((data) => {
+      //       console.log("songs");
+      //       console.log(data);
+      //      this.setState({recentlyLiked:data})
+      //      console.log(this.state.recentlyLiked);
+      //     //  console.log(this.state.arrayOfIDs);
+      //     })
+      //     .catch((error)=>{
+      //       console.log(error);
+      //     })
+        
+      
+      // var x = "";
+      // for (var i=0; i< this.state.recentlyLiked.length; i++)
       // {
       //   x += this.state.recentlyLiked[i].artist + " ● " + this.state.recentlyLiked[i].song + " ";
       // }
-       
+      //  console.log(x);
       // if (x.length > 150)
       // {
       //   x = x.slice(0,149) + "...";
       // }
+      // console.log(x);
       const stringofsongs = this.state.recentlyLiked.map(item =>{
         return(
           <span>
