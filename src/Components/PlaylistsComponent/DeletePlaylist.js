@@ -2,6 +2,7 @@ import React ,{ Component} from 'react';
 import'./DeletePlaylist.css';
 import {BASEURL} from "../../Constants/baseURL";
 import {connect} from 'react-redux';
+import {withRouter} from "react-router-dom";
 
 
 
@@ -19,12 +20,13 @@ handleDelete (str) {
     body: JSON.stringify({ playlistName: str})
   }; 
      fetch(url,requestOptions)
-      .then((res) => {res.json(); window.location.reload(true);})
+      .then((res) => {res.text(); window.location.reload(true);})
       .then((data) =>{ 
         console.log(data);
-        
+
       })
       .catch((err)=>console.log(err))
+      this.props.history.replace("/webplayer/yourlibrary")
 }
 
 render(){
@@ -62,4 +64,4 @@ const mapStateToProps = state =>{
   };
 };
 
-export default connect(mapStateToProps) (DeletePlaylist)
+export default connect(mapStateToProps) (withRouter (DeletePlaylist));
