@@ -4,6 +4,8 @@ import { NavLink, Link } from "react-router-dom";
 import CreatePlaylist from '../PlaylistsComponent/CreatePlaylist';
 import { addNewURL } from '../../HelperFunctions/History';
 import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
+import * as actionTypes from "../../Store/actions";
  
 
 class HomePageSidebar extends Component{
@@ -40,7 +42,12 @@ class HomePageSidebar extends Component{
           
         const list = data.playlist.map(item => {
           return (
-            <li className="List2">{item.playlistName}</li>
+            <li onClick={()=>{
+
+              this.props.history.push("/webplayer/playlist/");
+              this.props.onPlaylistClicked(item._id);
+              // window.location.reload(true);
+            }} className="List2">{item.playlistName}</li>
           )
         }
         
@@ -92,4 +99,13 @@ const mapStateToProps = state => {
   };
 
 };
-export default connect(mapStateToProps)(HomePageSidebar);
+
+const mapDispatchToProps = dispatch => {
+
+  return {
+
+    onPlaylistClicked : (itemID) => dispatch ({type: actionTypes.SELECT_PLAYLIST , value: itemID})
+  };
+
+};
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(HomePageSidebar));
