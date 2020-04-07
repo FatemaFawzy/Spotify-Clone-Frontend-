@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./EditProfile.css";
+import {BASEURL} from "../../../Constants/baseURL"
+import {connect} from "react-redux"
 
 class EditProfile extends Component {
   constructor(props){
@@ -15,9 +17,9 @@ class EditProfile extends Component {
       username: props.passedInfo.userName,
       gender: props.passedInfo.gender,
       birthDate: {
-        day: "",
-        month: "",
-        year: "",
+        day: props.passedInfo.birthDate.slice(8,10),
+        month: props.passedInfo.birthDate.slice(5,7),
+        year: props.passedInfo.birthDate.slice(0,4),
       },
       usernameErrorMessage: "",
       savedChanges: false,
@@ -78,22 +80,27 @@ class EditProfile extends Component {
     //document.getElementById("edit-profile-form").submit();
       this.setState({savedChanges: true}, () => console.log(this.state) );
 
-    // const requestOptions = {
-    //     method:"PATCH",
-    //     headers:{ 'Authorization' : "validtoken"}
-    // }
-    // console.log(requestOptions.headers);
-    // const url = baseURL + "/users/me/editprofile?userName="+ this.state.username + "&day=" + this.state.birthDate.day + "&month=" + this.state.birthDate.month + "&year=" + this.state.year + "&gender=" + this.state.gender; 
-    // fetch(url,requestOptions)
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log(data);  
-    //   })
-    //   .catch((error)=>{
-    //     console.log(error);
-    //   })
+    const requestOptions = {
+        method:"PATCH",
+        headers: { 'x-auth' : this.props.userToken},
+        body: JSON.stringify({ 
+          userName: this.state.username,
+          day: this.state.birthDate.day,
+          month: this.state.birthDate.month,
+          year: this.state.birthDate.year,
+          gender: this.state.gender
+        })
+    }
+    console.log(requestOptions.headers);
+    const url = BASEURL + "users/me/editprofile"; 
+    fetch(url,requestOptions)
+      .then((response) => response.text())
+      .then((data) => {
+        console.log(data);  
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
      }
   }
   
@@ -111,12 +118,12 @@ class EditProfile extends Component {
             <form id="edit-profile-form" noValidate>
 
               <div className="form-group">
-                <label for="email" className="subtitle">Email</label>
+                <label htmlFor="email" className="subtitle">Email</label>
                 <p id="email"> {this.state.email} </p>
               </div>
 
               <div className="form-group">
-                <label for="userName" className="subtitle">Username</label>
+                <label htmlFor="userName" className="subtitle">Username</label>
                 <input type="text" className="form-control" id="userName" aria-describedby="emailHelp"
                 defaultValue={this.state.username} onChange={this.handleChange}/>
                 <p id="userNameError" className="empty-input p-2"> {this.state.usernameErrorMessage}</p>
@@ -124,7 +131,7 @@ class EditProfile extends Component {
 
               <div className="form-group">
 
-                <label for="gender" className="subtitle"> Gender </label>
+                <label htmlFor="gender" className="subtitle"> Gender </label>
                     <select id="gender" className="form-control" defaultValue= {this.state.gender} onChange={this.handleChange}> 
                       <option value="M"> Male </option>
                       <option value="F"> Female </option>
@@ -133,7 +140,7 @@ class EditProfile extends Component {
               </div>
 
               <div className="form-group ">
-                <label for="edit-birth-date" className="subtitle"> Date of birth </label>
+                <label htmlFor="edit-birth-date" className="subtitle"> Date of birth </label>
                 <div className="row" id="edit-birth-date">
 
                   <div className="col-3 ">
@@ -222,4 +229,12 @@ class EditProfile extends Component {
   }
 }
 
-export default EditProfile;
+const mapStateToProps = state => {
+
+  return {
+    userToken:state.userToken
+  };
+
+};
+
+export default connect(mapStateToProps)(EditProfile);
