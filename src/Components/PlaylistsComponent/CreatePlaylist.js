@@ -15,6 +15,7 @@ class CreatePlaylist extends Component{
 
 createNewPlaylist = (e) =>{
   e.preventDefault();
+  
   var NewPlaylistName = document.getElementById('new-playlist-name').value; 
   var Privacy=false;
   const url = BASEURL+ "playlists/?playlistName="+NewPlaylistName+"&privacy="+Privacy;    
@@ -28,10 +29,15 @@ createNewPlaylist = (e) =>{
   };    
      fetch(url,requestOptions)
       .then((res) => res.json())
-      .then((data) =>console.log(data))
+      .then((data) =>{
+        console.log(data)
+        this.toggle()
+        window.location.reload(true);
+      })
       .catch((err)=>console.log(err))
-    console.log(NewPlaylistName)
-    this.toggle()
+    
+    
+    
 }
 render()
 {
