@@ -1,6 +1,8 @@
 .delete-playlist .modal-dialog
 {
   padding: 18% 0;
+  min-height: 100vh;
+  z-index: 1999;
 }
 .delete-playlist #delete
 {
