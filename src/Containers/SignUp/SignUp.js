@@ -99,11 +99,10 @@ class SignUp extends Component{
             var err= document.getElementsByClassName("already-exists");
             err[0].innerHTML= "UserName and/or email already exist";
             document.getElementById("signup-form").reset();
+            window.location.reload(true);
           }
         })
         .catch((error)=> {console.log(error)});
-
-
       }
     // Check which inputs are empty and print an error message
     else {

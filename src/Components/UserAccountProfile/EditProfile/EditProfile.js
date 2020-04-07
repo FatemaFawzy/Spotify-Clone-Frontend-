@@ -28,6 +28,7 @@ class EditProfile extends Component {
   }
 
   componentDidMount() {
+    document.getElementById("saved-changes").classList.toggle("hide");
 
     if(this.props.passedInfo.birthDate){
       this.setState({day:this.props.passedInfo.birthDate.slice(8,10)});
@@ -76,13 +77,13 @@ class EditProfile extends Component {
   
   handleSubmit = e => {
     e.preventDefault();
-    if (this.state.usernameErrorMessage === "") {
+    // if (this.state.usernameErrorMessage === "") {
     //document.getElementById("edit-profile-form").submit();
       // this.setState({savedChanges: true}, () => console.log(this.state) );
 
     const requestOptions = {
         method:"PATCH",
-        headers: { 'x-auth' : this.props.userToken},
+        headers: { 'Content-Type': 'application/json','x-auth' : this.props.userToken},
         body: JSON.stringify({ 
           userName: this.state.username,
           gender: this.state.gender,
@@ -96,7 +97,6 @@ class EditProfile extends Component {
           // year: "1998"
         })
     }
-    console.log(requestOptions.headers);
     const url = BASEURL + "users/me/editprofile"; 
     fetch(url,requestOptions)
       .then((response) => {
@@ -104,11 +104,16 @@ class EditProfile extends Component {
         return response.text()})
       .then((data) => {
         console.log(data);  
+        if (data=="Updated"){
+          document.getElementById("saved-changes").classList.remove("hide");
+        }
+        window.location.reload(true);
+        
       })
       .catch((error)=>{
         console.log(error);
       })
-     }
+    //  }
   }
   
   render(){
