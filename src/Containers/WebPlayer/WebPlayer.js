@@ -17,6 +17,7 @@ import welcomePage from '../WelcomePage/welcomePage';
 import OtherUser from '../OtherUserPage/OtherUser';
 import LikedSongs from '../../Components/LikedSongs/LikedSongs';
 import AddToPlaylist from '../../Components/PlaylistsComponent/AddToPlaylist';
+import SeeAllArtists from '../../Containers/HomePage/SeeAllArtists';
 
 
 
@@ -41,7 +42,7 @@ class WebPlayer extends Component {
             <Route exact path="/webplayer/" component={HomePage}/>
             <Route path="/webplayer/search" component={SearchPage}/>
             <Route path="/webplayer/yourlibrary" component={YourLibrary}/>
-            <Route path="/webplayer/HomePage" component={HomePage}/>
+            <Route exact path="/webplayer/HomePage" component={HomePage}/>
 
               {/* TODO: change the directory. this is for testing only */}
               <Route path="/webplayer/likedsongs" component={LikedSongs}/>
@@ -49,6 +50,7 @@ class WebPlayer extends Component {
               <Route path="/webplayer/playlist" component={PlaylistPage}/>
               <Route path="/webplayer/user" component={OtherUser}/>
               <Route path="/webplayer/artistprofile" component={ArtistProfile}/>
+              <Route path="/webplayer/HomePage/seeallartists" component={SeeAllArtists}/>
 
             </Switch>
 

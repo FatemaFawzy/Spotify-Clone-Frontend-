@@ -10,28 +10,26 @@ import {connect} from 'react-redux';
 
 class PlaylistPage extends Component
 {
-  constructor(props){
-    super(props);
-  }
+  
   
   state= 
   { 
-      SongInfo: [
-        {id : 1, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
-        {id : 2, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
-        {id : 3, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
-        {id : 4, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
-        {id : 5, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
-        {id : 6, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
-        {id : 7, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
-        {id : 8, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
-        {id : 9, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
-        {id : 10, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
-        {id : 11, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
-        {id : 12, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
+      // SongInfo: [
+      //   {id : 1, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
+      //   {id : 2, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
+      //   {id : 3, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
+      //   {id : 4, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
+      //   {id : 5, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
+      //   {id : 6, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
+      //   {id : 7, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
+      //   {id : 8, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
+      //   {id : 9, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
+      //   {id : 10, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
+      //   {id : 11, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
+      //   {id : 12, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
         
-      ],
-      playlistImage: "https://www.udiscovermusic.com/wp-content/uploads/2019/05/Lana-Del-Rey-Born-To-Die-album-cover-web-optimised-820.jpg",
+      // ],
+      playlistImage: "https://i.ibb.co/Q89hfcW/single-bar-note.jpg",
       // playlistname: "Born to die",
       // playlistCreator: "Lana Del Rey",
       songsNumber: "",  
@@ -41,6 +39,8 @@ class PlaylistPage extends Component
       ShowingRemove: false,
       playplaylist: "Play",
       playlistInfo:{},
+      ArtistNames:[],
+      playlistTracks:[]
   }
   componentDidMount() {
 
@@ -63,22 +63,71 @@ class PlaylistPage extends Component
           }
         }
         var tracksCount = Object.keys(selectedPlaylist.tracks).length;
-        // for(var i=0 ; i<tracksCount;i++){
-          
-        // }
         console.log(this.props.PlaylistID)
         this.setState({
         playlistInfo: selectedPlaylist,
-        playlistImage: "http://52.14.190.202:8000/images/"+selectedPlaylist.imagePath,
-        songsNumber: tracksCount + " Songs"
+        playlistImage: "http://52.14.190.202:8000/Images/"+selectedPlaylist.imagePath,
+        songsNumber: tracksCount,
+        playlistTracks: selectedPlaylist.tracks,
       });
-        console.log(this.state.playlistInfo);
+        console.log(this.state.playlistTracks);
+        this.gettracks()
       })
       .catch((error)=>{
         console.log(error);
       })
       
+
     }
+
+    gettracks () {
+      var url =BASEURL+ "tracks"; 
+      const requestOptions = {
+        method:"POST",
+        headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
+        'Content-Type': 'application/json'},
+        body: JSON.stringify({id: this.state.playlistTracks})
+    };
+      fetch(url,requestOptions)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) =>{ 
+          this.setState({playlistTracks:data.tracks})
+          console.log(this.state.playlistTracks)
+          // this.getArtistName()
+        })
+        .catch((err)=>console.log(err))
+    }
+
+    // getArtistName()
+    // {
+      
+    //   for(var i =0;i<this.state.playlistTracks.length;i++){
+    //   var x=''
+    //   var url =BASEURL+ "Artists/"+this.state.playlistTracks[i].artistId; 
+    //   const requestOptions = {
+    //     method:"GET",
+    //   headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
+
+    //   }
+    //   fetch(url,requestOptions)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {    
+    //     x=data.artist.artistName
+    //     console.log(x)
+    //   }, this.state.playlistTracks[i] = {...this.state.playlistTracks[i], artistName:x })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+      
+    //  }
+    
+    //  console.log(this.state.playlistTracks)  
+    // }
+    
 
   DropMenuCard ()
   {
@@ -94,10 +143,10 @@ class PlaylistPage extends Component
     var heart=document.getElementById(id);
     var url=""
     if( heart.classList.contains("far")){
-    url = BASEURL+"playlists/like/?id="+"5e8a701954fe752c1498f730";
+    url = BASEURL+"playlists/like/?id="+this.state.playlistInfo._id;
     }
     else if(heart.classList.contains("fas")){
-    url = BASEURL+"playlists/unlike/?id="+"5e8a701954fe752c1498f730";
+    url = BASEURL+"playlists/unlike/?id="+this.state.playlistInfo._id;
     }
     heart.classList.toggle("far");
     heart.classList.toggle("fas");
@@ -105,9 +154,9 @@ class PlaylistPage extends Component
     console.log(url);
     const requestOptions = {
       method: 'POST',  
-      headers: {'x-auth':  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
-      'Content-Type': 'application/json' }, 
-      body: JSON.stringify({ id: "5e8a701954fe752c1498f730"}) ,
+      headers: {'x':  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
+       }, 
+      body: JSON.stringify({ id: this.state.playlistInfo._id}) ,
  
     };
     fetch(url, requestOptions)
@@ -189,7 +238,7 @@ else if (check=="REMOVE"){
 
           </div>
             </li>
-            <li > <div style={{color:"#b3b3b3"}}> {this.state.songsNumber}</div> </li>
+            <li > <div style={{color:"#b3b3b3"}}> {this.state.songsNumber} Songs</div> </li>
 					</ul>
           </div>
 
@@ -197,13 +246,13 @@ else if (check=="REMOVE"){
         <table className="table table-borderless">
           <tbody>
                                              {/* Display Songs */}
-           {this.state.SongInfo.map((song,index)=>(
+           {this.state.songsNumber == 0 ? <h2 className="d-flex justify-content-center">It's a bit empty here...</h2> : this.state.playlistTracks.map((song,index)=>(
             <tr key={index}>
               <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
-                  <li>{song.SongName}</li>
-                  <li className="song-info"><a href='/webplayer/artistprofile'>{song.Singer} </a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>{song.AlbumName} </a></li>
+                  <li>{song.trackName}</li>
+                  <li className="song-info"><a href='/webplayer/artistprofile'>{song.artistId} </a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'> {song.AlbumName}</a></li>
                 </ul>
               </td>
               <td>
@@ -217,7 +266,7 @@ else if (check=="REMOVE"){
                   </div>
                 </div>
               </td>
-              <td className="duration">{song.Duration}</td>
+              <td className="duration">{song.duration}</td>
             </tr>
             ))} 
              

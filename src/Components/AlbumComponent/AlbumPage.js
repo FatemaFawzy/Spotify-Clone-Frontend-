@@ -11,6 +11,9 @@ import {connect} from 'react-redux';
 
 class AlbumPage extends Component
 {
+  constructor(props){
+    super(props);
+  }
   state= 
 { 
     SongInfo: [
@@ -36,9 +39,77 @@ class AlbumPage extends Component
     ShowingAdd: false,
     ShowSave: false,
     ShowingSave: false,
-    playAlbum: "Play"
+    playAlbum: "Play",
+    AlbumInfo: {},
+    AblumSongs: [],
     
 }
+componentDidMount(){
+  
+  var url = BASEURL+ "album/" + this.props.AlbumID; 
+
+  var requestOptions = {
+    method: 'GET',
+    headers: { 'x-auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjNzg1ZTE0NGQ5NDA0MzliNDU4NGEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MjgwMDExfQ.R3gD5zX1j6A9KS2uYGzjZExCc7FDgsoiPEdVlxKy24Q',
+     'Content-Type': 'application/json' },
+  };
+  fetch(url,requestOptions)
+    .then((response) => { return response.json()})
+    .then((data) => {
+      // console.log(data)
+      this.setState({ 
+        AlbumInfo: data.album,
+       AlbumImage:"http://52.14.190.202:8000/images/"+data.album.imagePath,
+      songsNumber:data.album.tracks.length});
+      // console.log(this.state.AlbumInfo);
+      this.gettracks()
+    })
+    .catch((error)=>{console.log(error);
+
+    })
+  }
+  gettracks () {
+    var url =BASEURL+ "tracks"; 
+    const requestOptions = {
+      method:"POST",
+      headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
+      'Content-Type': 'application/json'},
+      body: JSON.stringify({id: this.state.AlbumInfo.tracks})
+  };
+    fetch(url,requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) =>{ 
+        this.setState({SongInfo:data.tracks})
+        console.log(this.state.SongInfo)
+        this.getArtistName()
+      })
+      .catch((err)=>console.log(err))
+  }
+
+  getArtistName()
+  {
+    var x=''
+    var url =BASEURL+ "Artists/"+this.state.AlbumInfo.artistId; 
+    const requestOptions = {
+      method:"GET",
+    headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
+
+    }
+    fetch(url,requestOptions)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {    
+     this.setState({Artist:data.artist.artistName})
+    })
+    .catch((error)=>{
+      console.log(error);
+    })  
+   }
+  
+
   toggle_add_to_playlist()
  {
    var blur_add_to_playlist=document.getElementById ('blur-add-to-playlist');
@@ -123,7 +194,7 @@ else if (check=="SAVE"){
 
              <li> <CardMedia className="play-pause" image={this.state.AlbumImage} /> </li>
 
-					  <li> <h3> {this.state.AlbumName} </h3> </li>
+					  <li> <h3> {this.state.AlbumInfo.albumName} </h3> </li>
 					  <li> <h5> {this.state.Artist} </h5> </li>
             
             <li> <a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playAlbum}</a> </li>
@@ -137,7 +208,7 @@ else if (check=="SAVE"){
               </div>
               </div>
             </li>
-            <li> <div style={{color:"#b3b3b3"}}> {this.state.songsNumber} </div></li>
+            <li> <div style={{color:"#b3b3b3"}}> {this.state.songsNumber} Songs </div></li>
 					</ul>
           </div>
 
@@ -152,8 +223,8 @@ else if (check=="SAVE"){
               <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
-                  <li>{song.SongName}</li>
-                  <li className="song-info"><a href='/webplayer/artistprofile'>{song.Singer} </a></li>
+                  <li>{song.trackName}</li>
+                  <li className="song-info"><a href='/webplayer/artistprofile'>{this.state.Artist} </a> </li>
                 </ul>
               </td>
               <td>
@@ -165,7 +236,7 @@ else if (check=="SAVE"){
                   </div>
                 </div>
               </td>
-              <td className="duration">{song.Duration}</td>
+              <td className="duration">{song.duration}</td>
             </tr>
             ))} 
                                          
