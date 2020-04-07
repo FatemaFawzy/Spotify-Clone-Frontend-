@@ -150,13 +150,6 @@ class HomePage extends Component {
       .then((data) => {
         if ((data.artists.length)>5)
         {
-<<<<<<< HEAD
-        this.setState({popularartists:data.artists.slice(0,5)})
-        }
-        else{
-        this.setState({popularartists:data.artists})
-        }
-=======
         this.setState({excessArtists:true});
         this.setState({popularartists:data.artists.slice(0,5)})
 
@@ -165,7 +158,6 @@ class HomePage extends Component {
         this.setState({popularartists:data.artists})  
         }
         
->>>>>>> edacc752707c9c3bcad668cc0600c6867eb5d1bc
       })
       .catch((error)=>{
         console.log(error);

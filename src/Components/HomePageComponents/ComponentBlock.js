@@ -4,6 +4,8 @@ import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
 // import * as itemType from "../../Constants/itemType";
 import {BASEURL} from "../../Constants/baseURL";
 
+import {Link, Router } from "react-router-dom";
+
 
 
 class ComponentBlock extends Component {
@@ -116,7 +118,7 @@ return(
   <div className="component-block">
     <div className="container">
     <h1 className="header">{this.props.ComponentName}</h1>
-    <a id="see-all">{this.props.excess ? "SEE ALL" : ""}</a>
+    <Link to="/webplayer/HomePage/seeallartists"><a id="see-all">{this.props.excess ? "SEE ALL" : ""}</a></Link>
     </div>
     <p className="header-description">{this.props.description}</p>
     
