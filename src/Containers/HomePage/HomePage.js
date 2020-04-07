@@ -1,11 +1,6 @@
 import React,{Component} from 'react';
-import {BrowserRouter as Router,
-  Switch, 
-  Route, 
- } from "react-router-dom";
  import './HomePage.css';
 import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
-import GeneralItem from "../GenericComponenets/GeneralItem";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
@@ -22,6 +17,7 @@ class HomePage extends Component {
      popularalbums:[],
      newreleases:[],
      popularartists:[],
+     excessArtists: false,
     
     }
     
@@ -44,10 +40,10 @@ class HomePage extends Component {
     //     console.log(error);
     //   })
 
-    const recentlyPlayedarray=[{type: "SONG" , title: "Meek Mill", subtitle: "SONG", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
-    {type: "ALBUM" , title: "Mileyyy", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-    {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-    {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}]; 
+    const recentlyPlayedarray=[{type: "SONG" , title: "High Hopes", subtitle: "Pink Floyd", url: "https://i.scdn.co/image/ab67616d0000b27330ba0e3ed0e1db48cd3b94a8", id:"1", roundImgOrNot: ""},
+    {type: "SONG" , title: "Is This Love", subtitle: "Bob Marley", url: "https://i.scdn.co/image/ab67616d0000b27399defae6e4954461aa362d92", id:"2", roundImgOrNot: ""},
+    {type: "SONG" , title: "Kiki", subtitle: "Drake", url: "https://i.scdn.co/image/ab67616d0000b273a58da82cd7b27ffc575ccb3e", id:"3", roundImgOrNot: ""},
+    {type: "SONG" , title: "Mood Booster", subtitle: "Chill", url: "https://pl.scdn.co/images/pl/default/36bdc599a28c5a55269620ad5ade6f5fc459dd6e", id:"4", roundImgOrNot: ""}]; 
     
     this.setState({recentlyPlayed:recentlyPlayedarray});
 
@@ -66,11 +62,9 @@ class HomePage extends Component {
     //     console.log(error);
     //   })
     
-    const madeforyouarray= [{type: "PLAYLIST" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
-     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}];  
-    
+    const madeforyouarray= [{type: "PLAYLIST" , title: "Daily Mix", subtitle: "Mulst Listen", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-ZIZSg7rI8fyqBOxIftVBDFFwb0Oqc3saYbGwBLz5V1jHdKGz&usqp=CAU", id:"1", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Mix 2", subtitle: "Feel Good", url: "https://i.redd.it/avxncpgy8do11.png", id:"2", roundImgOrNot: ""}];
+     
     this.setState({madeforyou:madeforyouarray});
 
     //Make a request with this.props.userID
@@ -82,18 +76,18 @@ class HomePage extends Component {
     //     return response.json();
     //   })
     //   .then((data) => {
-    //     this.setState({yourplaylists:data.slice(0,5)})
+    //     this.setState({popularplaylists:data.slice(0,5)})
     //   })
     //   .catch((error)=>{
     //     console.log(error);
     //   })
     
-     const yourplaylistsarray= [{type: "PLAYLIST" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
-     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "PLAYLIST" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}]; 
+     const popularplaylistsarray= [{type: "PLAYLIST" , title: "Dance Pop", subtitle: "Dance All Day", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRGAe4ncly34_omxS6TWVHiweCRGPuoP2I0XOTjAotRHj1EcZDu&usqp=CAU", id:"1", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Mic Drop", subtitle: "Get Hyped", url: "https://cdn.playlists.net/images/genre_moods/image/medium/Pop.jpg", id:"2", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Hip Hop", subtitle: "Dance", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSNRqOkxQgHtfVUS6rVtcV1Y1RHsReptSs_Kjirqr16kLSq0WZ0&usqp=CAU", id:"3", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Anti Pop", subtitle: "", url: "https://i.redd.it/9vt7zp9ru8211.jpg", id:"4", roundImgOrNot: ""}]; 
     
-    this.setState({yourplaylists:yourplaylistsarray});
+    this.setState({popularplaylists:popularplaylistsarray});
 
     //Make a request with this.props.userID
     //assume this is the returned data
@@ -114,7 +108,7 @@ class HomePage extends Component {
      {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
      {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
      {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}];  
-    
+     
     this.setState({popularalbums:popularalbumsarray});
 
     //Make a request with this.props.userID
@@ -141,14 +135,23 @@ class HomePage extends Component {
 
     //Make a request with this.props.userID
     //assume this is the returned data
-
+    
     const url = "http://52.14.190.202:8000/artists/homepage/popular"; 
     fetch(url)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        this.setState({popularartists:data})
+        if ((data.artists.length)>5)
+        {
+        this.setState({excessArtists:true});
+        this.setState({popularartists:data.artists.slice(0,5)})
+
+        }
+        else{
+        this.setState({popularartists:data.artists})  
+        }
+        
       })
       .catch((error)=>{
         console.log(error);
@@ -164,12 +167,12 @@ class HomePage extends Component {
             image="https://scontent.fcai3-1.fna.fbcdn.net/v/t1.0-9/19397029_10210794027939033_5811382860033366804_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_eui2=AeHEhGNHMDc070CTQv4WD5FK-tEUbysbE-HFFkFOk7OxsfeTak6rLywRWjbRlCDjWmzjtl79NUg2XF9AsJX_0QE9j0LnqnOoo_ADLnnZUnidEA&_nc_ohc=QgP5sx3F3dsAX-nzFSx&_nc_ht=scontent.fcai3-1.fna&oh=86cb020fb7ea1a4e8c69aaaf075680d5&oe=5EA58791"/>
             <div id="homepage-body" >
               
-              {/* <ComponentBlock ComponentName="Recently played" description="" details={this.state.recentlyPlayed}  /> */}
-              {/* <ComponentBlock type="playlists" ComponentName="Made for You" description="Playlists to match your mood" details={this.state.madeforyou} />
-              <ComponentBlock type="playlists" ComponentName="Your playlists" description="" details={this.state.yourplaylists}/>
-              <ComponentBlock type="albums" ComponentName="Popular albums" description="" details={this.state.popularalbums}/>
-              <ComponentBlock type="songs" ComponentName="Popular new releases" description=""  details={this.state.newreleases}/> */}
-              <ComponentBlock type="artists" ComponentName="Popular artists" details={this.state.popularartists}/>
+               <ComponentBlock ComponentName="Recently played" type="songs" description="" details={this.state.recentlyPlayed}   /> 
+               <ComponentBlock type="playlists" ComponentName="Made for You" description="Playlists to match your mood" details={this.state.madeforyou} />
+               <ComponentBlock type="playlists" ComponentName="Popular playlists" description="" details={this.state.popularplaylists}/> 
+                {/* <ComponentBlock type="albums" ComponentName="Popular albums" description="" details={this.state.popularalbums} />
+               <ComponentBlock type="songs" ComponentName="Popular new releases" description=""  details={this.state.newreleases} />  */}
+              <ComponentBlock type="artists" ComponentName="Popular artists" details={this.state.popularartists} excess={this.state.excessArtists}/>
               
             </div>
           
