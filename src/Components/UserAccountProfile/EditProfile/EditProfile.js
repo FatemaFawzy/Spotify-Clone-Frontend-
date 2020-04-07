@@ -85,16 +85,21 @@ class EditProfile extends Component {
         headers: { 'x-auth' : this.props.userToken},
         body: JSON.stringify({ 
           userName: this.state.username,
+          gender: this.state.gender,
           day: this.state.birthDate.day,
           month: this.state.birthDate.month,
-          year: this.state.birthDate.year,
-          gender: this.state.gender
+          year: this.state.birthDate.year
+          // userName: "Fatema",
+          // gender: "F",
+          // day: "20",
+          // month: "09",
+          // year: "1998"
         })
     }
     console.log(requestOptions.headers);
     const url = BASEURL + "users/me/editprofile"; 
     fetch(url,requestOptions)
-      .then((response) => response.text())
+      .then((response) => {console.log(response); return response.text()})
       .then((data) => {
         console.log(data);  
       })
