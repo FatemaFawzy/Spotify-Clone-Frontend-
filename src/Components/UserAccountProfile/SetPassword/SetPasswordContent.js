@@ -2,7 +2,7 @@ import React,{Component} from "react";
 import './SetPasswordContent.css';
 import {Link, Router } from "react-router-dom";
 import {connect} from "react-redux";
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "../../../Constants/baseURL";
 
 
 
