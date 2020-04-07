@@ -7,8 +7,26 @@
   height: 357.8px;  */
   margin-bottom: 300px;
 }
-
+.component-block .container{
+  display: inline-block;
+}
+.component-block #see-all{
+  float: right;
+  color: rgb(179, 179, 179);
+  padding-top: 23px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  
+}
+.component-block #see-all:hover{
+  padding-top: 21px;
+  text-decoration: underline;
+  cursor: pointer;
+  text-underline-position: below;
+}
 .component-block .header{
+  display: inline-block;
   padding-left: 12px;
   font-size: 28px;
   font-weight: 600;
