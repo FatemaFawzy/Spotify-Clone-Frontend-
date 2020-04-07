@@ -17,7 +17,7 @@ class MainNavbar extends Component {
 
   componentDidMount(){
 
-    if(this.props.loggenIn){
+    if(this.props.logging){
 
       const url = BASEURL +"users/me";
     const requestOptions = {
