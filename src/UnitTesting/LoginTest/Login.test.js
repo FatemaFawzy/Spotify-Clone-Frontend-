@@ -38,8 +38,7 @@ describe("Login Render test", ()=>{
   describe("Login ValidateEmail function test", ()=>{
   
   it('invalid email check', () => {
-    let wrapper;
-    wrapper = shallow(<Login /> );
+    const wrapper = shallow(<Login /> );
     wrapper.setState({email:'abc'});
     const button = wrapper.find('button#login-button');
     button.simulate('click');
@@ -48,8 +47,7 @@ describe("Login Render test", ()=>{
   });
 
   it('Email input Empty check', () => {
-    let wrapper;
-    wrapper = shallow(<Login /> );
+    const wrapper = shallow(<Login /> );
     wrapper.setState({email:''});
     const button = wrapper.find('button#login-button');
     button.simulate('click');
@@ -60,8 +58,7 @@ describe("Login Render test", ()=>{
 })
   describe("Login handleEmail function test", ()=>{
     it('Email handle on change check', () => {
-      let wrapper;
-      wrapper = shallow(<Login /> );
+      const wrapper = shallow(<Login /> );
       const input = wrapper.find('input#email-input');
       const event ={
         preventDefault(){},
@@ -75,8 +72,7 @@ describe("Login Render test", ()=>{
   describe("Login ValidatePassword function test", ()=>{
 
   it('Password input Empty check', () => {
-    let wrapper;
-    wrapper = shallow(<Login /> );
+    const wrapper = shallow(<Login /> );
     wrapper.setState({password:''});
     const button = wrapper.find('button#login-button');
     button.simulate('click');
@@ -88,8 +84,8 @@ describe("Login Render test", ()=>{
 
   describe("Login handlePassword function test", ()=>{
     it('Password handle on change check', () => {
-      let wrapper;
-      wrapper = shallow(<Login /> );
+      
+      const wrapper = shallow(<Login /> );
       const input = wrapper.find('input#password-input');
       const event ={
         preventDefault(){},
