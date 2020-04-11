@@ -5,12 +5,19 @@ import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
 
 
-
+/** Class DeletePlaylist 
+ * @category DeletePlaylist
+ * @extends Component
+ */
 export class DeletePlaylist extends Component{
   constructor(props){
     super(props);
   }
   
+  /**Function to handle delete playlist
+   * @memberof DeletePlaylist
+   * @func handleDelete
+   */ 
 handleDelete (str) {
   const url = BASEURL+ "playlists";    
   const requestOptions = {
@@ -58,6 +65,11 @@ render(){
   )
 }
 }
+
+/**A function connecting component to redux store
+ * @memberof DeletePlaylist
+ * @func mapStateToProps
+ */
 const mapStateToProps = state =>{
   return{
     userToken: state.userToken

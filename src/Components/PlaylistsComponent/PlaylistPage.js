@@ -8,6 +8,10 @@ import HomePageNavbar from '../HomePage/HomePageNavbar';
 import {BASEURL} from "../../Constants/baseURL";
 import {connect} from 'react-redux';
 
+/** Class PlaylistPage 
+ * @category PlaylistPage
+ * @extends Component
+ */
 export class PlaylistPage extends Component
 {
   
@@ -29,21 +33,77 @@ export class PlaylistPage extends Component
       //   {id : 12, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
         
       // ],
+
+      /** playlist image
+     * @memberof PlaylistPage
+     * @type {string}
+     */
       playlistImage: "https://i.ibb.co/Q89hfcW/single-bar-note.jpg",
-      // playlistname: "Born to die",
-      // playlistCreator: "Lana Del Rey",
+     
+     /** playlist songs number
+     * @memberof PlaylistPage
+     * @type {string}
+     */
       songsNumber: "",  
+      
+      /** show/add snack bar
+     * @memberof PlaylistPage
+     * @type {boolean}
+     */
       ShowAdd: false,
+      
+      /** show/add snack bar
+     * @memberof PlaylistPage
+     * @type {boolean}
+     */
       ShowingAdd: false,
+     
+     /** show/remove snack bar
+     * @memberof PlaylistPage
+     * @type {boolean}
+     */
       ShowRemove: false,
+      
+      /** show/remove snack bar
+     * @memberof PlaylistPage
+     * @type {boolean}
+     */
       ShowingRemove: false,
+      
+      /** button play
+     * @memberof PlaylistPage
+     * @type {string}
+     */
       playplaylist: "Play",
+     
+      /** object of playlist info
+     * @memberof PlaylistPage
+     * @type {object}
+     */
       playlistInfo:{},
+     
+    /**Array of Artist names
+     * @memberof PlaylistPage
+     * @type {Array<artistNames>}
+     */
       ArtistNames:[],
+
+    /**Array of playlist tracks
+     * @memberof PlaylistPage
+     * @type {Array<tracks>}
+     */
       playlistTracks:[]
   }
-  componentDidMount() {
 
+   /**Function that is called when the component renders
+   * @memberof PlaylistPage
+   * @func componentDidMount
+   */
+  componentDidMount() {
+    /** variable of url 
+     * @memberof PlaylistPage
+     * @type {string}
+     */
     var url =BASEURL+ "playlists/me?id="+this.props.PlaylistID; 
     const requestOptions = {
       method:"GET",
@@ -80,7 +140,16 @@ export class PlaylistPage extends Component
 
     }
 
+ /**Function to get tracks
+   * @memberof PlaylistPage
+   * @func gettracks
+   */
     gettracks () {
+
+      /** variable of url 
+     * @memberof PlaylistPage
+     * @type {string}
+     */
       var url =BASEURL+ "tracks"; 
       const requestOptions = {
         method:"POST",
@@ -128,19 +197,24 @@ export class PlaylistPage extends Component
     //  console.log(this.state.playlistTracks)  
     // }
     
-
-  // DropMenuCard ()
-  // {
-  //   document.getElementById("DropMenuCard").classList.toggle("show");
-  // }
-  // DropMenuSong()
-  // {
-  //   document.getElementById("DropMenuSong").classList.toggle("show");
-  // }
-
+  /**Function to like playlist
+   * @memberof PlaylistPage
+   * @func likeSong
+   * @param e
+   */
   likeSong = e => {
     const {id} = e.target;
+   
+    /** variable of heart icon 
+     * @memberof PlaylistPage
+     * @type {string}
+     */
     var heart=document.getElementById(id);
+    
+    /** variable of url 
+     * @memberof PlaylistPage
+     * @type {string}
+     */
     var url=""
     if( heart.classList.contains("far")){
     url = BASEURL+"playlists/like/?id="+this.state.playlistInfo._id;
@@ -165,18 +239,36 @@ export class PlaylistPage extends Component
         .catch((error)=> {console.log(error)});
   }
 
+
+  /**Function to toggle add to playlist
+   * @memberof PlaylistPage
+   * @func toggle_add_to_playlist
+   */
   toggle_add_to_playlist()
 {
+  /** variable blur add to playlist
+   * @memberof PlaylistPage
+   * @type {string}
+   */
   var blur_add_to_playlist=document.getElementById('blur-add-to-playlist');
   if (blur_add_to_playlist!=null){
   blur_add_to_playlist.classList.toggle('activate')
   }
+
+   /** variable popup add to playlist
+   * @memberof PlaylistPage
+   * @type {string}
+   */
   var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
   if (popup_add_to_playlist!=null){
   popup_add_to_playlist.classList.toggle('activate')
 }
 }
 
+ /**Function to play button
+   * @memberof PlaylistPage
+   * @func playButton
+   */
 playButton = () => {
   if ( this.state.playplaylist === "Play" ) {
     this.setState({playplaylist: "Pause"});
@@ -186,7 +278,17 @@ playButton = () => {
   }
 }
 
+/**Function to show snack bar
+   * @memberof PlaylistPage
+   * @func show
+   * @param e
+   */
 show = e => {
+
+  /** variable to check which snack bar is called
+   * @memberof PlaylistPage
+   * @type {string}
+   */
   var check = e.target.id;
   if (check=="ADD"){
   this.setState({ ShowAdd: true, ShowingAdd: true });
@@ -288,6 +390,11 @@ else if (check=="REMOVE"){
   )
 }
 }
+
+/**A function connecting component to redux store
+ * @memberof PlaylistPage
+ * @func mapStateToProps
+ */
 const mapStateToProps = state =>{
   return{
     userToken: state.userToken,

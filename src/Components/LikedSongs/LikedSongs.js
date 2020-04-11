@@ -6,10 +6,20 @@ import CardMedia from '../Media/CardMedia';
 import {BASEURL} from "../../Constants/baseURL";
 import {connect} from 'react-redux';
   
+
+/** Class LikedSongs 
+ * @category LikedSongs
+ * @extends Component
+ */
 export class LikedSongs extends Component
 {
   state= 
   { 
+    /**Array of Song Info
+   * @memberof LikedSongs
+   * @type {Array<songs>}
+   */
+
       SongInfo: [
         {id : 1, SongName : "Born To Die", Singer: "Lana Del Rey", AlbumName: "Born To Die",Duration : "3:52"},
         {id : 2, SongName : "Love", Singer: "Lana Del Rey", AlbumName: "Love",Duration : "4:15"},
@@ -25,14 +35,52 @@ export class LikedSongs extends Component
         {id : 12, SongName : "Summertime Sadness", Singer: "Lana Del Rey", AlbumName: "Born To Die", Duration : "2:58"},
         
       ],
+    /** Liked Songs image
+     * @memberof LikedSongs
+     * @type {sring}
+     */
       LikedSongsImage: "https://uploads-ssl.webflow.com/5e36e6f21212670638c0d63c/5e39d85cee05be53d238681a_likedSongs.png",
+     
+    /** Liked Songs Number
+     * @memberof LikedSongs
+     * @type {sring}
+     */
       songsNumber: "32 Songs",   
+    
+    /** show/remove snack bar
+     * @memberof LikedSongs
+     * @type {boolean}
+     */
       ShowRemove: false,
+      
+     /** showing/removing snack bar
+     * @memberof LikedSongs
+     * @type {boolean}
+     */
       ShowingRemove: false,
+      
+    /** button play
+     * @memberof LikedSongs
+     * @type {sring}
+     */
       playLikedSongs: "Play",
+     
+    /** object of tracks IDS
+     * @memberof LikedSongs
+     * @type {object}
+     */
       TracksID: {},
+
+    /** object of Liked tracks 
+     * @memberof LikedSongs
+     * @type {object}
+     */
       LikedTracks:{}
   }
+   /**Function that is called when the component renders
+   * @memberof LikedSongs
+   * @func componentDidMount
+   */
   componentDidMount()
   {
      const url = BASEURL +"tracks/like/me";
@@ -56,7 +104,10 @@ export class LikedSongs extends Component
     
             })       
   }
-
+/**Function to get liked tracks
+   * @memberof LikedSongs
+   * @func getLikedTrackes
+   */
 getLikedTrackes () {
     var url =BASEURL+ "tracks"; 
       const requestOptions = {
@@ -77,22 +128,31 @@ getLikedTrackes () {
         .catch((err)=>console.log(err))
   }
 
+/**Function to toggle add to playlist
+   * @memberof LikedSongs
+   * @func toggle_add_to_playlist
+   */
   toggle_add_to_playlist()
   {
+   /** variable blur add to playlist
+   * @memberof LikedSongs
+   * @type {string}
+   */
     var blur_add_to_playlist=document.getElementById ('blur-add-to-playlist');
     blur_add_to_playlist.classList.toggle('activate')
+
+  /** variable popup add to playlist
+   * @memberof LikedSongs
+   * @type {string}
+   */
     var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
     popup_add_to_playlist.classList.toggle('activate')
   }
-  // DropMenuCard ()
-  // {
-  //   document.getElementById("DropMenuCard").classList.toggle("show");
-  // }
-  // DropMenuSong()
-  // {
-  //   document.getElementById("DropMenuSong").classList.toggle("show");
-  // }
-
+ 
+  /**Function to play button
+   * @memberof LikedSongs
+   * @func playButton
+   */
   playButton = () => {
     if ( this.state.playLikedSongs === "Play" ) {
       this.setState({playLikedSongs: "Pause"});
@@ -102,7 +162,17 @@ getLikedTrackes () {
     }
   }
   
+  /**Function to show snack bar
+   * @memberof LikedSongs
+   * @func show
+   * @param e
+   */
 show = e => {
+
+   /** variable to check which snack bar is called
+   * @memberof LikedSongs
+   * @type {string}
+   */
   var check = e.target.id;
   if (check=="REMOVE"){
   this.setState({ ShowRemove: true, ShowingRemove: true });
@@ -193,6 +263,11 @@ show = e => {
   )
 }
 }
+
+/**A function connecting component to redux store
+ * @memberof Likedsongs
+ * @func mapStateToProps
+ */
 const mapStateToProps = state =>{
   return{
     userToken: state.userToken,

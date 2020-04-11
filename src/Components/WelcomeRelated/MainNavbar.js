@@ -5,15 +5,28 @@ import {connect} from 'react-redux';
 import * as actionTypes from "../../Store/actions";
 import {BASEURL} from "../../Constants/baseURL";
 
+/** Class MainNavbar 
+ * @category MainNavbar
+ * @extends Component
+ */
 export class MainNavbar extends Component {
   constructor(props){
     super(props); 
-    this.state={
+    this.state=
+    {
+    /** profile image
+   * @memberof MainNavbar
+   * @type {string}
+   */
       image:"",
      
     }
   }
 
+  /**Function that is called when the component renders
+   * @memberof MainNavbar
+   * @func componentDidMount
+   */
   componentDidMount(){
 
     if(this.props.logging){
@@ -106,8 +119,9 @@ export class MainNavbar extends Component {
     )
 }
 }
-/**
- * 
+
+/** A function connecting component to redux store
+ * @memberof MainNavbar
  * @param {*} state 
  */
 const mapStateToProps = state =>{
@@ -118,6 +132,11 @@ const mapStateToProps = state =>{
   };
 };
 
+
+/** A function connecting component to redux store
+ * @memberof MainNavbar
+ * @param {*} dispatch 
+ */
 const mapDispatchToProps = dispatch => {
   return {
     onSignOut : () => dispatch ({type: actionTypes.ON_SIGNOUT}),

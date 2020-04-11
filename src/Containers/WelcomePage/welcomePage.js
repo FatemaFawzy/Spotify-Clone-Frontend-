@@ -3,7 +3,10 @@ import './welcomePage.css';
 import Bottom from "../../Components/WelcomeRelated/Bottom";
 import MainNavbar from "../../Components/WelcomeRelated/MainNavbar";
 
-
+/** Class welcomePage 
+ * @category welcomePage
+ * @extends Component
+ */
 class welcomePage extends Component{
 	render() 
 	{

@@ -2,9 +2,17 @@ import React ,{ Component} from 'react';
 import'./AddToPlaylist.css';
 import LikedSongs from '../LikedSongs/LikedSongs';
 
+/** Class AddToPlaylist 
+ * @category AddToPlaylist
+ * @extends Component
+ */
 export class AddToPlaylist extends Component{
   state= 
 { 
+  /** Array of playlist info
+   * @memberof AddToPlaylist
+   * @type {Array<plalistInfo>}
+   */
     plalistInfo: [
       {id : 1, PlalistImage : "https://miro.medium.com/max/2480/1*8FkvzbSdSJ4HNxtuZo5kLg.jpeg", PlaylistName: "test",SongsNumber : "17"},
       {id : 2, PlalistImage : "https://papers.co/wallpaper/papers.co-ac23-wallpaper-ghost-stories-coldplay-cover-art-2-wallpaper.jpg", PlaylistName: "test",SongsNumber : "34"},
@@ -16,18 +24,44 @@ export class AddToPlaylist extends Component{
     ]
   }
  
+    /**Function toggle create to playlist
+   * @memberof AddToPlaylist
+   * @func toggle_add_to_playlist
+   */
   toggle_add_to_playlist()
  {
+    /**variable blur add to playlist
+   * @memberof AddToPlaylist
+   * @type {string}
+   */
    var blur_add_to_playlist=document.getElementById ('blur-add-to-playlist');
    blur_add_to_playlist.classList.toggle('activate')
+
+    /** variable popup add to playlist
+   * @memberof AddToPlaylist
+   * @type {string}
+   */
    var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
    popup_add_to_playlist.classList.toggle('activate')
  }
 
+   /**Function toggle create to playlist
+   * @memberof AddToPlaylist
+   * @func toggle
+   */
  toggle()
  {
+    /** variable blur create to playlist
+   * @memberof AddToPlaylist
+   * @type {string}
+   */
    var blur=document.getElementById('blur');
    blur.classList.toggle('active')
+
+  /** variable pop create to playlist
+   * @memberof AddToPlaylist
+   * @type {string}
+   */
    var popup=document.getElementById('popup');
    popup.classList.toggle('active')
  }
