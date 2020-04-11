@@ -77,7 +77,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.ON_SIGNOUT:
       return {
         ...state,
-        loggenIn: false
+        loggenIn: false,
+        userID: null,
+        userToken: null
         };
       break;
       

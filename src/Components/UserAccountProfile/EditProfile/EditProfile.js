@@ -3,7 +3,7 @@ import "./EditProfile.css";
 import {BASEURL} from "../../../Constants/baseURL"
 import {connect} from "react-redux"
 
-class EditProfile extends Component {
+export class EditProfile extends Component {
   constructor(props){
     super(props);
     var handleChange = this.handleChange.bind(this);
@@ -28,6 +28,7 @@ class EditProfile extends Component {
   }
 
   componentDidMount() {
+    if(document.getElementById("saved-changes")){
     document.getElementById("saved-changes").classList.toggle("hide");
 
     if(this.props.passedInfo.birthDate){
@@ -40,6 +41,7 @@ class EditProfile extends Component {
     }
     else document.getElementById("saved-changes").classList.add("hide");
   }
+  }
   handleChange =e => {
     
     const {id, value}= e.target;
@@ -51,11 +53,13 @@ class EditProfile extends Component {
 
         if ( value.length === 0 ) {
           this.setState({usernameErrorMessage: "You must specify your username" }) ;
-          document.getElementById(id).style.borderColor= "#bd3200";
+          if (document.getElementById(id)) {
+          document.getElementById(id).style.borderColor= "#bd3200";}
         }
         else {
           this.setState({usernameErrorMessage: ""});
-          document.getElementById(id).style.borderColor= "#ced4da";
+          if (document.getElementById(id)) {
+          document.getElementById(id).style.borderColor= "#ced4da";}
         }
         break;
       case "gender":

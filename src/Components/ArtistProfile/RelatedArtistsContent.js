@@ -10,7 +10,7 @@ import * as itemType from "../../Constants/itemType";
  * @category RelatedArtistsContent
  * @extends Component
  */
-class RelatedArtistsContent extends Component {
+export class RelatedArtistsContent extends Component {
 
   state = {
     /**Array of playlists in the bottom

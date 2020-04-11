@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
 
-class SongSearched extends Component {
+export class SongSearched extends Component {
   state = {
     dropContentClass: "dropdown-content",
     songSearchedIdActive: "",
@@ -46,11 +46,15 @@ class SongSearched extends Component {
   render() {
 
     var actualName;
-    if (this.props.name.length > 20) {
-      actualName = this.props.name.slice(0, 20) + "...";
-    } else {
-      actualName = this.props.name;
+    if(this.props.name){
+      if (this.props.name.length > 20) {
+        actualName = this.props.name.slice(0, 20) + "...";
+      } else {
+        actualName = this.props.name;
+      }
+
     }
+
 
     var PlayPause = this.state.playing ? <i className="fas fa-pause"></i> : <i className="fas fa-play"></i>;
 

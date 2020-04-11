@@ -8,7 +8,7 @@ const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 );
 
-class SignUp extends Component{
+export class SignUp extends Component{
   constructor(props){
     super(props);
 
@@ -251,12 +251,14 @@ class SignUp extends Component{
     Object.entries(errorMessages).forEach (pair => {
       if ( pair[1] != null && pair[0] != "gender" && pair[1].length > 1) {
         var fieldToBeChanged = document.getElementsByName( pair[0] );
-        fieldToBeChanged[0].style.borderColor= "#bd3200";
+        if(fieldToBeChanged[0]) {
+        fieldToBeChanged[0].style.borderColor= "#bd3200";}
         // console.log (pair);
       }
       else if ( pair[1] != null && pair[0] != "gender" && pair[1].length === 0) {
         var fieldToBeChanged = document.getElementsByName( pair[0] );
-        fieldToBeChanged[0].style.borderColor= "#ced4da";
+        if(fieldToBeChanged[0]) {
+        fieldToBeChanged[0].style.borderColor= "#ced4da";}
         // console.log (pair);
       }
     })
@@ -286,7 +288,7 @@ class SignUp extends Component{
             <form  id="signup-form" noValidate>
 
               <input 
-              name= "email" className="form-control input-field" type="email" placeholder="Email" onChange={this.handleChange}/> 
+              name= "email" id="email-input" className="form-control input-field" type="email" placeholder="Email" onChange={this.handleChange}/> 
               <p id="empty-email" className="empty-input"> {errorMessages.email}</p>
 
               <input name="password" className="form-control input-field" type="Password" placeholder="Password" onChange={this.handleChange}/> 

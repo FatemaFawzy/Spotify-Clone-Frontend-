@@ -7,16 +7,21 @@ import * as itemType from "../../Constants/itemType";
 
 
 
-const TopResultItem =(props) =>{
+export const TopResultItem =(props) =>{
 
     const roundImgOrNot= props.type===itemType.ARTIST?"i-am-top-and-round-img":"i-am-top-and-not-round";
     
     var actualName;
-    if(props.name.length>20){
-      actualName=props.name.slice(0,20) + "...";
-    }else{
-      actualName=props.name;
+    if(props.name){
+
+      if(props.name.length>20){
+        actualName=props.name.slice(0,20) + "...";
+      }else{
+        actualName=props.name;
+      }
+
     }
+
 
     return(
         

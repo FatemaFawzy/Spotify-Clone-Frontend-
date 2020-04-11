@@ -5,7 +5,7 @@ import MediaObject from './MediaObject';
 import {connect} from "react-redux";
 import { BASEURL } from '../../Constants/baseURL';
 
-class ArtistOverviewContent extends Component {
+export class ArtistOverviewContent extends Component {
 
   state= { 
     SongInfo:[],
@@ -84,8 +84,9 @@ class ArtistOverviewContent extends Component {
     }
 
     var icon= document.getElementById("albums-arrow");
+    if (icon !== null){
     icon.classList.toggle("fa-chevron-down");
-    icon.classList.toggle("fa-chevron-up");
+    icon.classList.toggle("fa-chevron-up");}
   }
 
   showMoreSingles= e => {
@@ -99,8 +100,9 @@ class ArtistOverviewContent extends Component {
     }
 
     var icon= document.getElementById("singles-arrow");
+    if (icon !== null){
     icon.classList.toggle("fa-chevron-down");
-    icon.classList.toggle("fa-chevron-up");
+    icon.classList.toggle("fa-chevron-up");}
   }
 
   render(){
