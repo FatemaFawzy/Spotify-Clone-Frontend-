@@ -2,7 +2,9 @@ import React from "react";
 import "./AccountSidebar.css";
 import { NavLink } from "react-router-dom";
 
-
+ /**A function Component that represents the sidebar of the user account page
+   * @func AccountSidebar
+   */
 const AccountSidebar = (props) => (
   <div className="account-sidebar">
 

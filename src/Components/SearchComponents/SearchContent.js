@@ -5,6 +5,10 @@ import "./SongSearched"
 import SongSearched from "./SongSearched";
 
 
+/** Function component SearchContent that shows the content of the search page before typing anything in the search box.
+ * @func SearchContent
+ */
+
 const SearchContent = () => (
 
     <div className="before-typed-search">
@@ -28,14 +32,6 @@ const SearchContent = () => (
        color= "rgb(123,150,162)" 
        image="https://t.scdn.co/images/68433b0ee5b5465b8e926c42b84cbcdb.jpeg" />
 
-
-
-
-
-
-
-
-       
         </div>
 );
 

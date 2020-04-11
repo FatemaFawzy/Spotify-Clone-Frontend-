@@ -5,11 +5,26 @@ import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
 import GeneralItem from "../GenericComponenets/GeneralItem";
 import * as itemType from "../../Constants/itemType";
 
+/** Class OtherUser that represents the page og another profile
+ * @category OtherUser
+ * @extends Component
+ */
+
 export class OtherUser extends Component {
 
   state={
+
+        /**A variable that holds the related playlists to a certaian profile that is returned from the request
+   * @memberof OtherUser
+   * @type {Array<object>}
+   */
     userRelated:[],
   }
+
+    /**A function that renders when the component is called
+   * @memberof OtherUser
+   * @func componentDidMount
+   */
 
   componentDidMount(){
 
