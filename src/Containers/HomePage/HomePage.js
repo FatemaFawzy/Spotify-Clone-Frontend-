@@ -6,23 +6,58 @@ import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
 
 
-
+/** Class HomePage
+ * @category HomePage
+ * @extends Component
+ */
 class HomePage extends Component {
   constructor(props){
     super(props);
     this.state = {
-     recentlyPlayed:[],    
+  /**Array of recently played playlists, or songs
+   * @memberof HomePage
+   * @type {Array}
+   */
+     recentlyPlayed:[],   
+  /**Array of playlists generated for the user
+   * @memberof HomePage
+   * @type {Array<playlists>}
+   */ 
      madeforyou:[],
+  /**Array of playlists followed or created by the user
+   * @memberof HomePage
+   * @type {Array<playlists>}
+   */
      yourplaylists: [],
+  /**Array of popular albums for homepage
+   * @memberof HomePage
+   * @type {Array<albums>}
+   */
      popularalbums:[],
+  /**Array of newly released songs
+   * @memberof HomePage
+   * @type {Array<songs>}
+   */
      newreleases:[],
+   /**Array of popular artists for homepage
+   * @memberof HomePage
+   * @type {Array<artists>}
+   */
      popularartists:[],
+  /**Boolean to indicate whether we have more than 5 artists or not (slicing)
+   * @memberof HomePage
+   * @type {boolean}
+   */
      excessArtists: false,
     
     }
     
   }
   
+  /**A function that fires once the homepage is called
+   * @memberof HomePage
+   * @func componentDidMount
+   */
   componentDidMount() {
 
     //Make a request with this.props.userID

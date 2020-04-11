@@ -12,7 +12,7 @@ import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibrar
 import "./YourLibrary.css";
 
 
-class YourLibrary extends Component {
+export class YourLibrary extends Component {
 
   render() {
 

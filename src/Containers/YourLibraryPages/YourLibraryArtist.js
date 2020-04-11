@@ -4,7 +4,7 @@ import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibrar
 import GeneralItem from "../GenericComponenets/GeneralItem";
 import {connect} from "react-redux";
 
-class YourLibraryArtist extends Component {
+export class YourLibraryArtist extends Component {
   constructor(props){
     super(props);
     this.state = {

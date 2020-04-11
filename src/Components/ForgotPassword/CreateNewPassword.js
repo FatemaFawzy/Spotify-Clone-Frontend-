@@ -2,19 +2,34 @@ import React, { Component } from "react";
 import "./CreateNewPassword.css";
 import Header from  "../WelcomeRelated/Header";
 import Footer from "../WelcomeRelated/Footer";
-import {BrowserRouter as Router, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Redirect, withRouter} from "react-router-dom";
 import {Link} from "react-router-dom";
 
 const initialState = {
+  /**Input string for the password
+   * @memberof CreateNewPassword
+   * @type {string}
+   */
   newPassword: "",
+   /**Error message for an unacceptable input
+   * @memberof CreateNewPassword
+   * @type {string}
+   */
   newPasswordError: ""
 }
-class CreateNewPassword extends Component {
+/** Class CreateNewPassword to get a new password from the user
+ * @category ForgotPassword
+ * @extends Component
+ */
+export class CreateNewPassword extends Component {
   constructor(props){
   super(props);
   this.state = initialState;
   }
-
+  /**A function that validates user input
+   * @memberof CreateNewPassword
+   * @func validate
+   */
  validate = () => {
    let inp = this.state.newPassword;
    let newPasswordError="";
@@ -22,25 +37,37 @@ class CreateNewPassword extends Component {
    if (inp.length === 0)
    {
      newPasswordError = "This field is required.";
+     if (document.querySelector("#my-text"))
+     {
      document.querySelector("#my-text").classList.add("red-border");
+     }
      this.setState({newPasswordError});
      proceed = false;
    }
    else if (inp.length < 6) {
     newPasswordError = "Password is too short";
+    if (document.querySelector("#my-text"))
+    {
     document.querySelector("#my-text").classList.add("red-border");
+    }
     this.setState({newPasswordError});
     proceed = false;
    }
    else {
    newPasswordError = "";
+   if (document.querySelector("#my-text"))
+   {
    document.querySelector("#my-text").classList.remove("red-border");
+   }
    this.setState({inp, newPasswordError});
    proceed = true;
    }
    return proceed;
  };
-
+/**A function that updates the state of the class with the user input
+ * @memberof CreateNewPassword
+ * @func handleChange
+ */
  handleChange = event => {
   let inp = this.state.newPassword;
   inp = event.target.value;
@@ -48,14 +75,20 @@ class CreateNewPassword extends Component {
   this.validate();
 
 };
-
+/**A function that implements the fetch request and validates the input to redirect user to success page.
+ * @memberof CreateNewPassword
+ * @func clickSubmit
+ */
  clickSubmit = event => {
   let newPassword = this.state.newPassword;
-  event.preventDefault();
+  //event.preventDefault();
   if(this.validate()){
      this.setState({initialState});
      var clr= document.querySelector("#action-form");
+     if (clr)
+     {
      clr.reset();
+     }
      this.props.history.push('/logIn/forgotpassword/newpassword/passwordisnew');
 
     // const requestOptions = {
@@ -105,4 +138,4 @@ return(
 );
 }
 }
-export default CreateNewPassword;
+export default withRouter(CreateNewPassword);

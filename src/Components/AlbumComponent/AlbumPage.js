@@ -8,7 +8,10 @@ import HomePageNavbar from '../HomePage/HomePageNavbar';
 import {BASEURL} from "../../Constants/baseURL";
 import {connect} from 'react-redux';
 
-
+/** Class AlbumPage 
+ * @category AlbumPage
+ * @extends Component
+ */
 class AlbumPage extends Component
 {
   constructor(props){
@@ -16,6 +19,10 @@ class AlbumPage extends Component
   }
   state= 
 { 
+  /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {Array<songs>}
+   */
     SongInfo: [
       {id : 1, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
       {id : 2, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
@@ -29,23 +36,77 @@ class AlbumPage extends Component
       
       
     ],
-
+  /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {sring}
+   */
     AlbumImage: "https://i1.sndcdn.com/artworks-000240088107-9s5wcs-t500x500.jpg",
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {sring}
+   */
     AlbumName: "Perfect",
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {sring}
+   */
     Artist: "Ed sheran",
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {sring}
+   */
     songsNumber: "12 Songs",
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {sring}
+   */
     dropContentClass: "dropdown-content",
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {boolean}
+   */
     ShowAdd: false,
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {boolean}
+   */
     ShowingAdd: false,
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {boolean}
+   */
     ShowSave: false,
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {boolean}
+   */
     ShowingSave: false,
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {string}
+   */
     playAlbum: "Play",
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {sring}
+   */
     AlbumInfo: {},
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {Array<songs>}
+   */
     AblumSongs: [],
     
 }
+ /**Function that is called when the component renders
+   * @memberof AlbumPage
+   * @func componentDidMount
+   */
 componentDidMount(){
-  
+   /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
   var url = BASEURL+ "album/" + this.props.AlbumID; 
 
   var requestOptions = {
@@ -68,7 +129,15 @@ componentDidMount(){
 
     })
   }
+   /**Function to get tracks
+   * @memberof AlbumPage
+   * @func gettracks
+   */
   gettracks () {
+  /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
     var url =BASEURL+ "tracks"; 
     const requestOptions = {
       method:"POST",
@@ -87,10 +156,21 @@ componentDidMount(){
       })
       .catch((err)=>console.log(err))
   }
-
+  /**Function to get tracks
+   * @memberof AlbumPage
+   * @func getArtistName
+   */
   getArtistName()
   {
+    /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
     var x=''
+  /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
     var url =BASEURL+ "Artists/"+this.state.AlbumInfo.artistId; 
     const requestOptions = {
       method:"GET",
@@ -109,25 +189,52 @@ componentDidMount(){
     })  
    }
   
-
+     /**Function to get tracks
+   * @memberof AlbumPage
+   * @func toggle_add_to_playlist
+   */
   toggle_add_to_playlist()
  {
+    /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
    var blur_add_to_playlist=document.getElementById ('blur-add-to-playlist');
    blur_add_to_playlist.classList.toggle('activate')
+    /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
    var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
    popup_add_to_playlist.classList.toggle('activate')
  }
   
+ /**Function to get tracks
+   * @memberof AlbumPage
+   * @func DropMenuCard
+   */ 
   DropMenuCard ()
   {
     document.getElementById("DropMenuCard").classList.toggle("show");
   }
+   /**Function to get tracks
+   * @memberof AlbumPage
+   * @func DropMenuSong
+   */
   DropMenuSong()
   {
     document.getElementById("DropMenuSong").classList.toggle("show");
   }
-  
+   /**Function to get tracks
+   * @memberof AlbumPage
+   * @func likeSong
+   * @param r
+   */
   likeSong = r => {
+     /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
     const {id} = r.target;
     var heart=document.getElementById(id);
     var url=""
@@ -151,8 +258,16 @@ componentDidMount(){
     //     .catch((error)=> {console.log(error)});
   }
 
-
+ /**Function to get tracks
+   * @memberof AlbumPage
+   * @func playButton
+   * @param e
+   */
 playButton = e => {
+   /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
   const {id} = e.target;
   if ( this.state.playAlbum === "Play" ) {
     this.setState({playAlbum: "Pause"});
@@ -161,7 +276,16 @@ playButton = e => {
     this.setState({playAlbum: "Play"});
   }
 }
+ /**Function to get tracks
+   * @memberof AlbumPage
+   * @func show
+   * @param e
+   */
 show = e => {
+   /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
   var check = e.target.id;
   if (check=="ADD"){
   this.setState({ ShowAdd: true, ShowingAdd: true });

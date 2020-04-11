@@ -5,15 +5,30 @@ import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
 
+/** Class SeeAllArtists 
+ * @category SeeAllArtists
+ * @extends Component
+ */
 class SeeAllArtists extends Component {
   constructor(props){
     super(props);
     this.state = {
+  /**Array of artists to show up in the page.
+   * @memberof SeeAllArtists
+   * @type {Array<artists>}
+   */
      popularartists:[],
+   /**Constant boolean to indicate that there is no need for see all to appear.
+   * @memberof SeeAllArtists
+   * @type {boolean}
+   */
      all:false
     }  
   }
-
+ /**A function that's called when the page is brought up.
+   * @memberof ForgotPassword
+   * @func componentDidMount
+   */
   componentDidMount() {
     const url = "http://52.14.190.202:8000/artists/homepage/popular"; 
     fetch(url)

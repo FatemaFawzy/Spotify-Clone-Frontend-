@@ -7,11 +7,18 @@ import {BASEURL} from "../../Constants/baseURL";
 import {Link, Router } from "react-router-dom";
 
 
-
+/** Class ComponentBlock 
+ * @category ComponentBlock
+ * @extends Component
+ */
 class ComponentBlock extends Component {
   constructor(props){
     super(props);
     this.state = {
+  /**Array of objects to fill the general components.
+   * @memberof ComponentBlock
+   * @type {Array<object>}
+   */
       Results:[]
     }  
   }

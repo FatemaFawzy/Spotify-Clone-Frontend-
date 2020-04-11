@@ -6,19 +6,33 @@ import {BrowserRouter as Router, Redirect} from "react-router-dom";
 import {Link} from "react-router-dom";
 
 const initialState = {
+    /**Input string for the email
+   * @memberof ForgotPassword
+   * @type {string}
+   */
   email: "",
+   /**Error message for wrong input
+   * @memberof ForgotPassword
+   * @type {string}
+   */
   emailError: ""
 }
 const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 );
-
-class ForgotPassword extends Component {
+/** Class ForgotPassword to get an email from the user to send the instructions of resetting the password
+ * @category ForgotPassword
+ * @extends Component
+ */
+export class ForgotPassword extends Component {
   constructor(props){
     super(props);
  this.state = initialState;
   }
-
+ /**A function that validates user input
+   * @memberof ForgotPassword
+   * @func validate
+   */
  validate = () => {
    let inp = this.state.email;
    let emailError="";
@@ -27,42 +41,62 @@ class ForgotPassword extends Component {
    {
     emailError = "This field is required.";
     this.setState({emailError});
+    if (document.querySelector("#my-text"))
+    {
     document.querySelector("#my-text").classList.add("red-border");
+    }
     proceed = false;
    }
    else 
    {
     emailError = "";
     this.setState({inp, emailError});
+    if (document.querySelector("#my-text"))
+    {
     document.querySelector("#my-text").classList.remove("red-border");
+    }
     proceed = true;
    }
    return proceed;
   };
-
+ /**A function that reflects changes in input to the state of the class
+   * @memberof ForgotPassword
+   * @func handleChange
+   */
   handleChange = event => {
     let inp = this.state.email;
     inp = event.target.value;
     this.state.email = inp;
     this.validate();
   };
-
+ /**A function that handles form submission and implements the fetch request
+   * @memberof ForgotPassword
+   * @func clickSubmit
+   */
   clickSubmit = event => {
     let email = this.state.email;
     let emailError = this.state.emailError;
     this.setState({emailError});
-    event.preventDefault();
+    //event.preventDefault();
     if (!emailFormat.test(email) && email.length !== 0)
     {
-      emailError = "The email address you entered is invalid.";
+      if (document.querySelector("#my-text"))
+      {
+
       document.querySelector("#my-text").classList.add("red-border");
+      
+      }
+      emailError = "The email address you entered is invalid.";
       this.setState({emailError});
     }
     else if(this.validate())
     {
       this.setState({initialState});
      const {email}=this.state;
+     if (document.querySelector("#my-text"))
+      {
       document.querySelector("#my-text").classList.remove("red-border");
+      }
       const requestOptions = {
         method:"POST",
         headers: {'Content-Type':  'application/json'},

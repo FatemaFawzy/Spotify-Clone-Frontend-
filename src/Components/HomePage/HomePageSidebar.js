@@ -7,22 +7,49 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import * as actionTypes from "../../Store/actions";
  
-
+/** Class HomepageSidebar 
+ * @category HomePage
+ * @extends Component
+ */
 class HomePageSidebar extends Component{
   constructor(props){
     super(props);
     this.state = {
+    /**Array of playlists in the bottom
+   * @memberof HomePageSidebar
+   * @type {Array<playlist>}
+   */
     playlistArray:[],
+     /**Array of playlists to be show cased
+   * @memberof HomePageSidebar
+   * @type {Array<playlist>}
+   */
     total:"",
     }
   }
+   /**A function to show the popping area for creating a new playlist
+   * @memberof HomePageSidebar
+   * @func toggle
+   */
   toggle()
   {
+  /**A function to show the popping area for creating a new playlist
+   * @memberof HomePageSidebar
+   * @var blur
+   */
     var blur=document.getElementById('blur');
     blur.classList.toggle('active')
+      /**A function to show the popping area for creating a new playlist
+   * @memberof HomePageSidebar
+   * @var pop
+   */
     var popup=document.getElementById('popup');
     popup.classList.toggle('active')
   }
+    /**A function that fires once the homepage sidebar is called in the web player
+   * @memberof HomePageSidebar
+   * @func componentDidMount
+   */
   componentDidMount() {
     
     const requestOptions = {

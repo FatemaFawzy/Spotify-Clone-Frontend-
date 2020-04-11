@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import "./MediaObject.css";
 
+/** Class MediaObject
+ * @category MediaObject
+ * @extends Component
+ */
 class MediaObject extends Component {
   constructor(props){
     super(props);
     this.referefence= React.createRef();
     this.state = {
+  /**Array of playlists in the bottom
+   * @memberof MediaObject
+   * @type {boolean}
+   */
       playing: false,
     }
   }

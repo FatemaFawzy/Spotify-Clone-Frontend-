@@ -6,11 +6,28 @@ import MainNavbar from '../WelcomeRelated/MainNavbar';
 import Bottom from "../WelcomeRelated/Bottom";
 import { Link } from "react-router-dom";
 
+ /**Elements 
+   * @memberof HelpPage
+   * @type {Array<Albums>}
+   */
 var elements;
+ /**Check visible
+   * @memberof HelpPage
+   * @type {Array<Albums>}
+   */
 var checkvisible;
 
+/** Class HelpPage 
+ * @category HelpPage
+ * @extends Component
+ */
 class HelpPage extends Component {
 
+    /**A function to show the popping area for creating a new playlist
+   * @memberof HelpPage
+   * @func handelindexchange
+   * @param event
+   */
   handelindexchange = (event) => {
     checkvisible = document.querySelectorAll(".slide-cars-title");
     var j;

@@ -9,13 +9,29 @@ import DropDownMenu from "../../Containers/GenericComponenets/DropDownMenu";
 import COllapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
 import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
 
-
+ 
+/** Class HomepageSidebar 
+ * @category HomePage
+ * @extends Component
+ */
 export class HomePageNavbar extends Component{
   constructor(props){
     super(props); 
     this.props={
+  /**URL of image in dropdown menu
+   * @memberof HomePageNavbar
+   * @type {string}
+   */
       image:"",
+  /**Name in dropdown menu
+   * @memberof HomePageNavbar
+   * @type {string}
+   */
       name:"",
+   /**Account type to indicate whether the upgrade button should show or not.
+   * @memberof HomePageNavbar
+   * @type {string}
+   */
       accountType:""
      
     }
