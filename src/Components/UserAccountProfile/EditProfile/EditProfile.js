@@ -3,7 +3,7 @@ import "./EditProfile.css";
 import {BASEURL} from "../../../Constants/baseURL"
 import {connect} from "react-redux"
 
-class EditProfile extends Component {
+export class EditProfile extends Component {
   constructor(props){
     super(props);
     var handleChange = this.handleChange.bind(this);
@@ -28,6 +28,7 @@ class EditProfile extends Component {
   }
 
   componentDidMount() {
+    if(document.getElementById("saved-changes")){
     document.getElementById("saved-changes").classList.toggle("hide");
 
     if(this.props.passedInfo.birthDate){
@@ -39,6 +40,7 @@ class EditProfile extends Component {
       document.getElementById("saved-changes").classList.remove("hide");
     }
     else document.getElementById("saved-changes").classList.add("hide");
+  }
   }
   handleChange =e => {
     
