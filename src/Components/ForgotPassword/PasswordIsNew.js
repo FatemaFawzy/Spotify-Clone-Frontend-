@@ -4,7 +4,7 @@ import Header from '../WelcomeRelated/Header';
 import Footer from '../WelcomeRelated/Footer';
 
 /** Class PasswordIsNew to indicate that the new password has been successfully reset
- * @category ForgotPassword
+ * @category PasswordIsNew
  * @extends Component
  */
 export class PasswordIsNew extends Component {

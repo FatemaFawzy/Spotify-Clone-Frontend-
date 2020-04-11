@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Components/ForgotPassword/Success.js</title>
+    <title>JSDoc: Source: Components/WelcomeRelated/Header.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Components/ForgotPassword/Success.js</h1>
+    <h1 class="page-title">Source: Components/WelcomeRelated/Header.js</h1>
 
     
 
@@ -26,30 +26,29 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
-import './Success.css';
-import Header from '../WelcomeRelated/Header';
-import Footer from '../WelcomeRelated/Footer';
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import "./Header.css";
+import spotify from "../../assets/yarab.png";
+import {BrowserRouter as Router} from "react-router-dom";
+import {Link} from "react-router-dom";
 
-/** Class Success to indicate that an email has been sent with instructions on resetting the password.
- * @category Success
- * @extends Component
+/** Header as a functional component that appears in several welcome related pages.
+ * @func Header
  */
-export class Success extends Component {
-render(){
-return (
-  &lt;div className="Success">
-    &lt;Header />
-    &lt;div className="container">
-      &lt;h1 className="text-center">&lt;strong>Password Reset&lt;/strong>&lt;/h1>
-      &lt;p className="text-center" style={{fontWeight:"500"}} id="paragraph">A message has been sent to you by email with a link to reset your current password.&lt;/p>
+const Header=()=>(
+&lt;div className="header">
+  &lt;nav className="navbar navbar-dark black-background d-flex align-items-end" id="top-nav">
+    &lt;div className="pl-md-5 pb-1 pt-0" >
+      &lt;Link to="/">
+        &lt;div className="navbar-brand" href="#">
+          &lt;img src={spotify} id="spotify"/>
+        &lt;/div>
+      &lt;/Link>
     &lt;/div>
-    &lt;Footer />
-  &lt;/div>
+  &lt;/nav>
+&lt;/div>
 );
-}
-}
-export default Success;</code></pre>
+export default Header;</code></pre>
         </article>
     </section>
 

@@ -4,6 +4,9 @@ import spotify from "../../assets/yarab.png";
 import {BrowserRouter as Router} from "react-router-dom";
 import {Link} from "react-router-dom";
 
+/** Header as a functional component that appears in several welcome related pages.
+ * @func Header
+ */
 const Header=()=>(
 <div className="header">
   <nav className="navbar navbar-dark black-background d-flex align-items-end" id="top-nav">

@@ -101,6 +101,10 @@ export class ForgotPassword extends Component {
       {
       document.querySelector("#my-text").classList.remove("red-border");
       }
+   /**Prerequisites for fetch request
+   * @memberof ForgotPassword
+   * @type {object}
+   */
       const requestOptions = {
         method:"POST",
         headers: {'Content-Type':  'application/json'},

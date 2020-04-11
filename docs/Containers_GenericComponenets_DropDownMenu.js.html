@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/GenericComponenets/DropDownMenu.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/GenericComponenets/DropDownMenu.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import './DropDownMenu.css';
+import { BrowserRouter, withRouter } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import { connect } from "react-redux";
+import {BASEURL} from "../../Constants/baseURL";
+import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
+
+/** Class DropDownMenu for web player navbars
+ * @category DropDownMenu
+ * @extends Component
+ */
+export class DropDownMenu extends Component {
+  state = {
+     /**name of user in dropdown menu
+   * @memberof DropDownMenu
+   * @type {string}
+   */
+    username: "",
+     /**image of user in dropdown menu
+   * @memberof DownDownMenu
+   * @type {string}
+   */
+    userimage: "",
+
+  }
+  /**Function that mounts when the component is rendered.
+   * @memberof DropDownMenu
+   * @func componentDidMount
+   */
+  componentDidMount() {
+    //make a request with the this.props.userID to get the name and pic of the user
+
+     /**URL for fetch request
+     * @memberof DropDownMenu
+     * @type {string}
+     */
+    const url = BASEURL +"users/me";
+    /**Prerequisites for fetch request
+     * @memberof DropDownMenu
+     * @type {object}
+     */
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'x-auth': this.props.userToken },
+    };
+      fetch(url,requestOptions)
+        .then((response) => {
+          return response.json();
+          
+        })
+        .then((data) => {
+          if (data.userName > 15) {
+            this.setState({ username: data.userName.slice(0, 15) + "..." });
+          }
+          else {
+            this.setState({ username: data.userName });
+          }
+          this.setState({ userimage: data.imagePath });
+        })
+        .catch((error)=>{
+          console.log(error);
+
+        })
+
+
+  }
+  render() {
+    return (
+      &lt;div className="drop-down-menu">
+        &lt;div className="over btn-group mr-4 " id="right-drop-down"  >
+          &lt;button type="button" className="btn dropdown-toggle account-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            &lt;img className="image" src={BASEURL+"Images/"+(this.state.userimage)} alt=".." />
+            &lt;p className="name">{this.state.username}&lt;/p>
+          &lt;/button>
+          &lt;div className="over dropdown-menu dropdown-menu-right">
+            &lt;BrowserRouter forceRefresh={true}>&lt;Link to="/account" className="over dropdown-item">&lt;button className="dropdown-item white-words pl-4" type="button">Account&lt;/button>&lt;/Link>   &lt;/BrowserRouter>
+            &lt;BrowserRouter forceRefresh={true}>&lt;Link to="/" className="over dropdown-item">&lt;button className="dropdown-item white-words border-on-top" type="button">Log Out&lt;/button>&lt;/Link>   &lt;/BrowserRouter>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+
+  return {
+    userID: state.userID,
+    userToken: state.userToken
+  };
+
+};
+
+export default connect(mapStateToProps)(DropDownMenu);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="Success.html">Success</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 22:10:56 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -11,7 +11,7 @@ const initialState = {
    * @type {string}
    */
   newPassword: "",
-   /**Error message for an unacceptable input
+   /**Error message for an unacceptable input password
    * @memberof CreateNewPassword
    * @type {string}
    */
@@ -64,7 +64,7 @@ export class CreateNewPassword extends Component {
    }
    return proceed;
  };
-/**A function that updates the state of the class with the user input
+/**A function that updates the state of the email with the user's input in the field
  * @memberof CreateNewPassword
  * @func handleChange
  */
@@ -84,6 +84,10 @@ export class CreateNewPassword extends Component {
   //event.preventDefault();
   if(this.validate()){
      this.setState({initialState});
+   /**Getting the form to clear it after submitting
+   * @memberof CreateNewPassword
+   * @type {tag}
+   */
      var clr= document.querySelector("#action-form");
      if (clr)
      {
