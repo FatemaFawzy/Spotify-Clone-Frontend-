@@ -6,7 +6,7 @@ import ArtistAboutContent from "./ArtistAboutContent";
 import {withRouter} from "react-router-dom";
 
 
-class ArtistProfileContent extends Component {
+export class ArtistProfileContent extends Component {
   
   render ()
     {
