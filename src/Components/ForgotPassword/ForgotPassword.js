@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Redirect} from "react-router-dom";
 import {Link} from "react-router-dom";
 
 const initialState = {
-    /**Input string for the email
+  /**Input string for the email
    * @memberof ForgotPassword
    * @type {string}
    */
@@ -17,6 +17,10 @@ const initialState = {
    */
   emailError: ""
 }
+ /**Email format that must be entered by the user
+   * @memberof ForgotPassword
+   * @type {expression}
+   */
 const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 );
@@ -29,7 +33,7 @@ export class ForgotPassword extends Component {
     super(props);
  this.state = initialState;
   }
- /**A function that validates user input
+ /**A function that validates user input(must be an email)
    * @memberof ForgotPassword
    * @func validate
    */
@@ -69,7 +73,7 @@ export class ForgotPassword extends Component {
     this.state.email = inp;
     this.validate();
   };
- /**A function that handles form submission and implements the fetch request
+ /**A function that handles form submission and implements the fetch request to send the instructions on the provided email
    * @memberof ForgotPassword
    * @func clickSubmit
    */
@@ -103,6 +107,10 @@ export class ForgotPassword extends Component {
         body: JSON.stringify({ email: email })
       }
       console.log(requestOptions.body);
+   /**URL for fetch request
+   * @memberof ForgotPassword
+   * @type {string}
+   */
       var url = 'http://52.14.190.202:8000/users/forgot'; 
       fetch(url,requestOptions)
         .then((response) => {
