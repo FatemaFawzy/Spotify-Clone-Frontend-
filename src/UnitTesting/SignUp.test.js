@@ -78,22 +78,45 @@ describe("testing formValidity", () => {
 
 // --------------------------------------------------------------------------------------------
 
-// describe("handleChange", () => {
-//   let wrapper;
+describe("handleChange", () => {
+  let wrapper;
   
-//   beforeEach(() => {
-//     wrapper = shallow(<SignUp/>);
-//     const instance= wrapper.instance();
+  beforeEach(() => {
+    wrapper = shallow(<SignUp/>);
 
-//   })
+  })
  
-//   it('Should change the email error message according to the input', () => {
-//     const email= wrapper.find("input.email");
-//     email.value= "";
-//     instance.hangleChange()   
-//   })
+  it('Should adjust error message if: email is empty', () => {
+    const email= wrapper.find("input#email-input");
+    const event = {
+      preventDefault() {},
+      target: { name: 'email', value: ''}
+    } 
+    email.simulate('change', event);
+    expect(wrapper.state().errorMessages.email).toContain("Please enter your email.");
+  })
 
-// })
+  it('Should adjust error message if: email is wrong', () => {
+    const email= wrapper.find("input#email-input");
+    const event = {
+      preventDefault() {},
+      target: { name: 'email', value: 'fatema@yahoo'}
+    } 
+    email.simulate('change', event);
+    expect(wrapper.state().errorMessages.email).toContain("The email address you entered is invalid.");
+  })
+
+  it('Should adjust error message if: email is correct', () => {
+    const email= wrapper.find("input#email-input");
+    const event = {
+      preventDefault() {},
+      target: { name: 'email', value: 'fatema@yahoo.com'}
+    } 
+    email.simulate('change', event);
+    expect(wrapper.state().errorMessages.email).toContain("");
+  })
+
+})
 
 // //-----------------------------------------------------------------------------------------------
 
@@ -102,13 +125,13 @@ describe("testing formValidity", () => {
   
 //   beforeEach(() => {
 //     wrapper = shallow(<SignUp/>);
-//     const instance= wrapper.instance();
 
 //   })
  
 //   it('Should submit the form if it is valid', () => {
+//     const instance= wrapper.instance();
 //     instance.handleValidity()= true;
-   
+//     wrapper.find("button#signup-button").simulate('click');
 //   })
 
 // })
