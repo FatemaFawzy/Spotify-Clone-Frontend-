@@ -64,11 +64,13 @@ export class ArtistProfile extends Component{
 
     if ( this.state.follow === "follow" ) {
       this.setState({follow: "unfollow"});
-      document.getElementById(id).style.color="#1DB954";
+      if (document.getElementById(id)){
+      document.getElementById(id).style.color="#1DB954";}
     }
     else if ( this.state.follow === "unfollow" ) {
       this.setState({follow: "follow"});
-      document.getElementById(id).style.color="white";
+      if (document.getElementById(id)){
+      document.getElementById(id).style.color="white";}
     }
 
   }
