@@ -33,5 +33,14 @@ describe("Your Library-Album Container test", ()=>{
     const divTags= wrapper.find("div");
     expect(divTags).toHaveLength(2);
   })
+  describe("Your Library - Album componentDidMount test", ()=>{
+  
+    it('calls componentDidMount', () => {
+      jest.spyOn(YourLibraryAlbum.prototype, 'componentDidMount')
+      const wrapper = shallow(<YourLibraryAlbum />)
+      expect(YourLibraryAlbum.prototype.componentDidMount.mock.calls.length).toBe(1)
+    })
+  
+  })
 
 })

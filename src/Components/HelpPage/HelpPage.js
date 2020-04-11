@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 
  /**Elements 
    * @memberof HelpPage
-   * @type {Array<Albums>}
+   * @type {Array<object>}
    */
 var elements;
  /**Check visible
    * @memberof HelpPage
-   * @type {Array<Albums>}
+   * @type {boolean}
    */
 var checkvisible;
 

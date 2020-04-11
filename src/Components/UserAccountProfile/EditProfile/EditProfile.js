@@ -3,30 +3,83 @@ import "./EditProfile.css";
 import {BASEURL} from "../../../Constants/baseURL"
 import {connect} from "react-redux"
 
+/** Class EditProfile 
+ * @category EditProfile
+ * @extends Component
+ */
 export class EditProfile extends Component {
   constructor(props){
     super(props);
+
+  /**variable for binding the function to the component
+   * @memberof EditProfile
+   * @type {Object}
+   */
     var handleChange = this.handleChange.bind(this);
 
     // Year dropdown idea from -> https://stackoverflow.com/questions/49679501/how-to-create-list-of-years-in-the-dropdown-using-react-js-jsx
+    
+  /**Function for getting the year to generate dropdown menu
+   * @memberof EditProfile
+   * @func year
+   */
     const year = (new Date()).getFullYear();
     this.years = Array.from(new Array(121),(val, index) => year - index);
     
     this.state = {
+        /**State member email
+       * @memberof EditProfile
+       * @type {String}
+       */
       email: props.passedInfo.email,
+      /**State member username
+       * @memberof EditProfile
+       * @type {String}
+       */
       username: props.passedInfo.userName,
+      /**State member gender
+       * @memberof EditProfile
+       * @type {String}
+       */
       gender: props.passedInfo.gender,
+      /**State object containing birthdate
+       * @memberof EditProfile
+       * @type {Object}
+       */
       birthDate: {
+      /**State member of birthdate containing day
+       * @memberof EditProfile
+       * @type {string}
+       */
         day: props.passedInfo.birthDate? props.passedInfo.birthDate.slice(8,10): "",
+      /**State member of birthdate containing month
+       * @memberof EditProfile
+       * @type {string}
+       */
         month: props.passedInfo.birthDate? props.passedInfo.birthDate.slice(5,7): "",
+      /**State member of birthdate containing year
+       * @memberof EditProfile
+       * @type {string}
+       */
         year: props.passedInfo.birthDate? props.passedInfo.birthDate.slice(0,4): "",
       },
+      /**State member for username error message
+       * @memberof EditProfile
+       * @type {string}
+       */
       usernameErrorMessage: "",
+      /**State member for saved changes after editing
+       * @memberof EditProfile
+       * @type {boolean}
+       */
       savedChanges: false,
     }
     
   }
-
+  /**Function for setting state on rendering 
+   * @memberof EditProfile
+   * @func componentDidMount
+   */
   componentDidMount() {
     if(document.getElementById("saved-changes")){
     document.getElementById("saved-changes").classList.toggle("hide");
@@ -42,8 +95,20 @@ export class EditProfile extends Component {
     else document.getElementById("saved-changes").classList.add("hide");
   }
   }
+
+  /**Function for setting state when inputs change 
+   * @memberof EditProfile
+   * @func handleChange
+   */
   handleChange =e => {
-    
+      /**const id of the calling element
+       * @memberof EditProfile
+       * @type {string}
+       */    
+       /**const value of the calling element
+       * @memberof EditProfile
+       * @type {string}
+       */    
     const {id, value}= e.target;
     let birthDate= { ...this.state.birthDate };  
 
@@ -78,7 +143,11 @@ export class EditProfile extends Component {
     this.setState({birthDate}, () => console.log(this.state) );
 
   }
-  
+
+  /**Function for handling submitting the form
+   * @memberof EditProfile
+   * @func handleSubmit
+   */  
   handleSubmit = e => {
     e.preventDefault();
     // if (this.state.usernameErrorMessage === "") {
@@ -101,6 +170,10 @@ export class EditProfile extends Component {
           // year: "1998"
         })
     }
+      /**const url of the request
+       * @memberof EditProfile
+       * @type {string}
+       */   
     const url = BASEURL + "users/me/editprofile"; 
     fetch(url,requestOptions)
       .then((response) => {
@@ -245,6 +318,10 @@ export class EditProfile extends Component {
   }
 }
 
+  /**Function for connecting the component with redux store
+   * @memberof EditProfile
+   * @func mapStateToProps
+   */
 const mapStateToProps = state => {
 
   return {

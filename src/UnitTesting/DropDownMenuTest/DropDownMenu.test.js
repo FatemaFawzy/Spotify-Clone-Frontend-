@@ -33,5 +33,14 @@ describe("Drop Down Menu Container test", ()=>{
     const buttons= wrapper.find("button");
     expect(buttons).toHaveLength(3);
   })
+  describe("Drop Down Menu componentDidMount test", ()=>{
+  
+    it('calls componentDidMount', () => {
+      jest.spyOn(DropDownMenu.prototype, 'componentDidMount')
+      const wrapper = shallow(<DropDownMenu />)
+      expect(DropDownMenu.prototype.componentDidMount.mock.calls.length).toBe(1)
+    })
+  
+  })
 
 })

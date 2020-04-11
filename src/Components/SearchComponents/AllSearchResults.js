@@ -4,12 +4,34 @@ import * as itemType from "../../Constants/itemType";
 import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
 import {BASEURL} from "../../Constants/baseURL";
 
+/** Function Component AllSearchResults the page that appears after the user clicks to see all the results
+ * @func AllSearchResults
+ */
 const AllSearchResults = ({ results, type, searchfieldvalue }) => {
 
+  /**variable that will hold the rendered name
+   * @type {string} 
+   */
   let renderedName = "";
+
+  /**variable that will hold the rendered subname
+   * @type {string} 
+   */
   let renderedSubname = "";
+
+  /**variable indicates whether the image is round or not
+   * @type {boolean} 
+   */
   let roundImgOrNot = false;
+
+  /**variable that will hold the array of rendered results
+   * @type {Array<object>} 
+   */
   let Results;
+
+  /**variable that will hold the result title
+   * @type {string} 
+   */
   let resultTitle="";
 
   if(results){

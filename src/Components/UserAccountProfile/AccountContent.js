@@ -6,7 +6,9 @@ import RecoverPlaylists from "./RecoverPlaylists/RecoverPlaylists";
 import {Route , Switch, Redirect} from "react-router-dom";
 import EditProfile from "./EditProfile/EditProfile.js";
 
-
+ /**A function Component that switches the routes between different Components of the user account page
+   * @func AccountContent
+   */
 const AccountContent= ({info,token}) => (
 
 

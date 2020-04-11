@@ -5,12 +5,20 @@ import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
 import * as itemType from "../../Constants/itemType";
 
-
+/** Function Component TopResultItem that displays the top result of the search
+ * @func TopResultItem
+ */
 
 export const TopResultItem =(props) =>{
 
+     /**Variable that indicates whether the image is round or not
+   * @type {string}
+   */
     const roundImgOrNot= props.type===itemType.ARTIST?"i-am-top-and-round-img":"i-am-top-and-not-round";
     
+    /**Variable that holds the actual name that appears after being truncated if it is too long
+   * @type {string}
+   */
     var actualName;
     if(props.name){
 

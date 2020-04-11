@@ -6,26 +6,53 @@ import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
 import {connect} from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
 
-
+/** Class ArtistProfile
+ * @category ArtistProfile
+ * @extends Component
+ */
 export class ArtistProfile extends Component{
 
   constructor(props){
     super(props);
 
     this.state = {
+  /**Object of artist objects with info
+   * @memberof ArtistProfile
+   * @type {Array<artists>}
+   */
       artistInfo:{},
+  /**state member to play artist's songs
+   * @memberof ArtistProfile
+   * @type {string}
+   */
       play: "play",
+  /**state member to follow artist
+   * @memberof ArtistProfile
+   * @type {string}
+   */
       follow: "follow",
+  /**state member having the artist profile's cover link
+   * @memberof ArtistProfile
+   * @type {string}
+   */
       coverLink: "https://ak8.picdn.net/shutterstock/videos/31469038/thumb/1.jpg",
   }
 }
-
+  /**Function for setting state on rendering and getting artist info
+   * @memberof ArtistProfile
+   * @func componentDidMount
+   */
   componentDidMount() {
     console.log(this.props.match.url)
     // Get the basic artist info
     // this.props.history.replace("/webplayer/artistprofile/" + this.props.selectedArtistID ) 
 
     // const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/" + "api/Artist/" +"123"; 
+
+  /**const url of the request
+   * @memberof ArtistProfile
+   * @type {string}
+   */ 
     var url = BASEURL + "Artists/" + this.props.selectedArtistID; 
     var requestOptions = {
       method: 'GET',
@@ -46,8 +73,15 @@ export class ArtistProfile extends Component{
       })
 
   }
-
+  /**Function for toggling play and pause in header
+   * @memberof ArtistProfile
+   * @func playArtist
+   */
   playArtist = e => {
+        /**const id of the calling element
+     * @memberof ArtistProfile
+     * @type {string}
+     */  
     const {id} = e.target;
 
     if ( this.state.play === "play" ) {
@@ -58,8 +92,15 @@ export class ArtistProfile extends Component{
     }
 
   }
-
+  /**Function for toggling follow and follow in header
+   * @memberof ArtistProfile
+   * @func followArtist
+   */
   followArtist = e => {
+      /**const id of the calling element
+       * @memberof ArtistProfile
+       * @type {string}
+       */  
     const {id} = e.target;
 
     if ( this.state.follow === "follow" ) {
@@ -150,6 +191,10 @@ export class ArtistProfile extends Component{
  };
 };
 
+  /**Function for connecting the component with redux store
+   * @memberof ArtistProfile
+   * @func mapStateToProps
+   */
 const mapStateToProps = state => {
 
   return {

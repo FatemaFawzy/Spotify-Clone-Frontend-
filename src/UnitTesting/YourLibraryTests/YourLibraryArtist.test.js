@@ -27,4 +27,14 @@ describe("Your Library-Artist Container test", ()=>{
     const header= wrapper.find("h1.artist-header");
     expect(header.text()).toContain("Artists");
   })
+
+  describe("Your Library - Artist componentDidMount test", ()=>{
+  
+    it('calls componentDidMount', () => {
+      jest.spyOn(YourLibraryArtist.prototype, 'componentDidMount')
+      const wrapper = shallow(<YourLibraryArtist />)
+      expect(YourLibraryArtist.prototype.componentDidMount.mock.calls.length).toBe(1)
+    })
+  
+  })
 })

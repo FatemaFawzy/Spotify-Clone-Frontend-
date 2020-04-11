@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import "./ArtistAboutContent.css"
 
+/** Class ArtistAboutContent 
+ * @category ArtistAboutContent
+ * @extends Component
+ */
+
 class ArtistAboutContent extends Component {
 
   constructor(props){

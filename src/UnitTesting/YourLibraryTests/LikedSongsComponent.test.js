@@ -34,4 +34,14 @@ describe("OtherUser Container test", ()=>{
     expect(button).toHaveLength(1);
   })
 
+  describe("Liked Songs componentDidMount test", ()=>{
+  
+    it('calls componentDidMount', () => {
+      jest.spyOn(LikedSongsComponent.prototype, 'componentDidMount')
+      const wrapper = shallow(<LikedSongsComponent />)
+      expect(LikedSongsComponent.prototype.componentDidMount.mock.calls.length).toBe(1)
+    })
+  
+  })
+
 })

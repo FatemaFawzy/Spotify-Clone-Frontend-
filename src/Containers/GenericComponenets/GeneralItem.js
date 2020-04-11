@@ -5,7 +5,17 @@ import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
 
+/** Class GeneralItem that holds the data of a certain song, playlist, album...etc.
+ * @category GeneralItem
+ * @extends Component
+ */
+
 export class GeneralItem extends Component {
+
+    /**A function that is called upon a click of the general item
+   * @memberof GeneralItem
+   * @func  handleClick
+   */
 
   handleClick = () => {
 
@@ -64,8 +74,16 @@ export class GeneralItem extends Component {
 
   render() {
 
+       /**Indicates whether the image is round or not
+   * @memberof GeneralItem
+   * @type {string}
+   */
     const roundImgOrNot = this.props.roundimage ? "i-am-round-img-general" : "i-am-general-not-round";
 
+    /**variable that holds the actual name that appears after being truncated if it is too long
+    * @memberof GeneralItem
+    * @type {string}
+    */
      var actualName;
     if (this.props.name.length > 17) {
       actualName = this.props.name.slice(0, 17) + "...";
