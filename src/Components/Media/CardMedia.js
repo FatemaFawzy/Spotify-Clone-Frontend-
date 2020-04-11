@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import "./CardMedia.css";
 
+/** Class CardMedia 
+ * @category CardMedia
+ * @extends Component
+ */
 class CardMedia extends Component {
   constructor(props){
     super(props);
-    this.state = {
+    this.state = 
+    {
+  
+    /** playing button
+   * @memberof CardMedia
+   * @type {boolean}
+   */
       playing: false,
     }
   }

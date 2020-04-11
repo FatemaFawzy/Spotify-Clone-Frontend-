@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/UserAccountProfile/EditProfile/EditProfile.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/UserAccountProfile/EditProfile/EditProfile.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
+import "./EditProfile.css";
+import {BASEURL} from "../../../Constants/baseURL"
+import {connect} from "react-redux"
+
+/** Class EditProfile 
+ * @category EditProfile
+ * @extends Component
+ */
+export class EditProfile extends Component {
+  constructor(props){
+    super(props);
+
+  /**variable for binding the function to the component
+   * @memberof EditProfile
+   * @type {Object}
+   */
+    var handleChange = this.handleChange.bind(this);
+
+    // Year dropdown idea from -> https://stackoverflow.com/questions/49679501/how-to-create-list-of-years-in-the-dropdown-using-react-js-jsx
+    
+  /**Function for getting the year to generate dropdown menu
+   * @memberof EditProfile
+   * @func year
+   */
+    const year = (new Date()).getFullYear();
+    this.years = Array.from(new Array(121),(val, index) => year - index);
+    
+    this.state = {
+        /**State member email
+       * @memberof EditProfile
+       * @type {String}
+       */
+      email: props.passedInfo.email,
+      /**State member username
+       * @memberof EditProfile
+       * @type {String}
+       */
+      username: props.passedInfo.userName,
+      /**State member gender
+       * @memberof EditProfile
+       * @type {String}
+       */
+      gender: props.passedInfo.gender,
+      /**State object containing birthdate
+       * @memberof EditProfile
+       * @type {Object}
+       */
+      birthDate: {
+      /**State member of birthdate containing day
+       * @memberof EditProfile
+       * @type {string}
+       */
+        day: props.passedInfo.birthDate? props.passedInfo.birthDate.slice(8,10): "",
+      /**State member of birthdate containing month
+       * @memberof EditProfile
+       * @type {string}
+       */
+        month: props.passedInfo.birthDate? props.passedInfo.birthDate.slice(5,7): "",
+      /**State member of birthdate containing year
+       * @memberof EditProfile
+       * @type {string}
+       */
+        year: props.passedInfo.birthDate? props.passedInfo.birthDate.slice(0,4): "",
+      },
+      /**State member for username error message
+       * @memberof EditProfile
+       * @type {string}
+       */
+      usernameErrorMessage: "",
+      /**State member for saved changes after editing
+       * @memberof EditProfile
+       * @type {boolean}
+       */
+      savedChanges: false,
+    }
+    
+  }
+  /**Function for setting state on rendering 
+   * @memberof EditProfile
+   * @func componentDidMount
+   */
+  componentDidMount() {
+    if(document.getElementById("saved-changes")){
+    document.getElementById("saved-changes").classList.toggle("hide");
+
+    if(this.props.passedInfo.birthDate){
+      this.setState({day:this.props.passedInfo.birthDate.slice(8,10)});
+      this.setState({month:this.props.passedInfo.birthDate.slice(5,7)});
+      this.setState({year:this.props.passedInfo.birthDate.slice(0,4)});
+    }
+    if (this.savedChanges) {
+      document.getElementById("saved-changes").classList.remove("hide");
+    }
+    else document.getElementById("saved-changes").classList.add("hide");
+  }
+  }
+
+  /**Function for setting state when inputs change 
+   * @memberof EditProfile
+   * @func handleChange
+   */
+  handleChange =e => {
+      /**const id of the calling element
+       * @memberof EditProfile
+       * @type {string}
+       */    
+       /**const value of the calling element
+       * @memberof EditProfile
+       * @type {string}
+       */    
+    const {id, value}= e.target;
+    let birthDate= { ...this.state.birthDate };  
+
+    switch (id) {
+      case "userName":
+        this.setState({username: value}, () => {console.log(this.state)});
+
+        if ( value.length === 0 ) {
+          this.setState({usernameErrorMessage: "You must specify your username" }) ;
+          if (document.getElementById(id)) {
+          document.getElementById(id).style.borderColor= "#bd3200";}
+        }
+        else {
+          this.setState({usernameErrorMessage: ""});
+          if (document.getElementById(id)) {
+          document.getElementById(id).style.borderColor= "#ced4da";}
+        }
+        break;
+      case "gender":
+        this.setState({gender: value}, () => {console.log(this.state)});
+        break;
+      case "day":
+        birthDate.day=value;
+        break;
+      case "month":
+        birthDate.month=value;
+        break;
+      case "year":
+        birthDate.year=value;
+        break;                
+    }
+    this.setState({birthDate}, () => console.log(this.state) );
+
+  }
+
+  /**Function for handling submitting the form
+   * @memberof EditProfile
+   * @func handleSubmit
+   */  
+  handleSubmit = e => {
+    e.preventDefault();
+    // if (this.state.usernameErrorMessage === "") {
+    //document.getElementById("edit-profile-form").submit();
+      // this.setState({savedChanges: true}, () => console.log(this.state) );
+
+    const requestOptions = {
+        method:"PATCH",
+        headers: { 'Content-Type': 'application/json','x-auth' : this.props.userToken},
+        body: JSON.stringify({ 
+          userName: this.state.username,
+          gender: this.state.gender,
+          day: this.state.birthDate.day,
+          month: this.state.birthDate.month,
+          year: this.state.birthDate.year
+          // userName: "Fatema",
+          // gender: "F",
+          // day: "20",
+          // month: "09",
+          // year: "1998"
+        })
+    }
+      /**const url of the request
+       * @memberof EditProfile
+       * @type {string}
+       */   
+    const url = BASEURL + "users/me/editprofile"; 
+    fetch(url,requestOptions)
+      .then((response) => {
+        console.log(response); 
+        return response.text()})
+      .then((data) => {
+        console.log(data);  
+        if (data=="Updated"){
+          document.getElementById("saved-changes").classList.remove("hide");
+        }
+        window.location.reload(true);
+        
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+    //  }
+  }
+  
+  render(){
+    return(
+      &lt;div className="edit-profile-body">
+
+        &lt;div className="container">
+          
+          &lt;h1 id="saved-changes" className="hide"> Your changes have been saved &lt;/h1>
+
+          &lt;h1 id="edit-profile-h1"> Edit Profile &lt;/h1>
+
+          &lt;div className="edit-profile-box col-12">
+            &lt;form id="edit-profile-form" noValidate>
+
+              &lt;div className="form-group">
+                &lt;label htmlFor="email" className="subtitle">Email&lt;/label>
+                &lt;p id="email"> {this.state.email} &lt;/p>
+              &lt;/div>
+
+              &lt;div className="form-group">
+                &lt;label htmlFor="userName" className="subtitle">Username&lt;/label>
+                &lt;input type="text" className="form-control" id="userName" aria-describedby="emailHelp"
+                defaultValue={this.state.username} onChange={this.handleChange}/>
+                &lt;p id="userNameError" className="empty-input p-2"> {this.state.usernameErrorMessage}&lt;/p>
+              &lt;/div>
+
+              &lt;div className="form-group">
+
+                &lt;label htmlFor="gender" className="subtitle"> Gender &lt;/label>
+                    &lt;select id="gender" className="form-control" defaultValue= {this.state.gender} onChange={this.handleChange}> 
+                      &lt;option value="M"> Male &lt;/option>
+                      &lt;option value="F"> Female &lt;/option>
+                    &lt;/select>
+
+              &lt;/div>
+
+              &lt;div className="form-group ">
+                &lt;label htmlFor="edit-birth-date" className="subtitle"> Date of birth &lt;/label>
+                &lt;div className="row" id="edit-birth-date">
+
+                  &lt;div className="col-3 ">
+                    &lt;select id="day" className="form-control" defaultValue= {this.state.birthDate.day} onChange={this.handleChange}> 
+                      &lt;option value="01"> 01 &lt;/option>
+                      &lt;option value="02"> 02 &lt;/option>
+                      &lt;option value="03"> 03 &lt;/option>
+                      &lt;option value="04"> 04 &lt;/option>
+                      &lt;option value="05"> 05 &lt;/option>
+                      &lt;option value="06"> 06 &lt;/option>
+                      &lt;option value="07"> 07 &lt;/option>
+                      &lt;option value="08"> 08 &lt;/option>
+                      &lt;option value="09"> 09 &lt;/option>
+                      &lt;option value="10"> 10 &lt;/option>
+                      &lt;option value="11"> 11 &lt;/option>
+                      &lt;option value="12"> 12 &lt;/option>
+                      &lt;option value="13"> 13 &lt;/option>
+                      &lt;option value="14"> 14 &lt;/option>
+                      &lt;option value="15"> 15 &lt;/option>
+                      &lt;option value="16"> 16 &lt;/option>
+                      &lt;option value="17"> 17 &lt;/option>
+                      &lt;option value="18"> 18 &lt;/option>
+                      &lt;option value="19"> 19 &lt;/option>
+                      &lt;option value="20"> 20 &lt;/option>
+                      &lt;option value="21"> 21 &lt;/option>
+                      &lt;option value="22"> 22 &lt;/option>
+                      &lt;option value="23"> 23 &lt;/option>
+                      &lt;option value="24"> 24 &lt;/option>
+                      &lt;option value="25"> 25 &lt;/option>
+                      &lt;option value="26"> 26 &lt;/option>
+                      &lt;option value="27"> 27 &lt;/option>
+                      &lt;option value="28"> 28 &lt;/option>
+                      &lt;option value="29"> 29 &lt;/option>
+                      &lt;option value="30"> 30 &lt;/option>
+                      &lt;option value="31"> 31 &lt;/option>
+                    &lt;/select>
+
+                  &lt;/div>
+
+                  &lt;div className="col-6">
+                    &lt;select id="month" className="form-control" defaultValue= {this.state.birthDate.month} onChange={this.handleChange}> 
+                      &lt;option value="01"> January &lt;/option>
+                      &lt;option value="02"> February &lt;/option>
+                      &lt;option value="03"> March &lt;/option>
+                      &lt;option value="04"> April &lt;/option>
+                      &lt;option value="05"> May &lt;/option>
+                      &lt;option value="06"> June &lt;/option>
+                      &lt;option value="07"> July &lt;/option>
+                      &lt;option value="08"> August &lt;/option>
+                      &lt;option value="09"> September &lt;/option>
+                      &lt;option value="10"> October &lt;/option>
+                      &lt;option value="11"> November &lt;/option>
+                      &lt;option value="12"> December &lt;/option>
+                    &lt;/select>
+                  &lt;/div>
+
+                  &lt;div className="col-3 ">
+                    &lt;select id="year" className="form-control" defaultValue= {this.state.birthDate.year} onChange={this.handleChange}>
+                      {
+                        this.years.map((year, index) => {
+                          return &lt;option key={`year${index}`} value={year}>{year}&lt;/option>
+                        })
+                      }
+                    &lt;/select>
+                  &lt;/div>
+
+                &lt;/div>
+              &lt;/div>
+
+              &lt;div className="mt-5"> 
+                &lt;button id="save-profile" className="btn btn-success rounded-pill text-center d-flex justify-content-center"
+                onClick={this.handleSubmit} >
+                        SAVE PROFILE 
+                &lt;/button>
+                &lt;a id="cancel" className="btn btn-sm btn-link " href="#"> CANCEL &lt;/a>
+              &lt;/div>
+
+            &lt;/form>
+          &lt;/div>
+
+        &lt;/div>
+
+      &lt;/div>
+
+    );
+  }
+}
+
+  /**Function for connecting the component with redux store
+   * @memberof EditProfile
+   * @func mapStateToProps
+   */
+const mapStateToProps = state => {
+
+  return {
+    userToken:state.userToken
+  };
+
+};
+
+export default connect(mapStateToProps)(EditProfile);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AddToPlaylist.html">AddToPlaylist</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="welcomePage.html">welcomePage</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#BrowseItem">BrowseItem</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchContent">SearchContent</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 23:32:36 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

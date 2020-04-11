@@ -19,28 +19,26 @@ export class AlbumPage extends Component
   }
   state= 
 { 
-  /**Array of playlists in the bottom
+  /**Array of Song Info
    * @memberof AlbumPage
    * @type {Array<songs>}
    */
     SongInfo: [
-      {id : 1, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
-      {id : 2, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
-      {id : 3, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
-      {id : 4, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
-      {id : 5, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
-      {id : 6, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
-      {id : 7, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
-      {id : 8, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
-      {id : 9, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
-      
-      
+      // {id : 1, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      // {id : 2, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      // {id : 3, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+      // {id : 4, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      // {id : 5, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      // {id : 6, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+      // {id : 7, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      // {id : 8, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      // {id : 9, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
     ],
-  /**Array of playlists in the bottom
+  /** Album image
    * @memberof AlbumPage
    * @type {sring}
    */
-    AlbumImage: "https://i1.sndcdn.com/artworks-000240088107-9s5wcs-t500x500.jpg",
+    AlbumImage: "https://i.ibb.co/Q89hfcW/single-bar-note.jpg",
     /**Array of playlists in the bottom
    * @memberof AlbumPage
    * @type {sring}
@@ -88,7 +86,7 @@ export class AlbumPage extends Component
     playAlbum: "Play",
     /**Array of playlists in the bottom
    * @memberof AlbumPage
-   * @type {sring}
+   * @type {object}
    */
     AlbumInfo: {},
     /**Array of playlists in the bottom
@@ -103,13 +101,13 @@ export class AlbumPage extends Component
    * @func componentDidMount
    */
 componentDidMount(){
-   /**Function to get tracks
+   /** variable of url and requestOptions
    * @memberof AlbumPage
    * @type {string}
    */
   var url = BASEURL+ "album/" + this.props.AlbumID; 
 
-  var requestOptions = {
+  const requestOptions = {
     method: 'GET',
     headers: { 'x-auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjNzg1ZTE0NGQ5NDA0MzliNDU4NGEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MjgwMDExfQ.R3gD5zX1j6A9KS2uYGzjZExCc7FDgsoiPEdVlxKy24Q',
      'Content-Type': 'application/json' },
@@ -134,7 +132,7 @@ componentDidMount(){
    * @func gettracks
    */
   gettracks () {
-  /**Function to get tracks
+  /**variable of url and requestOptions
    * @memberof AlbumPage
    * @type {string}
    */
@@ -156,18 +154,13 @@ componentDidMount(){
       })
       .catch((err)=>console.log(err))
   }
-  /**Function to get tracks
+  /**Function to get Artist name
    * @memberof AlbumPage
    * @func getArtistName
    */
   getArtistName()
   {
-    /**Function to get tracks
-   * @memberof AlbumPage
-   * @type {string}
-   */
-    var x=''
-  /**Function to get tracks
+  /** variable of url
    * @memberof AlbumPage
    * @type {string}
    */
@@ -189,19 +182,19 @@ componentDidMount(){
     })  
    }
   
-     /**Function to get tracks
+     /**Function toggle add to playlist
    * @memberof AlbumPage
    * @func toggle_add_to_playlist
    */
   toggle_add_to_playlist()
  {
-    /**Function to get tracks
+    /** variable blur add to playlist
    * @memberof AlbumPage
    * @type {string}
    */
    var blur_add_to_playlist=document.getElementById ('blur-add-to-playlist');
    blur_add_to_playlist.classList.toggle('activate')
-    /**Function to get tracks
+    /**variable popup add to playlist
    * @memberof AlbumPage
    * @type {string}
    */
@@ -227,18 +220,24 @@ componentDidMount(){
 //   }
 
 
-   /**Function to get tracks
+   /**Function to like playlist
    * @memberof AlbumPage
    * @func likeSong
    * @param r
    */
   likeSong = r => {
-     /**Function to get tracks
+    const {id} = r.target;
+   
+    /** heart icon
    * @memberof AlbumPage
    * @type {string}
    */
-    const {id} = r.target;
     var heart=document.getElementById(id);
+
+    /** variable url
+   * @memberof AlbumPage
+   * @type {string}
+   */
     var url=""
     if( heart.classList.contains("far")){
     url = BASEURL+"album/like/id="+this.props.AlbumID;
@@ -260,7 +259,7 @@ componentDidMount(){
     //     .catch((error)=> {console.log(error)});
   }
 
- /**Function to get tracks
+ /**Function to toggle play and pause button
    * @memberof AlbumPage
    * @func playButton
    */
@@ -276,13 +275,13 @@ playButton = () => {
     this.setState({playAlbum: "Play"});
   }
 }
- /**Function to get tracks
+ /**Function to show snack bar
    * @memberof AlbumPage
    * @func show
    * @param e
    */
 show = e => {
-   /**Function to get tracks
+   /** variable to check which snack bar is called
    * @memberof AlbumPage
    * @type {string}
    */
@@ -381,6 +380,11 @@ else if (check=="SAVE"){
   )
 }
 }
+
+/**A function connecting component to redux store
+ * @memberof AlbumPage
+ * @func mapStateToProps
+ */
 const mapStateToProps = state =>{
   return{
     userToken: state.userToken,

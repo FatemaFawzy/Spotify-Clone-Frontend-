@@ -47,28 +47,26 @@ export class AlbumPage extends Component
   }
   state= 
 { 
-  /**Array of playlists in the bottom
+  /**Array of Song Info
    * @memberof AlbumPage
    * @type {Array&lt;songs>}
    */
     SongInfo: [
-      {id : 1, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
-      {id : 2, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
-      {id : 3, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
-      {id : 4, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
-      {id : 5, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
-      {id : 6, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
-      {id : 7, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
-      {id : 8, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
-      {id : 9, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
-      
-      
+      // {id : 1, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      // {id : 2, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      // {id : 3, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+      // {id : 4, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      // {id : 5, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      // {id : 6, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+      // {id : 7, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      // {id : 8, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      // {id : 9, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
     ],
-  /**Array of playlists in the bottom
+  /** Album image
    * @memberof AlbumPage
    * @type {sring}
    */
-    AlbumImage: "https://i1.sndcdn.com/artworks-000240088107-9s5wcs-t500x500.jpg",
+    AlbumImage: "https://i.ibb.co/Q89hfcW/single-bar-note.jpg",
     /**Array of playlists in the bottom
    * @memberof AlbumPage
    * @type {sring}
@@ -116,7 +114,7 @@ export class AlbumPage extends Component
     playAlbum: "Play",
     /**Array of playlists in the bottom
    * @memberof AlbumPage
-   * @type {sring}
+   * @type {object}
    */
     AlbumInfo: {},
     /**Array of playlists in the bottom
@@ -131,13 +129,13 @@ export class AlbumPage extends Component
    * @func componentDidMount
    */
 componentDidMount(){
-   /**Function to get tracks
+   /** variable of url and requestOptions
    * @memberof AlbumPage
    * @type {string}
    */
   var url = BASEURL+ "album/" + this.props.AlbumID; 
 
-  var requestOptions = {
+  const requestOptions = {
     method: 'GET',
     headers: { 'x-auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjNzg1ZTE0NGQ5NDA0MzliNDU4NGEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MjgwMDExfQ.R3gD5zX1j6A9KS2uYGzjZExCc7FDgsoiPEdVlxKy24Q',
      'Content-Type': 'application/json' },
@@ -162,7 +160,7 @@ componentDidMount(){
    * @func gettracks
    */
   gettracks () {
-  /**Function to get tracks
+  /**variable of url and requestOptions
    * @memberof AlbumPage
    * @type {string}
    */
@@ -184,18 +182,13 @@ componentDidMount(){
       })
       .catch((err)=>console.log(err))
   }
-  /**Function to get tracks
+  /**Function to get Artist name
    * @memberof AlbumPage
    * @func getArtistName
    */
   getArtistName()
   {
-    /**Function to get tracks
-   * @memberof AlbumPage
-   * @type {string}
-   */
-    var x=''
-  /**Function to get tracks
+  /** variable of url
    * @memberof AlbumPage
    * @type {string}
    */
@@ -217,19 +210,19 @@ componentDidMount(){
     })  
    }
   
-     /**Function to get tracks
+     /**Function toggle add to playlist
    * @memberof AlbumPage
    * @func toggle_add_to_playlist
    */
   toggle_add_to_playlist()
  {
-    /**Function to get tracks
+    /** variable blur add to playlist
    * @memberof AlbumPage
    * @type {string}
    */
    var blur_add_to_playlist=document.getElementById ('blur-add-to-playlist');
    blur_add_to_playlist.classList.toggle('activate')
-    /**Function to get tracks
+    /**variable popup add to playlist
    * @memberof AlbumPage
    * @type {string}
    */
@@ -255,18 +248,24 @@ componentDidMount(){
 //   }
 
 
-   /**Function to get tracks
+   /**Function to like playlist
    * @memberof AlbumPage
    * @func likeSong
    * @param r
    */
   likeSong = r => {
-     /**Function to get tracks
+    const {id} = r.target;
+   
+    /** heart icon
    * @memberof AlbumPage
    * @type {string}
    */
-    const {id} = r.target;
     var heart=document.getElementById(id);
+
+    /** variable url
+   * @memberof AlbumPage
+   * @type {string}
+   */
     var url=""
     if( heart.classList.contains("far")){
     url = BASEURL+"album/like/id="+this.props.AlbumID;
@@ -288,7 +287,7 @@ componentDidMount(){
     //     .catch((error)=> {console.log(error)});
   }
 
- /**Function to get tracks
+ /**Function to toggle play and pause button
    * @memberof AlbumPage
    * @func playButton
    */
@@ -304,13 +303,13 @@ playButton = () => {
     this.setState({playAlbum: "Play"});
   }
 }
- /**Function to get tracks
+ /**Function to show snack bar
    * @memberof AlbumPage
    * @func show
    * @param e
    */
 show = e => {
-   /**Function to get tracks
+   /** variable to check which snack bar is called
    * @memberof AlbumPage
    * @type {string}
    */
@@ -409,6 +408,11 @@ else if (check=="SAVE"){
   )
 }
 }
+
+/**A function connecting component to redux store
+ * @memberof AlbumPage
+ * @func mapStateToProps
+ */
 const mapStateToProps = state =>{
   return{
     userToken: state.userToken,
@@ -426,17 +430,13 @@ export default connect(mapStateToProps) (AlbumPage);</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="Success.html">Success</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AddToPlaylist.html">AddToPlaylist</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="welcomePage.html">welcomePage</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#BrowseItem">BrowseItem</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchContent">SearchContent</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-<<<<<<< HEAD
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 22:28:33 GMT+0200 (Eastern European Standard Time)
-=======
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 23:11:20 GMT+0200 (Eastern European Standard Time)
->>>>>>> 4ac641fa76b987d02cc5e249c85540009c22a5ea
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 23:32:36 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

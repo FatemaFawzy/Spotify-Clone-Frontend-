@@ -6,15 +6,20 @@ import { NavLink, Link } from "react-router-dom";
  * @extends Component
  */
 export class CollapseDropDown extends Component {
+
+     /**Function toggle add to playlist
+   * @memberof CollapseDropDown
+   * @func toggle
+   */
   toggle()
   {
-      /**------>Write description<------
+       /** variable blur create playlist
    * @memberof CollapseDropDown
    * @type {string}
    */
     var blur=document.getElementById('blur');
     blur.classList.toggle('active')
-      /**------>Write description<------
+      /** variable popup create playlist
    * @memberof CollapseDropDown
    * @type {string}
    */

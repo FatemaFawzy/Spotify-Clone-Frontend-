@@ -4,20 +4,51 @@ import {BASEURL} from "../../Constants/baseURL";
 import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
 
+/** Class CreatePlaylist 
+ * @category CreatePlaylist
+ * @extends Component
+ */
 export class CreatePlaylist extends Component{
  
+    /**Function toggle create to playlist
+   * @memberof CreatePlaylist
+   * @func toggle
+   */
   toggle()
  {
+  /** variable blur create to playlist
+   * @memberof CreatePlaylist
+   * @type {string}
+   */
    var blur=document.getElementById('blur');
    blur.classList.toggle('active')
+
+   /** variable pop create to playlist
+   * @memberof CreatePlaylist
+   * @type {string}
+   */
    var popup=document.getElementById('popup');
    popup.classList.toggle('active')
  }
 
+  /**Function create new playlist
+   * @memberof CreatePlaylist
+   * @func toggle
+   * @param e
+   */
 createNewPlaylist = (e) =>{
   e.preventDefault();
   
+  /** variable New Playlist Name
+   * @memberof CreatePlaylist
+   * @type {string}
+   */
   var NewPlaylistName = document.getElementById('new-playlist-name').value; 
+
+  /** variable Privacy of playlist
+   * @memberof CreatePlaylist
+   * @type {boolean}
+   */
   var Privacy=false;
   const url = BASEURL+ "playlists/?playlistName="+NewPlaylistName+"&privacy="+Privacy;    
   console.log(url);
@@ -74,6 +105,11 @@ return (
 )
 }
 }
+
+/**A function connecting component to redux store
+ * @memberof CreatePlaylist
+ * @func mapStateToProps
+ */
 const mapStateToProps = state =>{
   return{
     userToken: state.userToken,

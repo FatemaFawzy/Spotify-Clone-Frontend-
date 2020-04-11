@@ -1,6 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Bottom.css";
-function Bottom() {
+
+/** Class Bottom 
+ * @category Bottom
+ * @extends Component
+ */
+class Bottom extends Component {
+  render(){
 		return(
 			<footer className="bottom-bar page-footer pt-4 ">
 			  <div className=" container text-center text-md-left">
@@ -33,5 +39,6 @@ function Bottom() {
 			  </div>
 			</footer>
 		)	
+}
 }
 export default Bottom

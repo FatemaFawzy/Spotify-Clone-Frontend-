@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/SignUp/SignUp.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/SignUp/SignUp.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import './SignUp.css';
+import {connect} from "react-redux";
+import * as actionTypes from "../../Store/actions";
+import {BASEURL} from "../../Constants/baseURL";
+
+  /**Function to test whether the email is in the correct form or not
+   * @memberof SignUp
+   * @func emailFormat
+   */
+const emailFormat = RegExp(
+  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+);
+
+/** Class SignUp
+ * @category SignUp
+ * @extends Component
+ */
+export class SignUp extends Component{
+  constructor(props){
+    super(props);
+
+    this.state= {
+       /**state member (email)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+      email: null,
+       /**state member (password)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+      password: null,
+       /**state member (username)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+      username: null,
+       /**state member (day)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+      day: null,
+       /**state member (month)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+      month: null,
+       /**state member (year)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+      year: null,
+       /**state member (gender)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+      gender: null,
+       /**state member (accountType)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+      accountType: null,
+       /**state member error message if the account already exists in the DB
+       * @memberof SignUp
+       * @type {string}
+       */ 
+      alreadyExists: "",
+       /**object state error messages
+       * @memberof SignUp
+       * @type {Object}
+       */  
+      errorMessages: {
+       /**state member of errorMessages (email)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+        email: " ",
+       /**state member of errorMessages (password)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+        password: " ",
+       /**state member of errorMessages (username)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+        username: " ",
+       /**state member of errorMessages (day)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+        day: " ",
+       /**state member of errorMessages (month)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+        month: " ",
+       /**state member of errorMessages (year)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+        year: " ",
+       /**state member of errorMessages (gender)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+        gender: " ",
+       /**state member of errorMessages (accountType)
+       * @memberof SignUp
+       * @type {string}
+       */ 
+        accountType: " ",
+      }
+    };
+  }
+
+    /**Function to test the validity of the form
+   * @memberof SignUp
+   * @func formValidity
+   */
+// Check the validity of the form based on whether all error messages are empty or not 
+  formValidity = () => {
+   /**variable for form validity
+   * @memberof SignUp
+   * @type {boolean}
+   */
+    let valid = true;
+    
+
+// if the user submitted the form without writing anything in the inputs, it won't get submitted
+// because the initial length of the error messages = 1 (space)
+// the space gets removed only when the correct input is entered (length=0)
+    Object.values(this.state.errorMessages).forEach(val => {
+      if (val !== null &amp;&amp; val.length === 0 ) {
+        valid = true;
+      }
+      else if ( val === null || val !== null &amp;&amp; val.length > 0 ) {
+        valid = false;
+        console.log ("value is "+val +"length is" +val.length);
+      }
+
+    });
+
+    return valid;
+  };
+    /**Function to check whether to submit the form or not
+   * @memberof SignUp
+   * @func handleSubmit
+   */
+  // submit only if the form is valid -> all inputs are entered and correct
+  handleSubmit =e => {
+    e.preventDefault();
+    let errorMessages= { ...this.state.errorMessages };
+    const {email,  password, username, day, month, year, gender, accountType} = this.state;
+  /**variable for premium account type
+   * @memberof SignUp
+   * @type {boolean}
+   */
+    var isPremium= false;
+    console.log(this.state);
+
+    if( accountType=== "Premium Account") {
+      isPremium= true;
+    }
+    if (this.formValidity(this.state)) {
+   /**const url for request
+   * @memberof SignUp
+   * @type {String}
+   */
+      const url = BASEURL+"users/signup";
+      console.log(url);
+      const requestOptions = {
+        method: 'POST',  
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userName : username,
+          email: email,
+          isPremium: false,
+          password: password,
+          day: day,
+          month: month,
+          year: year,
+          gender: gender
+        })
+        }
+        console.log(requestOptions)
+        fetch(url, requestOptions)
+        .then(response => response.text())
+        .then(data => {
+          console.log(data);
+          if(data == "User added Successfully as inActive. Waiting for Email Confirmation "){
+            this.props.history.replace("/signup/emailsent/");
+          }
+          else if(data == "UserName and/or email already exist"){
+            // this.setState({alreadyExists: data}, () => console.log(this.state.alreadyExists) );
+            var err= document.getElementsByClassName("already-exists");
+            err[0].innerHTML= "UserName and/or email already exist";
+            document.getElementById("signup-form").reset();
+            window.location.reload(true);
+          }
+        })
+        .catch((error)=> {console.log(error)});
+      }
+    // Check which inputs are empty and print an error message
+    else {
+      if ( email === null )
+        errorMessages.email = "Please enter your email.";
+
+        if ( password === null )
+        errorMessages.password = "Please enter your password.";
+
+        if ( username === null )
+        errorMessages.username = "What should we call you?";  
+        
+        if ( day === null )
+        errorMessages.day = "Please choose a day."; 
+
+        if ( month === null )
+        errorMessages.month = "Please choose a month."; 
+
+        if ( year === null )
+        errorMessages.year = "Please choose a year."; 
+
+        if ( gender === null )
+        errorMessages.gender = "Please select your gender."; 
+
+        if ( accountType === null )
+        errorMessages.accountType = "What type of account do you like?"; 
+      
+        this.setState( { errorMessages }, () => console.log(this.state) );
+        console.log("ERROR");
+    }
+
+    // Check which input fields (except gender) have errors to give them a red border
+    // pair: [name, value]
+    Object.entries(errorMessages).forEach (pair => {
+      if ( pair[1] != null &amp;&amp; pair[0] != "gender" &amp;&amp; pair[1].length > 1) {
+      /**array of inputs to be given a style
+       * @memberof SignUp
+       * @type {Array&lt;elements>}
+       */
+        var fieldToBeChanged = document.getElementsByName( pair[0] );
+        fieldToBeChanged[0].style.borderColor= "#bd3200";
+        console.log (pair);
+      }
+    });
+
+  };
+
+    /**Function to change error messages according to inputs
+   * @memberof SignUp
+   * @func handleChange
+   */
+  // Dynamic changes of error messages when the user types in the inputs
+  handleChange =e => {
+    // e.preventDefault();
+      /**const name of the calling element
+       * @memberof SignUp
+       * @type {string}
+       */    
+       /**const value of the calling element
+       * @memberof SignUp
+       * @type {string}
+       */    
+    const { name, value }= e.target;
+       /**object copy of state error messages
+       * @memberof SignUp
+       * @type {Object}
+       */  
+    let errorMessages= { ...this.state.errorMessages };  
+    this.setState({ [name]: value}, () => console.log(this.state) );
+
+    switch (name) {
+
+      case "email":
+        if ( value.length === 0 ) {
+          errorMessages.email = "Please enter your email.";
+
+        }
+        else if ( !emailFormat.test(value) ) {
+          errorMessages.email = "The email address you entered is invalid.";
+        }
+        else {
+          errorMessages.email = "";
+        }
+        break;
+
+      case "password":
+        if ( value.length === 0 ) {
+          errorMessages.password = "Please enter your password.";
+        }
+        else if (value.length &lt; 6) {
+          errorMessages.password = "The password you entered is too short.";
+        }
+        else {
+          errorMessages.password = "";
+        }
+        break;
+      
+      case "username":
+        if ( value.length === 0 ) {
+          errorMessages.username = "What should we call you?";
+        }
+        else {
+          errorMessages.username = "";
+        }
+        break;
+      
+      case "day":
+        if ( value.length === 0 ) {
+          errorMessages.day = "Please choose a day.";
+        }
+        else if ( value > 31 || value &lt; 1 ) {
+          errorMessages.day = "Please choose a valid day of the month.";
+        }
+        else {
+          errorMessages.day = "";
+        }
+        break;
+
+      case "month":
+        if ( value.length === 0 ) {
+          errorMessages.month = "Please choose a month.";
+        }
+        else {
+          errorMessages.month = "";
+        }
+        break;
+
+      case "year":
+        if ( value.length === 0 ) {
+          errorMessages.year = "Please choose a year.";
+        }
+        else if ( value > 2020 || value &lt; 1990 ) {
+          errorMessages.year = "Please choose a valid year (1990-2020).";
+        }
+        else {
+          errorMessages.year = "";
+        }
+        break;
+
+      case "gender":
+        if ( value.length === 0 ) {
+          errorMessages.gender = "Please select your gender.";
+        }
+        else {
+          errorMessages.gender = "";
+        }
+        break;  
+
+      case "accountType":
+        if ( value.length === 0 ) {
+          errorMessages.accountType = "What type of account do you like?";
+        }
+        else {
+          errorMessages.accountType = "";
+        }
+        break;              
+
+      default:
+        break;
+    }
+
+    this.setState({ errorMessages}, () => console.log(this.state) );
+    
+    // Check which input fields (except gender) have errors to give them a red border
+    // pair: [name, value]
+    Object.entries(errorMessages).forEach (pair => {
+      if ( pair[1] != null &amp;&amp; pair[0] != "gender" &amp;&amp; pair[1].length > 1) {
+      /**array of inputs to be given a style
+       * @memberof SignUp
+       * @type {Array&lt;elements>}
+       */
+        var fieldToBeChanged = document.getElementsByName( pair[0] );
+        if(fieldToBeChanged[0]) {
+        fieldToBeChanged[0].style.borderColor= "#bd3200";}
+        // console.log (pair);
+      }
+      else if ( pair[1] != null &amp;&amp; pair[0] != "gender" &amp;&amp; pair[1].length === 0) {
+        var fieldToBeChanged = document.getElementsByName( pair[0] );
+        if(fieldToBeChanged[0]) {
+        fieldToBeChanged[0].style.borderColor= "#ced4da";}
+        // console.log (pair);
+      }
+    })
+  };
+
+  // ---------------------------------------------------------------------------------------------------------------
+  // -----------------------------------------------HTML Content----------------------------------------------------
+  // ---------------------------------------------------------------------------------------------------------------
+
+  render() {
+    const { errorMessages } = this.state;
+    return (
+      &lt;div className="signup-body">
+          &lt;div id= "logo" className="container-fluid border-bottom p-md-4 p-s-2">
+            &lt;a href="/" >&lt;/a> 
+          &lt;/div>
+
+          &lt;div className="container text-left signup-box">
+            &lt;div>
+              &lt;h2 className="already-exists"> {this.state.alreadyExists} &lt;/h2>
+              &lt;h2 > Sign up with your email address &lt;/h2>
+            &lt;/div>
+
+{/* &lt;form  id="signup-form" action ="#" method ="post"> */}
+{/* I removed 'required' from inputs */}
+
+            &lt;form  id="signup-form" noValidate>
+
+              &lt;input 
+              name= "email" id="email-input" className="form-control input-field" type="email" placeholder="Email" onChange={this.handleChange}/> 
+              &lt;p id="empty-email" className="empty-input"> {errorMessages.email}&lt;/p>
+
+              &lt;input name="password" className="form-control input-field" type="Password" placeholder="Password" onChange={this.handleChange}/> 
+              &lt;p id="empty-password" className="empty-input"> {errorMessages.password} &lt;/p>
+
+              &lt;input name="username" className="form-control input-field" type="text" placeholder="What should we call you?" onChange={this.handleChange}/> 
+              &lt;p id="empty-userame" className="empty-input pb-2"> {errorMessages.username}&lt;/p>
+                  
+              &lt;div className="form-group">
+
+                &lt;label htmlFor="birth-date"> Date of birth &lt;/label>
+                &lt;div className="row" id="birth-date">
+
+                  &lt;div className="col-3">
+                    &lt;input name="day" className=" form-control birth-date-signup" type="number" placeholder="Day" max="31" min="1" maxLength="2" onChange={this.handleChange}/>
+                  &lt;/div>
+
+                  &lt;div className="col-6">
+                    &lt;select name="month" className="form-control birth-date-signup dropdown" onChange={this.handleChange}> 
+                      &lt;option value=""> Month &lt;/option>
+                      &lt;option value="01"> January &lt;/option>
+                      &lt;option value="02"> February &lt;/option>
+                      &lt;option value="03"> March &lt;/option>
+                      &lt;option value="04"> April &lt;/option>
+                      &lt;option value="05"> May &lt;/option>
+                      &lt;option value="06"> June &lt;/option>
+                      &lt;option value="07"> July &lt;/option>
+                      &lt;option value="08"> August &lt;/option>
+                      &lt;option value="09"> September &lt;/option>
+                      &lt;option value="10"> October &lt;/option>
+                      &lt;option value="11"> November &lt;/option>
+                      &lt;option value="12"> December &lt;/option>
+                    &lt;/select>
+                  &lt;/div>
+
+                  &lt;div className="col-3 ">
+                    &lt;input name="year" className="form-control birth-date-signup" type="number" placeholder="Year" max="1999" min="1900" maxLength="4" onChange={this.handleChange}/>
+                  &lt;/div>
+
+                &lt;/div>
+              &lt;/div>
+
+              &lt;p id="empty-day" className="empty-input"> {errorMessages.day}&lt;/p>
+              &lt;p id="empty-month" className="empty-input"> {errorMessages.month}&lt;/p>
+              &lt;p id="empty-year" className="empty-input pb-2"> {errorMessages.year}&lt;/p>
+
+              &lt;div className="form-group">
+
+                &lt;label htmlFor="gender-options"> Gender&lt;/label>
+                &lt;div className="m-2" id="gender-options">
+                    &lt;input name="gender" type="radio" value="M" onChange={this.handleChange}/> Male   
+                    &lt;input name="gender" type="radio" value="F" className="ml-3" onChange={this.handleChange}/> Female
+                &lt;/div>
+
+              &lt;/div>
+          
+              &lt;p id="empty-gender" className="empty-input pb-2"> {errorMessages.gender}&lt;/p>
+
+              &lt;div className="form-group">
+
+                &lt;label htmlFor="account-type">What kind of account do you like?&lt;/label>
+                &lt;div >
+                  &lt;select className="form-control birth-date-signup dropdown" name="accountType" onChange={this.handleChange} > 
+                    &lt;option value=""> Choose from here &lt;/option>
+                    &lt;option value="Regular Account"> Regular Account&lt;/option>
+                    &lt;option value="Premium Account"> Premium Account&lt;/option>
+                    &lt;option value="Artist Account">Artist Account&lt;/option>
+                  &lt;/select>
+                &lt;/div>
+
+                &lt;p id="empty-account-type" className="empty-input pt-2"> {errorMessages.accountType}&lt;/p>
+
+              &lt;/div>
+
+              &lt;button type="submit" id="signup-button" className="btn btn-success rounded-pill text-center d-flex justify-content-center" onClick={this.handleSubmit}>
+              SIGN UP 
+              &lt;/button>  
+
+            &lt;/form>
+
+            &lt;p> Already have an account? &lt;a href="/logIn"> Log in &lt;/a> &lt;/p>
+
+          &lt;/div>
+
+      &lt;/div>
+    );
+  }
+} 
+  /**Function for connecting the component with redux store
+   * @memberof SignUp
+   * @func mapDispatchToProps
+   */
+const mapDispatchToProps = dispatch => {
+  return {
+    onSignUp : (userID,userToken) => dispatch ({type: actionTypes.ON_SIGNUP, payload: {id: userID , token: userToken} }),
+  };
+};
+
+export default connect(null,mapDispatchToProps)(SignUp);
+
+// Form validation made with the help of the video from
+// https://www.youtube.com/watch?v=4CeTFW4agRw</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AddToPlaylist.html">AddToPlaylist</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="welcomePage.html">welcomePage</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#BrowseItem">BrowseItem</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchContent">SearchContent</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 23:32:36 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
