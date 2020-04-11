@@ -1,12 +1,12 @@
 import React from 'react';
-import ArtistProfile from '../Containers/ArtistProfile/ArtistProfile';
+import {ArtistProfile} from '../Containers/ArtistProfile/ArtistProfile';
 import { shallow } from 'enzyme';
 
 describe("[UNIT] Testing the ArtistProfile component", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<ArtistProfile/>);
+    wrapper = shallow(<ArtistProfile match={{url: "url"}}/>);
   });
 
   describe("Testing ArtistProfile redering", () => { 

@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
 
 
-class ArtistProfile extends Component{
+export class ArtistProfile extends Component{
 
   constructor(props){
     super(props);

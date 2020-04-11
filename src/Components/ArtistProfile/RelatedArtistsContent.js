@@ -6,7 +6,8 @@ import {connect} from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
 import * as itemType from "../../Constants/itemType";
 
-class RelatedArtistsContent extends Component {
+
+export class RelatedArtistsContent extends Component {
 
   state = {
     artistInfo: [
