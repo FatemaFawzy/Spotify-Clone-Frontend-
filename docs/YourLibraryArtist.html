@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: HomePageNavbar</title>
+    <title>JSDoc: Class: YourLibraryArtist</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: HomePageNavbar</h1>
+    <h1 class="page-title">Class: YourLibraryArtist</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>HomePageNavbar<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>YourLibraryArtist<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Class HomepageSidebar</p></div>
+            <div class="class-description"><p>Class YourLibraryArtist</p></div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="HomePageNavbar"><span class="type-signature"></span>new HomePageNavbar<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="YourLibraryArtist"><span class="type-signature"></span>new YourLibraryArtist<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -93,7 +93,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Components_HomePage_HomePageNavbar.js.html">Components/HomePage/HomePageNavbar.js</a>, <a href="Components_HomePage_HomePageNavbar.js.html#line18">line 18</a>
+        <a href="Containers_YourLibraryPages_YourLibraryArtist.js.html">Containers/YourLibraryPages/YourLibraryArtist.js</a>, <a href="Containers_YourLibraryPages_YourLibraryArtist.js.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -145,7 +145,7 @@
         <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            <dt><a href="HomePageNavbar.html">HomePageNavbar</a></dt>
+            <dt><a href="YourLibraryArtist.html">YourLibraryArtist</a></dt>
             <dd></dd>
         </dl>
     
@@ -161,13 +161,13 @@
 
         
             
-<h4 class="name" id=".accountType"><span class="type-signature">(static) </span>accountType<span class="type-signature"> :string</span></h4>
+<h4 class="name" id=".artistArray"><span class="type-signature">(static) </span>artistArray<span class="type-signature"> :Array.&lt;artists></span></h4>
 
 
 
 
 <div class="description">
-    <p>Account type to indicate whether the upgrade button should show or not.</p>
+    <p>Includes results of fetch requests</p>
 </div>
 
 
@@ -176,7 +176,7 @@
     <ul>
         <li>
             
-<span class="param-type">string</span>
+<span class="param-type">Array.&lt;artists></span>
 
 
         </li>
@@ -215,7 +215,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Components_HomePage_HomePageNavbar.js.html">Components/HomePage/HomePageNavbar.js</a>, <a href="Components_HomePage_HomePageNavbar.js.html#line35">line 35</a>
+        <a href="Containers_YourLibraryPages_YourLibraryArtist.js.html">Containers/YourLibraryPages/YourLibraryArtist.js</a>, <a href="Containers_YourLibraryPages_YourLibraryArtist.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -233,13 +233,13 @@
 
         
             
-<h4 class="name" id=".image"><span class="type-signature">(static) </span>image<span class="type-signature"> :string</span></h4>
+<h4 class="name" id=".total"><span class="type-signature">(static) </span>total<span class="type-signature"> :String</span></h4>
 
 
 
 
 <div class="description">
-    <p>URL of image in dropdown menu</p>
+    <p>Final array of albums</p>
 </div>
 
 
@@ -248,7 +248,7 @@
     <ul>
         <li>
             
-<span class="param-type">string</span>
+<span class="param-type">String</span>
 
 
         </li>
@@ -287,7 +287,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Components_HomePage_HomePageNavbar.js.html">Components/HomePage/HomePageNavbar.js</a>, <a href="Components_HomePage_HomePageNavbar.js.html#line25">line 25</a>
+        <a href="Containers_YourLibraryPages_YourLibraryArtist.js.html">Containers/YourLibraryPages/YourLibraryArtist.js</a>, <a href="Containers_YourLibraryPages_YourLibraryArtist.js.html#line24">line 24</a>
     </li></ul></dd>
     
 
@@ -304,27 +304,35 @@
 
 
         
-            
-<h4 class="name" id=".name"><span class="type-signature">(static) </span>name<span class="type-signature"> :string</span></h4>
+    
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".componentDidMount"><span class="type-signature">(static) </span>componentDidMount<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
 
 
 
 <div class="description">
-    <p>Name in dropdown menu</p>
+    <p>A function that fires once the homepage is called</p>
 </div>
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
 
 
-        </li>
-    </ul>
+
+
+
 
 
 
@@ -359,7 +367,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Components_HomePage_HomePageNavbar.js.html">Components/HomePage/HomePageNavbar.js</a>, <a href="Components_HomePage_HomePageNavbar.js.html#line30">line 30</a>
+        <a href="Containers_YourLibraryPages_YourLibraryArtist.js.html">Containers/YourLibraryPages/YourLibraryArtist.js</a>, <a href="Containers_YourLibraryPages_YourLibraryArtist.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -375,9 +383,21 @@
 
 
 
-        
-    
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     

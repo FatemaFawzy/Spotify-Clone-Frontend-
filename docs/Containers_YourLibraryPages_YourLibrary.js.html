@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: PasswordIsNew</title>
+    <title>JSDoc: Source: Containers/YourLibraryPages/YourLibrary.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,148 +17,60 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: PasswordIsNew</h1>
+    <h1 class="page-title">Source: Containers/YourLibraryPages/YourLibrary.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>PasswordIsNew<span class="signature">()</span><span class="type-signature"></span></h2>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import HomePageSidebar from "../../Components/HomePage/HomePageSidebar"
+import YourLibraryPlaylist from "./YourLibraryPlaylist";
+import YourLibraryArtist from "./YourLibraryArtist";
+import YourLibraryAlbum from "./YourLibraryAlbum";
+import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
+import "./YourLibrary.css";
+
+/** Class YourLibrary
+ * @extends Component
+ */
+export class YourLibrary extends Component {
+
+  render() {
+
+    return (
+      &lt;div className="your-library-class">
         
-            <div class="class-description"><p>Class PasswordIsNew to indicate that the new password has been successfully reset</p></div>
-        
-    
-</header>
+        &lt;div className="all-your-library-content">
 
-<article>
-    <div class="container-overview">
-    
-        
+          &lt;Switch>
+            &lt;Route exact path="/webplayer/yourlibrary/" component={YourLibraryPlaylist} />
+            &lt;Route path="/webplayer/yourlibrary/artist" component={YourLibraryArtist} />
+            &lt;Route path="/webplayer/yourlibrary/album" component={YourLibraryAlbum} />
+          &lt;/Switch>
 
-    
-    <h2>Constructor</h2>
-    
+        &lt;/div>
 
-    
-    <h4 class="name" id="PasswordIsNew"><span class="type-signature"></span>new PasswordIsNew<span class="signature">()</span><span class="type-signature"></span></h4>
-    
+      &lt;/div>
+      
+    );
 
-    
 
+  }
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Components_ForgotPassword_PasswordIsNew.js.html">Components/ForgotPassword/PasswordIsNew.js</a>, <a href="Components_ForgotPassword_PasswordIsNew.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li>Component</li>
-    </ul>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+export default YourLibrary;</code></pre>
+        </article>
+    </section>
 
 
 

@@ -2,11 +2,22 @@ import React, { Component } from 'react';
 import './CollapseDropDown.css';
 import { NavLink, Link } from "react-router-dom";
 
+/** Class CollapseDropDown that appears when window size in less than 500px
+ * @extends Component
+ */
 export class CollapseDropDown extends Component {
   toggle()
   {
+      /**------>Write description<------
+   * @memberof CollapseDropDown
+   * @type {string}
+   */
     var blur=document.getElementById('blur');
     blur.classList.toggle('active')
+      /**------>Write description<------
+   * @memberof CollapseDropDown
+   * @type {string}
+   */
     var popup=document.getElementById('popup');
     popup.classList.toggle('active')
   }

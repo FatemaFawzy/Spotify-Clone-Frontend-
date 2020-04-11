@@ -177,6 +177,10 @@ export class HomePage extends Component {
     //Make a request with this.props.userID
     //assume this is the returned data
     
+     /**url for fetch request
+   * @memberof HomePage
+   * @type {String}
+   */
     const url = "http://52.14.190.202:8000/artists/homepage/popular"; 
     fetch(url)
       .then((response) => {
