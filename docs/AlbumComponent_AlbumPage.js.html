@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: AlbumComponent/AlbumPage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: AlbumComponent/AlbumPage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import './AlbumPage.css';
+import {Link} from "react-router-dom";
+import ReactDOM from "react-dom"
+import CardMedia from '../Media/CardMedia';
+import ReactSnackBar from "react-js-snackbar";
+import HomePageNavbar from '../HomePage/HomePageNavbar';
+import {BASEURL} from "../../Constants/baseURL";
+import {connect} from 'react-redux';
+
+/** Class AlbumPage 
+ * @category AlbumPage
+ * @extends Component
+ */
+class AlbumPage extends Component
+{
+  constructor(props){
+    super(props);
+  }
+  state= 
+{ 
+  /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {Array&lt;songs>}
+   */
+    SongInfo: [
+      {id : 1, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      {id : 2, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      {id : 3, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+      {id : 4, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      {id : 5, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      {id : 6, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+      {id : 7, SongName : "Perfect", Singer: "Ed Sheran",Duration : "3:52"},
+      {id : 8, SongName : "Galway girl", Singer: "Ed Sheran",Duration : "4:15"},
+      {id : 9, SongName : "Shape of you", Singer: "Ed Sheran",Duration : "2:58"},
+      
+      
+    ],
+  /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {sring}
+   */
+    AlbumImage: "https://i1.sndcdn.com/artworks-000240088107-9s5wcs-t500x500.jpg",
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {sring}
+   */
+    AlbumName: "Perfect",
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {sring}
+   */
+    Artist: "Ed sheran",
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {sring}
+   */
+    songsNumber: "12 Songs",
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {sring}
+   */
+    dropContentClass: "dropdown-content",
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {boolean}
+   */
+    ShowAdd: false,
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {boolean}
+   */
+    ShowingAdd: false,
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {boolean}
+   */
+    ShowSave: false,
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {boolean}
+   */
+    ShowingSave: false,
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {string}
+   */
+    playAlbum: "Play",
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {sring}
+   */
+    AlbumInfo: {},
+    /**Array of playlists in the bottom
+   * @memberof AlbumPage
+   * @type {Array&lt;songs>}
+   */
+    AblumSongs: [],
+    
+}
+ /**Function that is called when the component renders
+   * @memberof AlbumPage
+   * @func componentDidMount
+   */
+componentDidMount(){
+   /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
+  var url = BASEURL+ "album/" + this.props.AlbumID; 
+
+  var requestOptions = {
+    method: 'GET',
+    headers: { 'x-auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjNzg1ZTE0NGQ5NDA0MzliNDU4NGEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MjgwMDExfQ.R3gD5zX1j6A9KS2uYGzjZExCc7FDgsoiPEdVlxKy24Q',
+     'Content-Type': 'application/json' },
+  };
+  fetch(url,requestOptions)
+    .then((response) => { return response.json()})
+    .then((data) => {
+      // console.log(data)
+      this.setState({ 
+        AlbumInfo: data.album,
+       AlbumImage:"http://52.14.190.202:8000/images/"+data.album.imagePath,
+      songsNumber:data.album.tracks.length});
+      // console.log(this.state.AlbumInfo);
+      this.gettracks()
+    })
+    .catch((error)=>{console.log(error);
+
+    })
+  }
+   /**Function to get tracks
+   * @memberof AlbumPage
+   * @func gettracks
+   */
+  gettracks () {
+  /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
+    var url =BASEURL+ "tracks"; 
+    const requestOptions = {
+      method:"POST",
+      headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
+      'Content-Type': 'application/json'},
+      body: JSON.stringify({id: this.state.AlbumInfo.tracks})
+  };
+    fetch(url,requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) =>{ 
+        this.setState({SongInfo:data.tracks})
+        console.log(this.state.SongInfo)
+        this.getArtistName()
+      })
+      .catch((err)=>console.log(err))
+  }
+  /**Function to get tracks
+   * @memberof AlbumPage
+   * @func getArtistName
+   */
+  getArtistName()
+  {
+    /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
+    var x=''
+  /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
+    var url =BASEURL+ "Artists/"+this.state.AlbumInfo.artistId; 
+    const requestOptions = {
+      method:"GET",
+    headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
+
+    }
+    fetch(url,requestOptions)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {    
+     this.setState({Artist:data.artist.artistName})
+    })
+    .catch((error)=>{
+      console.log(error);
+    })  
+   }
+  
+     /**Function to get tracks
+   * @memberof AlbumPage
+   * @func toggle_add_to_playlist
+   */
+  toggle_add_to_playlist()
+ {
+    /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
+   var blur_add_to_playlist=document.getElementById ('blur-add-to-playlist');
+   blur_add_to_playlist.classList.toggle('activate')
+    /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
+   var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
+   popup_add_to_playlist.classList.toggle('activate')
+ }
+  
+ /**Function to get tracks
+   * @memberof AlbumPage
+   * @func DropMenuCard
+   */ 
+  DropMenuCard ()
+  {
+    document.getElementById("DropMenuCard").classList.toggle("show");
+  }
+   /**Function to get tracks
+   * @memberof AlbumPage
+   * @func DropMenuSong
+   */
+  DropMenuSong()
+  {
+    document.getElementById("DropMenuSong").classList.toggle("show");
+  }
+   /**Function to get tracks
+   * @memberof AlbumPage
+   * @func likeSong
+   * @param r
+   */
+  likeSong = r => {
+     /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
+    const {id} = r.target;
+    var heart=document.getElementById(id);
+    var url=""
+    if( heart.classList.contains("far")){
+    url = BASEURL+"album/like/id="+this.props.AlbumID;
+    }
+    else if(heart.classList.contains("fas")){
+    url = BASEURL+"album/unlike/id="+ this.props.AlbumID;
+    }
+    heart.classList.toggle("far");
+    heart.classList.toggle("fas");
+    
+    console.log(url);
+    // const requestOptions = {
+    //   method: 'POST',  
+    //   headers: {'x-auth': this.props.userToken }, 
+    // };
+    // fetch(url, requestOptions)
+    //     .then(response => response.json())
+    //     .then(data => console.log(data))
+    //     .catch((error)=> {console.log(error)});
+  }
+
+ /**Function to get tracks
+   * @memberof AlbumPage
+   * @func playButton
+   * @param e
+   */
+playButton = e => {
+   /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
+  const {id} = e.target;
+  if ( this.state.playAlbum === "Play" ) {
+    this.setState({playAlbum: "Pause"});
+  }
+  else if ( this.state.playAlbum === "Pause" ) {
+    this.setState({playAlbum: "Play"});
+  }
+}
+ /**Function to get tracks
+   * @memberof AlbumPage
+   * @func show
+   * @param e
+   */
+show = e => {
+   /**Function to get tracks
+   * @memberof AlbumPage
+   * @type {string}
+   */
+  var check = e.target.id;
+  if (check=="ADD"){
+  this.setState({ ShowAdd: true, ShowingAdd: true });
+  setTimeout(() => {
+    this.setState({ ShowAdd: false, ShowingAdd: false });
+  }, 2000); 
+  return; 
+  }
+else if (check=="SAVE"){
+  this.setState({ ShowSave: true, ShowingSave: true });
+  setTimeout(() => {
+    this.setState({ ShowSave: false, ShowingSave: false });
+  }, 2000);
+  return;  
+}
+};
+
+  render(){
+  return(
+  &lt;div className="album-page">
+     &lt;HomePageNavbar accountType="regular" name="Ali Halafawy" color="black"
+        image="https://scontent.fcai3-1.fna.fbcdn.net/v/t1.0-9/19397029_10210794027939033_5811382860033366804_n.jpg?_nc_cat=111&amp;_nc_sid=85a577&amp;_nc_eui2=AeHEhGNHMDc070CTQv4WD5FK-tEUbysbE-HFFkFOk7OxsfeTak6rLywRWjbRlCDjWmzjtl79NUg2XF9AsJX_0QE9j0LnqnOoo_ADLnnZUnidEA&amp;_nc_ohc=QgP5sx3F3dsAX-nzFSx&amp;_nc_ht=scontent.fcai3-1.fna&amp;oh=86cb020fb7ea1a4e8c69aaaf075680d5&amp;oe=5EA58791"/>
+
+      &lt;div className="content-spacing">
+        &lt;div className="row" >
+                                             {/* Crad Element */}
+
+          &lt;div className="col-xs-12  col-lg-5 col-xl-4 d-flex justify-content-center " style={{display:"table"}}>
+             &lt;ul className="list-unstyled centered-content">
+
+             &lt;li> &lt;CardMedia className="play-pause" image={this.state.AlbumImage} /> &lt;/li>
+
+					  &lt;li> &lt;h3> {this.state.AlbumInfo.albumName} &lt;/h3> &lt;/li>
+					  &lt;li> &lt;h5> {this.state.Artist} &lt;/h5> &lt;/li>
+            
+            &lt;li> &lt;a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playAlbum}&lt;/a> &lt;/li>
+            &lt;li >
+              &lt;button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> &lt;/button>
+              &lt;div className="dropdown ">
+              &lt;a className="card-menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• &lt;/a>
+              &lt;div className="dropdown-menu card-dropdown-content ">
+              &lt;a className="dropdown-item drop-class" href="#" id="SAVE" value="ShowSave" onClick={this.show}>Save To Your Library&lt;/a>
+              &lt;a className="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Add To Playlist&lt;/a>
+              &lt;/div>
+              &lt;/div>
+            &lt;/li>
+            &lt;li> &lt;div style={{color:"#b3b3b3"}}> {this.state.songsNumber} Songs &lt;/div>&lt;/li>
+					&lt;/ul>
+          &lt;/div>
+
+                                              {/* Song Info */}
+
+          &lt;div className="col-xs-12  col-lg-7 col-xl-8 ">
+          &lt;table className="table table-borderless">
+            &lt;tbody>
+                                            {/* display songs */}
+          {this.state.SongInfo.map((song,index)=>(
+            &lt;tr key={index}>
+              &lt;th scope="row" className="music-sign d-flex justify-content-center">	 &lt;/th>
+              &lt;td className="song-content">
+                &lt;ul className="list-unstyled">
+                  &lt;li>{song.trackName}&lt;/li>
+                  &lt;li className="song-info">&lt;a href='/webplayer/artistprofile'>{this.state.Artist} &lt;/a> &lt;/li>
+                &lt;/ul>
+              &lt;/td>
+              &lt;td>
+                &lt;div className="dropdown ">
+                &lt;a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• &lt;/a>
+                  &lt;div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
+                    &lt;a className="dropdown-item drop-class" href="#" id="ADD" value="ShowAdd" onClick={this.show} >Add to your liked songs&lt;/a>
+                    &lt;a className="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Add to playlist&lt;/a>
+                  &lt;/div>
+                &lt;/div>
+              &lt;/td>
+              &lt;td className="duration">{song.duration}&lt;/td>
+            &lt;/tr>
+            ))} 
+                                         
+            &lt;/tbody>
+          &lt;/table>
+
+          &lt;ReactSnackBar Icon={&lt;span className="fab fa-spotify">&lt;/span>} Show={this.state.ShowAdd}>
+                      Added To Your Liked Songs
+          &lt;/ReactSnackBar>
+
+          &lt;ReactSnackBar Icon={&lt;span className="fab fa-spotify">&lt;/span>} Show={this.state.ShowSave}>
+                      Saved To Your Library
+          &lt;/ReactSnackBar>
+           &lt;/div> 
+          &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  )
+}
+}
+const mapStateToProps = state =>{
+  return{
+    userToken: state.userToken,
+    AlbumID: state.selectedAlbumID,
+  };
+};
+
+export default connect(mapStateToProps) (AlbumPage);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="Success.html">Success</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 20:14:33 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

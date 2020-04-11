@@ -3,7 +3,11 @@ import './PasswordIsNew.css';
 import Header from '../WelcomeRelated/Header';
 import Footer from '../WelcomeRelated/Footer';
 
-class PasswordIsNew extends Component {
+/** Class PasswordIsNew to indicate that the new password has been successfully reset
+ * @category ForgotPassword
+ * @extends Component
+ */
+export class PasswordIsNew extends Component {
 render(){
 return (
   <div className="password-is-new">

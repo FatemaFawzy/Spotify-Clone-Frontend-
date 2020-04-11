@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: HomePage/HomePageSidebar.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: HomePage/HomePageSidebar.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import './HomePageSidebar.css';
+import { NavLink, Link } from "react-router-dom";
+import CreatePlaylist from '../PlaylistsComponent/CreatePlaylist';
+import { addNewURL } from '../../HelperFunctions/History';
+import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
+import * as actionTypes from "../../Store/actions";
+ 
+/** Class HomepageSidebar 
+ * @category HomePage
+ * @extends Component
+ */
+class HomePageSidebar extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+    /**Array of playlists in the bottom
+   * @memberof HomePageSidebar
+   * @type {Array&lt;playlist>}
+   */
+    playlistArray:[],
+     /**Array of playlists to be show cased
+   * @memberof HomePageSidebar
+   * @type {Array&lt;playlist>}
+   */
+    total:"",
+    }
+  }
+   /**A function to show the popping area for creating a new playlist
+   * @memberof HomePageSidebar
+   * @func toggle
+   */
+  toggle()
+  {
+    var blur=document.getElementById('blur');
+    blur.classList.toggle('active')
+    var popup=document.getElementById('popup');
+    popup.classList.toggle('active')
+  }
+    /**A function that fires once the homepage sidebar is called in the web player
+   * @memberof HomePageSidebar
+   * @func componentDidMount
+   */
+  componentDidMount() {
+    
+    const requestOptions = {
+      method:"GET",
+      headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
+    }
+    
+    const url = "http://52.14.190.202:8000/playlists/me"; 
+    fetch(url,requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data.playlist);
+        if(data.playlist)
+        {
+          
+        const list = data.playlist.map(item => {
+          return (
+            &lt;li onClick={()=>{
+              this.props.history.push("/webplayer/playlist/" + item._id );
+              this.props.onPlaylistClicked(item._id);
+              window.location.reload(true);
+            }} className="List2">{item.playlistName}&lt;/li>
+          )
+        }
+        
+        )
+        console.log(list);
+        this.setState({total:list});
+        console.log(this.state.total);
+      }
+    
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+      
+    }
+
+render() {
+ return (
+
+    &lt;div className="wrapper">
+      
+      &lt;div className="sidebar">
+        
+        &lt;Link to="/webplayer/HomePage">&lt;img className="logo"  src="https://i.ya-webdesign.com/images/itunes-logo-white-png-1.png" alt="logo"/>&lt;/Link>
+        
+          &lt;ul>
+              &lt;li>&lt;NavLink  onClick={addNewURL("/webplayer/HomePage")} className="List" to="/webplayer/HomePage/">&lt;i className="fas fa-home">&lt;/i>Home&lt;/NavLink>&lt;/li>
+              &lt;li>&lt;NavLink   className="List" to="/webplayer/search/">&lt;i className="fas fa-search" aria-hidden="true">&lt;/i>Search&lt;/NavLink>&lt;/li>
+              &lt;li>&lt;NavLink onClick={addNewURL("webplayer/yourlibrary/")} className="List" to="/webplayer/yourlibrary/">&lt;i className="fas fa-bookmark" aria-hidden="true">&lt;/i>Your library&lt;/NavLink>&lt;/li>
+              &lt;p id="Playlist">Playlists&lt;/p>
+              &lt;li>&lt;a className="List2" href="#" onClick={this.toggle}>&lt;i className="fas fa-plus-square fa-2x" aria-hidden="true">&lt;/i>Create Playlist&lt;/a>&lt;/li>
+              &lt;li>&lt;NavLink  onClick={addNewURL("/webplayer/likedsongs")} className="List2" to="/webplayer/likedsongs/">&lt;i className="fas fa-heart fa-2x" aria-hidden="true">&lt;/i>Liked Songs&lt;/NavLink>&lt;/li>
+              &lt;hr/>
+              &lt;div id="my-playlist" className="my-playlists">
+                {this.state.total}
+              &lt;/div>
+          &lt;/ul> 
+      &lt;/div>
+    
+    &lt;/div>
+
+);
+}
+} 
+const mapStateToProps = state => {
+
+  return {
+    userID:state.userID
+  };
+
+};
+
+const mapDispatchToProps = dispatch => {
+
+  return {
+
+    onPlaylistClicked : (itemID) => dispatch ({type: actionTypes.SELECT_PLAYLIST , value: itemID})
+  };
+
+};
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(HomePageSidebar));</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="Success.html">Success</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 20:14:33 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

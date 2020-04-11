@@ -6,9 +6,17 @@ import {connect} from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
 import * as itemType from "../../Constants/itemType";
 
-class RelatedArtistsContent extends Component {
+/** Class RelatedArtistsContent 
+ * @category RelatedArtistsContent
+ * @extends Component
+ */
+export class RelatedArtistsContent extends Component {
 
   state = {
+    /**Array of playlists in the bottom
+   * @memberof RelatedArtistsContent
+   * @type {Array<artist>}
+   */
     artistInfo: [
       // {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
       // {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
@@ -22,7 +30,10 @@ class RelatedArtistsContent extends Component {
 
     ],
   }
-
+   /**A function to show the popping area for creating a new playlist
+   * @memberof RelatedArtistsContent
+   * @func componentDidMount
+   */
   componentDidMount() {
     
     const url = BASEURL + "users/artists/related";

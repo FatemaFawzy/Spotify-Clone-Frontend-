@@ -3,7 +3,11 @@ import './Success.css';
 import Header from '../WelcomeRelated/Header';
 import Footer from '../WelcomeRelated/Footer';
 
-class Success extends Component {
+/** Class Success to indicate that an email has been sent with instructions on resetting the password.
+ * @category ForgotPassword
+ * @extends Component
+ */
+export class Success extends Component {
 render(){
 return (
   <div className="Success">

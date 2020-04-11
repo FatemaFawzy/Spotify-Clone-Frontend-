@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import React ,{ Component} from 'react';
 
 
-class LikedSongsComponent extends Component {
+export class LikedSongsComponent extends Component {
   
   constructor(props){
     super(props);

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/HomePage/HomePage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/HomePage/HomePage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React,{Component} from 'react';
+ import './HomePage.css';
+import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
+import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
+import * as itemType from "../../Constants/itemType";
+import {connect} from "react-redux";
+
+
+/** Class HomePage
+ * @category HomePage
+ * @extends Component
+ */
+class HomePage extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+  /**Array of recently played playlists, or songs
+   * @memberof HomePage
+   * @type {Array}
+   */
+     recentlyPlayed:[],   
+  /**Array of playlists generated for the user
+   * @memberof HomePage
+   * @type {Array&lt;playlists>}
+   */ 
+     madeforyou:[],
+  /**Array of playlists followed or created by the user
+   * @memberof HomePage
+   * @type {Array&lt;playlists>}
+   */
+     yourplaylists: [],
+  /**Array of popular albums for homepage
+   * @memberof HomePage
+   * @type {Array&lt;albums>}
+   */
+     popularalbums:[],
+  /**Array of newly released songs
+   * @memberof HomePage
+   * @type {Array&lt;songs>}
+   */
+     newreleases:[],
+   /**Array of popular artists for homepage
+   * @memberof HomePage
+   * @type {Array&lt;artists>}
+   */
+     popularartists:[],
+  /**Boolean to indicate whether we have more than 5 artists or not (slicing)
+   * @memberof HomePage
+   * @type {boolean}
+   */
+     excessArtists: false,
+    
+    }
+    
+  }
+  
+  /**A function that fires once the homepage is called
+   * @memberof HomePage
+   * @func componentDidMount
+   */
+  componentDidMount() {
+
+    //Make a request with this.props.userID
+    //assume this is the returned data
+
+    // const url = "https://jsonplaceholder.typicode.com/photos"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({recentlyPlayed:data.slice(0,5)})
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+
+    const recentlyPlayedarray=[{type: "SONG" , title: "High Hopes", subtitle: "Pink Floyd", url: "https://i.scdn.co/image/ab67616d0000b27330ba0e3ed0e1db48cd3b94a8", id:"1", roundImgOrNot: ""},
+    {type: "SONG" , title: "Is This Love", subtitle: "Bob Marley", url: "https://i.scdn.co/image/ab67616d0000b27399defae6e4954461aa362d92", id:"2", roundImgOrNot: ""},
+    {type: "SONG" , title: "Kiki", subtitle: "Drake", url: "https://i.scdn.co/image/ab67616d0000b273a58da82cd7b27ffc575ccb3e", id:"3", roundImgOrNot: ""},
+    {type: "SONG" , title: "Mood Booster", subtitle: "Chill", url: "https://pl.scdn.co/images/pl/default/36bdc599a28c5a55269620ad5ade6f5fc459dd6e", id:"4", roundImgOrNot: ""}]; 
+    
+    this.setState({recentlyPlayed:recentlyPlayedarray});
+
+    //Make a request with this.props.userID
+    //assume this is the returned data
+
+    // const url = "https://jsonplaceholder.typicode.com/photos"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({madeforyou:data.slice(0,5)})
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+    
+    const madeforyouarray= [{type: "PLAYLIST" , title: "Daily Mix", subtitle: "Mulst Listen", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-ZIZSg7rI8fyqBOxIftVBDFFwb0Oqc3saYbGwBLz5V1jHdKGz&amp;usqp=CAU", id:"1", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Mix 2", subtitle: "Feel Good", url: "https://i.redd.it/avxncpgy8do11.png", id:"2", roundImgOrNot: ""}];
+     
+    this.setState({madeforyou:madeforyouarray});
+
+    //Make a request with this.props.userID
+    //assume this is the returned data
+
+    // const url = "https://jsonplaceholder.typicode.com/photos"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({popularplaylists:data.slice(0,5)})
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+    
+     const popularplaylistsarray= [{type: "PLAYLIST" , title: "Dance Pop", subtitle: "Dance All Day", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRGAe4ncly34_omxS6TWVHiweCRGPuoP2I0XOTjAotRHj1EcZDu&amp;usqp=CAU", id:"1", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Mic Drop", subtitle: "Get Hyped", url: "https://cdn.playlists.net/images/genre_moods/image/medium/Pop.jpg", id:"2", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Hip Hop", subtitle: "Dance", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSNRqOkxQgHtfVUS6rVtcV1Y1RHsReptSs_Kjirqr16kLSq0WZ0&amp;usqp=CAU", id:"3", roundImgOrNot: ""},
+     {type: "PLAYLIST" , title: "Anti Pop", subtitle: "", url: "https://i.redd.it/9vt7zp9ru8211.jpg", id:"4", roundImgOrNot: ""}]; 
+    
+    this.setState({popularplaylists:popularplaylistsarray});
+
+    //Make a request with this.props.userID
+    //assume this is the returned data
+    // const requestOptions={
+    //   method:"GET",
+    //   headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+    // }
+
+    // const url1 = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/albums/homepage/popular"; 
+    // fetch(url1,requestOptions)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     this.setState({popularalbums:data});
+    //     console.log(this.state.popularalbums);
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+    
+    // const popularalbumsarray= [{type: "ALBUM" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
+    //  {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+    //  {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+    //  {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}];  
+    
+    // this.setState({popularalbums:popularalbumsarray});
+
+    //Make a request with this.props.userID
+    //assume this is the returned data
+
+    // const url = "https://jsonplaceholder.typicode.com/photos"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({newreleases:data.slice(0,5)})
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+    
+    const newreleasesarray= [{type: "SONG" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
+     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
+     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}];
+    
+    this.setState({newreleases:newreleasesarray});
+
+    //Make a request with this.props.userID
+    //assume this is the returned data
+    
+    const url = "http://52.14.190.202:8000/artists/homepage/popular"; 
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if ((data.artists.length)>5)
+        {
+        this.setState({excessArtists:true});
+        this.setState({popularartists:data.artists.slice(0,5)})
+
+        }
+        else{
+        this.setState({popularartists:data.artists})  
+        }
+        
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+  }
+
+  render(){
+    return (
+      &lt;div className ="home-navbar" >
+        
+             
+            &lt;HomePageNavbar accountType="regular" name="Ali Halafawy" color="#121212"
+            image="https://scontent.fcai3-1.fna.fbcdn.net/v/t1.0-9/19397029_10210794027939033_5811382860033366804_n.jpg?_nc_cat=111&amp;_nc_sid=85a577&amp;_nc_eui2=AeHEhGNHMDc070CTQv4WD5FK-tEUbysbE-HFFkFOk7OxsfeTak6rLywRWjbRlCDjWmzjtl79NUg2XF9AsJX_0QE9j0LnqnOoo_ADLnnZUnidEA&amp;_nc_ohc=QgP5sx3F3dsAX-nzFSx&amp;_nc_ht=scontent.fcai3-1.fna&amp;oh=86cb020fb7ea1a4e8c69aaaf075680d5&amp;oe=5EA58791"/>
+            &lt;div id="homepage-body" >
+              
+               &lt;ComponentBlock ComponentName="Recently played" type="songs" description="" details={this.state.recentlyPlayed}   /> 
+               &lt;ComponentBlock type="playlists" ComponentName="Made for You" description="Playlists to match your mood" details={this.state.madeforyou} />
+               &lt;ComponentBlock type="playlists" ComponentName="Popular playlists" description="" details={this.state.popularplaylists}/> 
+                {/* &lt;ComponentBlock type="albums" ComponentName="Popular albums" description="" details={this.state.popularalbums} />
+               &lt;ComponentBlock type="songs" ComponentName="Popular new releases" description=""  details={this.state.newreleases} />  */}
+              &lt;ComponentBlock type="artists" ComponentName="Popular artists" details={this.state.popularartists} excess={this.state.excessArtists}/>
+              
+            &lt;/div>
+          
+      &lt;/div>
+      
+    );
+
+
+  }
+  
+}
+
+const mapStateToProps = state => {
+
+  return {
+    userID:state.userID
+  };
+
+};
+export default connect(mapStateToProps)(HomePage);
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="Success.html">Success</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 20:31:02 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

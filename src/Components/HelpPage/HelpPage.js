@@ -6,11 +6,28 @@ import MainNavbar from '../WelcomeRelated/MainNavbar';
 import Bottom from "../WelcomeRelated/Bottom";
 import { Link } from "react-router-dom";
 
+ /**Elements 
+   * @memberof HelpPage
+   * @type {Array<Albums>}
+   */
 var elements;
+ /**Check visible
+   * @memberof HelpPage
+   * @type {Array<Albums>}
+   */
 var checkvisible;
 
+/** Class HelpPage 
+ * @category HelpPage
+ * @extends Component
+ */
 class HelpPage extends Component {
 
+    /**A function to show the popping area for creating a new playlist
+   * @memberof HelpPage
+   * @func handelindexchange
+   * @param event
+   */
   handelindexchange = (event) => {
     checkvisible = document.querySelectorAll(".slide-cars-title");
     var j;
@@ -136,7 +153,7 @@ class HelpPage extends Component {
           </div>
         </div>
 
-        {/* Fourth block */}
+        {/* Fifth block */}
         <div className="carousel-exist">
           <div className="container">
             <div className="row">
@@ -224,7 +241,7 @@ class HelpPage extends Component {
           </div>
         </div>
 
-        {/* Fourth block */}
+        {/* Sixth block */}
         <div className="get-spotify-sugg">
           <div className="container">
             <h1>Still not on Spotify?</h1>

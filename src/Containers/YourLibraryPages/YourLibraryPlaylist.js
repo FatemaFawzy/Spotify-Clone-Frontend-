@@ -5,7 +5,7 @@ import GeneralItem from "../GenericComponenets/GeneralItem";
 import LikedSongsComponent from '../../Components/YourLibraryComponents/LikedSongsComponent';
 import {connect} from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
-class YourLibraryPlaylist extends Component {
+export class YourLibraryPlaylist extends Component {
   constructor(props){
     super(props);
     this.state = {

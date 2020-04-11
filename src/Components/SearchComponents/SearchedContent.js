@@ -11,6 +11,7 @@ import {BASEURL} from "../../Constants/baseURL";
 const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfieldvalue, loading }) => {
 
   //For Songs
+  if(songs){
   var RenderedSongs;
   if (!songs.length) {
     RenderedSongs = null;
@@ -45,6 +46,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       {Songs}
     </div>)
   }
+}
 
   //for other elements
   // const otheritems=[artists, albums];
@@ -92,6 +94,7 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
   // }
 
   //For Artists
+  if(artists){
   var RenderedArtists;
   if (!artists.length) {
     RenderedArtists = null;
@@ -132,8 +135,10 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       {Artists}
     </div>)
   }
+}
 
   //For Albums
+  if(albums){
   var RenderedAlbums;
   if (!albums.length) {
     RenderedAlbums = null;
@@ -170,8 +175,10 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       {Albums}
     </div>)
   }
+}
 
   //For Playlists
+  if(playlists){
   var RenderedPlaylists;
   if (!playlists.length) {
     RenderedPlaylists = null;
@@ -208,9 +215,11 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       {Playlists}
     </div>)
   }
+}
 
 
   //For Profiles
+  if(profiles){
   var RenderedProfiles;
   if (!profiles.length) {
     RenderedProfiles = null;
@@ -247,12 +256,15 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
       {Profiles}
     </div>)
   }
+}
 
   //For the top results
   let topResultName="";
   let topResultType="";
   let topResultImage= ""
   let topID="";
+
+  if(songs){
 
   if(songs.length){
     topResultName=songs[0].trackName;
@@ -271,10 +283,8 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
         id={topID} />
         
     </div>
-
-
-
   )
+  }
 
 
   ///////////////////////////////////CONDITIONAL RENDERING//////////////////////////////////////////
@@ -295,7 +305,11 @@ const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfi
 
     
     const noResultsfound = 'No results found for "' + searchfieldvalue + '"';
-    if (!songs.length && !artists.length && !albums.length && !playlists.length && !profiles.length) {
+    if ((songs&&!songs.length) && 
+    (artists&&!artists.length) && 
+    (albums&&!albums.length) && 
+    (playlists&&!playlists.length) && 
+    (profiles&&!profiles.length)) {
       return (
         <div className="no-results-found-container">
         <div className="no-results-found">

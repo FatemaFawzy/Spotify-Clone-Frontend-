@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
 import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
 
-class DropDownMenu extends Component {
+export class DropDownMenu extends Component {
   state = {
     username: "",
     userimage: "",

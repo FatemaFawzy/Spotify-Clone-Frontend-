@@ -4,7 +4,7 @@ import GeneralItem from "../GenericComponenets/GeneralItem";
 import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
 
 
-class YourLibraryAlbum extends Component {
+export class YourLibraryAlbum extends Component {
   constructor(props){
     super(props);
     this.state = {

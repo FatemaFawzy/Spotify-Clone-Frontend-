@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: HelpPage/HelpPage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: HelpPage/HelpPage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
+import "./HelpPage.css";
+import Carousel from 'react-bootstrap/Carousel';
+import whitebackground from "../../assets/whitebackground.jpg";
+import MainNavbar from '../WelcomeRelated/MainNavbar';
+import Bottom from "../WelcomeRelated/Bottom";
+import { Link } from "react-router-dom";
+
+ /**Elements 
+   * @memberof HelpPage
+   * @type {Array&lt;Albums>}
+   */
+var elements;
+ /**Check visible
+   * @memberof HelpPage
+   * @type {Array&lt;Albums>}
+   */
+var checkvisible;
+
+/** Class HelpPage 
+ * @category HelpPage
+ * @extends Component
+ */
+class HelpPage extends Component {
+
+    /**A function to show the popping area for creating a new playlist
+   * @memberof HelpPage
+   * @func handelindexchange
+   * @param event
+   */
+  handelindexchange = (event) => {
+    checkvisible = document.querySelectorAll(".slide-cars-title");
+    var j;
+    for (var i = 0; i &lt; checkvisible.length; i++) {
+      if (checkvisible[i].offsetWidth > 0 &amp;&amp; checkvisible[i].offsetHeight > 0)
+        j = i;
+    }
+    elements = document.querySelectorAll(".slide");
+    for (var i = 0; i &lt; elements.length; i++) {
+      if (i == j) {
+        elements[i].className = "slide active";
+      }
+
+      else {
+        if (elements[i].className == "slide active")
+          elements[i].className = "slide";
+      }
+    }
+  }
+
+  render() {
+    return (
+      &lt;div className="help-class">
+        &lt;div className="helpNav" > 
+        &lt;MainNavbar color="black" position="relative" IsLoggedIn="false" />
+        &lt;/div>
+        {/* First block */}
+        &lt;div className="help-header">
+          &lt;div className="container">
+
+            &lt;h1>How can we help you?&lt;/h1>
+            {/* &lt;input type="text" className="search-help-field" id="" aria-describedby="helpId" placeholder="Search">&lt;/input> */}
+
+            &lt;div className="row">
+
+              &lt;div className="col-5 col-md-3 side-text-help">
+                &lt;p>ACCOUNT HELP&lt;/p>
+                &lt;h5>Finding accounts&lt;/h5>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+
+        &lt;/div>
+
+        {/* Second block */}
+
+        &lt;div className="front-nav">
+          &lt;div className="container">
+
+            &lt;div className="row">
+
+              &lt;div className="col-12 col-md-4 front-nav-item">
+                &lt;h4>Account &amp; Payment&lt;/h4>
+
+                &lt;p>Account Help&lt;/p>
+                &lt;p>Payment Help&lt;/p>
+                &lt;p>Subscription Options&lt;/p>
+                &lt;p>Privacy &amp; Security&lt;/p>
+
+                {/* drop down  should be added here*/}
+              &lt;/div>
+
+              &lt;div className="col-12 col-md-4 front-nav-item">
+                &lt;h4>Using Spotify&lt;/h4>
+
+
+                &lt;p>Video tutorials&lt;/p>
+                &lt;p>Getting started&lt;/p>
+                &lt;p>Playlists&lt;/p>
+                &lt;p>Features&lt;/p>
+                &lt;p>System &amp; settings&lt;/p>
+
+                {/* drop down  should be added here*/}
+              &lt;/div>
+
+              &lt;div className="col-12 col-md-4 front-nav-item">
+                &lt;h4>Listen Everywhere&lt;/h4>
+                &lt;p>Speakers&lt;/p>
+                &lt;p>TVs&lt;/p>
+                &lt;p>Cars&lt;/p>
+                &lt;p>Gaming&lt;/p>
+                &lt;p>Smart Watches&lt;/p>
+
+                {/* drop down  should be added here*/}
+              &lt;/div>
+
+            &lt;/div>
+          &lt;/div>
+
+        &lt;/div>
+
+        {/* Third block */}
+        &lt;div className="visit-com-help">
+          &lt;div className="container">
+            &lt;h1>Visit the Community&lt;/h1>
+            &lt;p>Have questions? Find answers from our worldwide Community of expert fans!&lt;/p>
+            &lt;h5>1960 members online right now.&lt;/h5>
+            {/* &lt;Link className="get-spotify-bt" to="/signup/">FIND ANSWERS&lt;/Link> */}
+          &lt;/div>
+        &lt;/div>
+
+        {/* Fourth block */}
+        &lt;div className="features-how-use">
+          &lt;div className="container">
+            &lt;h1>How to use the features&lt;/h1>
+            &lt;div className="row">
+              &lt;div className="col-12 col-md-6" >
+                &lt;p>GET STARTED&lt;/p>
+                &lt;hr />
+                &lt;h3>Search&lt;/h3>
+                &lt;h3>Playlists&lt;/h3>
+                &lt;h3>Listen Offline&lt;/h3>
+              &lt;/div>
+              &lt;div className="col-12 col-md-6">
+                &lt;p>AND CHECK THESE OUT&lt;/p>
+                &lt;hr />
+                &lt;h3>Radio&lt;/h3>
+                &lt;h3>Discover Weekly&lt;/h3>
+                &lt;h3>Spotify on Chromecast&lt;/h3>
+                &lt;h3>Share&lt;/h3>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+
+        {/* Fourth block */}
+        &lt;div className="carousel-exist">
+          &lt;div className="container">
+            &lt;div className="row">
+              &lt;div className="col-md-6 hidden-xs hidden-sm carousel-iphones">
+                &lt;div className="iphone-device">
+                  &lt;div className="iphone-screen">
+                    &lt;img src="https://support.scdn.co/static/img/videos/video-offline.jpg" className="slide active" />
+                    &lt;img src="https://support.scdn.co/static/img/videos/video-connect.jpg" className="slide" />
+                    &lt;img src="https://support.scdn.co/static/img/videos/video-chromecast.jpg" className="slide" />
+                    &lt;img src="https://support.scdn.co/static/img/videos/video-playlist.jpg" className="slide" />
+                    &lt;img src="https://support.scdn.co/static/img/videos/video-search.jpg" className="slide" />
+                  &lt;/div>
+                &lt;/div>
+              &lt;/div>
+
+              &lt;div className="col-md-6 video-info-container">
+
+                &lt;Carousel controls={true} indicators={true} onSlideEnd={(event) => this.handelindexchange(event)}>
+                  &lt;Carousel.Item>
+                    &lt;img
+                      className="d-block w-100"
+                      src={whitebackground}
+                      alt="First slide"
+                    />
+                    &lt;Carousel.Caption>
+                      &lt;h3 className="slide-cars-title">Listen Offline&lt;/h3>
+                      &lt;p>How to take your music with you in the car, on the plane, or wherever you may not be able to access the internet&lt;/p>
+                    &lt;/Carousel.Caption>
+                  &lt;/Carousel.Item>
+                  &lt;Carousel.Item>
+                    &lt;img
+                      className="d-block w-100"
+                      src={whitebackground}
+                      alt="Third slide"
+                    />
+
+                    &lt;Carousel.Caption>
+                      &lt;h3 className="slide-cars-title">Spotify Connect&lt;/h3>
+                      &lt;p>Play Spotify on your speaker, sound system, or TV with Spotify Connect. Here's how!&lt;/p>
+                    &lt;/Carousel.Caption>
+                  &lt;/Carousel.Item>
+                  &lt;Carousel.Item>
+                    &lt;img
+                      className="d-block w-100"
+                      src={whitebackground}
+                      alt="Third slide"
+                    />
+
+                    &lt;Carousel.Caption>
+                      &lt;h3 className="slide-cars-title">Spotify on Chromecast&lt;/h3>
+                      &lt;p>Spotify on your Chromecast? You heard us right! Here's how to team them up!&lt;/p>
+                    &lt;/Carousel.Caption>
+                  &lt;/Carousel.Item>
+
+                  &lt;Carousel.Item>
+                    &lt;img
+                      className="d-block w-100"
+                      src={whitebackground}
+                      alt="Third slide"
+                    />
+
+                    &lt;Carousel.Caption>
+                      &lt;h3 className="slide-cars-title">Make a Playlist&lt;/h3>
+                      &lt;p>Playlists are your personal mixtapes that you can share or collaborate on with friends. Here's how to get started.&lt;/p>
+                    &lt;/Carousel.Caption>
+                  &lt;/Carousel.Item>
+
+                  &lt;Carousel.Item>
+                    &lt;img
+                      className="d-block w-100"
+                      src={whitebackground}
+                      alt="Third slide"
+                    />
+
+                    &lt;Carousel.Caption>
+                      &lt;h3 className="slide-cars-title">Search&lt;/h3>
+                      &lt;p>Search is the key to Spotify's vast library of music, whether you're looking for a particular artist, album, or song; or if you want Spotify to find music to match a mood, activity, or time of day.&lt;/p>
+                    &lt;/Carousel.Caption>
+                  &lt;/Carousel.Item>
+                &lt;/Carousel>
+
+              &lt;/div>
+
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+
+        {/* Fourth block */}
+        &lt;div className="get-spotify-sugg">
+          &lt;div className="container">
+            &lt;h1>Still not on Spotify?&lt;/h1>
+            &lt;div className="row justify-content-center">
+
+              &lt;div className="col-12 col-md-6">
+
+                &lt;p>Over 30 million tracks; thousands of curated playlists; Discover Weekly; Spotify Running; Radio; Chromecast, sound system, car, TV, and PlayStation integration; sharing and creating playlists with your friends... All of this is ready for you.&lt;/p>
+              &lt;/div>
+            &lt;/div>
+            &lt;Link className="get-spotify-bt" to="/signup/">GET SPOTIFY&lt;/Link>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;Bottom />
+      &lt;/div>
+    );
+  }
+}
+
+export default HelpPage</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="Success.html">Success</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 20:14:33 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

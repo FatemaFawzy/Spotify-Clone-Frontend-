@@ -4,7 +4,7 @@ import MainNavbar from "../../Components/WelcomeRelated/MainNavbar";
 import Footer from "../../Components/WelcomeRelated/Footer";
 import {Link, Router } from "react-router-dom";
 
-class Premium extends Component {
+export class Premium extends Component {
 render() {
 return ( 
   <div className="premium">

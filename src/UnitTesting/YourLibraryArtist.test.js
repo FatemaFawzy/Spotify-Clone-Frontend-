@@ -7,22 +7,24 @@ import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
 
 //IMPORT THE COMPONENT YOU WANNA TEST
-import {GeneralItem} from "./GeneralItem";
+import {YourLibraryArtist} from "../Containers/YourLibraryPages/YourLibraryArtist"
 
 //CALL THE DESCRIBE FUNCTION 
 //IT TAKES TWO PARAMETERS 1ST: A TEXT DESCRIPTION
 //                        2ND: AN ARROW FUNCTION 
-describe("GeneralItem Container test", ()=>{
+describe("Your Library-Artist Container test", ()=>{
 
+
+  //INSIDE THE ARROW FUNCTION YOU FIRST HAVE TO GRAB THE COMPONENT
+  // YOU DO AS FOLLOWING NOW YOU HAVE THE COMPONENT STORED IN THE wrapper VARIABLE
   let wrapper;
   beforeEach(() => {
-   wrapper = shallow(<GeneralItem name="testName"/> ); 
+   wrapper = shallow(<YourLibraryArtist/> ); 
   });
 
 
-  it("Should have a round image if the passed prop roundimage is true", ()=>{
-    wrapper.setProps({roundimage:true})
-    expect(wrapper.find("img.i-am-round-img-general"))
+  it("Should have an artists header", ()=>{
+    const header= wrapper.find("h1.artist-header");
+    expect(header.text()).toContain("Artists");
   })
-
 })

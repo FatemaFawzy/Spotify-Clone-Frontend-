@@ -28,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "doc": "jsdoc -c jsdoc.json"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,9 +47,10 @@
     ]
   },
   "devDependencies": {
-    "redux-mock-store": "^1.5.4",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "react-test-renderer": "^16.13.1"
+    "jsdoc": "^3.6.4",
+    "react-test-renderer": "^16.13.1",
+    "redux-mock-store": "^1.5.4"
   }
 }
