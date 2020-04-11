@@ -2,7 +2,7 @@ import React ,{ Component} from 'react';
 import'./AddToPlaylist.css';
 import LikedSongs from '../LikedSongs/LikedSongs';
 
-class AddToPlaylist extends Component{
+export class AddToPlaylist extends Component{
   state= 
 { 
     plalistInfo: [

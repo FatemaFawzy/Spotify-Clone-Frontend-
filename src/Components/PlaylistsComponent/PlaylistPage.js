@@ -8,7 +8,7 @@ import HomePageNavbar from '../HomePage/HomePageNavbar';
 import {BASEURL} from "../../Constants/baseURL";
 import {connect} from 'react-redux';
 
-class PlaylistPage extends Component
+export class PlaylistPage extends Component
 {
   
   
@@ -129,14 +129,14 @@ class PlaylistPage extends Component
     // }
     
 
-  DropMenuCard ()
-  {
-    document.getElementById("DropMenuCard").classList.toggle("show");
-  }
-  DropMenuSong()
-  {
-    document.getElementById("DropMenuSong").classList.toggle("show");
-  }
+  // DropMenuCard ()
+  // {
+  //   document.getElementById("DropMenuCard").classList.toggle("show");
+  // }
+  // DropMenuSong()
+  // {
+  //   document.getElementById("DropMenuSong").classList.toggle("show");
+  // }
 
   likeSong = e => {
     const {id} = e.target;
@@ -177,8 +177,7 @@ class PlaylistPage extends Component
 }
 }
 
-playButton = e => {
-  const {id} = e.target;
+playButton = () => {
   if ( this.state.playplaylist === "Play" ) {
     this.setState({playplaylist: "Pause"});
   }
@@ -222,7 +221,7 @@ else if (check=="REMOVE"){
 					  <li> <h3> {this.state.playlistInfo.playlistName} </h3> </li>
 					  <li> <h5> {this.state.playlistInfo.userId} </h5></li>
             <li >
-               <a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playplaylist}</a>
+               <button href="#" id="play-button" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playplaylist}</button>
             </li>
             <li  className="d-flex justify-content-around">
             <button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> </button>
