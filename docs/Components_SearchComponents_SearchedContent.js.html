@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/SearchComponents/SearchedContent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/SearchComponents/SearchedContent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import "./SearchedContent.css";
+import SearchContent from "./SearchContent";
+import { Link } from "react-router-dom";
+import SongSearched from "./SongSearched";
+import TopResultItem from "./TopResultItem";
+import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
+import * as itemType from "../../Constants/itemType";
+import { BASEURL } from "../../Constants/baseURL";
+
+/** Function component SearchContent that shows the content of the search page after typing in the search box.
+ * @func SearchedContent
+ */
+const SearchedContent = ({ songs, artists, albums, playlists, profiles, searchfieldvalue, loading }) => {
+
+  //For Songs
+  if (songs) {
+
+    /**Holds the rendered songs after being mapped to JSX
+     * @type {Array&lt;object>}
+     */
+    var RenderedSongs;
+    if (!songs.length) {
+      RenderedSongs = null;
+    }
+    else {
+
+      /**Holds an array of the needed songs to be rendered on the screen (max 3)
+      * @type {Array&lt;object>}
+      */
+      var neededSongs;
+      if (songs.length > 3) {
+        neededSongs = songs.splice(0, 3);
+      }
+      else {
+        neededSongs = songs;
+      }
+      const Songs = neededSongs.map(song => (
+        &lt;SongSearched
+          image={BASEURL + "Images/" + song.imagePath}
+          name={song.trackName}
+          subname={song.artistName}
+          key={song._id}
+          id={song._id}
+          artistid={song.artistId}
+        />)
+
+        // &lt;SongSearched
+        //   image={song.url}
+        //   name={song.title}
+        //   subname={song.title}
+        //   key={song.id}
+        // />)
+      )
+      RenderedSongs = (&lt;div id="searched-category-block-song" className="searched-category-block">
+        &lt;Link to="/webplayer/search/songs/" id="searched-category-title-song" className="searched-category-title" >Songs&lt;/Link>
+        {Songs}
+      &lt;/div>)
+    }
+  }
+
+  //for other elements
+  // const otheritems=[artists, albums];
+  // var RenderedItems=[];
+
+  // for(var i=0;i&lt;otheritems.length;i++)
+  // {
+
+  // if (!otheritems[i].length) {
+  //   RenderedItems.push(null);
+  // }
+  // else {
+  //   var neededItems;
+  //   if (otheritems[i].length > 5) {
+  //     neededItems = otheritems[i].splice(0, 5);
+  //   }
+  //   else {
+  //     neededItems = otheritems[i];
+  //   }
+  //   const Items = neededItems.map(item => (
+  //     // &lt;GeneralItem
+  //     //   image={artist.image.url}
+  //     //   name={artist.artistName}
+  //     //   subname="Artist"
+  //     //   roundimage={true}
+  //     //   key={artist._id}
+  //     // />)
+
+  //     &lt;GeneralItem
+  //     image={item.url}
+  //     name={item.title}
+  //     subname="Artist"
+  //     roundimage={false}
+  //     key={item.id}
+  //   />)
+
+  //   )
+  //   RenderedItems.push(&lt;div className="searched-category-block">
+  //     &lt;Link to={("/webplayer/search/artists")} className="searched-category-title" >Artists&lt;/Link>
+  //     {/* +props.type.toLowerCase() */}
+  //     {Items}
+  //   &lt;/div>)
+  // }
+
+  // }
+
+  //For Artists
+  if (artists) {
+    /**Holds the rendered artists after being mapped to JSX
+ * @type {Array&lt;object>}
+ */
+    var RenderedArtists;
+    if (!artists.length) {
+      RenderedArtists = null;
+    }
+    else {
+      /**Holds an array of the needed artists to be rendered on the screen (max 5)
+  * @type {Array&lt;object>}
+  */
+      var neededArtists;
+      if (artists.length > 5) {
+        neededArtists = artists.splice(0, 5);
+      }
+      else {
+        neededArtists = artists;
+      }
+      const Artists = neededArtists.map(artist => (
+        &lt;GeneralItem
+          image={BASEURL + "Images/" + artist.imagePath}
+          name={artist.artistName}
+          subname="Artist"
+          roundimage={true}
+          key={artist._id}
+          id={artist._id}
+          type={itemType.ARTIST}
+        />)
+
+        // &lt;GeneralItem
+        //   image={artist.url}
+        //   name={artist.title}
+        //   subname="Artist"
+        //   roundimage={true}
+        //   key={artist.id}
+        //   id={artist.id}
+        //   type={itemType.ARTIST}
+        // />)
+
+
+      )
+      RenderedArtists = (&lt;div className="searched-category-block">
+        &lt;Link to="/webplayer/search/artists/" className="searched-category-title" >Artists&lt;/Link>
+        {Artists}
+      &lt;/div>)
+    }
+  }
+
+  //For Albums
+  if (albums) {
+    /**Holds the rendered albums after being mapped to JSX
+ * @type {Array&lt;object>}
+ */
+    var RenderedAlbums;
+    if (!albums.length) {
+      RenderedAlbums = null;
+    }
+    else {
+
+      /**Holds an array of the needed albums to be rendered on the screen (max 5)
+ * @type {Array&lt;object>}
+ */
+      var neededAlbums;
+      if (songs.length > 5) {
+        neededAlbums = albums.splice(0, 5);
+      }
+      else {
+        neededAlbums = albums;
+      }
+      const Albums = neededAlbums.map(album => (
+        &lt;GeneralItem
+          image={BASEURL + "Images/" + album.imagePath}
+          name={album.albumName}
+          subname={album.artistName}
+          key={album._id}
+          id={album._id}
+          type={itemType.ALBUM}
+        />)
+
+        // &lt;GeneralItem
+        //   image={album.url}
+        //   name={album.title}
+        //   subname="Album"
+        //   key={album.id}
+        //   id={album.id}
+        //   type={itemType.ALBUM}
+        // />)
+      )
+      RenderedAlbums = (&lt;div className="searched-category-block">
+        &lt;Link to="/webplayer/search/albums/" className="searched-category-title" >Albums&lt;/Link>
+        {Albums}
+      &lt;/div>)
+    }
+  }
+
+  //For Playlists
+  if (playlists) {
+    /**Holds the rendered playlists after being mapped to JSX
+ * @type {Array&lt;object>}
+ */
+    var RenderedPlaylists;
+    if (!playlists.length) {
+      RenderedPlaylists = null;
+    }
+    else {
+
+      /**Holds an array of the needed playlists to be rendered on the screen (max 5)
+ * @type {Array&lt;object>}
+ */
+      var neededPlaylists;
+      if (playlists.length > 5) {
+        neededPlaylists = playlists.splice(0, 5);
+      }
+      else {
+        neededPlaylists = playlists;
+      }
+      const Playlists = neededPlaylists.map(playlist => (
+        &lt;GeneralItem
+          image={BASEURL + "Images/" + playlist.imagePath}
+          name={playlist.playlistName}
+          subname={playlist.userName}
+          key={playlist._id}
+          id={playlist._id}
+          type={itemType.PLAYLIST}
+        />)
+
+        // &lt;GeneralItem
+        //   image={playlist.url}
+        //   name={playlist.title}
+        //   subname="Playlist"
+        //   key={playlist.id}
+        //   id={playlist.id}
+        //   type={itemType.PLAYLIST}
+        // />)
+      )
+      RenderedPlaylists = (&lt;div className="searched-category-block">
+        &lt;Link to="/webplayer/search/playlists/" className="searched-category-title" >Playlists&lt;/Link>
+        {Playlists}
+      &lt;/div>)
+    }
+  }
+
+
+  //For Profiles
+  if (profiles) {
+
+    /**Holds the rendered profiles after being mapped to JSX
+ * @type {Array&lt;object>}
+ */
+    var RenderedProfiles;
+    if (!profiles.length) {
+      RenderedProfiles = null;
+    }
+    else {
+
+      /**Holds an array of the needed profiles to be rendered on the screen (max 5)
+ * @type {Array&lt;object>}
+ */
+      var neededProfiles;
+      if (playlists.length > 5) {
+        neededProfiles = profiles.splice(0, 5);
+      }
+      else {
+        neededProfiles = profiles;
+      }
+      const Profiles = neededProfiles.map(profile => (
+        &lt;GeneralItem
+          image={BASEURL + "Images/" + profile.imagePath}
+          name={profile.userName}
+          subname="Profile"
+          key={profile._id}
+          id={profile._id}
+          type={itemType.PROFILE}
+        />)
+
+        // &lt;GeneralItem
+        //   image={profile.url}
+        //   name={profile.title}
+        //   subname="Profile"
+        //   key={profile.id}
+        //   id={profile.id}
+        //   type={itemType.PROFILE}
+        // />)
+      )
+      RenderedProfiles = (&lt;div className="searched-category-block">
+        &lt;Link to="/webplayer/search/profiles/" className="searched-category-title" >Profiles&lt;/Link>
+        {Profiles}
+      &lt;/div>)
+    }
+  }
+
+  //For the top results
+
+  /**Holds the top result name
+   * @type {string}
+   */
+  let topResultName = "";
+  /**Holds the top result type
+ * @type {string}
+ */
+  let topResultType = "";
+  /**Holds the top result image path
+ * @type {string}
+ */
+  let topResultImage = ""
+
+  /**Holds the top result id
+ * @type {string}
+ */
+  let topID = "";
+
+  if (songs) {
+
+    if (songs.length) {
+      topResultName = songs[0].trackName;
+      topResultType = itemType.SONG;
+      topResultImage = BASEURL + "Images/" + songs[0].imagePath;
+      topID = songs[0]._id;
+    }
+    var RenderedTopResult = (
+      &lt;div className="searched-top-container">
+        &lt;h2 className="searched-top-title"> &lt;span>Top result&lt;/span>&lt;/h2>
+        &lt;TopResultItem
+          image={topResultImage}
+          name={topResultName}
+          subname={topResultType}
+          type={topResultType}
+          id={topID} />
+
+      &lt;/div>
+    )
+  }
+
+
+  ///////////////////////////////////CONDITIONAL RENDERING//////////////////////////////////////////
+  if (searchfieldvalue === "") {
+    return &lt;SearchContent />
+  }
+  else {
+
+    if (loading) {
+      return (
+        &lt;div className="search-spinner-loading">
+          &lt;i className="fa fa-refresh fa-spin">&lt;/i>
+        &lt;/div>
+      );
+
+    }
+    else {
+
+      /**the message that appears if no results are found 
+     * @type {string}
+     */
+      const noResultsfound = 'No results found for "' + searchfieldvalue + '"';
+      if ((songs &amp;&amp; !songs.length) &amp;&amp;
+        (artists &amp;&amp; !artists.length) &amp;&amp;
+        (albums &amp;&amp; !albums.length) &amp;&amp;
+        (playlists &amp;&amp; !playlists.length) &amp;&amp;
+        (profiles &amp;&amp; !profiles.length)) {
+        return (
+          &lt;div className="no-results-found-container">
+            &lt;div className="no-results-found">
+              &lt;h1>{noResultsfound}&lt;/h1>
+              &lt;p>Please make sure your words are spelled correctly or use less or different keywords.&lt;/p>
+            &lt;/div>
+          &lt;/div>
+        )
+      }
+      else {
+
+        return (
+          &lt;div className="after-typed-search">
+
+            &lt;div className="row">
+
+              &lt;div className="col col-md-12 col-lg-5 col-sm-12" >
+                {RenderedTopResult}
+              &lt;/div>
+
+              &lt;div className="col col-md-12 col-lg-7 col-sm-12">
+                {RenderedSongs}
+              &lt;/div>
+
+            &lt;/div>
+
+            &lt;div className="rest-of-search-rendered">
+
+              {RenderedArtists}
+              {RenderedAlbums}
+              {RenderedPlaylists}
+              {RenderedProfiles}
+
+            &lt;/div>
+
+            {/* {RenderedItems[0]}
+          {RenderedItems[1]} */}
+
+          &lt;/div>
+        );
+      }
+    }
+  }
+
+}
+
+export default SearchedContent;
+
+
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#BrowseItem">BrowseItem</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchContent">SearchContent</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 23:25:27 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

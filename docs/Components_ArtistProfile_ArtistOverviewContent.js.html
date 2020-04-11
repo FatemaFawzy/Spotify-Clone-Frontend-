@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/ArtistProfile/ArtistOverviewContent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/ArtistProfile/ArtistOverviewContent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import "./ArtistOverviewContent.css";
+import "./MediaObject";
+import MediaObject from './MediaObject';
+import {connect} from "react-redux";
+import { BASEURL } from '../../Constants/baseURL';
+
+/** Class ArtistOverviewContent
+ * @extends Component
+ */
+export class ArtistOverviewContent extends Component {
+
+  state= { 
+  /**Array of popular songs info 
+   * @memberof ArtistOverviewContent
+   * @type {Array&lt;songsInfo>}
+   */
+    SongInfo:[],
+    // SongInfo: [
+    //   {id : 1, SongName : "Another Love (Zwette Edit)",Duration : "3:52", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    //   {id : 2, SongName : "Heal", Duration : "4:15", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    //   {id : 3, SongName : "True Colors", Duration : "2:58", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    //   {id : 4, SongName : "Grow Old With Me", Duration : "3:52", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    //   {id : 5, SongName : "Summer Day", Duration : "4:15", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    // ],
+
+  /**Array of artist albums info 
+   * @memberof ArtistOverviewContent
+   * @type {Array&lt;albumInfo>}
+   */    
+    albumInfo: [
+      {id : 6, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
+      albumLink: "/webplayer/album/"},
+      {id : 7, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
+      albumLink: "/webplayer/album/"},
+      {id : 8, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
+      albumLink: "/webplayer/album/"},
+      {id : 9, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
+      albumLink: "/webplayer/album/"},
+      {id : 10, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
+      albumLink: "/webplayer/album/"},
+      {id : 11, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
+      albumLink: "/webplayer/album/"},
+    ],
+
+  /**Array of artist singles info 
+   * @memberof ArtistOverviewContent
+   * @type {Array&lt;singlesInfo>}
+   */
+    singlesInfo: [
+      {id : 12, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+      albumLink: "/webplayer/album/"},
+      {id : 13, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+      albumLink: "/webplayer/album/"},
+      {id : 14, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+      albumLink: "/webplayer/album/"},
+      {id : 15, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+      albumLink: "/webplayer/album/"},
+      {id : 16, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+      albumLink: "/webplayer/album/"},
+      {id : 17, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+      albumLink: "/webplayer/album/"},
+    ],
+
+  /**state object for showing more or less albums 
+   * @memberof ArtistOverviewContent
+   * @type {String}
+   */
+    showAlbums: "SHOW MORE",
+
+  /**state object for showing more or less singles 
+   * @memberof ArtistOverviewContent
+   * @type {String}
+   */
+    showSingles: "SHOW MORE",
+  }
+
+   /**Function that is called when the component renders
+   * @memberof ArtistOverviewContent
+   * @func componentDidMount
+   */
+  componentDidMount(){
+      // get artist's popular tracks
+      // var url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/tracks/top?artistId=123"; 
+
+      // var requestOptions = {
+      //   method: 'GET',
+      //   headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
+      // };
+      
+      // fetch(url,requestOptions)
+      //   .then((response) => { return response.json()})
+      //   .then((data) => {
+      //     this.setState({
+      //     SongInfo: data.popularTracks});
+      //     console.log(this.state.SongInfo);
+      //   })
+      //   .catch((error)=>{console.log(error);
+  
+      //   })
+
+  }
+
+   /**Function that is called to show more albums
+   * @memberof ArtistOverviewContent
+   * @func showMoreAlbums
+   */  
+  showMoreAlbums= e => {
+
+    if(this.state.showAlbums === "SHOW MORE") {
+      this.setState ({showAlbums: "SHOW LESS"});
+    }
+
+    else if(this.state.showAlbums === "SHOW LESS") {
+      this.setState ({showAlbums: "SHOW MORE"});
+    }
+
+    var icon= document.getElementById("albums-arrow");
+    if (icon !== null){
+    icon.classList.toggle("fa-chevron-down");
+    icon.classList.toggle("fa-chevron-up");}
+  }
+
+  /**Function that is called to show more singles
+   * @memberof ArtistOverviewContent
+   * @func showMoreSingles
+   */  
+  showMoreSingles= e => {
+
+    if(this.state.showSingles === "SHOW MORE") {
+      this.setState ({showSingles: "SHOW LESS"});
+    }
+
+    else if(this.state.showSingles === "SHOW LESS") {
+      this.setState ({showSingles: "SHOW MORE"});
+    }
+
+    var icon= document.getElementById("singles-arrow");
+    if (icon !== null){
+    icon.classList.toggle("fa-chevron-down");
+    icon.classList.toggle("fa-chevron-up");}
+  }
+
+  render(){
+
+    return (
+      &lt;div id="overview-body" className="artist-overview-content">
+        
+        &lt;section>
+          &lt;h1 id="popular-h1"> Popular &lt;/h1>
+
+          &lt;table className="table table-borderless d-flex">
+            &lt;tbody>
+              {/* Display Songs */}
+              {this.state.SongInfo.map((song,index)=>(
+              &lt;tr key={index}>
+                &lt;th className="music-sign d-flex  mr-3">	 &lt;/th>
+
+                &lt;td className="song-content pl-0 ml-0">
+                  &lt;span>
+                    &lt;img className="song-photo mr-3" src={`http://52.14.190.202:8000/images/${song.trackImage}`}>&lt;/img>
+                    &lt;span className="song-name"> {song.trackName} &lt;/span>
+                  &lt;/span>
+                &lt;/td>
+
+                &lt;td>
+                  &lt;div className="dropdown ">
+                    &lt;a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• &lt;/a>
+                    &lt;div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
+                      &lt;a className="dropdown-item drop-class" href="#">Add to your liked songs&lt;/a>
+                      &lt;a className="dropdown-item drop-class" href="#">Add to playlist&lt;/a>
+                    &lt;/div>
+                  &lt;/div>
+                &lt;/td>
+
+                &lt;td className="duration"> {song.duration}&lt;/td>
+              &lt;/tr>
+              ))} 
+              
+            &lt;/tbody>
+          &lt;/table>
+
+        &lt;/section>
+
+        &lt;section className="container p-0 m-0 ">
+          &lt;h1> Albums &lt;/h1>
+          &lt;div className="row">
+
+          {this.state.albumInfo.slice(0,3).map((album,index)=>(   
+            &lt;div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
+              &lt;MediaObject key={index} image={album.albumPhoto} 
+              objectName={album.albumName} albumLink={album.albumLink}> &lt;/MediaObject>
+            &lt;/div>  
+          ))}
+
+          {this.state.albumInfo.slice(3,this.state.albumInfo.length).map((album,index)=>(   
+            &lt;div className="col-sm-12 col-md-4 col-lg-3 col-xl-2 hide-these"> 
+              &lt;MediaObject key={index} image={album.albumPhoto} 
+              objectName={album.albumName} albumLink={album.albumLink}> &lt;/MediaObject>
+            &lt;/div>  
+          ))}           
+          &lt;/div>
+
+{/* Contents of show more drop down */}
+          &lt;div className="row justify-content-center">
+            &lt;div className="collapse" id="collapseAlbums">
+
+              &lt;div className="row">
+              {this.state.albumInfo.slice(3,this.state.albumInfo.length).map((album,index)=>(   
+                  &lt;div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
+                    &lt;MediaObject key={index} image={album.albumPhoto} 
+                    objectName={album.albumName} albumLink={album.albumLink}> &lt;/MediaObject>
+                  &lt;/div>  
+              ))}
+              &lt;/div>
+
+            &lt;/div>
+
+            &lt;button id="show-more-album-btn"className="btn show-more mb-3" type="button" data-toggle="collapse" data-target="#collapseAlbums"
+                aria-expanded="false" aria-controls="collapseExample" onClick={this.showMoreAlbums}> 
+                {this.state.showAlbums} &lt;i id="albums-arrow" className="fas fa-chevron-down">&lt;/i> 
+            &lt;/button>
+
+          &lt;/div>
+
+        &lt;/section>
+
+        &lt;section className="container m-0 p-0">
+          &lt;h1> Singles &lt;/h1>
+          &lt;div className="row">
+            {this.state.singlesInfo.slice(0,3).map((single,index)=>(   
+                &lt;div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
+                  &lt;MediaObject key={index} image={single.singlePhoto} 
+                  objectName={single.singleName} albumLink={single.albumLink}> &lt;/MediaObject>
+                &lt;/div>  
+            ))}
+
+            {this.state.singlesInfo.slice(3,this.state.singlesInfo.length).map((single,index)=>(   
+                &lt;div className="col-sm-12 col-md-4 col-lg-3 col-xl-2 hide-these"> 
+                  &lt;MediaObject key={index} image={single.singlePhoto} 
+                  objectName={single.singleName} albumLink={single.albumLink}> &lt;/MediaObject>
+                &lt;/div>  
+            ))}
+          &lt;/div>
+          
+{/* Contents of show more drop down */}
+          &lt;div className="row justify-content-center">
+
+            &lt;div className="collapse" id="collapseSingles">
+              &lt;div className="row">
+                {this.state.singlesInfo.slice(3,this.state.singlesInfo.length).map((single,index)=>(   
+                    &lt;div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
+                      &lt;MediaObject key={index} image={single.singlePhoto} 
+                  objectName={single.singleName} albumLink={single.albumLink}> &lt;/MediaObject>
+                    &lt;/div>  
+                ))}
+                &lt;/div>
+            &lt;/div>
+
+            &lt;button className="btn show-more mb-3" type="button" data-toggle="collapse" data-target="#collapseSingles"
+                aria-expanded="false" aria-controls="collapseExample" onClick={this.showMoreSingles}> 
+                {this.state.showSingles} &lt;i id="singles-arrow" className="fas fa-chevron-down">&lt;/i> 
+            &lt;/button>
+            
+          &lt;/div>
+
+        &lt;/section>        
+          
+          
+      &lt;/div>
+    );
+  }
+}
+  /**A function connecting component to redux store
+ * @memberof ArtistOverviewContent
+ * @func mapStateToProps
+ */
+const mapStateToProps = state => {
+
+  return {
+    userID : state.userID
+    //now you have access to the userID as this.props.userID inside the class component.
+  };
+
+};
+
+export default connect(mapStateToProps)(ArtistOverviewContent);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#BrowseItem">BrowseItem</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchContent">SearchContent</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 23:25:27 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

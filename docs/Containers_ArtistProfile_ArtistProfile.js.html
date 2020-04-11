@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/ArtistProfile/ArtistProfile.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/ArtistProfile/ArtistProfile.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import "./ArtistProfile.css";
+import {NavLink } from "react-router-dom";
+import ArtistProfileContent from "../../Components/ArtistProfile/ArtistProfileContent";
+import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
+import {connect} from "react-redux";
+import {BASEURL} from "../../Constants/baseURL";
+
+/** Class ArtistProfile
+ * @category ArtistProfile
+ * @extends Component
+ */
+export class ArtistProfile extends Component{
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+  /**Object of artist objects with info
+   * @memberof ArtistProfile
+   * @type {Array&lt;artists>}
+   */
+      artistInfo:{},
+  /**state member to play artist's songs
+   * @memberof ArtistProfile
+   * @type {string}
+   */
+      play: "play",
+  /**state member to follow artist
+   * @memberof ArtistProfile
+   * @type {string}
+   */
+      follow: "follow",
+  /**state member having the artist profile's cover link
+   * @memberof ArtistProfile
+   * @type {string}
+   */
+      coverLink: "https://ak8.picdn.net/shutterstock/videos/31469038/thumb/1.jpg",
+  }
+}
+  /**Function for setting state on rendering and getting artist info
+   * @memberof ArtistProfile
+   * @func componentDidMount
+   */
+  componentDidMount() {
+    console.log(this.props.match.url)
+    // Get the basic artist info
+    // this.props.history.replace("/webplayer/artistprofile/" + this.props.selectedArtistID ) 
+
+    // const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/" + "api/Artist/" +"123"; 
+
+  /**const url of the request
+   * @memberof ArtistProfile
+   * @type {string}
+   */ 
+    var url = BASEURL + "Artists/" + this.props.selectedArtistID; 
+    var requestOptions = {
+      method: 'GET',
+      headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
+    };
+    
+    fetch(url,requestOptions)
+      .then((response) => { return response.json()})
+      .then((data) => {
+        this.setState({
+        artistInfo: data.artist,
+        coverLink: "http://52.14.190.202:8000/images/"+data.artist.imagePath
+      });
+        console.log(this.state.artistInfo);
+      })
+      .catch((error)=>{console.log(error);
+
+      })
+
+  }
+  /**Function for toggling play and pause in header
+   * @memberof ArtistProfile
+   * @func playArtist
+   */
+  playArtist = e => {
+        /**const id of the calling element
+     * @memberof ArtistProfile
+     * @type {string}
+     */  
+    const {id} = e.target;
+
+    if ( this.state.play === "play" ) {
+      this.setState({play: "pause"});
+    }
+    else if ( this.state.play === "pause" ) {
+      this.setState({play: "play"});
+    }
+
+  }
+  /**Function for toggling follow and follow in header
+   * @memberof ArtistProfile
+   * @func followArtist
+   */
+  followArtist = e => {
+      /**const id of the calling element
+       * @memberof ArtistProfile
+       * @type {string}
+       */  
+    const {id} = e.target;
+
+    if ( this.state.follow === "follow" ) {
+      this.setState({follow: "unfollow"});
+      if (document.getElementById(id)){
+      document.getElementById(id).style.color="#1DB954";}
+    }
+    else if ( this.state.follow === "unfollow" ) {
+      this.setState({follow: "follow"});
+      if (document.getElementById(id)){
+      document.getElementById(id).style.color="white";}
+    }
+
+  }
+
+  // handleSectionClick = e => {
+  //   const {id} = e.target;
+  //   var clickedOption= document.getElementById(id);
+  //   clickedOption.classList.add("grey-background");
+
+  //   var options =document.getElementsByClassName("grey-background");
+  //   for (var i = 0 ; i &lt; options.length ; i++) {
+  //     if (options[i].id !== id){
+  //       options[i].classList.remove("grey-background");
+  //     }
+  //   }; 
+  // }
+
+  render() {
+  return (
+    &lt;div className="artist-profile-body">
+
+       &lt;HomePageNavbar color="rgba(77,67,61,0.4)"/>
+     
+      &lt;div className="container  artist-top-section " style={{ backgroundImage: `url(${this.state.coverLink})` }}>
+
+        &lt;div className="montly-listeners">
+          Average rating: {this.state.artistInfo.rating}/5
+        &lt;/div>
+
+        &lt;div>
+          &lt;h1 className="artist-name font-weight-bolder"> {this.state.artistInfo.artistName} &lt;/h1>
+        &lt;/div>
+
+        &lt;div id="buttons">
+          &lt;button id="play-button" className="btn btn-success rounded-pill" onClick={this.playArtist}>
+            {this.state.play} 
+          &lt;/button>
+
+          &lt;button id="follow-button" className="btn btn-success rounded-pill " onClick={this.followArtist}>
+            {this.state.follow}
+          &lt;/button>
+        &lt;/div>
+
+        &lt;div id="artist-profile-sections">
+          {/* TODO: change link when search is implemented */}  
+
+          {/* &lt;a id="overview" type="button" className=" artist-profile-sections" 
+          role="button" href="/webplayer/likedsongs/" onClick={this.handleSectionClick}> Overview &lt;/a>
+
+          &lt;a id="related-artists" type="button" className=" artist-profile-sections" 
+          role="button" href="/webplayer/likedsongs/relatedartists/" onClick={this.handleSectionClick}> Related Artists &lt;/a>
+
+          &lt;a id="about" type="button" className=" artist-profile-sections" 
+          role="button" href="/webplayer/likedsongs/artistabout/" onClick={this.handleSectionClick}> About &lt;/a> */}
+
+          &lt;NavLink to={this.props.match.url + "/overview/"} id="overview" 
+          className="artist-profile-sections" 
+          onClick={this.handleSectionClick}> Overview &lt;/NavLink>
+          
+          &lt;NavLink to={this.props.match.url + "/relatedartists/"} id="related-artists" 
+          className=" artist-profile-sections" 
+          onClick={this.handleSectionClick}> Related Artists &lt;/NavLink>
+
+          &lt;NavLink to={this.props.match.url + "/artistabout/"} id="about" 
+          className="artist-profile-sections" 
+          onClick={this.handleSectionClick}> About &lt;/NavLink> 
+
+
+        &lt;/div>
+
+      &lt;/div>
+
+      &lt;ArtistProfileContent info={this.state.artistInfo} artistID={this.props.selectedArtistID}/>
+
+    &lt;/div>
+  )
+ };
+};
+
+  /**Function for connecting the component with redux store
+   * @memberof ArtistProfile
+   * @func mapStateToProps
+   */
+const mapStateToProps = state => {
+
+  return {
+    selectedArtistID : state.selectedArtistID
+    //now you have access to the selectedArtistID as this.props.selectedArtistID inside the class component.
+  };
+
+};
+
+export default connect(mapStateToProps)(ArtistProfile);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#BrowseItem">BrowseItem</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchContent">SearchContent</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 23:25:27 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
