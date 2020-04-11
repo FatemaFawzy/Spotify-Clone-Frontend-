@@ -28,4 +28,14 @@ describe("Your Library-Playlist Container test", ()=>{
     expect(header.text()).toContain("Playlists");
   })
 
+  describe("Your Library - Playlist componentDidMount test", ()=>{
+  
+    it('calls componentDidMount', () => {
+      jest.spyOn(YourLibraryPlaylist.prototype, 'componentDidMount')
+      const wrapper = shallow(<YourLibraryPlaylist />)
+      expect(YourLibraryPlaylist.prototype.componentDidMount.mock.calls.length).toBe(1)
+    })
+  
+  })
+
 })

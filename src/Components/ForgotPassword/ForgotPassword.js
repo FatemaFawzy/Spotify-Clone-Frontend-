@@ -25,7 +25,7 @@ const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 );
 /** Class ForgotPassword to get an email from the user to send the instructions of resetting the password
- * @category ForgotPassword
+ * @group ForgotPassword
  * @extends Component
  */
 export class ForgotPassword extends Component {
