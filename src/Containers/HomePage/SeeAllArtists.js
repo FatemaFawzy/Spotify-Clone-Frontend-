@@ -5,7 +5,7 @@ import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
 
-class SeeAllArtists extends Component {
+export class SeeAllArtists extends Component {
   constructor(props){
     super(props);
     this.state = {

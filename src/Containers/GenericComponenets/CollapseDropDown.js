@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './CollapseDropDown.css';
 import { NavLink, Link } from "react-router-dom";
 
-class CollapseDropDown extends Component {
+export class CollapseDropDown extends Component {
   toggle()
   {
     var blur=document.getElementById('blur');

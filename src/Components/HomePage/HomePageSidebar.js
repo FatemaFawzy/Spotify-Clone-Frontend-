@@ -8,7 +8,7 @@ import {withRouter} from "react-router-dom";
 import * as actionTypes from "../../Store/actions";
  
 
-class HomePageSidebar extends Component{
+export class HomePageSidebar extends Component{
   constructor(props){
     super(props);
     this.state = {
