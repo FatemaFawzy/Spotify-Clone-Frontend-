@@ -53,11 +53,13 @@ export class EditProfile extends Component {
 
         if ( value.length === 0 ) {
           this.setState({usernameErrorMessage: "You must specify your username" }) ;
-          document.getElementById(id).style.borderColor= "#bd3200";
+          if (document.getElementById(id)) {
+          document.getElementById(id).style.borderColor= "#bd3200";}
         }
         else {
           this.setState({usernameErrorMessage: ""});
-          document.getElementById(id).style.borderColor= "#ced4da";
+          if (document.getElementById(id)) {
+          document.getElementById(id).style.borderColor= "#ced4da";}
         }
         break;
       case "gender":
