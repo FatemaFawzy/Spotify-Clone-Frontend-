@@ -10,7 +10,7 @@ import MainNavbar from '../../Components/WelcomeRelated/MainNavbar';
 import {connect} from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
 
-class AccountLayout extends Component {
+export class AccountLayout extends Component {
 
   state={
 
