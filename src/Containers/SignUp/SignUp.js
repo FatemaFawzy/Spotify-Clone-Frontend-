@@ -8,7 +8,7 @@ const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 );
 
-class SignUp extends Component{
+export class SignUp extends Component{
   constructor(props){
     super(props);
 
