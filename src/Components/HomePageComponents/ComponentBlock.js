@@ -11,7 +11,7 @@ import {Link, Router } from "react-router-dom";
  * @category ComponentBlock
  * @extends Component
  */
-class ComponentBlock extends Component {
+ export class ComponentBlock extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -126,9 +126,9 @@ return(
     <div className="container">
     <h1 className="header">{this.props.ComponentName}</h1>
     <Link to="/webplayer/HomePage/seeallartists"><a id="see-all">{this.props.excess ? "SEE ALL" : ""}</a></Link>
-    </div>
+  </div> 
     <p className="header-description">{this.props.description}</p>
-    
+  
     {final}  
   </div>
     )

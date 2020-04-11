@@ -9,7 +9,7 @@ import {connect} from "react-redux";
  * @category SeeAllArtists
  * @extends Component
  */
-class SeeAllArtists extends Component {
+export class SeeAllArtists extends Component {
   constructor(props){
     super(props);
     this.state = {

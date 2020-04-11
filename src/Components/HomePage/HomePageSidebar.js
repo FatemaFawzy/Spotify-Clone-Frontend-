@@ -11,7 +11,7 @@ import * as actionTypes from "../../Store/actions";
  * @category HomePage
  * @extends Component
  */
-class HomePageSidebar extends Component{
+export class HomePageSidebar extends Component{
   constructor(props){
     super(props);
     this.state = {

@@ -12,7 +12,7 @@ const initialState = {
   newPassword: "",
   newPasswordError:"",
 }
-class SetPasswordContent extends Component{
+export class SetPasswordContent extends Component{
   constructor(props){
     super(props);
  this.state = initialState;
@@ -26,13 +26,19 @@ class SetPasswordContent extends Component{
      {
        currentError = "Enter your current password.";
        this.setState({currentError});
+       if (document.querySelector("#newPassword-input1"))
+       {
        document.querySelector("#newPassword-input1").classList.add("red-border");
+       }
        proceedemail = false;
      }
      else {
       currentError = "";
       this.setState({current, currentError});
+      if (document.querySelector("#newPassword-input1"))
+      {
       document.querySelector("#newPassword-input1").classList.remove("red-border");
+      }
       proceedemail = true;
       }
       return proceedemail;
@@ -46,13 +52,19 @@ class SetPasswordContent extends Component{
      {
        newPasswordError = "Enter your new password.";
        this.setState({newPasswordError});
+       if (document.querySelector("#newPassword-input2"))
+       {
        document.querySelector("#newPassword-input2").classList.add("red-border");
+       }
        proceedpassword = false;
      }
      else {
       newPasswordError = "";
       this.setState({newPassword, newPasswordError});
+      if (document.querySelector("#newPassword-input2"))
+      {
       document.querySelector("#newPassword-input2").classList.remove("red-border");
+      }
       proceedpassword = true;
       }
       return proceedpassword;
@@ -81,7 +93,7 @@ class SetPasswordContent extends Component{
     
     let current = this.state.current;
     let currentError = this.state.currentError;
-    event.preventDefault();
+    // event.preventDefault();
     // console.log(email.length);
     this.validateCurrent();
     this.validateNew();

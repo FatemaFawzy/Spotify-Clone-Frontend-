@@ -10,7 +10,7 @@ import {connect} from "react-redux";
  * @category HomePage
  * @extends Component
  */
-class HomePage extends Component {
+export class HomePage extends Component {
   constructor(props){
     super(props);
     this.state = {

@@ -7,27 +7,27 @@ import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
 
 //IMPORT THE COMPONENT YOU WANNA TEST
-import Header from "../Components/WelcomeRelated/Header"
+import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
 
 //CALL THE DESCRIBE FUNCTION 
 //IT TAKES TWO PARAMETERS 1ST: A TEXT DESCRIPTION
 //                        2ND: AN ARROW FUNCTION 
-describe("Header Container test", ()=>{
+describe("Collapse DropDown test", ()=>{
 
   let wrapper;
   beforeEach(() => {
-   wrapper = shallow(<Header/> ); 
+   wrapper = shallow(<CollapseDropDown /> ); 
   });
 
 
-  it("Should have an image tag", ()=>{
-   const image= wrapper.find("img");
-    expect(image).toHaveLength(1);
+  it("Should have 7 icons", ()=>{
+    const icons=wrapper.find("i");
+    expect(icons).toHaveLength(7);
   })
   
-  it("Should have two divs", ()=>{
-    const divNumber= wrapper.find("div");
-    expect(divNumber).toHaveLength(3);
+  it("Should have 1 NavLink", ()=>{
+    const NavLinks=wrapper.find("NavLink");
+    expect(NavLinks).toHaveLength(1);
   })
 
 })
