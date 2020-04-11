@@ -12,7 +12,7 @@ import {connect} from 'react-redux';
  * @category AlbumPage
  * @extends Component
  */
-class AlbumPage extends Component
+export class AlbumPage extends Component
 {
   constructor(props){
     super(props);
@@ -55,7 +55,7 @@ class AlbumPage extends Component
    * @memberof AlbumPage
    * @type {sring}
    */
-    songsNumber: "12 Songs",
+    songsNumber: "",
     /**Array of playlists in the bottom
    * @memberof AlbumPage
    * @type {sring}
@@ -209,22 +209,24 @@ componentDidMount(){
    popup_add_to_playlist.classList.toggle('activate')
  }
   
- /**Function to get tracks
-   * @memberof AlbumPage
-   * @func DropMenuCard
-   */ 
-  DropMenuCard ()
-  {
-    document.getElementById("DropMenuCard").classList.toggle("show");
-  }
-   /**Function to get tracks
-   * @memberof AlbumPage
-   * @func DropMenuSong
-   */
-  DropMenuSong()
-  {
-    document.getElementById("DropMenuSong").classList.toggle("show");
-  }
+//  /**Function to get tracks
+//    * @memberof AlbumPage
+//    * @func DropMenuCard
+//    */ 
+//   DropMenuCard ()
+//   {
+//     document.getElementById("DropMenuCard").classList.toggle("show");
+//   }
+//    /**Function to get tracks
+//    * @memberof AlbumPage
+//    * @func DropMenuSong
+//    */
+//   DropMenuSong()
+//   {
+//     document.getElementById("DropMenuSong").classList.toggle("show");
+//   }
+
+
    /**Function to get tracks
    * @memberof AlbumPage
    * @func likeSong
@@ -261,14 +263,12 @@ componentDidMount(){
  /**Function to get tracks
    * @memberof AlbumPage
    * @func playButton
-   * @param e
    */
-playButton = e => {
+playButton = () => {
    /**Function to get tracks
    * @memberof AlbumPage
    * @type {string}
    */
-  const {id} = e.target;
   if ( this.state.playAlbum === "Play" ) {
     this.setState({playAlbum: "Pause"});
   }
@@ -321,7 +321,7 @@ else if (check=="SAVE"){
 					  <li> <h3> {this.state.AlbumInfo.albumName} </h3> </li>
 					  <li> <h5> {this.state.Artist} </h5> </li>
             
-            <li> <a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playAlbum}</a> </li>
+            <li> <button id="play-button" href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playAlbum}</button> </li>
             <li >
               <button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> </button>
               <div className="dropdown ">
