@@ -223,8 +223,6 @@ class SearchPage extends Component {
           searchBlur={this.OnSearchBlur}
           isXvisible={Xvisible} />
 
-          
-
           {actualSearchPage}
 
       </div>

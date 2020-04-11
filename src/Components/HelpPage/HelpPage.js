@@ -136,7 +136,7 @@ class HelpPage extends Component {
           </div>
         </div>
 
-        {/* Fourth block */}
+        {/* Fifth block */}
         <div className="carousel-exist">
           <div className="container">
             <div className="row">
@@ -224,7 +224,7 @@ class HelpPage extends Component {
           </div>
         </div>
 
-        {/* Fourth block */}
+        {/* Sixth block */}
         <div className="get-spotify-sugg">
           <div className="container">
             <h1>Still not on Spotify?</h1>
