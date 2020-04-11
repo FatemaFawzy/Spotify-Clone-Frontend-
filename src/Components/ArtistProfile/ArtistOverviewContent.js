@@ -5,9 +5,16 @@ import MediaObject from './MediaObject';
 import {connect} from "react-redux";
 import { BASEURL } from '../../Constants/baseURL';
 
+/** Class ArtistOverviewContent
+ * @extends Component
+ */
 export class ArtistOverviewContent extends Component {
 
   state= { 
+  /**Array of popular songs info 
+   * @memberof ArtistOverviewContent
+   * @type {Array<songsInfo>}
+   */
     SongInfo:[],
     // SongInfo: [
     //   {id : 1, SongName : "Another Love (Zwette Edit)",Duration : "3:52", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
@@ -17,6 +24,10 @@ export class ArtistOverviewContent extends Component {
     //   {id : 5, SongName : "Summer Day", Duration : "4:15", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
     // ],
 
+  /**Array of artist albums info 
+   * @memberof ArtistOverviewContent
+   * @type {Array<albumInfo>}
+   */    
     albumInfo: [
       {id : 6, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
       albumLink: "/webplayer/album/"},
@@ -32,6 +43,10 @@ export class ArtistOverviewContent extends Component {
       albumLink: "/webplayer/album/"},
     ],
 
+  /**Array of artist singles info 
+   * @memberof ArtistOverviewContent
+   * @type {Array<singlesInfo>}
+   */
     singlesInfo: [
       {id : 12, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
       albumLink: "/webplayer/album/"},
@@ -47,10 +62,23 @@ export class ArtistOverviewContent extends Component {
       albumLink: "/webplayer/album/"},
     ],
 
+  /**state object for showing more or less albums 
+   * @memberof ArtistOverviewContent
+   * @type {String}
+   */
     showAlbums: "SHOW MORE",
+
+  /**state object for showing more or less singles 
+   * @memberof ArtistOverviewContent
+   * @type {String}
+   */
     showSingles: "SHOW MORE",
   }
 
+   /**Function that is called when the component renders
+   * @memberof ArtistOverviewContent
+   * @func componentDidMount
+   */
   componentDidMount(){
       // get artist's popular tracks
       // var url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/tracks/top?artistId=123"; 
@@ -72,7 +100,11 @@ export class ArtistOverviewContent extends Component {
       //   })
 
   }
-  
+
+   /**Function that is called to show more albums
+   * @memberof ArtistOverviewContent
+   * @func showMoreAlbums
+   */  
   showMoreAlbums= e => {
 
     if(this.state.showAlbums === "SHOW MORE") {
@@ -89,6 +121,10 @@ export class ArtistOverviewContent extends Component {
     icon.classList.toggle("fa-chevron-up");}
   }
 
+  /**Function that is called to show more singles
+   * @memberof ArtistOverviewContent
+   * @func showMoreSingles
+   */  
   showMoreSingles= e => {
 
     if(this.state.showSingles === "SHOW MORE") {
@@ -235,7 +271,10 @@ export class ArtistOverviewContent extends Component {
     );
   }
 }
-
+  /**A function connecting component to redux store
+ * @memberof ArtistOverviewContent
+ * @func mapStateToProps
+ */
 const mapStateToProps = state => {
 
   return {

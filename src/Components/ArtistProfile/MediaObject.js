@@ -10,7 +10,7 @@ class MediaObject extends Component {
     super(props);
     this.referefence= React.createRef();
     this.state = {
-  /**Array of playlists in the bottom
+  /**State member showing whether a song/album is playing or not
    * @memberof MediaObject
    * @type {boolean}
    */

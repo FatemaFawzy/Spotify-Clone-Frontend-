@@ -13,9 +13,9 @@ import * as itemType from "../../Constants/itemType";
 export class RelatedArtistsContent extends Component {
 
   state = {
-    /**Array of playlists in the bottom
+    /**Array of artists' info
    * @memberof RelatedArtistsContent
-   * @type {Array<artist>}
+   * @type {Array<artistInfo>}
    */
     artistInfo: [
       // {id : 1, artistName: "Vance Joy", artistPhoto : "https://i.scdn.co/image/7d186c3a80955b82a8cc46fe86bdf305478629e8"},
@@ -30,7 +30,7 @@ export class RelatedArtistsContent extends Component {
 
     ],
   }
-   /**A function to show the popping area for creating a new playlist
+   /**A function that requests artist info on rendering
    * @memberof RelatedArtistsContent
    * @func componentDidMount
    */
@@ -84,6 +84,10 @@ export class RelatedArtistsContent extends Component {
   }
 }
 
+  /**A function connecting component to redux store
+ * @memberof RelatedArtistsContent
+ * @func mapStateToProps
+ */
 const mapStateToProps = state => {
 
   return {

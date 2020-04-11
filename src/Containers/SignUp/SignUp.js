@@ -4,39 +4,127 @@ import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
 import {BASEURL} from "../../Constants/baseURL";
 
+  /**Function to test whether the email is in the correct form or not
+   * @memberof SignUp
+   * @func emailFormat
+   */
 const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 );
 
+/** Class SignUp
+ * @category SignUp
+ * @extends Component
+ */
 export class SignUp extends Component{
   constructor(props){
     super(props);
 
     this.state= {
+       /**state member (email)
+       * @memberof SignUp
+       * @type {string}
+       */ 
       email: null,
+       /**state member (password)
+       * @memberof SignUp
+       * @type {string}
+       */ 
       password: null,
+       /**state member (username)
+       * @memberof SignUp
+       * @type {string}
+       */ 
       username: null,
+       /**state member (day)
+       * @memberof SignUp
+       * @type {string}
+       */ 
       day: null,
+       /**state member (month)
+       * @memberof SignUp
+       * @type {string}
+       */ 
       month: null,
+       /**state member (year)
+       * @memberof SignUp
+       * @type {string}
+       */ 
       year: null,
+       /**state member (gender)
+       * @memberof SignUp
+       * @type {string}
+       */ 
       gender: null,
+       /**state member (accountType)
+       * @memberof SignUp
+       * @type {string}
+       */ 
       accountType: null,
+       /**state member error message if the account already exists in the DB
+       * @memberof SignUp
+       * @type {string}
+       */ 
       alreadyExists: "",
+       /**object state error messages
+       * @memberof SignUp
+       * @type {Object}
+       */  
       errorMessages: {
+       /**state member of errorMessages (email)
+       * @memberof SignUp
+       * @type {string}
+       */ 
         email: " ",
+       /**state member of errorMessages (password)
+       * @memberof SignUp
+       * @type {string}
+       */ 
         password: " ",
+       /**state member of errorMessages (username)
+       * @memberof SignUp
+       * @type {string}
+       */ 
         username: " ",
+       /**state member of errorMessages (day)
+       * @memberof SignUp
+       * @type {string}
+       */ 
         day: " ",
+       /**state member of errorMessages (month)
+       * @memberof SignUp
+       * @type {string}
+       */ 
         month: " ",
+       /**state member of errorMessages (year)
+       * @memberof SignUp
+       * @type {string}
+       */ 
         year: " ",
+       /**state member of errorMessages (gender)
+       * @memberof SignUp
+       * @type {string}
+       */ 
         gender: " ",
+       /**state member of errorMessages (accountType)
+       * @memberof SignUp
+       * @type {string}
+       */ 
         accountType: " ",
       }
     };
   }
 
+    /**Function to test the validity of the form
+   * @memberof SignUp
+   * @func formValidity
+   */
 // Check the validity of the form based on whether all error messages are empty or not 
   formValidity = () => {
+   /**variable for form validity
+   * @memberof SignUp
+   * @type {boolean}
+   */
     let valid = true;
     
 
@@ -56,12 +144,19 @@ export class SignUp extends Component{
 
     return valid;
   };
-
+    /**Function to check whether to submit the form or not
+   * @memberof SignUp
+   * @func handleSubmit
+   */
   // submit only if the form is valid -> all inputs are entered and correct
   handleSubmit =e => {
     e.preventDefault();
     let errorMessages= { ...this.state.errorMessages };
     const {email,  password, username, day, month, year, gender, accountType} = this.state;
+  /**variable for premium account type
+   * @memberof SignUp
+   * @type {boolean}
+   */
     var isPremium= false;
     console.log(this.state);
 
@@ -69,7 +164,10 @@ export class SignUp extends Component{
       isPremium= true;
     }
     if (this.formValidity(this.state)) {
-
+   /**const url for request
+   * @memberof SignUp
+   * @type {String}
+   */
       const url = BASEURL+"users/signup";
       console.log(url);
       const requestOptions = {
@@ -138,6 +236,10 @@ export class SignUp extends Component{
     // pair: [name, value]
     Object.entries(errorMessages).forEach (pair => {
       if ( pair[1] != null && pair[0] != "gender" && pair[1].length > 1) {
+      /**array of inputs to be given a style
+       * @memberof SignUp
+       * @type {Array<elements>}
+       */
         var fieldToBeChanged = document.getElementsByName( pair[0] );
         fieldToBeChanged[0].style.borderColor= "#bd3200";
         console.log (pair);
@@ -146,10 +248,26 @@ export class SignUp extends Component{
 
   };
 
+    /**Function to change error messages according to inputs
+   * @memberof SignUp
+   * @func handleChange
+   */
   // Dynamic changes of error messages when the user types in the inputs
   handleChange =e => {
     // e.preventDefault();
+      /**const name of the calling element
+       * @memberof SignUp
+       * @type {string}
+       */    
+       /**const value of the calling element
+       * @memberof SignUp
+       * @type {string}
+       */    
     const { name, value }= e.target;
+       /**object copy of state error messages
+       * @memberof SignUp
+       * @type {Object}
+       */  
     let errorMessages= { ...this.state.errorMessages };  
     this.setState({ [name]: value}, () => console.log(this.state) );
 
@@ -250,6 +368,10 @@ export class SignUp extends Component{
     // pair: [name, value]
     Object.entries(errorMessages).forEach (pair => {
       if ( pair[1] != null && pair[0] != "gender" && pair[1].length > 1) {
+      /**array of inputs to be given a style
+       * @memberof SignUp
+       * @type {Array<elements>}
+       */
         var fieldToBeChanged = document.getElementsByName( pair[0] );
         if(fieldToBeChanged[0]) {
         fieldToBeChanged[0].style.borderColor= "#bd3200";}
@@ -377,7 +499,10 @@ export class SignUp extends Component{
     );
   }
 } 
-
+  /**Function for connecting the component with redux store
+   * @memberof SignUp
+   * @func mapDispatchToProps
+   */
 const mapDispatchToProps = dispatch => {
   return {
     onSignUp : (userID,userToken) => dispatch ({type: actionTypes.ON_SIGNUP, payload: {id: userID , token: userToken} }),

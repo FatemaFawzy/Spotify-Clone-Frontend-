@@ -3,6 +3,10 @@ import './EmailSent.css';
 import Header from '../../Components/WelcomeRelated/Header';
 import Footer from '../../Components/WelcomeRelated/Footer';
 
+/** Class EmailSent 
+ * @category EmailSent
+ * @extends Component
+ */
 class EmailSent extends Component {
 render(){
 return (
