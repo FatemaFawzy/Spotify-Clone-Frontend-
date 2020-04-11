@@ -5,14 +5,31 @@ import GeneralItem from "../GenericComponenets/GeneralItem";
 import LikedSongsComponent from '../../Components/YourLibraryComponents/LikedSongsComponent';
 import {connect} from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
+
+/** Class YourLibraryPlaylist
+ * @extends Component
+ */
 export class YourLibraryPlaylist extends Component {
   constructor(props){
     super(props);
     this.state = {
+      /**Includes results of fetch requests
+   * @memberof YourLibraryPlaylist
+   * @type {Array<playlists>}
+   */
     playlistArray:[],
-    total:"",
+   /**Final array of albums
+   * @memberof YourLibraryPlaylist
+   * @type {String}
+   */
+   total:"",
     }
   }
+
+  /**A function that fires once the homepage is called
+   * @memberof YourLibraryPlaylist
+   * @func componentDidMount
+   */
 componentDidMount() {
 //   //   const playlistArray=
 //   //   [
@@ -38,11 +55,19 @@ componentDidMount() {
 //   //     id:"5"}
 //   // ];
 
+/**Prerequisites for fetch request
+   * @memberof YourLibraryPlaylist
+   * @type {String}
+   */
 const requestOptions = {
   method:"GET",
   headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
 }
 
+ /**url for fetch request
+   * @memberof YourLibraryPlaylist
+   * @type {String}
+   */
 const url = "http://52.14.190.202:8000/playlists/me"; 
 fetch(url,requestOptions)
   .then((response) => {

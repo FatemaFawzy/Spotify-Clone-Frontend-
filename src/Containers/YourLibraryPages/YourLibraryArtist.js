@@ -4,15 +4,32 @@ import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibrar
 import GeneralItem from "../GenericComponenets/GeneralItem";
 import {connect} from "react-redux";
 
+/** Class YourLibraryArtist
+ * @extends Component
+ */
 export class YourLibraryArtist extends Component {
   constructor(props){
     super(props);
     this.state = {
+    /**Includes results of fetch requests
+   * @memberof YourLibraryArtist
+   * @type {Array<artists>}
+   */
       artistArray:[],
+
+    /**Final array of albums
+   * @memberof YourLibraryArtist
+   * @type {String}
+   */
         total:""
 
     }
   }
+
+  /**A function that fires once the homepage is called
+   * @memberof YourLibraryArtist
+   * @func componentDidMount
+   */
   componentDidMount() {
      //Make a request with this.props.userID
     //assume this is the returned data

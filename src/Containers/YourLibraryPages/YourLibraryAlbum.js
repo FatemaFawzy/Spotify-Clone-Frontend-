@@ -3,15 +3,31 @@ import './YourLibraryAlbum.css';
 import GeneralItem from "../GenericComponenets/GeneralItem";
 import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
 
-
+/** Class YourLibraryAlbum
+ * @extends Component
+ */
 export class YourLibraryAlbum extends Component {
   constructor(props){
     super(props);
     this.state = {
+      /**Includes results of fetch requests
+   * @memberof YourLibraryAlbum
+   * @type {Array<Albums>}
+   */
       albumArray:[],
+
+      /**Final array of albums
+   * @memberof YourLibraryAlbum
+   * @type {String}
+   */
       total:""
     }
   }
+
+  /**A function that fires once the homepage is called
+   * @memberof YourLibraryAlbum
+   * @func componentDidMount
+   */
   componentDidMount() {
      //Make a request with this.props.userID
     //assume this is the returned data

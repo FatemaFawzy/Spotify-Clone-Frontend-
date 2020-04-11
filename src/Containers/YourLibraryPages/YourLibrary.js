@@ -11,7 +11,9 @@ import YourLibraryAlbum from "./YourLibraryAlbum";
 import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
 import "./YourLibrary.css";
 
-
+/** Class YourLibrary
+ * @extends Component
+ */
 export class YourLibrary extends Component {
 
   render() {

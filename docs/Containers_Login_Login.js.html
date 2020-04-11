@@ -1,4 +1,32 @@
-import React ,{ Component} from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/Login/Login.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/Login/Login.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
 import './Login.css';
 import {Link, Router } from "react-router-dom";
 import {connect} from "react-redux";
@@ -148,7 +176,7 @@ clickSubmit = event => {
   // console.log(email.length);
   this.validateEmail();
   this.validatePassword();
-  if(!emailFormat.test(email) && email.length !== 0)
+  if(!emailFormat.test(email) &amp;&amp; email.length !== 0)
   {
     emailError="The email address is invalid."
     if (document.querySelector("#email-input"))
@@ -157,7 +185,7 @@ clickSubmit = event => {
     }
     this.setState({emailError})
   }
-  else if(this.validateEmail() && this.validatePassword()){
+  else if(this.validateEmail() &amp;&amp; this.validatePassword()){
      this.setState({initialState});
     //  console.log(email.length);
     //  var clr= document.querySelector("#login-form");
@@ -236,60 +264,60 @@ clickSubmit = event => {
 render() {
  return (
    
-  <div className="login">
-    <div id="logo"></div>
+  &lt;div className="login">
+    &lt;div id="logo">&lt;/div>
 
-    <div className="container">
+    &lt;div className="container">
 
-      <p className="first-line">To continue, log in to Spotify.</p>
-      <p className="incorrect d-none">{this.state.incorrectData}</p>
-      <a id="facebook-button"  className=" buttons btn btn-block btn-facebook" href="#" role="button"><i className="fab fa-facebook logo" aria-hidden="true"></i>  Continue With Facebook</a>
+      &lt;p className="first-line">To continue, log in to Spotify.&lt;/p>
+      &lt;p className="incorrect d-none">{this.state.incorrectData}&lt;/p>
+      &lt;a id="facebook-button"  className=" buttons btn btn-block btn-facebook" href="#" role="button">&lt;i className="fab fa-facebook logo" aria-hidden="true">&lt;/i>  Continue With Facebook&lt;/a>
 
-        <div className="horizontal">
-          <span className="horizontal-span" >
+        &lt;div className="horizontal">
+          &lt;span className="horizontal-span" >
            OR
-          </span>
-        </div>
+          &lt;/span>
+        &lt;/div>
 
-        <form id="login-form">
+        &lt;form id="login-form">
 
-          <div className="form-group">
-            <input type="text" className="form-control " id="email-input" aria-describedby="emailHelp"  placeholder="Email adrress or username" onChange={this.handleEmail} name="email" />
-            <p  id="missing-email">{this.state.emailError}</p>           
-          </div>
+          &lt;div className="form-group">
+            &lt;input type="text" className="form-control " id="email-input" aria-describedby="emailHelp"  placeholder="Email adrress or username" onChange={this.handleEmail} name="email" />
+            &lt;p  id="missing-email">{this.state.emailError}&lt;/p>           
+          &lt;/div>
 
-          <div className="form-group">
-            <input type="password" className="form-control " id="password-input"  placeholder="Password"  onChange={this.handlePassword} name="password" />
-            <p  id="missing-password">{this.state.passwordError}</p>
-          </div>
+          &lt;div className="form-group">
+            &lt;input type="password" className="form-control " id="password-input"  placeholder="Password"  onChange={this.handlePassword} name="password" />
+            &lt;p  id="missing-password">{this.state.passwordError}&lt;/p>
+          &lt;/div>
 
-          <div className="form-group form-check">
-            <div className="custom-control custom-checkbox">
-              <button id="login-button" type="submit" className="buttons btn btn-success" onClick={this.clickSubmit}>LOG IN</button>
-            </div>
-          </div>
+          &lt;div className="form-group form-check">
+            &lt;div className="custom-control custom-checkbox">
+              &lt;button id="login-button" type="submit" className="buttons btn btn-success" onClick={this.clickSubmit}>LOG IN&lt;/button>
+            &lt;/div>
+          &lt;/div>
 
-        </form>
+        &lt;/form>
 
-        <br/>
+        &lt;br/>
 
-        <Link to="/logIn/forgotpassword" className="password-forgot" >Forgot your password?</Link> 
+        &lt;Link to="/logIn/forgotpassword" className="password-forgot" >Forgot your password?&lt;/Link> 
 
-        <br/>
+        &lt;br/>
 
-        <hr className="horizontal-line-bottom1"/>
+        &lt;hr className="horizontal-line-bottom1"/>
 
-        <h4 className="dont-have-account">Don't have an account?</h4>
-        <a id="signup-button" className="buttons btn btn-block btn-apple" href="/signup" role="button">Sign up for spotify</a>
+        &lt;h4 className="dont-have-account">Don't have an account?&lt;/h4>
+        &lt;a id="signup-button" className="buttons btn btn-block btn-apple" href="/signup" role="button">Sign up for spotify&lt;/a>
 
-        <br/>
+        &lt;br/>
 
-        <hr className="horizontal-line-bottom2" />
+        &lt;hr className="horizontal-line-bottom2" />
 
 
-    </div>
+    &lt;/div>
 
-</div>
+&lt;/div>
 );
 }
 } 
@@ -299,4 +327,26 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="Login.html">Login</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="Success.html">Success</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 22:19:11 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
