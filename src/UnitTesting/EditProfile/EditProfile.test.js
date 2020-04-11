@@ -1,5 +1,5 @@
 import React from 'react';
-import {EditProfile} from '../Components/UserAccountProfile/EditProfile/EditProfile';
+import {EditProfile} from '../../Components/UserAccountProfile/EditProfile/EditProfile';
 import { shallow } from 'enzyme';
 
 describe("Testing EditProfile redering", () => {
