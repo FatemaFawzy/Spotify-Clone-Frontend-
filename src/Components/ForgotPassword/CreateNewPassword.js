@@ -18,7 +18,7 @@ const initialState = {
   newPasswordError: ""
 }
 /** Class CreateNewPassword to get a new password from the user
- * @category ForgotPassword
+ * @group ForgotPassword
  * @extends Component
  */
 export class CreateNewPassword extends Component {
