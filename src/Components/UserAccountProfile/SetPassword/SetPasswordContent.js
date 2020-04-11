@@ -7,17 +7,39 @@ import {BASEURL} from "../../../Constants/baseURL";
 
 
 const initialState = {
+    /**Current password input
+   * @memberof SetPasswordContent
+   * @type {String}
+   */
   current: "",
+   /**Current password error message
+   * @memberof SetPasswordContent
+   * @type {String}
+   */
   currentError: "",
+   /**New password input
+   * @memberof SetPasswordContent
+   * @type {String}
+   */
   newPassword: "",
+   /**New password error message
+   * @memberof SetPasswordContent
+   * @type {String}
+   */
   newPasswordError:"",
 }
+/** Class SetPasswordContent
+ * @extends Component
+ */
 export class SetPasswordContent extends Component{
   constructor(props){
     super(props);
  this.state = initialState;
   }
-
+/**A function that checks Current Password's validation
+  * @memberof SetPasswordContent
+  * @func validateCurrent
+  */
   validateCurrent = () => {
     let current = this.state.current;
     let currentError="";
@@ -44,6 +66,10 @@ export class SetPasswordContent extends Component{
       return proceedemail;
    }
   
+   /**A function that checks New Password's validation
+  * @memberof SetPasswordContent
+  * @func validateNew
+  */
    validateNew = () => {
     let newPassword = this.state.newPassword;
     let newPasswordError="";
@@ -72,7 +98,10 @@ export class SetPasswordContent extends Component{
   
   
   
-  
+  /**A function that handles Current Password input change
+  * @memberof SetPasswordContent
+  * @func handleCurrent
+  */
    handleCurrent = event => {
     let current = this.state.current;
     current = event.target.value;
@@ -81,6 +110,11 @@ export class SetPasswordContent extends Component{
     
   
   };
+
+  /**A function that handles New Password input change
+  * @memberof SetPasswordContent
+  * @func handleNew
+  */
   handleNew = event => {
     let pass = this.state.newPassword;
     pass = event.target.value;
@@ -89,6 +123,11 @@ export class SetPasswordContent extends Component{
     
   
   };
+
+  /**A function that handles forms submission
+  * @memberof SetPasswordContent
+  * @func clickSubmit
+  */
   clickSubmit = event => {
     
     let current = this.state.current;
@@ -101,11 +140,20 @@ export class SetPasswordContent extends Component{
     {
       const {current,newPassword}=this.state;
 
+        /**Prerequisites for fetch request
+   * @memberof SetPasswordContent
+   * @type {String}
+   */
       const requestOptions = {
           method:"PUT",
           headers:{'Content-Type':  'application/json','x-auth':this.props.userToken},
           body:JSON.stringify({oldPassword:current,newPassword:newPassword})
         }
+
+      /**url for fetch request
+   * @memberof SetPasswordContent
+   * @type {String}
+   */
         const url = "http://52.14.190.202:8000/changepassword"; 
         fetch(url,requestOptions)
           .then((response) => {

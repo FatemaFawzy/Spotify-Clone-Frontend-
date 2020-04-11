@@ -40,7 +40,7 @@ import {connect} from 'react-redux';
  * @category AlbumPage
  * @extends Component
  */
-class AlbumPage extends Component
+export class AlbumPage extends Component
 {
   constructor(props){
     super(props);
@@ -83,7 +83,7 @@ class AlbumPage extends Component
    * @memberof AlbumPage
    * @type {sring}
    */
-    songsNumber: "12 Songs",
+    songsNumber: "",
     /**Array of playlists in the bottom
    * @memberof AlbumPage
    * @type {sring}
@@ -237,22 +237,24 @@ componentDidMount(){
    popup_add_to_playlist.classList.toggle('activate')
  }
   
- /**Function to get tracks
-   * @memberof AlbumPage
-   * @func DropMenuCard
-   */ 
-  DropMenuCard ()
-  {
-    document.getElementById("DropMenuCard").classList.toggle("show");
-  }
-   /**Function to get tracks
-   * @memberof AlbumPage
-   * @func DropMenuSong
-   */
-  DropMenuSong()
-  {
-    document.getElementById("DropMenuSong").classList.toggle("show");
-  }
+//  /**Function to get tracks
+//    * @memberof AlbumPage
+//    * @func DropMenuCard
+//    */ 
+//   DropMenuCard ()
+//   {
+//     document.getElementById("DropMenuCard").classList.toggle("show");
+//   }
+//    /**Function to get tracks
+//    * @memberof AlbumPage
+//    * @func DropMenuSong
+//    */
+//   DropMenuSong()
+//   {
+//     document.getElementById("DropMenuSong").classList.toggle("show");
+//   }
+
+
    /**Function to get tracks
    * @memberof AlbumPage
    * @func likeSong
@@ -289,14 +291,12 @@ componentDidMount(){
  /**Function to get tracks
    * @memberof AlbumPage
    * @func playButton
-   * @param e
    */
-playButton = e => {
+playButton = () => {
    /**Function to get tracks
    * @memberof AlbumPage
    * @type {string}
    */
-  const {id} = e.target;
   if ( this.state.playAlbum === "Play" ) {
     this.setState({playAlbum: "Pause"});
   }
@@ -349,7 +349,7 @@ else if (check=="SAVE"){
 					  &lt;li> &lt;h3> {this.state.AlbumInfo.albumName} &lt;/h3> &lt;/li>
 					  &lt;li> &lt;h5> {this.state.Artist} &lt;/h5> &lt;/li>
             
-            &lt;li> &lt;a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playAlbum}&lt;/a> &lt;/li>
+            &lt;li> &lt;button id="play-button" href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playAlbum}&lt;/button> &lt;/li>
             &lt;li >
               &lt;button id="like-song" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> &lt;/button>
               &lt;div className="dropdown ">
@@ -426,13 +426,13 @@ export default connect(mapStateToProps) (AlbumPage);</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="Success.html">Success</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="Success.html">Success</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 20:31:02 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 22:25:09 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

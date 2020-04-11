@@ -7,25 +7,53 @@ import {BASEURL} from "../../Constants/baseURL";
 
 
 const initialState = {
+  /**Email input
+   * @memberof Login
+   * @type {String}
+   */
   email: "",
+  /**Email Error message
+   * @memberof Login
+   * @type {String}
+   */
   emailError: "",
+  /**Password input
+   * @memberof Login
+   * @type {String}
+   */
   password: "",
+  /**Password Error message
+   * @memberof Login
+   * @type {String}
+   */
   passwordError:"",
+  /**Incorrect user info message
+   * @memberof Login
+   * @type {String}
+   */
   incorrectData:"",
 }
 
-
+/**Email format that must be entered by the user
+   * @memberof Login
+   * @type {expression}
+   */
 const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 );
+/** Class Login
+ * @extends Component
+ */
 export class Login extends Component{
   constructor(props){
     super(props);
  this.state = initialState;
   }
 
-
-
+/**A function that checks email's validation
+  * @memberof Login
+  * @func validateEmail
+  */
  validateEmail = () => {
   let email = this.state.email;
   let emailError="";
@@ -51,7 +79,10 @@ export class Login extends Component{
     }
     return proceedemail;
  }
-
+/**A function that checks password's validation
+  * @memberof Login
+  * @func validatePassword
+  */
  validatePassword = () => {
   let password = this.state.password;
   let passwordError="";
@@ -80,7 +111,10 @@ export class Login extends Component{
 
 
 
-
+/**A function that handles email on change
+  * @memberof Login
+  * @func handleEmail
+  */
  handleEmail = event => {
   let email = this.state.email;
   email = event.target.value;
@@ -89,6 +123,10 @@ export class Login extends Component{
   
 
 };
+/**A function that handles password on change
+  * @memberof Login
+  * @func handlePassword
+  */
 handlePassword = event => {
   let pass = this.state.password;
   pass = event.target.value;
@@ -97,7 +135,10 @@ handlePassword = event => {
   
 
 };
-
+/**A function that handles forms submission
+  * @memberof Login
+  * @func clickSubmit
+  */
 clickSubmit = event => {
   let incorrectData = "";
   let email = this.state.email;
@@ -139,12 +180,21 @@ clickSubmit = event => {
 
     // headers: { 'Access-Control-Expose-Headers': 'x-auth','Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
      // body: JSON.stringify({ email: "ayaelsackaan.1999@gmail.com" ,password: "111" }) 
-    const requestOptions = {
+    
+   /**Prerequisites for fetch request
+   * @memberof Login
+   * @type {String}
+   */
+     const requestOptions = {
       method:"POST",
       headers: { 'Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
       body: JSON.stringify({ email: this.state.email ,password: this.state.password })
     }
     // console.log(this.state.email + this.state.password)
+    /**url for fetch request
+   * @memberof Login
+   * @type {String}
+   */
     const url = BASEURL + "users/login"
       fetch(url,requestOptions)
         .then((response) => {

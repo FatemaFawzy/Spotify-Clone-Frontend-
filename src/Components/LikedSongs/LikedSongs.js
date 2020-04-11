@@ -6,7 +6,7 @@ import CardMedia from '../Media/CardMedia';
 import {BASEURL} from "../../Constants/baseURL";
 import {connect} from 'react-redux';
   
-class LikedSongs extends Component
+export class LikedSongs extends Component
 {
   state= 
   { 
@@ -84,17 +84,16 @@ getLikedTrackes () {
     var popup_add_to_playlist=document.getElementById('popup-add-to-playlist');
     popup_add_to_playlist.classList.toggle('activate')
   }
-  DropMenuCard ()
-  {
-    document.getElementById("DropMenuCard").classList.toggle("show");
-  }
-  DropMenuSong()
-  {
-    document.getElementById("DropMenuSong").classList.toggle("show");
-  }
+  // DropMenuCard ()
+  // {
+  //   document.getElementById("DropMenuCard").classList.toggle("show");
+  // }
+  // DropMenuSong()
+  // {
+  //   document.getElementById("DropMenuSong").classList.toggle("show");
+  // }
 
-  playButton = e => {
-    const {id} = e.target;
+  playButton = () => {
     if ( this.state.playLikedSongs === "Play" ) {
       this.setState({playLikedSongs: "Pause"});
     }
@@ -128,7 +127,7 @@ show = e => {
              <ul className="list-unstyled centered-content">
               <CardMedia image={this.state.LikedSongsImage}/>
 					  <li> <h3> Liked Songs </h3> </li>
-            <li> <a href="#" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playLikedSongs}</a> </li>
+            <li> <button href="#" id="play-button" onClick={this.playButton} className=" btn btn-success rounded-pill text-center px-5 py-2 mt-3 font-weight-bold"> {this.state.playLikedSongs}</button> </li>
             <li > <div> {this.state.songsNumber}</div> </li>
 					</ul>
           </div>

@@ -6,7 +6,7 @@ import {withRouter} from "react-router-dom";
 
 
 
-class DeletePlaylist extends Component{
+export class DeletePlaylist extends Component{
   constructor(props){
     super(props);
   }

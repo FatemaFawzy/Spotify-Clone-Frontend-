@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/YourLibraryPages/YourLibraryArtist.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/YourLibraryPages/YourLibraryArtist.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import './YourLibraryArtist.css';
+import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
+import GeneralItem from "../GenericComponenets/GeneralItem";
+import {connect} from "react-redux";
+
+/** Class YourLibraryArtist
+ * @extends Component
+ */
+export class YourLibraryArtist extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+    /**Includes results of fetch requests
+   * @memberof YourLibraryArtist
+   * @type {Array&lt;artists>}
+   */
+      artistArray:[],
+
+    /**Final array of albums
+   * @memberof YourLibraryArtist
+   * @type {String}
+   */
+        total:""
+
+    }
+  }
+
+  /**A function that fires once the homepage is called
+   * @memberof YourLibraryArtist
+   * @func componentDidMount
+   */
+  componentDidMount() {
+     //Make a request with this.props.userID
+    //assume this is the returned data
+
+    // const url = "https://jsonplaceholder.typicode.com/photos"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({artistArray:data.slice(0,10)})
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+    const artistArray = [
+      {image:"https://i.scdn.co/image/1fc2f537d678d701d7d143a8fd4f0c2f29fbde22",
+      name:"Rihanna",
+      id:"1"},
+      {image:"https://i.scdn.co/image/cfd6e47fbe4446750ec209dfa37bc919cb55c86f",
+      name:"21 Savage",
+      id:"2"},
+      {image:"https://i.scdn.co/image/ab67616d0000b27353789eb3f891f59bde5755aa",
+      name:"Hassan Shakoush",
+      id:"3"},
+      {image:"https://i.scdn.co/image/012ecd119617ac24ab56620ace4b81735b172686",
+      name:"Drake",
+      id:"4"},
+      ];
+    const artists = artistArray.map(item => {
+      return (
+        &lt;GeneralItem
+        image={item.image}
+        name={item.name}
+        subname="Artist"
+        roundimage= "true"
+        id={item.id}
+        type="ARTIST"
+      />
+      )
+    }
+    )
+    this.setState({total:artists});
+  }
+render() {
+return ( 
+  &lt;div className="your-library-artist">
+        &lt;YourLibraryNavbar moreButtonName="Artists" type="Artists" name="Mariam El Baz" image="https://scontent.faly3-1.fna.fbcdn.net/v/t1.0-9/55551870_2158938997531927_3034631111746519040_n.jpg?_nc_cat=104&amp;_nc_sid=85a577&amp;_nc_eui2=AeGwe2-J_MT4EygifW-VfNvej1uF1cRNlvwiorJldSFzTIIpuVox357lEbAA-O4M3jEKKMKWI8PrCYFUvy0wVPf8XPOsIIRBGNPyiy7u7AH8Ug&amp;_nc_ohc=V_GhBoRn94kAX_oH8FG&amp;_nc_ht=scontent.faly3-1.fna&amp;oh=2049561230477a31e5eb3fe1ea8f3a92&amp;oe=5EA2F5F0" />
+        &lt;div className="actual-content">
+        &lt;h1 className="artist-header">Artists&lt;/h1>
+        {this.state.total}
+        &lt;/div>
+  &lt;/div>
+);
+}
+}
+const mapStateToProps = state => {
+
+  return {
+    userID:state.userID
+  };
+
+};
+export default connect(mapStateToProps)(YourLibraryArtist);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="Success.html">Success</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 22:25:09 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

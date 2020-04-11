@@ -4,7 +4,7 @@ import Header from '../WelcomeRelated/Header';
 import Footer from '../WelcomeRelated/Footer';
 
 /** Class Success to indicate that an email has been sent with instructions on resetting the password.
- * @category ForgotPassword
+ * @category Success
  * @extends Component
  */
 export class Success extends Component {

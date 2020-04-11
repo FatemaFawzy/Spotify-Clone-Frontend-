@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/YourLibraryPages/YourLibraryPlaylist.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/YourLibraryPages/YourLibraryPlaylist.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import './YourLibraryPlaylist.css';
+import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
+import GeneralItem from "../GenericComponenets/GeneralItem";
+import LikedSongsComponent from '../../Components/YourLibraryComponents/LikedSongsComponent';
+import {connect} from "react-redux";
+import {BASEURL} from "../../Constants/baseURL";
+
+/** Class YourLibraryPlaylist
+ * @extends Component
+ */
+export class YourLibraryPlaylist extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      /**Includes results of fetch requests
+   * @memberof YourLibraryPlaylist
+   * @type {Array&lt;playlists>}
+   */
+    playlistArray:[],
+   /**Final array of albums
+   * @memberof YourLibraryPlaylist
+   * @type {String}
+   */
+   total:"",
+    }
+  }
+
+  /**A function that fires once the homepage is called
+   * @memberof YourLibraryPlaylist
+   * @func componentDidMount
+   */
+componentDidMount() {
+//   //   const playlistArray=
+//   //   [
+//   //     {image:"https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba",
+//   //     name:"Mood Booster",
+//   //     description:"Ride on dem swings",
+//   //     id:"1"},
+//   //     {image:"https://i.scdn.co/image/ab67706f0000000262822373d6fce52feea1501c",
+//   //     name:"Pop PunkFaves",
+//   //     description:"Your favorite punks.",
+//   //     id:"2"},
+//   //     {image:"https://i.pinimg.com/474x/75/28/e7/7528e70aef7cf03be7a5fb13a163f476.jpg",
+//   //     name:"Today's Top Hits",
+//   //     description:"Drake is on top of the Hot 100!",
+//   //     id:"3"},
+//   //     {image:"https://pl.scdn.co/images/pl/default/2d5e3dba500f5a4f87581eaf7e294089806b6ba9",
+//   //     name:"Comfort Zone",
+//   //     description:"Chilled songs that you are familiar with - no surprises!",
+//   //     id:"4"},
+//   //     {image:"https://i.scdn.co/image/ab67706f00000002b6b079ea1e8f5af584d7a897",
+//   //     name:"Hip Hop Drive",
+//   //     description:"Hey there homie..",
+//   //     id:"5"}
+//   // ];
+
+/**Prerequisites for fetch request
+   * @memberof YourLibraryPlaylist
+   * @type {String}
+   */
+const requestOptions = {
+  method:"GET",
+  headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
+}
+
+ /**url for fetch request
+   * @memberof YourLibraryPlaylist
+   * @type {String}
+   */
+const url = "http://52.14.190.202:8000/playlists/me"; 
+fetch(url,requestOptions)
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data.playlist);
+    if(data.playlist)
+    {
+    const playlists = data.playlist.map(item => {
+      return (
+        &lt;GeneralItem
+        image= {BASEURL + "Images/" + item.imagePath}
+        name={item.playlistName}
+        subname="HEY"
+        id={item._id}
+        type="PLAYLIST"
+      />
+      )
+    }
+    )
+    this.setState({total:playlists});
+  }
+
+  })
+  .catch((error)=>{
+    console.log(error);
+  })
+  console.log(this.state.playlistArray.playlists);
+}
+render() {
+return ( 
+  &lt;div className="your-library-playlist">
+     &lt;YourLibraryNavbar moreButtonName="More" type="Playlists" name="Mariam El Baz" image="https://scontent.faly3-1.fna.fbcdn.net/v/t1.0-9/55551870_2158938997531927_3034631111746519040_n.jpg?_nc_cat=104&amp;_nc_sid=85a577&amp;_nc_eui2=AeGwe2-J_MT4EygifW-VfNvej1uF1cRNlvwiorJldSFzTIIpuVox357lEbAA-O4M3jEKKMKWI8PrCYFUvy0wVPf8XPOsIIRBGNPyiy7u7AH8Ug&amp;_nc_ohc=V_GhBoRn94kAX_oH8FG&amp;_nc_ht=scontent.faly3-1.fna&amp;oh=2049561230477a31e5eb3fe1ea8f3a92&amp;oe=5EA2F5F0" />
+        &lt;div className="actual-content">
+        &lt;h1 className="playlist-header">Playlists&lt;/h1>
+        &lt;LikedSongsComponent {...this.props}/>
+        {this.state.total}
+        &lt;/div>
+
+      &lt;/div>
+
+);
+}
+}
+
+const mapStateToProps = state => {
+
+  return {
+    userID:state.userID
+  };
+
+};
+export default connect(mapStateToProps)(YourLibraryPlaylist);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="Success.html">Success</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 22:25:09 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

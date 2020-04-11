@@ -10,15 +10,38 @@ import DropDownMenu from '../../Containers/GenericComponenets/DropDownMenu';
 import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
 
 
-
+/** Class YourLibraryNavbar specially designed for your library pages in the web player
+ * @category YourLibraryNavbar
+ * @extends Component
+ */
 export class YourLibraryNavbar extends Component{
   constructor(props){
     super(props); 
     this.props={
+   /**image of user in dropdown menu
+   * @memberof YourLibraryNavbar
+   * @type {string}
+   */
       image:"",
+  /**name of user in dropdown menu
+   * @memberof YourLibraryNavbar
+   * @type {string}
+   */
       name:"",
+   /**name of user in dropdown menu
+   * @memberof YourLibraryNavbar
+   * @type {string}
+   */
       type:"",
+   /**Heading of dropdown menu differs from one page calling the navbar to another
+   * @memberof YourLibraryNavbar
+   * @type {string}
+   */
       moreButtonName:"",
+  /**Color of navbar
+   * @memberof YourLibraryNavbar
+   * @type {string}
+   */
       navBackground:""
     }
   }

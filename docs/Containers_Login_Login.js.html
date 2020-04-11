@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/Login/Login.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/Login/Login.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import './Login.css';
+import {Link, Router } from "react-router-dom";
+import {connect} from "react-redux";
+import * as actionTypes from "../../Store/actions";
+import {BASEURL} from "../../Constants/baseURL";
+
+
+const initialState = {
+  /**Email input
+   * @memberof Login
+   * @type {String}
+   */
+  email: "",
+  /**Email Error message
+   * @memberof Login
+   * @type {String}
+   */
+  emailError: "",
+  /**Password input
+   * @memberof Login
+   * @type {String}
+   */
+  password: "",
+  /**Password Error message
+   * @memberof Login
+   * @type {String}
+   */
+  passwordError:"",
+  /**Incorrect user info message
+   * @memberof Login
+   * @type {String}
+   */
+  incorrectData:"",
+}
+
+/**Email format that must be entered by the user
+   * @memberof Login
+   * @type {expression}
+   */
+const emailFormat = RegExp(
+  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+);
+/** Class Login
+ * @extends Component
+ */
+export class Login extends Component{
+  constructor(props){
+    super(props);
+ this.state = initialState;
+  }
+
+/**A function that checks email's validation
+  * @memberof Login
+  * @func validateEmail
+  */
+ validateEmail = () => {
+  let email = this.state.email;
+  let emailError="";
+  let proceedemail=true;
+  if (email.length === 0)
+   {
+     emailError = "Please enter your Spotify username or email address.";
+     this.setState({emailError});
+     if (document.querySelector("#password-input"))
+     {
+     document.querySelector("#email-input").classList.add("red-border");
+     }
+     proceedemail = false;
+   }
+   else {
+    emailError = "";
+    this.setState({email, emailError});
+    if (document.querySelector("#password-input"))
+     {
+    document.querySelector("#email-input").classList.remove("red-border");
+     }
+    proceedemail = true;
+    }
+    return proceedemail;
+ }
+/**A function that checks password's validation
+  * @memberof Login
+  * @func validatePassword
+  */
+ validatePassword = () => {
+  let password = this.state.password;
+  let passwordError="";
+  let proceedpassword=true;
+  if (password.length === 0)
+   {
+     passwordError = "Please enter your password.";
+     this.setState({passwordError});
+     if (document.querySelector("#password-input"))
+     {
+     document.querySelector("#password-input").classList.add("red-border");
+     }
+     proceedpassword = false;
+   }
+   else {
+    passwordError = "";
+    this.setState({password, passwordError});
+    if (document.querySelector("#password-input"))
+    {
+    document.querySelector("#password-input").classList.remove("red-border");
+    }
+    proceedpassword = true;
+    }
+    return proceedpassword;
+ }
+
+
+
+/**A function that handles email on change
+  * @memberof Login
+  * @func handleEmail
+  */
+ handleEmail = event => {
+  let email = this.state.email;
+  email = event.target.value;
+  this.state.email = email;
+  this.validateEmail();
+  
+
+};
+/**A function that handles password on change
+  * @memberof Login
+  * @func handlePassword
+  */
+handlePassword = event => {
+  let pass = this.state.password;
+  pass = event.target.value;
+  this.state.password = pass;
+  this.validatePassword();
+  
+
+};
+/**A function that handles forms submission
+  * @memberof Login
+  * @func clickSubmit
+  */
+clickSubmit = event => {
+  let incorrectData = "";
+  let email = this.state.email;
+  let emailError = this.state.emailError;
+  let password = this.state.password;
+  // event.preventDefault();
+  // console.log(email.length);
+  this.validateEmail();
+  this.validatePassword();
+  if(!emailFormat.test(email) &amp;&amp; email.length !== 0)
+  {
+    emailError="The email address is invalid."
+    if (document.querySelector("#email-input"))
+    {
+    document.querySelector("#email-input").classList.add("red-border");
+    }
+    this.setState({emailError})
+  }
+  else if(this.validateEmail() &amp;&amp; this.validatePassword()){
+     this.setState({initialState});
+    //  console.log(email.length);
+    //  var clr= document.querySelector("#login-form");
+    //  clr.reset();
+    //  let returnedData={
+    //   id: 1,
+    //   token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjOTk1MDE0NGQ5NDA0MzliNDU4NTkiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2Mjc4MjQ3fQ.oC1SvSyACTq3GxB-GNOgXOCvsBKY-VzDZErnyDROgsE"
+    // }
+
+     
+
+
+    // const requestOptions = {
+    //       method:"POST",
+    //       headers: { 'x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s',
+    //     'email': this.state.email, 'password':this.state.password }
+    //     }
+    //     console.log(this.state.email + this.state.password)
+    //     const url = BASEURL + "users/login"; 
+
+    // headers: { 'Access-Control-Expose-Headers': 'x-auth','Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
+     // body: JSON.stringify({ email: "ayaelsackaan.1999@gmail.com" ,password: "111" }) 
+    
+   /**Prerequisites for fetch request
+   * @memberof Login
+   * @type {String}
+   */
+     const requestOptions = {
+      method:"POST",
+      headers: { 'Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
+      body: JSON.stringify({ email: this.state.email ,password: this.state.password })
+    }
+    // console.log(this.state.email + this.state.password)
+    /**url for fetch request
+   * @memberof Login
+   * @type {String}
+   */
+    const url = BASEURL + "users/login"
+      fetch(url,requestOptions)
+        .then((response) => {
+          console.log(response.status)
+          if(response.status===401){
+            console.log("incorrect username or password")
+            return "icorrect";
+          }
+          else if(response.status===200){
+            console.log("response is ok")
+            return response.headers.get("x-auth")
+          }
+        })
+        .then((data) => {
+          console.log(data);
+
+          if(data==="icorrect"){
+
+            document.querySelector(".incorrect").classList.remove("d-none");
+            incorrectData= "Incorrect username or password.";
+            this.setState({incorrectData});
+            console.log("incorrect username or password")
+
+          }
+          else{
+            this.props.onSignIn(data);
+            this.props.history.replace('/account/');
+          }
+
+         
+         
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
+  }
+};
+
+render() {
+ return (
+   
+  &lt;div className="login">
+    &lt;div id="logo">&lt;/div>
+
+    &lt;div className="container">
+
+      &lt;p className="first-line">To continue, log in to Spotify.&lt;/p>
+      &lt;p className="incorrect d-none">{this.state.incorrectData}&lt;/p>
+      &lt;a id="facebook-button"  className=" buttons btn btn-block btn-facebook" href="#" role="button">&lt;i className="fab fa-facebook logo" aria-hidden="true">&lt;/i>  Continue With Facebook&lt;/a>
+
+        &lt;div className="horizontal">
+          &lt;span className="horizontal-span" >
+           OR
+          &lt;/span>
+        &lt;/div>
+
+        &lt;form id="login-form">
+
+          &lt;div className="form-group">
+            &lt;input type="text" className="form-control " id="email-input" aria-describedby="emailHelp"  placeholder="Email adrress or username" onChange={this.handleEmail} name="email" />
+            &lt;p  id="missing-email">{this.state.emailError}&lt;/p>           
+          &lt;/div>
+
+          &lt;div className="form-group">
+            &lt;input type="password" className="form-control " id="password-input"  placeholder="Password"  onChange={this.handlePassword} name="password" />
+            &lt;p  id="missing-password">{this.state.passwordError}&lt;/p>
+          &lt;/div>
+
+          &lt;div className="form-group form-check">
+            &lt;div className="custom-control custom-checkbox">
+              &lt;button id="login-button" type="submit" className="buttons btn btn-success" onClick={this.clickSubmit}>LOG IN&lt;/button>
+            &lt;/div>
+          &lt;/div>
+
+        &lt;/form>
+
+        &lt;br/>
+
+        &lt;Link to="/logIn/forgotpassword" className="password-forgot" >Forgot your password?&lt;/Link> 
+
+        &lt;br/>
+
+        &lt;hr className="horizontal-line-bottom1"/>
+
+        &lt;h4 className="dont-have-account">Don't have an account?&lt;/h4>
+        &lt;a id="signup-button" className="buttons btn btn-block btn-apple" href="/signup" role="button">Sign up for spotify&lt;/a>
+
+        &lt;br/>
+
+        &lt;hr className="horizontal-line-bottom2" />
+
+
+    &lt;/div>
+
+&lt;/div>
+);
+}
+} 
+const mapDispatchToProps = dispatch => {
+  return {
+    onSignIn : (userToken) => dispatch ({type: actionTypes.ON_SIGNIN, payload: { token: userToken} }),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Login);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="Success.html">Success</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 22:25:09 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

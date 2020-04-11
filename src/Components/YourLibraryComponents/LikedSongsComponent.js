@@ -5,13 +5,25 @@ import {Link} from "react-router-dom";
 import React ,{ Component} from 'react';
 
 
+/** Class LikedSongsComponent that creates the bluish component in the your library-playlist page.
+ * @category LikedSongsComponent
+ * @extends Component
+ */
 export class LikedSongsComponent extends Component {
   
   constructor(props){
     super(props);
 
     this.state = {
+   /**Total number of liked songs that appears on the interface of the component
+   * @memberof LikedSongsComponent
+   * @type {string}
+   */
       totalLiked: "60",
+   /**Array of recently liked songs
+   * @memberof LikedSongsComponent
+   * @type {Array<song>}
+   */
       recentlyLiked:[{artist:"Drake", song:"God's Plan"},
                      {artist:"Rihanna", song:"Work"},
                      {artist:"21 Savage", song:"X Bitch"},
@@ -20,17 +32,36 @@ export class LikedSongsComponent extends Component {
                      {artist:"21 Savage", song:"asmr"},
                      {artist:"Saint JHN", song:"I Heard You Got Too Lit Last Night"}
                    ],
+   /**String that concatenates the details as needed to preview
+   * @memberof LikedSongsComponent
+   * @type {string}
+   */
       string:'',
+  /**Array of IDs of songs(used for backend fetch request)
+   * @memberof LikedSongsComponent
+   * @type {Array}
+   */
       arrayOfIDs:[]
     }
   }
- 
+  /**A function that gets called once this component is rendered
+   * @memberof LikedSongsComponent
+   * @func componentDidMount
+   */
     componentDidMount(){
 
+     /**Prerequisites for fetch request
+     * @memberof LikedSongsComponent
+     * @type {object}
+     */
       const requestOptions = {
         method:"GET",
         headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
       }
+    /**URL for fetch request
+     * @memberof LikedSongsComponent
+     * @type {string}
+     */
       const url = "http://52.14.190.202:8000/tracks/like/me"; 
       fetch(url,requestOptions)
         .then((response) => {
@@ -89,7 +120,10 @@ console.log(this.state.arrayOfIDs);
       //       console.log(error);
       //     })
         
-      
+     /**Variable that concatenates the details of the songs
+     * @memberof LikedSongsComponent
+     * @type {string}
+     */
       var x = "";
       for (var i=0; i< this.state.recentlyLiked.length; i++)
       {
@@ -101,6 +135,10 @@ console.log(this.state.arrayOfIDs);
         x = x.slice(0,149) + "...";
       }
       console.log(x);
+    /**string of songs used for concatenation7
+     * @memberof LikedSongsComponent
+     * @type {Array<songs>}
+     */
       const stringofsongs = this.state.recentlyLiked.map(item =>{
         return(
           <span>
@@ -118,7 +156,10 @@ console.log(this.state.arrayOfIDs);
       }) 
       this.setState({string:stringofsongs});
     };
- 
+  /**A function that redirects the user to the liked songs page on click of the component.
+   * @memberof LikedSongsComponent
+   * @func handleClick
+   */
   handleClick = () => {
     this.props.history.push("/webplayer/likedsongs/");
   } 

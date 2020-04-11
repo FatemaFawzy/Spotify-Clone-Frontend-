@@ -3,6 +3,10 @@ import "./Footer.css";
 import {BrowserRouter as Router} from "react-router-dom";
 import {Link} from "react-router-dom";
 
+
+/** Footer as a functional component that appears in several welcome related pages.
+ * @func Footer
+ */
 const Footer=()=>(
   <div className="footer">
     <nav className="navbar navbar-dark black-background navbar-default navbar-expand black" id="bottom-nav">

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/PremiumBenefits/Premium.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/PremiumBenefits/Premium.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import './Premium.css';
+import MainNavbar from "../../Components/WelcomeRelated/MainNavbar";
+import Footer from "../../Components/WelcomeRelated/Footer";
+import {Link, Router } from "react-router-dom";
+
+/** Class Premium that creates the premium benefits page.
+ * @category Premium
+ * @extends Component
+ */
+export class Premium extends Component {
+render() {
+return ( 
+  &lt;div className="premium">
+    &lt;MainNavbar color="rgba(0, 0, 0, 0.5)" />
+    &lt;div className="jumbotron" id="top-section">
+      &lt;h1 id="get-premium">Get Premium free for 1 month&lt;/h1>
+      &lt;h2 id="price">Just EGP 49.99/month after. Cancel anytime.&lt;/h2>
+      &lt;Link to="/signup" className="btn btn-success button">&lt;span id="ovflow">Get Premium&lt;/span>&lt;/Link>
+      &lt;p className="pt-4" id="terms">&lt;span className="underline">Terms and conditions apply.&lt;/span> 1 month free not available for users who have already tried Premium.&lt;/p>
+    &lt;/div>
+
+    &lt;h1 id="question" className=" mt-4 pt-5 mb-3 pb-5">Why go Premium?&lt;/h1>
+
+    &lt;div className="container">
+      &lt;div className="row justify-content-around">
+        &lt;div className="col-xl-2 col-md-6 col-12 pb-md-5 mb-5 mb-md-0">
+          &lt;div className="row d-flex">
+            &lt;div className=" col-4 col-xl-12">
+              &lt;img className="card-img-top pb-lg-5" src="https://campaigns.scdn.co/images/benefit-1.png" alt=""/>
+            &lt;/div>
+            &lt;div className="col-8 col-xl-12 remove-pad">
+              &lt;h1 className="card-title">Daily top picks.&lt;/h1>
+              &lt;p className="card-text">Listen anywhere.&lt;/p>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;div className="col-xl-2 col-md-6 col-12 pb-md-5 mb-5 mb-md-0">
+          &lt;div className="row">
+            &lt;div className=" col-4 col-xl-12">
+              &lt;img className="card-img-top pb-lg-5" src="https://campaigns.scdn.co/images/benefit-2.png" alt=""/>
+            &lt;/div>
+            &lt;div className="col-8 col-xl-12 remove-pad">
+              &lt;h1 className="card-title">No ad interruptions.&lt;/h1>
+              &lt;p className="card-text">Enjoy nonstop music.&lt;/p>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;div className="col-xl-2 col-md-6 col-12 pb-md-5 mb-5 mb-md-0">
+          &lt;div className="row">
+            &lt;div className=" col-4 col-xl-12">
+              &lt;img className="card-img-top pb-lg-5" src="https://campaigns.scdn.co/images/benefit-3.png" alt=""/>
+            &lt;/div>
+            &lt;div className="col-8 col-xl-12 remove-pad">
+              &lt;h1 className="card-title">Get new releases.&lt;/h1>
+              &lt;p className="card-text">Two weeks early.&lt;/p>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;div className="col-xl-2 col-md-6 col-12 pb-md-5 mb-5 mb-md-0">
+          &lt;div className="row">
+            &lt;div className=" col-4 col-xl-12">
+              &lt;img className="card-img-top pb-lg-5" src="https://campaigns.scdn.co/images/benefit-4.png" alt=""/>
+            &lt;/div>
+            &lt;div className="col-8 col-xl-12 remove-pad">
+              &lt;h1 className="card-title">Unlimited skips.&lt;/h1>
+              &lt;p className="card-text">Just hit next.&lt;/p>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+
+    &lt;div className=" d-flex justify-content-center">
+      &lt;div className="card end-card px-4">
+        &lt;h3 className="pt-4">Spotify Premium&lt;/h3>
+        &lt;p id="month">&lt;span id="bold"> EGP 49.99&lt;/span> / month&lt;/p>
+        &lt;p className="border-bottom1 small">1 month free&lt;/p>
+        &lt;p className="padTop">&lt;i className="fas fa-check">&lt;/i>&lt;span className="pl-2">Unlimited skips&lt;/span>&lt;/p>
+        &lt;p>&lt;i className="fas fa-check">&lt;/i>&lt;span className="pl-2">No ad interruptions&lt;/span>&lt;/p>
+        &lt;p>&lt;i className="fas fa-check">&lt;/i>&lt;span className="pl-2">Reach new releases first&lt;/span>&lt;/p>
+        &lt;p className="border-bottom2">&lt;i className="fas fa-check">&lt;/i>&lt;span className="pl-2">View daily top picks&lt;/span>&lt;/p>
+        &lt;Link to="/signup" className="btn btn-success bigger" >GET PREMIUM&lt;/Link>
+      &lt;/div>
+    &lt;/div>
+
+    &lt;p className="text-center pt-5" id="last">Terms and conditions apply.&lt;/p>
+
+    &lt;Footer />
+  &lt;/div>
+);
+}
+}
+export default Premium;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="Success.html">Success</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 22:25:09 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
