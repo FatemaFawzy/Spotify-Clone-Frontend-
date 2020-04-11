@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import * as actionTypes from "../../Store/actions";
 import {BASEURL} from "../../Constants/baseURL";
 
-class MainNavbar extends Component {
+export class MainNavbar extends Component {
   constructor(props){
     super(props); 
     this.state={
@@ -106,7 +106,10 @@ class MainNavbar extends Component {
     )
 }
 }
-
+/**
+ * 
+ * @param {*} state 
+ */
 const mapStateToProps = state =>{
   return{
     logging: state.loggenIn,

@@ -6,16 +6,40 @@ import { connect } from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
 import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
 
+/** Class DropDownMenu for web player navbars
+ * @category DropDownMenu
+ * @extends Component
+ */
 export class DropDownMenu extends Component {
   state = {
+     /**name of user in dropdown menu
+   * @memberof DropDownMenu
+   * @type {string}
+   */
     username: "",
+     /**image of user in dropdown menu
+   * @memberof DownDownMenu
+   * @type {string}
+   */
     userimage: "",
 
   }
+  /**Function that mounts when the component is rendered.
+   * @memberof DropDownMenu
+   * @func componentDidMount
+   */
   componentDidMount() {
     //make a request with the this.props.userID to get the name and pic of the user
 
+     /**URL for fetch request
+     * @memberof DropDownMenu
+     * @type {string}
+     */
     const url = BASEURL +"users/me";
+    /**Prerequisites for fetch request
+     * @memberof DropDownMenu
+     * @type {object}
+     */
     const requestOptions = {
       method: 'GET',
       headers: { 'x-auth': this.props.userToken },

@@ -1,5 +1,5 @@
 import React from 'react';
-import {ArtistProfile} from '../Containers/ArtistProfile/ArtistProfile';
+import {ArtistProfile} from '../../Containers/ArtistProfile/ArtistProfile';
 import { shallow } from 'enzyme';
 
 describe("Testing ArtistProfile redering", () => {

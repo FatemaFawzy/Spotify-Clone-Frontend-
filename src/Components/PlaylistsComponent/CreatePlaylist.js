@@ -4,7 +4,7 @@ import {BASEURL} from "../../Constants/baseURL";
 import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
 
-class CreatePlaylist extends Component{
+export class CreatePlaylist extends Component{
  
   toggle()
  {
@@ -81,4 +81,4 @@ const mapStateToProps = state =>{
   };
 };
 
-export default connect(mapStateToProps)  (withRouter(CreatePlaylist));
+export default connect(mapStateToProps)(CreatePlaylist);

@@ -4,6 +4,10 @@ import MainNavbar from "../../Components/WelcomeRelated/MainNavbar";
 import Footer from "../../Components/WelcomeRelated/Footer";
 import {Link, Router } from "react-router-dom";
 
+/** Class Premium that creates the premium benefits page.
+ * @category Premium
+ * @extends Component
+ */
 export class Premium extends Component {
 render() {
 return ( 
