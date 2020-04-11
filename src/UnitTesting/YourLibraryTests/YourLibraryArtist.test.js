@@ -7,27 +7,24 @@ import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
 
 //IMPORT THE COMPONENT YOU WANNA TEST
-import CollapseDropDown from "../Containers/GenericComponenets/CollapseDropDown";
+import {YourLibraryArtist} from "../../Containers/YourLibraryPages/YourLibraryArtist"
 
 //CALL THE DESCRIBE FUNCTION 
 //IT TAKES TWO PARAMETERS 1ST: A TEXT DESCRIPTION
 //                        2ND: AN ARROW FUNCTION 
-describe("Collapse DropDown test", ()=>{
+describe("Your Library-Artist Container test", ()=>{
 
+
+  //INSIDE THE ARROW FUNCTION YOU FIRST HAVE TO GRAB THE COMPONENT
+  // YOU DO AS FOLLOWING NOW YOU HAVE THE COMPONENT STORED IN THE wrapper VARIABLE
   let wrapper;
   beforeEach(() => {
-   wrapper = shallow(<CollapseDropDown /> ); 
+   wrapper = shallow(<YourLibraryArtist/> ); 
   });
 
 
-  it("Should have 7 icons", ()=>{
-    const icons=wrapper.find("i");
-    expect(icons).toHaveLength(7);
+  it("Should have an artists header", ()=>{
+    const header= wrapper.find("h1.artist-header");
+    expect(header.text()).toContain("Artists");
   })
-  
-  it("Should have 1 NavLink", ()=>{
-    const NavLinks=wrapper.find("NavLink");
-    expect(NavLinks).toHaveLength(1);
-  })
-
 })

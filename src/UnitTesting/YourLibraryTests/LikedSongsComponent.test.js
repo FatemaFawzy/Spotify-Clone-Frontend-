@@ -7,26 +7,31 @@ import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
 
 //IMPORT THE COMPONENT YOU WANNA TEST
-import YourLibrary from "../Containers/YourLibraryPages/YourLibrary";
+import {LikedSongsComponent} from "../../Components/YourLibraryComponents/LikedSongsComponent"
 
 //CALL THE DESCRIBE FUNCTION 
 //IT TAKES TWO PARAMETERS 1ST: A TEXT DESCRIPTION
 //                        2ND: AN ARROW FUNCTION 
-describe("Your Library Container test", ()=>{
+describe("OtherUser Container test", ()=>{
 
 
   //INSIDE THE ARROW FUNCTION YOU FIRST HAVE TO GRAB THE COMPONENT
   // YOU DO AS FOLLOWING NOW YOU HAVE THE COMPONENT STORED IN THE wrapper VARIABLE
   let wrapper;
   beforeEach(() => {
-   wrapper = shallow(<YourLibrary/> ); 
+   wrapper = shallow(<LikedSongsComponent/> ); 
   });
 
 
   //IN THIS FUNCTION I AM TESTING TO ASSERT THAT THE COMPONENT HAS AN IMAGE TAG INSIDE OF IT
-  it("Should have 2 divs", ()=>{
-    const divNumber= wrapper.find("div");
-    expect(divNumber).toHaveLength(2);
+  it("Should have a specific header", ()=>{
+    const header= wrapper.find("h1");
+    expect(header.text()).toContain("Liked Songs");
+  })
+
+  it("Should have one button", ()=>{
+    const button= wrapper.find("button");
+    expect(button).toHaveLength(1);
   })
 
 })

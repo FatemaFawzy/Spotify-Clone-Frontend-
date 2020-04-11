@@ -7,16 +7,16 @@ import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
 
 //IMPORT THE COMPONENT YOU WANNA TEST
-import {SeeAllArtists} from "../Containers/HomePage/SeeAllArtists";
+import {HomePage} from "../../Containers/HomePage/HomePage";
 
 //CALL THE DESCRIBE FUNCTION 
 //IT TAKES TWO PARAMETERS 1ST: A TEXT DESCRIPTION
 //                        2ND: AN ARROW FUNCTION 
-describe("See All Artists page test", ()=>{
+describe("Home Page test", ()=>{
 
   let wrapper;
   beforeEach(() => {
-   wrapper = shallow(<SeeAllArtists /> ); 
+   wrapper = shallow(<HomePage /> ); 
   });
 
 
@@ -25,16 +25,13 @@ describe("See All Artists page test", ()=>{
     expect(div).toHaveLength(2);
   })
 
-  describe("See All Artists componentDidMount test", ()=>{
+  describe("Home Page componentDidMount test", ()=>{
   
-    it('calls componentDidMount', () => {
-      jest.spyOn(SeeAllArtists.prototype, 'componentDidMount')
-      const wrapper = shallow(<SeeAllArtists />)
-      expect(SeeAllArtists.prototype.componentDidMount.mock.calls.length).toBe(1)
-    })
-
+  it('calls componentDidMount', () => {
+    jest.spyOn(HomePage.prototype, 'componentDidMount')
+    const wrapper = shallow(<HomePage />)
+    expect(HomePage.prototype.componentDidMount.mock.calls.length).toBe(1)
   })
-  
-  
 
+})
 })
