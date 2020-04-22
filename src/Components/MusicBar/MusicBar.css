@@ -26,7 +26,7 @@
 
 .music-bar .card-body {
   padding: 6px 15px;
-  max-width: 100px;
+  max-width: 100%;
 }
 
 .music-bar .list-group {
@@ -108,5 +108,5 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  /* width: 350px; */
+  max-width: 100%;
 }

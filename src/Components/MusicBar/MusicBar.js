@@ -46,9 +46,9 @@ class MusicBar extends Component {
                   <div className="col-10">
                     <div className="card-body pt-2 pl-0">
                       
-                      {/* <ul className="list-group list-group-horizontal"> 
+                      <ul className="list-group list-group-horizontal"> 
 
-                        <li className="pr-2">
+                        <li className="pr-2 prevent-overflow">
                           <div className="song-name prevent-overflow">
                             <a id="song-name" href={this.state.albumLink}> {this.state.songName} </a>
                           </div>
@@ -62,7 +62,7 @@ class MusicBar extends Component {
                           <button id="heart-button" className="far fa-heart" title="Save to your Liked Songs" onClick={this.likeSong}> </button>
                         </li>
 
-                      </ul> */}
+                      </ul>
 
                     </div>
                   </div>
