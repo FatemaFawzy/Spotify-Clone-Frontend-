@@ -7,11 +7,20 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/actions";
 
+function updatePlaying() {
+  this.setState({playing:false})
+}
+
 /** Class SongSearched that displays the searched song as an item component
  * @category SongSearched
  * @extends Component
  */
 export class SongSearched extends Component {
+
+  constructor(props){
+    super(props);
+    updatePlaying = updatePlaying.bind(this);
+  }
   state = {
 
     /**variable that holds the SongSearched
@@ -31,6 +40,12 @@ export class SongSearched extends Component {
    * @type {boolean}
    */
     playing: false,
+
+       /**variable that indicates whether to show the snackbar at the bottom or not
+   * @memberof SongSearched
+   * @type {string}
+   */
+    isplayingclass:"fas fa-play",
 
     /**variable that indicates whether to show the snackbar at the bottom or not
    * @memberof SongSearched
@@ -105,7 +120,8 @@ export class SongSearched extends Component {
     * @memberof SongSearched
     * @type {object}
     */
-    var PlayPause = this.state.playing ? <i className="fas fa-pause"></i> : <i className="fas fa-play"></i>;
+    // var PlayPause = this.state.playing ? <i className="fas fa-pause"></i> : <i className="fas fa-play"></i>;
+      var PlayPause=<i className={this.state.isplayingclass}></i>;
 
     return (
       <div className="song-searched-class" id={this.state.songSearchedIdActive}>
@@ -121,8 +137,13 @@ export class SongSearched extends Component {
 
               //TODO: also check later on that their isn't any other song playing
               if (!this.state.playing) {
+                let prevActive = document.getElementById("song-searched-active");
+                if(prevActive){ prevActive.id="";}               
                 this.setState({ songSearchedIdActive: "song-searched-active" })
+                let prevPlaying= document.getElementsByClassName("fas fa-pause");
+                if(prevPlaying){prevPlaying.className="fas fa-play";}
               }
+              this.setState((prevstate, event) => ({ isplayingclass: prevstate.playing ? "fas fa-play" : "fas fa-pause" }))
               this.setState((prevstate, event) => ({ playing: prevstate.playing ? false : true }))
 
             }}>{PlayPause}</button>
