@@ -26,6 +26,13 @@ class MusicBar extends Component {
     heart.classList.toggle("fas");
   }
 
+  muteVolume = e => {
+    const {id} = e.target;
+    var sound=document.getElementById(id);
+    sound.classList.toggle("fa-volume-mute");
+    sound.classList.toggle("fa-volume-up");  
+  }
+
   render() {
     return (
 
@@ -39,7 +46,7 @@ class MusicBar extends Component {
               <div className="card pl-0">
                 <div className="row no-gutters">
 
-                  <div className="col-2">
+                  <div className="col-2 ">
                     <img className="card-img song-photo" src={this.state.photoLink}></img>
                   </div>
 
@@ -78,8 +85,15 @@ class MusicBar extends Component {
 
             </div>
 
-            <div className="music-bar-right col pr-0 d-flex align-items-center justify-content-end">
-              UNDER CONSTRUCTION
+            <div className="music-bar-right col pr-0 d-flex align-items-center justify-content-end list-group-horizontal">
+              <div className="volume-bar">
+                <button id="volume-button" className="fas fa-volume-up" onClick={this.muteVolume}> </button>
+
+                <div class="progress">
+                  <div class="progress-bar bg-success" role="progressbar" style={{width: "50%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+              </div>
             </div>          
 
           </div>
