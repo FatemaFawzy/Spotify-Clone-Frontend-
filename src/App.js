@@ -39,7 +39,7 @@ function App() {
           <Route  exact path="/logIn/forgotpassword/" component={ForgotPassword}/>
           <Route path="/logIn/forgotpassword/success/" component={Success}/>
           <Route path="/signup/emailsent/" component={EmailSent}/>
-          <Route exact path="52.14.190.202:8000/users/reset/front/" component={CreateNewPassword}/>
+          <Route exact path="/logIn/forgotpassword/newpassword/" component={CreateNewPassword}/>
           <Route path="/logIn/forgotpassword/newpassword/passwordisnew/" component={PasswordIsNew}/>
           
           {/* TODO: Change the route of artistprofile when search is implemented */}
