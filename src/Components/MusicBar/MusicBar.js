@@ -119,6 +119,7 @@ class MusicBar extends Component {
                 <div id="music-progress" className="progress ">
                   <div className="progress-bar bg-success" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" 
                   aria-valuemax="100"> </div>
+                  <button className="fas fa-circle slider"></button>
                 </div>
                 
                 <div className="duration pl-1">
@@ -141,7 +142,11 @@ class MusicBar extends Component {
                   <div className="progress">
                     <div id="volume" className="progress-bar bg-success" role="progressbar" style={{width: "50%"}} aria-valuenow="25" aria-valuemin="0" 
                     aria-valuemax="100"> </div>
+                    <button className="fas fa-circle slider"></button>
                   </div>
+                  {/* <div className="slidecontainer">
+                    <input type="range" min="1" max="100" value="10" class="slider" id="myRange"></input>
+                  </div> */}
                 </li>
 
               </ul>

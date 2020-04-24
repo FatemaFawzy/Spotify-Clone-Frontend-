@@ -144,6 +144,16 @@
   background-color: #1db954 !important;
 }
 
+.music-bar .slider {
+  color: white;
+  background-color: transparent;
+  border: none;
+  outline: none; 
+  z-index: 99;
+  position: absolute;
+  margin-top: -4px;
+}
+
 /* ----------------Middle-side-bar-------------------- */
 
 .music-bar #music-progress {
@@ -184,3 +194,37 @@
 .music-bar .play {
   font-size: 40px;
 }
+
+
+
+/* 
+.music-bar .slidecontainer {
+  width: 80px;
+}
+
+.music-bar .slider {
+  -webkit-appearance: none;
+  width: 80px;
+  height: 3px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+}
+
+.music-bar .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%; 
+  background: white;
+  cursor: pointer;
+}
+
+.music-bar .slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+} */
