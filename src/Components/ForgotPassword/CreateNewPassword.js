@@ -4,6 +4,7 @@ import Header from  "../WelcomeRelated/Header";
 import Footer from "../WelcomeRelated/Footer";
 import {BrowserRouter as Router, Redirect, withRouter} from "react-router-dom";
 import {Link} from "react-router-dom";
+import {BASEURL} from "../../Constants/baseURL";
 
 const initialState = {
   /**Input string for the password
@@ -102,7 +103,7 @@ export class CreateNewPassword extends Component {
       headers: {'Content-Type':  'application/json'},
       body: JSON.stringify({token:userToken, newPassword: this.state.newPassword})
     };
-    const url = window.location.href; 
+    const url = BASEURL + "/users/reset"; 
     fetch(url,requestOptions)
       .then((response) => {
         return response.json();
@@ -114,7 +115,7 @@ export class CreateNewPassword extends Component {
         }
         else if (data.message == "Reset Failed")
         {
-           newPasswordError = "Failed to reset password.";
+           this.setState({newPasswordError:"Failed to reset password."});
         }
       })
       .catch((error)=>{

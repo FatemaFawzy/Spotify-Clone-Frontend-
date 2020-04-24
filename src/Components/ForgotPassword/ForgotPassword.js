@@ -4,6 +4,7 @@ import Header from  "../WelcomeRelated/Header";
 import Footer from "../WelcomeRelated/Footer";
 import {BrowserRouter as Router, Redirect} from "react-router-dom";
 import {Link} from "react-router-dom";
+import {BASEURL} from "../../Constants/baseURL";
 
 const initialState = {
   /**Input string for the email
@@ -81,7 +82,6 @@ export class ForgotPassword extends Component {
     let email = this.state.email;
     let emailError = this.state.emailError;
     this.setState({emailError});
-    //event.preventDefault();
     if (!emailFormat.test(email) && email.length !== 0)
     {
       if (document.querySelector("#my-text"))
@@ -95,6 +95,7 @@ export class ForgotPassword extends Component {
     }
     else if(this.validate())
     {
+      console.log(this.validate());
       this.setState({initialState});
      const {email}=this.state;
      if (document.querySelector("#my-text"))
@@ -115,7 +116,7 @@ export class ForgotPassword extends Component {
    * @memberof ForgotPassword
    * @type {string}
    */
-      var url = 'http://52.14.190.202:8000/users/forgot'; 
+      var url = BASEURL + '/users/forgot'; 
       fetch(url,requestOptions)
         .then((response) => {
           return response.json();
@@ -124,6 +125,7 @@ export class ForgotPassword extends Component {
           console.log(data);
           if (data.message === "Email Sent Successfully")
           {
+            console.log(data);
             this.props.history.push('/logIn/forgotpassword/success');
           }
           else if (data.message == "Email Cannot be sent a problem while sending email")
@@ -143,7 +145,6 @@ export class ForgotPassword extends Component {
   };
 
 render(){
-  // document.querySelector("#my-text").addEventListener("click", function(e){ e.key == 'enter'? document.querySelectpr("#anchor").click() : null});
 return(
   <div className="forgot-password">
     <Header />

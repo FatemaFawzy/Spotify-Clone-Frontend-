@@ -2,6 +2,7 @@ import "./LikedSongsComponent.css";
 import {BrowserRouter as Router} from "react-router-dom";
 import {Link} from "react-router-dom";
 import React ,{ Component} from 'react';
+import {BASEURL} from "../../Constants/baseURL";
 
 
 /** Class LikedSongsComponent that creates the bluish component in the your library-playlist page.
@@ -54,7 +55,7 @@ export class LikedSongsComponent extends Component {
      * @memberof LikedSongsComponent
      * @type {string}
      */
-      const url = baseURL + "/tracks/like/me"; 
+      const url = BASEURL + "/tracks/like/me"; 
       fetch(url,requestOptions)
         .then((response) => {
           return response.json();
@@ -75,7 +76,7 @@ console.log(this.state.arrayOfIDs);
           headers:{'Content-Type':'application/json'},
           body: JSON.stringify({id: this.state.arrayOfIDs})
         }
-        const url1 = baseURL + "/tracks"; 
+        const url1 = BASEURL + "/tracks"; 
         fetch(url1,requestOptions1)
           .then((response) => {
             return response.json();
@@ -124,7 +125,7 @@ console.log(this.state.arrayOfIDs);
         )
       }) 
       this.setState({string:stringofsongs});
-      this.setState({totalLiked:(this.recentlyLiked.length+1)})
+      // this.setState({totalLiked:(this.recentlyLiked.length+1)})
     };
   /**A function that redirects the user to the liked songs page on click of the component.
    * @memberof LikedSongsComponent
