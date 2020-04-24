@@ -95,29 +95,31 @@ export class CreateNewPassword extends Component {
      }
      this.props.history.push('/logIn/forgotpassword/newpassword/passwordisnew');
 
-    // const requestOptions = {
-    //   method: "PATCH",
-    //   headers: {'Content-Type':  'application/json'},
-    //   body: JSON.stringify({ newPassword: this.state.newPassword})
-    // };
-    // const url = window.location.href; 
-    // fetch(url,requestOptions)
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     if (data.message == "Password has been reset successfully")
-    //     {
-    //      this.props.history.push('/logIn/forgotpassword/newpassword/passwordisnew');
-    //     }
-    //     else if (data.message == "Reset Failed")
-    //     {
-    //        newPasswordError = "Failed to reset password.";
-    //     }
-    //   })
-    //   .catch((error)=>{
-    //     console.log(error);
-    //   })
+     var userToken = window.location.pathname.slice((window.location.pathname.indexOf('?') + 1));
+
+    const requestOptions = {
+      method: "PATCH",
+      headers: {'Content-Type':  'application/json'},
+      body: JSON.stringify({token:userToken, newPassword: this.state.newPassword})
+    };
+    const url = window.location.href; 
+    fetch(url,requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data.message == "Password has been reset successfully")
+        {
+         this.props.history.push('/logIn/forgotpassword/newpassword/passwordisnew');
+        }
+        else if (data.message == "Reset Failed")
+        {
+           newPasswordError = "Failed to reset password.";
+        }
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
     
    }
 
