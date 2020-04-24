@@ -17,6 +17,7 @@ import ArtistProfile from './Containers/ArtistProfile/ArtistProfile';
 import EmailSent from './Containers/SignUp/EmailSent';
 import CreateNewPassword from "./Components/ForgotPassword/CreateNewPassword";
 import PasswordIsNew from "./Components/ForgotPassword/PasswordIsNew";
+import ScrollToTop from "./Containers/GenericComponenets/ScrollToTop";
 
 
        
@@ -25,6 +26,7 @@ function App() {
     <div className="App">
 
       <Router>
+      <ScrollToTop>
 
         <Switch>
 
@@ -48,6 +50,8 @@ function App() {
           
           {/* TODO: add routes to the other pages */}
         </Switch>
+
+      </ScrollToTop>
       </Router>
 
       

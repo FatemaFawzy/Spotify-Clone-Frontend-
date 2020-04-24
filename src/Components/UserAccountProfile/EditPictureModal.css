@@ -1,0 +1,50 @@
+.modal-edit-picture-class{
+
+}
+.modal-header-edit-picture-class{
+ 
+  color: rgb(29,185,84);
+
+
+}
+
+.modal-body-edit-picture-class{
+  
+
+
+}
+
+.modal-footer-edit-picture-class{
+  
+
+
+}
+.modal-footer-edit-picture-class button{
+
+  max-width: 290px;
+	min-width: 160px;
+	height: 30px;
+	background:#1DB954;
+	border:none;
+	text-align: center;
+	font-size:12px;
+	letter-spacing: 2px;
+	font-weight: 700;
+	float: right;
+	line-height: 1;
+  padding: 10px 32px;
+  color: white;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 80%;
+
+}
+
+
+
+.modal-footer-edit-picture-class button:hover {
+	background: #1ED760;
+}
+.modal-footer-edit-picture-class button:focus {
+	outline: none;
+}

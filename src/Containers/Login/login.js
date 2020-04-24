@@ -5,55 +5,24 @@ import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
 import {BASEURL} from "../../Constants/baseURL";
 
-
 const initialState = {
-  /**Email input
-   * @memberof Login
-   * @type {String}
-   */
   email: "",
-  /**Email Error message
-   * @memberof Login
-   * @type {String}
-   */
   emailError: "",
-  /**Password input
-   * @memberof Login
-   * @type {String}
-   */
   password: "",
-  /**Password Error message
-   * @memberof Login
-   * @type {String}
-   */
   passwordError:"",
-  /**Incorrect user info message
-   * @memberof Login
-   * @type {String}
-   */
   incorrectData:"",
 }
 
-/**Email format that must be entered by the user
-   * @memberof Login
-   * @type {expression}
-   */
 const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 );
-/** Class Login
- * @extends Component
- */
-export class Login extends Component{
+class Login extends Component{
   constructor(props){
     super(props);
  this.state = initialState;
   }
 
-/**A function that checks email's validation
-  * @memberof Login
-  * @func validateEmail
-  */
+
  validateEmail = () => {
   let email = this.state.email;
   let emailError="";
@@ -62,27 +31,18 @@ export class Login extends Component{
    {
      emailError = "Please enter your Spotify username or email address.";
      this.setState({emailError});
-     if (document.querySelector("#password-input"))
-     {
      document.querySelector("#email-input").classList.add("red-border");
-     }
      proceedemail = false;
    }
    else {
     emailError = "";
     this.setState({email, emailError});
-    if (document.querySelector("#password-input"))
-     {
     document.querySelector("#email-input").classList.remove("red-border");
-     }
     proceedemail = true;
     }
     return proceedemail;
  }
-/**A function that checks password's validation
-  * @memberof Login
-  * @func validatePassword
-  */
+
  validatePassword = () => {
   let password = this.state.password;
   let passwordError="";
@@ -91,19 +51,13 @@ export class Login extends Component{
    {
      passwordError = "Please enter your password.";
      this.setState({passwordError});
-     if (document.querySelector("#password-input"))
-     {
      document.querySelector("#password-input").classList.add("red-border");
-     }
      proceedpassword = false;
    }
    else {
     passwordError = "";
     this.setState({password, passwordError});
-    if (document.querySelector("#password-input"))
-    {
     document.querySelector("#password-input").classList.remove("red-border");
-    }
     proceedpassword = true;
     }
     return proceedpassword;
@@ -111,10 +65,7 @@ export class Login extends Component{
 
 
 
-/**A function that handles email on change
-  * @memberof Login
-  * @func handleEmail
-  */
+
  handleEmail = event => {
   let email = this.state.email;
   email = event.target.value;
@@ -123,10 +74,6 @@ export class Login extends Component{
   
 
 };
-/**A function that handles password on change
-  * @memberof Login
-  * @func handlePassword
-  */
 handlePassword = event => {
   let pass = this.state.password;
   pass = event.target.value;
@@ -135,32 +82,26 @@ handlePassword = event => {
   
 
 };
-/**A function that handles forms submission
-  * @memberof Login
-  * @func clickSubmit
-  */
-clickSubmit = event => {
+
+ clickSubmit = event => {
   let incorrectData = "";
   let email = this.state.email;
   let emailError = this.state.emailError;
   let password = this.state.password;
-  // event.preventDefault();
+  event.preventDefault();
   // console.log(email.length);
   this.validateEmail();
   this.validatePassword();
   if(!emailFormat.test(email) && email.length !== 0)
   {
     emailError="The email address is invalid."
-    if (document.querySelector("#email-input"))
-    {
     document.querySelector("#email-input").classList.add("red-border");
-    }
     this.setState({emailError})
   }
   else if(this.validateEmail() && this.validatePassword()){
      this.setState({initialState});
     //  console.log(email.length);
-    //  var clr= document.querySelector("#login-form");
+    //  var clr= document.querySelector("#Login-form");
     //  clr.reset();
     //  let returnedData={
     //   id: 1,
@@ -176,26 +117,17 @@ clickSubmit = event => {
     //     'email': this.state.email, 'password':this.state.password }
     //     }
     //     console.log(this.state.email + this.state.password)
-    //     const url = BASEURL + "users/login"; 
+    //     const url = BASEURL + "users/Login"; 
 
     // headers: { 'Access-Control-Expose-Headers': 'x-auth','Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
      // body: JSON.stringify({ email: "ayaelsackaan.1999@gmail.com" ,password: "111" }) 
-    
-   /**Prerequisites for fetch request
-   * @memberof Login
-   * @type {String}
-   */
-     const requestOptions = {
+    const requestOptions = {
       method:"POST",
       headers: { 'Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
       body: JSON.stringify({ email: this.state.email ,password: this.state.password })
     }
     // console.log(this.state.email + this.state.password)
-    /**url for fetch request
-   * @memberof Login
-   * @type {String}
-   */
-    const url = BASEURL + "users/login"
+    const url = BASEURL + "users/Login"
       fetch(url,requestOptions)
         .then((response) => {
           console.log(response.status)
@@ -231,7 +163,9 @@ clickSubmit = event => {
           console.log(error);
         })
   }
-};
+
+
+ };
 
 render() {
  return (
@@ -273,7 +207,7 @@ render() {
 
         <br/>
 
-        <Link to="/logIn/forgotpassword" className="password-forgot" >Forgot your password?</Link> 
+        <Link to="/Login/forgotpassword" className="password-forgot" >Forgot your password?</Link> 
 
         <br/>
 

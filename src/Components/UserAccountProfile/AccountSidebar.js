@@ -1,18 +1,79 @@
 import React from "react";
 import "./AccountSidebar.css";
 import { NavLink } from "react-router-dom";
+import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
+import EditPictureModal from "./EditPictureModal";
+import {BASEURL} from "../../Constants/baseURL";
 
  /**A function Component that represents the sidebar of the user account page
    * @func AccountSidebar
    */
-const AccountSidebar = (props) => (
-  <div className="account-sidebar">
+const AccountSidebar = (props) => {
 
+  //props.image
+  //props.token
+
+  const [modalShow, setModalShow] = React.useState(false);
+  const [selectedPhoto, setSelectedPhoto] = React.useState(null);
+
+return (
+  <div className="account-sidebar">
+  
+
+    
     <img
       className="user-img"
-      alt="Profile"
       src={props.image}
+      onError={()=>{
+        document.getElementsByClassName("user-img").src = {emptyprofilepic}
+      }}
     />
+
+
+      <button className="edit-photo-button" onClick={() => setModalShow(true)}>
+        Edit Photo
+      </button>
+
+      <EditPictureModal
+        show={modalShow}
+        onHide={() => { 
+          setModalShow(false);
+          setSelectedPhoto(null);
+
+        }}
+        onSaveFile={()=>{
+          const fd= new FormData();
+          fd.append('image', selectedPhoto,selectedPhoto.name);
+          console.log(fd)
+          console.log(selectedPhoto)
+
+          const requestOptions = {
+            method:"POST",
+            headers: { 'Content-Type': 'application/json','x-auth' : props.token},
+            body: JSON.stringify({ 
+              photo: fd })
+        }
+        const url = BASEURL + "users/profilepicture"; 
+        fetch(url,requestOptions)
+          .then((response) => {
+            console.log(response); 
+            return response.text()})
+          .then((data) => {
+            console.log(data);  
+            // window.location.reload(true);
+          })
+          .catch((error)=>{
+            console.log(error);
+          })
+
+        }}
+        onChangeFile={(event)=>{
+          console.log(event.target.files[0]);
+          setSelectedPhoto(event.target.files[0]);
+ 
+        }}
+        photo={selectedPhoto}
+      />
 
     <div className="side-items">
 
@@ -40,5 +101,7 @@ const AccountSidebar = (props) => (
 
   </div>
 );
+
+}
 
 export default AccountSidebar;
