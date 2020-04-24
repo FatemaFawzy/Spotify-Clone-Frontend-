@@ -14,6 +14,7 @@ class MusicBar extends Component {
       albumLink: "/webplayer/yourlibrary",
       artistProfileLink: "/webplayer/artistprofile/",
       duration: "3:45",
+      volume: "",
 
     }
   }
@@ -29,7 +30,19 @@ class MusicBar extends Component {
     const {id} = e.target;
     var sound=document.getElementById(id);
     sound.classList.toggle("fa-volume-mute");
-    sound.classList.toggle("fa-volume-up");  
+    sound.classList.toggle("fa-volume-up");
+    var volumeBar=document.getElementById("volume");
+
+    if(sound && sound.classList.contains("fa-volume-mute")){
+      if (volumeBar) {
+        this.setState({volume: volumeBar.style.width})
+        volumeBar.style.width= "0%";
+      }
+    }
+    else if (sound && sound.classList.contains("fa-volume-up")){
+      volumeBar.style.width=this.state.volume;
+    }
+  
   }
 
   playPause = e => {
@@ -126,7 +139,7 @@ class MusicBar extends Component {
 
                 <li>
                   <div className="progress">
-                    <div className="progress-bar bg-success" role="progressbar" style={{width: "50%"}} aria-valuenow="25" aria-valuemin="0" 
+                    <div id="volume" className="progress-bar bg-success" role="progressbar" style={{width: "50%"}} aria-valuenow="25" aria-valuemin="0" 
                     aria-valuemax="100"> </div>
                   </div>
                 </li>
