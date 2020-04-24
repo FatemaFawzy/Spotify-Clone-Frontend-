@@ -13,8 +13,7 @@ class MusicBar extends Component {
       // TODO: change the albumlink and artistprofile
       albumLink: "/webplayer/yourlibrary",
       artistProfileLink: "/webplayer/artistprofile/",
-
-    
+      duration: "3:45",
 
     }
   }
@@ -31,6 +30,13 @@ class MusicBar extends Component {
     var sound=document.getElementById(id);
     sound.classList.toggle("fa-volume-mute");
     sound.classList.toggle("fa-volume-up");  
+  }
+
+  playPause = e => {
+    const {id} = e.target;
+    var icon=document.getElementById(id);
+    icon.classList.toggle("fa-play-circle");
+    icon.classList.toggle("fa-pause-circle");  
   }
 
   render() {
@@ -80,20 +86,52 @@ class MusicBar extends Component {
 
             </div>
 
-            <div className="music-bar-middle col d-flex align-items-center justify-content-center">
-              MUSIC BAR
+
+{/* ----------------------------------------------------------------------------------------------------- */}
+
+
+            <div className="music-bar-middle">
+              <div className="d-flex justify-content-center">
+                <button className="middle-icons fas fa-random mr-2"></button>
+                <button className="middle-icons fas fa-step-backward"></button>
+                <button id="play-track-bar" className="play middle-icons far fa-play-circle mr-3 ml-3" onClick={this.playPause} ></button>
+                <button className="middle-icons fas fa-step-forward"></button>
+                <button className="middle-icons fas fa-sync-alt ml-2"></button>
+              </div>
+              <div className="duration-bar d-flex">
+                <div className="duration pr-1">
+                  1:59
+                </div>
+
+                <div id="music-progress" className="progress ">
+                  <div className="progress-bar bg-success" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" 
+                  aria-valuemax="100"> </div>
+                </div>
+                
+                <div className="duration pl-1">
+                  {this.state.duration}
+                </div>
+              </div>
 
             </div>
 
-            <div className="music-bar-right col pr-0 d-flex align-items-center justify-content-end list-group-horizontal">
-              <div className="volume-bar">
-                <button id="volume-button" className="fas fa-volume-up" onClick={this.muteVolume}> </button>
+{/* ----------------------------------------------------------------------------------------------------- */}
 
-                <div class="progress">
-                  <div class="progress-bar bg-success" role="progressbar" style={{width: "50%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+            <div className="music-bar-right pr-0 d-flex align-items-center justify-content-end list-group-horizontal">
+              <ul className="volume-bar list-group list-group-horizontal">
 
-              </div>
+                <li>
+                  <button id="volume-button" className="fas fa-volume-up" onClick={this.muteVolume}> </button>
+                </li>
+
+                <li>
+                  <div className="progress">
+                    <div className="progress-bar bg-success" role="progressbar" style={{width: "50%"}} aria-valuenow="25" aria-valuemin="0" 
+                    aria-valuemax="100"> </div>
+                  </div>
+                </li>
+
+              </ul>
             </div>          
 
           </div>
