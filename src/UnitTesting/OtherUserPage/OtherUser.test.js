@@ -24,14 +24,14 @@ describe("OtherUser Container test", ()=>{
 
 
   //IN THIS FUNCTION I AM TESTING TO ASSERT THAT THE COMPONENT HAS AN IMAGE TAG INSIDE OF IT
-  it("Should have an image", ()=>{
+  it("Should have an image if the loading state is false", ()=>{
+    wrapper.setState({loading:false})
     const image= wrapper.find("img");
     expect(image).toHaveLength(1);
   })
-
-  it("Should have an name", ()=>{
-    const name= wrapper.find("h2.other-profile-name-class");
-    expect(name).toHaveLength(1);
+  it("Should have a loading spinner if the loading state is true", ()=>{
+    wrapper.setState({loading:true})
+    const loadingdiv= wrapper.find("div.search-spinner-loading");
+    expect(loadingdiv).toHaveLength(1);
   })
-
 })

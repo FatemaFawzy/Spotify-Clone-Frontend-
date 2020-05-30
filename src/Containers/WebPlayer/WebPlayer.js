@@ -18,8 +18,10 @@ import OtherUser from '../OtherUserPage/OtherUser';
 import LikedSongs from '../../Components/LikedSongs/LikedSongs';
 import AddToPlaylist from '../../Components/PlaylistsComponent/AddToPlaylist';
 import SeeAllArtists from '../../Containers/HomePage/SeeAllArtists';
+import AdsBar from "../../Components/Ads/AdsBar";
 
 
+var isPremium=false;
 
 
 class WebPlayer extends Component {
@@ -53,6 +55,8 @@ class WebPlayer extends Component {
               <Route path="/webplayer/HomePage/seeallartists" component={SeeAllArtists}/>
 
             </Switch>
+
+            {!isPremium&&<AdsBar/>}
 
           </div>
 

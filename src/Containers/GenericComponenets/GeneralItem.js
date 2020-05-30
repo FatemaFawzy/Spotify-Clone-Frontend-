@@ -17,7 +17,10 @@ export class GeneralItem extends Component {
    * @func  handleClick
    */
 
-  handleClick = () => {
+  handleClick = (event) => {
+
+    console.log(event.target);
+    if ((!event.target.matches('.play-button-general-class')) && (!event.target.matches('.fas'))) {
 
     switch (this.props.type) {
       case itemType.SONG:
@@ -69,7 +72,7 @@ export class GeneralItem extends Component {
         break;
     }
 
-
+  }
   }
 
   render() {
@@ -91,13 +94,39 @@ export class GeneralItem extends Component {
       actualName = this.props.name;
     }
 
+    var playPause=(this.props.somethingIsPlaying&&this.props.playingPlaylistID===this.props.id)?"fa-pause":"fa-play";
+    var activeComponentID=(this.props.somethingIsPlaying&&this.props.playingPlaylistID===this.props.id)?"active-component-id":"";
+    
     return (
-      <div onClick={this.handleClick} className="item-general-outer-class">
+      <div onClick={this.handleClick} className="item-general-outer-class" id={activeComponentID}>
 
         <img src={this.props.image} id={roundImgOrNot} className="img-style-item-general" />
         <p>{actualName}</p>
         <a href="#">{this.props.subname}</a>
-        <button><i className="fas fa-play"></i></button>
+        {(this.props.type===itemType.PLAYLIST||this.props.type===itemType.SONG)&&<button 
+        // style={{display:(this.props.somethingIsPlaying&&
+        //   (this.props.playingSongID===this.props.id||this.props.playingPlaylistID===this.props.id))?"block":"none"}} 
+        className="play-button-general-class" 
+        onClick={()=>{
+
+          switch (this.props.type) {
+            case itemType.SONG:
+              this.props.onPlayASong(this.props.id);
+              break;
+      
+            case itemType.PLAYLIST:
+              this.props.onPlayAPlaylist(this.props.id);
+              break;
+      
+            default:
+              break;
+          }
+
+
+            
+
+        }
+      }><i className={"fas "+playPause}></i></button>}
 
       </div>
     )
@@ -113,9 +142,19 @@ const mapDispatchToProps = dispatch => {
     onArtistClicked : (itemID) => dispatch ({type: actionTypes.SELECT_ARTIST , value: itemID}),
     onAlbumClicked : (itemID) => dispatch ({type: actionTypes.SELECT_ALBUM , value: itemID}),
     onPlaylistClicked : (itemID) => dispatch ({type: actionTypes.SELECT_PLAYLIST , value: itemID}),
-    onProfileClicked : (itemID) => dispatch ({type: actionTypes.SELECT_PROFILE , value: itemID})
+    onProfileClicked : (itemID) => dispatch ({type: actionTypes.SELECT_PROFILE , value: itemID}),
+    onPlayASong: (songID) => dispatch({type: actionTypes.PLAY_SONG, value:songID}),
+    onPlayAPlaylist: (playlistID) => dispatch({type: actionTypes.PLAY_PLAYLIST, value:playlistID}),
 
   };
-
 };
-export default connect(null,mapDispatchToProps)(withRouter(GeneralItem));
+
+const mapStateToProps = state =>{
+  return{
+    playingSongID: state.playingSongID,
+    playingPlaylistID: state.playingPlaylistID,
+    somethingIsPlaying: state.somethingIsPlaying,
+  };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(GeneralItem));

@@ -7,19 +7,14 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/actions";
 
-function updatePlaying() {
-  this.setState({playing:false})
-}
-
 /** Class SongSearched that displays the searched song as an item component
  * @category SongSearched
  * @extends Component
  */
 export class SongSearched extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
-    updatePlaying = updatePlaying.bind(this);
   }
   state = {
 
@@ -41,11 +36,11 @@ export class SongSearched extends Component {
    */
     playing: false,
 
-       /**variable that indicates whether to show the snackbar at the bottom or not
-   * @memberof SongSearched
-   * @type {string}
-   */
-    isplayingclass:"fas fa-play",
+    /**variable that indicates whether to show the snackbar at the bottom or not
+* @memberof SongSearched
+* @type {string}
+*/
+    isplayingclass: "fas fa-play",
 
     /**variable that indicates whether to show the snackbar at the bottom or not
    * @memberof SongSearched
@@ -77,15 +72,12 @@ export class SongSearched extends Component {
   */
   handleClickoutside = event => {
     if ((!event.target.matches('.dropbtn') || !ReactDOM.findDOMNode(this).contains(event.target))) {
-      if (!this.state.playing) {
-        this.setState({ songSearchedIdActive: "" })
+      if (!(this.props.id === this.props.playingSongID) && this.props.somethingIsPlaying) {
+        this.setState({ songSearchedIdActive: "" });
       }
       this.setState({ dropContentClass: "dropdown-content" })
     }
 
-    // if(!ReactDOM.findDOMNode(this).contains(e.target)) {
-    //   // the click was outside your component, so handle closing here
-    // }
   }
 
   /**A function that is called whenever a user chooses the option of adding a song in the dropdown
@@ -120,11 +112,26 @@ export class SongSearched extends Component {
     * @memberof SongSearched
     * @type {object}
     */
-    // var PlayPause = this.state.playing ? <i className="fas fa-pause"></i> : <i className="fas fa-play"></i>;
-      var PlayPause=<i className={this.state.isplayingclass}></i>;
+    var PlayPause;
+
+    /**variable that holds the id of the wrapping div, indicates whether the component is active or not.
+    * @memberof SongSearched
+    * @type {string}
+    */
+    var idOfTheActive;
+
+    if ((this.props.id === this.props.playingSongID) && this.props.somethingIsPlaying) {
+      PlayPause = <i className="fas fa-pause"></i>;
+      idOfTheActive = "song-searched-active";
+    }
+    else {
+      PlayPause = <i className="fas fa-play"></i>;
+      idOfTheActive = "";
+    }
+
 
     return (
-      <div className="song-searched-class" id={this.state.songSearchedIdActive}>
+      <div className="song-searched-class" id={this.state.songSearchedIdActive} id={idOfTheActive}>
 
         <div className="name-image-song-searched">
           <img src={this.props.image} className="img-style-song-searched" />
@@ -135,16 +142,16 @@ export class SongSearched extends Component {
           <button
             onClick={(event) => {
 
-              //TODO: also check later on that their isn't any other song playing
-              if (!this.state.playing) {
-                let prevActive = document.getElementById("song-searched-active");
-                if(prevActive){ prevActive.id="";}               
-                this.setState({ songSearchedIdActive: "song-searched-active" })
-                let prevPlaying= document.getElementsByClassName("fas fa-pause");
-                if(prevPlaying){prevPlaying.className="fas fa-play";}
+              this.props.onPlayASong(this.props.id);
+
+              if ((this.props.id === this.props.playingSongID) && this.props.somethingIsPlaying) {
+                this.setState({ songSearchedIdActive: "" });
               }
-              this.setState((prevstate, event) => ({ isplayingclass: prevstate.playing ? "fas fa-play" : "fas fa-pause" }))
-              this.setState((prevstate, event) => ({ playing: prevstate.playing ? false : true }))
+              else {
+                let prevActive = document.getElementById("song-searched-active");
+                if (prevActive) { prevActive.id = ""; }
+                this.setState({ songSearchedIdActive: "song-searched-active" });
+              }
 
             }}>{PlayPause}</button>
         </div>
@@ -169,11 +176,6 @@ export class SongSearched extends Component {
       </div>
     )
   }
-
-
-
-
-
 }
 const mapDispatchToProps = dispatch => {
 
@@ -181,8 +183,16 @@ const mapDispatchToProps = dispatch => {
 
     onSongClicked: (itemID) => dispatch({ type: actionTypes.SELECT_SONG, value: itemID }),
     onArtistClicked: (itemID) => dispatch({ type: actionTypes.SELECT_ARTIST, value: itemID }),
+    onPlayASong: (songID) => dispatch({ type: actionTypes.PLAY_SONG, value: songID }),
 
   };
 
 };
-export default connect(null, mapDispatchToProps)(SongSearched);
+
+const mapStateToProps = state => {
+  return {
+    playingSongID: state.playingSongID,
+    somethingIsPlaying: state.somethingIsPlaying,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SongSearched);

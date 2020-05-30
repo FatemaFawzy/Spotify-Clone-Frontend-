@@ -6,3 +6,7 @@ export const SELECT_PLAYLIST = "SELECT_PLAYLIST";
 export const ON_SIGNUP = "ON_SIGNUP";
 export const ON_SIGNOUT = "ON_SIGNOUT";
 export const ON_SIGNIN = "ON_SIGNIN";
+export const SELECT_GENRE= "SELECT_GENRE";
+export const PLAY_SONG = "PLAY_SONG";
+export const PLAY_PAUSE = "PLAY_PAUSE";
+export const PLAY_PLAYLIST ="PLAY_PLAYLIST";

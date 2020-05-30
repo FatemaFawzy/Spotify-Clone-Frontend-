@@ -5,6 +5,7 @@ import SearchedContent from "./SearchedContent";
 import Searchbar from "./Searchbar";
 import { Switch, Route, Redirect } from "react-router-dom";
 import AllSearchResults from "./AllSearchResults";
+import SongsByGenre from "./SongsByGenre";
 import * as itemType from "../../Constants/itemType";
 import { BASEURL } from "../../Constants/baseURL";
 
@@ -171,6 +172,8 @@ class SearchPage extends Component {
   OnCancelSearch = () => {
     this.setState({ searchfield: "" })
     this.setState({ searchFocused: true })
+    if(this.props.history) this.props.history.push("/webplayer/search/");
+    
   }
 
   /**A function that is called when the search field focused 
@@ -180,6 +183,7 @@ class SearchPage extends Component {
 
   OnSearchFocus = () => {
     this.setState({ searchFocused: true })
+    if(this.props.history) this.props.history.push("/webplayer/search/");
   }
 
   /**A function that is called when the search field blured 
@@ -250,6 +254,8 @@ class SearchPage extends Component {
           results={this.state.profiles}
           type={itemType.PROFILE} />} />
 
+        <Route path="/webplayer/search/songsbygenre/" component={SongsByGenre} />
+
       </Switch>
 
 
@@ -265,6 +271,7 @@ class SearchPage extends Component {
           profiles={this.state.profiles}
           searchfieldvalue={this.state.searchfield}
           loading={this.state.loading} />} />
+        <Route path="/webplayer/search/songsbygenre/" component={SongsByGenre} />
         <Redirect to="/webplayer/search/" />
 
       </Switch>

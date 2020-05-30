@@ -1,0 +1,63 @@
+.ads-bar-class{
+  width: 100%;
+  color:white;
+  background: linear-gradient(90deg, rgb(174,40,150) 0%, rgb(131,94,194) 35%, rgb(81,155,245) 100%);
+  height: 80px;
+  position: fixed;
+  bottom: 90px;
+  margin-right: auto;
+  margin-left: auto;
+  border-top: solid black 1px;
+}
+
+.ads-bar-class .realtive-ads-bar-wrapping-div{
+  position: relative;
+}
+
+.ads-bar-class .upgrade-to-premium{
+  position: absolute;
+  right: 250px;
+  top:20px;
+  color: rgb(58,127,210);
+  background-color: rgb(255,255,255);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  border-radius: 20px;
+}
+
+.ads-bar-class .upgrade-to-premium:hover{
+  text-decoration: none;
+  color: rgb(58,127,210);
+  font-size: 0.95rem;
+}
+
+.ads-bar-class .realtive-ads-bar-wrapping-div p{
+  color: rgb(251,244,250);
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 20px;
+  margin-top: 7px;
+  display: block;
+  float: left;
+  width: 50%;
+}
+.ads-bar-class .realtive-ads-bar-wrapping-div .ad-text-or-image:hover{
+  text-decoration: none;
+  cursor: pointer;
+  height: 100%;
+  display: block;
+}
+
+.ads-bar-class .realtive-ads-bar-wrapping-div img{
+  height: 80px;
+}
+
+@media only screen and (max-width: 500px) {
+
+  .ads-bar-class .upgrade-to-premium{
+    right: 30px;
+    }
+}
