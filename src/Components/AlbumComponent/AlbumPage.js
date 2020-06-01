@@ -164,22 +164,22 @@ componentDidMount(){
    * @memberof AlbumPage
    * @type {string}
    */
-    var url =BASEURL+ "Artists/"+this.state.AlbumInfo.artistId; 
-    const requestOptions = {
-      method:"GET",
-    headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
+    // var url =BASEURL+ "Artists/"+this.state.AlbumInfo.artistId; 
+    // const requestOptions = {
+    //   method:"GET",
+    // headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
 
-    }
-    fetch(url,requestOptions)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {    
-     this.setState({Artist:data.artist.artistName})
-    })
-    .catch((error)=>{
-      console.log(error);
-    })  
+    // }
+    // fetch(url,requestOptions)
+    // .then((response) => {
+    //   return response.json();
+    // })
+    // .then((data) => {    
+    //  this.setState({Artist:data.artist.artistName})
+    // })
+    // .catch((error)=>{
+    //   console.log(error);
+    // })  
    }
   
      /**Function toggle add to playlist

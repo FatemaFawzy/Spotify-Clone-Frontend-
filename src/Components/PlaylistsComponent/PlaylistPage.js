@@ -150,23 +150,23 @@ export class PlaylistPage extends Component
      * @memberof PlaylistPage
      * @type {string}
      */
-      var url =BASEURL+ "tracks"; 
-      const requestOptions = {
-        method:"POST",
-        headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
-        'Content-Type': 'application/json'},
-        body: JSON.stringify({id: this.state.playlistTracks})
-    };
-      fetch(url,requestOptions)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) =>{ 
-          this.setState({playlistTracks:data.tracks})
-          console.log(this.state.playlistTracks)
-          // this.getArtistName()
-        })
-        .catch((err)=>console.log(err))
+    //   var url =BASEURL+ "tracks"; 
+    //   const requestOptions = {
+    //     method:"POST",
+    //     headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
+    //     'Content-Type': 'application/json'},
+    //     body: JSON.stringify({id: this.state.playlistTracks})
+    // };
+    //   fetch(url,requestOptions)
+    //     .then((response) => {
+    //       return response.json();
+    //     })
+    //     .then((data) =>{ 
+    //       this.setState({playlistTracks:data.tracks})
+    //       console.log(this.state.playlistTracks)
+    //       // this.getArtistName()
+    //     })
+    //     .catch((err)=>console.log(err))
     }
 
     // getArtistName()

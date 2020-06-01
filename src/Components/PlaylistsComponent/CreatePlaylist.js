@@ -49,25 +49,25 @@ createNewPlaylist = (e) =>{
    * @memberof CreatePlaylist
    * @type {boolean}
    */
-  var Privacy=false;
-  const url = BASEURL+ "playlists/?playlistName="+NewPlaylistName+"&privacy="+Privacy;    
-  console.log(url);
-  const requestOptions = {
-    method: 'POST', 
-    headers: {'x-auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
-    'Content-Type': 'application/json' }, 
-    body: JSON.stringify({ playlistName: NewPlaylistName, privacy: Privacy }) ,
+  // var Privacy=false;
+  // const url = BASEURL+ "playlists/?playlistName="+NewPlaylistName+"&privacy="+Privacy;    
+  // console.log(url);
+  // const requestOptions = {
+  //   method: 'POST', 
+  //   headers: {'x-auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
+  //   'Content-Type': 'application/json' }, 
+  //   body: JSON.stringify({ playlistName: NewPlaylistName, privacy: Privacy }) ,
 
-  };    
-     fetch(url,requestOptions)
-      .then((res) => res.json())
-      .then((data) =>{
-        console.log(data)
-        this.toggle()
-        window.location.reload(true);
-        this.props.history.replace("/webplayer/playlist" + data.playlistId)
-      })
-      .catch((err)=>console.log(err))
+  // };    
+  //    fetch(url,requestOptions)
+  //     .then((res) => res.json())
+  //     .then((data) =>{
+  //       console.log(data)
+  //       this.toggle()
+  //       window.location.reload(true);
+  //       this.props.history.replace("/webplayer/playlist" + data.playlistId)
+  //     })
+  //     .catch((err)=>console.log(err))
        
     
     
