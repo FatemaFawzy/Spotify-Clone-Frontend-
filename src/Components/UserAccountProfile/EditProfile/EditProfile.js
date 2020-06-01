@@ -154,43 +154,38 @@ export class EditProfile extends Component {
     //document.getElementById("edit-profile-form").submit();
       // this.setState({savedChanges: true}, () => console.log(this.state) );
 
-    const requestOptions = {
-        method:"PATCH",
-        headers: { 'Content-Type': 'application/json','x-auth' : this.props.userToken},
-        body: JSON.stringify({ 
-          userName: this.state.username,
-          gender: this.state.gender,
-          day: this.state.birthDate.day,
-          month: this.state.birthDate.month,
-          year: this.state.birthDate.year
-          // userName: "Fatema",
-          // gender: "F",
-          // day: "20",
-          // month: "09",
-          // year: "1998"
-        })
-    }
-      /**const url of the request
-       * @memberof EditProfile
-       * @type {string}
-       */   
-    const url = BASEURL + "users/me/editprofile"; 
-    fetch(url,requestOptions)
-      .then((response) => {
-        console.log(response); 
-        return response.text()})
-      .then((data) => {
-        console.log(data);  
-        if (data=="Updated"){
-          document.getElementById("saved-changes").classList.remove("hide");
-        }
-        window.location.reload(true);
+    // const requestOptions = {
+    //     method:"PATCH",
+    //     headers: { 'Content-Type': 'application/json','x-auth' : this.props.userToken},
+    //     body: JSON.stringify({ 
+    //       userName: this.state.username,
+    //       gender: this.state.gender,
+    //       day: this.state.birthDate.day,
+    //       month: this.state.birthDate.month,
+    //       year: this.state.birthDate.year
+    //     })
+    // }
+    //   /**const url of the request
+    //    * @memberof EditProfile
+    //    * @type {string}
+    //    */   
+    // const url = BASEURL + "users/me/editprofile"; 
+    // fetch(url,requestOptions)
+    //   .then((response) => {
+    //     console.log(response); 
+    //     return response.text()})
+    //   .then((data) => {
+    //     console.log(data);  
+    //     if (data=="Updated"){
+    //       document.getElementById("saved-changes").classList.remove("hide");
+    //     }
+    //     window.location.reload(true);
         
-      })
-      .catch((error)=>{
-        console.log(error);
-      })
-    //  }
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+ 
   }
   
   render(){
