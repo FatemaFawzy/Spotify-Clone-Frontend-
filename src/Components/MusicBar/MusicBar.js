@@ -3,6 +3,8 @@ import "./MusicBar.css";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/actions";
 import {formatTime, progressOffset} from "../../HelperFunctions/History";
+import ReactSnackBar from "react-js-snackbar";
+import '../PlaylistsComponent/SnackBar.css';
 
 class MusicBar extends Component {
 
@@ -20,6 +22,8 @@ class MusicBar extends Component {
       progress:"0%",
       volume: "0.5",
       muted: false,
+      showSnackBar: false,
+      snackBarMes: "",
 
     }
     this.forcedProgress=false;
@@ -29,8 +33,24 @@ class MusicBar extends Component {
   likeSong = e => {
     const {id} = e.target;
     var heart=document.getElementById(id);
+    if (heart){
+      if(heart.classList.contains("far")){
+        this.setState({ showSnackBar: true, snackBarMes: "Added to your liked songs" });
+        setTimeout(() => {
+          this.setState({ showSnackBar: false });
+        }, 2000);     
+      }
+      else if(heart.classList.contains("fas")){
+        this.setState({ showSnackBar: true, snackBarMes: "Removed from your liked songs" });
+        setTimeout(() => {
+          this.setState({ showSnackBar: false });
+        }, 2000);      
+      }      
+
+    }
     heart.classList.toggle("far");
     heart.classList.toggle("fas");
+
   }
 
   playPause = e => {
@@ -149,6 +169,9 @@ class MusicBar extends Component {
 
 
       <div className="music-bar d-flex align-items-center pt-0 pb-0">
+        <ReactSnackBar Icon={<span className="fab fa-spotify"></span>} Show={this.state.showSnackBar}>
+            {this.state.snackBarMes}
+        </ReactSnackBar>
         <div className="music-bar-inside container-fluid m-0">
           <div className="row">
 

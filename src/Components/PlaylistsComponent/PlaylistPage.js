@@ -215,28 +215,28 @@ export class PlaylistPage extends Component
      * @memberof PlaylistPage
      * @type {string}
      */
-    var url=""
-    if( heart.classList.contains("far")){
-    url = BASEURL+"playlists/like/?id="+this.state.playlistInfo._id;
-    }
-    else if(heart.classList.contains("fas")){
-    url = BASEURL+"playlists/unlike/?id="+this.state.playlistInfo._id;
-    }
-    heart.classList.toggle("far");
-    heart.classList.toggle("fas");
+    // var url=""
+    // if( heart.classList.contains("far")){
+    // url = BASEURL+"playlists/like/?id="+this.state.playlistInfo._id;
+    // }
+    // else if(heart.classList.contains("fas")){
+    // url = BASEURL+"playlists/unlike/?id="+this.state.playlistInfo._id;
+    // }
+    // heart.classList.toggle("far");
+    // heart.classList.toggle("fas");
     
-    console.log(url);
-    const requestOptions = {
-      method: 'POST',  
-      headers: {'x':  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
-       }, 
-      body: JSON.stringify({ id: this.state.playlistInfo._id}) ,
+    // console.log(url);
+    // const requestOptions = {
+    //   method: 'POST',  
+    //   headers: {'x':  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
+    //    }, 
+    //   body: JSON.stringify({ id: this.state.playlistInfo._id}) ,
  
-    };
-    fetch(url, requestOptions)
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch((error)=> {console.log(error)});
+    // };
+    // fetch(url, requestOptions)
+    //     .then(response => response.json())
+    //     .then(data => console.log(data))
+    //     .catch((error)=> {console.log(error)});
   }
 
 
