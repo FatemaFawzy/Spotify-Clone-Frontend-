@@ -53,24 +53,24 @@ return (
           console.log(fd);
           console.log(selectedPhoto);
 
-          const requestOptions = {
-            method:"POST",
-            headers: { 'Content-Type': 'application/json','x-auth' : props.token},
-            body: JSON.stringify({ 
-              photo: fd })
-        }
-        const url = BASEURL + "users/profilepicture"; 
-        fetch(url,requestOptions)
-          .then((response) => {
-            console.log(response); 
-            return response.text()})
-          .then((data) => {
-            console.log(data);  
-            // window.location.reload(true);
-          })
-          .catch((error)=>{
-            console.log(error);
-          })
+          // const requestOptions = {
+          //   method:"POST",
+          //   headers: { 'Content-Type': 'application/json','x-auth' : props.token},
+          //   body: JSON.stringify({ 
+          //     photo: fd })
+          // }
+          // const url = BASEURL + "users/profilepicture"; 
+          // fetch(url,requestOptions)
+          //   .then((response) => {
+          //     console.log(response); 
+          //     return response.text()})
+          //   .then((data) => {
+          //     console.log(data);  
+          //     // window.location.reload(true);
+          //   })
+          //   .catch((error)=>{
+          //     console.log(error);
+          //   })
 
         }}
         onChangeFile={(event)=>{

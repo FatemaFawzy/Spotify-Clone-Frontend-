@@ -50,34 +50,34 @@ export class SongsByGenre extends Component {
   }
 
   componentDidMount() {
-    const url = BASEURL + "tracks/?genre=" + this.props.selectedGenreID;
+    // const url = BASEURL + "tracks/?genre=" + this.props.selectedGenreID;
 
-    const requestOptions = {
-      method: 'GET',
-      headers: { 'x-auth': this.props.userToken },
-    };
+    // const requestOptions = {
+    //   method: 'GET',
+    //   headers: { 'x-auth': this.props.userToken },
+    // };
 
-    try {
-      fetch(url, requestOptions)
-        .then((response) => {
+    // try {
+    //   fetch(url, requestOptions)
+    //     .then((response) => {
 
-          return response.json();
+    //       return response.json();
 
-        })
-        .then((data) => {
+    //     })
+    //     .then((data) => {
 
-          this.setState({ songs: data })
+    //       this.setState({ songs: data })
 
-        })
-        .catch(function (error) {
-          console.log('There has been a problem with your fetch operation: ',
-            error.message);
-        })
+    //     })
+    //     .catch(function (error) {
+    //       console.log('There has been a problem with your fetch operation: ',
+    //         error.message);
+    //     })
 
-    }
-    catch (error) {
-      console(error);
-    }
+    // }
+    // catch (error) {
+    //   console(error);
+    // }
 
 
 

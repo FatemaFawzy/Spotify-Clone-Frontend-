@@ -31,32 +31,32 @@ export class SearchContent extends Component {
     ],
   }
   componentDidMount() {
-    const url = BASEURL + "tracks/allgenres";
+    // const url = BASEURL + "tracks/allgenres";
 
-    const requestOptions = {
-      method: 'GET',
-      headers: { 'x-auth': this.props.userToken },
-    };
+    // const requestOptions = {
+    //   method: 'GET',
+    //   headers: { 'x-auth': this.props.userToken },
+    // };
 
-    try {
-      fetch(url, requestOptions)
-        .then((response) => {
+    // try {
+    //   fetch(url, requestOptions)
+    //     .then((response) => {
 
-          return response.json();
+    //       return response.json();
 
-        })
-        .then((data) => {
+    //     })
+    //     .then((data) => {
 
-        })
-        .catch(function (error) {
-          console.log('There has been a problem with your fetch operation: ',
-            error.message);
-        })
+    //     })
+    //     .catch(function (error) {
+    //       console.log('There has been a problem with your fetch operation: ',
+    //         error.message);
+    //     })
 
-    }
-    catch (error) {
-      console(error);
-    }
+    // }
+    // catch (error) {
+    //   console(error);
+    // }
 
 
 

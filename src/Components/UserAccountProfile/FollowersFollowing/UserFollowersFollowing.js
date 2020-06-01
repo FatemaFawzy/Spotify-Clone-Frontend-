@@ -54,35 +54,35 @@ class UserFollowersFollowing extends Component {
   }
 
   componentDidMount() {
-    const url = BASEURL + "whateverlink" + this.props.passedToken;
+    // const url = BASEURL + "whateverlink" + this.props.passedToken;
 
-    const requestOptions = {
-      method: 'GET',
-      headers: { 'x-auth': this.props.passedToken },
-    };
+    // const requestOptions = {
+    //   method: 'GET',
+    //   headers: { 'x-auth': this.props.passedToken },
+    // };
 
-    try {
-      fetch(url, requestOptions)
-        .then((response) => {
+    // try {
+    //   fetch(url, requestOptions)
+    //     .then((response) => {
 
-          return response.json();
+    //       return response.json();
 
-        })
-        .then((data) => {
-          this.setState({
-            followers: data,
-            following: data
-          })
+    //     })
+    //     .then((data) => {
+    //       this.setState({
+    //         followers: data,
+    //         following: data
+    //       })
 
-        })
-        .catch(function (error) {
-          console.log('There has been a problem with your fetch operation: ',
-            error.message);
-        })
-    }
-    catch (error) {
-      console(error);
-    }
+    //     })
+    //     .catch(function (error) {
+    //       console.log('There has been a problem with your fetch operation: ',
+    //         error.message);
+    //     })
+    // }
+    // catch (error) {
+    //   console(error);
+    // }
   }
 
   render() {

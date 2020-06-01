@@ -76,68 +76,68 @@ class SearchPage extends Component {
     this.setState({ searchfield: event.target.value })
     this.setState({ loading: true });
 
-    if (event.target.value !== "") {
-      const url = BASEURL + "Search?word=" + event.target.value;
-      // const url = "http://localhost:3001/" + "Search?word=" + event.target.value;
-      const requestOptions = {
-        method: 'GET',
-        headers: { 'x-auth': 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s' },
-      };
+    // if (event.target.value !== "") {
+    //   const url = BASEURL + "Search?word=" + event.target.value;
+    //   // const url = "http://localhost:3001/" + "Search?word=" + event.target.value;
+    //   const requestOptions = {
+    //     method: 'GET',
+    //     headers: { 'x-auth': 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s' },
+    //   };
 
-      try {
-        fetch(url, requestOptions)
-          .then((response) => {
-            if (response.status === 400) {
-              console.log("request failed");
-              throw new Error('Network response was not ok.');
-            }
-            else if (response.status === 403) {
-              console.log("request failed");
-              throw new Error('Network response was not ok.');
+    //   try {
+    //     fetch(url, requestOptions)
+    //       .then((response) => {
+    //         if (response.status === 400) {
+    //           console.log("request failed");
+    //           throw new Error('Network response was not ok.');
+    //         }
+    //         else if (response.status === 403) {
+    //           console.log("request failed");
+    //           throw new Error('Network response was not ok.');
 
-            }
-            else if (response.status === 401) {
-              console.log("request failed");
-              throw new Error('Network response was not ok.');
-            }
-            else if (response.status === 404) {
-              console.log("request failed");
-              throw new Error('Network response was not ok.');
+    //         }
+    //         else if (response.status === 401) {
+    //           console.log("request failed");
+    //           throw new Error('Network response was not ok.');
+    //         }
+    //         else if (response.status === 404) {
+    //           console.log("request failed");
+    //           throw new Error('Network response was not ok.');
 
-            }
-            else if (response.status === 500) {
-              console.log("request failed");
-              throw new Error('Network response was not ok.');
+    //         }
+    //         else if (response.status === 500) {
+    //           console.log("request failed");
+    //           throw new Error('Network response was not ok.');
 
-            }
-            else {
-              return response.json();
+    //         }
+    //         else {
+    //           return response.json();
 
-            }
+    //         }
 
-          })
-          .then((data) => {
-            this.setState({
-              songs: data.Tracks,
-              artists: data.Artists,
-              albums: data.Albums,
-              playlist: data.Playlists,
-              profiles: data.Users
-            })
-            this.setState({ loading: false });
-          })
-          .catch(function (error) {
-            console.log('There has been a problem with your fetch operation: ',
-              error.message);
-          })
+    //       })
+    //       .then((data) => {
+    //         this.setState({
+    //           songs: data.Tracks,
+    //           artists: data.Artists,
+    //           albums: data.Albums,
+    //           playlist: data.Playlists,
+    //           profiles: data.Users
+    //         })
+    //         this.setState({ loading: false });
+    //       })
+    //       .catch(function (error) {
+    //         console.log('There has been a problem with your fetch operation: ',
+    //           error.message);
+    //       })
 
-      }
-      catch (error) {
-        console(error);
-      }
+    //   }
+    //   catch (error) {
+    //     console(error);
+    //   }
 
 
-    }
+    // }
 
 
 
