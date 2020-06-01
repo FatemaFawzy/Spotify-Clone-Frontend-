@@ -2,6 +2,7 @@ import React ,{ Component} from 'react';
 import "./MusicBar.css";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/actions";
+import {formatTime} from "../../HelperFunctions/History";
 
 class MusicBar extends Component {
 
@@ -17,8 +18,11 @@ class MusicBar extends Component {
       artistProfileLink: "/webplayer/artistprofile/",
       duration: "3:45",
       volume: "",
+      progress:"0%",
 
     }
+    this.forcedProgress=false;
+    this.intervalUpdate = setInterval(this.onUpdate, 250);
   }
 
   likeSong = e => {
@@ -68,7 +72,53 @@ class MusicBar extends Component {
       }
   }
 
+  
+
   render() {
+
+    var currentTime;
+    var duration;
+    var volumeIcon;
+    var icon=document.getElementById("play-track-bar");
+
+    if(this.refs.player) {
+      currentTime=this.refs.player.currentTime;
+      duration=this.refs.player.duration;
+      if(this.forcedProgress){
+        this.forcedProgress=false;
+    
+        this.refs.player.currentTime= this.refs.player.duration * (this.state.progress/100);
+      }
+      if(this.state.muted)
+      {
+        volumeIcon="fa-volume-mute";
+      }
+      else
+      {
+        volumeIcon="fa-volume-up";
+      }
+    }
+
+    if(this.props.somethingIsPlaying) {
+      if(this.refs.player) this.refs.player.play();
+      // document.querySelector("audio").play();
+      if(icon) {
+        icon.classList.remove("fa-play-circle");
+        icon.classList.add("fa-pause-circle");
+      }
+        
+    }
+
+    else {
+      if(this.refs.player) this.refs.player.pause();
+      // document.querySelector("audio").pause();
+      if(icon){
+        icon.classList.remove("fa-pause-circle");
+        icon.classList.add("fa-play-circle");
+      }
+       
+    }
+
     return (
 
 
@@ -129,7 +179,7 @@ class MusicBar extends Component {
               </div>
               <div className="duration-bar d-flex">
                 <div className="duration pr-1">
-                  1:59
+                  {formatTime(currentTime)}
                 </div>
 
                 <div id="music-progress" className="progress ">
@@ -139,7 +189,7 @@ class MusicBar extends Component {
                 </div>
                 
                 <div className="duration pl-1">
-                  {this.state.duration}
+                  {formatTime(duration)}
                 </div>
               </div>
 
@@ -151,7 +201,7 @@ class MusicBar extends Component {
               <ul className="volume-bar list-group list-group-horizontal">
 
                 <li>
-                  <button id="volume-button" className="fas fa-volume-up" onClick={this.muteVolume}> </button>
+                  <button id="volume-button" className={"fas "+volumeIcon} onClick={this.muteVolume}> </button>
                 </li>
 
                 <li>
