@@ -17,8 +17,9 @@ class MusicBar extends Component {
       albumLink: "/webplayer/yourlibrary",
       artistProfileLink: "/webplayer/artistprofile/",
       duration: "3:45",
-      volume: "0.5",
       progress:"0%",
+      volume: "0.5",
+      muted: false,
 
     }
     this.forcedProgress=false;
@@ -30,25 +31,6 @@ class MusicBar extends Component {
     var heart=document.getElementById(id);
     heart.classList.toggle("far");
     heart.classList.toggle("fas");
-  }
-
-  muteVolume = e => {
-    const {id} = e.target;
-    var sound=document.getElementById(id);
-    sound.classList.toggle("fa-volume-mute");
-    sound.classList.toggle("fa-volume-up");
-    var volumeBar=document.getElementById("volume");
-
-    if(sound && sound.classList.contains("fa-volume-mute")){
-      if (volumeBar) {
-        this.setState({volume: volumeBar.style.width})
-        volumeBar.style.width= "0%";
-      }
-    }
-    else if (sound && sound.classList.contains("fa-volume-up")){
-      volumeBar.style.width=this.state.volume;
-    }
-  
   }
 
   playPause = e => {
@@ -90,6 +72,35 @@ class MusicBar extends Component {
           progress: (this.refs.player.currentTime / this.refs.player.duration)*100
         });
       }
+    }
+  }
+
+  muteVolume = e => {
+    // const {id} = e.target;
+    // var sound=document.getElementById(id);
+    // sound.classList.toggle("fa-volume-mute");
+    // sound.classList.toggle("fa-volume-up");
+    // var volumeBar=document.getElementById("volume");
+
+    // if(sound && sound.classList.contains("fa-volume-mute")){
+    //   if (volumeBar) {
+    //     this.setState({volume: volumeBar.style.width})
+    //     volumeBar.style.width= "0%";
+    //   }
+    // }
+    // else if (sound && sound.classList.contains("fa-volume-up")){
+    //   volumeBar.style.width=this.state.volume;
+    // }
+  
+    if(this.state.muted)
+    {
+      this.setState({muted:false});
+      if(this.refs.player) this.refs.player.volume=this.state.volume;
+    }
+    else
+    {
+      this.setState({muted:true});
+      if(this.refs.player) this.refs.player.volume=0;
     }
   }
 
@@ -205,7 +216,7 @@ class MusicBar extends Component {
                   <div ref="progressRef" className="progress-bar bg-success" role="progressbar" style={{width: this.state.progress +"%"}} aria-valuenow="25" aria-valuemin="0" 
                   aria-valuemax="100" > </div>
 
-                  <button style={{left:(this.state.progress -4)+"%"}} className="fas fa-circle slider"></button>
+                  <button style={{left:(this.state.progress -3)+"%"}} className="fas fa-circle slider"></button>
                 </div>
                 
                 <div className="duration pl-1">
@@ -225,10 +236,10 @@ class MusicBar extends Component {
                 </li>
 
                 <li>
-                  <div className="progress">
-                    <div id="volume" className="progress-bar bg-success" role="progressbar" style={{width: "50%"}} aria-valuenow="25" aria-valuemin="0" 
+                  <div className="progress" onClick={this.changeVolume}>
+                    <div ref="volumeRef" id="volume" className="progress-bar bg-success" role="progressbar" style={{width:this.state.muted?0+"%": this.state.volume*100+"%"}} aria-valuenow="25" aria-valuemin="0" 
                     aria-valuemax="100"> </div>
-                    <button className="fas fa-circle slider"></button>
+                    <button style={{left:this.state.muted?"-15%":(this.state.volume*100-15)+"%"}} className="fas fa-circle slider"></button>
                   </div>
                   {/* <div className="slidecontainer">
                     <input type="range" min="1" max="100" value="10" class="slider" id="myRange"></input>
@@ -240,6 +251,7 @@ class MusicBar extends Component {
 
           </div>
         </div>
+        
         <audio ref="player" autoPlay={this.props.somethingIsPlaying}>
           <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" />
           {/* <source src="https://www.computerhope.com/jargon/m/example.mp3" /> */}
