@@ -51,7 +51,7 @@ export function goForward() {
 //function to format the time refrenced from stackoverflow
 export function formatTime(s) {
   if (!s && s !== 0) {
-    return '??:??';
+    return '00:00';
   }
 
   var total_seconds = Math.floor(s);
@@ -74,4 +74,14 @@ function format2Number(num) {
     return '00';
   }
   return str;
+}
+
+
+export function progressOffset(element) {
+  var offset = 0;
+  while (element && element !== document) {
+    offset += element.offsetLeft;
+    element = element.offsetParent;
+  }
+  return offset;
 }

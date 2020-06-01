@@ -2,7 +2,7 @@ import React ,{ Component} from 'react';
 import "./MusicBar.css";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/actions";
-import {formatTime} from "../../HelperFunctions/History";
+import {formatTime, progressOffset} from "../../HelperFunctions/History";
 
 class MusicBar extends Component {
 
@@ -17,7 +17,7 @@ class MusicBar extends Component {
       albumLink: "/webplayer/yourlibrary",
       artistProfileLink: "/webplayer/artistprofile/",
       duration: "3:45",
-      volume: "",
+      volume: "0.5",
       progress:"0%",
 
     }
@@ -72,7 +72,24 @@ class MusicBar extends Component {
       }
   }
 
+  handleProgress = e =>{
+
+    var progressRef =this.refs.progressRef;
+    var progress=((e.clientX-progressOffset(progressRef))/document.getElementById("music-progress").clientWidth)*100;
+    this.setState({progress:progress});
+    this.forcedProgress=true;
+
+  }
   
+  onUpdate =()=>{
+    if (this.refs.player) {
+      if (!this.forcedProgress) {
+        this.setState({
+          progress: (this.refs.player.currentTime / this.refs.player.duration)*100
+        });
+      }
+    }
+  }
 
   render() {
 
@@ -182,10 +199,11 @@ class MusicBar extends Component {
                   {formatTime(currentTime)}
                 </div>
 
-                <div id="music-progress" className="progress ">
-                  <div className="progress-bar bg-success" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" 
-                  aria-valuemax="100"> </div>
-                  <button className="fas fa-circle slider"></button>
+                <div id="music-progress" className="progress" onClick={this.handleProgress}>
+                  <div ref="progressRef" className="progress-bar bg-success" role="progressbar" style={{width: this.state.progress +"%"}} aria-valuenow="25" aria-valuemin="0" 
+                  aria-valuemax="100" > </div>
+
+                  <button style={{left:(this.state.progress -4)+"%"}} className="fas fa-circle slider"></button>
                 </div>
                 
                 <div className="duration pl-1">
