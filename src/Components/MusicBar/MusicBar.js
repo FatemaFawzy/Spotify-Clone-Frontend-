@@ -1,5 +1,7 @@
 import React ,{ Component} from 'react';
 import "./MusicBar.css";
+import { connect } from "react-redux";
+import * as actionTypes from "../../Store/actions";
 
 class MusicBar extends Component {
 
@@ -160,4 +162,21 @@ class MusicBar extends Component {
 
 };
 
-export default MusicBar;
+const mapDispatchToProps = dispatch => {
+
+  return {
+
+    onPlayASong: (songID) => dispatch({type: actionTypes.PLAY_SONG, value:songID}),
+    onPlayPause: ()=> dispatch({type: actionTypes.PLAY_PAUSE})
+
+  };
+
+};
+
+const mapStateToProps = state =>{
+  return{
+    playingSongID: state.playingSongID,
+    somethingIsPlaying: state.somethingIsPlaying,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(MusicBar)
