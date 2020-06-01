@@ -72,6 +72,7 @@ class MusicBar extends Component {
       }
   }
 
+  //when the music progress bar is clicked the track is adjusted accordignly
   handleProgress = e =>{
 
     var progressRef =this.refs.progressRef;
@@ -80,7 +81,8 @@ class MusicBar extends Component {
     this.forcedProgress=true;
 
   }
-  
+ 
+  // update the music progress bar as the track keeps playing
   onUpdate =()=>{
     if (this.refs.player) {
       if (!this.forcedProgress) {
