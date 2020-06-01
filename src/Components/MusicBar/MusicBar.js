@@ -50,8 +50,22 @@ class MusicBar extends Component {
   playPause = e => {
     const {id} = e.target;
     var icon=document.getElementById(id);
-    icon.classList.toggle("fa-play-circle");
-    icon.classList.toggle("fa-pause-circle");  
+
+      this.props.onPlayPause();
+      if(this.props.somethingIsPlaying)
+      {
+        this.refs.player.pause();
+        icon.classList.remove("fa-pause-circle");
+        icon.classList.add("fa-play-circle");
+
+      }
+      else
+      {
+
+        this.refs.player.play();
+        icon.classList.remove("fa-play-circle");
+        icon.classList.add("fa-pause-circle");
+      }
   }
 
   render() {
@@ -156,6 +170,11 @@ class MusicBar extends Component {
 
           </div>
         </div>
+        <audio ref="player" autoPlay={this.props.somethingIsPlaying}>
+          <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" />
+          {/* <source src="https://www.computerhope.com/jargon/m/example.mp3" /> */}
+         
+        </audio>
       </div>
     )
   };
