@@ -75,23 +75,19 @@ class MusicBar extends Component {
     }
   }
 
-  muteVolume = e => {
-    // const {id} = e.target;
-    // var sound=document.getElementById(id);
-    // sound.classList.toggle("fa-volume-mute");
-    // sound.classList.toggle("fa-volume-up");
-    // var volumeBar=document.getElementById("volume");
+  //update volume when volume bar is clicked
+  changeVolume = e =>{
+    this.setState({muted:false})
+    var volumeRef =this.refs.volumeRef;
+    console.log((e.clientX-(progressOffset(volumeRef)))/78);
+    var volume=((e.clientX-(progressOffset(volumeRef)))/78);
+    if(volume<0) volume=0;
+    else if(volume>1) volume=1;
+    this.setState({volume:volume});
+    if(this.refs.player) this.refs.player.volume=volume;
+  }
 
-    // if(sound && sound.classList.contains("fa-volume-mute")){
-    //   if (volumeBar) {
-    //     this.setState({volume: volumeBar.style.width})
-    //     volumeBar.style.width= "0%";
-    //   }
-    // }
-    // else if (sound && sound.classList.contains("fa-volume-up")){
-    //   volumeBar.style.width=this.state.volume;
-    // }
-  
+  muteVolume = e => {
     if(this.state.muted)
     {
       this.setState({muted:false});
@@ -251,7 +247,7 @@ class MusicBar extends Component {
 
           </div>
         </div>
-        
+
         <audio ref="player" autoPlay={this.props.somethingIsPlaying}>
           <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" />
           {/* <source src="https://www.computerhope.com/jargon/m/example.mp3" /> */}
