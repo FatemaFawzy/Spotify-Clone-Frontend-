@@ -10,3 +10,5 @@ export const SELECT_GENRE= "SELECT_GENRE";
 export const PLAY_SONG = "PLAY_SONG";
 export const PLAY_PAUSE = "PLAY_PAUSE";
 export const PLAY_PLAYLIST ="PLAY_PLAYLIST";
+export const TOGGLE_SONG_LOOP = "TOGGLE_SONG_LOOP";
+export const INCREMENT_NUM_SONGS = "INCREMENT_NUM_SONGS";

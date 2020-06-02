@@ -15,7 +15,8 @@ const initialState = {
   playingSongID: null,
   playingPlaylistID: null,
   somethingIsPlaying:false,
-  
+  playOnRepeat:false,
+  numberOfSongsPlayed:0,
 }
 
 const reducer = (state = initialState, action) => {
@@ -153,6 +154,34 @@ const reducer = (state = initialState, action) => {
                   };
               }
   
+            break;
+
+            case actionTypes.TOGGLE_SONG_LOOP:
+
+              if((state.playOnRepeat))
+              {
+                return {
+                  ...state,
+                  playOnRepeat:false,
+                  };
+              }
+              else
+              {
+                return {
+                  ...state,
+                  playOnRepeat:true,
+                  };
+              }
+              
+  
+            break;
+
+            case actionTypes.INCREMENT_NUM_SONGS:
+              return {
+                ...state,
+                numberOfSongsPlayed:(state.numberOfSongsPlayed+1)%5
+                };
+
             break;
       
     default:

@@ -5,6 +5,7 @@ import * as actionTypes from "../../Store/actions";
 import {formatTime, progressOffset} from "../../HelperFunctions/History";
 import ReactSnackBar from "react-js-snackbar";
 import '../PlaylistsComponent/SnackBar.css';
+import {Tracks} from "./SongFiles.js";
 
 class MusicBar extends Component {
 
@@ -143,6 +144,14 @@ class MusicBar extends Component {
       {
         volumeIcon="fa-volume-up";
       }
+
+      if(!this.refs.player.loop)
+      {
+        if(this.refs.player.ended&&this.props.somethingIsPlaying)
+        {
+          this.props.onPlayPause();
+        }
+      }
     }
 
     if(this.props.somethingIsPlaying) {
@@ -151,8 +160,7 @@ class MusicBar extends Component {
       if(icon) {
         icon.classList.remove("fa-play-circle");
         icon.classList.add("fa-pause-circle");
-      }
-        
+      } 
     }
 
     else {
@@ -224,7 +232,13 @@ class MusicBar extends Component {
                 <button className="middle-icons fas fa-step-backward"></button>
                 <button id="play-track-bar" className="play middle-icons far fa-play-circle mr-3 ml-3" onClick={this.playPause} ></button>
                 <button className="middle-icons fas fa-step-forward"></button>
-                <button className="middle-icons fas fa-sync-alt ml-2"></button>
+                <button 
+                style={{color:this.props.playOnRepeat?"#1db954":"rgb(179,179,179)"}} 
+                className="middle-icons fas fa-sync-alt ml-2"
+                onClick={()=>{
+                  this.props.onToggleLoop();
+                }}
+                ></button>
               </div>
               <div className="duration-bar d-flex">
                 <div className="duration pr-1">
@@ -271,7 +285,7 @@ class MusicBar extends Component {
           </div>
         </div>
 
-        <audio ref="player" autoPlay={this.props.somethingIsPlaying}>
+        <audio ref="player" loop={this.props.playOnRepeat}>
           <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" />
           {/* <source src="https://www.computerhope.com/jargon/m/example.mp3" /> */}
          
@@ -287,7 +301,8 @@ const mapDispatchToProps = dispatch => {
   return {
 
     onPlayASong: (songID) => dispatch({type: actionTypes.PLAY_SONG, value:songID}),
-    onPlayPause: ()=> dispatch({type: actionTypes.PLAY_PAUSE})
+    onPlayPause: ()=> dispatch({type: actionTypes.PLAY_PAUSE}),
+    onToggleLoop: ()=> dispatch({type:actionTypes.TOGGLE_SONG_LOOP}),
 
   };
 
@@ -297,6 +312,7 @@ const mapStateToProps = state =>{
   return{
     playingSongID: state.playingSongID,
     somethingIsPlaying: state.somethingIsPlaying,
+    playOnRepeat: state.playOnRepeat,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(MusicBar)
