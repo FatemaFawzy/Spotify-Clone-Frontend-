@@ -99,14 +99,13 @@ export class ArtistOverviewContent extends Component {
   
       //   })
 
-      // get artist's popular tracks
-      var url = BASEURL+ "albums/byartist/123"; 
-
       var requestOptions = {
         method: 'GET'
       };
       
-      fetch(url,requestOptions)
+      // get artist's albums
+      var urlAlbum = BASEURL+ "albums/byartist/123"; 
+      fetch(urlAlbum,requestOptions)
         .then((response) => { return response.json()})
         .then((data) => {
           this.setState({
@@ -114,7 +113,18 @@ export class ArtistOverviewContent extends Component {
           console.log(this.state.SongInfo);
         })
         .catch((error)=>{console.log(error);
-  
+        })
+
+      // get artist's singles
+      var urlSingle = BASEURL+ "singles/byartist/123"; 
+      fetch(urlSingle,requestOptions)
+        .then((response) => { return response.json()})
+        .then((data) => {
+          this.setState({
+          singlesInfo: data.singlesInfo});
+          console.log(this.state.SongInfo);
+        })
+        .catch((error)=>{console.log(error);
         })
   }
 
@@ -200,8 +210,8 @@ export class ArtistOverviewContent extends Component {
 
         </section>
 
-        <section className="container p-0 m-0 ">
-          <h1> Albums </h1>
+        <section className="container p-0 m-0">
+          <h1 className="mt-5"> Albums </h1>
           <div className="row">
 
           {this.state.albumInfo.slice(0,3).map((album,index)=>(   
@@ -244,7 +254,7 @@ export class ArtistOverviewContent extends Component {
         </section>
 
         <section className="container m-0 p-0">
-          <h1> Singles </h1>
+          <h1 className="mt-0"> Singles </h1>
           <div className="row">
             {this.state.singlesInfo.slice(0,3).map((single,index)=>(   
                 <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2"> 
