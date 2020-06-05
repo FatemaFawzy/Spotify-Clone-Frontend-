@@ -2,6 +2,7 @@ import React ,{ Component} from 'react';
 import './YourLibraryAlbum.css';
 import GeneralItem from "../GenericComponenets/GeneralItem";
 import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
+import {BASEURL} from "../../Constants/baseURL";
 
 /** Class YourLibraryAlbum
  * @extends Component
@@ -10,13 +11,7 @@ export class YourLibraryAlbum extends Component {
   constructor(props){
     super(props);
     this.state = {
-      /**Includes results of fetch requests
-   * @memberof YourLibraryAlbum
-   * @type {Array<Albums>}
-   */
-      albumArray:[],
-
-      /**Final array of albums
+   /**Final array of albums
    * @memberof YourLibraryAlbum
    * @type {String}
    */
@@ -31,49 +26,34 @@ export class YourLibraryAlbum extends Component {
   componentDidMount() {
      //Make a request with this.props.userID
     //assume this is the returned data
-
-    // const url = "https://jsonplaceholder.typicode.com/photos"; 
-    // fetch(url)
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     this.setState({albumArray:data.slice(0,10)})
-    //   })
-    //   .catch((error)=>{
-    //     console.log(error);
-    //   })
-
-    const albumArray=[{image:"https://i.scdn.co/image/ab67616d0000b2735132ca4fc74bf9ef23ffe1a8",
-                  name:"Championship",
-                  artist:"Meek Mill",
-                  id:"1"},
-                  {image:"https://i.scdn.co/image/ab67616d0000b273fed52a40ad6c4b45f5cf7f11",
-                  name:"Bank Account",
-                  artist:"21 Savage",
-                  id:"2"},
-                  {image:"https://i.scdn.co/image/ab67616d0000b273aa451cc44a4ac5ffb88ee848",
-                  name:"Privacy",
-                  artist:"Cardi B",
-                  id:"3"},
-                  {image:"https://i.scdn.co/image/ab67616d0000b27313b3e37318a0c247b550bccd",
-                  name:"X",
-                  artist:"Ed Sheeran",
-                  id:"4"}];
-
-    const albums = albumArray.map(item => {
-      return (
-        <GeneralItem
-        image={item.image}
-        name={item.name}
-        subname={item.artist}
-        id={item.id}
-        type="ALBUM"
-      />
-      )
+    const requestOptions={
+      method:"GET",
+      headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
-    )
-    this.setState({total:albums});
+    const url = BASEURL+"albums/me"; 
+    fetch(url,requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const albums = data.albums.map(item => {
+          return (
+            <GeneralItem
+            image={item.imagePath}
+            name={item.albumName}
+            subname={item.artistName}
+            id={item._id}
+            type="ALBUM"
+          />
+          )
+        }
+        )
+        this.setState({total:albums});
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+  
   }
 render() {
 return ( 
