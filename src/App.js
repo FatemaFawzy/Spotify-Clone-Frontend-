@@ -5,6 +5,7 @@ import HelpPage from "./Components/HelpPage/HelpPage";
 import welcomePage from "./Containers/WelcomePage/welcomePage";
 import SignUp from "./Containers/SignUp/SignUp";
 import Login from "./Containers/Login/Login";
+import loginFacebook from "./Containers/Login/LoginFacebook";
 import Premium from "./Containers/PremiumBenefits/Premium";
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
 import Success from "./Components/ForgotPassword/Success";
@@ -38,6 +39,7 @@ function App() {
           <Route  path="/premium/" component={Premium}/>
           <Route  path="/webplayer/" component={WebPlayer}/>
           <Route  exact path="/logIn/" component={Login}/>
+          <Route  exact path="/loginFacebook/" component={loginFacebook}/>
           <Route  exact path="/logIn/forgotpassword/" component={ForgotPassword}/>
           <Route path="/logIn/forgotpassword/success/" component={Success}/>
           <Route path="/signup/emailsent/" component={EmailSent}/>

@@ -4,6 +4,7 @@ import {Link, Router } from "react-router-dom";
 import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
 import {BASEURL} from "../../Constants/baseURL";
+import LoginFacebook from "./LoginFacebook";
 
 const initialState = {
   email: "",
@@ -82,6 +83,10 @@ handlePassword = event => {
   
 
 };
+
+facebook = event =>(
+  <LoginFacebook/>
+);
 
  clickSubmit = event => {
   let incorrectData = "";
@@ -177,7 +182,7 @@ render() {
 
       <p className="first-line">To continue, log in to Spotify.</p>
       <p className="incorrect d-none">{this.state.incorrectData}</p>
-      <a id="facebook-button"  className=" buttons btn btn-block btn-facebook" href="#" role="button"><i className="fab fa-facebook logo" aria-hidden="true"></i>  Continue With Facebook</a>
+      <a id="facebook-button"  className=" buttons btn btn-block btn-facebook" href="#" role="button" onClick={this.facebook}><i className="fab fa-facebook logo" aria-hidden="true"></i>  Continue With Facebook</a>
 
         <div className="horizontal">
           <span className="horizontal-span" >
