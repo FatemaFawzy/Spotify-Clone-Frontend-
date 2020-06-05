@@ -138,6 +138,11 @@ class MusicBar extends Component {
     else if (this.state.playQueue) this.setState({playQueue: false});
   }
   
+  stop = e => {
+    if (this.refs.player) this.refs.player.currentTime=0;
+    this.props.onPlayPause();
+  }
+
   render() {
 
     var currentTime;
@@ -245,7 +250,7 @@ class MusicBar extends Component {
 
             <div className="music-bar-middle">
               <div className="d-flex justify-content-center">
-                <button className="middle-icons fas fa-random mr-2" title="Shuffle"></button>
+                <button className="middle-icons fas fa-stop mr-2" title="Stop" onClick={this.stop}></button>
                 <button className="middle-icons fas fa-step-backward" title="Previous" onClick={this.playPrevious}></button>
                 <button id="play-track-bar" className="play middle-icons far fa-play-circle mr-3 ml-3" onClick={this.playPause} ></button>
                 <button className="middle-icons fas fa-step-forward" title="Next" onClick={this.playNext}></button>
