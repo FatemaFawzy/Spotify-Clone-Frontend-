@@ -148,32 +148,33 @@ export class SetPasswordContent extends Component{
    * @type {String}
    */
       const requestOptions = {
-          method:"PUT",
-          headers:{'Content-Type':  'application/json','x-auth':this.props.userToken},
-          body:JSON.stringify({oldPassword:current,newPassword:newPassword})
+          method:"GET",
+          headers:{'Content-Type':  'application/json','x-auth':'x-auth'},
+          
         }
 
       /**url for fetch request
    * @memberof SetPasswordContent
    * @type {String}
    */
-        // const url = "http://52.14.190.202:8000/changepassword"; 
-        // fetch(url,requestOptions)
-        //   .then((response) => {
-        //     return response.text();
-        //   })
-        //   .then((data) => {
-        //    console.log(data);
-        //    if(data == "Password has been changed successfully"){
-        //    document.querySelector("#success").classList.remove("d-none");
-        //    }
-        //    else if (data == "Password is incorrect"){
-        //      currentError = "You've entered an incorrect password."
-        //    }
-        //   })
-        //   .catch((error)=>{
-        //     console.log(error);
-        //   })
+        const url = BASEURL + "/user/currentpassword"; 
+        fetch(url,requestOptions)
+          .then((response) => {
+            return response.text();
+          })
+          .then((data) => {
+           console.log(data);
+           console.log(this.state.current);
+           if(data == this.state.current){
+           }
+           else{
+             this.setState({currentError:"You've entered an incorrect password."});
+             document.querySelector("#success").classList.add("d-none");
+           }
+          })
+          .catch((error)=>{
+            console.log(error);
+          })
     }
   };
 
