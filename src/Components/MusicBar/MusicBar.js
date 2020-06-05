@@ -25,6 +25,7 @@ class MusicBar extends Component {
       muted: false,
       showSnackBar: false,
       snackBarMes: "",
+      trackNum: 0,
 
     }
     this.forcedProgress=false;
@@ -121,6 +122,7 @@ class MusicBar extends Component {
     }
   }
 
+  
   render() {
 
     var currentTime;
@@ -189,7 +191,7 @@ class MusicBar extends Component {
                 <div className="row no-gutters">
 
                   <div className="col-2 ">
-                    <img className="card-img song-photo" src={this.state.photoLink}></img>
+                    <img className="card-img song-photo" src={Tracks[this.state.trackNum].imgURL}></img>
                   </div>
 
                   <div className="col-10">
@@ -199,11 +201,11 @@ class MusicBar extends Component {
 
                         <li className="pr-2 prevent-overflow">
                           <div className="song-name prevent-overflow">
-                            <a id="song-name" href={this.state.albumLink}> {this.state.songName} </a>
+                            <a id="song-name" href={this.state.albumLink}> {Tracks[this.state.trackNum].SongName} </a>
                           </div>
 
                           <div className="artist-name prevent-overflow">
-                            <a id="artist-name" href={this.state.artistProfileLink}> {this.state.artistName} </a>
+                            <a id="artist-name" href={this.state.artistProfileLink}> {Tracks[this.state.trackNum].Artist} </a>
                           </div>
                         </li>
 
@@ -228,11 +230,11 @@ class MusicBar extends Component {
 
             <div className="music-bar-middle">
               <div className="d-flex justify-content-center">
-                <button className="middle-icons fas fa-random mr-2"></button>
-                <button className="middle-icons fas fa-step-backward"></button>
+                <button className="middle-icons fas fa-random mr-2" title="Shuffle"></button>
+                <button className="middle-icons fas fa-step-backward" title="Previous"></button>
                 <button id="play-track-bar" className="play middle-icons far fa-play-circle mr-3 ml-3" onClick={this.playPause} ></button>
-                <button className="middle-icons fas fa-step-forward"></button>
-                <button 
+                <button className="middle-icons fas fa-step-forward" title="Next"></button>
+                <button title="Play on Repeat"
                 style={{color:this.props.playOnRepeat?"#1db954":"rgb(179,179,179)"}} 
                 className="middle-icons fas fa-sync-alt ml-2"
                 onClick={()=>{
@@ -263,7 +265,9 @@ class MusicBar extends Component {
 
             <div className="music-bar-right pr-0 d-flex align-items-center justify-content-end list-group-horizontal">
               <ul className="volume-bar list-group list-group-horizontal">
-
+                <li>
+                  <button className="middle-icons fas fa-list mr-2" title="Play Queue"></button>
+                </li>
                 <li>
                   <button id="volume-button" className={"fas "+volumeIcon} onClick={this.muteVolume}> </button>
                 </li>
@@ -286,9 +290,8 @@ class MusicBar extends Component {
         </div>
 
         <audio ref="player" loop={this.props.playOnRepeat}>
-          <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" />
-          {/* <source src="https://www.computerhope.com/jargon/m/example.mp3" /> */}
-         
+          {/* <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" /> */}
+          <source src={Tracks[this.state.trackNum].songURL} />
         </audio>
       </div>
     )
