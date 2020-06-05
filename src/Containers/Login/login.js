@@ -126,48 +126,48 @@ facebook = event =>(
 
     // headers: { 'Access-Control-Expose-Headers': 'x-auth','Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
      // body: JSON.stringify({ email: "ayaelsackaan.1999@gmail.com" ,password: "111" }) 
-    const requestOptions = {
-      method:"POST",
-      headers: { 'Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
-      body: JSON.stringify({ email: this.state.email ,password: this.state.password })
-    }
-    // console.log(this.state.email + this.state.password)
-    const url = BASEURL + "users/Login"
-      fetch(url,requestOptions)
-        .then((response) => {
-          console.log(response.status)
-          if(response.status===401){
-            console.log("incorrect username or password")
-            return "icorrect";
-          }
-          else if(response.status===200){
-            console.log("response is ok")
-            return response.headers.get("x-auth")
-          }
-        })
-        .then((data) => {
-          console.log(data);
+  //  ******** const requestOptions = {
+  //     method:"POST",
+  //     headers: { 'Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
+  //     body: JSON.stringify({ email: this.state.email ,password: this.state.password })
+  //   }
+  //   // console.log(this.state.email + this.state.password)
+  //   const url = BASEURL + "users/Login"
+  //     fetch(url,requestOptions)
+  //       .then((response) => {
+  //         console.log(response.status)
+  //         if(response.status===401){
+  //           console.log("incorrect username or password")
+  //           return "icorrect";
+  //         }
+  //         else if(response.status===200){
+  //           console.log("response is ok")
+  //           return response.headers.get("x-auth")
+  //         }
+  //       })
+  //       .then((data) => {
+  //         console.log(data);
 
-          if(data==="icorrect"){
+  //         if(data==="icorrect"){
 
-            document.querySelector(".incorrect").classList.remove("d-none");
-            incorrectData= "Incorrect username or password.";
-            this.setState({incorrectData});
-            console.log("incorrect username or password")
+  //           document.querySelector(".incorrect").classList.remove("d-none");
+  //           incorrectData= "Incorrect username or password.";
+  //           this.setState({incorrectData});
+  //           console.log("incorrect username or password")
 
-          }
-          else{
-            this.props.onSignIn(data);
-            this.props.history.replace('/account/');
-          }
+  //         }
+  //         else{
+  //           this.props.onSignIn(data);
+  //           this.props.history.replace('/account/');
+  //         }
 
          
          
-        })
-        .catch((error)=>{
-          console.log(error);
-        })
-  }
+  //       })
+  //       .catch((error)=>{
+  //         console.log(error);
+  //       })
+   }
 
 
  };

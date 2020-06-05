@@ -156,10 +156,10 @@
   /* width: 200px; */
    width: 45%;
    margin-left:10px !important;
+   margin-right: 10px !important;
 }
 
 }
-
 #active-component-id button{
 display: block;
 }

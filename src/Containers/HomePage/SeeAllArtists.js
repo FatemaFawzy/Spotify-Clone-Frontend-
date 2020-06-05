@@ -30,18 +30,18 @@ export class SeeAllArtists extends Component {
    * @func componentDidMount
    */
   componentDidMount() {
-    const url = "http://52.14.190.202:8000/artists/homepage/popular"; 
-    fetch(url)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-       this.setState({popularartists:data.artists})   
+    // const url = "http://52.14.190.202:8000/artists/homepage/popular"; 
+    // fetch(url)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //    this.setState({popularartists:data.artists})   
         
-      })
-      .catch((error)=>{
-        console.log(error);
-      })
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
   }
 
   render(){
