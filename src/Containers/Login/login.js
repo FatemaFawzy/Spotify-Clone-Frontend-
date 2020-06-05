@@ -17,7 +17,7 @@ const initialState = {
 const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 );
-class Login extends Component{
+export class Login extends Component{
   constructor(props){
     super(props);
  this.state = initialState;
@@ -32,13 +32,19 @@ class Login extends Component{
    {
      emailError = "Please enter your Spotify username or email address.";
      this.setState({emailError});
+     if(document.querySelector("#email-input"))
+     {
      document.querySelector("#email-input").classList.add("red-border");
+     }
      proceedemail = false;
    }
    else {
     emailError = "";
     this.setState({email, emailError});
+    if(document.querySelector("#email-input"))
+    {
     document.querySelector("#email-input").classList.remove("red-border");
+    }
     proceedemail = true;
     }
     return proceedemail;
@@ -52,13 +58,20 @@ class Login extends Component{
    {
      passwordError = "Please enter your password.";
      this.setState({passwordError});
+     if(document.querySelector("#password-input"))
+     {
      document.querySelector("#password-input").classList.add("red-border");
+     }
      proceedpassword = false;
    }
    else {
     passwordError = "";
     this.setState({password, passwordError});
+    if(document.querySelector("#password-input"))
+    {
     document.querySelector("#password-input").classList.remove("red-border");
+    }
+
     proceedpassword = true;
     }
     return proceedpassword;
@@ -93,14 +106,20 @@ facebook = event =>(
   let email = this.state.email;
   let emailError = this.state.emailError;
   let password = this.state.password;
-  event.preventDefault();
+  if(event)
+    {
+    event.preventDefault();
+    }
   // console.log(email.length);
   this.validateEmail();
   this.validatePassword();
   if(!emailFormat.test(email) && email.length !== 0)
   {
     emailError="The email address is invalid."
+    if(document.querySelector("#email-input"))
+    {
     document.querySelector("#email-input").classList.add("red-border");
+    }
     this.setState({emailError})
   }
   else if(this.validateEmail() && this.validatePassword()){

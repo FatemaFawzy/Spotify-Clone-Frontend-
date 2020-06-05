@@ -129,7 +129,10 @@ export class SetPasswordContent extends Component{
   * @func clickSubmit
   */
   clickSubmit = event => {
-    
+    if(event)
+    {
+    event.preventDefault();
+    }
     let current = this.state.current;
     let currentError = this.state.currentError;
     // event.preventDefault();
