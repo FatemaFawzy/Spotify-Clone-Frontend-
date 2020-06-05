@@ -47,30 +47,30 @@ export class ArtistProfile extends Component{
     // Get the basic artist info
     // this.props.history.replace("/webplayer/artistprofile/" + this.props.selectedArtistID ) 
 
-    // const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/" + "api/Artist/" +"123"; 
-
   /**const url of the request
    * @memberof ArtistProfile
    * @type {string}
    */ 
     // var url = BASEURL + "Artists/" + this.props.selectedArtistID; 
-    // var requestOptions = {
-    //   method: 'GET',
-    //   headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
-    // };
+    var url = BASEURL + "Artists/123" ; 
+    var requestOptions = {
+      method: 'GET',
+      // headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
+    };
     
-    // fetch(url,requestOptions)
-    //   .then((response) => { return response.json()})
-    //   .then((data) => {
-    //     this.setState({
-    //     artistInfo: data.artist,
-    //     coverLink: "http://52.14.190.202:8000/images/"+data.artist.imagePath
-    //   });
-    //     console.log(this.state.artistInfo);
-    //   })
-    //   .catch((error)=>{console.log(error);
+    fetch(url,requestOptions)
+      .then((response) => { return response.json()})
+      .then((data) => {
+        this.setState({
+        artistInfo: data,
+        coverLink: data.imagePath
+        // coverLink: "http://52.14.190.202:8000/images/"+data.artist.imagePath
+      });
+        console.log(this.state.artistInfo);
+      })
+      .catch((error)=>{console.log(error);
 
-    //   })
+      })
 
   }
   /**Function for toggling play and pause in header
