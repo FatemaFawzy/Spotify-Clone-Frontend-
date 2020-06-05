@@ -25,7 +25,7 @@ class MusicBar extends Component {
       muted: false,
       showSnackBar: false,
       snackBarMes: "",
-      trackNum: 28,
+      trackNum: 0,
       playQueue: false,
     }
 
@@ -117,20 +117,24 @@ class MusicBar extends Component {
   }
 
   playPrevious = e => {
+    //if it's playing a queue, get the previous song
     if(this.state.playQueue) {
       if(this.state.trackNum != 0) this.setState({trackNum: this.state.trackNum-1});
       else if (this.state.trackNum == 0) this.setState({trackNum: Tracks.length-1});
       this.refs.player.load();
     }
-
+    //if only one song is playing, just play it from the start
+      if (this.refs.player) this.refs.player.currentTime=0;
   }
 
   playNext = e => {
+    
     if(this.state.playQueue){
       if(this.state.trackNum != Tracks.length-1) this.setState({trackNum: this.state.trackNum+1});
       else if (this.state.trackNum == Tracks.length-1) this.setState({trackNum: 0});
       this.refs.player.load();
     }
+
   }
 
   playQueue = e => {

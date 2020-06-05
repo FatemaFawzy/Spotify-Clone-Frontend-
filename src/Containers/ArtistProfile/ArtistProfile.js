@@ -47,30 +47,30 @@ export class ArtistProfile extends Component{
     // Get the basic artist info
     // this.props.history.replace("/webplayer/artistprofile/" + this.props.selectedArtistID ) 
 
-    // const url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/" + "api/Artist/" +"123"; 
-
   /**const url of the request
    * @memberof ArtistProfile
    * @type {string}
    */ 
     // var url = BASEURL + "Artists/" + this.props.selectedArtistID; 
-    // var requestOptions = {
-    //   method: 'GET',
-    //   headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
-    // };
+    var url = BASEURL + "Artists/123" ; 
+    var requestOptions = {
+      method: 'GET',
+      // headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
+    };
     
-    // fetch(url,requestOptions)
-    //   .then((response) => { return response.json()})
-    //   .then((data) => {
-    //     this.setState({
-    //     artistInfo: data.artist,
-    //     coverLink: "http://52.14.190.202:8000/images/"+data.artist.imagePath
-    //   });
-    //     console.log(this.state.artistInfo);
-    //   })
-    //   .catch((error)=>{console.log(error);
+    fetch(url,requestOptions)
+      .then((response) => { return response.json()})
+      .then((data) => {
+        this.setState({
+        artistInfo: data,
+        coverLink: data.imagePath
+        // coverLink: "http://52.14.190.202:8000/images/"+data.artist.imagePath
+      });
+        console.log(this.state.artistInfo);
+      })
+      .catch((error)=>{console.log(error);
 
-    //   })
+      })
 
   }
   /**Function for toggling play and pause in header
@@ -116,18 +116,6 @@ export class ArtistProfile extends Component{
 
   }
 
-  // handleSectionClick = e => {
-  //   const {id} = e.target;
-  //   var clickedOption= document.getElementById(id);
-  //   clickedOption.classList.add("grey-background");
-
-  //   var options =document.getElementsByClassName("grey-background");
-  //   for (var i = 0 ; i < options.length ; i++) {
-  //     if (options[i].id !== id){
-  //       options[i].classList.remove("grey-background");
-  //     }
-  //   }; 
-  // }
 
   render() {
   return (
@@ -156,28 +144,15 @@ export class ArtistProfile extends Component{
         </div>
 
         <div id="artist-profile-sections">
-          {/* TODO: change link when search is implemented */}  
-
-          {/* <a id="overview" type="button" className=" artist-profile-sections" 
-          role="button" href="/webplayer/likedsongs/" onClick={this.handleSectionClick}> Overview </a>
-
-          <a id="related-artists" type="button" className=" artist-profile-sections" 
-          role="button" href="/webplayer/likedsongs/relatedartists/" onClick={this.handleSectionClick}> Related Artists </a>
-
-          <a id="about" type="button" className=" artist-profile-sections" 
-          role="button" href="/webplayer/likedsongs/artistabout/" onClick={this.handleSectionClick}> About </a> */}
 
           <NavLink to={this.props.match.url + "/overview/"} id="overview" 
-          className="artist-profile-sections" 
-          onClick={this.handleSectionClick}> Overview </NavLink>
+          className="artist-profile-sections"> Overview </NavLink>
           
           <NavLink to={this.props.match.url + "/relatedartists/"} id="related-artists" 
-          className=" artist-profile-sections" 
-          onClick={this.handleSectionClick}> Related Artists </NavLink>
+          className=" artist-profile-sections"> Related Artists </NavLink>
 
           <NavLink to={this.props.match.url + "/artistabout/"} id="about" 
-          className="artist-profile-sections" 
-          onClick={this.handleSectionClick}> About </NavLink> 
+          className="artist-profile-sections"> About </NavLink> 
 
 
         </div>

@@ -36,27 +36,27 @@ export class RelatedArtistsContent extends Component {
    */
   componentDidMount() {
     
-    // const url = BASEURL + "users/artists/related";
+    const url = BASEURL + "users/artists/related";
 
-    // const requestOptions = {
-    //     method: 'GET',
-    //     headers: { 'x-auth': this.props.userToken , 'artistId' : this.props.id },
-    //   }
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'x-auth': this.props.userToken , 'artistId' : this.props.id },
+      }
 
-    // fetch(url,requestOptions)
-    //   .then((response) => {
-    //     console.log(response)
-    //     return response.json();
+    fetch(url,requestOptions)
+      .then((response) => {
+        console.log(response)
+        return response.json();
         
-    //   })
-    //   .then((data) => {
-    //     this.setState({artistInfo: data});
-    //      console.log(data);
-    //   })
-    //   .catch((error)=>{
-    //     console.log(error);
+      })
+      .then((data) => {
+        this.setState({artistInfo: data});
+         console.log(data);
+      })
+      .catch((error)=>{
+        console.log(error);
 
-    //   })
+      })
   }
 
   render(){
@@ -66,7 +66,9 @@ export class RelatedArtistsContent extends Component {
 
             {this.state.artistInfo.map((artist,index)=>(   
                 <div > 
-                  <GeneralItem className="genral-item" image={ BASEURL + "Images/" +artist.imagePath}
+                  {/* <GeneralItem className="genral-item" image={ BASEURL + "Images/" +artist.imagePath}
+                  name={artist.artistName} subname="Artist" type={itemType.ARTIST} roundimage="1" id={artist._id} key={artist._id}></GeneralItem> */}
+                  <GeneralItem className="genral-item" image={ artist.imagePath}
                   name={artist.artistName} subname="Artist" type={itemType.ARTIST} roundimage="1" id={artist._id} key={artist._id}></GeneralItem>
                 </div>  
             ))}
