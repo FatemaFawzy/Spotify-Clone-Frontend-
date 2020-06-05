@@ -18,10 +18,10 @@ const initialState = {
    */
   emailError: ""
 }
- /**Email format that must be entered by the user
-   * @memberof ForgotPassword
-   * @type {expression}
-   */
+/**Email format that must be entered by the user
+ * @memberof ForgotPassword
+ * @type {expression}
+ */
 const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 );
@@ -44,6 +44,8 @@ export class ForgotPassword extends Component {
    let proceed=true;
    if (inp.length === 0)
    {
+     console.log("inp length");
+     console.log(inp.length);
     emailError = "This field is required.";
     this.setState({emailError});
     if (document.querySelector("#my-text"))
@@ -84,62 +86,63 @@ export class ForgotPassword extends Component {
     this.setState({emailError});
     if (!emailFormat.test(email) && email.length !== 0)
     {
+      console.log("in if");
+      console.log(email);
+      console.log(this.validate());
       if (document.querySelector("#my-text"))
       {
-
       document.querySelector("#my-text").classList.add("red-border");
-      
       }
       emailError = "The email address you entered is invalid.";
       this.setState({emailError});
     }
     else if(this.validate())
     {
-      console.log(this.validate());
+      console.log("yaaaaaaaaaaaaaaaaaaaaaaay");
       this.setState({initialState});
      const {email}=this.state;
      if (document.querySelector("#my-text"))
       {
       document.querySelector("#my-text").classList.remove("red-border");
       }
-   /**Prerequisites for fetch request
-   * @memberof ForgotPassword
-   * @type {object}
-   */
-      const requestOptions = {
-        method:"POST",
-        headers: {'Content-Type':  'application/json'},
-        body: JSON.stringify({ email: email })
-      }
-      console.log(requestOptions.body);
-   /**URL for fetch request
-   * @memberof ForgotPassword
-   * @type {string}
-   */
-      var url = BASEURL + '/users/forgot'; 
-      fetch(url,requestOptions)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          if (data.message === "Email Sent Successfully")
-          {
-            console.log(data);
-            this.props.history.push('/logIn/forgotpassword/success');
-          }
-          else if (data.message == "Email Cannot be sent a problem while sending email")
-          {
-            this.state.emailError = "Your request cannot be performed. Please try again later.";
-          }
-          else if (data.message == "Email not found")
-          {
-           this.state.emailError = "The email you entered does not exist in the Spotify server."  
-          }
-        })
-        .catch((error)=>{
-          console.log(error);
-        })
+  //  /**Prerequisites for fetch request
+  //  * @memberof ForgotPassword
+  //  * @type {object}
+  //  */
+  //     const requestOptions = {
+  //       method:"POST",
+  //       headers: {'Content-Type':  'application/json'},
+  //       body: JSON.stringify({ email: email })
+  //     }
+  //     console.log(requestOptions.body);
+  //  /**URL for fetch request
+  //  * @memberof ForgotPassword
+  //  * @type {string}
+  //  */
+  //     var url = BASEURL + '/users/forgot'; 
+  //     fetch(url,requestOptions)
+  //       .then((response) => {
+  //         return response.json();
+  //       })
+  //       .then((data) => {
+  //         console.log(data);
+  //         if (data.message === "Email Sent Successfully")
+  //         {
+  //           console.log(data);
+  //           this.props.history.push('/logIn/forgotpassword/success');
+  //         }
+  //         else if (data.message == "Email Cannot be sent a problem while sending email")
+  //         {
+  //           this.state.emailError = "Your request cannot be performed. Please try again later.";
+  //         }
+  //         else if (data.message == "Email not found")
+  //         {
+  //          this.state.emailError = "The email you entered does not exist in the Spotify server."  
+  //         }
+  //       })
+  //       .catch((error)=>{
+  //         console.log(error);
+  //       })
 
     }
   };
@@ -155,7 +158,11 @@ return(
         <div  className= "d-flex justify-content-start pad" id="labelling"><label htmlFor="my-text" className="mb-1"><strong>Email address</strong></label></div>
         <div className= "d-flex justify-content-center"><input type="email" name="email" required className="mb-3 mt-0 pt-1 pb-1" id="my-text" onChange={this.handleChange} /></div>
         <div className="justify-content-start red pad" id="empty-input">{this.state.emailError}</div>
-        <div className="d-flex justify-content-center"><Link to="/logIn/forgotpassword/success" className="button-spacing d-flex justify-content-center"><button className="btn btn-success px-5 py-2 mt-4 padded" id="anchor" role="button" type="submit" onClick={this.clickSubmit}>SEND</button></Link></div>
+        <div className="d-flex justify-content-center">
+            <button className="btn btn-success px-5 py-2 mt-4 padded" id="anchor" role="button" type="submit" onClick={this.clickSubmit}>
+              SEND
+            </button>
+        </div>
       </form>
     </div>
     <Footer />

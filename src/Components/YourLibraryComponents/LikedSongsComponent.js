@@ -43,53 +43,53 @@ export class LikedSongsComponent extends Component {
    */
     componentDidMount(){
 
-     /**Prerequisites for fetch request
-     * @memberof LikedSongsComponent
-     * @type {object}
-     */
-      const requestOptions = {
-        method:"GET",
-        headers:{'x-auth':this.props.userToken}
-      }
-    /**URL for fetch request
-     * @memberof LikedSongsComponent
-     * @type {string}
-     */
-      const url = BASEURL + "/tracks/like/me"; 
-      fetch(url,requestOptions)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-         console.log(data);
-         this.setState({arrayOfIDs:data})
-         console.log(this.state.arrayOfIDs);
-        })
-        .catch((error)=>{
-          console.log(error);
-        })
+    //  /**Prerequisites for fetch request
+    //  * @memberof LikedSongsComponent
+    //  * @type {object}
+    //  */
+    //   const requestOptions = {
+    //     method:"GET",
+    //     headers:{'x-auth':this.props.userToken}
+    //   }
+    // /**URL for fetch request
+    //  * @memberof LikedSongsComponent
+    //  * @type {string}
+    //  */
+    //   const url = BASEURL + "/tracks/like/me"; 
+    //   fetch(url,requestOptions)
+    //     .then((response) => {
+    //       return response.json();
+    //     })
+    //     .then((data) => {
+    //      console.log(data);
+    //      this.setState({arrayOfIDs:data})
+    //      console.log(this.state.arrayOfIDs);
+    //     })
+    //     .catch((error)=>{
+    //       console.log(error);
+    //     })
 
 console.log(this.state.arrayOfIDs);
 
-        const requestOptions1 = {
-          method:"POST",
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({id: this.state.arrayOfIDs})
-        }
-        const url1 = BASEURL + "/tracks"; 
-        fetch(url1,requestOptions1)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            console.log("songs");
-            console.log(data.tracks);
-           this.setState({recentlyLiked:data.tracks})
-           console.log(this.state.recentlyLiked);
-          })
-          .catch((error)=>{
-            console.log(error);
-          })
+        // const requestOptions1 = {
+        //   method:"POST",
+        //   headers:{'Content-Type':'application/json'},
+        //   body: JSON.stringify({id: this.state.arrayOfIDs})
+        // }
+        // const url1 = BASEURL + "/tracks"; 
+        // fetch(url1,requestOptions1)
+        //   .then((response) => {
+        //     return response.json();
+        //   })
+        //   .then((data) => {
+        //     console.log("songs");
+        //     console.log(data.tracks);
+        //    this.setState({recentlyLiked:data.tracks})
+        //    console.log(this.state.recentlyLiked);
+        //   })
+        //   .catch((error)=>{
+        //     console.log(error);
+        //   })
      /**Variable that concatenates the details of the songs
      * @memberof LikedSongsComponent
      * @type {string}
