@@ -15,52 +15,54 @@ export class ArtistOverviewContent extends Component {
    * @memberof ArtistOverviewContent
    * @type {Array<songsInfo>}
    */
-    // SongInfo:[],
-    SongInfo: [
-      {id : 1, trackName : "Another Love (Zwette Edit)",Duration : "3:52", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-      {id : 2, trackName : "Heal", Duration : "4:15", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-      {id : 3, trackName : "True Colors", Duration : "2:58", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-      {id : 4, trackName : "Grow Old With Me", Duration : "3:52", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-      {id : 5, trackName : "Summer Day", Duration : "4:15", trackImage: "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-    ],
+    SongInfo:[],
+    // SongInfo: [
+    //   {id : 1, trackName : "Another Love (Zwette Edit)",Duration : "3:52", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    //   {id : 2, trackName : "Heal", Duration : "4:15", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    //   {id : 3, trackName : "True Colors", Duration : "2:58", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    //   {id : 4, trackName : "Grow Old With Me", Duration : "3:52", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    //   {id : 5, trackName : "Summer Day", Duration : "4:15", trackImage: "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    // ],
 
   /**Array of artist albums info 
    * @memberof ArtistOverviewContent
    * @type {Array<albumInfo>}
-   */    
-    albumInfo: [
-      {id : 6, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
-      albumLink: "/webplayer/album/"},
-      {id : 7, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
-      albumLink: "/webplayer/album/"},
-      {id : 8, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
-      albumLink: "/webplayer/album/"},
-      {id : 9, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
-      albumLink: "/webplayer/album/"},
-      {id : 10, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
-      albumLink: "/webplayer/album/"},
-      {id : 11, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
-      albumLink: "/webplayer/album/"},
-    ],
+   */ 
+  albumInfo: [],   
+    // albumInfo: [
+    //   {id : 6, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
+    //   albumLink: "/webplayer/album/"},
+    //   {id : 7, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
+    //   albumLink: "/webplayer/album/"},
+    //   {id : 8, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
+    //   albumLink: "/webplayer/album/"},
+    //   {id : 9, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
+    //   albumLink: "/webplayer/album/"},
+    //   {id : 10, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
+    //   albumLink: "/webplayer/album/"},
+    //   {id : 11, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
+    //   albumLink: "/webplayer/album/"},
+    // ],
 
   /**Array of artist singles info 
    * @memberof ArtistOverviewContent
    * @type {Array<singlesInfo>}
    */
-    singlesInfo: [
-      {id : 12, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
-      albumLink: "/webplayer/album/"},
-      {id : 13, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
-      albumLink: "/webplayer/album/"},
-      {id : 14, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
-      albumLink: "/webplayer/album/"},
-      {id : 15, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
-      albumLink: "/webplayer/album/"},
-      {id : 16, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
-      albumLink: "/webplayer/album/"},
-      {id : 17, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
-      albumLink: "/webplayer/album/"},
-    ],
+  singlesInfo: [],
+    // singlesInfo: [
+    //   {id : 12, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+    //   albumLink: "/webplayer/album/"},
+    //   {id : 13, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+    //   albumLink: "/webplayer/album/"},
+    //   {id : 14, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+    //   albumLink: "/webplayer/album/"},
+    //   {id : 15, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+    //   albumLink: "/webplayer/album/"},
+    //   {id : 16, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+    //   albumLink: "/webplayer/album/"},
+    //   {id : 17, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+    //   albumLink: "/webplayer/album/"},
+    // ],
 
   /**state object for showing more or less albums 
    * @memberof ArtistOverviewContent
@@ -80,28 +82,23 @@ export class ArtistOverviewContent extends Component {
    * @func componentDidMount
    */
   componentDidMount(){
-      // get artist's popular tracks
-      // var url = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/tracks/top?artistId=123"; 
-
-      // var requestOptions = {
-      //   method: 'GET',
-      //   headers: { 'x-auth': "eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s" },
-      // };
-      
-      // fetch(url,requestOptions)
-      //   .then((response) => { return response.json()})
-      //   .then((data) => {
-      //     this.setState({
-      //     SongInfo: data.popularTracks});
-      //     console.log(this.state.SongInfo);
-      //   })
-      //   .catch((error)=>{console.log(error);
-  
-      //   })
-
       var requestOptions = {
         method: 'GET'
       };
+
+      // get artist's popular tracks
+      var urlPopular = BASEURL+ "tracks/top/123"; 
+
+      fetch(urlPopular,requestOptions)
+        .then((response) => { return response.json()})
+        .then((data) => {
+          this.setState({
+          SongInfo: data.SongInfo});
+          console.log(this.state.SongInfo);
+        })
+        .catch((error)=>{console.log(error);
+
+        })
       
       // get artist's albums
       var urlAlbum = BASEURL+ "albums/byartist/123"; 
