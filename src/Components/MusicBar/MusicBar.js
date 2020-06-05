@@ -122,6 +122,19 @@ class MusicBar extends Component {
     }
   }
 
+  playPrevious = e => {
+    if(this.state.trackNum != 0) this.setState({trackNum: this.state.trackNum-1});
+    else if (this.state.trackNum == 0) this.setState({trackNum: Tracks.length-1});
+  }
+
+  playNext = e => {
+    if(this.state.trackNum != Tracks.length-1) this.setState({trackNum: this.state.trackNum+1});
+    else if (this.state.trackNum == Tracks.length-1) this.setState({trackNum: 0});
+  }
+
+  playQueue = e => {
+    
+  }
   
   render() {
 
@@ -231,9 +244,9 @@ class MusicBar extends Component {
             <div className="music-bar-middle">
               <div className="d-flex justify-content-center">
                 <button className="middle-icons fas fa-random mr-2" title="Shuffle"></button>
-                <button className="middle-icons fas fa-step-backward" title="Previous"></button>
+                <button className="middle-icons fas fa-step-backward" title="Previous" onClick={this.playPrevious}></button>
                 <button id="play-track-bar" className="play middle-icons far fa-play-circle mr-3 ml-3" onClick={this.playPause} ></button>
-                <button className="middle-icons fas fa-step-forward" title="Next"></button>
+                <button className="middle-icons fas fa-step-forward" title="Next" onClick={this.playNext}></button>
                 <button title="Play on Repeat"
                 style={{color:this.props.playOnRepeat?"#1db954":"rgb(179,179,179)"}} 
                 className="middle-icons fas fa-sync-alt ml-2"
@@ -266,7 +279,7 @@ class MusicBar extends Component {
             <div className="music-bar-right pr-0 d-flex align-items-center justify-content-end list-group-horizontal">
               <ul className="volume-bar list-group list-group-horizontal">
                 <li>
-                  <button className="middle-icons fas fa-list mr-2" title="Play Queue"></button>
+                  <button className="middle-icons fas fa-list mr-2" title="Play Queue" onClick={this.playQueue}></button>
                 </li>
                 <li>
                   <button id="volume-button" className={"fas "+volumeIcon} onClick={this.muteVolume}> </button>
