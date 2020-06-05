@@ -4,6 +4,7 @@ import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
+import {BASEURL} from "../../Constants/baseURL";
 
 
 /** Class HomePage
@@ -28,7 +29,7 @@ export class HomePage extends Component {
    * @memberof HomePage
    * @type {Array<playlists>}
    */
-     yourplaylists: [],
+     popularplaylists: [],
   /**Array of popular albums for homepage
    * @memberof HomePage
    * @type {Array<albums>}
@@ -65,66 +66,71 @@ export class HomePage extends Component {
    * @func componentDidMount
    */
   componentDidMount() {
-
+     console.log("hello");
     //Make a request with this.props.userID
     //assume this is the returned data
 
-     // const url = "http://52.14.190.202:8000/artists/homepage/popular"; 
-    // fetch(url)
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     if ((data.recentlyPlayed.length)>5)
-    //     {
-    //     this.setState({excessRecentlyPlayed:true});
-    //     this.setState({recentlyPlayed:data.playlists.slice(0,5)})
-  
-    //     }
-    //     else{
-    //     this.setState({recentlyPlayed:data.artists})  
-    //     }
-        
-    //   })
-    //   .catch((error)=>{
-    //     console.log(error);
-    //   })
+    const requestOptions1={
+      method:"GET",
+      headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+    }
 
-    const recentlyPlayedarray=[{type: "SONG" , title: "High Hopes", subtitle: "Pink Floyd", url: "https://i.scdn.co/image/ab67616d0000b27330ba0e3ed0e1db48cd3b94a8", id:"1", roundImgOrNot: ""},
-    {type: "SONG" , title: "Is This Love", subtitle: "Bob Marley", url: "https://i.scdn.co/image/ab67616d0000b27399defae6e4954461aa362d92", id:"2", roundImgOrNot: ""},
-    {type: "SONG" , title: "Kiki", subtitle: "Drake", url: "https://i.scdn.co/image/ab67616d0000b273a58da82cd7b27ffc575ccb3e", id:"3", roundImgOrNot: ""},
-    {type: "SONG" , title: "Mood Booster", subtitle: "Chill", url: "https://pl.scdn.co/images/pl/default/36bdc599a28c5a55269620ad5ade6f5fc459dd6e", id:"4", roundImgOrNot: ""}]; 
-    
-    this.setState({recentlyPlayed:recentlyPlayedarray});
+     const url1 = BASEURL + "homepage/recentlyplayed"; 
+    fetch(url1,requestOptions1)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if ((data.recentlyPlayed.length)>5)
+        {
+        this.setState({excessRecentlyPlayed:true});
+        this.setState({recentlyPlayed:data.recentlyPlayed.slice(0,5)})
+  
+        }
+        else{
+        this.setState({recentlyPlayed:data.recentlyPlayed})  
+        }
+        
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+
+   
+
 
     //Make a request with this.props.userID
     //assume this is the returned data
+    const requestOptions2={
+      method:"GET",
+      headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+    }
 
-    // const url = "http://52.14.190.202:8000/artists/homepage/popular"; 
-    // fetch(url)
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     if ((data.madeforyou.length)>5)
-    //     {
-    //     this.setState({madeForYou:true});
-    //     this.setState({madeforyou:data.playlists.slice(0,5)})
+    const url2 = BASEURL + "homepage/madeforyou"; 
+    fetch(url2,requestOptions2)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log("heyy");
+        console.log(data.madeforyou);
+        if ((data.madeforyou.length)>5)
+        {
+          
+        this.setState({excessMadeForYou:true});
+        this.setState({madeforyou:data.madeforyou.slice(0,5)})
   
-    //     }
-    //     else{
-    //     this.setState({madeforyou:data.artists})  
-    //     }
-        
-    //   })
-    //   .catch((error)=>{
-    //     console.log(error);
-    //   })
+        }
+        else{
+        this.setState({madeforyou:data.madeforyou})  
+        }
+        console.log(this.state.madeforyou);
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
     
-    // const madeforyouarray= [{type: "PLAYLIST" , title: "Daily Mix", subtitle: "Mulst Listen", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-ZIZSg7rI8fyqBOxIftVBDFFwb0Oqc3saYbGwBLz5V1jHdKGz&usqp=CAU", id:"1", roundImgOrNot: ""},
-    //  {type: "PLAYLIST" , title: "Mix 2", subtitle: "Feel Good", url: "https://i.redd.it/avxncpgy8do11.png", id:"2", roundImgOrNot: ""}];
-     
-    // this.setState({madeforyou:madeforyouarray});
+    
 
     //Make a request with this.props.userID
     //assume this is the returned data
@@ -133,91 +139,36 @@ export class HomePage extends Component {
    * @memberof HomePage
    * @type {String}
    */
-  // const url = "http://52.14.190.202:8000/artists/homepage/popular"; 
-  // fetch(url)
-  //   .then((response) => {
-  //     return response.json();
-  //   })
-  //   .then((data) => {
-  //     if ((data.playlists.length)>5)
-  //     {
-  //     this.setState({excessPlaylists:true});
-  //     this.setState({popularplaylists:data.playlists.slice(0,5)})
 
-  //     }
-  //     else{
-  //     this.setState({popularplaylists:data.artists})  
-  //     }
+  const requestOptions3={
+    method:"GET",
+    headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+  }
+  const url3 =  BASEURL + "homepage/popularplaylists"; 
+  fetch(url3,requestOptions3)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data.popularPlaylists);
+      if ((data.popularPlaylists.length)>5)
+      {
+      this.setState({excessPlaylists:true});
+      this.setState({popularplaylists:data.popularPlaylists.slice(0,5)})
+
+      }
+      else{
+      this.setState({popularplaylists:data.popularPlaylists})  
+      }
+      console.log(this.state.popularplaylists);
       
-  //   })
-  //   .catch((error)=>{
-  //     console.log(error);
-  //   })
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
     
-    //  const popularplaylistsarray= [{type: "PLAYLIST" , title: "Dance Pop", subtitle: "Dance All Day", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRGAe4ncly34_omxS6TWVHiweCRGPuoP2I0XOTjAotRHj1EcZDu&usqp=CAU", id:"1", roundImgOrNot: ""},
-    //  {type: "PLAYLIST" , title: "Mic Drop", subtitle: "Get Hyped", url: "https://cdn.playlists.net/images/genre_moods/image/medium/Pop.jpg", id:"2", roundImgOrNot: ""},
-    //  {type: "PLAYLIST" , title: "Hip Hop", subtitle: "Dance", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSNRqOkxQgHtfVUS6rVtcV1Y1RHsReptSs_Kjirqr16kLSq0WZ0&usqp=CAU", id:"3", roundImgOrNot: ""},
-    //  {type: "PLAYLIST" , title: "Anti Pop", subtitle: "", url: "https://i.redd.it/9vt7zp9ru8211.jpg", id:"4", roundImgOrNot: ""}]; 
-    
-    // this.setState({popularplaylists:popularplaylistsarray});
-
-    //Make a request with this.props.userID
-    //assume this is the returned data
-    // const requestOptions={
-    //   method:"GET",
-    //   headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
-    // }
-
-    // const url1 = "https://b9b31d99-4598-43e6-90a8-893c3988d489.mock.pstmn.io/albums/homepage/popular"; 
-    // fetch(url1,requestOptions)
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log(data);
-    //     this.setState({popularalbums:data});
-    //     console.log(this.state.popularalbums);
-    //   })
-    //   .catch((error)=>{
-    //     console.log(error);
-    //   })
-    
-    // const popularalbumsarray= [{type: "ALBUM" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
-    //  {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-    //  {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-    //  {type: "ALBUM" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}];  
-    
-    // this.setState({popularalbums:popularalbumsarray});
-
-    //Make a request with this.props.userID
-    //assume this is the returned data
-
-    // const url = "https://jsonplaceholder.typicode.com/photos"; 
-    // fetch(url)
-      // .then((response) => {
-      //   return response.json();
-      // })
-      // .then((data) => {
-      //   if ((data.artists.length)>5)
-      //   {
-      //     this.setState({excessArtists:true});
-      //     this.setState({popularartists:data.artists.slice(0,5)})
-  
-      //     }
-      //     else{
-      //     this.setState({popularartists:data.artists})  
-      //     }
-      // })
-      // .catch((error)=>{
-      //   console.log(error);
-      // })
-    
-    const newreleasesarray= [{type: "SONG" , title: "Meek Mill", subtitle: "ARTIST", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"1", roundImgOrNot: ""},
-     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""},
-     {type: "SONG" , title: "Meek Mill", subtitle: "hdyyyy", url: "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba", id:"2", roundImgOrNot: ""}];
-    
-    this.setState({newreleases:newreleasesarray});
+ 
+      
 
     //Make a request with this.props.userID
     //assume this is the returned data
@@ -226,26 +177,31 @@ export class HomePage extends Component {
   //  * @memberof HomePage
   //  * @type {String}
   //  */
-  //   const url = "http://52.14.190.202:8000/artists/homepage/popular"; 
-  //   fetch(url)
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       if ((data.artists.length)>5)
-  //       {
-  //       this.setState({excessArtists:true});
-  //       this.setState({popularartists:data.artists.slice(0,5)})
 
-  //       }
-  //       else{
-  //       this.setState({popularartists:data.artists})  
-  //       }
+  const requestOptions4={
+    method:"GET",
+    headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+  }
+    const url4 = BASEURL + "homepage/popularartists"; 
+    fetch(url4,requestOptions4)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if ((data.popularartists.length)>5)
+        {
+        this.setState({excessArtists:true});
+        this.setState({popularartists:data.popularartists.slice(0,5)})
+
+        }
+        else{
+        this.setState({popularartists:data.artists})  
+        }
         
-  //     })
-  //     .catch((error)=>{
-  //       console.log(error);
-  //     })
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
   }
 
   render(){

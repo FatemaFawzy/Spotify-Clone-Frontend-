@@ -18,6 +18,9 @@ import OtherUser from '../OtherUserPage/OtherUser';
 import LikedSongs from '../../Components/LikedSongs/LikedSongs';
 import AddToPlaylist from '../../Components/PlaylistsComponent/AddToPlaylist';
 import SeeAllArtists from '../../Containers/HomePage/SeeAllArtists';
+import SeeAllPlaylists from '../../Containers/HomePage/SeeAllPlaylists';
+import SeeAllMadeForYou from '../../Containers/HomePage/SeeAllMadeForYou';
+import SeeAllRecentlyPlayed from '../../Containers/HomePage/SeeAllRecentlyPlayed';
 import AdsBar from "../../Components/Ads/AdsBar";
 
 
@@ -53,6 +56,9 @@ class WebPlayer extends Component {
               <Route path="/webplayer/user" component={OtherUser}/>
               <Route path="/webplayer/artistprofile" component={ArtistProfile}/>
               <Route path="/webplayer/HomePage/seeallartists" component={SeeAllArtists}/>
+              <Route path="/webplayer/HomePage/seeallplaylists" component={SeeAllPlaylists}/>
+              <Route path="/webplayer/HomePage/seeallMadeForYou" component={SeeAllMadeForYou}/>
+              <Route path="/webplayer/HomePage/seeallrecentlyplayed" component={SeeAllRecentlyPlayed}/>
 
             </Switch>
 

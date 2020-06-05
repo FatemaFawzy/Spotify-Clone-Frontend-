@@ -57,36 +57,36 @@ export class HomePageSidebar extends Component{
       headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
     }
     
-    const url = "http://52.14.190.202:8000/playlists/me"; 
-    fetch(url,requestOptions)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data.playlist);
-        if(data.playlist)
-        {
+    // const url = "http://52.14.190.202:8000/playlists/me"; 
+    // fetch(url,requestOptions)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data.playlist);
+    //     if(data.playlist)
+    //     {
           
-        const list = data.playlist.map(item => {
-          return (
-            <li onClick={()=>{
-              this.props.history.push("/webplayer/playlist/" + item._id );
-              this.props.onPlaylistClicked(item._id);
-              window.location.reload(true);
-            }} className="List2">{item.playlistName}</li>
-          )
-        }
+    //     const list = data.playlist.map(item => {
+    //       return (
+    //         <li onClick={()=>{
+    //           this.props.history.push("/webplayer/playlist/" + item._id );
+    //           this.props.onPlaylistClicked(item._id);
+    //           window.location.reload(true);
+    //         }} className="List2">{item.playlistName}</li>
+    //       )
+    //     }
         
-        )
-        console.log(list);
-        this.setState({total:list});
-        console.log(this.state.total);
-      }
+    //     )
+    //     console.log(list);
+    //     this.setState({total:list});
+    //     console.log(this.state.total);
+    //   }
     
-      })
-      .catch((error)=>{
-        console.log(error);
-      })
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
       
     }
 
