@@ -55,47 +55,47 @@ componentDidMount() {
 //   //     id:"5"}
 //   // ];
 
-/**Prerequisites for fetch request
-   * @memberof YourLibraryPlaylist
-   * @type {String}
-   */
-const requestOptions = {
-  method:"GET",
-  headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
-}
+// /**Prerequisites for fetch request
+//    * @memberof YourLibraryPlaylist
+//    * @type {String}
+//    */
+// const requestOptions = {
+//   method:"GET",
+//   headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
+// }
 
- /**url for fetch request
-   * @memberof YourLibraryPlaylist
-   * @type {String}
-   */
-const url = BASEURL+"playlists/me"; 
-fetch(url,requestOptions)
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data.playlist);
-    if(data.playlist)
-    {
-    const playlists = data.playlist.map(item => {
-      return (
-        <GeneralItem
-        image= {BASEURL + "Images/" + item.imagePath}
-        name={item.playlistName}
-        subname="HEY"
-        id={item._id}
-        type="PLAYLIST"
-      />
-      )
-    }
-    )
-    this.setState({total:playlists});
-  }
+//  /**url for fetch request
+//    * @memberof YourLibraryPlaylist
+//    * @type {String}
+//    */
+// const url = BASEURL+"playlists/me"; 
+// fetch(url,requestOptions)
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((data) => {
+//     console.log(data.playlist);
+//     if(data.playlist)
+//     {
+//     const playlists = data.playlist.map(item => {
+//       return (
+//         <GeneralItem
+//         image= {BASEURL + "Images/" + item.imagePath}
+//         name={item.playlistName}
+//         subname="HEY"
+//         id={item._id}
+//         type="PLAYLIST"
+//       />
+//       )
+//     }
+//     )
+//     this.setState({total:playlists});
+//   }
 
-  })
-  .catch((error)=>{
-    console.log(error);
-  })
+//   })
+//   .catch((error)=>{
+//     console.log(error);
+//   })
   console.log(this.state.playlistArray.playlists);
 }
 render() {
