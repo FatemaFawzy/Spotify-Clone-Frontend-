@@ -38,7 +38,7 @@ export class YourLibraryArtist extends Component {
       method:"GET",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
-    const url = "http://spotifyclone.mocklab.io/artists/me"; 
+    const url = BASEURL + "/artists/me"; 
     fetch(url,requestOptions)
       .then((response) => {
         return response.json();
