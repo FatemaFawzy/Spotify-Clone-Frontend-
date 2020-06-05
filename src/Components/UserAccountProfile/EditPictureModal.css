@@ -1,26 +1,8 @@
-.modal-edit-picture-class{
-
-}
 .modal-header-edit-picture-class{
- 
   color: rgb(29,185,84);
-
-
 }
 
-.modal-body-edit-picture-class{
-  
-
-
-}
-
-.modal-footer-edit-picture-class{
-  
-
-
-}
 .modal-footer-edit-picture-class button{
-
   max-width: 290px;
 	min-width: 160px;
 	height: 30px;
@@ -37,14 +19,26 @@
   border-radius: 20px;
   font-weight: 700;
   font-size: 80%;
-
 }
-
-
 
 .modal-footer-edit-picture-class button:hover {
 	background: #1ED760;
 }
+
 .modal-footer-edit-picture-class button:focus {
 	outline: none;
+}
+
+.modal-edit-picture-class .old-image-class{
+  width: 120px;
+  height: 120px;
+  border: 2px solid rgb(29,30,31);
+  border-radius: 50%;
+  display: block;
+  margin: 20px auto;
+}
+
+.modal-edit-picture-class .profile-container-div{
+  text-align: center;
+  align-items: center;
 }

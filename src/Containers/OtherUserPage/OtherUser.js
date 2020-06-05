@@ -19,6 +19,18 @@ export class OtherUser extends Component {
    * @type {Array<object>}
    */
     userRelated:[],
+
+            /**A variable that tells whether the user is followed or not
+   * @memberof OtherUser
+   * @type {boolean}
+   */
+    isFollowed:false,
+
+              /**A variable that states whether the page is loading or not
+   * @memberof OtherUser
+   * @type {boolean}
+   */
+  loading:false,
   }
 
     /**A function that renders when the component is called
@@ -27,6 +39,8 @@ export class OtherUser extends Component {
    */
 
   componentDidMount(){
+
+    this.setState({ loading: true });
 
     // TODO: I Should send a request to get the info related to the user with ID = this.props.profileID
 
@@ -37,6 +51,7 @@ export class OtherUser extends Component {
         })
         .then((data) => {
           this.setState({userRelated:data.slice(0,10)})
+          this.setState({ loading: false });
         })
         .catch((error)=>{
           console.log(error);
@@ -60,6 +75,16 @@ export class OtherUser extends Component {
         type={itemType.PLAYLIST}/>
       )
     })
+
+    if (this.state.loading) {
+      return (
+        <div className="search-spinner-loading">
+          <i className="fa fa-refresh fa-spin"></i>
+        </div>
+      );
+
+    }
+    else {
     return(
       <div className="other-user-page-class">
         <div className="other-profile-pic-name">
@@ -68,6 +93,11 @@ export class OtherUser extends Component {
             src={emptyprofilepic}
             alt={emptyprofilepic}/>
           <h2 className="other-profile-name-class">User With ID {this.props.profileID}</h2>
+          <h4 onClick={()=>{
+            this.setState((prevstate, event) => ({ isFollowed: prevstate.isFollowed ? false : true }))
+
+          }} 
+          >{this.state.isFollowed?"UnFollow":"Follow"}</h4>
         </div>
 
       {RelatedItems}
@@ -75,6 +105,7 @@ export class OtherUser extends Component {
 
 
     )
+        }
   }
 
 

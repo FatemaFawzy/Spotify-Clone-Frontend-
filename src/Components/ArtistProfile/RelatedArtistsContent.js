@@ -36,32 +36,27 @@ export class RelatedArtistsContent extends Component {
    */
   componentDidMount() {
     
-    const url = BASEURL + "users/artists/related";
+    // const url = BASEURL + "users/artists/related";
 
     // const requestOptions = {
-    //   method: 'GET',
-    //   headers: { 'x-auth':"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk" , 'artistId' : "5e8a701954fe752c1498f723" },
-    // }
+    //     method: 'GET',
+    //     headers: { 'x-auth': this.props.userToken , 'artistId' : this.props.id },
+    //   }
 
-    const requestOptions = {
-        method: 'GET',
-        headers: { 'x-auth': this.props.userToken , 'artistId' : this.props.id },
-      }
-
-    fetch(url,requestOptions)
-      .then((response) => {
-        console.log(response)
-        return response.json();
+    // fetch(url,requestOptions)
+    //   .then((response) => {
+    //     console.log(response)
+    //     return response.json();
         
-      })
-      .then((data) => {
-        this.setState({artistInfo: data});
-         console.log(data);
-      })
-      .catch((error)=>{
-        console.log(error);
+    //   })
+    //   .then((data) => {
+    //     this.setState({artistInfo: data});
+    //      console.log(data);
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
 
-      })
+    //   })
   }
 
   render(){

@@ -15,6 +15,7 @@ const AccountSidebar = (props) => {
 
   const [modalShow, setModalShow] = React.useState(false);
   const [selectedPhoto, setSelectedPhoto] = React.useState(null);
+  const [imagePreview, setImagePreview] = React.useState(null);
 
 return (
   <div className="account-sidebar">
@@ -35,41 +36,65 @@ return (
       </button>
 
       <EditPictureModal
+        oldimage={props.image}
+        newimage={imagePreview}
         show={modalShow}
         onHide={() => { 
           setModalShow(false);
           setSelectedPhoto(null);
+          setImagePreview(null);
 
         }}
         onSaveFile={()=>{
-          const fd= new FormData();
-          fd.append('image', selectedPhoto,selectedPhoto.name);
-          console.log(fd)
-          console.log(selectedPhoto)
+          let fd= new FormData();
+          // fd.append('image', selectedPhoto,selectedPhoto.name);
+          fd.append('image', selectedPhoto);
+          fd.append('name',selectedPhoto.name);
+          console.log(fd);
+          console.log(selectedPhoto);
 
-          const requestOptions = {
-            method:"POST",
-            headers: { 'Content-Type': 'application/json','x-auth' : props.token},
-            body: JSON.stringify({ 
-              photo: fd })
-        }
-        const url = BASEURL + "users/profilepicture"; 
-        fetch(url,requestOptions)
-          .then((response) => {
-            console.log(response); 
-            return response.text()})
-          .then((data) => {
-            console.log(data);  
-            // window.location.reload(true);
-          })
-          .catch((error)=>{
-            console.log(error);
-          })
+          // const requestOptions = {
+          //   method:"POST",
+          //   headers: { 'Content-Type': 'application/json','x-auth' : props.token},
+          //   body: JSON.stringify({ 
+          //     photo: fd })
+          // }
+          // const url = BASEURL + "users/profilepicture"; 
+          // fetch(url,requestOptions)
+          //   .then((response) => {
+          //     console.log(response); 
+          //     return response.text()})
+          //   .then((data) => {
+          //     console.log(data);  
+          //     // window.location.reload(true);
+          //   })
+          //   .catch((error)=>{
+          //     console.log(error);
+          //   })
 
         }}
         onChangeFile={(event)=>{
           console.log(event.target.files[0]);
-          setSelectedPhoto(event.target.files[0]);
+          if(event.target.files[0]&&(!(event.target.files[0].type==="image/jpeg"||event.target.files[0].type==="image/png")))
+          {
+            console.log("valid image");
+            setSelectedPhoto(null);
+            setImagePreview(null);
+            alert("Please enter a valid image. Valid extentions are .jpeg or .png");
+          }
+          else
+          {
+            console.log("invalid image");
+            var reader = new FileReader();
+            reader.readAsDataURL(event.target.files[0]);
+            reader.onloadend =(event)=>{
+              console.log(event.target.result)
+              setImagePreview(event.target.result);
+            }
+            setSelectedPhoto(event.target.files[0]);
+
+          }
+          
  
         }}
         photo={selectedPhoto}
@@ -90,6 +115,11 @@ return (
       {/* set device password link*/}
       <NavLink to="/account/set-device-password/" >
         <i className="fas fa-lock"> &ensp; Set device password </i>
+      </NavLink>
+
+      {/* user followers and following link*/}
+      <NavLink to="/account/userfollowersfollowing/" >
+        <i className="fas fa-users"> &ensp; Followers/Following </i>
       </NavLink>
 
       {/* Recover playlists*/}

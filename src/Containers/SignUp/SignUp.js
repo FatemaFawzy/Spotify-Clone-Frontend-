@@ -168,40 +168,45 @@ export class SignUp extends Component{
    * @memberof SignUp
    * @type {String}
    */
-      const url = BASEURL+"users/signup";
-      console.log(url);
-      const requestOptions = {
-        method: 'POST',  
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userName : username,
-          email: email,
-          isPremium: false,
-          password: password,
-          day: day,
-          month: month,
-          year: year,
-          gender: gender
-        })
-        }
-        console.log(requestOptions)
-        fetch(url, requestOptions)
-        .then(response => response.text())
-        .then(data => {
-          console.log(data);
-          if(data == "User added Successfully as inActive. Waiting for Email Confirmation "){
-            this.props.history.replace("/signup/emailsent/");
-          }
-          else if(data == "UserName and/or email already exist"){
-            // this.setState({alreadyExists: data}, () => console.log(this.state.alreadyExists) );
-            var err= document.getElementsByClassName("already-exists");
-            err[0].innerHTML= "UserName and/or email already exist";
-            document.getElementById("signup-form").reset();
-            window.location.reload(true);
-          }
-        })
-        .catch((error)=> {console.log(error)});
+
+
+      // const url = BASEURL+"users/signup";
+      // console.log(url);
+      // const requestOptions = {
+      //   method: 'POST',  
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     userName : username,
+      //     email: email,
+      //     isPremium: false,
+      //     password: password,
+      //     day: day,
+      //     month: month,
+      //     year: year,
+      //     gender: gender
+      //   })
+      //   }
+      //   console.log(requestOptions)
+      //   fetch(url, requestOptions)
+      //   .then(response => response.text())
+      //   .then(data => {
+      //     console.log(data);
+      //     if(data == "User added Successfully as inActive. Waiting for Email Confirmation "){
+      //       this.props.history.replace("/signup/emailsent/");
+      //     }
+      //     else if(data == "UserName and/or email already exist"){
+      //       // this.setState({alreadyExists: data}, () => console.log(this.state.alreadyExists) );
+      //       var err= document.getElementsByClassName("already-exists");
+      //       err[0].innerHTML= "UserName and/or email already exist";
+      //       document.getElementById("signup-form").reset();
+      //       window.location.reload(true);
+      //     }
+      //   })
+      //   .catch((error)=> {console.log(error)});
       }
+
+
+
     // Check which inputs are empty and print an error message
     else {
       if ( email === null )

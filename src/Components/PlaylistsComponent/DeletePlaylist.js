@@ -19,21 +19,21 @@ export class DeletePlaylist extends Component{
    * @func handleDelete
    */ 
 handleDelete (str) {
-  const url = BASEURL+ "playlists";    
-  const requestOptions = {
-    method: 'DELETE', 
-    headers: { 'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk',
-    'Content-Type': 'application/json' },
-    body: JSON.stringify({ playlistName: str})
-  }; 
-     fetch(url,requestOptions)
-      .then((res) => {res.text(); window.location.reload(true);})
-      .then((data) =>{ 
-        console.log(data);
+  // const url = BASEURL+ "playlists";    
+  // const requestOptions = {
+  //   method: 'DELETE', 
+  //   headers: { 'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk',
+  //   'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ playlistName: str})
+  // }; 
+  //    fetch(url,requestOptions)
+  //     .then((res) => {res.text(); window.location.reload(true);})
+  //     .then((data) =>{ 
+  //       console.log(data);
 
-      })
-      .catch((err)=>console.log(err))
-      this.props.history.replace("/webplayer/yourlibrary")
+  //     })
+  //     .catch((err)=>console.log(err))
+  //     this.props.history.replace("/webplayer/yourlibrary")
 }
 
 render(){

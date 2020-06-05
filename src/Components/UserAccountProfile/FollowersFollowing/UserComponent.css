@@ -1,0 +1,35 @@
+.user-component-class{
+
+  width:100%;
+  background-color: rgb(211,211,211);
+  display: flex;
+  padding:10px;
+  border-radius: 20px;
+  box-shadow: 5px 3px 3px gray;
+  margin-top: 20px;
+}
+
+.user-component-class img{
+  height: 60px;
+  width: 60px;
+  border: solid white 2px;
+  border-radius: 50%;
+  float:left;
+  margin-right: 20px;
+}
+
+.user-component-class h5{
+  font-weight: 700;
+  color: rgb(29,30,31);
+  margin: auto auto;
+}
+
+.user-component-class:hover{
+  padding: 11px;
+  cursor: pointer;
+  border-bottom: solid rgb(9,175,98) 4px;
+}
+
+.user-component-class:hover h5{
+  cursor: pointer;
+}

@@ -24,16 +24,6 @@ describe("SongSearched test", ()=>{
   });
 
   //FUNCTION TESTS
-
-  it('should test the play/pause button', () => {
-    const wrapper = shallow(<SongSearched />);
-    expect(wrapper.state('playing')).toBe(false);
-    wrapper.find('button').at(0).simulate('click');
-    expect(wrapper.state('playing')).toBe(true);
-    wrapper.find('button').at(0).simulate('click');
-    expect(wrapper.state('playing')).toBe(false);
-  });
-
   
   it('should test the drop down button', () => {
     const wrapper = shallow(<SongSearched />);

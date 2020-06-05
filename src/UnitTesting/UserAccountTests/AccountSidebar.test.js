@@ -30,7 +30,7 @@ describe("AccountSideBar Container test", ()=>{
   it("Should have 3 navlinks", ()=>{
     const wrapper = shallow(<AccountSideBar image=""/> ); 
     const navlinks= wrapper.find("NavLink");
-    expect(navlinks).toHaveLength(3);
+    expect(navlinks).toHaveLength(4);
   })
 
 

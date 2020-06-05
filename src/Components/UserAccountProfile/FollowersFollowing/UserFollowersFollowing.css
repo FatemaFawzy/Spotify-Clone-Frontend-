@@ -1,0 +1,27 @@
+.users-followers-following-class a{
+
+  text-align: center;
+  display: block;
+  font-weight: 800;
+  color: black;
+  padding-bottom: 10px;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+
+}
+
+.users-followers-following-class a:hover{
+
+  /* border-bottom: solid rgb(29,30,31) 3px; */
+  color: purple;
+  text-decoration: none;
+  font-size: 1.55rem;
+
+}
+.users-followers-following-class a.active{
+
+  border-bottom: solid rgb(29,30,31) 3px;
+  color: purple;
+
+}
+

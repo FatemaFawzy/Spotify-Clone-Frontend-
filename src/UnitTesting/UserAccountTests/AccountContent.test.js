@@ -23,7 +23,7 @@ describe("AccountContent Container test", ()=>{
   it("Should have three routes", ()=>{
     const wrapper = shallow(<AccountContent /> ); 
     const Routes= wrapper.find("Route");
-    expect(Routes).toHaveLength(3);
+    expect(Routes).toHaveLength(4);
   })
 
   

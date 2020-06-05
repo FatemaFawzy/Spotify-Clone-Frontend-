@@ -1,35 +1,60 @@
-import React from "react"
+import React, { Component } from "react"
 import  "./BrowseItem.css"
-
-/** Function BrowseItem a block that represents each genre
- * @func BrowseItem
+import { connect } from "react-redux";
+import * as actionTypes from "../../Store/actions";
+import {withRouter} from "react-router-dom";
+ /** Class BrowseItem displays the genre
+ * @category BrowseItem
+ * @extends Component
  */
 
-const BrowseItem =(props) =>{
 
-    /**object that has inline styling for the main div
+export class BrowseItem extends Component{
+
+  render(){
+
+    /**variable that indicates the background color
+   * @memberof BrowseItem
    * @type {object}
    */
-    const style={
-        backgroundColor: props.color
-    };
+  const style={
+    backgroundColor: this.props.color
+};
 
-    /**variable that holds the given class for the main div
-   * @type {string}
-   */
-    const givenclass= props.special==="true"? "BrowseItem special-browse":"BrowseItem"; 
-    return(
-        <div className={givenclass} style={style} >
+/**variable that holds the given class for the main div
+* @memberof BrowseItem
+* @type {string}
+*/
+const givenclass= this.props.special==="true"? "BrowseItem special-browse":"BrowseItem"; 
+return(
+    <div 
+    onClick={()=>{
+      console.log("Clicked");
+      this.props.history.push("/webplayer/search/songsbygenre/" + this.props.id);
+        this.props.onGenreClicked(this.props.id,this.props.color);
+        // window.location.reload(true);
+    }
+    }
+    className={givenclass} style={style} >
 
-            <h3 className="head-style">{props.header}</h3>
+        <h3 className="head-style">{this.props.header}</h3>
 
-            <img src={props.image} className="img-style" alt="" />
+        <img src={this.props.image} className="img-style" alt="" />
 
-        </div>
-    )
+    </div>
+)
 
-
-
+  }
 
 }
-export default BrowseItem
+
+const mapDispatchToProps = dispatch => {
+
+  return {
+
+    onGenreClicked: (itemID,itemColor) => dispatch({ type: actionTypes.SELECT_GENRE, value: {id:itemID,color:itemColor} }),
+
+  };
+};
+
+export default connect(null, mapDispatchToProps)(withRouter(BrowseItem));

@@ -1,2 +1,2 @@
-export const BASEURL = "http://52.14.39.171:8000/";
-
+// export const BASEURL = "http://18.223.133.157:8000/";
+// export const BASEURL = "http://spotifyclone.mocklab.io/";

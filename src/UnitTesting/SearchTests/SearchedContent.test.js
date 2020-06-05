@@ -23,13 +23,6 @@ describe("SearchedContent test", ()=>{
   //YOU CAN CREATE AS MANY "it" ARROW FUNCTION AS YOU WANT TO TEST DIFFERENT FUNCTIONALITIES
 
 
-  it("Should render SearchContent page if search field is empty", ()=>{
-    wrapper = shallow(<SearchedContent songs={[]} artists={[]} albums={[]} playlists={[]} profiles={[]}/> );
-    wrapper.setProps({searchfieldvalue:"" });
-    const SearchContent= wrapper.find("SearchContent");
-    expect(SearchContent).toHaveLength(1);
-  })
-
   it("Should render Loading if loading is true and search field is not empty", ()=>{
     wrapper = shallow(<SearchedContent songs={[]} artists={[]} albums={[]} playlists={[]} profiles={[]}/> );
     wrapper.setProps({searchfieldvalue:"something",loading:true });

@@ -159,3 +159,7 @@
 }
 
 }
+
+#active-component-id button{
+display: block;
+}
