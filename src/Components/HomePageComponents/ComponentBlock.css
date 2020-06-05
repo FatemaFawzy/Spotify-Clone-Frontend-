@@ -27,7 +27,7 @@
 }
 .component-block .header{
   display: inline-block;
-  padding-left: 12px;
+  padding-left: 0px;
   font-size: 28px;
   font-weight: 600;
   color: white;
@@ -36,7 +36,7 @@
   padding-bottom: 0;
 }
 .component-block .header-description{
-  padding-left: 12px;
+  padding-left: 16px;
   padding-top: 10px;
   color: rgb(179, 179, 179);
   font-size: 14px;
@@ -54,6 +54,13 @@
   }
 }
 
+@media (max-width: 500px)
+{
+  .component-block{
+    padding-right: 0;
+    padding-left: 12px;
+  }
+}
 /* .component-block .header:hover{
 text-decoration: underline;
 } */

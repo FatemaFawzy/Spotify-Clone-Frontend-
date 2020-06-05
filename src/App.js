@@ -5,6 +5,7 @@ import HelpPage from "./Components/HelpPage/HelpPage";
 import welcomePage from "./Containers/WelcomePage/welcomePage";
 import SignUp from "./Containers/SignUp/SignUp";
 import Login from "./Containers/Login/Login";
+import loginFacebook from "./Containers/Login/LoginFacebook";
 import Premium from "./Containers/PremiumBenefits/Premium";
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
 import Success from "./Components/ForgotPassword/Success";
@@ -38,10 +39,11 @@ function App() {
           <Route  path="/premium/" component={Premium}/>
           <Route  path="/webplayer/" component={WebPlayer}/>
           <Route  exact path="/logIn/" component={Login}/>
+          <Route  exact path="/loginFacebook/" component={loginFacebook}/>
           <Route  exact path="/logIn/forgotpassword/" component={ForgotPassword}/>
           <Route path="/logIn/forgotpassword/success/" component={Success}/>
           <Route path="/signup/emailsent/" component={EmailSent}/>
-          <Route exact path="52.14.190.202:8000/users/reset/front/" component={CreateNewPassword}/>
+          <Route exact path="/logIn/forgotpassword/newpassword/" component={CreateNewPassword}/>
           <Route path="/logIn/forgotpassword/newpassword/passwordisnew/" component={PasswordIsNew}/>
           
           {/* TODO: Change the route of artistprofile when search is implemented */}

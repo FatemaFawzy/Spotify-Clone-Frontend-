@@ -154,23 +154,23 @@ export class SetPasswordContent extends Component{
    * @memberof SetPasswordContent
    * @type {String}
    */
-        const url = "http://52.14.190.202:8000/changepassword"; 
-        fetch(url,requestOptions)
-          .then((response) => {
-            return response.text();
-          })
-          .then((data) => {
-           console.log(data);
-           if(data == "Password has been changed successfully"){
-           document.querySelector("#success").classList.remove("d-none");
-           }
-           else if (data == "Password is incorrect"){
-             currentError = "You've entered an incorrect password."
-           }
-          })
-          .catch((error)=>{
-            console.log(error);
-          })
+        // const url = "http://52.14.190.202:8000/changepassword"; 
+        // fetch(url,requestOptions)
+        //   .then((response) => {
+        //     return response.text();
+        //   })
+        //   .then((data) => {
+        //    console.log(data);
+        //    if(data == "Password has been changed successfully"){
+        //    document.querySelector("#success").classList.remove("d-none");
+        //    }
+        //    else if (data == "Password is incorrect"){
+        //      currentError = "You've entered an incorrect password."
+        //    }
+        //   })
+        //   .catch((error)=>{
+        //     console.log(error);
+        //   })
     }
   };
 

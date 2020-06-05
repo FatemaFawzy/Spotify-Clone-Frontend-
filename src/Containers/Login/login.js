@@ -4,6 +4,7 @@ import {Link, Router } from "react-router-dom";
 import {connect} from "react-redux";
 import * as actionTypes from "../../Store/actions";
 import {BASEURL} from "../../Constants/baseURL";
+import LoginFacebook from "./LoginFacebook";
 
 const initialState = {
   email: "",
@@ -83,6 +84,10 @@ handlePassword = event => {
 
 };
 
+facebook = event =>(
+  <LoginFacebook/>
+);
+
  clickSubmit = event => {
   let incorrectData = "";
   let email = this.state.email;
@@ -121,48 +126,48 @@ handlePassword = event => {
 
     // headers: { 'Access-Control-Expose-Headers': 'x-auth','Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
      // body: JSON.stringify({ email: "ayaelsackaan.1999@gmail.com" ,password: "111" }) 
-    const requestOptions = {
-      method:"POST",
-      headers: { 'Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
-      body: JSON.stringify({ email: this.state.email ,password: this.state.password })
-    }
-    // console.log(this.state.email + this.state.password)
-    const url = BASEURL + "users/Login"
-      fetch(url,requestOptions)
-        .then((response) => {
-          console.log(response.status)
-          if(response.status===401){
-            console.log("incorrect username or password")
-            return "icorrect";
-          }
-          else if(response.status===200){
-            console.log("response is ok")
-            return response.headers.get("x-auth")
-          }
-        })
-        .then((data) => {
-          console.log(data);
+  //  ******** const requestOptions = {
+  //     method:"POST",
+  //     headers: { 'Content-Type': 'application/json','x-auth' : 'eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s'},
+  //     body: JSON.stringify({ email: this.state.email ,password: this.state.password })
+  //   }
+  //   // console.log(this.state.email + this.state.password)
+  //   const url = BASEURL + "users/Login"
+  //     fetch(url,requestOptions)
+  //       .then((response) => {
+  //         console.log(response.status)
+  //         if(response.status===401){
+  //           console.log("incorrect username or password")
+  //           return "icorrect";
+  //         }
+  //         else if(response.status===200){
+  //           console.log("response is ok")
+  //           return response.headers.get("x-auth")
+  //         }
+  //       })
+  //       .then((data) => {
+  //         console.log(data);
 
-          if(data==="icorrect"){
+  //         if(data==="icorrect"){
 
-            document.querySelector(".incorrect").classList.remove("d-none");
-            incorrectData= "Incorrect username or password.";
-            this.setState({incorrectData});
-            console.log("incorrect username or password")
+  //           document.querySelector(".incorrect").classList.remove("d-none");
+  //           incorrectData= "Incorrect username or password.";
+  //           this.setState({incorrectData});
+  //           console.log("incorrect username or password")
 
-          }
-          else{
-            this.props.onSignIn(data);
-            this.props.history.replace('/account/');
-          }
+  //         }
+  //         else{
+  //           this.props.onSignIn(data);
+  //           this.props.history.replace('/account/');
+  //         }
 
          
          
-        })
-        .catch((error)=>{
-          console.log(error);
-        })
-  }
+  //       })
+  //       .catch((error)=>{
+  //         console.log(error);
+  //       })
+   }
 
 
  };
@@ -177,7 +182,7 @@ render() {
 
       <p className="first-line">To continue, log in to Spotify.</p>
       <p className="incorrect d-none">{this.state.incorrectData}</p>
-      <a id="facebook-button"  className=" buttons btn btn-block btn-facebook" href="#" role="button"><i className="fab fa-facebook logo" aria-hidden="true"></i>  Continue With Facebook</a>
+      <a id="facebook-button"  className=" buttons btn btn-block btn-facebook" href="#" role="button" onClick={this.facebook}><i className="fab fa-facebook logo" aria-hidden="true"></i>  Continue With Facebook</a>
 
         <div className="horizontal">
           <span className="horizontal-span" >
