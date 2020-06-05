@@ -59,8 +59,6 @@ export const Tracks = [
 
   {id : 30, SongName :"FRIENDS", Artist: "Anne Marie",AlbumName:"FRIENDS",Duration : "6:23", imgURL:"https://i1.sndcdn.com/artworks-000318359442-6c66wn-t500x500.jpg", songURL:"https://www.mboxdrive.com/Marshmello-Anne-Marie-FRIENDS-Music-Video-OFFICIAL-FRIENDZONE-ANTHEM_jzD_yyEcp0M.mp3"},
 
-  {id : 31, SongName :"Pray For Me", Artist: "Kendrick Lamar",AlbumName:"Pray For Me",Duration : "4:56", imgURL:"https://i.ytimg.com/vi/KROtUpkOzRQ/maxresdefault.jpg", songURL:"https://www.mboxdrive.com/The Weeknd, Kendrick Lamar - Pray For Me (Official Lyric Video) (128 kbps).mp3"},
-
   {id : 32, SongName :"Call Out My Name", Artist: "The Weeknd",AlbumName:"Call Out My Name",Duration : "3:54", imgURL:"https://i.pinimg.com/originals/8b/8c/c5/8b8cc57a160d164cdf008e63acecfc4e.jpg", songURL:"https://www.mboxdrive.com/The-Weeknd-Call-Out-My-Name-Official-Video_M4ZoCHID9GI.mp3"},
 
   {id : 33, SongName :"stressed out", Artist: "twenty one pilots",AlbumName:"Blurry Face",Duration : "3:49", imgURL:"https://1.bp.blogspot.com/-SA-KMhcN1Rw/XbZ2EDS4fUI/AAAAAAAABVg/IJmEbps2GO8RxbtM1zuZz62zqAG7_U8sACLcBGAsYHQ/s1600/twenty-one-pilots-m4a.png", songURL:"https://www.mboxdrive.com/twenty one pilots Stressed Out [OFFICIAL VIDEO].mp3"},

@@ -25,9 +25,10 @@ class MusicBar extends Component {
       muted: false,
       showSnackBar: false,
       snackBarMes: "",
-      trackNum: 0,
-
+      trackNum: 28,
+      playQueue: false,
     }
+
     this.forcedProgress=false;
     this.intervalUpdate = setInterval(this.onUpdate, 250);
   }
@@ -58,22 +59,10 @@ class MusicBar extends Component {
   playPause = e => {
     const {id} = e.target;
     var icon=document.getElementById(id);
+    this.props.onPlayPause();
+    if(this.props.somethingIsPlaying) this.refs.player.pause();
+    else this.refs.player.play();
 
-      this.props.onPlayPause();
-      if(this.props.somethingIsPlaying)
-      {
-        this.refs.player.pause();
-        icon.classList.remove("fa-pause-circle");
-        icon.classList.add("fa-play-circle");
-
-      }
-      else
-      {
-
-        this.refs.player.play();
-        icon.classList.remove("fa-play-circle");
-        icon.classList.add("fa-pause-circle");
-      }
   }
 
   //when the music progress bar is clicked the track is adjusted accordignly
@@ -110,6 +99,11 @@ class MusicBar extends Component {
   }
 
   muteVolume = e => {
+    const volIcon=document.getElementById("volume-button");
+    if(volIcon) {
+      volIcon.classList.toggle("fa-volume-mute");
+      volIcon.classList.toggle("fa-volume-up");
+    }
     if(this.state.muted)
     {
       this.setState({muted:false});
@@ -123,49 +117,57 @@ class MusicBar extends Component {
   }
 
   playPrevious = e => {
-    if(this.state.trackNum != 0) this.setState({trackNum: this.state.trackNum-1});
-    else if (this.state.trackNum == 0) this.setState({trackNum: Tracks.length-1});
+    if(this.state.playQueue) {
+      if(this.state.trackNum != 0) this.setState({trackNum: this.state.trackNum-1});
+      else if (this.state.trackNum == 0) this.setState({trackNum: Tracks.length-1});
+      this.refs.player.load();
+    }
+
   }
 
   playNext = e => {
-    if(this.state.trackNum != Tracks.length-1) this.setState({trackNum: this.state.trackNum+1});
-    else if (this.state.trackNum == Tracks.length-1) this.setState({trackNum: 0});
+    if(this.state.playQueue){
+      if(this.state.trackNum != Tracks.length-1) this.setState({trackNum: this.state.trackNum+1});
+      else if (this.state.trackNum == Tracks.length-1) this.setState({trackNum: 0});
+      this.refs.player.load();
+    }
   }
 
   playQueue = e => {
-    
+    if (!this.state.playQueue) this.setState({playQueue: true});
+    else if (this.state.playQueue) this.setState({playQueue: false});
   }
   
   render() {
 
     var currentTime;
     var duration;
-    var volumeIcon;
     var icon=document.getElementById("play-track-bar");
 
     if(this.refs.player) {
       currentTime=this.refs.player.currentTime;
       duration=this.refs.player.duration;
+
+      // Check if the user wants to skip to a certain part of the track
       if(this.forcedProgress){
         this.forcedProgress=false;
     
         this.refs.player.currentTime= this.refs.player.duration * (this.state.progress/100);
       }
-      if(this.state.muted)
-      {
-        volumeIcon="fa-volume-mute";
-      }
-      else
-      {
-        volumeIcon="fa-volume-up";
-      }
 
+      //check if the user clicked on play on repeat
       if(!this.refs.player.loop)
       {
         if(this.refs.player.ended&&this.props.somethingIsPlaying)
         {
           this.props.onPlayPause();
         }
+      }
+
+      //check if the current track ended to play next in queue
+      if(this.state.playQueue && this.refs.player.ended) {
+        this.playNext();
+        this.props.onPlayPause();
       }
     }
 
@@ -279,10 +281,11 @@ class MusicBar extends Component {
             <div className="music-bar-right pr-0 d-flex align-items-center justify-content-end list-group-horizontal">
               <ul className="volume-bar list-group list-group-horizontal">
                 <li>
-                  <button className="middle-icons fas fa-list mr-2" title="Play Queue" onClick={this.playQueue}></button>
+                  <button className="middle-icons fas fa-list mr-2" title="Play Queue" onClick={this.playQueue}
+                  style={{color:this.state.playQueue?"#1db954":"rgb(179,179,179)"}}></button>
                 </li>
                 <li>
-                  <button id="volume-button" className={"fas "+volumeIcon} onClick={this.muteVolume}> </button>
+                  <button id="volume-button" className="fas fa-volume-up" onClick={this.muteVolume}> </button>
                 </li>
 
                 <li>
