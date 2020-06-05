@@ -116,18 +116,6 @@ export class ArtistProfile extends Component{
 
   }
 
-  // handleSectionClick = e => {
-  //   const {id} = e.target;
-  //   var clickedOption= document.getElementById(id);
-  //   clickedOption.classList.add("grey-background");
-
-  //   var options =document.getElementsByClassName("grey-background");
-  //   for (var i = 0 ; i < options.length ; i++) {
-  //     if (options[i].id !== id){
-  //       options[i].classList.remove("grey-background");
-  //     }
-  //   }; 
-  // }
 
   render() {
   return (
@@ -156,28 +144,15 @@ export class ArtistProfile extends Component{
         </div>
 
         <div id="artist-profile-sections">
-          {/* TODO: change link when search is implemented */}  
-
-          {/* <a id="overview" type="button" className=" artist-profile-sections" 
-          role="button" href="/webplayer/likedsongs/" onClick={this.handleSectionClick}> Overview </a>
-
-          <a id="related-artists" type="button" className=" artist-profile-sections" 
-          role="button" href="/webplayer/likedsongs/relatedartists/" onClick={this.handleSectionClick}> Related Artists </a>
-
-          <a id="about" type="button" className=" artist-profile-sections" 
-          role="button" href="/webplayer/likedsongs/artistabout/" onClick={this.handleSectionClick}> About </a> */}
 
           <NavLink to={this.props.match.url + "/overview/"} id="overview" 
-          className="artist-profile-sections" 
-          onClick={this.handleSectionClick}> Overview </NavLink>
+          className="artist-profile-sections"> Overview </NavLink>
           
           <NavLink to={this.props.match.url + "/relatedartists/"} id="related-artists" 
-          className=" artist-profile-sections" 
-          onClick={this.handleSectionClick}> Related Artists </NavLink>
+          className=" artist-profile-sections"> Related Artists </NavLink>
 
           <NavLink to={this.props.match.url + "/artistabout/"} id="about" 
-          className="artist-profile-sections" 
-          onClick={this.handleSectionClick}> About </NavLink> 
+          className="artist-profile-sections"> About </NavLink> 
 
 
         </div>

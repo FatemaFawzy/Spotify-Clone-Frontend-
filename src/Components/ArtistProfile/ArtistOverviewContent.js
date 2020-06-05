@@ -15,14 +15,14 @@ export class ArtistOverviewContent extends Component {
    * @memberof ArtistOverviewContent
    * @type {Array<songsInfo>}
    */
-    SongInfo:[],
-    // SongInfo: [
-    //   {id : 1, SongName : "Another Love (Zwette Edit)",Duration : "3:52", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-    //   {id : 2, SongName : "Heal", Duration : "4:15", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-    //   {id : 3, SongName : "True Colors", Duration : "2:58", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-    //   {id : 4, SongName : "Grow Old With Me", Duration : "3:52", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-    //   {id : 5, SongName : "Summer Day", Duration : "4:15", SongPhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-    // ],
+    // SongInfo:[],
+    SongInfo: [
+      {id : 1, trackName : "Another Love (Zwette Edit)",Duration : "3:52", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+      {id : 2, trackName : "Heal", Duration : "4:15", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+      {id : 3, trackName : "True Colors", Duration : "2:58", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+      {id : 4, trackName : "Grow Old With Me", Duration : "3:52", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+      {id : 5, trackName : "Summer Day", Duration : "4:15", trackImage: "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+    ],
 
   /**Array of artist albums info 
    * @memberof ArtistOverviewContent
@@ -99,6 +99,23 @@ export class ArtistOverviewContent extends Component {
   
       //   })
 
+      // get artist's popular tracks
+      var url = BASEURL+ "albums/byartist/123"; 
+
+      var requestOptions = {
+        method: 'GET'
+      };
+      
+      fetch(url,requestOptions)
+        .then((response) => { return response.json()})
+        .then((data) => {
+          this.setState({
+          albumInfo: data.albumInfo});
+          console.log(this.state.SongInfo);
+        })
+        .catch((error)=>{console.log(error);
+  
+        })
   }
 
    /**Function that is called to show more albums
@@ -158,7 +175,8 @@ export class ArtistOverviewContent extends Component {
 
                 <td className="song-content pl-0 ml-0">
                   <span>
-                    <img className="song-photo mr-3" src={`http://52.14.190.202:8000/images/${song.trackImage}`}></img>
+                    {/* <img className="song-photo mr-3" src={`http://52.14.190.202:8000/images/${song.trackImage}`}></img> */}
+                    <img className="song-photo mr-3" src={song.trackImage}></img>
                     <span className="song-name"> {song.trackName} </span>
                   </span>
                 </td>
