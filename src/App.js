@@ -4,7 +4,7 @@ import AccountLayout from "./Containers/UserAccountProfile/AccountLayout";
 import HelpPage from "./Components/HelpPage/HelpPage";
 import welcomePage from "./Containers/WelcomePage/welcomePage";
 import SignUp from "./Containers/SignUp/SignUp";
-import Login from "./Containers/Login/Login";
+import Login from "./Containers/Login/Login"
 import loginFacebook from "./Containers/Login/LoginFacebook";
 import Premium from "./Containers/PremiumBenefits/Premium";
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
