@@ -306,7 +306,7 @@ class MusicBar extends Component {
                 </li>
 
                 <li>
-                  <div className="progress" onClick={this.changeVolume}>
+                  <div className="progress volumebar" onClick={this.changeVolume}>
                     <div ref="volumeRef" id="volume" className="progress-bar bg-success" role="progressbar" style={{width:this.state.muted?0+"%": this.state.volume*100+"%"}} aria-valuenow="25" aria-valuemin="0" 
                     aria-valuemax="100"> </div>
                     <button style={{left:this.state.muted?"-15%":(this.state.volume*100-15)+"%"}} className="fas fa-circle slider"></button>
