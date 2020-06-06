@@ -92,18 +92,16 @@ class MusicBar extends Component {
     var volumeRef =this.refs.volumeRef;
     console.log((e.clientX-(progressOffset(volumeRef)))/78);
     var volume=((e.clientX-(progressOffset(volumeRef)))/78);
-    if(volume<0) volume=0;
+    if(volume<0) {
+      volume=0;
+      this.setState({muted:true});
+    }
     else if(volume>1) volume=1;
     this.setState({volume:volume});
     if(this.refs.player) this.refs.player.volume=volume;
   }
 
   muteVolume = e => {
-    const volIcon=document.getElementById("volume-button");
-    if(volIcon) {
-      volIcon.classList.toggle("fa-volume-mute");
-      volIcon.classList.toggle("fa-volume-up");
-    }
     if(this.state.muted)
     {
       this.setState({muted:false});
@@ -149,6 +147,7 @@ class MusicBar extends Component {
 
   render() {
 
+    var volumeIcon;
     var currentTime;
     var duration;
     var icon=document.getElementById("play-track-bar");
@@ -197,6 +196,15 @@ class MusicBar extends Component {
         icon.classList.add("fa-play-circle");
       }
        
+    }
+
+    if(this.state.muted)
+    {
+      volumeIcon="fa-volume-mute";
+    }
+    else
+    {
+      volumeIcon="fa-volume-up";
     }
 
     return (
@@ -294,7 +302,7 @@ class MusicBar extends Component {
                   style={{color:this.state.playQueue?"#1db954":"rgb(179,179,179)"}}></button>
                 </li>
                 <li>
-                  <button id="volume-button" className="fas fa-volume-up" onClick={this.muteVolume}> </button>
+                  <button id="volume-button" className={"fas "+volumeIcon} onClick={this.muteVolume}> </button>
                 </li>
 
                 <li>
