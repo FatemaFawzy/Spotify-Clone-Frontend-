@@ -75,7 +75,7 @@ export class HomePage extends Component {
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
 
-     const url1 = BASEURL + "homepage/recentlyplayed"; 
+     const url1 ="http://spotifyclone.mocklab.io/homepage/recentlyplayed"; 
     fetch(url1,requestOptions1)
       .then((response) => {
         return response.json();
@@ -216,9 +216,7 @@ export class HomePage extends Component {
                <ComponentBlock ComponentName="Recently played" type="songs" description="" details={this.state.recentlyPlayed} excess={this.state.excessRecentlyPlayed}   /> 
                <ComponentBlock type="playlists" ComponentName="Made for You" description="Playlists to match your mood" details={this.state.madeforyou} excess={this.state.excessMadeForYou} />
                <ComponentBlock type="playlists" ComponentName="Popular playlists" description="" details={this.state.popularplaylists} excess={this.state.excessPlaylists}/> 
-                {/* <ComponentBlock type="albums" ComponentName="Popular albums" description="" details={this.state.popularalbums} />
-               <ComponentBlock type="songs" ComponentName="Popular new releases" description=""  details={this.state.newreleases} />  */}
-              <ComponentBlock type="artists" ComponentName="Popular artists" details={this.state.popularartists} excess={this.state.excessArtists}/>
+               <ComponentBlock type="artists" ComponentName="Popular artists" details={this.state.popularartists} excess={this.state.excessArtists}/>
               
             </div>
           
