@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+.wrapper-Artist{
+  zoom:100%;
+  background-color: rgb(37, 34, 34);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 800;
+  letter-spacing: .015em;
+  display: flex;
+  position: relative;
+  color: #b3b3b3 !important;
+  text-transform: none;
+  font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+
+}
+
+
+.wrapper-Artist .sidebar{
+  width: 230px;
+  height: 100%;
+  background: black;
+  padding: 20px 0px;
+  position: fixed;
+}
+
+.wrapper-Artist .sidebar .logo{
+  display: block;
+  width: 160px;
+  height: 40px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 30px;
+  margin-bottom: 20px;
+
+}
+.wrapper-Artist .sidebar ul{
+  padding-inline-start: 3px;
+  
+}
+
+.wrapper-Artist .sidebar ul .List,.List2 {
+  list-style-type: none;
+  padding: 10px;
+  padding-left: 20px;
+  margin: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+ 
+} 
+.wrapper-Artist .active{
+background-color: hsla(0,0%,100%,.3);
+}   
+
+.wrapper-Artist .sidebar ul li a{
+  color: #b3b3b3;
+  text-decoration: none;
+  display: block;
+}
+
+.wrapper-Artist .sidebar ul li a .fas{
+  width: 40px;
+  vertical-align: middle;
+}
+
+.wrapper-Artist .sidebar ul li:hover{
+  color: white;
+  border-radius: 5px;
+  /* filter: brightness(120%); */
+}
+    
+.wrapper-Artist .sidebar ul li:hover a{
+  color: white;
+  /* filter: brightness(120%); */
+}
+
+.wrapper-Artist .sidebar ul #Playlist{
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 11.2px;
+  letter-spacing: 2px;
+  padding-left: 25px;
+  padding-top: 15px;
+}
+
+.wrapper-Artist .sidebar hr{
+  width: 160px;
+  border-bottom: 0.3px solid #282828;
+    
+}
+
+.wrapper-Artist #my-playlist::-webkit-scrollbar {
+  width: 15px;
+  background-color: black;
+}
+.wrapper-Artist .my-playlists {
+  font-weight: 300;
+  height: 262px;
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+}
+
+.wrapper-Artist #my-playlist::-webkit-scrollbar-thumb {
+  background-color: #505050 ;
+  border-radius: 0px;
+} 
+.wrapper-Artist .sidebar a.active{
+  color: white;
+  background-color:  rgb(40,40,40); 
+}
+
+.wrapper-Artist .sidebar a.active:hover a{
+  color: white;
+  background-color:  rgb(40,40,40); 
+}
+
+@media (max-width: 500px)
+{
+  .wrapper-Artist{
+    display: none;
+  }
+}
+
+
