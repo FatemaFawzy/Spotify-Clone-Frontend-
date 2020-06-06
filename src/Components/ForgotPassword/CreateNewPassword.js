@@ -81,6 +81,10 @@ export class CreateNewPassword extends Component {
  * @func clickSubmit
  */
  clickSubmit = event => {
+  if (event)
+  {
+  event.preventDefault();
+  }
   let newPassword = this.state.newPassword;
   //event.preventDefault();
   if(this.validate()){
@@ -98,29 +102,29 @@ export class CreateNewPassword extends Component {
 
      var userToken = window.location.pathname.slice((window.location.pathname.indexOf('?') + 1));
 
-    const requestOptions = {
-      method: "PATCH",
-      headers: {'Content-Type':  'application/json'},
-      body: JSON.stringify({token:userToken, newPassword: this.state.newPassword})
-    };
-    const url = BASEURL + "/users/reset"; 
-    fetch(url,requestOptions)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        if (data.message == "Password has been reset successfully")
-        {
-         this.props.history.push('/logIn/forgotpassword/newpassword/passwordisnew');
-        }
-        else if (data.message == "Reset Failed")
-        {
-           this.setState({newPasswordError:"Failed to reset password."});
-        }
-      })
-      .catch((error)=>{
-        console.log(error);
-      })
+    // const requestOptions = {
+    //   method: "PATCH",
+    //   headers: {'Content-Type':  'application/json'},
+    //   body: JSON.stringify({token:userToken, newPassword: this.state.newPassword})
+    // };
+    // const url = BASEURL + "/users/reset"; 
+    // fetch(url,requestOptions)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     if (data.message == "Password has been reset successfully")
+    //     {
+    //      this.props.history.push('/logIn/forgotpassword/newpassword/passwordisnew');
+    //     }
+    //     else if (data.message == "Reset Failed")
+    //     {
+    //        this.setState({newPasswordError:"Failed to reset password."});
+    //     }
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
     
    }
 
