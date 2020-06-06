@@ -90,26 +90,25 @@ class MusicBar extends Component {
   }
 
   //update volume when volume bar is clicked
-  changeVolume = e => {
-    this.setState({ muted: false })
-    var volumeRef = this.refs.volumeRef;
-    console.log((e.clientX - (progressOffset(volumeRef))) / 78);
-    var volume = ((e.clientX - (progressOffset(volumeRef))) / 78);
-    if (volume < 0) volume = 0;
-    else if (volume > 1) volume = 1;
-    this.setState({ volume: volume });
-    if (this.refs.player) this.refs.player.volume = volume;
+  changeVolume = e =>{
+    this.setState({muted:false})
+    var volumeRef =this.refs.volumeRef;
+    console.log((e.clientX-(progressOffset(volumeRef)))/78);
+    var volume=((e.clientX-(progressOffset(volumeRef)))/78);
+    if(volume<0) {
+      volume=0;
+      this.setState({muted:true});
+    }
+    else if(volume>1) volume=1;
+    this.setState({volume:volume});
+    if(this.refs.player) this.refs.player.volume=volume;
   }
 
   muteVolume = e => {
-    const volIcon = document.getElementById("volume-button");
-    if (volIcon) {
-      volIcon.classList.toggle("fa-volume-mute");
-      volIcon.classList.toggle("fa-volume-up");
-    }
-    if (this.state.muted) {
-      this.setState({ muted: false });
-      if (this.refs.player) this.refs.player.volume = this.state.volume;
+    if(this.state.muted)
+    {
+      this.setState({muted:false});
+      if(this.refs.player) this.refs.player.volume=this.state.volume;
     }
     else {
       this.setState({ muted: true });
@@ -150,6 +149,7 @@ class MusicBar extends Component {
 
   render() {
 
+    var volumeIcon;
     var currentTime;
     var duration;
     var icon = document.getElementById("play-track-bar");
@@ -226,7 +226,14 @@ class MusicBar extends Component {
 
     }
 
-
+    if(this.state.muted)
+    {
+      volumeIcon="fa-volume-mute";
+    }
+    else
+    {
+      volumeIcon="fa-volume-up";
+    }
 
     return (
 
@@ -325,14 +332,14 @@ class MusicBar extends Component {
                     style={{ color: this.state.playQueue ? "#1db954" : "rgb(179,179,179)" }}></button>
                 </li>
                 <li>
-                  <button id="volume-button" className="fas fa-volume-up" onClick={this.muteVolume}> </button>
+                  <button id="volume-button" className={"fas "+volumeIcon} onClick={this.muteVolume}> </button>
                 </li>
 
                 <li>
-                  <div className="progress" onClick={this.changeVolume}>
-                    <div ref="volumeRef" id="volume" className="progress-bar bg-success" role="progressbar" style={{ width: this.state.muted ? 0 + "%" : this.state.volume * 100 + "%" }} aria-valuenow="25" aria-valuemin="0"
-                      aria-valuemax="100"> </div>
-                    <button style={{ left: this.state.muted ? "-15%" : (this.state.volume * 100 - 15) + "%" }} className="fas fa-circle slider"></button>
+                  <div className="progress volumebar" onClick={this.changeVolume}>
+                    <div ref="volumeRef" id="volume" className="progress-bar bg-success" role="progressbar" style={{width:this.state.muted?0+"%": this.state.volume*100+"%"}} aria-valuenow="25" aria-valuemin="0" 
+                    aria-valuemax="100"> </div>
+                    <button style={{left:this.state.muted?"-15%":(this.state.volume*100-15)+"%"}} className="fas fa-circle slider"></button>
                   </div>
                   {/* <div className="slidecontainer">
                     <input type="range" min="1" max="100" value="10" class="slider" id="myRange"></input>
