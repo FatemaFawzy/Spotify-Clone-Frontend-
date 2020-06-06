@@ -1,8 +1,8 @@
-
 import "./LikedSongsComponent.css";
 import {BrowserRouter as Router} from "react-router-dom";
 import {Link} from "react-router-dom";
 import React ,{ Component} from 'react';
+import {BASEURL} from "../../Constants/baseURL";
 
 
 /** Class LikedSongsComponent that creates the bluish component in the your library-playlist page.
@@ -19,19 +19,12 @@ export class LikedSongsComponent extends Component {
    * @memberof LikedSongsComponent
    * @type {string}
    */
-      totalLiked: "60",
+      totalLiked: "",
    /**Array of recently liked songs
    * @memberof LikedSongsComponent
    * @type {Array<song>}
    */
-      recentlyLiked:[{artist:"Drake", song:"God's Plan"},
-                     {artist:"Rihanna", song:"Work"},
-                     {artist:"21 Savage", song:"X Bitch"},
-                     {artist:"Saint JHN", song:"Roses"},
-                     {artist:"The Weeknd", song:"Blinding Lights"},
-                     {artist:"21 Savage", song:"asmr"},
-                     {artist:"Saint JHN", song:"I Heard You Got Too Lit Last Night"}
-                   ],
+      recentlyLiked:[],
    /**String that concatenates the details as needed to preview
    * @memberof LikedSongsComponent
    * @type {string}
@@ -41,7 +34,7 @@ export class LikedSongsComponent extends Component {
    * @memberof LikedSongsComponent
    * @type {Array}
    */
-      arrayOfIDs:[]
+      arrayOfIDs:[],
     }
   }
   /**A function that gets called once this component is rendered
@@ -50,76 +43,53 @@ export class LikedSongsComponent extends Component {
    */
     componentDidMount(){
 
-     /**Prerequisites for fetch request
-     * @memberof LikedSongsComponent
-     * @type {object}
-     */
-      const requestOptions = {
-        method:"GET",
-        headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
-      }
-    /**URL for fetch request
-     * @memberof LikedSongsComponent
-     * @type {string}
-     */
-      const url = "http://52.14.190.202:8000/tracks/like/me"; 
-      fetch(url,requestOptions)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-         console.log(data);
-         this.setState({arrayOfIDs:data})
-         console.log(this.state.arrayOfIDs);
-        })
-        .catch((error)=>{
-          console.log(error);
-        })
+    //  /**Prerequisites for fetch request
+    //  * @memberof LikedSongsComponent
+    //  * @type {object}
+    //  */
+    //   const requestOptions = {
+    //     method:"GET",
+    //     headers:{'x-auth':this.props.userToken}
+    //   }
+    // /**URL for fetch request
+    //  * @memberof LikedSongsComponent
+    //  * @type {string}
+    //  */
+    //   const url = BASEURL + "/tracks/like/me"; 
+    //   fetch(url,requestOptions)
+    //     .then((response) => {
+    //       return response.json();
+    //     })
+    //     .then((data) => {
+    //      console.log(data);
+    //      this.setState({arrayOfIDs:data})
+    //      console.log(this.state.arrayOfIDs);
+    //     })
+    //     .catch((error)=>{
+    //       console.log(error);
+    //     })
 
 console.log(this.state.arrayOfIDs);
 
-        const requestOptions1 = {
-          method:"POST",
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({id: this.state.arrayOfIDs})
-        }
-        const url1 = "http://52.14.190.202:8000/tracks"; 
-        fetch(url1,requestOptions1)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            console.log("songs");
-            console.log(data.tracks);
-           this.setState({recentlyLiked:data.tracks})
-           console.log(this.state.recentlyLiked);
-          //  console.log(this.state.arrayOfIDs);
-          })
-          .catch((error)=>{
-            console.log(error);
-          })
-
-
-      //     const requestOptions2 = {
-      //       method:"POST",
-      //       headers:{'Content-Type':'application/json'},
-      //     }
-      //     const url2 = "http://52.14.190.202:8000/artists/"+ recentlyLiked.artistId;
-      //   fetch(url2,requestOptions2)
-      //     .then((response) => {
-      //       return response.json();
-      //     })
-      //     .then((data) => {
-      //       console.log("songs");
-      //       console.log(data.tracks);
-      //      this.setState({recentlyLiked:data.tracks})
-      //      console.log(this.state.recentlyLiked);
-      //     //  console.log(this.state.arrayOfIDs);
-      //     })
-      //     .catch((error)=>{
-      //       console.log(error);
-      //     })
-        
+        // const requestOptions1 = {
+        //   method:"POST",
+        //   headers:{'Content-Type':'application/json'},
+        //   body: JSON.stringify({id: this.state.arrayOfIDs})
+        // }
+        // const url1 = BASEURL + "/tracks"; 
+        // fetch(url1,requestOptions1)
+        //   .then((response) => {
+        //     return response.json();
+        //   })
+        //   .then((data) => {
+        //     console.log("songs");
+        //     console.log(data.tracks);
+        //    this.setState({recentlyLiked:data.tracks})
+        //    console.log(this.state.recentlyLiked);
+        //   })
+        //   .catch((error)=>{
+        //     console.log(error);
+        //   })
      /**Variable that concatenates the details of the songs
      * @memberof LikedSongsComponent
      * @type {string}
@@ -127,7 +97,7 @@ console.log(this.state.arrayOfIDs);
       var x = "";
       for (var i=0; i< this.state.recentlyLiked.length; i++)
       {
-        x += this.state.recentlyLiked[i].artist + " ● " + this.state.recentlyLiked[i].song + " ";
+        x += this.state.recentlyLiked[i].artistName + " ● " + this.state.recentlyLiked[i].trackName + " ";
       }
        console.log(x);
       if (x.length > 150)
@@ -143,18 +113,19 @@ console.log(this.state.arrayOfIDs);
         return(
           <span>
             <span>
-              {item.artist + " "}
+              {item.artistName + " "}
             </span>
             <span className="song-name">
             ● 
             </span>
             <span className="song-name">
-              {" " +item.song  + " "}
+              {" " +item.trackName  + " "}
             </span>
           </span>
         )
       }) 
       this.setState({string:stringofsongs});
+      // this.setState({totalLiked:(this.recentlyLiked.length+1)})
     };
   /**A function that redirects the user to the liked songs page on click of the component.
    * @memberof LikedSongsComponent
@@ -182,4 +153,12 @@ return (
 );
 }
 }
+const mapStateToProps = state => {
+
+  return {
+    userToken:state.userToken
+  };
+
+};
+
 export default LikedSongsComponent;

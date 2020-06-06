@@ -229,35 +229,3 @@
   display: none;
 }
 
-
-/* 
-.music-bar .slidecontainer {
-  width: 80px;
-}
-
-.music-bar .slider {
-  -webkit-appearance: none;
-  width: 80px;
-  height: 3px;
-  border-radius: 5px;  
-  background: #d3d3d3;
-  outline: none;
-}
-
-.music-bar .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%; 
-  background: white;
-  cursor: pointer;
-}
-
-.music-bar .slider::-moz-range-thumb {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: white;
-  cursor: pointer;
-} */

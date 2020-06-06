@@ -17,30 +17,30 @@ export class SongsByGenre extends Component {
      */
     songs: [
       {
-        imagePath: "",
-        trackName: "Goodbye",
-        artistName: "I hate the world",
+        imagePath: "https://i.ytimg.com/vi/0R6YO0IAN48/maxresdefault.jpg",
+        trackName: "Perfect",
+        artistName: "Ed Sheeran",
         _id: "1",
         artistId: "1",
       },
       {
-        imagePath: "",
-        trackName: "Life is bad",
-        artistName: "Death",
+        imagePath: "https://images-na.ssl-images-amazon.com/images/I/71x%2BT7Cjx8L._AC_SL1400_.jpg",
+        trackName: "Radioactive",
+        artistName: "Imagine Dragons",
         _id: "2",
         artistId: "2",
       },
       {
-        imagePath: "",
-        trackName: "We are all bad people",
-        artistName: "Yes, we are",
+        imagePath: "https://i.pinimg.com/originals/8b/8c/c5/8b8cc57a160d164cdf008e63acecfc4e.jpg",
+        trackName: "Call Out My Name",
+        artistName: "The Weekend",
         _id: "3",
         artistId: "3",
       },
       {
-        imagePath: "",
-        trackName: "End me",
-        artistName: "For good",
+        imagePath: "https://m.media-amazon.com/images/I/81Jbh4gWTDL._SS500_.jpg",
+        trackName: "I'm a Mess",
+        artistName: "Bebe Rexha",
         _id: "4",
         artistId: "4",
       }
@@ -91,7 +91,8 @@ export class SongsByGenre extends Component {
 
         {this.state.songs.map(song => (
           <SongSearched
-            image={BASEURL + "Images/" + song.imagePath}
+            // image={BASEURL + "Images/" + song.imagePath}
+            image={song.imagePath}
             name={song.trackName}
             subname={song.artistName}
             key={song._id}

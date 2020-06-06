@@ -25,8 +25,10 @@ class MusicBar extends Component {
       muted: false,
       showSnackBar: false,
       snackBarMes: "",
-
+      trackNum: 0,
+      playQueue: false,
     }
+
     this.forcedProgress=false;
     this.intervalUpdate = setInterval(this.onUpdate, 250);
     this.songObject=Tracks[0];
@@ -59,22 +61,10 @@ class MusicBar extends Component {
   playPause = e => {
     const {id} = e.target;
     var icon=document.getElementById(id);
+    this.props.onPlayPause();
+    if(this.props.somethingIsPlaying) this.refs.player.pause();
+    else this.refs.player.play();
 
-      this.props.onPlayPause();
-      if(this.props.somethingIsPlaying)
-      {
-        this.refs.player.pause();
-        icon.classList.remove("fa-pause-circle");
-        icon.classList.add("fa-play-circle");
-
-      }
-      else
-      {
-
-        this.refs.player.play();
-        icon.classList.remove("fa-play-circle");
-        icon.classList.add("fa-pause-circle");
-      }
   }
 
   //when the music progress bar is clicked the track is adjusted accordignly
@@ -111,6 +101,11 @@ class MusicBar extends Component {
   }
 
   muteVolume = e => {
+    const volIcon=document.getElementById("volume-button");
+    if(volIcon) {
+      volIcon.classList.toggle("fa-volume-mute");
+      volIcon.classList.toggle("fa-volume-up");
+    }
     if(this.state.muted)
     {
       this.setState({muted:false});
@@ -123,31 +118,57 @@ class MusicBar extends Component {
     }
   }
 
+  playPrevious = e => {
+    //if it's playing a queue, get the previous song
+    if(this.state.playQueue) {
+      if(this.state.trackNum != 0) this.setState({trackNum: this.state.trackNum-1});
+      else if (this.state.trackNum == 0) this.setState({trackNum: Tracks.length-1});
+      this.refs.player.load();
+    }
+    //if only one song is playing, just play it from the start
+      if (this.refs.player) this.refs.player.currentTime=0;
+  }
+
+  playNext = e => {
+    
+    if(this.state.playQueue){
+      if(this.state.trackNum != Tracks.length-1) this.setState({trackNum: this.state.trackNum+1});
+      else if (this.state.trackNum == Tracks.length-1) this.setState({trackNum: 0});
+      this.refs.player.load();
+    }
+
+  }
+
+  playQueue = e => {
+    if (!this.state.playQueue) this.setState({playQueue: true});
+    else if (this.state.playQueue) this.setState({playQueue: false});
+  }
+  
+  stop = e => {
+    if (this.refs.player) this.refs.player.currentTime=0;
+    this.props.onPlayPause();
+  }
+
   render() {
 
     var currentTime;
     var duration;
-    var volumeIcon;
     var icon=document.getElementById("play-track-bar");
 
     if(this.refs.player) {
       currentTime=this.refs.player.currentTime;
       duration=this.refs.player.duration;
+
+      // Check if the user wants to skip to a certain part of the track
       if(this.forcedProgress){
         this.forcedProgress=false;
     
         this.refs.player.currentTime= this.refs.player.duration * (this.state.progress/100);
       }
-      if(this.state.muted)
-      {
-        volumeIcon="fa-volume-mute";
-      }
-      else
-      {
-        volumeIcon="fa-volume-up";
-      }
 
-      
+      //check if the user clicked on play on repeat
+      if(!this.refs.player.loop)
+      {
         if(this.refs.player.ended&&this.props.somethingIsPlaying)
         {
           console.log("Ended")
@@ -157,25 +178,13 @@ class MusicBar extends Component {
           this.props.onPlayPause();
           }
         }
+      }
 
-        if(this.props.adsModeOn)
-        {
-          if(!this.EnteredAdsMode)
-          {
-            // this.songObject=Tracks[1];
-            this.refs.player.load();
-            this.EnteredAdsMode=true;
-          }
-          
-          console.log(this.songObject)
-          if(this.refs.player.ended&&this.props.somethingIsPlaying)
-          {
-            this.props.onAdsEnded();
-            this.EnteredAdsMode=false;
-            // this.refs.player.load();
-          }
-        }
-      
+      //check if the current track ended to play next in queue
+      if(this.state.playQueue && this.refs.player.ended) {
+        this.playNext();
+        this.props.onPlayPause();
+      }
     }
 
     if(this.props.somethingIsPlaying) {
@@ -213,7 +222,7 @@ class MusicBar extends Component {
                 <div className="row no-gutters">
 
                   <div className="col-2 ">
-                    <img className="card-img song-photo" src={this.state.photoLink}></img>
+                    <img className="card-img song-photo" src={Tracks[this.state.trackNum].imgURL}></img>
                   </div>
 
                   <div className="col-10">
@@ -223,11 +232,11 @@ class MusicBar extends Component {
 
                         <li className="pr-2 prevent-overflow">
                           <div className="song-name prevent-overflow">
-                            <a id="song-name" href={this.state.albumLink}> {this.state.songName} </a>
+                            <a id="song-name" href={this.state.albumLink}> {Tracks[this.state.trackNum].SongName} </a>
                           </div>
 
                           <div className="artist-name prevent-overflow">
-                            <a id="artist-name" href={this.state.artistProfileLink}> {this.state.artistName} </a>
+                            <a id="artist-name" href={this.state.artistProfileLink}> {Tracks[this.state.trackNum].Artist} </a>
                           </div>
                         </li>
 
@@ -252,18 +261,11 @@ class MusicBar extends Component {
 
             <div className="music-bar-middle">
               <div className="d-flex justify-content-center">
-                <button className="middle-icons fas fa-random mr-2"></button>
-                <button className="middle-icons fas fa-step-backward"></button>
+                <button className="middle-icons fas fa-stop mr-2" title="Stop" onClick={this.stop}></button>
+                <button className="middle-icons fas fa-step-backward" title="Previous" onClick={this.playPrevious}></button>
                 <button id="play-track-bar" className="play middle-icons far fa-play-circle mr-3 ml-3" onClick={this.playPause} ></button>
-                <button 
-                className="middle-icons fas fa-step-forward"
-                onClick={()=>{
-                  if(this.refs.player) this.refs.player.load();
-                  this.songObject=Tracks[4];
-                  
-                }}
-                ></button>
-                <button 
+                <button className="middle-icons fas fa-step-forward" title="Next" onClick={this.playNext}></button>
+                <button title="Play on Repeat"
                 style={{color:this.props.playOnRepeat?"#1db954":"rgb(179,179,179)"}} 
                 className="middle-icons fas fa-sync-alt ml-2"
                 onClick={()=>{
@@ -294,9 +296,12 @@ class MusicBar extends Component {
 
             <div className="music-bar-right pr-0 d-flex align-items-center justify-content-end list-group-horizontal">
               <ul className="volume-bar list-group list-group-horizontal">
-
                 <li>
-                  <button id="volume-button" className={"fas "+volumeIcon} onClick={this.muteVolume}> </button>
+                  <button className="middle-icons fas fa-list mr-2" title="Play Queue" onClick={this.playQueue}
+                  style={{color:this.state.playQueue?"#1db954":"rgb(179,179,179)"}}></button>
+                </li>
+                <li>
+                  <button id="volume-button" className="fas fa-volume-up" onClick={this.muteVolume}> </button>
                 </li>
 
                 <li>
@@ -317,9 +322,8 @@ class MusicBar extends Component {
         </div>
 
         <audio ref="player" loop={this.props.playOnRepeat}>
-          <source src={this.props.adsModeOn?Tracks[32].songURL:this.songObject.songURL} />
-          {/* <source src="https://www.computerhope.com/jargon/m/example.mp3" /> */}
-         
+          {/* <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" /> */}
+          <source src={Tracks[this.state.trackNum].songURL} />
         </audio>
       </div>
     )
