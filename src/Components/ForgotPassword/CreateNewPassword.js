@@ -86,7 +86,8 @@ export class CreateNewPassword extends Component {
   event.preventDefault();
   }
   let newPassword = this.state.newPassword;
-  //event.preventDefault();
+  if (event)
+  {event.preventDefault();}
   if(this.validate()){
      this.setState({initialState});
    /**Getting the form to clear it after submitting
