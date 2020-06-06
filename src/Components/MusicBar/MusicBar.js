@@ -7,6 +7,7 @@ import ReactSnackBar from "react-js-snackbar";
 import '../PlaylistsComponent/SnackBar.css';
 import { Tracks } from "./SongFiles.js";
 import AdsAudio from "../../assets/adsaudio.mp3";
+import {BASEURL} from "../../Constants/baseURL"
 
 class MusicBar extends Component {
 
@@ -37,21 +38,62 @@ class MusicBar extends Component {
   }
 
   likeSong = e => {
-    const { id } = e.target;
-    var heart = document.getElementById(id);
-    if (heart) {
-      if (heart.classList.contains("far")) {
-        this.setState({ showSnackBar: true, snackBarMes: "Added to your liked songs" });
-        setTimeout(() => {
-          this.setState({ showSnackBar: false });
-        }, 2000);
+    const {id} = e.target;
+    var heart=document.getElementById(id);
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'x-auth': this.props.userToken },
+    }
+
+    if (heart){
+      if(heart.classList.contains("far")){
+
+        //send a request to like the song
+        const url = BASEURL + "track/like/123";
+        // const url = BASEURL + "track/like/" + playingSongID;
+        fetch(url,requestOptions)
+          .then((response) => {
+            console.log(response)
+            return response.json();
+          })
+          .then((data) => {
+            if(data.message == "Song liked successfully"){
+              this.setState({ showSnackBar: true, snackBarMes: "Added to your liked songs" });
+              setTimeout(() => {
+                this.setState({ showSnackBar: false });
+              }, 2000);  
+            }
+             console.log(data);
+          })
+          .catch((error)=>{
+            console.log(error);
+          })
       }
-      else if (heart.classList.contains("fas")) {
-        this.setState({ showSnackBar: true, snackBarMes: "Removed from your liked songs" });
-        setTimeout(() => {
-          this.setState({ showSnackBar: false });
-        }, 2000);
-      }
+      else if(heart.classList.contains("fas")){
+
+        //send a request to unlike the song
+        const url1 = BASEURL + "track/unlike/123";
+        // const url = BASEURL + "track/unlike/" + playingSongID;
+
+        fetch(url1,requestOptions)
+          .then((response) => {
+            console.log(response)
+            return response.json();
+          })
+          .then((data) => {
+            if(data.message == "Song unliked successfully"){
+              this.setState({ showSnackBar: true, snackBarMes: "Removed from your liked songs" });
+              setTimeout(() => {
+                this.setState({ showSnackBar: false });
+              }, 2000); 
+            }
+             console.log(data);
+          })
+          .catch((error)=>{
+            console.log(error);
+          })     
+      }      
 
     }
     heart.classList.toggle("far");
