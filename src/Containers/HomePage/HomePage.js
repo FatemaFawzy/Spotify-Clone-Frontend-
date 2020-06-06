@@ -75,7 +75,7 @@ export class HomePage extends Component {
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
 
-     const url1 ="http://spotifyclone.mocklab.io/homepage/recentlyplayed"; 
+     const url1 =BASEURL + "homepage/recentlyplayed"; 
     fetch(url1,requestOptions1)
       .then((response) => {
         return response.json();
