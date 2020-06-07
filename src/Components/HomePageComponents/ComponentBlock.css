@@ -59,6 +59,7 @@
   .component-block{
     padding-right: 0;
     padding-left: 12px;
+    margin-bottom: 600px;
   }
 }
 /* .component-block .header:hover{

@@ -73,7 +73,10 @@ export class MainNavbar extends Component {
         <div className="collapse navbar-collapse " id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto justify-content-end  ">
                   <li className="nav-item ">
-                  <Link to="/webplayer" className="nav-link">Web player</Link>
+                    <Link to="/ArtistAccount/ArtistWebPlayer/" className="nav-link">Artist Account</Link>
+                  </li>
+                  <li className="nav-item ">
+                   <Link to="/webplayer" className="nav-link">Web Player</Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/premium" className="nav-link  " > Premium </Link>

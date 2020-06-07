@@ -42,9 +42,10 @@ render()
             id={result._id}
             type="ARTIST"
           />     
-          )    
-          link="/webplayer/HomePage/seeallartists"
+          )
           })
+              
+          link="/webplayer/HomePage/seeallartists";
         }
     break;
 
@@ -85,8 +86,8 @@ render()
                />     
                    
                )  
-               link="/webplayer/HomePage/seeallrecentlyplayed"  
                })
+               link="/webplayer/HomePage/seeallrecentlyplayed";
              }
       break;
 
