@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import NotificationList from "../../Components/Notifications/NotificationList"
+// import NotificationList from "../../Components/Notifications/NotificationList"
+import NotificationList from "../NotificationList"
 import "./NotificationButton.css";
 // import "./App.css";
 class NotificationButton extends Component {
@@ -25,7 +26,7 @@ class NotificationButton extends Component {
           <i class="fas fa-bell"></i>
           <span class="num">4</span>
 
-          <div>
+          <div className="whatever">
             <NotificationList notifications={this.state.notifications} />
           </div>
         </div>

@@ -8,8 +8,7 @@ import * as History from "../../HelperFunctions/History";
 import DropDownMenu from "../../Containers/GenericComponenets/DropDownMenu";
 import COllapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
 import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
-// import NotificationButton from "../../Containers/NotificationBtn/NotficationButton"
- 
+import NotificationButton from "../Notifications/NotificationBtn/NotficationButton"
 /** Class HomepageSidebar 
  * @category HomePage
  * @extends Component
@@ -56,6 +55,7 @@ export class HomePageNavbar extends Component{
                 
                   <div id="ul-upgrade" className={this.props.accountType == "premium" ? 'd-none' : ''}>
                   <Link to="/premium"><button id="upgradebtn">UPGRADE</button></Link>
+                  <NotificationButton/>
                   </div>
                 
               </div>

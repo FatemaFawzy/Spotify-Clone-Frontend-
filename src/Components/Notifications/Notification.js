@@ -6,8 +6,8 @@ const Notification = ({name,username }) => {
     <div>
       <div className="notification">
         <div border>
-          <ul>
-            <li>
+          <ul className="conTainer">
+            <li className="bulletPoint">
               <span className="text">
                 <span>
                   {username}
