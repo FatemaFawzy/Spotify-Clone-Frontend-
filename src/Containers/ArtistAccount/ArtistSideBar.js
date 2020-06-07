@@ -87,7 +87,7 @@ render() {
           <ul>
               <li><NavLink  onClick={addNewURL("/webplayer/HomePage")} className="List" to="/webplayer/HomePage/"><i class="fas fa-user"></i>Profile</NavLink></li>
               <li><NavLink  onClick={addNewURL("/webplayer/likedsongs")} className="List2" to="/webplayer/likedsongs/"><i class="fas fa-info"></i>Info</NavLink></li>
-              <li><NavLink   className="List" to="/webplayer/search/"><i class="fas fa-music"></i>My Songs</NavLink></li>
+              <li><NavLink   className="List" to="/ArtistAccount/ArtistWebPlayer/MySongs/"><i class="fas fa-music"></i>My Songs</NavLink></li>
               <li><NavLink onClick={addNewURL("webplayer/yourlibrary/")} className="List" to="/webplayer/yourlibrary/"><i class="fas fa-compact-disc"></i>My Albums</NavLink></li>
              
               <hr/>

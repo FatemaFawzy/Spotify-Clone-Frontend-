@@ -23,6 +23,7 @@ import SeeAllMadeForYou from '../../Containers/HomePage/SeeAllMadeForYou';
 import SeeAllRecentlyPlayed from '../../Containers/HomePage/SeeAllRecentlyPlayed';
 import AdsBar from "../../Components/Ads/AdsBar";
 import { ArtistHomePage } from './ArtistHomePage';
+import ArtistSongs from "./ArtistSongs";
 
 
 var isPremium=false;
@@ -46,6 +47,7 @@ class ArtistWebPlayer extends Component {
 
          <Switch>
           <Route exact path="/ArtistAccount/ArtistWebPlayer/" component={ArtistHomePage}/>
+          <Route exact path="/ArtistAccount/ArtistWebPlayer/MySongs" component={ArtistSongs}/>
          </Switch>
             
 
