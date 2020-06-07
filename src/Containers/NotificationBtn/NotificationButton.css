@@ -1,0 +1,49 @@
+.box {
+  position: fixed;
+  top: -1%;
+  right: 10%;
+  transform: translate(20%, 10%);
+}
+
+.notification:hover {
+  width: 150px;
+  height: 60px;
+  text-align: left;
+  padding: 0 10px;
+  transform: translatex(10%);
+  background-color:black;
+}
+
+.notification .fas {
+  color: #cecece;
+  line-height: 60px;
+  font-size: 23px;
+}
+.notification .num {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  left: 13px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ff2c74;
+  color: #ffff;
+  line-height: 15px;
+  font-size: small;
+  font-family: sans-seif;
+  text-align: center;
+  font-style: bold;
+}
+.notification:hover .num {
+  position: relative;
+  background: transparent;
+  color: #ff2c74;
+  font-size: 20px;
+  top: -4px;
+  left:3px;
+  font-style: bold;
+}
+.notification:hover ul {
+  display: block;
+}

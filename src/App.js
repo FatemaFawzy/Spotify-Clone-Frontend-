@@ -42,6 +42,7 @@ function App() {
           <Route exact path="/logIn/forgotpassword/newpassword/" component={CreateNewPassword}/>
           <Route path="/logIn/forgotpassword/newpassword/passwordisnew/" component={PasswordIsNew}/>
           <Route path="/ArtistAccount/ArtistWebPlayer/" component={ArtistWebPlayer}/>
+          {/* <Route  path="/webplayer/notificationHistory" component={ArtistProfile}/> */}
 
           
           {/* TODO: Change the route of artistprofile when search is implemented */}

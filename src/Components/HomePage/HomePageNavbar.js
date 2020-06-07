@@ -8,7 +8,7 @@ import * as History from "../../HelperFunctions/History";
 import DropDownMenu from "../../Containers/GenericComponenets/DropDownMenu";
 import COllapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
 import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
-
+import NotificationButton from "../../Containers/NotificationBtn/NotficationButton"
  
 /** Class HomepageSidebar 
  * @category HomePage
@@ -64,6 +64,9 @@ export class HomePageNavbar extends Component{
 
                 <DropDownMenu/>
 
+              </div>
+              <div>
+                <NotificationButton/>
               </div>
 
 
