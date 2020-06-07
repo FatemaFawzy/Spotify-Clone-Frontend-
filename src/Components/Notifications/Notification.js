@@ -15,6 +15,8 @@ const Notification = ({name,username }) => {
                 </span>
               </span>
             </li>
+            <li>
+            </li>
           </ul>
         </div>
       </div>
