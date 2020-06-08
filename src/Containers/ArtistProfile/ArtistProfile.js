@@ -5,6 +5,10 @@ import ArtistProfileContent from "../../Components/ArtistProfile/ArtistProfileCo
 import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
 import {connect} from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
+import ReactNotifications from 'react-notifications-component';
+import { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css';
 
 /** Class ArtistProfile
  * @category ArtistProfile
@@ -120,7 +124,23 @@ export class ArtistProfile extends Component{
             return response.json();
           })
           .then((data) => {
-            if(data.message == "followed"){
+            if(data.message === "followed"){
+              store.addNotification({
+                title: 'Dropbox',
+                message: 'Files were synced',
+                type: 'default',                         // 'default', 'success', 'info', 'warning'
+                container: 'top-centre',                // where to position the notifications
+                animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+                animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+                dismiss: {
+                  duration: 3000 
+                }
+              })
+              
+
+
+
+
               this.setState({follow: "unfollow"});
               if (document.getElementById(id)){
               document.getElementById(id).style.color="#1DB954";}
@@ -182,6 +202,7 @@ export class ArtistProfile extends Component{
           </button>
 
           <button id="follow-button" className="btn btn-success rounded-pill " onClick={this.followArtist}>
+            <ReactNotifications/>
             {this.state.follow}
           </button>
         </div>

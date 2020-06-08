@@ -1,0 +1,39 @@
+.conTainer {
+  left: 0;
+  top: 60;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 70%;
+  background-color:rgba(0, 0, 0, 0.8);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  box-sizing: border-box;
+  display: none;
+}
+
+.bulletPoint {
+  list-style: none;
+  border-bottom:0.5px solid silver;
+  /* padding: 2px 0; */
+  display: flex;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+ul li .text {
+  color: white;
+  position: relative;
+  font-family: sans-serif;
+  /* top: 3px; */
+  font-size: small;
+
+  cursor: pointer;
+}
+ul li:hover .text {
+  font-weight: bold;
+  font-size: small;
+  color: #ff2c74;
+}
