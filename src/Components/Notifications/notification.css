@@ -35,5 +35,5 @@ ul li .text {
 ul li:hover .text {
   font-weight: bold;
   font-size: small;
-  color: #ff2c74;
+  color: rgb(29, 185, 84);
 }

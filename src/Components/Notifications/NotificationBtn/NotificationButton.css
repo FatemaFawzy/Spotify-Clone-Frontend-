@@ -1,4 +1,4 @@
-.box {
+.notificationBox {
   position: fixed;
   top: -1.5%;
   right: 10%;
@@ -29,8 +29,8 @@
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background-color: #ff2c74;
-  color: #C0c0c0;
+  background-color: rgb(29, 185, 84);
+  color: black;
   line-height: 15px;
   font-size: small;
   font-family: sans-seif;
@@ -40,7 +40,8 @@
 .notification:hover .num {
   position: relative;
   background: black;
-  color: #ff2c74;
+  /* color: #ff2c74; */
+  color: rgb(29, 185, 84);
   font-size: 20px;
   top: -4px;
   left:3px;
@@ -69,3 +70,70 @@
   width: 150px;
   height: 60px;
 } 
+@media screen and (max-width:1200px) and (min-width: 900px) {
+
+  .notificationBox {
+    position: fixed;
+    top: -1.5%;
+    right: 15%;
+    transform: translate(20%, 10%);
+    background-color: transparent;
+    /* display: none; */
+
+  }
+
+}
+
+
+
+
+
+@media screen and (max-width:900px) and (min-width: 600px) {
+
+  .notificationBox {
+    position: fixed;
+    top: -1.5%;
+    right: 15%;
+    transform: translate(20%, 10%);
+    background-color: transparent;
+
+  }
+
+}
+
+
+
+
+
+@media screen and (max-width:700px) and (min-width: 300px) {
+
+  .notificationBox {
+    position: fixed;
+    top: -1.5%;
+    right: 20%;
+    transform: translate(20%, 10%);
+    background-color: transparent;
+
+  }
+
+}
+
+
+
+
+
+@media screen and (max-width: 650px) and (min-width: 10px) {
+
+  .notificationBox {
+    position: fixed;
+    top: -1.5%;
+    right: 17%;
+    transform: translate(20%, 10%);
+    background-color: transparent;
+  }
+
+  .notificationBox:hover {
+    display: none;
+  }
+
+}
