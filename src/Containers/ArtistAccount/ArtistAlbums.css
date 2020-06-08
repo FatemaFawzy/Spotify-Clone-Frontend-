@@ -282,7 +282,28 @@
   color:rgb(29, 185, 84) !important;
 }
 
+.artist-albums #follow-button:hover{
+  padding: 10px 36px;
+}
 
+.artist-albums #all-albums{
+  font-size: 35px;
+  font-weight: 600;
+  color: white;
+  padding-left: 25px;
+  text-decoration: underline;
+  margin-top: 20px;
+  position: relative;
+  
+}
+
+
+@media (min-width:670px) and (max-width: 770px)
+{
+  .artist-albums #all-albums{
+    right: 190px;
+  }
+}
 
 .table td, .table th {
   padding: 3px;

@@ -17,7 +17,7 @@ export class ArtistAlbums extends Component {
   constructor(props){
     super(props);
     this.state = {  
-      AlbumInfo: []
+      AlbumInfo: [],
         // {id : 1, AlbumName : "The Wall", Singer: "Pink Floyd", Name: "",Duration : ""},
         // {id : 2, AlbumName : "Animals", Singer: "Pink Floyd", Name: "",Duration : ""},
         // {id : 3, AlbumName : "Hey You", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : ""},
@@ -30,7 +30,8 @@ export class ArtistAlbums extends Component {
         // {id : 10, AlbumName : "The Great Gig In The Sky", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
         // {id : 11, AlbumName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
         // {id : 12, AlbumName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-        
+       PopularAlbums: [],
+      
       
     }
     
@@ -41,20 +42,36 @@ export class ArtistAlbums extends Component {
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
   
-     const url1 ="http://spotifyclone.mocklab.io/albums/byartist/456"; 
-    fetch(url1,requestOptions1)
+    const url1 ="http://spotifyclonemock.mocklab.io/artist/myalbums/id"; 
+     fetch(url1,requestOptions1)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         console.log("kjkjkjkjkjkjk"); 
         this.setState({AlbumInfo:data.albumInfo})
-  
-        
       })
       .catch((error)=>{
         console.log(error);
       })
+      
+      const requestOptions2={
+        method:"GET",
+        headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+      }
+  
+      const url2 ="http://spotifyclonemock.mocklab.io/artist/myalbums/id"; 
+      fetch(url2,requestOptions2)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+         this.setState({PopularAlbums:data.albumInfo.slice(0,3)})
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
+      
     }
 
   render(){
@@ -71,6 +88,10 @@ export class ArtistAlbums extends Component {
          </button>
         </div>   
           </div>
+          <ComponentBlock ComponentName="Popular Albums" type="albums" description="" details={this.state.PopularAlbums} excess={false}   /> 
+           <div className="all-albums" >
+             <h2 id="all-albums" >All Albums</h2>
+           </div>    
           <div className="col-xs-12 col-sm-12 ">
         <table className="table table-borderless">
           <tbody>

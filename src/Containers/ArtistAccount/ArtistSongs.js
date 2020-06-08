@@ -16,9 +16,8 @@ import {NavLink,Link} from "react-router-dom";
 export class ArtistSongs extends Component {
   constructor(props){
     super(props);
-<<<<<<< HEAD
     this.state = {  
-      SongInfo: []
+      SongInfo: [],
         // {id : 1, SongName : "High Hopes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},
         // {id : 2, SongName : "Pigs", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "4:15"},
         // {id : 3, SongName : "Hey You", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100", Duration : "2:58"},
@@ -31,46 +30,19 @@ export class ArtistSongs extends Component {
         // {id : 10, SongName : "The Great Gig In The Sky", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},
         // {id : 11, SongName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "4:15"},
         // {id : 12, SongName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100", Duration : "2:58"},
-        
-      
-=======
-    this.state = { 
-      SongInfo: [] 
-      // SongInfo: [
-      //   {id : 1, SongName : "High Hopes", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-      //   {id : 2, SongName : "Pigs", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-      //   {id : 3, SongName : "Hey You", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-      //   {id : 4, SongName : "Time Machine", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-      //   {id : 5, SongName : "Comfortably Numb", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-      //   {id : 6, SongName : "Money", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-      //   {id : 7, SongName : "Wish You Were Here", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-      //   {id : 8, SongName : "The Final Cut", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-      //   {id : 9, SongName : "Another Brick In The Wall Pt. 1", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-      //   {id : 10, SongName : "The Great Gig In The Sky", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-      //   {id : 11, SongName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-      //   {id : 12, SongName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-        
-      // ]
->>>>>>> 844e5c00e0e7d5ea0ddd5d20800f09f55e0b3c09
+        PopularSongs: []
     }
     
   }
-  componentDidMount() {
-    var requestOptions = {
-      method: 'GET'
-    };
+  
 
-    // get artist's popular tracks
-    var urlPopular =BASEURL+"tracks/top/123"; 
-
-<<<<<<< HEAD
   componentDidMount() {
   const requestOptions1={
     method:"GET",
     headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
   }
 
-   const url1 ="http://spotifyclone.mocklab.io/songs"; 
+   const url1 = BASEURL + "songs"; 
   fetch(url1,requestOptions1)
     .then((response) => {
       return response.json();
@@ -84,23 +56,31 @@ export class ArtistSongs extends Component {
     .catch((error)=>{
       console.log(error);
     })
+
+    const requestOptions2={
+      method:"GET",
+      headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+    }
+
+    const url2 = BASEURL + "homepage/madeforyou"; 
+    fetch(url2,requestOptions2)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({PopularSongs:data.madeforyou.slice(0,3)})
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+    
+
+
   }
 
 
 
-=======
-    fetch(urlPopular,requestOptions)
-      .then((response) => { return response.json()})
-      .then((data) => {
-        this.setState({
-        SongInfo: data.SongInfo});
-        console.log(this.state.SongInfo);
-      })
-      .catch((error)=>{console.log(error);
 
-      })
- }
->>>>>>> 844e5c00e0e7d5ea0ddd5d20800f09f55e0b3c09
   render(){
     return (
       <div className ="artist-songs" >
@@ -117,6 +97,9 @@ export class ArtistSongs extends Component {
           </div>
           <div className="col-xs-12 col-sm-12 ">
         <table className="table table-borderless">
+          
+        <ComponentBlock ComponentName="Popular Songs" type="songs" description="" details={this.state.PopularSongs} excess={false}   /> 
+         <h1 id="all-songs">All Songs</h1>
           <tbody>
                                              {/* Display likd songs */}
            {this.state.SongInfo.map((song,id)=>(
