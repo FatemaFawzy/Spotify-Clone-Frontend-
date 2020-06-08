@@ -17,6 +17,9 @@ const initialState = {
   somethingIsPlaying:false,
   playOnRepeat:false,
   numberOfSongsPlayed:0,
+  premium: false,
+  trackNum: 0,
+  progress: 0,
 }
 
 const reducer = (state = initialState, action) => {
@@ -183,7 +186,30 @@ const reducer = (state = initialState, action) => {
                 };
 
             break;
-      
+
+            case actionTypes.UPGRADE_TO_PREMIUM:
+              return {
+                ...state,
+                premium: true
+                };
+
+            break;
+
+            case actionTypes.CHANGE_SONG_INDEX:
+              return {
+                ...state,
+                trackNum: action.value
+        
+              };
+              break;
+
+              case actionTypes.CHANGE_SONG_PROGRESS:
+                return {
+                  ...state,
+                  progress: action.value
+          
+                };
+                break;
     default:
       return state;
       break;
