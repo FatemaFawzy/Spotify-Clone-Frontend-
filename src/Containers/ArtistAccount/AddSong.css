@@ -1,0 +1,58 @@
+.add-song .add-info{
+  padding-top: 60px;
+}
+
+.add-song .form-control{
+  border: 0px;
+  box-shadow: none !important;
+}
+.add-song .form-control::placeholder{
+  color: rgb(29, 185, 84);
+}
+
+.add-song .redbox{
+  border: 1px solid red;
+}
+.add-song .redbox::placeholder{
+  color: red;
+  font-weight: 400;
+}
+
+.add-song p{
+color: red;
+font-weight: 100;
+margin-left: 5px;
+}
+
+.add-song h1{
+  color: white;
+  margin-bottom: 15px;
+}
+
+.add-song button{
+  text-decoration: none;
+  background-color: rgb(29, 185, 84);
+  color: white;
+  outline: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  border-radius: 500px;
+  line-height: 18px;
+  padding: 8px 34px;
+  outline: none;
+  border: none;
+   
+}
+.add-song button:active{
+  border: none;
+  outline: none;
+}
+.add-song button:focus{
+  border: none;
+  outline: none;
+}
+  
+
+
+

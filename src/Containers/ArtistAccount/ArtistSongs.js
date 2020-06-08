@@ -42,7 +42,7 @@ export class ArtistSongs extends Component {
     headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
   }
 
-   const url1 ="http://spotifyclonemock.mocklab.io/artist/mysongs/id"; 
+   const url1 =BASEURL2 + "artist/mysongs/id"; 
   fetch(url1,requestOptions1)
     .then((response) => {
       return response.json();
@@ -62,7 +62,7 @@ export class ArtistSongs extends Component {
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
 
-    const url2 = "http://spotifyclonemock.mocklab.io/artist/mysongs/id"; 
+    const url2 = BASEURL2 + "artist/mysongs/id"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();
@@ -105,9 +105,9 @@ export class ArtistSongs extends Component {
 
             <h1 className="artist-name font-weight-bolder"> My Songs</h1>
             <div id="buttons">
-         <button id="follow-button" className="btn btn-success rounded-pill " >
+         <Link to="/ArtistAccount/ArtistWebPlayer/AddSong"><button id="follow-button" className="btn btn-success rounded-pill " >
            Add Song   <i class="fas fa-plus"></i>
-         </button>
+         </button></Link>
         </div>   
           </div>
           <div className="col-xs-12 col-sm-12 ">
