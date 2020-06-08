@@ -16,27 +16,45 @@ import {NavLink,Link} from "react-router-dom";
 export class ArtistSongs extends Component {
   constructor(props){
     super(props);
-    this.state = {  
-      SongInfo: [
-        {id : 1, SongName : "High Hopes", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-        {id : 2, SongName : "Pigs", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-        {id : 3, SongName : "Hey You", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-        {id : 4, SongName : "Time Machine", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-        {id : 5, SongName : "Comfortably Numb", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-        {id : 6, SongName : "Money", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-        {id : 7, SongName : "Wish You Were Here", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-        {id : 8, SongName : "The Final Cut", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-        {id : 9, SongName : "Another Brick In The Wall Pt. 1", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-        {id : 10, SongName : "The Great Gig In The Sky", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-        {id : 11, SongName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-        {id : 12, SongName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
+    this.state = { 
+      SongInfo: [] 
+      // SongInfo: [
+      //   {id : 1, SongName : "High Hopes", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
+      //   {id : 2, SongName : "Pigs", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
+      //   {id : 3, SongName : "Hey You", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
+      //   {id : 4, SongName : "Time Machine", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
+      //   {id : 5, SongName : "Comfortably Numb", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
+      //   {id : 6, SongName : "Money", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
+      //   {id : 7, SongName : "Wish You Were Here", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
+      //   {id : 8, SongName : "The Final Cut", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
+      //   {id : 9, SongName : "Another Brick In The Wall Pt. 1", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
+      //   {id : 10, SongName : "The Great Gig In The Sky", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
+      //   {id : 11, SongName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
+      //   {id : 12, SongName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
         
-      ]
+      // ]
     }
     
   }
+  componentDidMount() {
+    var requestOptions = {
+      method: 'GET'
+    };
 
+    // get artist's popular tracks
+    var urlPopular =BASEURL+"tracks/top/123"; 
 
+    fetch(urlPopular,requestOptions)
+      .then((response) => { return response.json()})
+      .then((data) => {
+        this.setState({
+        SongInfo: data.SongInfo});
+        console.log(this.state.SongInfo);
+      })
+      .catch((error)=>{console.log(error);
+
+      })
+ }
   render(){
     return (
       <div className ="artist-songs" >
@@ -60,8 +78,8 @@ export class ArtistSongs extends Component {
               <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
-                  <li>{song.SongName}</li>
-                  <li className="song-info"><a href='/ArtistAccount/ArtistWebPlayer/'>{song.Singer} </a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>{song.AlbumName} </a></li>
+                  <li>{song.trackName}</li>
+                  <li className="song-info"><a href='/ArtistAccount/ArtistWebPlayer/'>Pink Floyd</a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>The Wall</a></li>
                 </ul>
               </td>
               <td >
