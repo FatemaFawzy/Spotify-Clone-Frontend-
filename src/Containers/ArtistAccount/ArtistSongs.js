@@ -42,7 +42,7 @@ export class ArtistSongs extends Component {
     };
 
     // get artist's popular tracks
-    var urlPopular =BASEURL2+"artist/mysongs/id"; 
+    var urlPopular ="http://spotifyclonemock.mocklab.io/artist/mysongs/id"; 
 
     fetch(urlPopular,requestOptions)
       .then((response) => { return response.json()})
@@ -53,6 +53,25 @@ export class ArtistSongs extends Component {
       })
       .catch((error)=>{console.log(error);
       })
+ }
+ deleteSong = () => {
+  var requestOptions = {
+    method: 'DELETE'
+  };
+
+  // get artist's popular tracks
+  var urlPopular ="http://spotifyclonemock.mocklab.io/songs/remove/id"; 
+
+  fetch(urlPopular,requestOptions)
+    .then((response) => { return response.json()})
+    .then((data) => {
+      if (data.message == "song deleted successfully")
+      {
+        console.log("song deleted");
+      }
+    })
+    .catch((error)=>{console.log(error);
+    })
  }
   render(){
     return (
@@ -86,7 +105,7 @@ export class ArtistSongs extends Component {
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
                   <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
                     <a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Edit</a>
-                    <a className="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Remove</a>
+                    <a className="dropdown-item drop-class" onClick={this.deleteSong} href="#">Remove</a>
                   </div>
                 </div>
               </td>
