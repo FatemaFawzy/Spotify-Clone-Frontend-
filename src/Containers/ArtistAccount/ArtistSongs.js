@@ -17,24 +17,48 @@ export class ArtistSongs extends Component {
   constructor(props){
     super(props);
     this.state = {  
-      SongInfo: [
-        {id : 1, SongName : "High Hopes", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-        {id : 2, SongName : "Pigs", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-        {id : 3, SongName : "Hey You", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-        {id : 4, SongName : "Time Machine", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-        {id : 5, SongName : "Comfortably Numb", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-        {id : 6, SongName : "Money", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-        {id : 7, SongName : "Wish You Were Here", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-        {id : 8, SongName : "The Final Cut", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-        {id : 9, SongName : "Another Brick In The Wall Pt. 1", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-        {id : 10, SongName : "The Great Gig In The Sky", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-        {id : 11, SongName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-        {id : 12, SongName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
+      SongInfo: []
+        // {id : 1, SongName : "High Hopes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},
+        // {id : 2, SongName : "Pigs", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "4:15"},
+        // {id : 3, SongName : "Hey You", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100", Duration : "2:58"},
+        // {id : 4, SongName : "Time Machine", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},
+        // {id : 5, SongName : "Comfortably Numb", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "4:15"},
+        // {id : 6, SongName : "Money", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100", Duration : "2:58"},
+        // {id : 7, SongName : "Wish You Were Here", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},
+        // {id : 8, SongName : "The Final Cut", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "4:15"},
+        // {id : 9, SongName : "Another Brick In The Wall Pt. 1", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100", Duration : "2:58"},
+        // {id : 10, SongName : "The Great Gig In The Sky", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},
+        // {id : 11, SongName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "4:15"},
+        // {id : 12, SongName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100", Duration : "2:58"},
         
-      ]
+      
     }
     
   }
+
+
+  componentDidMount() {
+  const requestOptions1={
+    method:"GET",
+    headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+  }
+
+   const url1 ="http://spotifyclone.mocklab.io/songs"; 
+  fetch(url1,requestOptions1)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log("kjkjkjkjkjkjk"); 
+      this.setState({SongInfo:data.songs})
+
+      
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+  }
+
 
 
   render(){
@@ -55,8 +79,8 @@ export class ArtistSongs extends Component {
         <table className="table table-borderless">
           <tbody>
                                              {/* Display likd songs */}
-           {this.state.SongInfo.map((song,index)=>(
-            <tr key={index}>
+           {this.state.SongInfo.map((song,id)=>(
+            <tr key={id}>
               <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
@@ -74,6 +98,7 @@ export class ArtistSongs extends Component {
                 </div>
               </td>
               <td className="duration">{song.Duration}</td>
+              <td className="likes">{song.Likes}  <i class="fas fa-heart"></i></td>
             </tr>
             ))} 
              
