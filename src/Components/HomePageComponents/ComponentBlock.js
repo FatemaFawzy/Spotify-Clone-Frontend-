@@ -92,13 +92,13 @@ render()
       break;
 
       case "albums":
-        if (this.props.details.albums){
-          final =this.props.details.albums.map(result => {
+        if (this.props.details){
+          final =this.props.details.map(result => {
              return (
                <GeneralItem
-                 image={result.imagePath}
+                 image={result.albumPhoto}
                  name={result.albumName}
-                 subname="ARTIST NAME"
+                 subname={result.Singer}
                  key={result._id}
                  id={result._id}
                  type="ALBUM"

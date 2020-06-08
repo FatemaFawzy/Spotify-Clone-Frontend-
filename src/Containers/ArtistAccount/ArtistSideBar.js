@@ -26,10 +26,36 @@ export class ArtistSideBar extends Component{
     total:"",
     }
   }
-   /**A function to show the popping area for creating a new playlist
-   * @memberof ArtistSideBar
-   * @func toggle
-   */
+
+  clickedProfile=()=>{
+    document.querySelector("#profile").classList.add("gray");
+    document.querySelector("#infor").classList.remove("gray");
+    document.querySelector("#songs").classList.remove("gray");
+    document.querySelector("#albums").classList.remove("gray");
+     
+  }
+  clickedinfo=()=>{
+    document.querySelector("#profile").classList.remove("gray");
+    document.querySelector("#infor").classList.add("gray");
+    document.querySelector("#songs").classList.remove("gray");
+    document.querySelector("#albums").classList.remove("gray");
+     
+  }
+  clickedsongs=()=>{
+    document.querySelector("#profile").classList.remove("gray");
+    document.querySelector("#infor").classList.remove("gray");
+    document.querySelector("#songs").classList.add("gray");
+    document.querySelector("#albums").classList.remove("gray");
+  }
+  clickedalbums=()=>{
+    document.querySelector("#profile").classList.remove("gray");
+    document.querySelector("#infor").classList.remove("gray");
+    document.querySelector("#songs").classList.remove("gray");
+    document.querySelector("#albums").classList.add("gray");
+  }
+
+  
+   
   
     /**A function that fires once the homepage sidebar is called in the web player
    * @memberof ArtistSideBar
@@ -85,10 +111,10 @@ render() {
         <Link to="/webplayer/HomePage"><img className="logo"  src="https://i.ya-webdesign.com/images/itunes-logo-white-png-1.png" alt="logo"/></Link>
         
           <ul>
-              <li><NavLink  onClick={addNewURL("/webplayer/HomePage")} className="List" to="/webplayer/HomePage/"><i class="fas fa-user"></i>Profile</NavLink></li>
-              <li><NavLink  onClick={addNewURL("/webplayer/likedsongs")} className="List2" to="/webplayer/likedsongs/"><i class="fas fa-info"></i>Info</NavLink></li>
-              <li><NavLink   className="List" to="/ArtistAccount/ArtistWebPlayer/MySongs/"><i class="fas fa-music"></i>My Songs</NavLink></li>
-              <li><NavLink onClick={addNewURL("webplayer/yourlibrary/")} className="List" to="/webplayer/yourlibrary/"><i class="fas fa-compact-disc"></i>My Albums</NavLink></li>
+              <li><Link  onClick={this.clickedProfile} id="profile" className="List gray" to="/ArtistAccount/ArtistWebPlayer/"><i class="fas fa-user"></i>Profile</Link></li>
+              <li><Link  onClick={this.clickedinfo} id="infor" onClick={addNewURL("")} className="List2" to=""><i class="fas fa-info"></i>Info</Link></li>
+              <li><Link  onClick={this.clickedsongs} id="songs" className="List" to="/ArtistAccount/ArtistWebPlayer/MySongs/"><i class="fas fa-music"></i>My Songs</Link></li>
+              <li><Link  onClick={this.clickedalbums} id="albums" className="List" to="/ArtistAccount/ArtistWebPlayer/MyAlbums"><i class="fas fa-compact-disc"></i>My Albums</Link></li>
              
               <hr/>
           </ul> 

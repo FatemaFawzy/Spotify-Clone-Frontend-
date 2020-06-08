@@ -1,4 +1,4 @@
-.home-nav-artist{
+.artist-nav{
   display: block;
   width: 100%;
   height: 60px;
@@ -8,7 +8,7 @@
   padding: 10px;
 }
 
-.home-nav-artist .home-nav-artist-nabar{
+.artist-nav .artist-nav-nabar{
   display: block;
   float: left;
   z-index: 15;
@@ -16,40 +16,27 @@
   width: 100%;
 }
 
-.home-nav-artist .collapse-drop{
+.artist-nav .collapse-drop{
   width: 100%;
 }
 
 
-.home-nav-artist .drop-down{
+.artist-nav .drop-down{
   display: inline-block;
   z-index: 100;
   position: absolute;
   right:240px;
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (max-width: 800px) {
-/* .home-nav-artist .drop-down .name{
-  display: none;
-} */
+ 
 
-}
-
-@media only screen and (max-width: 600px) {
-
-.home-nav-artist .drop-down .name{
-  /* display: none; */
-}
-}
-
-.home-nav-artist #ul-upgrade{
+.artist-nav #ul-upgrade{
  
   list-style: none;
 }
 
 
-.home-nav-artist #upgradebtn{
+.artist-nav #upgradebtn{
   text-decoration: none;
   background-color: transparent;
   color: white;
@@ -63,19 +50,19 @@
   padding: 8px 34px;
    
 }
-.home-nav-artist #upgradebtn:hover{
+.artist-nav #upgradebtn:hover{
   padding: 10px 36px;
 }
 
 
 @media (max-width:580px)
 {
-  .home-nav-artist #upgradebtn{
+  .artist-nav #upgradebtn{
     margin-top: 2px;
     padding: 5px 25px;
     font-size: 10px;
   }
-  .home-nav-artist #upgradebtn:hover{
+  .artist-nav #upgradebtn:hover{
     padding: 6px 27px;
     font-size: 10px;
   }
@@ -84,11 +71,12 @@
  
 @media (max-width: 500px)
 {
-  .home-nav-artist #upgradebtn{
+  .artist-nav #upgradebtn{
     font-size: 10px;
     
   }
-  .home-nav-artist .drop-down{
-    right: 10px;
+  .artist-nav .drop-down{
+    right: 5px;
+    top: 10px;
   }
 }

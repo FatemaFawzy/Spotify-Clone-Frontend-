@@ -45,7 +45,7 @@ export class ArtistNavbar extends Component{
   render(){
   return (
 
-            <div className="home-nav-artist"  style={{backgroundColor: this.props.color}}> 
+            <div className="artist-nav"  style={{backgroundColor: this.props.color}}> 
                               
               <div className="home-nav-nabar">
               
