@@ -70,7 +70,8 @@ export class DropDownMenu extends Component {
       <div className="drop-down-menu">
         <div className="over btn-group mr-4 " id="right-drop-down"  >
           <button type="button" className="btn dropdown-toggle account-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img className="image" src={BASEURL+"Images/"+(this.state.userimage)} alt=".." />
+            {/* <img className="image" src={BASEURL+"Images/"+(this.state.userimage)} alt=".." /> */}
+            <img className="image" src={this.state.userimage} alt=".." />
             <p className="name">{this.state.username}</p>
           </button>
           <div className="over dropdown-menu dropdown-menu-right">
