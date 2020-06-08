@@ -18,7 +18,8 @@ import PasswordIsNew from "./Components/ForgotPassword/PasswordIsNew";
 import ScrollToTop from "./Containers/GenericComponenets/ScrollToTop";
 import ArtistWebPlayer from "./Containers/ArtistAccount/ArtistWebPlayer";
 import ArtistSideBar from "./Containers/ArtistAccount/ArtistSideBar";
-
+// import NotificationHistory from "./Components/NotificationHistory"
+import NotificationHistory from "./Components/NotificationHistory/NotificationHistory"
 function App() {
   return (
     <div className="App">
@@ -27,7 +28,7 @@ function App() {
 
         <Switch>
 
-          
+
           <Route exact path="/" component={welcomePage}/>
           <Route  path="/account/" component={AccountLayout}/>
           <Route  path="/help/" component={HelpPage}/>
@@ -42,9 +43,8 @@ function App() {
           <Route exact path="/logIn/forgotpassword/newpassword/" component={CreateNewPassword}/>
           <Route path="/logIn/forgotpassword/newpassword/passwordisnew/" component={PasswordIsNew}/>
           <Route path="/ArtistAccount/ArtistWebPlayer/" component={ArtistWebPlayer}/>
-          {/* <Route  path="/webplayer/notificationHistory" component={ArtistProfile}/> */}
+          <Route  path="/webplayer/NotificationHistory" Component={NotificationHistory}/>
 
-          
           {/* TODO: Change the route of artistprofile when search is implemented */}
           <Route  path="/webplayer/likedsongs/" component={ArtistProfile}/>
           
@@ -84,6 +84,9 @@ function App() {
             <Route path="/webplayer/likedsongs/" component={ArtistProfile} />
 
             {/* TODO: add routes to the other pages */}
+
+            <Route  path="/webplayer/NotificationHistory" Component={NotificationHistory}/>
+
           </Switch>
         </ScrollToTop>
       </Router>

@@ -1,9 +1,9 @@
 .box {
   position: fixed;
-  top: -1%;
+  top: -1.5%;
   right: 10%;
   transform: translate(20%, 10%);
-  background-color: black;
+  background-color: transparent;
   
 }
 
@@ -30,7 +30,7 @@
   height: 15px;
   border-radius: 50%;
   background-color: #ff2c74;
-  color: #ffff;
+  color: #C0c0c0;
   line-height: 15px;
   font-size: small;
   font-family: sans-seif;
@@ -49,3 +49,23 @@
 .notification:hover ul {
   display: block;
 }
+.notification .seeAll{
+  /* background-color:121416; */
+  background-color: transparent;
+  color:transparent;
+  left:50px;
+  transform: translate(-100%, 10%);
+
+}
+ .notification:hover .seeAll{
+  position: relative;
+  background: black;
+  color: #C0c0c0;
+  text-align: center;
+  font-size: 17px;
+  top: -4px;
+  left:30%;
+  font-style:italic;
+  width: 150px;
+  height: 60px;
+} 

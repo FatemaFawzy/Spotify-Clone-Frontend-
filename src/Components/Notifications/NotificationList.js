@@ -10,12 +10,13 @@ const NotificationList = ({ notifications }) => {
               key={i}
               username={notifications[i].username}
               name={notifications[i].name}
-
               />
-            );
-          })
+              
 
+              );
+          })
         }
+
     </div>
   );
  

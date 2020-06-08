@@ -2,7 +2,10 @@ import React, { Component } from "react";
 // import NotificationList from "../../Components/Notifications/NotificationList"
 import NotificationList from "../NotificationList"
 import "./NotificationButton.css";
-// import "./App.css";
+import { Link } from "react-router-dom";
+
+
+
 class NotificationButton extends Component {
   constructor() {
     super();
@@ -24,12 +27,17 @@ class NotificationButton extends Component {
       <div class="box">
         <div class="notification">
           <i class="fas fa-bell"></i>
-          <span class="num">4</span>
-
+          <span class="num">3</span>
+ 
           <div className="whatever">
             <NotificationList notifications={this.state.notifications} />
+            <Link  to="/webplayer/NotificationHistory" className='seeAll'>More</Link>
+
           </div>
+
+
         </div>
+
       </div>
     );
   }
