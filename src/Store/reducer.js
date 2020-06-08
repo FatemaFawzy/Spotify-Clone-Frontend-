@@ -187,7 +187,7 @@ const reducer = (state = initialState, action) => {
 
             break;
 
-            case actionTypes.UPGRADE_TO_PREMIUM:
+            case actionTypes.CHANGE_PREMIUM:
               return {
                 ...state,
                 premium: true
