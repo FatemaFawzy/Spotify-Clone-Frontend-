@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
  import './ArtistSongs.css';
+ import ReactSnackBar from "react-js-snackbar";
 import ArtistHomePageNavbar from "./ArtistNavbar";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
@@ -30,7 +31,9 @@ export class ArtistSongs extends Component {
         // {id : 10, SongName : "The Great Gig In The Sky", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},
         // {id : 11, SongName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "4:15"},
         // {id : 12, SongName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100", Duration : "2:58"},
-        PopularSongs: []
+        PopularSongs: [],
+        Deleted: "",
+        Added:""
     }
     
   }
@@ -77,7 +80,7 @@ export class ArtistSongs extends Component {
  }
  ////////////////////////////////////////////////////////
  deleteSong = () => {
-
+this.setState({Deleted:true});
   var requestOptions = {
     method: 'DELETE'
   };
@@ -141,7 +144,18 @@ export class ArtistSongs extends Component {
              
       </tbody>
     </table>
-
+    {
+    this.state.Deleted == true ?
+    <ReactSnackBar Icon={<span className="fab fa-spotify"></span>} Show={this.state.ShowRemove}>
+                      Song Deleted Successfully
+    </ReactSnackBar> : <p></p>
+    }
+    {
+      this.state.Added == true ?
+      <ReactSnackBar Icon={<span className="fab fa-spotify"></span>} Show={this.state.ShowRemove}>
+      Song Added Successfully
+      </ReactSnackBar> : <p></p>
+    }
       </div> 
       </div>  
     

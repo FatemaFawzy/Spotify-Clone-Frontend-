@@ -31,6 +31,8 @@ export class ArtistAlbums extends Component {
         // {id : 11, AlbumName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
         // {id : 12, AlbumName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
        PopularAlbums: [],
+       Deleted:"",
+       Added:""
       
       
     }
@@ -74,6 +76,26 @@ export class ArtistAlbums extends Component {
       
     }
 
+deleteAlbum = () => {
+  this.setState({Deleted:true});
+  const requestOptions2={
+    method:'DELETE'
+  }
+
+  const url2 =BASEURL2+"album/remove/id"; 
+
+  fetch(url2,requestOptions2)
+    .then((response) => { return response.json()})
+    .then((data) => {
+      if (data.message == "album deleted successfully")
+      {
+        console.log("album deleted");
+      }
+    })
+    .catch((error)=>{console.log(error);
+    })
+}
+
   render(){
     return (
       <div className ="artist-albums" >
@@ -110,7 +132,7 @@ export class ArtistAlbums extends Component {
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
                   <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
                     <a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Edit</a>
-                    <a className="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Remove</a>
+                    <a className="dropdown-item drop-class" onClick={this.deleteAlbum} href="#">Remove</a>
                   </div>
                 </div>
               </td>

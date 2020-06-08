@@ -1,0 +1,39 @@
+.artist-information {
+  background-color: #121212;
+  color: white;
+  margin: 0;
+  max-width: 1955px;
+  padding-bottom: 110px;
+}
+.artist-information .info-content
+{
+  padding-top:50px;
+}
+.artist-information table
+{
+  margin-left:40px;
+}
+.artist-information .title
+{
+  font-weight:600;
+  padding-left:20px;
+  padding-bottom:10px;
+  color:#b3b3b3;
+}
+.artist-information li
+{
+  list-style-type: none;
+}
+.artist-information .list-element
+{
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size:18px;
+}
+.artist-information .response
+{
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size:18px;
+  padding-left:25%;
+}
