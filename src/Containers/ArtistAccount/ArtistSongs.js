@@ -4,7 +4,7 @@ import ArtistHomePageNavbar from "./ArtistNavbar";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL,BASEURL2} from "../../Constants/baseURL";
 import {NavLink,Link} from "react-router-dom";
 
 
@@ -42,7 +42,7 @@ export class ArtistSongs extends Component {
     };
 
     // get artist's popular tracks
-    var urlPopular ="http://spotifyclonemock.mocklab.io/artist/mysongs/id"; 
+    var urlPopular =BASEURL2+"artist/mysongs/id"; 
 
     fetch(urlPopular,requestOptions)
       .then((response) => { return response.json()})
