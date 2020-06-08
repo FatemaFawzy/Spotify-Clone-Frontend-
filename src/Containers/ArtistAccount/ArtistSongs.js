@@ -42,17 +42,16 @@ export class ArtistSongs extends Component {
     };
 
     // get artist's popular tracks
-    var urlPopular =BASEURL+"tracks/top/123"; 
+    var urlPopular ="http://spotifyclonemock.mocklab.io/artist/mysongs/id"; 
 
     fetch(urlPopular,requestOptions)
       .then((response) => { return response.json()})
       .then((data) => {
         this.setState({
-        SongInfo: data.SongInfo});
+        SongInfo: data.songsInfo});
         console.log(this.state.SongInfo);
       })
       .catch((error)=>{console.log(error);
-
       })
  }
   render(){
@@ -72,13 +71,13 @@ export class ArtistSongs extends Component {
           <div className="col-xs-12 col-sm-12 ">
         <table className="table table-borderless">
           <tbody>
-                                             {/* Display likd songs */}
+                {/* Display likd songs */}
            {this.state.SongInfo.map((song,index)=>(
             <tr key={index}>
               <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
-                  <li>{song.trackName}</li>
+                  <li>{song.SongName}</li>
                   <li className="song-info"><a href='/ArtistAccount/ArtistWebPlayer/'>Pink Floyd</a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>The Wall</a></li>
                 </ul>
               </td>
