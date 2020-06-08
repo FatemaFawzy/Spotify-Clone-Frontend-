@@ -26,7 +26,7 @@ class MusicBar extends Component {
       albumLink: "/webplayer/yourlibrary",
       artistProfileLink: "/webplayer/artistprofile/",
       duration: "3:45",
-      progress: "0%",
+      // progress: "0%",
       volume: "0.5",
       muted: false,
       showSnackBar: false,
@@ -114,11 +114,12 @@ class MusicBar extends Component {
   //when the music progress bar is clicked the track is adjusted accordignly
   handleProgress = (e) => {
     var progressRef = this.refs.progressRef;
-    var progress =
+    var progress1 =
       ((e.clientX - progressOffset(progressRef)) /
         document.getElementById("music-progress").clientWidth) *
       100;
-    this.setState({ progress: progress });
+    // this.setState({ progress: progress1 });
+    this.props.onChangeProgress(progress1);
     this.forcedProgress = true;
   };
 
@@ -126,10 +127,11 @@ class MusicBar extends Component {
   onUpdate = () => {
     if (this.refs.player) {
       if (!this.forcedProgress) {
-        this.setState({
-          progress:
-            (this.refs.player.currentTime / this.refs.player.duration) * 100,
-        });
+        // this.setState({
+        //   progress:
+        //     (this.refs.player.currentTime / this.refs.player.duration) * 100,
+        // });
+        this.props.onChangeProgress((this.refs.player.currentTime / this.refs.player.duration) * 100);
       }
     }
   };
@@ -206,7 +208,7 @@ class MusicBar extends Component {
         this.forcedProgress = false;
 
         this.refs.player.currentTime =
-          this.refs.player.duration * (this.state.progress / 100);
+          this.refs.player.duration * (this.props.progress / 100);
       }
 
       //check if the user clicked on play on repeat
@@ -360,7 +362,7 @@ class MusicBar extends Component {
                     ref="progressRef"
                     className="progress-bar bg-success"
                     role="progressbar"
-                    style={{ width: this.state.progress + "%" }}
+                    style={{ width: this.props.progress + "%" }}
                     aria-valuenow="25"
                     aria-valuemin="0"
                     aria-valuemax="100"
@@ -369,7 +371,7 @@ class MusicBar extends Component {
                   </div>
 
                   <button
-                    style={{ left: this.state.progress - 3 + "%" }}
+                    style={{ left: this.props.progress - 3 + "%" }}
                     className="fas fa-circle slider"
                   ></button>
                 </div>
@@ -457,7 +459,8 @@ const mapDispatchToProps = (dispatch) => {
     onPlayASong: (songID) => dispatch({ type: actionTypes.PLAY_SONG, value: songID }),
     onPlayPause: () => dispatch({ type: actionTypes.PLAY_PAUSE }),
     onToggleLoop: () => dispatch({ type: actionTypes.TOGGLE_SONG_LOOP }),
-    onChangeIndex: (songIndex) => dispatch({ type: actionTypes.CHANGE_SONG_INDEX, value: songIndex })
+    onChangeIndex: (songIndex) => dispatch({ type: actionTypes.CHANGE_SONG_INDEX, value: songIndex }),
+    onChangeProgress: (progressValue) => dispatch({ type: actionTypes.CHANGE_SONG_PROGRESS, value: progressValue })
   };
 };
 
@@ -467,6 +470,7 @@ const mapStateToProps = (state) => {
     somethingIsPlaying: state.somethingIsPlaying,
     playOnRepeat: state.playOnRepeat,
     trackNum: state.trackNum,
+    progress: state.progress,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(MusicBar);

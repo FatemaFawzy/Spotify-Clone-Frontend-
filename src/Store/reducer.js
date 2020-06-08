@@ -19,6 +19,7 @@ const initialState = {
   numberOfSongsPlayed:0,
   premium: false,
   trackNum: 0,
+  progress: 0,
 }
 
 const reducer = (state = initialState, action) => {
@@ -201,6 +202,14 @@ const reducer = (state = initialState, action) => {
         
               };
               break;
+
+              case actionTypes.CHANGE_SONG_PROGRESS:
+                return {
+                  ...state,
+                  progress: action.value
+          
+                };
+                break;
     default:
       return state;
       break;
