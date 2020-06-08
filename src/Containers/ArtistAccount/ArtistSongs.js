@@ -112,9 +112,9 @@ export class ArtistSongs extends Component {
           </div>
           <div className="col-xs-12 col-sm-12 ">
           <ComponentBlock ComponentName="Popular Songs" type="songs" description="" details={this.state.PopularSongs} excess={false}   />
+          <h1 id="all-songs">All Songs</h1>
         <table className="table table-borderless"> 
-         <h1 id="all-songs">All Songs</h1>
-          <tbody>
+         <tbody>
                                              {/* Display likd songs */}
            {this.state.SongInfo.map((song,id)=>(
             <tr key={id}>
