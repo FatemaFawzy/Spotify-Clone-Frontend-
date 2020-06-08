@@ -24,7 +24,7 @@ class NotificationButton extends Component {
 
   render() {
     return (
-      <div class="box">
+      <div class="notificationBox">
         <div class="notification">
           <i class="fas fa-bell"></i>
           <span class="num">3</span>
