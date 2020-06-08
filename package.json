@@ -10,6 +10,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "animate.css": "^4.1.0",
+    "animate.css-react": "^1.0.0",
     "bootstrap": "^4.4.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
