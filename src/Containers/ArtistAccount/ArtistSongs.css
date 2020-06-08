@@ -25,28 +25,6 @@
   height:300px;
   /* opacity: 0.5; */
 }
-.artist-songs #all-songs{
-  font-size: 35px;
-  font-weight: 600;
-  color: white;
-  padding-left: 25px;
-  text-decoration: underline;
-  margin-top: 20px;
-  position: relative;
-  
-}
-
-
-@media (min-width:670px) and (max-width: 770px)
-{
-  .artist-songs #all-songs{
-    right: 190px;
-  }
-}
-
-.artist-songs #follow-button:hover{
-  padding: 10px 36px;
-}
 
 .artist-songs .montly-listeners {
   font-size: 11px;
@@ -129,9 +107,6 @@
   margin-right: 10px;
 }
 
-.artist-songs .table tr:hover{
-  color:rgb(29, 185, 84) !important;
-}
 
 
 .artist-songs #artist-profile-sections {
@@ -164,10 +139,10 @@
     margin-bottom: 10px !important;
   }
 }
+
+
 @media (max-width:635px)
 {
-  
-
   .artist-songs .artist-name
   {
     font-size:40px;
@@ -190,14 +165,13 @@
 }
 
 
-@media (max-width: 500px){
+@media (max-width: 525px){
   .artist-songs .artist-top-section{
     width: 100% !important;
   }
-  
   .artist-songs .artist-name
   {
-    font-size:50px;
+    font-size:35px;
   }
   .artist-songs #follow-button {
     font-size: 12px;
@@ -272,6 +246,7 @@
   font-size: 20px;
   color:#b3b3b3;
   cursor: default;
+  margin-right: 0px !important;
 }
 .artist-songs  tr:hover .music-sign:after{
   content: "\25B8" ; 
@@ -298,39 +273,44 @@
   
   text-decoration: underline;
 }
+
+
 .artist-songs tr:hover{
   background-color: rgba(70, 66, 69,0.4);
 }
+
+.artist-songs .table tr:hover{
+  color:rgb(29, 185, 84) !important;
+}
+
+.artist-songs #follow-button:hover{
+  padding: 10px 36px;
+}
+
+.artist-songs #all-albums{
+  font-size: 35px;
+  font-weight: 600;
+  color: white;
+  padding-left: 25px;
+  text-decoration: underline;
+  margin-top: 20px;
+  position: relative;
+  
+}
+
+
+@media (min-width:670px) and (max-width: 770px)
+{
+  .artist-songs #all-albums{
+    right: 190px;
+  }
+}
+
 .table td, .table th {
   padding: 3px;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
-
-.artist-songs .likes{
-  width:100px ;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-@media (max-width: 1110px)
-{
-  .artist-songs .likes{
-    width:150px;
-  }
-}
-@media (max-width: 850px)
-{
-  .artist-songs .likes{
-    width:300px;
-  }
-}
-@media (max-width: 660px)
-{
-  .artist-songs .likes{
-    width:500px;
-  }
-}
-
 
 .artist-songs .Menu{
   cursor: pointer;
@@ -355,7 +335,6 @@
   color:white;
   text-decoration: none;
 }
-
 
 /*//////////////// DropMenuSong ///////////////////*/
 
@@ -389,8 +368,6 @@
 .artist-songs .show {
   display: block;
 }
-
-
 
 /* //////////////////////// Page responsive ////////////////////////////////*/
 /* @media (max-width: 768px) {

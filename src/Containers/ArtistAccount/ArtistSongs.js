@@ -42,14 +42,14 @@ export class ArtistSongs extends Component {
     headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
   }
 
-   const url1 = BASEURL + "songs"; 
+   const url1 ="http://spotifyclonemock.mocklab.io/artist/mysongs/id"; 
   fetch(url1,requestOptions1)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
       console.log("kjkjkjkjkjkjk"); 
-      this.setState({SongInfo:data.songs})
+      this.setState({PopularSongs:data.songsInfo.slice(0,3)})
 
       
     })
@@ -57,17 +57,12 @@ export class ArtistSongs extends Component {
       console.log(error);
     })
 
-<<<<<<< HEAD
-    // get artist's popular tracks
-    var urlPopular ="http://spotifyclonemock.mocklab.io/artist/mysongs/id"; 
-=======
     const requestOptions2={
       method:"GET",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
->>>>>>> 15cf9568d6de1db4c7ffccf9b4dd25885afc94ac
 
-    const url2 = BASEURL + "homepage/madeforyou"; 
+    const url2 = "http://spotifyclonemock.mocklab.io/artist/mysongs/id"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();
@@ -80,13 +75,15 @@ export class ArtistSongs extends Component {
       .catch((error)=>{console.log(error);
       })
  }
+ ////////////////////////////////////////////////////////
  deleteSong = () => {
+
   var requestOptions = {
     method: 'DELETE'
   };
 
   // get artist's popular tracks
-  var urlPopular ="http://spotifyclonemock.mocklab.io/songs/remove/id"; 
+  var urlPopular =BASEURL2+"songs/remove/id"; 
 
   fetch(urlPopular,requestOptions)
     .then((response) => { return response.json()})
@@ -114,9 +111,8 @@ export class ArtistSongs extends Component {
         </div>   
           </div>
           <div className="col-xs-12 col-sm-12 ">
-        <table className="table table-borderless">
-          
-        <ComponentBlock ComponentName="Popular Songs" type="songs" description="" details={this.state.PopularSongs} excess={false}   /> 
+          <ComponentBlock ComponentName="Popular Songs" type="songs" description="" details={this.state.PopularSongs} excess={false}   />
+        <table className="table table-borderless"> 
          <h1 id="all-songs">All Songs</h1>
           <tbody>
                                              {/* Display likd songs */}
@@ -125,8 +121,8 @@ export class ArtistSongs extends Component {
               <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
-                  <li>{song.SongName}</li>
-                  <li className="song-info"><a href='/ArtistAccount/ArtistWebPlayer/'>Pink Floyd</a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>The Wall</a></li>
+                  <li>{song.songName}</li>
+                  <li className="song-info"><a href='/ArtistAccount/ArtistWebPlayer/'>{song.artistName}</a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>{song.AlbumName}</a></li>
                 </ul>
               </td>
               <td >
