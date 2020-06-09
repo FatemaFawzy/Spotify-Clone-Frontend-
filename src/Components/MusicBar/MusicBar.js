@@ -223,6 +223,12 @@ class MusicBar extends Component {
         this.playNext();
         this.props.onPlayPause();
       }
+
+      // //check if a new song is selected
+      // if (this.props.reload) {
+      //   this.refs.player.load();
+      //   this.props.onChangeReload(false);
+      // }
     }
 
     if (this.props.somethingIsPlaying) {
@@ -263,7 +269,7 @@ class MusicBar extends Component {
                   <div className="col-2 ">
                     <img
                       className="card-img song-photo"
-                      src={Tracks[this.props.trackNum].imgURL}
+                      src={(this.state.playQueue)?Tracks[this.props.trackNum].imgURL:Tracks[this.props.playingSongID].imgURL}
                     ></img>
                   </div>
 
@@ -274,7 +280,7 @@ class MusicBar extends Component {
                           <div className="song-name prevent-overflow">
                             <a id="song-name" href={this.state.albumLink}>
                               {" "}
-                              {Tracks[this.props.trackNum].SongName}{" "}
+                              {(this.state.playQueue)?Tracks[this.props.trackNum].SongName:Tracks[this.props.playingSongID].SongName}{" "}
                             </a>
                           </div>
 
@@ -283,8 +289,7 @@ class MusicBar extends Component {
                               id="artist-name"
                               href={this.state.artistProfileLink}
                             >
-                              {" "}
-                              {Tracks[this.props.trackNum].Artist}{" "}
+                              {(this.state.playQueue)?Tracks[this.props.trackNum].Artist:Tracks[this.props.playingSongID].Artist}
                             </a>
                           </div>
                         </li>
@@ -447,7 +452,7 @@ class MusicBar extends Component {
 
         <audio ref="player" loop={this.props.playOnRepeat}>
           {/* <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" /> */}
-          <source src={Tracks[this.props.trackNum].songURL} />
+          <source src={(this.state.playQueue)?Tracks[this.props.trackNum].songURL:Tracks[this.props.playingSongID].songURL} autoplay/>
         </audio>
       </div>
     );
@@ -460,7 +465,8 @@ const mapDispatchToProps = (dispatch) => {
     onPlayPause: () => dispatch({ type: actionTypes.PLAY_PAUSE }),
     onToggleLoop: () => dispatch({ type: actionTypes.TOGGLE_SONG_LOOP }),
     onChangeIndex: (songIndex) => dispatch({ type: actionTypes.CHANGE_SONG_INDEX, value: songIndex }),
-    onChangeProgress: (progressValue) => dispatch({ type: actionTypes.CHANGE_SONG_PROGRESS, value: progressValue })
+    onChangeProgress: (progressValue) => dispatch({ type: actionTypes.CHANGE_SONG_PROGRESS, value: progressValue }),
+    onChangeReload: (Reload) => dispatch({ type: actionTypes.ENABLE_LOAD_AUDIO, value: Reload }),
   };
 };
 
@@ -471,6 +477,7 @@ const mapStateToProps = (state) => {
     playOnRepeat: state.playOnRepeat,
     trackNum: state.trackNum,
     progress: state.progress,
+    reload: state.reload,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(MusicBar);
