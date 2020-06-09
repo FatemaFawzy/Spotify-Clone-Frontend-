@@ -39,6 +39,27 @@ export class EditArtistInformation extends Component {
       })
       .catch((error)=>{console.log(error);
       })
+
+  }
+  clickSubmit = () => {
+    const requestOptions3={
+      method:"POST",
+      headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+    }
+    const url3 =BASEURL2+"artist/information/edit"; 
+    fetch(url3,requestOptions3)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data.message == "info edited successfully")
+        {
+          console.log("edited successfully");
+          this.props.history.push("/ArtistAccount/ArtistWebPlayer/MyInfo/");
+        }
+      })
+      .catch((error)=>{console.log(error);
+      })
   }
   render(){
     return (
@@ -63,7 +84,7 @@ export class EditArtistInformation extends Component {
             </tr>
             <tr> 
               <td><li className="list-element">Date Of Birth:</li></td>
-              <td><input className="general-input" placeholder={this.state.info.dateOfBirth} type="text"/></td>
+              <td><input className="general-input" placeholder={this.state.info.dateOfBirth+"(dd/mm/yyyy)"} type="text"/></td>
             </tr>
             <tr> 
               <td><li className="list-element">Biography:</li></td>
@@ -75,7 +96,7 @@ export class EditArtistInformation extends Component {
             </tr>
             <tr> 
               <td> </td>
-              <Link to="/ArtistAccount/ArtistWebPlayer/MyInfo/"><td><button className="button">Done</button></td></Link>
+              <td><button className="button" onClick={this.clickSubmit}>Done</button></td>
             </tr>
       
         </table>
