@@ -1,11 +1,15 @@
 import React from "react";
 import './SearchBoxNotificationHist.css'
-function SearchBoxNotificationHist() {
+const SearchBoxNotificationHist =({searchfield,searchChange})=> {
   return (
     <div className='flexbox'>
       <div className='search'>
         <div>
-          <input type="text" placeholder="       Search . . ." required>
+          <input type="search" placeholder="       Search . . ." required 
+          onChange={searchChange}
+          >
+          
+          
           </input>
         </div>
       </div>

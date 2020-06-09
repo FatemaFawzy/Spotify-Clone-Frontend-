@@ -5,6 +5,8 @@ import './SearchBoxNotificationHist.css'
 import SearchBoxNotificationHist from './SearchBoxNotificationHist'
 import NotificationHistoryList from './NotificationHistoryList'
 import { Link } from "react-router-dom";
+
+
 class NotificationHistory extends Component {
   constructor() {
     super();
@@ -20,22 +22,19 @@ class NotificationHistory extends Component {
       .then(users => this.setState({ notifications: users }));
   }
 
-  // onSearchChange=(event)=>{
-  //   this.setState({searchfield:event.target.value})
-  // }
+  onSearchChange=(event)=>{
+    this.setState({searchfield:event.target.value })  
+      }
   render() {
-    // const filteredNotiHistory=this.state.notifications.filter(
-    //     notifications=>{
-    //       return notifications.name.toLowerCase().includes(this.state.searchfield.toLocaleLowerCase())
-    //     })
+        const filteredNotiHistory=this.state.notifications.filter(
+          notifications=>{
+            return notifications.username.toLowerCase().includes(this.state.searchfield.toLocaleLowerCase())
+          }
+        )
     return (
           <div>
-          <SearchBoxNotificationHist/>
-
-          {/* <SearchBoxNotificationHist searcChange={this.onSearchChange} /> */}
-
-          {/* <NotificationHistoryList notifications={filteredNotiHistory}/> */}
-          <NotificationHistoryList notifications={this.state.notifications}/>
+          <SearchBoxNotificationHist searchChange={this.onSearchChange} />
+          <NotificationHistoryList notifications={filteredNotiHistory}/>
 
           <div>
           <ReactNotifications/>
