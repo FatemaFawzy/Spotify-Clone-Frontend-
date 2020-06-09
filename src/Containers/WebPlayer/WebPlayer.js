@@ -22,7 +22,7 @@ import SeeAllPlaylists from '../../Containers/HomePage/SeeAllPlaylists';
 import SeeAllMadeForYou from '../../Containers/HomePage/SeeAllMadeForYou';
 import SeeAllRecentlyPlayed from '../../Containers/HomePage/SeeAllRecentlyPlayed';
 import AdsBar from "../../Components/Ads/AdsBar";
-
+import NotificationHistory from '../../Components/NotificationHistory/NotificationHistory'
 
 var isPremium=false;
 
@@ -48,6 +48,7 @@ class WebPlayer extends Component {
             <Route path="/webplayer/search" component={SearchPage}/>
             <Route path="/webplayer/yourlibrary" component={YourLibrary}/>
             <Route exact path="/webplayer/HomePage" component={HomePage}/>
+            <Route  path="/webplayer/NotificationHistory/" component={NotificationHistory}/>
 
               {/* TODO: change the directory. this is for testing only */}
               <Route path="/webplayer/likedsongs" component={LikedSongs}/>

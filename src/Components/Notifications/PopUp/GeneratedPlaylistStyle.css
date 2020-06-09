@@ -1,0 +1,22 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
+.generatedPopUp{
+  width:100%;
+  transform: translate(-70%,10%);
+  border-radius: 3%;
+}
+.PopUpMessageGP {
+  font-size: 50px;
+  font-family: 'Sacramento', cursive;
+  font-weight: bold;
+  text-align: center;
+  color: #fff8dc;
+
+
+}
+
+.iconGPlaylist{
+  font-size: 17px;
+  color: red;
+}
