@@ -17,8 +17,8 @@ export class ArtistAlbums extends Component {
   constructor(props){
     super(props);
     this.state = {  
-      AlbumInfo: [],
-        // {id : 1, AlbumName : "The Wall", Singer: "Pink Floyd", Name: "",Duration : ""},
+      AlbumInfo: [
+         {id : 1, AlbumName : "The Wall", Singer: "Pink Floyd", Name: "",Duration : ""},],
         // {id : 2, AlbumName : "Animals", Singer: "Pink Floyd", Name: "",Duration : ""},
         // {id : 3, AlbumName : "Hey You", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : ""},
         // {id : 4, AlbumName : "Time Machine", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : ""},
@@ -131,7 +131,7 @@ deleteAlbum = () => {
                 <div className="dropdown ">
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
                   <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
-                    <a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Edit</a>
+                    <Link to="/ArtistAccount/ArtistWebPlayer/MySongs/EditAlbum"><a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Edit</a></Link>
                     <a className="dropdown-item drop-class" onClick={this.deleteAlbum} href="#">Remove</a>
                   </div>
                 </div>

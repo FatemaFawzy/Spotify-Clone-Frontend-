@@ -18,8 +18,8 @@ export class ArtistSongs extends Component {
   constructor(props){
     super(props);
     this.state = {  
-      SongInfo: [],
-        // {id : 1, SongName : "High Hopes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},
+      SongInfo: [
+         {id : 1, SongName : "High Hopes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},],
         // {id : 2, SongName : "Pigs", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "4:15"},
         // {id : 3, SongName : "Hey You", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100", Duration : "2:58"},
         // {id : 4, SongName : "Time Machine", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},
@@ -132,7 +132,7 @@ this.setState({Deleted:true});
                 <div className="dropdown ">
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
                   <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
-                    <a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Edit</a>
+                    <Link to="/ArtistAccount/ArtistWebPlayer/MySongs/EditSong"><a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Edit</a></Link>
                     <a className="dropdown-item drop-class" onClick={this.deleteSong} href="#">Remove</a>
                   </div>
                 </div>
