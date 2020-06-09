@@ -190,7 +190,7 @@ class MusicBar extends Component {
 
   stop = (e) => {
     if (this.refs.player) this.refs.player.currentTime = 0;
-    this.props.onPlayPause();
+    if(this.props.somethingIsPlaying) this.props.onPlayPause();
   };
 
   render() {
