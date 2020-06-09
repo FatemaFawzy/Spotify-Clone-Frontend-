@@ -7,6 +7,7 @@ import ReactSnackBar from "react-js-snackbar";
 import "../PlaylistsComponent/SnackBar.css";
 import { Tracks } from "./SongFiles.js";
 import { BASEURL } from "../../Constants/baseURL";
+import AdsAudio from "../../assets/adsaudio.mp3";
 import FacebookShareButton from "../../Components/Share/FacebookShareButton";
 import TwitterShareButton from "../../Components/Share/TwitterShareButton";
 import ShareBox from "../../Components/Share/ShareBox";
@@ -36,6 +37,8 @@ class MusicBar extends Component {
 
     this.forcedProgress = false;
     this.intervalUpdate = setInterval(this.onUpdate, 250);
+    this.songObject = Tracks[0];
+    this.EnteredAdsMode = false;
   }
 
   likeSong = (e) => {
@@ -214,15 +217,43 @@ class MusicBar extends Component {
       //check if the user clicked on play on repeat
       if (!this.refs.player.loop) {
         if (this.refs.player.ended && this.props.somethingIsPlaying) {
-          this.props.onPlayPause();
+          this.props.onSongEnded();
+          if (!this.refs.player.loop) {
+            this.props.onPlayPause();
+          }
         }
       }
 
       //check if the current track ended to play next in queue
       if (this.state.playQueue && this.refs.player.ended) {
+        if (!this.props.adsModeOn) {
         this.playNext();
         this.props.onPlayPause();
+        }else
+        {
+          this.props.onAdsEnded();
+          this.EnteredAdsMode = false;
+          this.props.onPlayPause();
+          
+        }
       }
+
+      //----------------Ads Audio handling----------------------------
+      if (this.props.adsModeOn) {
+        if (!this.EnteredAdsMode) {
+          this.refs.player.load();
+          this.EnteredAdsMode = true;
+        }
+
+        if (this.refs.player.ended && this.props.somethingIsPlaying) {
+          this.props.onAdsEnded();
+          this.EnteredAdsMode = false;
+          console.log("hey");
+          if(this.state.playQueue||this.refs.player.loop)this.props.onPlayPause();
+          this.refs.player.load();
+        }
+      }
+      //----------------End of Ads Audio handling----------------------------
 
       // //check if a new song is selected
       // if (this.props.reload) {
@@ -238,7 +269,9 @@ class MusicBar extends Component {
         icon.classList.remove("fa-play-circle");
         icon.classList.add("fa-pause-circle");
       }
-    } else {
+    }
+
+    else {
       if (this.refs.player) this.refs.player.pause();
       // document.querySelector("audio").pause();
       if (icon) {
@@ -269,7 +302,11 @@ class MusicBar extends Component {
                   <div className="col-2 ">
                     <img
                       className="card-img song-photo"
-                      src={(this.state.playQueue)?Tracks[this.props.trackNum].imgURL:Tracks[this.props.playingSongID].imgURL}
+                      src={!this.props.adsModeOn?
+                        
+                        ((this.state.playQueue)?Tracks[this.props.trackNum].imgURL:Tracks[this.props.playingSongID].imgURL):
+                        "https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
+                        }
                     ></img>
                   </div>
 
@@ -280,7 +317,10 @@ class MusicBar extends Component {
                           <div className="song-name prevent-overflow">
                             <a id="song-name" href={this.state.albumLink}>
                               {" "}
-                              {(this.state.playQueue)?Tracks[this.props.trackNum].SongName:Tracks[this.props.playingSongID].SongName}{" "}
+                              {!this.props.adsModeOn?
+                                
+                                ((this.state.playQueue)?Tracks[this.props.trackNum].SongName:Tracks[this.props.playingSongID].SongName):
+                                "Ad Audio"}{" "}
                             </a>
                           </div>
 
@@ -289,7 +329,10 @@ class MusicBar extends Component {
                               id="artist-name"
                               href={this.state.artistProfileLink}
                             >
-                              {(this.state.playQueue)?Tracks[this.props.trackNum].Artist:Tracks[this.props.playingSongID].Artist}
+                              {
+                                !this.props.adsModeOn?
+                                ((this.state.playQueue)?Tracks[this.props.trackNum].Artist:Tracks[this.props.playingSongID].Artist):
+                                "Spotify"}
                             </a>
                           </div>
                         </li>
@@ -330,7 +373,7 @@ class MusicBar extends Component {
                 <button
                   className="middle-icons fas fa-step-backward"
                   title="Previous"
-                  onClick={this.playPrevious}
+                  onClick={(!this.props.adsModeOn)&&this.playPrevious}
                 ></button>
                 <button
                   id="play-track-bar"
@@ -340,7 +383,7 @@ class MusicBar extends Component {
                 <button
                   className="middle-icons fas fa-step-forward"
                   title="Next"
-                  onClick={this.playNext}
+                  onClick={(!this.props.adsModeOn)&&this.playNext}
                 ></button>
                 <button
                   title="Play on Repeat"
@@ -452,7 +495,11 @@ class MusicBar extends Component {
 
         <audio ref="player" loop={this.props.playOnRepeat}>
           {/* <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" /> */}
-          <source src={(this.state.playQueue)?Tracks[this.props.trackNum].songURL:Tracks[this.props.playingSongID].songURL} autoplay/>
+          <source src={
+            !this.props.adsModeOn?
+            (this.state.playQueue)?Tracks[this.props.trackNum].songURL:Tracks[this.props.playingSongID].songURL:
+            AdsAudio
+            } autoplay/>
         </audio>
       </div>
     );
@@ -466,6 +513,8 @@ const mapDispatchToProps = (dispatch) => {
     onToggleLoop: () => dispatch({ type: actionTypes.TOGGLE_SONG_LOOP }),
     onChangeIndex: (songIndex) => dispatch({ type: actionTypes.CHANGE_SONG_INDEX, value: songIndex }),
     onChangeProgress: (progressValue) => dispatch({ type: actionTypes.CHANGE_SONG_PROGRESS, value: progressValue }),
+    onSongEnded: () => dispatch({ type: actionTypes.INCREMENT_NUM_SONGS }),
+    onAdsEnded: () => dispatch({ type: actionTypes.EXIT_ADS_MODE }),
     onChangeReload: (Reload) => dispatch({ type: actionTypes.ENABLE_LOAD_AUDIO, value: Reload }),
   };
 };
@@ -475,6 +524,7 @@ const mapStateToProps = (state) => {
     playingSongID: state.playingSongID,
     somethingIsPlaying: state.somethingIsPlaying,
     playOnRepeat: state.playOnRepeat,
+    adsModeOn: state.adsModeOn,
     trackNum: state.trackNum,
     progress: state.progress,
     reload: state.reload,

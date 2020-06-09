@@ -17,6 +17,7 @@ const initialState = {
   somethingIsPlaying:false,
   playOnRepeat:false,
   numberOfSongsPlayed:0,
+  adsModeOn:false,
   premium: false,
   trackNum: 0,
   progress: 0,
@@ -181,9 +182,33 @@ const reducer = (state = initialState, action) => {
             break;
 
             case actionTypes.INCREMENT_NUM_SONGS:
+              if(state.numberOfSongsPlayed===2)
+              {
+                return {
+                  ...state,
+                  numberOfSongsPlayed:0,
+                  adsModeOn:true
+                  };
+
+              }
+              else
+              {
+                const newNumber=(state.numberOfSongsPlayed+1)
+                return {
+                  ...state,
+                  numberOfSongsPlayed:newNumber
+                  };
+
+              }
+              
+
+            break;
+
+            case actionTypes.EXIT_ADS_MODE:
+
               return {
                 ...state,
-                numberOfSongsPlayed:(state.numberOfSongsPlayed+1)%5
+                adsModeOn:false
                 };
 
             break;

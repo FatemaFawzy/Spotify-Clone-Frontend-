@@ -22,7 +22,7 @@ function NewSong() {
 function NewSongAdded() {
   return (
     <div className="buttonPopContainer"       style={{
-      transform:'translate(-18.5%,720%)',
+      transform:'translate(-10%,470%)',
     }}
 >
 
