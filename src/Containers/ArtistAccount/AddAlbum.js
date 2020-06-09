@@ -86,8 +86,25 @@ export class AddAlbum extends Component {
     this.validateImage();
     if(this.validateAlbumName() && this.validateImage())
     {
-      
-      this.props.history.push("/ArtistAccount/ArtistWebPlayer/AddSong")
+      const requestOptions2={
+        method:"POST",
+        headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+      }
+  
+      const url2 = BASEURL2+"albums/add"; 
+      fetch(url2,requestOptions2)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          if (data.message == "album added successfully")
+          {
+            console.log("album added successfully");
+            this.props.history.push("/ArtistAccount/ArtistWebPlayer/AddSong")
+          }
+        })
+        .catch((error)=>{console.log(error);
+        })
     }
   };
   

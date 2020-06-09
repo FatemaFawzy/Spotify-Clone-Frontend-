@@ -97,7 +97,7 @@ export class AddSong extends Component {
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
 
-    const url2 = "http://spotifyclonemock.mocklab.io/songs/add"; 
+    const url2 = BASEURL2+"songs/add"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();
