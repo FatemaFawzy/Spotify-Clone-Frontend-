@@ -25,13 +25,10 @@ import AdsBar from "../../Components/Ads/AdsBar";
 import { ArtistHomePage } from './ArtistHomePage';
 import ArtistSongs from "./ArtistSongs";
 import { ArtistAlbums } from './ArtistAlbums';
-<<<<<<< HEAD
 import ArtistInformation from './ArtistInformation';
 import EditArtistInformation from './EditArtistInformation';
-=======
 import { AddAlbum } from './AddAlbum';
 import {AddSong} from './AddSong';
->>>>>>> 2a0b1618b5f884e6e8e5c93a00f4fdb801ca5d30
 
 
 var isPremium=false;

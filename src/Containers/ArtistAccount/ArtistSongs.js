@@ -45,11 +45,7 @@ export class ArtistSongs extends Component {
     headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
   }
 
-<<<<<<< HEAD
-   const url1 =BASEURL2+"artist/mysongs/id"; 
-=======
    const url1 =BASEURL2 + "artist/mysongs/id"; 
->>>>>>> 2a0b1618b5f884e6e8e5c93a00f4fdb801ca5d30
   fetch(url1,requestOptions1)
     .then((response) => {
       return response.json();
