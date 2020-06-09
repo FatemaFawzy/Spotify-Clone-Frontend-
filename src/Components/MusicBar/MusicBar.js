@@ -269,7 +269,7 @@ class MusicBar extends Component {
                   <div className="col-2 ">
                     <img
                       className="card-img song-photo"
-                      src={(this.state.playQueue)?Tracks[this.props.trackNum].imgURL:Tracks[this.props.playingSongID].imgURL}
+                      src={(this.state.playQueue)?Tracks[this.props.trackNum].imgURL:Tracks[1].imgURL}
                     ></img>
                   </div>
 
@@ -280,7 +280,7 @@ class MusicBar extends Component {
                           <div className="song-name prevent-overflow">
                             <a id="song-name" href={this.state.albumLink}>
                               {" "}
-                              {(this.state.playQueue)?Tracks[this.props.trackNum].SongName:Tracks[this.props.playingSongID].SongName}{" "}
+                              {(this.state.playQueue)?Tracks[this.props.trackNum].SongName:Tracks[1].SongName}{" "}
                             </a>
                           </div>
 
@@ -289,7 +289,7 @@ class MusicBar extends Component {
                               id="artist-name"
                               href={this.state.artistProfileLink}
                             >
-                              {(this.state.playQueue)?Tracks[this.props.trackNum].Artist:Tracks[this.props.playingSongID].Artist}
+                              {(this.state.playQueue)?Tracks[this.props.trackNum].Artist:Tracks[1].Artist}
                             </a>
                           </div>
                         </li>
@@ -452,7 +452,7 @@ class MusicBar extends Component {
 
         <audio ref="player" loop={this.props.playOnRepeat}>
           {/* <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" /> */}
-          <source src={(this.state.playQueue)?Tracks[this.props.trackNum].songURL:Tracks[this.props.playingSongID].songURL} autoplay/>
+          <source src={(this.state.playQueue)?Tracks[this.props.trackNum].songURL:Tracks[1].songURL} autoplay/>
         </audio>
       </div>
     );

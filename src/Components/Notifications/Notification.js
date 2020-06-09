@@ -1,7 +1,7 @@
 import React from "react";
 import "./notification.css"
 
-const Notification = ({name,username }) => {
+const Notification = ({Message,username }) => {
   return (
     <div>
       <div className="notification">
@@ -10,8 +10,19 @@ const Notification = ({name,username }) => {
             <li className="bulletPoint">
               <span className="text">
                 <span>
-                  {username}
-                    {name}
+                <p><h2
+          style={{
+            fontSize:'14px',
+          }}
+          ><i class="far fa-comments"
+          
+          style={{
+            fontSize:'13px'
+          }}
+          ></i>
+          >{username}</h2></p>
+ 
+
                 </span>
               </span>
             </li>

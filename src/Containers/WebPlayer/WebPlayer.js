@@ -23,7 +23,6 @@ import SeeAllMadeForYou from '../../Containers/HomePage/SeeAllMadeForYou';
 import SeeAllRecentlyPlayed from '../../Containers/HomePage/SeeAllRecentlyPlayed';
 import AdsBar from "../../Components/Ads/AdsBar";
 import NotificationHistory from '../../Components/NotificationHistory/NotificationHistory'
-
 var isPremium=false;
 
 
