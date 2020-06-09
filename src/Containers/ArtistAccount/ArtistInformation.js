@@ -4,7 +4,7 @@ import ArtistHomePageNavbar from "./ArtistNavbar";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL,BASEURL2} from "../../Constants/baseURL";
 import {NavLink,Link} from "react-router-dom";
 
 export class ArtistInformation extends Component {
@@ -27,7 +27,7 @@ export class ArtistInformation extends Component {
       method:"GET",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
-    const url2 ="http://spotifyclonemock.mocklab.io/artist/information"; 
+    const url2 =BASEURL2+"artist/information"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();
