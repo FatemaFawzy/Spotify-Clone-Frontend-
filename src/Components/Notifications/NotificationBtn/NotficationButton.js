@@ -31,7 +31,7 @@ class NotificationButton extends Component {
  
           <div className="whatever">
             <NotificationList notifications={this.state.notifications} />
-            <Link  to="/webplayer/NotificationHistory" className='seeAll'>More</Link>
+            <Link  to="/webplayer/NotificationHistory/" className='seeAll'>More</Link>
 
           </div>
 

@@ -112,7 +112,7 @@ render() {
         
           <ul>
               <li><Link  onClick={this.clickedProfile} id="profile" className="List gray" to="/ArtistAccount/ArtistWebPlayer/"><i class="fas fa-user"></i>Profile</Link></li>
-              <li><Link  onClick={this.clickedinfo} id="infor" onClick={addNewURL("")} className="List2" to=""><i class="fas fa-info"></i>Info</Link></li>
+              <li><Link  onClick={this.clickedinfo} id="infor" className="List2" to="/ArtistAccount/ArtistWebPlayer/MyInfo/"><i class="fas fa-info"></i>Info</Link></li>
               <li><Link  onClick={this.clickedsongs} id="songs" className="List" to="/ArtistAccount/ArtistWebPlayer/MySongs/"><i class="fas fa-music"></i>My Songs</Link></li>
               <li><Link  onClick={this.clickedalbums} id="albums" className="List" to="/ArtistAccount/ArtistWebPlayer/MyAlbums"><i class="fas fa-compact-disc"></i>My Albums</Link></li>
              

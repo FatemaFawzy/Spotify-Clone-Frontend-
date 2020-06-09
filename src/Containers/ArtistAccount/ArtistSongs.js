@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
  import './ArtistSongs.css';
+ import ReactSnackBar from "react-js-snackbar";
 import ArtistHomePageNavbar from "./ArtistNavbar";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
@@ -17,8 +18,8 @@ export class ArtistSongs extends Component {
   constructor(props){
     super(props);
     this.state = {  
-      SongInfo: [],
-        // {id : 1, SongName : "High Hopes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},
+      SongInfo: [
+         {id : 1, SongName : "High Hopes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},],
         // {id : 2, SongName : "Pigs", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "4:15"},
         // {id : 3, SongName : "Hey You", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100", Duration : "2:58"},
         // {id : 4, SongName : "Time Machine", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},
@@ -30,7 +31,9 @@ export class ArtistSongs extends Component {
         // {id : 10, SongName : "The Great Gig In The Sky", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},
         // {id : 11, SongName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "4:15"},
         // {id : 12, SongName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100", Duration : "2:58"},
-        PopularSongs: []
+        PopularSongs: [],
+        Deleted: "",
+        Added:""
     }
     
   }
@@ -42,7 +45,7 @@ export class ArtistSongs extends Component {
     headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
   }
 
-   const url1 ="http://spotifyclonemock.mocklab.io/artist/mysongs/id"; 
+   const url1 =BASEURL2 + "artist/mysongs/id"; 
   fetch(url1,requestOptions1)
     .then((response) => {
       return response.json();
@@ -62,7 +65,7 @@ export class ArtistSongs extends Component {
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
 
-    const url2 = "http://spotifyclonemock.mocklab.io/artist/mysongs/id"; 
+    const url2 = BASEURL2 + "artist/mysongs/id"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();
@@ -77,7 +80,7 @@ export class ArtistSongs extends Component {
  }
  ////////////////////////////////////////////////////////
  deleteSong = () => {
-
+this.setState({Deleted:true});
   var requestOptions = {
     method: 'DELETE'
   };
@@ -105,16 +108,16 @@ export class ArtistSongs extends Component {
 
             <h1 className="artist-name font-weight-bolder"> My Songs</h1>
             <div id="buttons">
-         <button id="follow-button" className="btn btn-success rounded-pill " >
+         <Link to="/ArtistAccount/ArtistWebPlayer/AddSong"><button id="follow-button" className="btn btn-success rounded-pill " >
            Add Song   <i class="fas fa-plus"></i>
-         </button>
+         </button></Link>
         </div>   
           </div>
           <div className="col-xs-12 col-sm-12 ">
           <ComponentBlock ComponentName="Popular Songs" type="songs" description="" details={this.state.PopularSongs} excess={false}   />
+          <h1 id="all-songs">All Songs</h1>
         <table className="table table-borderless"> 
-         <h1 id="all-songs">All Songs</h1>
-          <tbody>
+         <tbody>
                                              {/* Display likd songs */}
            {this.state.SongInfo.map((song,id)=>(
             <tr key={id}>
@@ -129,7 +132,7 @@ export class ArtistSongs extends Component {
                 <div className="dropdown ">
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
                   <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
-                    <a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Edit</a>
+                    <Link to="/ArtistAccount/ArtistWebPlayer/MySongs/EditSong"><a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Edit</a></Link>
                     <a className="dropdown-item drop-class" onClick={this.deleteSong} href="#">Remove</a>
                   </div>
                 </div>
@@ -141,7 +144,18 @@ export class ArtistSongs extends Component {
              
       </tbody>
     </table>
-
+    {
+    this.state.Deleted == true ?
+    <ReactSnackBar Icon={<span className="fab fa-spotify"></span>} Show={this.state.ShowRemove}>
+                      Song Deleted Successfully
+    </ReactSnackBar> : <p></p>
+    }
+    {
+      this.state.Added == true ?
+      <ReactSnackBar Icon={<span className="fab fa-spotify"></span>} Show={this.state.ShowRemove}>
+      Song Added Successfully
+      </ReactSnackBar> : <p></p>
+    }
       </div> 
       </div>  
     

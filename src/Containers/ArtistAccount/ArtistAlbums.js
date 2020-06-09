@@ -17,8 +17,8 @@ export class ArtistAlbums extends Component {
   constructor(props){
     super(props);
     this.state = {  
-      AlbumInfo: [],
-        // {id : 1, AlbumName : "The Wall", Singer: "Pink Floyd", Name: "",Duration : ""},
+      AlbumInfo: [
+         {id : 1, AlbumName : "The Wall", Singer: "Pink Floyd", Name: "",Duration : ""},],
         // {id : 2, AlbumName : "Animals", Singer: "Pink Floyd", Name: "",Duration : ""},
         // {id : 3, AlbumName : "Hey You", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : ""},
         // {id : 4, AlbumName : "Time Machine", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : ""},
@@ -31,6 +31,8 @@ export class ArtistAlbums extends Component {
         // {id : 11, AlbumName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
         // {id : 12, AlbumName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
        PopularAlbums: [],
+       Deleted:"",
+       Added:""
       
       
     }
@@ -74,6 +76,26 @@ export class ArtistAlbums extends Component {
       
     }
 
+deleteAlbum = () => {
+  this.setState({Deleted:true});
+  const requestOptions2={
+    method:'DELETE'
+  }
+
+  const url2 =BASEURL2+"album/remove/id"; 
+
+  fetch(url2,requestOptions2)
+    .then((response) => { return response.json()})
+    .then((data) => {
+      if (data.message == "album deleted successfully")
+      {
+        console.log("album deleted");
+      }
+    })
+    .catch((error)=>{console.log(error);
+    })
+}
+
   render(){
     return (
       <div className ="artist-albums" >
@@ -83,9 +105,9 @@ export class ArtistAlbums extends Component {
 
             <h1 className="artist-name font-weight-bolder"> My Albums</h1>
             <div id="buttons">
-         <button id="follow-button" className="btn btn-success rounded-pill " >
+         <Link to="/ArtistAccount/ArtistWebPlayer/AddAlbum"><button id="follow-button" className="btn btn-success rounded-pill " >
            Add Album   <i class="fas fa-plus"></i>
-         </button>
+         </button></Link>
         </div>   
           </div>
           <ComponentBlock ComponentName="Popular Albums" type="albums" description="" details={this.state.PopularAlbums} excess={false}   /> 
@@ -109,8 +131,8 @@ export class ArtistAlbums extends Component {
                 <div className="dropdown ">
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
                   <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
-                    <a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Edit</a>
-                    <a className="dropdown-item drop-class" onClick={this.toggle_add_to_playlist} href="#">Remove</a>
+                    <Link to="/ArtistAccount/ArtistWebPlayer/MySongs/EditAlbum"><a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Edit</a></Link>
+                    <a className="dropdown-item drop-class" onClick={this.deleteAlbum} href="#">Remove</a>
                   </div>
                 </div>
               </td>
