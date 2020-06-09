@@ -296,7 +296,7 @@ class MusicBar extends Component {
                   <div className="col-2 ">
                     <img
                       className="card-img song-photo"
-                      src={!this.props.adsModeOn?Tracks[this.props.trackNum].imgURL:"https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"}
+                      src={!this.props.adsModeOn?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].imgURL:"https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"}
                     ></img>
                   </div>
 
@@ -307,7 +307,7 @@ class MusicBar extends Component {
                           <div className="song-name prevent-overflow">
                             <a id="song-name" href={this.state.albumLink}>
                               {" "}
-                              {!this.props.adsModeOn?Tracks[this.props.trackNum].SongName:"Ad Audio"}{" "}
+                              {!this.props.adsModeOn?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].SongName:"Ad Audio"}{" "}
                             </a>
                           </div>
 
@@ -317,7 +317,7 @@ class MusicBar extends Component {
                               href={this.state.artistProfileLink}
                             >
                               {" "}
-                              {!this.props.adsModeOn?Tracks[this.props.trackNum].Artist:"Spotify"}{" "}
+                              {!this.props.adsModeOn?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].Artist:"Spotify"}{" "}
                             </a>
                           </div>
                         </li>
@@ -480,7 +480,7 @@ class MusicBar extends Component {
 
         <audio ref="player" loop={this.props.playOnRepeat}>
           {/* <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" /> */}
-          <source src={!this.props.adsModeOn?Tracks[this.props.trackNum].songURL:AdsAudio} />
+          <source src={!this.props.adsModeOn?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].songURL:AdsAudio} />
         </audio>
       </div>
     );
