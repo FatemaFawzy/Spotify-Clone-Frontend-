@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
-import './WebPlayer.css';
+import './ArtistWebPlayer.css';
 // import SearchPage from "./SearchPage";
 import {Switch, Route} from "react-router-dom";
-import HomePageSidebar from "../../Components/HomePage/HomePageSidebar";
+import ArtistSidebar from "../ArtistAccount/ArtistSideBar";
 import SearchPage from "../../Components/SearchComponents/SearchPage";
 import YourLibrary  from '../YourLibraryPages/YourLibrary';
 import YourLibraryPlaylist  from '../YourLibraryPages/YourLibraryPlaylist';
@@ -22,57 +22,57 @@ import SeeAllPlaylists from '../../Containers/HomePage/SeeAllPlaylists';
 import SeeAllMadeForYou from '../../Containers/HomePage/SeeAllMadeForYou';
 import SeeAllRecentlyPlayed from '../../Containers/HomePage/SeeAllRecentlyPlayed';
 import AdsBar from "../../Components/Ads/AdsBar";
-import NotificationHistory from '../../Components/NotificationHistory/NotificationHistory'
+import { ArtistHomePage } from './ArtistHomePage';
+import ArtistSongs from "./ArtistSongs";
+import { ArtistAlbums } from './ArtistAlbums';
+import ArtistInformation from './ArtistInformation';
+import EditArtistInformation from './EditArtistInformation';
+import { AddAlbum } from './AddAlbum';
+import {AddSong} from './AddSong';
+import { EditSong } from './EditSong';
+import EditAlbum from "./EditAlbum";
+
 
 var isPremium=false;
 
 
-class WebPlayer extends Component {
+class ArtistWebPlayer extends Component {
 
   render(){
 
     return (
-      <div className ="web-player-class">
+      <div className ="web-player-class1">
         <div id="blur">
         <div id="blur-add-to-playlist">
         <div className="row mx-0 no-gutters" >
 
           <div className="side-bar-web-player">
-            <HomePageSidebar/>
+            <ArtistSidebar/>
           </div>
 
           <div className="content-web-player">
 
-          <Switch>
-            <Route exact path="/webplayer/" component={HomePage}/>
-            <Route path="/webplayer/search" component={SearchPage}/>
-            <Route path="/webplayer/yourlibrary" component={YourLibrary}/>
-            <Route exact path="/webplayer/HomePage" component={HomePage}/>
-            <Route  path="/webplayer/NotificationHistory/" component={NotificationHistory}/>
+         <Switch>
+          <Route exact path="/ArtistAccount/ArtistWebPlayer/" component={ArtistHomePage}/>
+          <Route exact path="/ArtistAccount/ArtistWebPlayer/MySongs" component={ArtistSongs}/>
+          <Route exact path="/ArtistAccount/ArtistWebPlayer/MyAlbums" component={ArtistAlbums}/>
+          <Route exact path="/ArtistAccount/ArtistWebPlayer/MyInfo" component={ArtistInformation}/>
+          <Route exact path="/ArtistAccount/ArtistWebPlayer/MyInfo/EditMyInfo" component={EditArtistInformation}/>
+          <Route exact path="/ArtistAccount/ArtistWebPlayer/MySongs/EditSong" component={EditSong}/>
+          <Route exact path="/ArtistAccount/ArtistWebPlayer/MySongs/EditAlbum" component={EditAlbum}/>
+          <Route exact path="/ArtistAccount/ArtistWebPlayer/AddAlbum" component={AddAlbum}/>
+          <Route exact path="/ArtistAccount/ArtistWebPlayer/AddSong" component={AddSong}/>
+         </Switch>
+            
 
-              {/* TODO: change the directory. this is for testing only */}
-              <Route path="/webplayer/likedsongs" component={LikedSongs}/>
-              <Route path="/webplayer/album" component={AlbumPage}/>
-              <Route path="/webplayer/playlist" component={PlaylistPage}/>
-              <Route path="/webplayer/user" component={OtherUser}/>
-              <Route path="/webplayer/artistprofile" component={ArtistProfile}/>
-              <Route path="/webplayer/HomePage/seeallartists" component={SeeAllArtists}/>
-              <Route path="/webplayer/HomePage/seeallplaylists" component={SeeAllPlaylists}/>
-              <Route path="/webplayer/HomePage/seeallMadeForYou" component={SeeAllMadeForYou}/>
-              <Route path="/webplayer/HomePage/seeallrecentlyplayed" component={SeeAllRecentlyPlayed}/>
-
-            </Switch>
-
-            {!isPremium&&<AdsBar/>}
+           
 
           </div>
 
 
         </div>
 
-        <footer className="music-bar-footer">
-          <MusicBar></MusicBar>
-        </footer>
+        
         </div>
         <AddToPlaylist/>
         </div>
@@ -86,5 +86,5 @@ class WebPlayer extends Component {
   
 }
 
-export default WebPlayer;
+export default ArtistWebPlayer;
 

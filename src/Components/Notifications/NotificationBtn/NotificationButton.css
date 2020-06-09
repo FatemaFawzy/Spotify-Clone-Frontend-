@@ -1,0 +1,139 @@
+.notificationBox {
+  position: fixed;
+  top: -1.5%;
+  right: 10%;
+  transform: translate(20%, 10%);
+  background-color: transparent;
+  
+}
+
+.notification:hover {
+  width: 150px;
+  height: 60px;
+  text-align: left;
+  padding: 0 10px;
+  transform: translatex(10%);
+  background-color:black;
+}
+
+.notification .fas {
+  color: #cecece;
+  line-height: 60px;
+  font-size: 23px;
+}
+.notification .num {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  left: 13px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgb(29, 185, 84);
+  color: black;
+  line-height: 15px;
+  font-size: small;
+  font-family: sans-seif;
+  text-align: center;
+  font-style: bold;
+}
+.notification:hover .num {
+  position: relative;
+  background: black;
+  /* color: #ff2c74; */
+  color: rgb(29, 185, 84);
+  font-size: 20px;
+  top: -4px;
+  left:3px;
+  font-style: bold;
+}
+.notification:hover ul {
+  display: block;
+}
+.notification .seeAll{
+  /* background-color:121416; */
+  background-color: transparent;
+  color:transparent;
+  left:50px;
+  transform: translate(-100%, 10%);
+
+}
+ .notification:hover .seeAll{
+  position: relative;
+  background: black;
+  color: #C0c0c0;
+  text-align: center;
+  font-size: 17px;
+  top: -4px;
+  left:30%;
+  font-style:italic;
+  width: 150px;
+  height: 60px;
+} 
+@media screen and (max-width:1200px) and (min-width: 900px) {
+
+  .notificationBox {
+    position: fixed;
+    top: -1.5%;
+    right: 15%;
+    transform: translate(20%, 10%);
+    background-color: transparent;
+    /* display: none; */
+
+  }
+
+}
+
+
+
+
+
+@media screen and (max-width:900px) and (min-width: 600px) {
+
+  .notificationBox {
+    position: fixed;
+    top: -1.5%;
+    right: 15%;
+    transform: translate(20%, 10%);
+    background-color: transparent;
+
+  }
+
+}
+
+
+
+
+
+@media screen and (max-width:700px) and (min-width: 300px) {
+
+  .notificationBox {
+    position: fixed;
+    top: -1.5%;
+    right: 20%;
+    transform: translate(20%, 10%);
+    background-color: transparent;
+
+  }
+
+}
+
+
+
+
+
+@media screen and (max-width: 650px) and (min-width: 10px) {
+
+  .notificationBox {
+    position: fixed;
+    top: -1.5%;
+    right: 17%;
+    transform: translate(20%, 10%);
+    background-color: transparent;
+  }
+
+  .notificationBox:hover {
+    display: none;
+  }
+
+}

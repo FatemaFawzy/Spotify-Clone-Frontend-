@@ -5,6 +5,10 @@ import ArtistProfileContent from "../../Components/ArtistProfile/ArtistProfileCo
 import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
 import {connect} from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
+import ReactNotifications from 'react-notifications-component';
+import { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css';
 
 /** Class ArtistProfile
  * @category ArtistProfile
@@ -103,15 +107,74 @@ export class ArtistProfile extends Component{
        */  
     const {id} = e.target;
 
-    if ( this.state.follow === "follow" ) {
-      this.setState({follow: "unfollow"});
-      if (document.getElementById(id)){
-      document.getElementById(id).style.color="#1DB954";}
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'x-auth': this.props.userToken },
     }
+
+    //if the user wants to follow the artist
+    if ( this.state.follow === "follow" ) {
+
+        //send a request to follow the artist
+        const url = BASEURL + "users/123/follow";
+        // const url = BASEURL + "users"+selectedArtistID+"follow";
+        fetch(url,requestOptions)
+          .then((response) => {
+            console.log(response)
+            return response.json();
+          })
+          .then((data) => {
+            if(data.message === "followed"){
+              store.addNotification({
+                title: 'Dropbox',
+                message: 'Files were synced',
+                type: 'default',                         // 'default', 'success', 'info', 'warning'
+                container: 'top-centre',                // where to position the notifications
+                animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+                animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+                dismiss: {
+                  duration: 3000 
+                }
+              })
+              
+
+
+
+
+              this.setState({follow: "unfollow"});
+              if (document.getElementById(id)){
+              document.getElementById(id).style.color="#1DB954";}
+            }
+             console.log(data);
+          })
+          .catch((error)=>{
+            console.log(error);
+          })
+    }
+
+    //if the user wants to unfollow the artist
     else if ( this.state.follow === "unfollow" ) {
-      this.setState({follow: "follow"});
-      if (document.getElementById(id)){
-      document.getElementById(id).style.color="white";}
+
+      //send a request to unfollow the artist
+      const url1 = BASEURL + "users/123/unfollow";
+      // const url = BASEURL + "users"+selectedArtistID+"unfollow";
+      fetch(url1,requestOptions)
+        .then((response) => {
+          console.log(response)
+          return response.json();
+        })
+        .then((data) => {
+          if(data.message == "unfollowed"){
+            this.setState({follow: "follow"});
+            if (document.getElementById(id)){
+            document.getElementById(id).style.color="white";}
+          }
+            console.log(data);
+        })
+        .catch((error)=>{
+          console.log(error);
+        })      
+
     }
 
   }
@@ -139,6 +202,7 @@ export class ArtistProfile extends Component{
           </button>
 
           <button id="follow-button" className="btn btn-success rounded-pill " onClick={this.followArtist}>
+            <ReactNotifications/>
             {this.state.follow}
           </button>
         </div>

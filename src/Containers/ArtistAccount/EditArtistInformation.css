@@ -1,0 +1,149 @@
+.edit-artist-information {
+  background-color: #121212;
+  color: white;
+  margin: 0;
+  max-width: 1955px;
+  padding-bottom: 110px;
+}
+.edit-artist-information .info-content
+{
+  padding-top:50px;
+}
+.edit-artist-information table
+{
+  margin-left:75px;
+}
+.edit-artist-information .title
+{
+  font-weight:600;
+  padding-left:20px;
+  padding-bottom:10px;
+  color:#b3b3b3;
+}
+.edit-artist-information .button
+{  
+  padding-top:19px;
+  padding-bottom:17px;
+  padding-right:100px;
+  padding-left:100px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  cursor:pointer;
+  border-radius: 35px;
+  color: #fff;
+  background-color: #1db954;
+  border-color: #1db954;
+  margin-left:-20px;
+  margin-top:15px;
+  outline:none;
+
+}
+.edit-artist-information li
+{
+  list-style-type: none;
+}
+.edit-artist-information .list-element
+{
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size:18px;
+}
+.edit-artist-information .general-input
+{
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size:18px;
+  margin-left:25%;
+  width:400px;
+  border-radius:4px;
+  padding:5px;
+}
+.edit-artist-information #birth-date
+{
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size:18px;
+  margin-left:22%;
+  width:430px;
+}
+.edit-artist-information .birth-date-signup
+{
+  box-shadow:none;
+  outline:none;
+  border:none;
+}
+.edit-artist-information .birth-date-signup:focus
+{
+  box-shadow:none;
+  outline:none;
+  border:none;
+}
+.edit-artist-information .birth-date-signup:active
+{
+  box-shadow:none;
+  outline:none;
+  border:none;
+}
+.edit-artist-information option
+{
+  color:rgb(29, 185, 84);
+}
+.edit-artist-information .email-error
+{
+  color: rgb(29, 185, 84);
+
+}
+.edit-artist-information .general-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(29, 185, 84);
+  opacity: 1; /* Firefox */
+}
+.edit-artist-information .birth-date-signup::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(29, 185, 84);
+  opacity: 1; /* Firefox */
+}
+@media (max-width:777px)
+{
+  .edit-artist-information table
+{
+  margin-left:40px;
+}
+}
+@media (max-width:977px)
+{
+  .edit-artist-information .general-input
+  {
+    width:300px;
+  }
+}
+@media (max-width:850px)
+{
+  .edit-artist-information .general-input
+  {
+    margin-left:15%;
+  }
+}
+@media (max-width:818px)
+{
+  .edit-artist-information .general-input
+  {
+    margin-left:5%;
+    width:250px;
+  }
+}
+@media (max-width:818px) and (min-with:500px)
+{
+  .edit-artist-information .title
+  {
+    font-size:36px;
+  }
+}
+@media (max-width:500px)
+{
+  .edit-artist-information .button{
+    margin-left:-70px;
+  }
+}

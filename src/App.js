@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 import AccountLayout from "./Containers/UserAccountProfile/AccountLayout";
 import HelpPage from "./Components/HelpPage/HelpPage";
 import welcomePage from "./Containers/WelcomePage/welcomePage";
@@ -9,28 +9,25 @@ import loginFacebook from "./Containers/Login/LoginFacebook";
 import Premium from "./Containers/PremiumBenefits/Premium";
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
 import Success from "./Components/ForgotPassword/Success";
-import {BrowserRouter as Router,
-        Switch, 
-        Route, 
-       } from "react-router-dom";
-import WebPlayer from './Containers/WebPlayer/WebPlayer';
-import ArtistProfile from './Containers/ArtistProfile/ArtistProfile';
-import EmailSent from './Containers/SignUp/EmailSent';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import WebPlayer from "./Containers/WebPlayer/WebPlayer";
+import ArtistProfile from "./Containers/ArtistProfile/ArtistProfile";
+import EmailSent from "./Containers/SignUp/EmailSent";
 import CreateNewPassword from "./Components/ForgotPassword/CreateNewPassword";
 import PasswordIsNew from "./Components/ForgotPassword/PasswordIsNew";
 import ScrollToTop from "./Containers/GenericComponenets/ScrollToTop";
-
-       
+import ArtistWebPlayer from "./Containers/ArtistAccount/ArtistWebPlayer";
+import ArtistSideBar from "./Containers/ArtistAccount/ArtistSideBar";
+// import NotificationHistory from "./Components/NotificationHistory"
 function App() {
   return (
     <div className="App">
-
       <Router>
       <ScrollToTop>
 
         <Switch>
 
-          
+
           <Route exact path="/" component={welcomePage}/>
           <Route  path="/account/" component={AccountLayout}/>
           <Route  path="/help/" component={HelpPage}/>
@@ -44,7 +41,8 @@ function App() {
           <Route path="/signup/emailsent/" component={EmailSent}/>
           <Route exact path="/logIn/forgotpassword/newpassword/" component={CreateNewPassword}/>
           <Route path="/logIn/forgotpassword/newpassword/passwordisnew/" component={PasswordIsNew}/>
-          
+          <Route path="/ArtistAccount/ArtistWebPlayer/" component={ArtistWebPlayer}/>
+
           {/* TODO: Change the route of artistprofile when search is implemented */}
           <Route  path="/webplayer/likedsongs/" component={ArtistProfile}/>
           
@@ -54,8 +52,6 @@ function App() {
 
       </ScrollToTop>
       </Router>
-
-      
     </div>
   );
 }

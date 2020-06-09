@@ -1,0 +1,13 @@
+.CloseButton {
+  padding: 2px 2px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+  align-self: flex-end;
+  border-radius: 50%;
+  background: black;
+  transform: translate(-60%, 20%);
+
+  border-color: black;
+}

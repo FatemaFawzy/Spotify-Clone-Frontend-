@@ -1,0 +1,58 @@
+.add-album .add-info{
+  padding-top: 60px;
+}
+
+.add-album .form-control{
+  border: 0px;
+  box-shadow: none !important;
+}
+.add-album .form-control::placeholder{
+  color: rgb(29, 185, 84);
+}
+
+.add-album .redbox{
+  border: 1px solid red;
+}
+.add-album .redbox::placeholder{
+  color: red;
+  font-weight: 400;
+}
+
+.add-album p{
+color: red;
+font-weight: 100;
+margin-left: 5px;
+}
+
+.add-album h1{
+  color: white;
+  margin-bottom: 15px;
+}
+
+.add-album button{
+  text-decoration: none;
+  background-color: rgb(29, 185, 84);
+  color: white;
+  outline: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  border-radius: 500px;
+  line-height: 18px;
+  padding: 8px 34px;
+  outline: none;
+  border: none;
+   
+}
+.add-album button:active{
+  border: none;
+  outline: none;
+}
+.add-album button:focus{
+  border: none;
+  outline: none;
+}
+  
+
+
+

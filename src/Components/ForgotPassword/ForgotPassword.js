@@ -81,6 +81,10 @@ export class ForgotPassword extends Component {
    * @func clickSubmit
    */
   clickSubmit = event => {
+    if (event)
+    {
+    event.preventDefault();
+    }
     let email = this.state.email;
     let emailError = this.state.emailError;
     this.setState({emailError});

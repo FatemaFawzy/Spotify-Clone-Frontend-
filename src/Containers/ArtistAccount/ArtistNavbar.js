@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./HomePageNavbar.css";
+import "./ArtistNavbar.css";
 import {BrowserRouter,withRouter} from "react-router-dom";
 import {NavLink, Link} from "react-router-dom";
 import { render } from "@testing-library/react";
@@ -8,29 +8,28 @@ import * as History from "../../HelperFunctions/History";
 import DropDownMenu from "../../Containers/GenericComponenets/DropDownMenu";
 import COllapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
 import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
-import NotificationButton from "../Notifications/NotificationBtn/NotficationButton";
-import { connect } from "react-redux";
 
+ 
 /** Class HomepageSidebar 
  * @category HomePage
  * @extends Component
  */
-export class HomePageNavbar extends Component{
+export class ArtistNavbar extends Component{
   constructor(props){
     super(props); 
     this.props={
   /**URL of image in dropdown menu
-   * @memberof HomePageNavbar
+   * @memberof ArtistNavbar
    * @type {string}
    */
       image:"",
   /**Name in dropdown menu
-   * @memberof HomePageNavbar
+   * @memberof ArtistNavbar
    * @type {string}
    */
       name:"",
    /**Account type to indicate whether the upgrade button should show or not.
-   * @memberof HomePageNavbar
+   * @memberof ArtistNavbar
    * @type {string}
    */
       accountType:""
@@ -46,32 +45,26 @@ export class HomePageNavbar extends Component{
   render(){
   return (
 
-            <div className="home-nav"  style={{backgroundColor: this.props.color}}> 
+            <div className="artist-nav"  style={{backgroundColor: this.props.color}}> 
                               
               <div className="home-nav-nabar">
               
-                <div className="collapse-drop">
-                  <CollapseDropDown />
-                </div>
+                  <div className="collapse-drop">
+                    <CollapseDropDown />
+                  </div>
                   
                 
-                  <div id="ul-upgrade" className={this.props.accountType == "premium" ? 'd-none' : ''}>
-                  <Link to="/premium"><button id="upgradebtn">
-                    {this.props.premium? "DOWNGRADE" : "UPGRADE"}
-                    </button></Link>
-                  <NotificationButton/>
-                  </div>
+                 
                 
-              </div>
               
-              <div className="drop-down">
+              
+                  <div className="drop-down">
 
-                <DropDownMenu/>
-
+                    <Link to="/webplayer/HomePage"><button id="upgradebtn">LOG OUT</button></Link>
+                  
+                  </div>
+            
               </div>
-              {/* <div>
-                <NotificationButton/>
-              </div> */}
 
 
             </div>
@@ -80,11 +73,4 @@ export class HomePageNavbar extends Component{
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    premium: state.premium,
-  };
-};
-
-// export default withRouter(HomePageNavbar);
-export default connect(mapStateToProps)(HomePageNavbar);
+export default withRouter(ArtistNavbar);
