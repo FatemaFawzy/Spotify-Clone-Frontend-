@@ -15,7 +15,7 @@ class NotificationButton extends Component {
   }
 
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch("http://spotifyclone.mocklab.io/notifications/recent")
       .then((Response) => Response.json())
       .then((users) => {
         this.setState({ notifications: users });

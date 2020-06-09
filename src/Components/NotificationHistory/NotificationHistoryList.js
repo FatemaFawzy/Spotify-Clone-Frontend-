@@ -1,18 +1,18 @@
 import React from "react";
-import Notification from "./Notification"
-const NotificationList = ({ notifications }) => {
+import SingleNotificationHistory from "./SingleNotificationHistory"
+const NotificationHistoryList = ({ notifications }) => {
   return(
     <div>
         {
-          notifications.slice(0,3).map((user,i)=>{
+          notifications.map((user,i)=>{
             return(
-              <Notification
+              <SingleNotificationHistory
               key={i}
               username={notifications[i].username}
               Message={notifications[i].Message}
+              // body={notifications[i].body}
               />
               
-
               );
           })
         }
@@ -21,4 +21,4 @@ const NotificationList = ({ notifications }) => {
   );
  
 }
-export default NotificationList;
+export default NotificationHistoryList;
