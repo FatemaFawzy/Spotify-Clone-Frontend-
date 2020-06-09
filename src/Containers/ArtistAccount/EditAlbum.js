@@ -12,8 +12,8 @@ export class EditAlbum extends Component {
     super(props);
     this.state = {
       info:{
-        name:"High Hopes",
-        image:"https://example.com/image/",
+        // name:"High Hopes",
+        // image:"https://example.com/image/",
        },
        Name:"",
       Image:"",
@@ -91,6 +91,19 @@ export class EditAlbum extends Component {
           method:"POST",
           headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
         }
+        const url2 = BASEURL2+"albums/edit"; 
+        fetch(url2,requestOptions2)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            if(data.message == "album edited successfully")
+            {
+              this.props.history.push("/ArtistAccount/ArtistWebPlayer/MyAlbums");
+            }
+          })
+          .catch((error)=>{console.log(error);
+          })
     
       }
       }
@@ -100,7 +113,7 @@ export class EditAlbum extends Component {
       method:"GET",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
-    const url2 =BASEURL2+"artist/information"; 
+    const url2 =BASEURL2+"album/information"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();

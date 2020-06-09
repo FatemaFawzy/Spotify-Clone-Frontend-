@@ -60,6 +60,18 @@
   margin-left:25%;
   width:400px;
 }
+.edit-artist-information #birth-date
+{
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size:18px;
+  margin-left:25%;
+  width:450px;
+}
+.edit-artist-information .green
+{
+  color:rgb(29, 185, 84);
+}
 .edit-artist-information .general-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: rgb(29, 185, 84);
   opacity: 1; /* Firefox */

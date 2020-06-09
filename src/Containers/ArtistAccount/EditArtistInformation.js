@@ -7,8 +7,12 @@ import {connect} from "react-redux";
 import {BASEURL,BASEURL2} from "../../Constants/baseURL";
 import {NavLink,Link} from "react-router-dom";
 
+const emailFormat = RegExp(
+  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+);
 export class EditArtistInformation extends Component {
-  constructor(props){
+  constructor(props)
+  {
     super(props);
     this.state = {
    info:{
@@ -18,9 +22,31 @@ export class EditArtistInformation extends Component {
     bio:"",
     imageURL:" ",
     artistName:"Pink Floyd"
-   }  
+   },
+   email:"",
+   emailError:"",
+   day:"",
+   dayError:"",
+   month:"",
+   monthError:"",
+   year:"",
+   yearError:""
     }   
   }
+  // validateEmail = () => {
+  //  if (emailFormat.test(email)) 
+  //  {
+  //     emailPass=true;
+  //  }
+  //  else
+  //  {
+  //    emailPass=false;
+  //    this.setState({emailError:"Please enter a valid email."});
+  //  }
+  // }
+  // validateDay = () => {
+
+  // }
   componentDidMount()
   {
     const requestOptions2={
@@ -72,24 +98,61 @@ export class EditArtistInformation extends Component {
         <table>
             <tr> 
               <td><li className="list-element">Email:</li></td>
-              <td><input className="general-input" placeholder={this.state.info.email} type="text"/></td>
+              <td><input id="email" className="general-input" placeholder={this.state.info.email} type="text"/></td>
             </tr>
+            <p className="email-error">{this.state.emailError}</p>
             <tr> 
               <td><li className="list-element">Username:</li></td>
               <td><input className="general-input" placeholder={this.state.info.username} type="text"/></td>
             </tr>
+            <p className="email-error"></p>
             <tr> 
               <td><li className="list-element">Name:</li></td>
               <td><input className="general-input" placeholder={this.state.info.artistName} type="text"/></td>
             </tr>
+            <p className="email-error"></p>
             <tr> 
               <td><li className="list-element">Date Of Birth:</li></td>
-              <td><input className="general-input" placeholder={this.state.info.dateOfBirth+"(dd/mm/yyyy)"} type="text"/></td>
+              <td>
+                <div className="row" id="birth-date">
+
+                  <div className="col-3">
+                    <input name="day" className=" form-control birth-date-signup" type="number" placeholder="Day" max="31" min="1" maxLength="2" onChange={this.handleChange}/>
+                  </div>
+
+                  <div className="col-6">
+                    <select name="month" className="form-control birth-date-signup dropdown" onChange={this.handleChange}> 
+                      <option className="green" value=""> Month </option>
+                      <option value="01"> January </option>
+                      <option value="02"> February </option>
+                      <option value="03"> March </option>
+                      <option value="04"> April </option>
+                      <option value="05"> May </option>
+                      <option value="06"> June </option>
+                      <option value="07"> July </option>
+                      <option value="08"> August </option>
+                      <option value="09"> September </option>
+                      <option value="10"> October </option>
+                      <option value="11"> November </option>
+                      <option value="12"> December </option>
+                    </select>
+                  </div>
+
+                  <div className="col-3 ">
+                    <input name="year" className="form-control birth-date-signup" type="number" placeholder="Year" max="1999" min="1900" maxLength="4" onChange={this.handleChange}/>
+                  </div>
+
+                  </div>
+              </td>
             </tr>
+            <p className="email-error">{this.state.dayError}</p>
+            <p className="email-error">{this.state.monthError}</p>
+            <p className="email-error">{this.state.YearError}</p>
             <tr> 
               <td><li className="list-element">Biography:</li></td>
               <td><input className="general-input" placeholder={this.state.info.bio} type="text"/></td>
             </tr>
+            <p className="email-error"></p>
             <tr> 
               <td><li className="list-element">Cover Image URL:</li></td>
               <td><input className="general-input" placeholder={this.state.info.imageURL} type="text"/></td>
