@@ -29,6 +29,8 @@ import ArtistInformation from './ArtistInformation';
 import EditArtistInformation from './EditArtistInformation';
 import { AddAlbum } from './AddAlbum';
 import {AddSong} from './AddSong';
+import { EditSong } from './EditSong';
+import EditAlbum from "./EditAlbum";
 
 
 var isPremium=false;
@@ -56,6 +58,8 @@ class ArtistWebPlayer extends Component {
           <Route exact path="/ArtistAccount/ArtistWebPlayer/MyAlbums" component={ArtistAlbums}/>
           <Route exact path="/ArtistAccount/ArtistWebPlayer/MyInfo" component={ArtistInformation}/>
           <Route exact path="/ArtistAccount/ArtistWebPlayer/MyInfo/EditMyInfo" component={EditArtistInformation}/>
+          <Route exact path="/ArtistAccount/ArtistWebPlayer/MySongs/EditSong" component={EditSong}/>
+          <Route exact path="/ArtistAccount/ArtistWebPlayer/MySongs/EditAlbum" component={EditAlbum}/>
           <Route exact path="/ArtistAccount/ArtistWebPlayer/AddAlbum" component={AddAlbum}/>
           <Route exact path="/ArtistAccount/ArtistWebPlayer/AddSong" component={AddSong}/>
          </Switch>

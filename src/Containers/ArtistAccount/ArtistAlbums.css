@@ -326,7 +326,7 @@
 .artist-albums .dropdown  {
   position: absolute;
   display: inline-flex;
-  
+  right: 20px;
   color:white;
   text-decoration: none;
 }
