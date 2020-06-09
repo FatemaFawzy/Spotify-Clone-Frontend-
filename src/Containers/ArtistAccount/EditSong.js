@@ -12,8 +12,8 @@ export class EditSong extends Component {
     super(props);
     this.state = {
    info:{
-    name:"High Hopes",
-    image:"https://example.com/image/",
+    // name:"High Hopes",
+    // image:"https://example.com/image/",
    },
    Name:"",
   Image:"",
@@ -91,6 +91,19 @@ export class EditSong extends Component {
       method:"POST",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
+    const url2 = "http://spotifyclonemock.mocklab.io/songs/edit"; 
+    fetch(url2,requestOptions2)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if(data.message == "song edited successfully")
+        {
+          this.props.history.push("/ArtistAccount/ArtistWebPlayer/MySongs");
+        }
+      })
+      .catch((error)=>{console.log(error);
+      })
 
   }
   }
@@ -100,7 +113,7 @@ export class EditSong extends Component {
       method:"GET",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
-    const url2 =BASEURL2+"artist/information"; 
+    const url2 =BASEURL2+"song/information"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();
