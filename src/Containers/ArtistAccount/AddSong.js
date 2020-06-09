@@ -92,11 +92,54 @@ export class AddSong extends Component {
      {
      clr.reset();
      }
-      this.props.history.push("/ArtistAccount/ArtistWebPlayer/AddSong")
+     const requestOptions2={
+      method:"POST",
+      headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+    }
+
+    const url2 = "http://spotifyclonemock.mocklab.io/songs/add"; 
+    fetch(url2,requestOptions2)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data.message == "song added successfully")
+        {
+          console.log("song added successfully");
+          this.props.history.push("/ArtistAccount/ArtistWebPlayer/AddSong")
+        }
+      })
+      .catch((error)=>{console.log(error);
+      })
+     
       
      
     }
   };
+  clickDone = () => {
+    if(this.validateAlbumName() && this.validateImage())
+    {
+    const requestOptions2={
+      method:"POST",
+      headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+    }
+
+    const url2 = "http://spotifyclonemock.mocklab.io/songs/add"; 
+    fetch(url2,requestOptions2)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data.message == "song added successfully")
+        {
+          console.log("song added successfully");
+          this.props.history.push("/ArtistAccount/ArtistWebPlayer/")
+        }
+      })
+      .catch((error)=>{console.log(error);
+      })
+    }
+  }
   
 
     render(){
@@ -128,7 +171,7 @@ export class AddSong extends Component {
             </form>
               <div className="Add-songs d-flex justify-content-center">
                 <button onClick={this.clickSubmit}>Add another song</button>
-                  <Link to="/ArtistAccount/ArtistWebPlayer/"><button>Done</button></Link>
+                 <button onClick={this.clickDone}>Done</button>
                 </div>
         
         </div>
