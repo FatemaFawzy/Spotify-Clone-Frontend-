@@ -71,3 +71,38 @@
   margin-left:40px;
 }
 }
+@media (max-width:977px)
+{
+  .edit-artist-information .general-input
+  {
+    width:300px;
+  }
+}
+@media (max-width:850px)
+{
+  .edit-artist-information .general-input
+  {
+    margin-left:15%;
+  }
+}
+@media (max-width:818px)
+{
+  .edit-artist-information .general-input
+  {
+    margin-left:5%;
+    width:250px;
+  }
+}
+@media (max-width:818px) and (min-with:500px)
+{
+  .edit-artist-information .title
+  {
+    font-size:36px;
+  }
+}
+@media (max-width:500px)
+{
+  .edit-artist-information .button{
+    margin-left:-70px;
+  }
+}
