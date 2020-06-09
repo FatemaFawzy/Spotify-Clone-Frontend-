@@ -8,7 +8,9 @@ import * as History from "../../HelperFunctions/History";
 import DropDownMenu from "../../Containers/GenericComponenets/DropDownMenu";
 import COllapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
 import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
-import NotificationButton from "../Notifications/NotificationBtn/NotficationButton"
+import NotificationButton from "../Notifications/NotificationBtn/NotficationButton";
+import { connect } from "react-redux";
+
 /** Class HomepageSidebar 
  * @category HomePage
  * @extends Component
@@ -54,7 +56,9 @@ export class HomePageNavbar extends Component{
                   
                 
                   <div id="ul-upgrade" className={this.props.accountType == "premium" ? 'd-none' : ''}>
-                  <Link to="/premium"><button id="upgradebtn">UPGRADE</button></Link>
+                  <Link to="/premium"><button id="upgradebtn">
+                    {this.props.premium? "DOWNGRADE" : "UPGRADE"}
+                    </button></Link>
                   <NotificationButton/>
                   </div>
                 
@@ -76,4 +80,11 @@ export class HomePageNavbar extends Component{
   }
 }
 
-export default withRouter(HomePageNavbar);
+const mapStateToProps = (state) => {
+  return {
+    premium: state.premium,
+  };
+};
+
+// export default withRouter(HomePageNavbar);
+export default connect(mapStateToProps)(HomePageNavbar);

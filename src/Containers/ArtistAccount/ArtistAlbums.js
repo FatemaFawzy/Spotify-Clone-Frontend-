@@ -105,9 +105,9 @@ deleteAlbum = () => {
 
             <h1 className="artist-name font-weight-bolder"> My Albums</h1>
             <div id="buttons">
-         <button id="follow-button" className="btn btn-success rounded-pill " >
+         <Link to="/ArtistAccount/ArtistWebPlayer/AddAlbum"><button id="follow-button" className="btn btn-success rounded-pill " >
            Add Album   <i class="fas fa-plus"></i>
-         </button>
+         </button></Link>
         </div>   
           </div>
           <ComponentBlock ComponentName="Popular Albums" type="albums" description="" details={this.state.PopularAlbums} excess={false}   /> 

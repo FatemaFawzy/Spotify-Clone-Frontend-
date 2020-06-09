@@ -45,7 +45,11 @@ export class ArtistSongs extends Component {
     headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
   }
 
+<<<<<<< HEAD
    const url1 =BASEURL2+"artist/mysongs/id"; 
+=======
+   const url1 =BASEURL2 + "artist/mysongs/id"; 
+>>>>>>> 2a0b1618b5f884e6e8e5c93a00f4fdb801ca5d30
   fetch(url1,requestOptions1)
     .then((response) => {
       return response.json();
@@ -65,7 +69,7 @@ export class ArtistSongs extends Component {
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
 
-    const url2 = BASEURL2+"artist/mysongs/id"; 
+    const url2 = BASEURL2 + "artist/mysongs/id"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();
@@ -108,16 +112,16 @@ this.setState({Deleted:true});
 
             <h1 className="artist-name font-weight-bolder"> My Songs</h1>
             <div id="buttons">
-         <button id="follow-button" className="btn btn-success rounded-pill " >
+         <Link to="/ArtistAccount/ArtistWebPlayer/AddSong"><button id="follow-button" className="btn btn-success rounded-pill " >
            Add Song   <i class="fas fa-plus"></i>
-         </button>
+         </button></Link>
         </div>   
           </div>
           <div className="col-xs-12 col-sm-12 ">
           <ComponentBlock ComponentName="Popular Songs" type="songs" description="" details={this.state.PopularSongs} excess={false}   />
+          <h1 id="all-songs">All Songs</h1>
         <table className="table table-borderless"> 
-         <h1 id="all-songs">All Songs</h1>
-          <tbody>
+         <tbody>
                                              {/* Display likd songs */}
            {this.state.SongInfo.map((song,id)=>(
             <tr key={id}>

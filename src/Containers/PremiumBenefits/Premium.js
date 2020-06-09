@@ -3,12 +3,55 @@ import './Premium.css';
 import MainNavbar from "../../Components/WelcomeRelated/MainNavbar";
 import Footer from "../../Components/WelcomeRelated/Footer";
 import {Link, Router } from "react-router-dom";
+import {BASEURL} from "../../Constants/baseURL";
+import { connect } from "react-redux";
+import * as actionTypes from "../../Store/actions";
+import ReactSnackBar from "react-js-snackbar";
+import "../../Components/PlaylistsComponent/SnackBar.css";
 
 /** Class Premium that creates the premium benefits page.
  * @category Premium
  * @extends Component
  */
 export class Premium extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showSnackBar: false,
+      snackBarMes: "",      
+    };
+  }
+  premiumSwitch = e => {
+    const requestOptions = {
+      method: "POST",
+      // headers: { "x-auth": this.props.userToken },
+    };
+    const url = BASEURL + "users/premium";
+    fetch(url, requestOptions)
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((data) => {
+        if (data.message == "Email confirmed successfully,Welcome To Premium Life!") {
+          this.props.onChangePremium(true);
+          this.setState({
+            showSnackBar: true,
+            snackBarMes: "Welcome to The Premium Family!",
+          });
+          setTimeout(() => {
+            this.setState({ showSnackBar: false });
+          }, 2000);
+        }
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });    
+
+  }
+
 render() {
 return ( 
   <div className="premium">
@@ -83,15 +126,33 @@ return (
         <p><i className="fas fa-check"></i><span className="pl-2">No ad interruptions</span></p>
         <p><i className="fas fa-check"></i><span className="pl-2">Reach new releases first</span></p>
         <p className="border-bottom2"><i className="fas fa-check"></i><span className="pl-2">View daily top picks</span></p>
-        <Link to="/signup" className="btn btn-success bigger" >GET PREMIUM</Link>
+        <button className="btn btn-success bigger" onClick={this.premiumSwitch}>GET PREMIUM</button>
       </div>
     </div>
 
     <p className="text-center pt-5" id="last">Terms and conditions apply.</p>
-
+    <ReactSnackBar
+          Icon={<span className="fab fa-spotify"></span>}
+          Show={this.state.showSnackBar}
+        >
+          {this.state.snackBarMes}
+        </ReactSnackBar>
     <Footer />
   </div>
 );
 }
 }
-export default Premium;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onChangePremium: (accountState) => dispatch({ type: actionTypes.CHANGE_PREMIUM, value: accountState }),
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    premium: state.premium,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Premium);
