@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Megrim&display=swap');
+
+.addedSongPopUp{
+  transform: translate(-300%,0%);
+  background: #ad5389;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  width: 104%;
+  margin-left: -2%;
+  height: 50px;
+  border-radius: 5%;
+  margin-top: -19px;
+  -webkit-box-shadow: 0px 6px 15px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 6px 15px 0px rgba(0,0,0,0.75);
+  box-shadow: inset 1px 3px 5px 0px rgba(0,0,0,0.75);  
+}
+.addedTextStyle{
+  font-family: 'Megrim', cursive;
+  font-weight: 900;
+  text-align: center;
+  font-size: x-large;
+  transform: translate(0,50%);
+  color: aliceblue;
+}
+#icon{
+  color: #FFD700	;
+}
