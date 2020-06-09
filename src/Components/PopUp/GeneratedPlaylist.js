@@ -19,7 +19,7 @@ function GeneratedPlaylist() {
   return (
     <div className="buttonPopContainer"
     style={{
-      transform:'translate(-18.5%,850%)',
+      transform:'translate(20%,370%)',
 
 
     }}

@@ -5,7 +5,6 @@ import './SearchBoxNotificationHist.css'
 import SearchBoxNotificationHist from './SearchBoxNotificationHist'
 import NotificationHistoryList from './NotificationHistoryList'
 import { Link } from "react-router-dom";
-import {Switch, Route} from "react-router-dom";
 class NotificationHistory extends Component {
   constructor() {
     super();
@@ -41,7 +40,7 @@ class NotificationHistory extends Component {
           <div>
           <ReactNotifications/>
           <div>
-            {/* <Link  to="/webplayer/PopUp/" className='seeAll'>PopUpPage</Link> */}
+            <Link  to="/webplayer/PopUp/" className='seeAll'>PopUpPage</Link>
 
           </div>
           </div>
