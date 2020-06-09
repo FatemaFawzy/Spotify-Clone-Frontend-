@@ -12,7 +12,7 @@ const initialState = {
   loggenIn: false,
   selectedGenreID: null,
   selectedGenreColor: null,
-  playingSongID: null,
+  playingSongID: 0,
   playingPlaylistID: null,
   somethingIsPlaying:false,
   playOnRepeat:false,
@@ -21,6 +21,7 @@ const initialState = {
   premium: false,
   trackNum: 0,
   progress: 0,
+  reload: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -235,6 +236,14 @@ const reducer = (state = initialState, action) => {
           
                 };
                 break;
+
+                case actionTypes.ENABLE_LOAD_AUDIO:
+                  return {
+                    ...state,
+                    reload: action.value
+            
+                  };
+                  break;
     default:
       return state;
       break;

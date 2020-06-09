@@ -254,6 +254,12 @@ class MusicBar extends Component {
         }
       }
       //----------------End of Ads Audio handling----------------------------
+
+      // //check if a new song is selected
+      // if (this.props.reload) {
+      //   this.refs.player.load();
+      //   this.props.onChangeReload(false);
+      // }
     }
 
     if (this.props.somethingIsPlaying) {
@@ -296,7 +302,11 @@ class MusicBar extends Component {
                   <div className="col-2 ">
                     <img
                       className="card-img song-photo"
-                      src={!this.props.adsModeOn?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].imgURL:"https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"}
+                      src={!this.props.adsModeOn?
+                        
+                        ((this.state.playQueue)?Tracks[this.props.trackNum].imgURL:Tracks[this.props.playingSongID].imgURL):
+                        "https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
+                        }
                     ></img>
                   </div>
 
@@ -307,7 +317,10 @@ class MusicBar extends Component {
                           <div className="song-name prevent-overflow">
                             <a id="song-name" href={this.state.albumLink}>
                               {" "}
-                              {!this.props.adsModeOn?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].SongName:"Ad Audio"}{" "}
+                              {!this.props.adsModeOn?
+                                
+                                ((this.state.playQueue)?Tracks[this.props.trackNum].SongName:Tracks[this.props.playingSongID].SongName):
+                                "Ad Audio"}{" "}
                             </a>
                           </div>
 
@@ -316,8 +329,10 @@ class MusicBar extends Component {
                               id="artist-name"
                               href={this.state.artistProfileLink}
                             >
-                              {" "}
-                              {!this.props.adsModeOn?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].Artist:"Spotify"}{" "}
+                              {
+                                !this.props.adsModeOn?
+                                ((this.state.playQueue)?Tracks[this.props.trackNum].Artist:Tracks[this.props.playingSongID].Artist):
+                                "Spotify"}
                             </a>
                           </div>
                         </li>
@@ -480,7 +495,11 @@ class MusicBar extends Component {
 
         <audio ref="player" loop={this.props.playOnRepeat}>
           {/* <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" /> */}
-          <source src={!this.props.adsModeOn?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].songURL:AdsAudio} />
+          <source src={
+            !this.props.adsModeOn?
+            (this.state.playQueue)?Tracks[this.props.trackNum].songURL:Tracks[this.props.playingSongID].songURL:
+            AdsAudio
+            } autoplay/>
         </audio>
       </div>
     );
@@ -496,6 +515,7 @@ const mapDispatchToProps = (dispatch) => {
     onChangeProgress: (progressValue) => dispatch({ type: actionTypes.CHANGE_SONG_PROGRESS, value: progressValue }),
     onSongEnded: () => dispatch({ type: actionTypes.INCREMENT_NUM_SONGS }),
     onAdsEnded: () => dispatch({ type: actionTypes.EXIT_ADS_MODE }),
+    onChangeReload: (Reload) => dispatch({ type: actionTypes.ENABLE_LOAD_AUDIO, value: Reload }),
   };
 };
 
@@ -507,6 +527,7 @@ const mapStateToProps = (state) => {
     adsModeOn: state.adsModeOn,
     trackNum: state.trackNum,
     progress: state.progress,
+    reload: state.reload,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(MusicBar);

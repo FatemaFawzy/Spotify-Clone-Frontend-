@@ -183,8 +183,8 @@ const mapDispatchToProps = dispatch => {
 
     onSongClicked: (itemID) => dispatch({ type: actionTypes.SELECT_SONG, value: itemID }),
     onArtistClicked: (itemID) => dispatch({ type: actionTypes.SELECT_ARTIST, value: itemID }),
-    onPlayASong: (songID) => dispatch({ type: actionTypes.PLAY_SONG, value: songID }),
-
+    // onPlayASong: (songID) => dispatch({ type: actionTypes.PLAY_SONG, value: songID, type: actionTypes.ENABLE_LOAD_AUDIO, value: true}),
+    onPlayASong: (songID) => dispatch({ type: actionTypes.PLAY_SONG, value: songID}),
   };
 
 };

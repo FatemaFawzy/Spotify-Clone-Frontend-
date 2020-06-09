@@ -20,28 +20,28 @@ export class SongsByGenre extends Component {
         imagePath: "https://i.ytimg.com/vi/0R6YO0IAN48/maxresdefault.jpg",
         trackName: "Perfect",
         artistName: "Ed Sheeran",
-        _id: "1",
+        _id: "0",
         artistId: "1",
       },
       {
         imagePath: "https://images-na.ssl-images-amazon.com/images/I/71x%2BT7Cjx8L._AC_SL1400_.jpg",
         trackName: "Radioactive",
         artistName: "Imagine Dragons",
-        _id: "2",
+        _id: "17",
         artistId: "2",
       },
       {
         imagePath: "https://i.pinimg.com/originals/8b/8c/c5/8b8cc57a160d164cdf008e63acecfc4e.jpg",
         trackName: "Call Out My Name",
         artistName: "The Weekend",
-        _id: "3",
+        _id: "20",
         artistId: "3",
       },
       {
         imagePath: "https://m.media-amazon.com/images/I/81Jbh4gWTDL._SS500_.jpg",
         trackName: "I'm a Mess",
         artistName: "Bebe Rexha",
-        _id: "4",
+        _id: "6",
         artistId: "4",
       }
 
