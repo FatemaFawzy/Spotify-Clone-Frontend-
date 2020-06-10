@@ -162,23 +162,23 @@ export class EditArtistInformation extends Component {
       })
   }
   clickSubmit = () => {
-    if (this.state.email.length == 0)
+    if (this.state.email.value == null)
     {
       this.setState({email:this.state.info.email});
     }
-    if (this.state.username.length == 0)
+    if (this.state.username.value == null)
     {
       this.setState({username:this.state.info.username});
     }
-    if (this.state.artistName == 0)
+    if (this.state.artistName.value == null)
     {
       this.setState({artistName:this.state.info.artistName});
     }
-    if (this.state.bio.length == 0)
+    if (this.state.bio.value == null)
     {
       this.setState({bio:this.state.info.bio});
     }
-    if (this.state.imageURL.length == 0)
+    if (this.state.imageURL.value == null)
     {
       this.setState({imageURL:this.state.info.imageURL});
     }
