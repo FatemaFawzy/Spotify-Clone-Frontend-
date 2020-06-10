@@ -35,7 +35,6 @@ export class ArtistInformation extends Component {
       .then((data) => {
         this.setState({
         info: data.info});
-        console.log(this.state.info);
       })
       .catch((error)=>{console.log(error);
       })

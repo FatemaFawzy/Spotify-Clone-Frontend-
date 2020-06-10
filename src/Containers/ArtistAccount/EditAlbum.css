@@ -13,11 +13,14 @@
 {
   margin-left:75px;
 }
+.edit-album h4{
+  font-size: 20px;
+}
+
 .edit-album .title
 {
   font-weight:600;
   padding-left:20px;
-  padding-bottom:10px;
   color:#b3b3b3;
 }
 .edit-album .button

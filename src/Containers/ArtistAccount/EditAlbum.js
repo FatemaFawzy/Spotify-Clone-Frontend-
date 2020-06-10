@@ -121,7 +121,6 @@ export class EditAlbum extends Component {
       .then((data) => {
         this.setState({
         info: data.info});
-        console.log(this.state.info);
       })
       .catch((error)=>{console.log(error);
       })
@@ -133,7 +132,8 @@ export class EditAlbum extends Component {
           image="https://scontent.fcai3-1.fna.fbcdn.net/v/t1.0-9/19397029_10210794027939033_5811382860033366804_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_eui2=AeHEhGNHMDc070CTQv4WD5FK-tEUbysbE-HFFkFOk7OxsfeTak6rLywRWjbRlCDjWmzjtl79NUg2XF9AsJX_0QE9j0LnqnOoo_ADLnnZUnidEA&_nc_ohc=QgP5sx3F3dsAX-nzFSx&_nc_ht=scontent.fcai3-1.fna&oh=86cb020fb7ea1a4e8c69aaaf075680d5&oe=5EA58791"/>
             
       <div className="info-content">
-        <h1 className="title"><i class="fas fa-info-circle"></i> Edit Album</h1>
+        <h1 className="title"><i class="fas fa-info-circle"></i> Edit Album </h1>
+        <h4> [Type NONE in the field that you don't want to change]</h4>
         <p id="error-message" className="d-none">Please fill all the required inputs</p>
         <table>
             <tr> 

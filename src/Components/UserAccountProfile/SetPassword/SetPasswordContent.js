@@ -135,8 +135,6 @@ export class SetPasswordContent extends Component{
     }
     let current = this.state.current;
     let currentError = this.state.currentError;
-    // event.preventDefault();
-    // console.log(email.length);
     this.validateCurrent();
     this.validateNew();
     if (this.validateCurrent() && this.validateNew())
@@ -163,9 +161,6 @@ export class SetPasswordContent extends Component{
             return response.text();
           })
           .then((data) => {
-           console.log(data);
-           console.log(this.state.current);
-           console.log(data);
           
            if(data == this.state.current){
             const requestOptions2 = {
@@ -184,8 +179,6 @@ export class SetPasswordContent extends Component{
                 return response.text();
               })
               .then((data) => {
-               console.log(data);
-               console.log(this.state.current);
                if(data.message == "password changed successfully"){
                 document.querySelector("#success").classList.remove("d-none");
     
