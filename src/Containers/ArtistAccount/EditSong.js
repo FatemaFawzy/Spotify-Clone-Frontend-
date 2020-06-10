@@ -19,69 +19,45 @@ export class EditSong extends Component {
   Image:"",
   }
   }
-  validateAlbumName = () => {
-    let Name = this.state.Name;
-    let proceedname = true;
-    if (Name.length === 0) {
-      if (document.querySelector("#basic-url1")) {
-        document.querySelector("#basic-url1").classList.add("redbox");
-        document.querySelector("#error-message").classList.remove("d-none");
-      }
-      proceedname = false;
-    } else {
-     
-      if (document.querySelector("#basic-url1")) {
-        document.querySelector("#basic-url1").classList.remove("redbox");
-        document.querySelector("#error-message").classList.add("d-none");
-      }
-      proceedname = true;
-    }
-    return proceedname;
-  };
-  validateImage = () => {
-    let Image = this.state.Image;
-    let proceedimage = true;
-    if (Image.length === 0) {
-      if (document.querySelector("#basic-url2")) {
-        document.querySelector("#basic-url2").classList.add("redbox");
-        document.querySelector("#error-message").classList.remove("d-none");
-      }
-      proceedimage = false;
-    } else {
-     
-      if (document.querySelector("#basic-url2")) {
-        document.querySelector("#basic-url2").classList.remove("redbox");
-        document.querySelector("#error-message").classList.add("d-none");
-      }
-      proceedimage = true;
-    }
-    return proceedimage;
-  };
 
-  handleName = (event) => {
-    let Name = this.state.Name;
+   handleName = (event) => {
+   let Name = this.state.Name;
     Name = event.target.value;
     this.state.Name = Name;
-    this.validateAlbumName();
+    // this.validateAlbumName();
   };
 
   handleImage = (event) => {
     let Image = this.state.Image;
     Image = event.target.value;
     this.state.Image = Image;
-    this.validateImage();
+    // this.validateImage();
   };
 
   clickSubmit= (event) => {
-    let Name=this.state.Name;
-    let Image=this.state.Image;
+
     if (event) {
       event.preventDefault();
     }
-    this.validateAlbumName();
-    this.validateImage();
-    if(this.validateAlbumName() && this.validateImage())
+    
+    console.log(this.state.info.name);
+    console.log(this.state.info.image);
+    
+    if(this.state.Name.length == 0)
     {
+      this.state.Name=this.state.info.name
+      
+    }
+     if(this.state.Image.length == 0)
+    {
+      this.state.Image=this.state.info.image
+    }
+    console.log(this.state.Name);
+    console.log(this.state.Image);
+    if(this.state.Name != null && this.state.Image != null)
+    {
+      console.log(this.state.Name);
+      console.log(this.state.Image);
       var clr= document.querySelector(".add-info");
      if (clr)
      {
@@ -91,7 +67,7 @@ export class EditSong extends Component {
       method:"POST",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
-    const url2 = "http://spotifyclonemock.mocklab.io/songs/edit"; 
+    const url2 = BASEURL2 + "songs/edit"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();
@@ -113,7 +89,7 @@ export class EditSong extends Component {
       method:"GET",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
-    const url2 =BASEURL2+"song/information"; 
+    const url2 =BASEURL2 + "song/information"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();
@@ -133,7 +109,6 @@ export class EditSong extends Component {
             
       <div className="info-content">
         <h1 className="title"><i class="fas fa-info-circle"></i>Edit Song </h1>
-        <h4>[Type NONE in the field that you don't want to change]</h4>
         <p id="error-message" className="d-none">Please fill all the required inputs</p>
         <table>
             <tr> 
