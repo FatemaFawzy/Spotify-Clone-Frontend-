@@ -4,7 +4,7 @@ import ArtistHomePageNavbar from "./ArtistNavbar";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
-import {BASEURL,BASEURL2} from "../../Constants/baseURL";
+import {BASEURL,BASEURL} from "../../Constants/baseURL";
 import {NavLink,Link} from "react-router-dom";
 
 export class EditAlbum extends Component {
@@ -65,7 +65,7 @@ export class EditAlbum extends Component {
           method:"POST",
           headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
         }
-        const url2 = BASEURL2 + "albums/edit"; 
+        const url2 = BASEURL + "albums/edit"; 
         fetch(url2,requestOptions2)
           .then((response) => {
             return response.json();
@@ -87,7 +87,7 @@ export class EditAlbum extends Component {
       method:"GET",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
-    const url2 =BASEURL2 + "album/information"; 
+    const url2 =BASEURL + "album/information"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();

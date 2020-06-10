@@ -6,7 +6,7 @@ import ArtistAlbumsNavbar from "./ArtistNavbar";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
-import {BASEURL,BASEURL2} from "../../Constants/baseURL";
+import {BASEURL,BASEURL} from "../../Constants/baseURL";
 import {NavLink,Link} from "react-router-dom";
 
 
@@ -48,7 +48,7 @@ export class ArtistAlbums extends Component {
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
   
-    const url1 =BASEURL2+"artist/myalbums/id"; 
+    const url1 =BASEURL+"artist/myalbums/id"; 
      fetch(url1,requestOptions1)
       .then((response) => {
         return response.json();
@@ -66,7 +66,7 @@ export class ArtistAlbums extends Component {
         headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
       }
   
-      const url2 =BASEURL2+"artist/myalbums/id"; 
+      const url2 =BASEURL+"artist/myalbums/id"; 
       fetch(url2,requestOptions2)
         .then((response) => {
           return response.json();
@@ -86,7 +86,7 @@ deleteAlbum = () => {
     method:'DELETE'
   }
 
-  const url2 =BASEURL2+"album/remove/id"; 
+  const url2 =BASEURL+"album/remove/id"; 
 
   fetch(url2,requestOptions2)
     .then((response) => { return response.json()})

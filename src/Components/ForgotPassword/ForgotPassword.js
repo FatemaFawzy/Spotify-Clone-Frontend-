@@ -4,7 +4,7 @@ import Header from  "../WelcomeRelated/Header";
 import Footer from "../WelcomeRelated/Footer";
 import {BrowserRouter as Router, Redirect} from "react-router-dom";
 import {Link} from "react-router-dom";
-import {BASEURL,BASEURL2} from "../../Constants/baseURL";
+import {BASEURL,BASEURL} from "../../Constants/baseURL";
 
 const initialState = {
   /**Input string for the email
@@ -120,7 +120,7 @@ export class ForgotPassword extends Component {
    * @memberof ForgotPassword
    * @type {string}
    */
-      var url =BASEURL2+'user/email'; 
+      var url =BASEURL+'user/email'; 
       fetch(url,requestOptions)
         .then((response) => {
           return response.json();

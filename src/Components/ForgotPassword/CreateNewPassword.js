@@ -4,7 +4,7 @@ import Header from  "../WelcomeRelated/Header";
 import Footer from "../WelcomeRelated/Footer";
 import {BrowserRouter as Router, Redirect, withRouter} from "react-router-dom";
 import {Link} from "react-router-dom";
-import {BASEURL,BASEURL2} from "../../Constants/baseURL";
+import {BASEURL,BASEURL} from "../../Constants/baseURL";
 
 const initialState = {
   /**Input string for the password
@@ -106,7 +106,7 @@ export class CreateNewPassword extends Component {
       headers: {'Content-Type':  'application/json'},
       body: JSON.stringify({token:userToken, newPassword: this.state.newPassword})
     };
-    const url = BASEURL2+"user/changepassword"; 
+    const url = BASEURL+"user/changepassword"; 
     fetch(url,requestOptions)
       .then((response) => {
         return response.json();
