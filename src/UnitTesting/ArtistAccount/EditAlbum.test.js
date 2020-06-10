@@ -7,7 +7,7 @@ import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
 
 //IMPORT THE COMPONENT YOU WANNA TEST
-import {EditSong} from "../../Containers/ArtistAccount/EditSong";
+import {EditAlbum} from "../../Containers/ArtistAccount/EditAlbum";
 
  //CALL THE DESCRIBE FUNCTION 
 //IT TAKES TWO PARAMETERS 1ST: A TEXT DESCRIPTION
@@ -16,11 +16,11 @@ import {EditSong} from "../../Containers/ArtistAccount/EditSong";
 
 
 
-describe("EditSong Render test", ()=>{
+describe("EditAlbum Render test", ()=>{
 
   let wrapper;
   beforeEach(() => {
-   wrapper = shallow(<EditSong /> ); 
+   wrapper = shallow(<EditAlbum /> ); 
   });
 
   
@@ -36,24 +36,24 @@ describe("EditSong Render test", ()=>{
 })
 
  
-  describe("EditSong handleName function test", ()=>{
-    it('Song Name handle on change check', () => {
-      const wrapper = shallow(<EditSong /> );
+  describe("EditAlbum handleAlbumName function test", ()=>{
+    it('Album Name handle on change check', () => {
+      const wrapper = shallow(<EditAlbum /> );
       const input = wrapper.find('input#basic-url1');
       const event ={
         preventDefault(){},
-        target: {value:'Song Name'}
+        target: {value:'Album Name'}
       };
       input.simulate('change',event);
-     expect(wrapper.state().Name).toContain("Song Name");
+     expect(wrapper.state().Name).toContain("Album Name");
     });
 })
   
 
 
-describe("EditSong handleImage function test", ()=>{
-  it('Song Image handle on change check', () => {
-    const wrapper = shallow(<EditSong /> );
+describe("EditAlbum handleImage function test", ()=>{
+  it('Album Image handle on change check', () => {
+    const wrapper = shallow(<EditAlbum /> );
     const input = wrapper.find('input#basic-url2');
     const event ={
       preventDefault(){},
