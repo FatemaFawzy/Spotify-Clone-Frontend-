@@ -144,13 +144,15 @@ export class SongSearched extends Component {
 
               this.props.onPlayASong(this.props.id);
 
-              if ((this.props.id === this.props.playingSongID) && this.props.somethingIsPlaying) {
+              if ((this.props.id == this.props.playingSongID) && this.props.somethingIsPlaying) {
                 this.setState({ songSearchedIdActive: "" });
+                
               }
               else {
                 let prevActive = document.getElementById("song-searched-active");
                 if (prevActive) { prevActive.id = ""; }
                 this.setState({ songSearchedIdActive: "song-searched-active" });
+                this.props.onLoadSong(true);
               }
 
             }}>{PlayPause}</button>
@@ -185,6 +187,7 @@ const mapDispatchToProps = dispatch => {
     onArtistClicked: (itemID) => dispatch({ type: actionTypes.SELECT_ARTIST, value: itemID }),
     // onPlayASong: (songID) => dispatch({ type: actionTypes.PLAY_SONG, value: songID, type: actionTypes.ENABLE_LOAD_AUDIO, value: true}),
     onPlayASong: (songID) => dispatch({ type: actionTypes.PLAY_SONG, value: songID}),
+    onLoadSong: (boolStatus) => dispatch({type:actionTypes.ENABLE_LOAD_AUDIO, value:boolStatus}),
   };
 
 };

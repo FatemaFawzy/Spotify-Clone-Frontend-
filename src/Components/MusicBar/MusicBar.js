@@ -172,12 +172,25 @@ class MusicBar extends Component {
   playPrevious = (e) => {
     //if it's playing a queue, get the previous song
     if (this.state.playQueue) {
+      let newTrackNum;
       if (this.state.trackNum != 0)
+      {
+        newTrackNum=this.state.trackNum -1;
+        this.setState((prevState, props) => ({
+          trackNum: prevState.trackNum - 1
+        }));
         // this.props.onChangeIndex(this.props.trackNum -1);
-        this.setState({trackNum: this.state.trackNum -1})
+        // this.setState({trackNum: this.state.trackNum -1})
+      }
+        
       else if (this.state.trackNum == 0)
+      {
+        newTrackNum=Tracks.length -1;
         // this.props.onChangeIndex(Tracks.length - 1);
         this.setState({trackNum: Tracks.length -1})
+      }
+
+      this.props.changePlayingSongID(newTrackNum.toString());
       this.refs.player.load();
     }
     //if only one song is playing, just play it from the start
@@ -186,12 +199,27 @@ class MusicBar extends Component {
 
   playNext = (e) => {
     if (this.state.playQueue) {
+      let newTrackNum;
       if (this.state.trackNum != Tracks.length - 1)
-        // this.props.onChangeIndex(this.props.trackNum +1);
-        this.setState({trackNum: this.state.trackNum +1})
+      {
+        newTrackNum=this.state.trackNum +1;
+      // this.props.onChangeIndex(this.props.trackNum +1);
+      this.setState((prevState, props) => ({
+        trackNum: prevState.trackNum + 1
+      }));
+        
+      // this.setState({trackNum: this.state.trackNum +1})
+      
+
+      }
+  
       else if (this.state.trackNum == Tracks.length - 1)
+      {
         // this.props.onChangeIndex(0);
+        newTrackNum=0;
         this.setState({trackNum: 0})
+      }
+      this.props.changePlayingSongID(newTrackNum.toString());
       this.refs.player.load();
     }
   };
@@ -296,6 +324,17 @@ class MusicBar extends Component {
       volumeIcon = "fa-volume-up";
     }
 
+    //check if a song componenet is playing a song 
+    if(this.props.reload)
+    {
+      //make the request to get the song here
+
+      this.setState({trackNum:parseInt(this.props.playingSongID)})
+      if(this.refs.player) this.refs.player.load();
+      this.props.onLoadSong(false);
+    }
+
+
     return (
       <div className="music-bar d-flex align-items-center pt-0 pb-0">
         <ReactSnackBar
@@ -317,7 +356,7 @@ class MusicBar extends Component {
                         
                         // ((this.state.playQueue)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].imgURL:Tracks[1].imgURL):
                         // "https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
-                        (!this.props.adsModeOn)?Tracks[this.state.trackNum].imgURL:"https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
+                        (!this.props.adsModeOn)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].imgURL:"https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
                       }
                     ></img>
                   </div>
@@ -334,7 +373,7 @@ class MusicBar extends Component {
                                 
                               //   ((this.state.playQueue)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].SongName:Tracks[1].SongName):
                               //   "Ad Audio"
-                              (!this.props.adsModeOn)?Tracks[this.state.trackNum].SongName:"Ad Audio"
+                              (!this.props.adsModeOn)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].SongName:"Ad Audio"
                                 }
                             </a>
                           </div>
@@ -348,7 +387,7 @@ class MusicBar extends Component {
                                 // !this.props.adsModeOn?
                                 // ((this.state.playQueue)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].Artist:Tracks[1].Artist):
                                 // "Spotify"
-                                (!this.props.adsModeOn)?Tracks[this.state.trackNum].Artist:"Spotify"
+                                (!this.props.adsModeOn)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].Artist:"Spotify"
                                 }
                             </a>
                           </div>
@@ -516,7 +555,7 @@ class MusicBar extends Component {
             // !this.props.adsModeOn?
             // (this.state.playQueue)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].songURL:Tracks[1].songURL:
             // AdsAudio
-            (!this.props.adsModeOn)? Tracks[this.state.trackNum].songURL: AdsAudio
+            (!this.props.adsModeOn)?Tracks[this.state.trackNum]&& Tracks[this.state.trackNum].songURL: AdsAudio
             } autoplay/>
         </audio>
       </div>
@@ -533,7 +572,8 @@ const mapDispatchToProps = (dispatch) => {
     onChangeProgress: (progressValue) => dispatch({ type: actionTypes.CHANGE_SONG_PROGRESS, value: progressValue }),
     onSongEnded: () => dispatch({ type: actionTypes.INCREMENT_NUM_SONGS }),
     onAdsEnded: () => dispatch({ type: actionTypes.EXIT_ADS_MODE }),
-    onChangeReload: (Reload) => dispatch({ type: actionTypes.ENABLE_LOAD_AUDIO, value: Reload }),
+    onLoadSong: (boolStatus) => dispatch({type:actionTypes.ENABLE_LOAD_AUDIO, value:boolStatus}),
+    changePlayingSongID:(songID)=>dispatch({type:actionTypes.CHANGE_SONG_ID, value:songID}),
   };
 };
 

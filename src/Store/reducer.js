@@ -108,7 +108,7 @@ const reducer = (state = initialState, action) => {
           {
             return {
               ...state,
-              playingSongID: action.value,
+              playingSongID: null,
               somethingIsPlaying:false,
               };
           }
@@ -241,6 +241,14 @@ const reducer = (state = initialState, action) => {
                   return {
                     ...state,
                     reload: action.value
+            
+                  };
+                  break;
+
+                case actionTypes.CHANGE_SONG_ID:
+                  return {
+                    ...state,
+                    playingSongID: action.value
             
                   };
                   break;
