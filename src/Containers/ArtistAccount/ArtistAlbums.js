@@ -36,7 +36,7 @@ export class ArtistAlbums extends Component {
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
   
-    const url1 =BASEURL+"artist/myalbums/id"; 
+    const url1 =BASEURL + "artist/myalbums/id"; 
      fetch(url1,requestOptions1)
       .then((response) => {
         return response.json();
@@ -109,7 +109,7 @@ deleteAlbum = () => {
          </button></Link>
         </div>   
           </div>
-          <ComponentBlock ComponentName="Popular Albums" type="albums" description="" details={this.state.PopularAlbums} excess={false}   /> 
+          
            <div className="all-albums" >
              <h2 id="all-albums" >All Albums</h2>
            </div>    
@@ -140,6 +140,7 @@ deleteAlbum = () => {
              
       </tbody>
     </table>
+    <ComponentBlock ComponentName="Popular Albums" type="albums" description="" details={this.state.PopularAlbums} excess={false}   /> 
     <ReactSnackBar
           Icon={<span className="fab fa-spotify"></span>}
           Show={this.state.showSnackBar}

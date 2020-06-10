@@ -123,8 +123,11 @@ export class ArtistSongs extends Component {
         </div>   
           </div>
           <div className="col-xs-12 col-sm-12 ">
-          <ComponentBlock ComponentName="Popular Songs" type="songs" description="" details={this.state.PopularSongs} excess={false}   />
+          
+          
           <h1 id="all-songs">All Songs</h1>
+
+          
         <table className="table table-borderless"> 
          <tbody>
                                              {/* Display likd songs */}
@@ -153,6 +156,9 @@ export class ArtistSongs extends Component {
 
       </tbody>
     </table>
+    <div className="Song-component">
+          <ComponentBlock ComponentName="Popular Songs" type="songs" description="" details={this.state.PopularSongs} excess={false}   />
+          </div>
     <ReactSnackBar
           Icon={<span className="fab fa-spotify"></span>}
           Show={this.state.showSnackBar}

@@ -130,6 +130,12 @@
   margin-right: 8px;
   outline: none;
 }
+@media(max-width:1000px)
+{
+  .artist-songs .Song-component{
+    margin-bottom: 10px !important;
+  }
+}
 
 /* .artist-songs .grey-background {
   background-color: #333;
@@ -294,7 +300,7 @@
   padding-left: 10px;
   text-decoration: underline;
   margin-top: 20px;
-  position: relative;
+  
   
 }
 
