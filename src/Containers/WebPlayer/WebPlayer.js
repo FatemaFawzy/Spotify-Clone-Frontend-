@@ -22,9 +22,9 @@ import SeeAllPlaylists from '../../Containers/HomePage/SeeAllPlaylists';
 import SeeAllMadeForYou from '../../Containers/HomePage/SeeAllMadeForYou';
 import SeeAllRecentlyPlayed from '../../Containers/HomePage/SeeAllRecentlyPlayed';
 import AdsBar from "../../Components/Ads/AdsBar";
-import NotificationHistory from '../../Components/NotificationHistory/NotificationHistory'
-import PopUpPage from '../../Components/PopUp/PopUpPage'
-var isPremium=false;
+import NotificationHistory from '../../Components/NotificationHistory/NotificationHistory';
+import PopUpPage from '../../Components/PopUp/PopUpPage';
+import { connect } from "react-redux";
 
 
 class WebPlayer extends Component {
@@ -64,7 +64,7 @@ class WebPlayer extends Component {
 
             </Switch>
 
-            {!isPremium&&<AdsBar/>}
+            {!this.props.premium&&<AdsBar/>}
 
           </div>
 
@@ -87,5 +87,10 @@ class WebPlayer extends Component {
   
 }
 
-export default WebPlayer;
+const mapStateToProps = state => {
+  return {
+    premium: state.premium,
+  };
+};
+export default connect(mapStateToProps)(WebPlayer);
 
