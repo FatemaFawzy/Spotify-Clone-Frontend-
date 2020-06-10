@@ -140,7 +140,7 @@ export class EditArtistInformation extends Component {
       method:"GET",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
-    const url2 ="http://spotifyclonemock.mocklab.io/artist/information"; 
+    const url2 =BASEURL2+"artist/information"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();
@@ -156,12 +156,52 @@ export class EditArtistInformation extends Component {
   clickSubmit = () => {
     if (this.validateEmail() && this.validateDay() && this.validateMonth() && this.validateYear())
     {
+      if (this.state.day.length == 0)
+      {
+        console.log("day is empty");
+        this.setState({day:this.state.info.day});
+      }
+      if (this.state.month.length == 0)
+      {
+        console.log("month is empty");
+        this.setState({month:this.state.info.month});
+      }
+      if (this.state.year.length == 0)
+      {
+        console.log("year is empty");
+        this.setState({year:this.state.info.year});
+      }
+      if (this.state.email.length == 0)
+      {
+        console.log("email is empty");
+        this.setState({email:this.state.info.email});
+      }
+      if (this.state.username.length == 0)
+      {
+        console.log("username is empty");
+        this.setState({username:this.state.info.username});
+      }
+      if (this.state.artistName.length == 0)
+      {
+        console.log("name is empty");
+        this.setState({artistName:this.state.info.artistName});
+      }
+       if (this.state.bio.length == 0)
+      {
+        console.log("bio is empty");
+        this.setState({bio:this.state.info.bio});
+      }
+     if (this.state.imageURL.length == 0)
+      {
+        console.log("image is empty");
+        this.setState({imageURL:this.state.info.imageURL});
+      }
       console.log("email val");
       const requestOptions3={
         method:"POST",
         headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
       }
-      const url3 ="http://spotifyclonemock.mocklab.io/artist/information/edit"; 
+      const url3 =BASEURL2+"artist/information/edit"; 
       fetch(url3,requestOptions3)
         .then((response) => {
           return response.json();
@@ -175,41 +215,6 @@ export class EditArtistInformation extends Component {
         })
         .catch((error)=>{console.log(error);
         })
-    }
-    else 
-    {
-      if (this.state.day.value == null)
-      {
-        this.setState({day:this.state.info.day});
-      }
-      if (this.state.month.value == null)
-      {
-        this.setState({month:this.state.info.month});
-      }
-      if (this.state.year.value == null)
-      {
-        this.setState({year:this.state.info.year});
-      }
-      if (this.state.email.value == null)
-      {
-        this.setState({email:this.state.info.email});
-      }
-      if (this.state.username.value == null)
-      {
-        this.setState({username:this.state.info.username});
-      }
-      if (this.state.artistName.value == null)
-      {
-        this.setState({artistName:this.state.info.artistName});
-      }
-      if (this.state.bio.value == null)
-      {
-        this.setState({bio:this.state.info.bio});
-      }
-      if (this.state.imageURL.value == null)
-      {
-        this.setState({imageURL:this.state.info.imageURL});
-      }
     }
   }
   render(){
