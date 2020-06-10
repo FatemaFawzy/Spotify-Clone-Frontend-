@@ -49,14 +49,15 @@ describe("ArtistSongs Render test", ()=>{
      expect(wrapper.state().Deleted).toEqual(true);
     });
 
-  describe("Artist Songs componentDidMount test", ()=>{
+  
 
-    it('calls componentDidMount', () => {
-      jest.spyOn(ArtistSongs.prototype, 'componentDidMount')
-      const wrapper = shallow(<ArtistSongs />)
-      expect(ArtistSongs.prototype.componentDidMount.mock.calls.length).toBe(1)
-    })
+})
+describe("Artist Songs componentDidMount test", ()=>{
 
+  it('calls componentDidMount', () => {
+    jest.spyOn(ArtistSongs.prototype, 'componentDidMount')
+    const wrapper = shallow(<ArtistSongs />)
+    expect(ArtistSongs.prototype.componentDidMount.mock.calls.length).toBe(1)
   })
 
 })
