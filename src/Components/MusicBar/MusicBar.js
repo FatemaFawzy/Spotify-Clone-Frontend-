@@ -33,6 +33,7 @@ class MusicBar extends Component {
       showSnackBar: false,
       snackBarMes: "",
       playQueue: false,
+      trackNum: 0,
     };
 
     this.forcedProgress = false;
@@ -116,7 +117,7 @@ class MusicBar extends Component {
 
   //when the music progress bar is clicked the track is adjusted accordignly
   handleProgress = (e) => {
-    if(this.props.somethingIsPlaying) {
+    if(!this.props.adsModeOn) {
       var progressRef = this.refs.progressRef;
       var progress1 =
         ((e.clientX - progressOffset(progressRef)) /
@@ -145,7 +146,7 @@ class MusicBar extends Component {
 
   //update volume when volume bar is clicked
   changeVolume = (e) => {
-    console.log(this.props.trackNum)
+    console.log(this.state.trackNum)
     this.setState({ muted: false });
     var volumeRef = this.refs.volumeRef;
     console.log((e.clientX - progressOffset(volumeRef)) / 78);
@@ -171,10 +172,12 @@ class MusicBar extends Component {
   playPrevious = (e) => {
     //if it's playing a queue, get the previous song
     if (this.state.playQueue) {
-      if (this.props.trackNum != 0)
-        this.props.onChangeIndex(this.props.trackNum -1);
-      else if (this.props.trackNum == 0)
-        this.props.onChangeIndex(Tracks.length - 1);
+      if (this.state.trackNum != 0)
+        // this.props.onChangeIndex(this.props.trackNum -1);
+        this.setState({trackNum: this.state.trackNum -1})
+      else if (this.state.trackNum == 0)
+        // this.props.onChangeIndex(Tracks.length - 1);
+        this.setState({trackNum: Tracks.length -1})
       this.refs.player.load();
     }
     //if only one song is playing, just play it from the start
@@ -183,10 +186,12 @@ class MusicBar extends Component {
 
   playNext = (e) => {
     if (this.state.playQueue) {
-      if (this.props.trackNum != Tracks.length - 1)
-        this.props.onChangeIndex(this.props.trackNum +1);
-      else if (this.props.trackNum == Tracks.length - 1)
-        this.props.onChangeIndex(0);
+      if (this.state.trackNum != Tracks.length - 1)
+        // this.props.onChangeIndex(this.props.trackNum +1);
+        this.setState({trackNum: this.state.trackNum +1})
+      else if (this.state.trackNum == Tracks.length - 1)
+        // this.props.onChangeIndex(0);
+        this.setState({trackNum: 0})
       this.refs.player.load();
     }
   };
@@ -310,9 +315,9 @@ class MusicBar extends Component {
                       src={
                         // !this.props.adsModeOn?
                         
-                        // ((this.state.playQueue)?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].imgURL:Tracks[1].imgURL):
+                        // ((this.state.playQueue)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].imgURL:Tracks[1].imgURL):
                         // "https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
-                        (!this.props.adsModeOn)?Tracks[this.props.trackNum].imgURL:"https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
+                        (!this.props.adsModeOn)?Tracks[this.state.trackNum].imgURL:"https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
                       }
                     ></img>
                   </div>
@@ -327,9 +332,9 @@ class MusicBar extends Component {
                               {
                               // !this.props.adsModeOn?
                                 
-                              //   ((this.state.playQueue)?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].SongName:Tracks[1].SongName):
+                              //   ((this.state.playQueue)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].SongName:Tracks[1].SongName):
                               //   "Ad Audio"
-                              (!this.props.adsModeOn)?Tracks[this.props.trackNum].SongName:"Ad Audio"
+                              (!this.props.adsModeOn)?Tracks[this.state.trackNum].SongName:"Ad Audio"
                                 }
                             </a>
                           </div>
@@ -341,9 +346,9 @@ class MusicBar extends Component {
                             >
                               {
                                 // !this.props.adsModeOn?
-                                // ((this.state.playQueue)?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].Artist:Tracks[1].Artist):
+                                // ((this.state.playQueue)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].Artist:Tracks[1].Artist):
                                 // "Spotify"
-                                (!this.props.adsModeOn)?Tracks[this.props.trackNum].Artist:"Spotify"
+                                (!this.props.adsModeOn)?Tracks[this.state.trackNum].Artist:"Spotify"
                                 }
                             </a>
                           </div>
@@ -509,9 +514,9 @@ class MusicBar extends Component {
           {/* <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" /> */}
           <source src={
             // !this.props.adsModeOn?
-            // (this.state.playQueue)?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].songURL:Tracks[1].songURL:
+            // (this.state.playQueue)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].songURL:Tracks[1].songURL:
             // AdsAudio
-            (!this.props.adsModeOn)? Tracks[this.props.trackNum].songURL: AdsAudio
+            (!this.props.adsModeOn)? Tracks[this.state.trackNum].songURL: AdsAudio
             } autoplay/>
         </audio>
       </div>
@@ -538,7 +543,7 @@ const mapStateToProps = (state) => {
     somethingIsPlaying: state.somethingIsPlaying,
     playOnRepeat: state.playOnRepeat,
     adsModeOn: state.adsModeOn,
-    trackNum: state.trackNum,
+    // trackNum: state.trackNum,
     progress: state.progress,
     reload: state.reload,
   };
