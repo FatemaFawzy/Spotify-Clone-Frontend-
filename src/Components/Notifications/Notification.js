@@ -5,10 +5,9 @@ const Notification = ({Message,username }) => {
   return (
     <div>
       <div className="notification">
-        <div border>
           <ul className="conTainer">
             <li className="bulletPoint">
-              <span className="text">
+              <span className="tEXT">
                 <span>
                 <p><h2
           style={{
@@ -20,14 +19,13 @@ const Notification = ({Message,username }) => {
             fontSize:'13px'
           }}
           ></i>
-          >{username}</h2></p>
+          {username}</h2></p>
  
 
                 </span>
               </span>
             </li>
           </ul>
-        </div>
       </div>
     </div>
   );

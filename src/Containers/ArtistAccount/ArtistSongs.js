@@ -51,7 +51,6 @@ export class ArtistSongs extends Component {
       return response.json();
     })
     .then((data) => {
-      console.log("kjkjkjkjkjkjk"); 
       this.setState({PopularSongs:data.songsInfo.slice(0,3)})
 
       
@@ -73,7 +72,6 @@ export class ArtistSongs extends Component {
       .then((data) => {
         this.setState({
         SongInfo: data.songsInfo});
-        console.log(this.state.SongInfo);
       })
       .catch((error)=>{console.log(error);
       })

@@ -55,7 +55,7 @@ export class ArtistHomePage extends Component {
         </div> 
 
         <div id="artist-profile-sections">
-\
+
           <Link to="#" id="about" 
           className="artist-profile-sections"> Biography </Link> 
         </div>

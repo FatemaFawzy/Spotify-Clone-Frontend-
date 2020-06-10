@@ -11,7 +11,7 @@ function NewSong() {
       <div>
           <h1 className='addedTextStyle'>New Song Is Added
             <span>   </span>
-            <i id='icon' class="fas fa-grin-stars"></i>
+            <i id='ICONN' class="fas fa-grin-stars"></i>
           </h1>
       </div>
     </div>
@@ -47,7 +47,7 @@ onClick={() => {
   });
 }}
 >
-<span className='texT'> Add new song</span>
+<span className='teXT'> Add new song</span>
 </button>
 
 

@@ -50,7 +50,7 @@ export class ArtistAlbums extends Component {
         return response.json();
       })
       .then((data) => {
-        console.log("kjkjkjkjkjkjk"); 
+         
         this.setState({AlbumInfo:data.albumInfo})
       })
       .catch((error)=>{

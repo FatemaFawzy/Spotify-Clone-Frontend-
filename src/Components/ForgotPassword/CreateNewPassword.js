@@ -4,7 +4,7 @@ import Header from  "../WelcomeRelated/Header";
 import Footer from "../WelcomeRelated/Footer";
 import {BrowserRouter as Router, Redirect, withRouter} from "react-router-dom";
 import {Link} from "react-router-dom";
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL,BASEURL2} from "../../Constants/baseURL";
 
 const initialState = {
   /**Input string for the password
@@ -89,43 +89,41 @@ export class CreateNewPassword extends Component {
   if (event)
   {event.preventDefault();}
   if(this.validate()){
-     this.setState({initialState});
-   /**Getting the form to clear it after submitting
-   * @memberof CreateNewPassword
-   * @type {tag}
-   */
-     var clr= document.querySelector("#action-form");
-     if (clr)
-     {
-     clr.reset();
-     }
-     this.props.history.push('/logIn/forgotpassword/newpassword/passwordisnew');
-
+  //    this.setState({initialState});
+  //  /**Getting the form to clear it after submitting
+  //  * @memberof CreateNewPassword
+  //  * @type {tag}
+  //  */
+  //    var clr= document.querySelector("#action-form");
+  //    if (clr)
+  //    {
+  //    clr.reset();
+  //    }
      var userToken = window.location.pathname.slice((window.location.pathname.indexOf('?') + 1));
 
-    // const requestOptions = {
-    //   method: "PATCH",
-    //   headers: {'Content-Type':  'application/json'},
-    //   body: JSON.stringify({token:userToken, newPassword: this.state.newPassword})
-    // };
-    // const url = BASEURL + "/users/reset"; 
-    // fetch(url,requestOptions)
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     if (data.message == "Password has been reset successfully")
-    //     {
-    //      this.props.history.push('/logIn/forgotpassword/newpassword/passwordisnew');
-    //     }
-    //     else if (data.message == "Reset Failed")
-    //     {
-    //        this.setState({newPasswordError:"Failed to reset password."});
-    //     }
-    //   })
-    //   .catch((error)=>{
-    //     console.log(error);
-    //   })
+    const requestOptions = {
+      method: "POST",
+      headers: {'Content-Type':  'application/json'},
+      body: JSON.stringify({token:userToken, newPassword: this.state.newPassword})
+    };
+    const url = BASEURL2+"user/changepassword"; 
+    fetch(url,requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data.message == "password changed successfully")
+        {
+         this.props.history.push('/logIn/forgotpassword/newpassword/passwordisnew');
+        }
+        else
+        {
+           this.setState({newPasswordError:"Failed to reset password."});
+        }
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
     
    }
 

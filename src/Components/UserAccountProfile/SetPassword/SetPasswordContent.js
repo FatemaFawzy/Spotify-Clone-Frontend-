@@ -2,7 +2,7 @@ import React,{Component} from "react";
 import './SetPasswordContent.css';
 import {Link, Router } from "react-router-dom";
 import {connect} from "react-redux";
-import {BASEURL} from "../../../Constants/baseURL";
+import {BASEURL,BASEURL2} from "../../../Constants/baseURL";
 
 
 
@@ -135,8 +135,6 @@ export class SetPasswordContent extends Component{
     }
     let current = this.state.current;
     let currentError = this.state.currentError;
-    // event.preventDefault();
-    // console.log(email.length);
     this.validateCurrent();
     this.validateNew();
     if (this.validateCurrent() && this.validateNew())
@@ -157,15 +155,40 @@ export class SetPasswordContent extends Component{
    * @memberof SetPasswordContent
    * @type {String}
    */
-        const url = BASEURL + "/user/currentpassword"; 
+        const url = BASEURL2 + "user/password"; 
         fetch(url,requestOptions)
           .then((response) => {
             return response.text();
           })
           .then((data) => {
-           console.log(data);
-           console.log(this.state.current);
+          
            if(data == this.state.current){
+            const requestOptions2 = {
+              method:"POST",
+              headers:{'Content-Type':  'application/json','x-auth':'x-auth'},
+              
+            }
+            
+          /**url for fetch request
+       * @memberof SetPasswordContent
+       * @type {String}
+       */
+            const url2 = BASEURL2 + "user/changepassword"; 
+            fetch(url2,requestOptions2)
+              .then((response) => {
+                return response.text();
+              })
+              .then((data) => {
+               if(data.message == "password changed successfully"){
+                document.querySelector("#success").classList.remove("d-none");
+    
+                
+               }
+              })
+              .catch((error)=>{
+                console.log(error);
+              })
+
            }
            else{
              this.setState({currentError:"You've entered an incorrect password."});
