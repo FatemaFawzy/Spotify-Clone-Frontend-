@@ -450,7 +450,7 @@ class MusicBar extends Component {
                   }}
                   className="middle-icons fas fa-sync-alt ml-2"
                   onClick={() => {
-                    this.props.onToggleLoop();
+                    (!this.props.adsModeOn)&&this.props.onToggleLoop();
                   }}
                 ></button>
               </div>
