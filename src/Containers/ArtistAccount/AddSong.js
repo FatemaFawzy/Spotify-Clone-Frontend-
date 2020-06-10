@@ -13,6 +13,8 @@ import {Link} from "react-router-dom";
 const initialState = {
   Name:"",
   Image:"",
+  nameerror:"",
+  imageerror:"",
 };
 /** Class AddSong
  * @category AddSong
@@ -24,40 +26,44 @@ export class AddSong extends Component {
     this.state = initialState
   }
 
-  validateAlbumName = () => {
+  validateSongName = () => {
     let Name = this.state.Name;
+    let nameerror=this.state.nameerror
     let proceedname = true;
     if (Name.length === 0) {
       if (document.querySelector("#basic-url1")) {
         document.querySelector("#basic-url1").classList.add("redbox");
-        document.querySelector("#error-message").classList.remove("d-none");
       }
+      this.setState({nameerror:"Please enter the song's name"});
       proceedname = false;
     } else {
      
       if (document.querySelector("#basic-url1")) {
         document.querySelector("#basic-url1").classList.remove("redbox");
-        document.querySelector("#error-message").classList.add("d-none");
+      
       }
+      this.setState({nameerror:""});
       proceedname = true;
     }
     return proceedname;
   };
   validateImage = () => {
     let Image = this.state.Image;
+    let imageerror=this.state.imageerror;
     let proceedimage = true;
     if (Image.length === 0) {
       if (document.querySelector("#basic-url2")) {
         document.querySelector("#basic-url2").classList.add("redbox");
-        document.querySelector("#error-message").classList.remove("d-none");
+        
       }
+      this.setState({imageerror:"Please enter the image's url"});
       proceedimage = false;
     } else {
      
       if (document.querySelector("#basic-url2")) {
         document.querySelector("#basic-url2").classList.remove("redbox");
-        document.querySelector("#error-message").classList.add("d-none");
       }
+      this.setState({imageerror:""});
       proceedimage = true;
     }
     return proceedimage;
@@ -67,7 +73,7 @@ export class AddSong extends Component {
     let Name = this.state.Name;
     Name = event.target.value;
     this.state.Name = Name;
-    this.validateAlbumName();
+    this.validateSongName();
   };
 
   handleImage = (event) => {
@@ -83,9 +89,9 @@ export class AddSong extends Component {
     if (event) {
       event.preventDefault();
     }
-    this.validateAlbumName();
+    this.validateSongName();
     this.validateImage();
-    if(this.validateAlbumName() && this.validateImage())
+    if(this.validateSongName() && this.validateImage())
     {
       var clr= document.querySelector(".add-info");
      if (clr)
@@ -116,8 +122,15 @@ export class AddSong extends Component {
      
     }
   };
-  clickDone = () => {
-    if(this.validateAlbumName() && this.validateImage())
+  clickDone = (event) => {
+    let Name=this.state.Name;
+    let Image=this.state.Image;
+    if (event) {
+      event.preventDefault();
+    }
+    this.validateSongName();
+    this.validateImage();
+    if(this.validateSongName() && this.validateImage())
     {
     const requestOptions2={
       method:"POST",
@@ -156,8 +169,8 @@ export class AddSong extends Component {
               
                 <div class="input-group mb-3" id="hhh">
                   <input type="text" onChange={this.handleName} name="Name" class="form-control" id="basic-url1" placeholder="Song Name"  aria-describedby="basic-addon2"/>
-                  
                 </div>
+                <p id="error-message1" >{this.state.nameerror}</p>
 
                 
                 <div class="input-group mb-3">
@@ -166,12 +179,12 @@ export class AddSong extends Component {
                   </div>
                   <input onChange={this.handleImage} name="Image" type="text" class="form-control" id="basic-url2" placeholder="Image Url" aria-describedby="basic-addon3"/>
                   </div>
-                  <p id="error-message" className="d-none">Please fill all the required inputs</p>
+                  <p id="error-message2" >{this.state.imageerror}</p>
                 
             </form>
               <div className="Add-songs d-flex justify-content-center">
-                <button onClick={this.clickSubmit}>Add another song</button>
-                 <button onClick={this.clickDone}>Done</button>
+                <button id="submit" onClick={this.clickSubmit}>Add another song</button>
+                 <button id="submit2" onClick={this.clickDone}>Done</button>
                 </div>
         
         </div>
