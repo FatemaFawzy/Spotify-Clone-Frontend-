@@ -4,7 +4,7 @@ import Header from  "../WelcomeRelated/Header";
 import Footer from "../WelcomeRelated/Footer";
 import {BrowserRouter as Router, Redirect} from "react-router-dom";
 import {Link} from "react-router-dom";
-import {BASEURL,BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "../../Constants/baseURL";
 
 const initialState = {
   /**Input string for the email

@@ -4,7 +4,7 @@ import ArtistHomePageNavbar from "./ArtistNavbar";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
-import {BASEURL,BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "../../Constants/baseURL";
 import {NavLink,Link} from "react-router-dom";
 
 const emailFormat = RegExp(
