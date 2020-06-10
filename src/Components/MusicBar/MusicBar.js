@@ -538,6 +538,7 @@ export class MusicBar extends Component {
                 <button
                   className="middle-icons fas fa-step-backward"
                   title="Previous"
+                  id="prev_btn"
                   onClick={(!this.props.adsModeOn)&&this.playPrevious}
                 ></button>
                 <button
@@ -548,6 +549,7 @@ export class MusicBar extends Component {
                 <button
                   className="middle-icons fas fa-step-forward"
                   title="Next"
+                  id="next_btn"
                   onClick={(!this.props.adsModeOn)&&this.playNext}
                 ></button>
                 <button

@@ -12,6 +12,16 @@ describe("Testing MusicBar redering", () => {
     const images=wrapper.find("img");
     expect(images).toHaveLength(1);
   })
+
+  it("Should have 1 audio tag", ()=>{
+    const images=wrapper.find("audio");
+    expect(images).toHaveLength(1);
+  })
+
+  it("Should have 10 buttons", ()=>{
+    const images=wrapper.find("button");
+    expect(images).toHaveLength(10);
+  })
 });
 
 describe("Testing LikeSong function", () => {
@@ -32,26 +42,6 @@ describe("Testing LikeSong function", () => {
 
   });
 });
-
-// describe("Testing PlayPause function", () => {
-//   let wrapper;
-
-//   beforeEach(() => {
-//     wrapper = shallow(<MusicBar/>);
-//   });
-
-//   it("should toggle the play and pause icons on click", () => {
-//     const event = {
-//       preventDefault() {},
-//       target: { id: "play-track-bar"}
-//     }
-//     // expect(wrapper.find("#heart-button")).toHaveClass("far fa-heart");  
-//     expect(wrapper.find('#play-track-bar').hasClass('fa-play-circle')).toEqual(true);
-//     wrapper.find("#play-track-bar").simulate('click', event);
-//     expect(wrapper.find('#play-track-bar').hasClass('fa-pause-circle')).toEqual(true); 
-
-//   });
-// });
 
 describe("Testing muteVolume function", () => {
   let wrapper;
@@ -113,20 +103,95 @@ describe("Testing playQueue function", () => {
   });
 });
 
-// describe("Testing stop function", () => {
+describe("Testing stop function", () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(<MusicBar/>);
+  });
+
+  it("should set the audio's current time to 0 on click", () => {
+    const event = {
+      preventDefault() {},
+      target: { id: "stop_btn"}
+    }
+    wrapper.find("#stop_btn").simulate('click', event);
+    expect(wrapper.find('#curr_time').text()).toEqual("00:00"); 
+
+  });
+});
+
+describe("Testing playNext function", () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(<MusicBar/>);
+  });
+
+  it("shouldn't increment the trackNum if playQueue=false", () => {
+    const event = {
+      preventDefault() {},
+      target: { id: "next_btn"}
+    }
+    wrapper.find("#next_btn").simulate('click', event);
+    expect(wrapper.state().trackNum).toEqual(0); 
+
+  });
+});
+
+describe("Testing playPrevious function", () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(<MusicBar/>);
+  });
+
+  it("shouldn't decrement the trackNum if playQueue=false", () => {
+    const event = {
+      preventDefault() {},
+      target: { id: "prev_btn"}
+    }
+    wrapper.find("#prev_btn").simulate('click', event);
+    expect(wrapper.state().trackNum).toEqual(0); 
+
+  });
+});
+
+// describe("Testing handleProgress function", () => {
 //   let wrapper;
 
 //   beforeEach(() => {
 //     wrapper = shallow(<MusicBar/>);
 //   });
 
-//   it("should set the audio's current time to 0 on click", () => {
+//   it("shouldn't change the progress if the an ad is playing", () => {
 //     const event = {
 //       preventDefault() {},
-//       target: { id: "stop_btn"}
+//       target: { id: "music-progress"}
 //     }
-//     wrapper.find("#stop_btn").simulate('click', event);
-//     expect(wrapper.find('#curr_time').innerHTML).toEqual("00:00"); 
+//     wrapper.setProps({adsModeOn: true});
+//     wrapper.find("#music-progress").simulate('click', event);
+//     expect(wrapper.forcedProgress).toBe(false);
 
+//   });
+// });
+
+// describe("Testing PlayPause function", () => {
+//   let wrapper;
+
+//   beforeEach(() => {
+//     wrapper = shallow(<MusicBar/>);
+//   });
+
+//   it("should toggle the play and pause icons on click", () => {
+//     const event = {
+//       preventDefault() {},
+//       target: { id: "play-track-bar"}
+//     }
+
+//     // expect(wrapper.find('#play-track-bar').hasClass('fa-play-circle')).toEqual(true);
+//     wrapper.find("#play-track-bar").simulate('click', event);
+//     // expect(wrapper.find('#play-track-bar').hasClass('fa-pause-circle')).toEqual(true); 
+//     expect(wrapper.props().somethingIsPlaying).toEqual(true);
 //   });
 // });
