@@ -34,3 +34,12 @@ describe("Artist Information Render test", ()=>{
     expect(icon).toHaveLength(1);
   })
 })
+describe("Artist Info componentDidMount test", ()=>{
+  
+  it('calls componentDidMount', () => {
+    jest.spyOn(ArtistInformation.prototype, 'componentDidMount')
+    const wrapper = shallow(<ArtistInformation />)
+    expect(ArtistInformation.prototype.componentDidMount.mock.calls.length).toBe(1)
+  })
+
+})

@@ -161,3 +161,13 @@ describe("Edit Artist Information Render test", ()=>{
     expect(wrapper.state().yearError).toEqual("Please choose a valid year.");
   })
 })
+
+describe("Edit Artist Info componentDidMount test", ()=>{
+  
+  it('calls componentDidMount', () => {
+    jest.spyOn(EditArtistInformation.prototype, 'componentDidMount')
+    const wrapper = shallow(<EditArtistInformation />)
+    expect(EditArtistInformation.prototype.componentDidMount.mock.calls.length).toBe(1)
+  })
+
+})
