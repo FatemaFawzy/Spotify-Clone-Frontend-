@@ -505,13 +505,13 @@ class MusicBar extends Component {
                             title="Save to your Liked Songs"
                             onClick={this.likeSong}
                           ></button>
-                          <div>
+                          <div className="share-icon">
                             <FacebookShareButton />
                           </div>
-                          <div>
+                          <div className="share-icon"> 
                             <TwitterShareButton />
                           </div>
-                          <div style={space}>
+                          <div style={space} className="share-icon">
                             <ShareBox />
                           </div>
                         </li>
