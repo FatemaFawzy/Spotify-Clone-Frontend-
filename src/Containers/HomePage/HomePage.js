@@ -61,11 +61,44 @@ export class HomePage extends Component {
     
   }
   
+    
+
   /**A function that fires once the homepage is called
    * @memberof HomePage
    * @func componentDidMount
    */
   componentDidMount() {
+
+    const popularArtistsArray=[{
+      id: "1",
+      artistName:"Cardi B",
+      imagePath:"https://i.pinimg.com/originals/61/33/9f/61339f68f4dbe4ca3ffd8352eb9b6839.jpg"
+    },
+    {
+      id: "2",
+      artistName:"Drake",
+      imagePath:" https://allaboutedm.com/wp-content/uploads/2018/06/Drake039s-Scorpion-Stream-on-Spotify-and-Apple-Music.jpg"
+    },
+      {
+      id: "3",
+      artistName:"Pink Floyd",
+      imagePath:"https://i.scdn.co/image/ab67616d0000b27331c57b302f0e3aca46ab7561"
+    },
+        {
+      id: "4",
+      artistName:"Amr Diab",
+      imagePath:"https://i.scdn.co/image/ee11ffb4c0f334e4c958ed051bbaf5f720751c9d"
+    },
+          {
+      id: "5",
+      artistName:"Nicki Minaj",
+      imagePath:"https://i.scdn.co/image/ab67706f00000002838a84cec88c50241b0dd5e6"
+    }
+  ];
+  this.setState({popularartists:popularArtistsArray});
+
+
+
      console.log("hello");
     //Make a request with this.props.userID
     //assume this is the returned data
@@ -173,36 +206,7 @@ export class HomePage extends Component {
     //Make a request with this.props.userID
     //assume this is the returned data
     
-     /**url for fetch request
-  //  * @memberof HomePage
-  //  * @type {String}
-  //  */
-
-  const requestOptions4={
-    method:"GET",
-    headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
-  }
-    const url4 = BASEURL + "homepage/popularartists"; 
-    fetch(url4,requestOptions4)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        if ((data.popularartists.length)>5)
-        {
-        this.setState({excessArtists:true});
-        this.setState({popularartists:data.popularartists.slice(0,5)})
-
-        }
-        else{
-        this.setState({popularartists:data.artists})  
-        }
-        
-      })
-      .catch((error)=>{
-        console.log(error);
-      })
-  }
+     }
 
   render(){
     return (

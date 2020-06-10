@@ -18,27 +18,15 @@ import {NavLink,Link} from "react-router-dom";
 export class ArtistAlbums extends Component {
   constructor(props){
     super(props);
-    this.state = { 
-   /** Array of albums
+    this.state = {  
+               /**array of albums
    * @memberof ArtistAlbums
    * @type {Array<Albums>}
    */ 
-      AlbumInfo: [
-         {id : 1, AlbumName : "The Wall", Singer: "Pink Floyd", Name: "",Duration : ""},],
-        // {id : 2, AlbumName : "Animals", Singer: "Pink Floyd", Name: "",Duration : ""},
-        // {id : 3, AlbumName : "Hey You", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : ""},
-        // {id : 4, AlbumName : "Time Machine", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : ""},
-        // {id : 5, AlbumName : "Comfortably Numb", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : ""},
-        // {id : 6, AlbumName : "Money", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-        // {id : 7, AlbumName : "Wish You Were Here", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-        // {id : 8, AlbumName : "The Final Cut", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-        // {id : 9, AlbumName : "Another Brick In The Wall Pt. 1", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-        // {id : 10, AlbumName : "The Great Gig In The Sky", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
-        // {id : 11, AlbumName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
-        // {id : 12, AlbumName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
-          /** Array of popular albums
+      AlbumInfo: [],
+          /**array of popular albums
    * @memberof ArtistAlbums
-   * @type {String}
+   * @type {Array<Albums>}
    */ 
        PopularAlbums: [],
     /**Boolean to indicate whether an album has been deleted
@@ -94,13 +82,13 @@ export class ArtistAlbums extends Component {
         headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
       }
   
-      const url2 =BASEURL+"artist/myalbums/id"; 
+      const url2 =BASEURL + "artist/myalbums/id"; 
       fetch(url2,requestOptions2)
         .then((response) => {
           return response.json();
         })
         .then((data) => {
-         this.setState({PopularAlbums:data.albumInfo.slice(0,3)})
+         this.setState({PopularAlbums:data.albumInfo.slice(0,5)})
         })
         .catch((error)=>{
           console.log(error);

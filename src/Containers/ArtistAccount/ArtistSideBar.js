@@ -123,7 +123,7 @@ render() {
       
       <div className="sidebar">
         
-        <Link to="/webplayer/HomePage"><img className="logo"  src="https://i.ya-webdesign.com/images/itunes-logo-white-png-1.png" alt="logo"/></Link>
+        <Link to="/ArtistAccount/ArtistWebPlayer/"><img className="logo"  src="https://i.ya-webdesign.com/images/itunes-logo-white-png-1.png" alt="logo"/></Link>
         
           <ul>
               <li><Link  onClick={this.clickedProfile} id="profile" className="List gray" to="/ArtistAccount/ArtistWebPlayer/"><i class="fas fa-user"></i>Profile</Link></li>

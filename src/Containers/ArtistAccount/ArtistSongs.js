@@ -83,7 +83,7 @@ export class ArtistSongs extends Component {
       return response.json();
     })
     .then((data) => {
-      this.setState({PopularSongs:data.songsInfo.slice(0,3)})
+      this.setState({PopularSongs:data.songsInfo.slice(0,5)})
 
       
     })

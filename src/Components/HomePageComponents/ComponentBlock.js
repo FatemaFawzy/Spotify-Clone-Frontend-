@@ -34,7 +34,7 @@ render()
           link="seeallartists";
         return (
           <GeneralItem
-            image={ BASEURL + "Images/" + result.imagePath}
+            image={result.imagePath}
             name={result.artistName}
             subname="ARTIST"
             roundimage

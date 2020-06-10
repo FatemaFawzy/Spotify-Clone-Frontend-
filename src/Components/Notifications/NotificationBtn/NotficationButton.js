@@ -3,19 +3,35 @@ import React, { Component } from "react";
 import NotificationList from "../NotificationList"
 import "./NotificationButton.css";
 import { Link } from "react-router-dom";
-
-
+import {BASEURL}  from '../../../Components/../Constants/baseURL'
+/** Class NotificationButton
+ * @category NotificationButton
+ * @extends Component
+ */
 
 class NotificationButton extends Component {
   constructor() {
     super();
     this.state = {
+
+      /**Object of notification- array of 3 newest notifications
+   * @memberof NotificationButton
+   * @type {Array<notifications>}
+   */  
       notifications: [],
     };
   }
 
+  /**Function for setting state on rendering and getting notification history
+   * @memberof NotificationButton
+   * @func componentDidMount
+   */
+  
   componentDidMount() {
-    fetch("http://spotifyclone.mocklab.io/notifications/recent")
+    let theurl= BASEURL+ "notifications/recent"
+
+
+    fetch(theurl)
       .then((Response) => Response.json())
       .then((users) => {
         this.setState({ notifications: users });
