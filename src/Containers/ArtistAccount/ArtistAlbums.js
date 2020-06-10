@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
  import './ArtistAlbums.css';
+ import ReactSnackBar from "react-js-snackbar";
+ import "../../Components/PlaylistsComponent/SnackBar.css";
 import ArtistAlbumsNavbar from "./ArtistNavbar";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
@@ -32,7 +34,9 @@ export class ArtistAlbums extends Component {
         // {id : 12, AlbumName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
        PopularAlbums: [],
        Deleted:"",
-       Added:""
+       Added:"",
+       showSnackBar: false,
+       snackBarMes: ""
       
       
     }
@@ -90,6 +94,13 @@ deleteAlbum = () => {
       if (data.message == "album deleted successfully")
       {
         console.log("album deleted");
+        this.setState({
+          showSnackBar: true,
+          snackBarMes: "Album Deleted",
+        });
+        setTimeout(() => {
+          this.setState({ showSnackBar: false });
+        }, 2000);
       }
     })
     .catch((error)=>{console.log(error);
@@ -141,7 +152,12 @@ deleteAlbum = () => {
              
       </tbody>
     </table>
-
+    <ReactSnackBar
+          Icon={<span className="fab fa-spotify"></span>}
+          Show={this.state.showSnackBar}
+        >
+      {this.state.snackBarMes}
+    </ReactSnackBar>
       </div> 
       </div>  
     

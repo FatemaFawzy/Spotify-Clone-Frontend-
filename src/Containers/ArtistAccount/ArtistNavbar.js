@@ -51,13 +51,7 @@ export class ArtistNavbar extends Component{
               
                   <div className="collapse-drop">
                     <CollapseDropDown />
-                  </div>
-                  
-                
-                 
-                
-              
-              
+                  </div>              
                   <div className="drop-down">
 
                     <Link to="/"><button id="upgradebtn">LOG OUT</button></Link>
