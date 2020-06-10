@@ -32,7 +32,7 @@ export class ArtistSongs extends Component {
         // {id : 11, SongName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "4:15"},
         // {id : 12, SongName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100", Duration : "2:58"},
         PopularSongs: [],
-        Deleted: "",
+        Deleted: false,
         Added:""
     }
     
@@ -131,7 +131,7 @@ this.setState({Deleted:true});
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
                   <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
                     <Link to="/ArtistAccount/ArtistWebPlayer/MySongs/EditSong"><a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Edit</a></Link>
-                    <a className="dropdown-item drop-class" onClick={this.deleteSong} href="#">Remove</a>
+                    <a className="dropdown-item drop-class" id="delete" onClick={this.deleteSong} href="#">Remove</a>
                   </div>
                 </div>
               </td>
