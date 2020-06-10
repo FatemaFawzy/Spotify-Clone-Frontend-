@@ -41,14 +41,3 @@ describe("Artist Sidebar Render test", ()=>{
   })
 
 })
-
-
-describe("Artist Sidebar componentDidMount test", ()=>{
-  
-  it('calls componentDidMount', () => {
-    jest.spyOn(ArtistSideBar.prototype, 'componentDidMount')
-    const wrapper = shallow(<ArtistSideBar />)
-    expect(ArtistSideBar.prototype.componentDidMount.mock.calls.length).toBe(1)
-  })
-
-})
