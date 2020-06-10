@@ -233,5 +233,11 @@
   .music-bar-right .volumebar, .song-photo {
     display: none !important;
   }
+  .music-bar .share-icon {
+    display: none !important;
+    
+    }
 }
+
+
 

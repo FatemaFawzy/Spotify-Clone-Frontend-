@@ -15,7 +15,6 @@
 .bulletPoint {
   list-style: none;
   border-bottom:0.5px solid silver;
-  /* padding: 2px 0; */
   display: flex;
 }
 
@@ -27,7 +26,6 @@
   color: white;
   position: relative;
   font-family: sans-serif;
-  /* top: 3px; */
   font-size: small;
 
   cursor: pointer;
