@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
  import './ArtistSongs.css';
  import ReactSnackBar from "react-js-snackbar";
+ import "../../Components/PlaylistsComponent/SnackBar.css";
 import ArtistHomePageNavbar from "./ArtistNavbar";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
@@ -33,7 +34,9 @@ export class ArtistSongs extends Component {
         // {id : 12, SongName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100", Duration : "2:58"},
         PopularSongs: [],
         Deleted: "",
-        Added:""
+        Added:"",
+        showSnackBar: false,
+        snackBarMes: ""
     }
     
   }
@@ -78,7 +81,8 @@ export class ArtistSongs extends Component {
  }
  ////////////////////////////////////////////////////////
  deleteSong = () => {
-this.setState({Deleted:true});
+
+  this.setState({Deleted:true});
   var requestOptions = {
     method: 'DELETE'
   };
@@ -92,6 +96,13 @@ this.setState({Deleted:true});
       if (data.message == "song deleted successfully")
       {
         console.log("song deleted");
+        this.setState({
+          showSnackBar: true,
+          snackBarMes: "Song Deleted",
+        });
+        setTimeout(() => {
+          this.setState({ showSnackBar: false });
+        }, 2000);
       }
     })
     .catch((error)=>{console.log(error);
@@ -139,21 +150,15 @@ this.setState({Deleted:true});
               <td className="likes">{song.Likes}  <i class="fas fa-heart"></i></td>
             </tr>
             ))} 
-             
+
       </tbody>
     </table>
-    {
-    this.state.Deleted == true ?
-    <ReactSnackBar Icon={<span className="fab fa-spotify"></span>} Show={this.state.ShowRemove}>
-                      Song Deleted Successfully
-    </ReactSnackBar> : <p></p>
-    }
-    {
-      this.state.Added == true ?
-      <ReactSnackBar Icon={<span className="fab fa-spotify"></span>} Show={this.state.ShowRemove}>
-      Song Added Successfully
-      </ReactSnackBar> : <p></p>
-    }
+    <ReactSnackBar
+          Icon={<span className="fab fa-spotify"></span>}
+          Show={this.state.showSnackBar}
+        >
+      {this.state.snackBarMes}
+    </ReactSnackBar>
       </div> 
       </div>  
     

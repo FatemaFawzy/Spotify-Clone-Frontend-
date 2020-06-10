@@ -232,11 +232,11 @@ export class EditArtistInformation extends Component {
             </tr>
             <tr> 
               <td><li className="list-element">Username:</li></td>
-              <td><input className="general-input" placeholder={this.state.info.username} type="text" onChange={this.handleUsernameChange}/></td>
+              <td><input id="username" className="general-input" placeholder={this.state.info.username} type="text" onChange={this.handleUsernameChange}/></td>
             </tr>
             <tr> 
               <td><li className="list-element">Name:</li></td>
-              <td><input className="general-input" placeholder={this.state.info.artistName} type="text" onChange={this.handleNameChange}/></td>
+              <td><input id="name" className="general-input" placeholder={this.state.info.artistName} type="text" onChange={this.handleNameChange}/></td>
             </tr>
             <tr> 
               <td><li className="list-element">Date Of Birth:</li>
@@ -248,15 +248,15 @@ export class EditArtistInformation extends Component {
                 <div className="row" id="birth-date">
 
                   <div className="col-3">
-                    <input name="day" className=" form-control birth-date-signup" type="number" placeholder={this.state.info.day} max="31" min="1" maxLength="2" onChange={this.handleDayChange}/>
+                    <input id="day" name="day" className=" form-control birth-date-signup" type="number" placeholder={this.state.info.day} max="31" min="1" maxLength="2" onChange={this.handleDayChange}/>
                   </div>
 
                   <div className="col-6">
-                  <input name="month" className=" form-control birth-date-signup" type="number" placeholder={this.state.info.month} max="12" min="1" maxLength="2" onChange={this.handleMonthChange}/>
+                  <input id="month" name="month" className=" form-control birth-date-signup" type="number" placeholder={this.state.info.month} max="12" min="1" maxLength="2" onChange={this.handleMonthChange}/>
                   </div>
 
                   <div className="col-3 ">
-                    <input name="year" className="form-control birth-date-signup" type="number" placeholder={this.state.info.year} max="1999" min="1900" maxLength="4" onChange={this.handleYearChange}/>
+                    <input id="year" name="year" className="form-control birth-date-signup" type="number" placeholder={this.state.info.year} max="1999" min="1900" maxLength="4" onChange={this.handleYearChange}/>
                   </div>
                   
                   </div>
@@ -264,11 +264,11 @@ export class EditArtistInformation extends Component {
             </tr>
             <tr> 
               <td><li className="list-element">Biography:</li></td>
-              <td><input className="general-input" placeholder={this.state.info.bio} type="text" onChange={this.handleBioChange}/></td>
+              <td><input id="bio" className="general-input" placeholder={this.state.info.bio} type="text" onChange={this.handleBioChange}/></td>
             </tr>
             <tr> 
               <td><li className="list-element">Cover Image URL:</li></td>
-              <td><input className="general-input" placeholder={this.state.info.imageURL} type="text" onChange={this.handleImageChange}/></td>
+              <td><input  id="image" className="general-input" placeholder={this.state.info.imageURL} type="text" onChange={this.handleImageChange}/></td>
             </tr>
             <tr> 
               <td> </td>
