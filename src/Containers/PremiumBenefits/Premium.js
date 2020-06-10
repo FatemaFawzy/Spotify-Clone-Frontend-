@@ -18,7 +18,15 @@ export class Premium extends Component {
     super(props);
 
     this.state = {
+    /**Boolean for showing or hiding the snackbar
+     * @memberof Premium
+     * @type {boolean}
+     */
       showSnackBar: false,
+    /**The message that appears in the snackbar
+     * @memberof Premium
+     * @type {string}
+     */
       snackBarMes: "",      
     };
   }
