@@ -63,18 +63,18 @@ describe("EditAlbum handleImage function test", ()=>{
    expect(wrapper.state().Image).toContain("http://example.com/image");
   });
 
-  describe("Edit Album componentDidMount test", ()=>{
-  
-    it('calls componentDidMount', () => {
-      jest.spyOn(EditAlbum.prototype, 'componentDidMount')
-      const wrapper = shallow(<EditAlbum />)
-      expect(EditAlbum.prototype.componentDidMount.mock.calls.length).toBe(1)
-    })
+ 
 
+})
+describe("Edit Album componentDidMount test", ()=>{
+  
+  it('calls componentDidMount', () => {
+    jest.spyOn(EditAlbum.prototype, 'componentDidMount')
+    const wrapper = shallow(<EditAlbum />)
+    expect(EditAlbum.prototype.componentDidMount.mock.calls.length).toBe(1)
   })
 
 })
-   
     
   
 
