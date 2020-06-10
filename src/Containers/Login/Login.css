@@ -233,14 +233,16 @@
 
 .login .horizontal-line-bottom1 {
   width: 450px;
-  padding-left: 15px;
-  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
   padding-bottom: 10px;
   padding-top: 15px;
 }
 
 .login .horizontal-line-bottom2 {
   width: 450px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 500px) {
