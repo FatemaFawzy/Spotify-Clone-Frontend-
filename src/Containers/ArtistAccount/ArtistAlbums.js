@@ -21,7 +21,7 @@ export class ArtistAlbums extends Component {
     this.state = {  
       AlbumInfo: [],
        PopularAlbums: [],
-       Deleted:"",
+       Deleted:false,
        Added:"",
        showSnackBar: false,
        snackBarMes: ""
@@ -131,7 +131,7 @@ deleteAlbum = () => {
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
                   <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
                     <Link to="/ArtistAccount/ArtistWebPlayer/MySongs/EditAlbum"><a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Edit</a></Link>
-                    <a className="dropdown-item drop-class" id="delete" onClick={this.deleteAlbum} href="#">Remove</a>
+                    <a className="dropdown-item drop-class" id="deletes" onClick={this.deleteAlbum} href="#">Remove</a>
                   </div>
                 </div>
               </td>
