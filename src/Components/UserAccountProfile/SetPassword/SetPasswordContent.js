@@ -2,7 +2,7 @@ import React,{Component} from "react";
 import './SetPasswordContent.css';
 import {Link, Router } from "react-router-dom";
 import {connect} from "react-redux";
-import {BASEURL,BASEURL2} from "../../../Constants/baseURL";
+import {BASEURL} from "../../../Constants/baseURL";
 
 
 
@@ -155,7 +155,7 @@ export class SetPasswordContent extends Component{
    * @memberof SetPasswordContent
    * @type {String}
    */
-        const url = BASEURL2 + "user/password"; 
+        const url = BASEURL + "user/password"; 
         fetch(url,requestOptions)
           .then((response) => {
             return response.text();
@@ -173,7 +173,7 @@ export class SetPasswordContent extends Component{
        * @memberof SetPasswordContent
        * @type {String}
        */
-            const url2 = BASEURL2 + "user/changepassword"; 
+            const url2 = BASEURL + "user/changepassword"; 
             fetch(url2,requestOptions2)
               .then((response) => {
                 return response.text();

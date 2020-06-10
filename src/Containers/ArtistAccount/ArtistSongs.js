@@ -6,7 +6,7 @@ import ArtistHomePageNavbar from "./ArtistNavbar";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
-import {BASEURL,BASEURL2} from "../../Constants/baseURL";
+import {BASEURL} from "../../Constants/baseURL";
 import {NavLink,Link} from "react-router-dom";
 
 
@@ -48,7 +48,7 @@ export class ArtistSongs extends Component {
     headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
   }
 
-   const url1 =BASEURL2 + "artist/mysongs/id"; 
+   const url1 =BASEURL + "artist/mysongs/id"; 
   fetch(url1,requestOptions1)
     .then((response) => {
       return response.json();
@@ -67,7 +67,7 @@ export class ArtistSongs extends Component {
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
 
-    const url2 = BASEURL2 + "artist/mysongs/id"; 
+    const url2 = BASEURL + "artist/mysongs/id"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();
@@ -88,7 +88,7 @@ export class ArtistSongs extends Component {
   };
 
   // get artist's popular tracks
-  var urlPopular =BASEURL2+"songs/remove/id"; 
+  var urlPopular =BASEURL+"songs/remove/id"; 
 
   fetch(urlPopular,requestOptions)
     .then((response) => { return response.json()})

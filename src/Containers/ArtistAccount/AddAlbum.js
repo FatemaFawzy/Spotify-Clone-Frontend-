@@ -4,7 +4,7 @@ import ArtistNavbar from "./ArtistNavbar";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
-import {BASEURL,BASEURL2} from "../../Constants/baseURL";
+import {BASEURL} from "../../Constants/baseURL";
 import {Link} from "react-router-dom";
 
 
@@ -98,7 +98,7 @@ export class AddAlbum extends Component {
         headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
       }
   
-      const url2 = BASEURL2+"albums/add"; 
+      const url2 = BASEURL+"albums/add"; 
       fetch(url2,requestOptions2)
         .then((response) => {
           return response.json();
