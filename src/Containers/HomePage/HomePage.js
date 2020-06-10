@@ -144,7 +144,7 @@ export class HomePage extends Component {
     method:"GET",
     headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
   }
-  const url3 =  BASEURL + "homepage/popularplaylists"; 
+  const url3 = BASEURL + "homepage/popularplaylists"; 
   fetch(url3,requestOptions3)
     .then((response) => {
       return response.json();

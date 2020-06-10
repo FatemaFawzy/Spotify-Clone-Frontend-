@@ -60,7 +60,7 @@ export class ArtistNavbar extends Component{
               
                   <div className="drop-down">
 
-                    <Link to="/webplayer/HomePage"><button id="upgradebtn">LOG OUT</button></Link>
+                    <Link to="/"><button id="upgradebtn">LOG OUT</button></Link>
                   
                   </div>
             
