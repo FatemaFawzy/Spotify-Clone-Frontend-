@@ -43,14 +43,12 @@ describe("followArtist", () => {
     wrapper = shallow(<ArtistProfile match={{url: "url"}}/>);
   });
 
-  it("should toggle between follow and unfollow on click", () => {
+  it("shouldn't toggle between follow and unfollow on click if the request isn't successful", () => {
     const event = {
       preventDefault() {},
       target: { id: "follow-button"}
     }
     expect(wrapper.find("button#follow-button").text()).toContain("follow");  
-    wrapper.find("button#follow-button").simulate('click', event);
-    expect(wrapper.find("button#follow-button").text()).toContain("unfollow");  
     wrapper.find("button#follow-button").simulate('click', event);
     expect(wrapper.find("button#follow-button").text()).toContain("follow");  
   });

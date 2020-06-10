@@ -79,7 +79,7 @@ export class AccountLayout extends Component {
           <div className="row no-gutters container-fluid">
 
             <div className="col-sm-3">
-              <AccountSidebar image={BASEURL + "Images/" + this.state.userInfo.imagePath}
+              <AccountSidebar image={this.state.userInfo.imagePath}
               token={this.props.userToken} />
             </div>
 

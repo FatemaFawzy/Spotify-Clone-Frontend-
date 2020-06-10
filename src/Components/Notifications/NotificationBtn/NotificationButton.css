@@ -1,7 +1,7 @@
 .notificationBox {
   position: fixed;
   top: -1.5%;
-  right: 10%;
+  right: 200px;
   transform: translate(20%, 10%);
   background-color: transparent;
   
@@ -75,7 +75,7 @@
   .notificationBox {
     position: fixed;
     top: -1.5%;
-    right: 15%;
+    right: 200px;
     transform: translate(20%, 10%);
     background-color: transparent;
     /* display: none; */
@@ -93,7 +93,7 @@
   .notificationBox {
     position: fixed;
     top: -1.5%;
-    right: 15%;
+    right: 200px;
     transform: translate(20%, 10%);
     background-color: transparent;
 
@@ -110,7 +110,7 @@
   .notificationBox {
     position: fixed;
     top: -1.5%;
-    right: 20%;
+    right: 200px;
     transform: translate(20%, 10%);
     background-color: transparent;
 
@@ -127,7 +127,7 @@
   .notificationBox {
     position: fixed;
     top: -1.5%;
-    right: 17%;
+    right: 200px;
     transform: translate(20%, 10%);
     background-color: transparent;
   }
@@ -136,4 +136,15 @@
     display: none;
   }
 
+}
+
+@media screen and (max-width: 800px) {
+
+  .notificationBox {
+    position: fixed;
+    top: -1.5%;
+    right: 100px;
+    transform: translate(20%, 10%);
+    background-color: transparent;
+  }
 }

@@ -4,7 +4,7 @@ import ArtistHomePageNavbar from "./ArtistNavbar";
 import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
 import * as itemType from "../../Constants/itemType";
 import {connect} from "react-redux";
-import {BASEURL,BASEURL2} from "../../Constants/baseURL";
+import {BASEURL} from "../../Constants/baseURL";
 import {NavLink,Link} from "react-router-dom";
 
 const emailFormat = RegExp(
@@ -140,7 +140,7 @@ export class EditArtistInformation extends Component {
       method:"GET",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
-    const url2 =BASEURL2+"artist/information"; 
+    const url2 =BASEURL+"artist/information"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();
@@ -201,7 +201,7 @@ export class EditArtistInformation extends Component {
         method:"POST",
         headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
       }
-      const url3 =BASEURL2+"artist/information/edit"; 
+      const url3 =BASEURL+"artist/information/edit"; 
       fetch(url3,requestOptions3)
         .then((response) => {
           return response.json();

@@ -14,36 +14,90 @@ import ShareBox from "../../Components/Share/ShareBox";
 let space = {
   right: "10%",
 };
+
+/** Class MusicBar
+ * @category MusicBar
+ * @extends Component
+ */
 class MusicBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      songName: "Another Love",
-      artistName: "Tom Odell",
-      photoLink:
-        "https://i.scdn.co/image/ab67616d00001e021917a0f3f4152622a040913f",
       // TODO: change the albumlink and artistprofile
+
+    /**Link to the album page
+     * @memberof MusicBar
+     * @type {string}
+     */      
       albumLink: "/webplayer/yourlibrary",
+    /**Link to the artist profile page
+     * @memberof MusicBar
+     * @type {string}
+     */      
       artistProfileLink: "/webplayer/artistprofile/",
-      duration: "3:45",
-      // progress: "0%",
+    /**Sound volume magnitude
+     * @memberof MusicBar
+     * @type {string}
+     */      
       volume: "0.5",
+    /**Check if the volume is muted
+     * @memberof MusicBar
+     * @type {boolean}
+     */ 
       muted: false,
+    /**Show or hide the snackbar
+     * @memberof MusicBar
+     * @type {boolean}
+     */ 
       showSnackBar: false,
+    /**Message appearing in the snackbar
+     * @memberof MusicBar
+     * @type {string}
+     */ 
       snackBarMes: "",
+    /**Enable or disable play queue
+     * @memberof MusicBar
+     * @type {boolean}
+     */ 
       playQueue: false,
+    /**Static queue tracks index
+     * @memberof MusicBar
+     * @type {int}
+     */ 
       trackNum: 0,
+      // duration: "3:45",
+      // progress: "0%",
     };
 
+    /**Check if the music progress bar is clicked on
+     * @memberof MusicBar
+     * @type {boolean}
+     */ 
     this.forcedProgress = false;
+    /**Value of interval update in the music progress bar
+     * @memberof MusicBar
+     * @type {double}
+     */ 
     this.intervalUpdate = setInterval(this.onUpdate, 250);
-    this.songObject = Tracks[0];
+    /**Flag for the ads
+     * @memberof MusicBar
+     * @type {boolean}
+     */ 
     this.EnteredAdsMode = false;
   }
 
+    /**Like or unlike a song
+   * @memberof MusicBar
+   * @func likeSong
+   */
   likeSong = (e) => {
     const { id } = e.target;
+
+    /**Like song icon
+     * @memberof MusicBar
+     * @type {object}
+     */
     var heart = document.getElementById(id);
 
     const requestOptions = {
@@ -56,6 +110,7 @@ class MusicBar extends Component {
         //send a request to like the song
         const url = BASEURL + "track/like/123";
         // const url = BASEURL + "track/like/" + playingSongID;
+        
         fetch(url, requestOptions)
           .then((response) => {
             console.log(response);
@@ -76,6 +131,7 @@ class MusicBar extends Component {
           .catch((error) => {
             console.log(error);
           });
+
       } else if (heart.classList.contains("fas")) {
         //send a request to unlike the song
         const url1 = BASEURL + "track/unlike/123";
@@ -107,49 +163,79 @@ class MusicBar extends Component {
     heart.classList.toggle("fas");
   };
 
+  /**Play or pause a song
+   * @memberof MusicBar
+   * @func playPause
+   */
   playPause = (e) => {
     const { id } = e.target;
+
+    /**play/pause song button
+     * @memberof MusicBar
+     * @type {object}
+    */
     var icon = document.getElementById(id);
     this.props.onPlayPause();
     if (this.props.somethingIsPlaying) this.refs.player.pause();
     else this.refs.player.play();
   };
 
-  //when the music progress bar is clicked the track is adjusted accordignly
+  /**Adjust the progress of the music bar when it's clicked
+   * @memberof MusicBar
+   * @func handleProgress
+   */ 
   handleProgress = (e) => {
     if(!this.props.adsModeOn) {
+
+      /**Progress ref
+     * @memberof MusicBar
+     * @type {node}
+     */
       var progressRef = this.refs.progressRef;
+    /**New updated progress
+     * @memberof MusicBar
+     * @type {double}
+     */
       var progress1 =
         ((e.clientX - progressOffset(progressRef)) /
           document.getElementById("music-progress").clientWidth) *
         100;
-      // this.setState({ progress: progress1 });
       this.props.onChangeProgress(progress1);
       this.forcedProgress = true;
     }
 
   };
 
-  // update the music progress bar as the track keeps playing
+  /**update the music progress bar as the track keeps playing
+   * @memberof MusicBar
+   * @func onUpdate
+   */ 
   onUpdate = () => {
     if (this.refs.player) {
       if (!this.forcedProgress) {
-        // this.setState({
-        //   progress:
-        //     (this.refs.player.currentTime / this.refs.player.duration) * 100,
-        // });
         const tempduration= this.refs.player.duration===0?1:this.refs.player.duration;
         this.props.onChangeProgress((this.refs.player.currentTime /tempduration) * 100);
       }
     }
   };
 
-  //update volume when volume bar is clicked
+  /**update volume when volume bar is clicked
+ * @memberof MusicBar
+ * @func changeVolume
+ */ 
   changeVolume = (e) => {
     console.log(this.state.trackNum)
     this.setState({ muted: false });
+    /**Volume ref
+     * @memberof MusicBar
+     * @type {node}
+     */
     var volumeRef = this.refs.volumeRef;
     console.log((e.clientX - progressOffset(volumeRef)) / 78);
+    /**Volume 
+     * @memberof MusicBar
+     * @type {double}
+     */
     var volume = (e.clientX - progressOffset(volumeRef)) / 78;
     if (volume < 0) {
       volume = 0;
@@ -159,6 +245,10 @@ class MusicBar extends Component {
     if (this.refs.player) this.refs.player.volume = volume;
   };
 
+/**mute/unmute volume when volume icon is clicked
+ * @memberof MusicBar
+ * @func muteVolume
+ */ 
   muteVolume = (e) => {
     if (this.state.muted) {
       this.setState({ muted: false });
@@ -169,9 +259,18 @@ class MusicBar extends Component {
     }
   };
 
+/**play previous song
+ * @memberof MusicBar
+ * @func playPrevious
+ */
   playPrevious = (e) => {
     //if it's playing a queue, get the previous song
     if (this.state.playQueue) {
+
+    /**Temporary track index
+     * @memberof MusicBar
+     * @type {int}
+     */
       let newTrackNum;
       if (this.state.trackNum != 0)
       {
@@ -179,14 +278,11 @@ class MusicBar extends Component {
         this.setState((prevState, props) => ({
           trackNum: prevState.trackNum - 1
         }));
-        // this.props.onChangeIndex(this.props.trackNum -1);
-        // this.setState({trackNum: this.state.trackNum -1})
       }
         
       else if (this.state.trackNum == 0)
       {
         newTrackNum=Tracks.length -1;
-        // this.props.onChangeIndex(Tracks.length - 1);
         this.setState({trackNum: Tracks.length -1})
       }
 
@@ -197,25 +293,28 @@ class MusicBar extends Component {
     if (this.refs.player) this.refs.player.currentTime = 0;
   };
 
+/**play next song
+ * @memberof MusicBar
+ * @func playNext
+ */
   playNext = (e) => {
     if (this.state.playQueue) {
+      /**Temporary track index
+     * @memberof MusicBar
+     * @type {int}
+     */
       let newTrackNum;
       if (this.state.trackNum != Tracks.length - 1)
       {
         newTrackNum=this.state.trackNum +1;
-      // this.props.onChangeIndex(this.props.trackNum +1);
-      this.setState((prevState, props) => ({
+        this.setState((prevState, props) => ({
         trackNum: prevState.trackNum + 1
       }));
-        
-      // this.setState({trackNum: this.state.trackNum +1})
-      
-
+              
       }
   
       else if (this.state.trackNum == Tracks.length - 1)
       {
-        // this.props.onChangeIndex(0);
         newTrackNum=0;
         this.setState({trackNum: 0})
       }
@@ -224,20 +323,44 @@ class MusicBar extends Component {
     }
   };
 
+/**Enable/disable play queue
+ * @memberof MusicBar
+ * @func playQueue
+ */
   playQueue = (e) => {
     if (!this.state.playQueue) this.setState({ playQueue: true });
     else if (this.state.playQueue) this.setState({ playQueue: false });
   };
 
+/**Stop playing the track 
+ * @memberof MusicBar
+ * @func stop
+ */
   stop = (e) => {
     if (this.refs.player) this.refs.player.currentTime = 0;
     if(this.props.somethingIsPlaying) this.props.onPlayPause();
   };
 
   render() {
+    /**Volume Icon
+     * @memberof MusicBar
+     * @type {object}
+     */
     var volumeIcon;
+    /**Current time of the track
+     * @memberof MusicBar
+     * @type {double}
+     */
     var currentTime;
+    /**Track duration
+     * @memberof MusicBar
+     * @type {double}
+     */
     var duration;
+    /**play/pause Icon
+     * @memberof MusicBar
+     * @type {object}
+     */
     var icon = document.getElementById("play-track-bar");
 
     if (this.refs.player) {
@@ -291,18 +414,11 @@ class MusicBar extends Component {
           this.refs.player.load();
         }
       }
-      //----------------End of Ads Audio handling----------------------------
 
-      // //check if a new song is selected
-      // if (this.props.reload) {
-      //   this.refs.player.load();
-      //   this.props.onChangeReload(false);
-      // }
     }
 
     if (this.props.somethingIsPlaying) {
       if (this.refs.player) this.refs.player.play();
-      // document.querySelector("audio").play();
       if (icon) {
         icon.classList.remove("fa-play-circle");
         icon.classList.add("fa-pause-circle");
@@ -311,7 +427,6 @@ class MusicBar extends Component {
 
     else {
       if (this.refs.player) this.refs.player.pause();
-      // document.querySelector("audio").pause();
       if (icon) {
         icon.classList.remove("fa-pause-circle");
         icon.classList.add("fa-play-circle");
@@ -352,11 +467,8 @@ class MusicBar extends Component {
                     <img
                       className="card-img song-photo"
                       src={
-                        // !this.props.adsModeOn?
-                        
-                        // ((this.state.playQueue)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].imgURL:Tracks[1].imgURL):
-                        // "https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
-                        (!this.props.adsModeOn)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].imgURL:"https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
+                        (!this.props.adsModeOn)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].imgURL:
+                        "https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
                       }
                     ></img>
                   </div>
@@ -369,10 +481,6 @@ class MusicBar extends Component {
                             <a id="song-name" href={this.state.albumLink}>
                               
                               {
-                              // !this.props.adsModeOn?
-                                
-                              //   ((this.state.playQueue)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].SongName:Tracks[1].SongName):
-                              //   "Ad Audio"
                               (!this.props.adsModeOn)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].SongName:"Ad Audio"
                                 }
                             </a>
@@ -384,9 +492,6 @@ class MusicBar extends Component {
                               href={this.state.artistProfileLink}
                             >
                               {
-                                // !this.props.adsModeOn?
-                                // ((this.state.playQueue)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].Artist:Tracks[1].Artist):
-                                // "Spotify"
                                 (!this.props.adsModeOn)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].Artist:"Spotify"
                                 }
                             </a>
@@ -450,7 +555,7 @@ class MusicBar extends Component {
                   }}
                   className="middle-icons fas fa-sync-alt ml-2"
                   onClick={() => {
-                    this.props.onToggleLoop();
+                    (!this.props.adsModeOn)&&this.props.onToggleLoop();
                   }}
                 ></button>
               </div>
@@ -540,9 +645,6 @@ class MusicBar extends Component {
                       className="fas fa-circle slider"
                     ></button>
                   </div>
-                  {/* <div className="slidecontainer">
-                    <input type="range" min="1" max="100" value="10" class="slider" id="myRange"></input>
-                  </div> */}
                 </li>
               </ul>
             </div>
@@ -550,11 +652,7 @@ class MusicBar extends Component {
         </div>
 
         <audio ref="player" loop={this.props.playOnRepeat}>
-          {/* <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" /> */}
           <source src={
-            // !this.props.adsModeOn?
-            // (this.state.playQueue)?Tracks[this.state.trackNum]&&Tracks[this.state.trackNum].songURL:Tracks[1].songURL:
-            // AdsAudio
             (!this.props.adsModeOn)?Tracks[this.state.trackNum]&& Tracks[this.state.trackNum].songURL: AdsAudio
             } autoplay/>
         </audio>
