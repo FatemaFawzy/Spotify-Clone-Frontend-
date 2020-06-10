@@ -27,7 +27,7 @@ export class SeeAllArtists extends Component {
     }  
   }
  /**A function that's called when the page is brought up.
-   * @memberof ForgotPassword
+   * @memberof SeeAllArtists
    * @func componentDidMount
    */
   componentDidMount() {

@@ -34,10 +34,18 @@ export class YourLibraryArtist extends Component {
   componentDidMount() {
      //Make a request with this.props.userID
     //assume this is the returned data
+          /**Object needed for the request.
+* @memberof YourLibraryArtist
+* @type {object}
+*/
     const requestOptions={
       method:"GET",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
+               /**URL for request.
+   * @memberof YourLibraryAlbum
+   * @type {string}
+   */
     const url = BASEURL + "artists/me"; 
     fetch(url,requestOptions)
       .then((response) => {

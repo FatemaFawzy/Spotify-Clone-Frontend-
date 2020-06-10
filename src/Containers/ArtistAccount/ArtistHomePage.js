@@ -16,12 +16,7 @@ export class ArtistHomePage extends Component {
   constructor(props){
     super(props);
     this.state = {
-   
-     
-
-     
-    
-    }
+   }
     
   }
 

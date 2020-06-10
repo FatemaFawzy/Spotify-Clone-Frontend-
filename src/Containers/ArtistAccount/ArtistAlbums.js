@@ -18,7 +18,11 @@ import {NavLink,Link} from "react-router-dom";
 export class ArtistAlbums extends Component {
   constructor(props){
     super(props);
-    this.state = {  
+    this.state = { 
+   /** Array of albums
+   * @memberof ArtistAlbums
+   * @type {Array<Albums>}
+   */ 
       AlbumInfo: [
          {id : 1, AlbumName : "The Wall", Singer: "Pink Floyd", Name: "",Duration : ""},],
         // {id : 2, AlbumName : "Animals", Singer: "Pink Floyd", Name: "",Duration : ""},
@@ -32,16 +36,40 @@ export class ArtistAlbums extends Component {
         // {id : 10, AlbumName : "The Great Gig In The Sky", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "3:52"},
         // {id : 11, AlbumName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Duration : "4:15"},
         // {id : 12, AlbumName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall", Duration : "2:58"},
+          /** Array of popular albums
+   * @memberof ArtistAlbums
+   * @type {String}
+   */ 
        PopularAlbums: [],
+    /**Boolean to indicate whether an album has been deleted
+   * @memberof ArtistAlbums
+   * @type {boolean}
+   */ 
        Deleted:"",
+    /**Boolean to indicate whether an album has been added
+   * @memberof ArtistAlbums
+   * @type {boolean}
+   */ 
        Added:"",
+   /**Boolean to indicate if the snackbar should appear
+   * @memberof ArtistAlbums
+   * @type {boolean}
+   */ 
        showSnackBar: false,
+   /**String of snackbar message
+   * @memberof ArtistAlbums
+   * @type {string}
+   */ 
        snackBarMes: ""
       
       
     }
     
   }
+     /**A function that fires when the page loads
+   * @memberof ArtistAlbums
+   * @func componentDidMount
+   */
   componentDidMount() {
     const requestOptions1={
       method:"GET",
@@ -79,7 +107,10 @@ export class ArtistAlbums extends Component {
         })
       
     }
-
+     /**A function that is called when an album is requested to be deleted
+   * @memberof ArtistAlbums
+   * @func deleteAlbum
+   */
 deleteAlbum = () => {
   this.setState({Deleted:true});
   const requestOptions2={

@@ -7,33 +7,58 @@ import {connect} from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
 import {NavLink,Link} from "react-router-dom";
 
+/** Class EditSong
+ * @category EditSong
+ * @extends Component
+ */
 export class EditSong extends Component {
   constructor(props){
     super(props);
     this.state = {
+   /** Song to be edited's info
+   * @memberof EditSong
+   * @type {object}
+   */ 
    info:{
     // name:"High Hopes",
     // image:"https://example.com/image/",
    },
+   /** Song to be edited's name
+   * @memberof EditSong
+   * @type {String}
+   */ 
    Name:"",
+   /** Song to be edited's image
+   * @memberof EditSong
+   * @type {String}
+   */ 
   Image:"",
   }
   }
-
+      /**A function that handles changes in name input
+   * @memberof EditSong
+   * @func handleName
+   */
    handleName = (event) => {
    let Name = this.state.Name;
     Name = event.target.value;
     this.state.Name = Name;
     // this.validateAlbumName();
   };
-
+      /**A function that handles changes in image input
+   * @memberof EditSong
+   * @func handleImage
+   */
   handleImage = (event) => {
     let Image = this.state.Image;
     Image = event.target.value;
     this.state.Image = Image;
     // this.validateImage();
   };
-
+      /**A function that fires when a user clicks on the button to edit the song
+   * @memberof AddSong
+   * @func clickSubmit
+   */
   clickSubmit= (event) => {
 
     if (event) {
@@ -83,6 +108,10 @@ export class EditSong extends Component {
 
   }
   }
+           /**A function that fires when the page loads
+   * @memberof EditSong
+   * @func componentDidMount
+   */
   componentDidMount()
   {
     const requestOptions2={

@@ -7,10 +7,18 @@ import {connect} from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
 import {NavLink,Link} from "react-router-dom";
 
+/** Class ArtistInformation
+ * @category ArtistInformation
+ * @extends Component
+ */
 export class ArtistInformation extends Component {
   constructor(props){
     super(props);
     this.state = {
+         /** Information about the artist
+   * @memberof ArtistInformation
+   * @type {Object}
+   */ 
    info:{
     email:"davidgilmour123@gmail.com",
     username:"pink_floyd",
@@ -23,6 +31,10 @@ export class ArtistInformation extends Component {
    }  
     }   
   }
+       /**A function that fires when the page loads
+   * @memberof ArtistInformation
+   * @func componentDidMount
+   */
   componentDidMount()
   {
     const requestOptions2={

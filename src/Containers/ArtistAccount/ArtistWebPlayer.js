@@ -35,7 +35,10 @@ import EditAlbum from "./EditAlbum";
 
 var isPremium=false;
 
-
+/** Class ArtistWebPlayer
+ * @category ArtistWebPlayer
+ * @extends Component
+ */
 export class ArtistWebPlayer extends Component {
 
   render(){

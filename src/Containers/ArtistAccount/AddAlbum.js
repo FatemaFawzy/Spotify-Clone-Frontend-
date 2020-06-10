@@ -10,9 +10,25 @@ import {Link} from "react-router-dom";
 
 
 const initialState = {
+     /**Name input
+   * @memberof AddAlbum
+   * @type {String}
+   */
   Name:"",
+     /**image input
+   * @memberof AddAlbum
+   * @type {String}
+   */
   Image:"",
+     /**Error message of name 
+   * @memberof AddAlbum
+   * @type {String}
+   */
   nameerror:"",
+  /**Error message of image
+   * @memberof AddAlbum
+   * @type {String}
+   */
   imageerror:"",
 };
 /** Class AddAlbum
@@ -24,10 +40,25 @@ export class AddAlbum extends Component {
     super(props);
     this.state = initialState
   }
-
+  /**A function that validates input album name
+   * @memberof AddAlbum
+   * @func validateAlbumName
+   */
   validateAlbumName = () => {
+      /**Name input
+   * @memberof AddAlbum
+   * @type {String}
+   */
     let Name = this.state.Name;
+   /**Name error message
+   * @memberof AddAlbum
+   * @type {String}
+   */
     let nameerror= this.state.nameerror;
+   /**Boolean to indicate whether validations have passed or not
+   * @memberof AddAlbum
+   * @type {String}
+   */
     let proceedname = true;
     if (Name.length === 0) {
       if (document.querySelector("#basic-url1") && document.querySelector("#error-message")) {
@@ -46,9 +77,25 @@ export class AddAlbum extends Component {
     }
     return proceedname;
   };
+  /**A function that validates input album image
+   * @memberof AddAlbum
+   * @func validateImage
+   */
   validateImage = () => {
+          /**Image input
+   * @memberof AddAlbum
+   * @type {String}
+   */
     let Image = this.state.Image;
+       /**Image error message
+   * @memberof AddAlbum
+   * @type {String}
+   */
     let imageerror = this.state.imageerror;
+       /**Boolean to indicate whether validations have passed or not
+   * @memberof AddAlbum
+   * @type {String}
+   */
     let proceedimage = true;
     if (Image.length === 0) {
       if (document.querySelector("#basic-url2") && document.querySelector("#error-message")) {
@@ -68,21 +115,30 @@ export class AddAlbum extends Component {
     }
     return proceedimage;
   };
-
+  /**A function that handles changes in name input
+   * @memberof AddAlbum
+   * @func handleName
+   */
   handleName = (event) => {
     let Name = this.state.Name;
     Name = event.target.value;
     this.state.Name = Name;
     this.validateAlbumName();
   };
-
+  /**A function that handles changes in image input
+   * @memberof AddAlbum
+   * @func handleImage
+   */
   handleImage = (event) => {
     let Image = this.state.Image;
     Image = event.target.value;
     this.state.Image = Image;
     this.validateImage();
   };
-
+  /**A function that fires when a user clicks on the button to submit
+   * @memberof AddAlbum
+   * @func clickSubmit
+   */
   clickSubmit= (event) => {
     let Name=this.state.Name;
     let Image=this.state.Image;

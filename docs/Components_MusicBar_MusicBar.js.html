@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/MusicBar/MusicBar.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/MusicBar/MusicBar.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
+import "./MusicBar.css";
+import { connect } from "react-redux";
+import * as actionTypes from "../../Store/actions";
+import { formatTime, progressOffset } from "../../HelperFunctions/History";
+import ReactSnackBar from "react-js-snackbar";
+import "../PlaylistsComponent/SnackBar.css";
+import { Tracks } from "./SongFiles.js";
+import { BASEURL } from "../../Constants/baseURL";
+import AdsAudio from "../../assets/adsaudio.mp3";
+import FacebookShareButton from "../../Components/Share/FacebookShareButton";
+import TwitterShareButton from "../../Components/Share/TwitterShareButton";
+import ShareBox from "../../Components/Share/ShareBox";
+let space = {
+  right: "10%",
+};
+
+/** Class MusicBar
+ * @category MusicBar
+ * @extends Component
+ */
+class MusicBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      // TODO: change the albumlink and artistprofile
+
+    /**Link to the album page
+     * @memberof MusicBar
+     * @type {string}
+     */      
+      albumLink: "/webplayer/yourlibrary",
+    /**Link to the artist profile page
+     * @memberof MusicBar
+     * @type {string}
+     */      
+      artistProfileLink: "/webplayer/artistprofile/",
+    /**Sound volume magnitude
+     * @memberof MusicBar
+     * @type {string}
+     */      
+      volume: "0.5",
+    /**Check if the volume is muted
+     * @memberof MusicBar
+     * @type {boolean}
+     */ 
+      muted: false,
+    /**Show or hide the snackbar
+     * @memberof MusicBar
+     * @type {boolean}
+     */ 
+      showSnackBar: false,
+    /**Message appearing in the snackbar
+     * @memberof MusicBar
+     * @type {string}
+     */ 
+      snackBarMes: "",
+    /**Enable or disable play queue
+     * @memberof MusicBar
+     * @type {boolean}
+     */ 
+      playQueue: false,
+    /**Static queue tracks index
+     * @memberof MusicBar
+     * @type {int}
+     */ 
+      trackNum: 0,
+      // duration: "3:45",
+      // progress: "0%",
+    };
+
+    /**Check if the music progress bar is clicked on
+     * @memberof MusicBar
+     * @type {boolean}
+     */ 
+    this.forcedProgress = false;
+    /**Value of interval update in the music progress bar
+     * @memberof MusicBar
+     * @type {double}
+     */ 
+    this.intervalUpdate = setInterval(this.onUpdate, 250);
+    /**Flag for the ads
+     * @memberof MusicBar
+     * @type {boolean}
+     */ 
+    this.EnteredAdsMode = false;
+  }
+
+    /**Like or unlike a song
+   * @memberof MusicBar
+   * @func likeSong
+   */
+  likeSong = (e) => {
+    const { id } = e.target;
+
+    /**Like song icon
+     * @memberof MusicBar
+     * @type {object}
+     */
+    var heart = document.getElementById(id);
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "x-auth": this.props.userToken },
+    };
+
+    if (heart) {
+      if (heart.classList.contains("far")) {
+        //send a request to like the song
+        const url = BASEURL + "track/like/123";
+        // const url = BASEURL + "track/like/" + playingSongID;
+        
+        fetch(url, requestOptions)
+          .then((response) => {
+            console.log(response);
+            return response.json();
+          })
+          .then((data) => {
+            if (data.message == "Song liked successfully") {
+              this.setState({
+                showSnackBar: true,
+                snackBarMes: "Added to your liked songs",
+              });
+              setTimeout(() => {
+                this.setState({ showSnackBar: false });
+              }, 2000);
+            }
+            console.log(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+      } else if (heart.classList.contains("fas")) {
+        //send a request to unlike the song
+        const url1 = BASEURL + "track/unlike/123";
+        // const url = BASEURL + "track/unlike/" + playingSongID;
+
+        fetch(url1, requestOptions)
+          .then((response) => {
+            console.log(response);
+            return response.json();
+          })
+          .then((data) => {
+            if (data.message == "Song unliked successfully") {
+              this.setState({
+                showSnackBar: true,
+                snackBarMes: "Removed from your liked songs",
+              });
+              setTimeout(() => {
+                this.setState({ showSnackBar: false });
+              }, 2000);
+            }
+            console.log(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    }
+    heart.classList.toggle("far");
+    heart.classList.toggle("fas");
+  };
+
+  /**Play or pause a song
+   * @memberof MusicBar
+   * @func playPause
+   */
+  playPause = (e) => {
+    const { id } = e.target;
+
+    /**play/pause song button
+     * @memberof MusicBar
+     * @type {object}
+    */
+    var icon = document.getElementById(id);
+    this.props.onPlayPause();
+    if (this.props.somethingIsPlaying) this.refs.player.pause();
+    else this.refs.player.play();
+  };
+
+  /**Adjust the progress of the music bar when it's clicked
+   * @memberof MusicBar
+   * @func handleProgress
+   */ 
+  handleProgress = (e) => {
+    if(!this.props.adsModeOn) {
+
+      /**Progress ref
+     * @memberof MusicBar
+     * @type {node}
+     */
+      var progressRef = this.refs.progressRef;
+    /**New updated progress
+     * @memberof MusicBar
+     * @type {double}
+     */
+      var progress1 =
+        ((e.clientX - progressOffset(progressRef)) /
+          document.getElementById("music-progress").clientWidth) *
+        100;
+      this.props.onChangeProgress(progress1);
+      this.forcedProgress = true;
+    }
+
+  };
+
+  /**update the music progress bar as the track keeps playing
+   * @memberof MusicBar
+   * @func onUpdate
+   */ 
+  onUpdate = () => {
+    if (this.refs.player) {
+      if (!this.forcedProgress) {
+        const tempduration= this.refs.player.duration===0?1:this.refs.player.duration;
+        this.props.onChangeProgress((this.refs.player.currentTime /tempduration) * 100);
+      }
+    }
+  };
+
+  /**update volume when volume bar is clicked
+ * @memberof MusicBar
+ * @func changeVolume
+ */ 
+  changeVolume = (e) => {
+    console.log(this.state.trackNum)
+    this.setState({ muted: false });
+    /**Volume ref
+     * @memberof MusicBar
+     * @type {node}
+     */
+    var volumeRef = this.refs.volumeRef;
+    console.log((e.clientX - progressOffset(volumeRef)) / 78);
+    /**Volume 
+     * @memberof MusicBar
+     * @type {double}
+     */
+    var volume = (e.clientX - progressOffset(volumeRef)) / 78;
+    if (volume &lt; 0) {
+      volume = 0;
+      this.setState({ muted: true });
+    } else if (volume > 1) volume = 1;
+    this.setState({ volume: volume });
+    if (this.refs.player) this.refs.player.volume = volume;
+  };
+
+/**mute/unmute volume when volume icon is clicked
+ * @memberof MusicBar
+ * @func muteVolume
+ */ 
+  muteVolume = (e) => {
+    if (this.state.muted) {
+      this.setState({ muted: false });
+      if (this.refs.player) this.refs.player.volume = this.state.volume;
+    } else {
+      this.setState({ muted: true });
+      if (this.refs.player) this.refs.player.volume = 0;
+    }
+  };
+
+/**play previous song
+ * @memberof MusicBar
+ * @func playPrevious
+ */
+  playPrevious = (e) => {
+    //if it's playing a queue, get the previous song
+    if (this.state.playQueue) {
+
+    /**Temporary track index
+     * @memberof MusicBar
+     * @type {int}
+     */
+      let newTrackNum;
+      if (this.state.trackNum != 0)
+      {
+        newTrackNum=this.state.trackNum -1;
+        this.setState((prevState, props) => ({
+          trackNum: prevState.trackNum - 1
+        }));
+      }
+        
+      else if (this.state.trackNum == 0)
+      {
+        newTrackNum=Tracks.length -1;
+        this.setState({trackNum: Tracks.length -1})
+      }
+
+      this.props.changePlayingSongID(newTrackNum.toString());
+      this.refs.player.load();
+    }
+    //if only one song is playing, just play it from the start
+    if (this.refs.player) this.refs.player.currentTime = 0;
+  };
+
+/**play next song
+ * @memberof MusicBar
+ * @func playNext
+ */
+  playNext = (e) => {
+    if (this.state.playQueue) {
+      /**Temporary track index
+     * @memberof MusicBar
+     * @type {int}
+     */
+      let newTrackNum;
+      if (this.state.trackNum != Tracks.length - 1)
+      {
+        newTrackNum=this.state.trackNum +1;
+        this.setState((prevState, props) => ({
+        trackNum: prevState.trackNum + 1
+      }));
+              
+      }
+  
+      else if (this.state.trackNum == Tracks.length - 1)
+      {
+        newTrackNum=0;
+        this.setState({trackNum: 0})
+      }
+      this.props.changePlayingSongID(newTrackNum.toString());
+      this.refs.player.load();
+    }
+  };
+
+/**Enable/disable play queue
+ * @memberof MusicBar
+ * @func playQueue
+ */
+  playQueue = (e) => {
+    if (!this.state.playQueue) this.setState({ playQueue: true });
+    else if (this.state.playQueue) this.setState({ playQueue: false });
+  };
+
+/**Stop playing the track 
+ * @memberof MusicBar
+ * @func stop
+ */
+  stop = (e) => {
+    if (this.refs.player) this.refs.player.currentTime = 0;
+    if(this.props.somethingIsPlaying) this.props.onPlayPause();
+  };
+
+  render() {
+    /**Volume Icon
+     * @memberof MusicBar
+     * @type {object}
+     */
+    var volumeIcon;
+    /**Current time of the track
+     * @memberof MusicBar
+     * @type {double}
+     */
+    var currentTime;
+    /**Track duration
+     * @memberof MusicBar
+     * @type {double}
+     */
+    var duration;
+    /**play/pause Icon
+     * @memberof MusicBar
+     * @type {object}
+     */
+    var icon = document.getElementById("play-track-bar");
+
+    if (this.refs.player) {
+      currentTime = this.refs.player.currentTime;
+      duration = this.refs.player.duration;
+
+      // Check if the user wants to skip to a certain part of the track
+      if (this.forcedProgress &amp;&amp; this.refs.player.duration !=0) {
+        this.forcedProgress = false;
+
+        this.refs.player.currentTime =
+          this.refs.player.duration * (this.props.progress / 100);
+      }
+
+      //check if the user clicked on play on repeat
+      if (!this.refs.player.loop) {
+        if (this.refs.player.ended &amp;&amp; this.props.somethingIsPlaying) {
+          this.props.onSongEnded();
+          if (!this.refs.player.loop) {
+            this.props.onPlayPause();
+          }
+        }
+      }
+
+      //check if the current track ended to play next in queue
+      if (this.state.playQueue &amp;&amp; this.refs.player.ended) {
+        if (!this.props.adsModeOn) {
+        this.playNext();
+        this.props.onPlayPause();
+        }else
+        {
+          this.props.onAdsEnded();
+          this.EnteredAdsMode = false;
+          this.props.onPlayPause();
+          
+        }
+      }
+
+      //----------------Ads Audio handling----------------------------
+      if (this.props.adsModeOn) {
+        if (!this.EnteredAdsMode) {
+          this.refs.player.load();
+          this.EnteredAdsMode = true;
+        }
+
+        if (this.refs.player.ended &amp;&amp; this.props.somethingIsPlaying) {
+          this.props.onAdsEnded();
+          this.EnteredAdsMode = false;
+          console.log("hey");
+          if(this.state.playQueue||this.refs.player.loop)this.props.onPlayPause();
+          this.refs.player.load();
+        }
+      }
+
+    }
+
+    if (this.props.somethingIsPlaying) {
+      if (this.refs.player) this.refs.player.play();
+      if (icon) {
+        icon.classList.remove("fa-play-circle");
+        icon.classList.add("fa-pause-circle");
+      }
+    }
+
+    else {
+      if (this.refs.player) this.refs.player.pause();
+      if (icon) {
+        icon.classList.remove("fa-pause-circle");
+        icon.classList.add("fa-play-circle");
+      }
+    }
+
+    if (this.state.muted) {
+      volumeIcon = "fa-volume-mute";
+    } else {
+      volumeIcon = "fa-volume-up";
+    }
+
+    //check if a song componenet is playing a song 
+    if(this.props.reload)
+    {
+      //make the request to get the song here
+
+      this.setState({trackNum:parseInt(this.props.playingSongID)})
+      if(this.refs.player) this.refs.player.load();
+      this.props.onLoadSong(false);
+    }
+
+
+    return (
+      &lt;div className="music-bar d-flex align-items-center pt-0 pb-0">
+        &lt;ReactSnackBar
+          Icon={&lt;span className="fab fa-spotify">&lt;/span>}
+          Show={this.state.showSnackBar}
+        >
+          {this.state.snackBarMes}
+        &lt;/ReactSnackBar>
+        &lt;div className="music-bar-inside container-fluid m-0">
+          &lt;div className="row">
+            &lt;div className="music-bar-left col pl-0">
+              &lt;div className="card pl-0">
+                &lt;div className="row no-gutters">
+                  &lt;div className="col-2 ">
+                    &lt;img
+                      className="card-img song-photo"
+                      src={
+                        (!this.props.adsModeOn)?Tracks[this.state.trackNum]&amp;&amp;Tracks[this.state.trackNum].imgURL:
+                        "https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&amp;v=beta&amp;t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
+                      }
+                    >&lt;/img>
+                  &lt;/div>
+
+                  &lt;div className="col-10">
+                    &lt;div className="card-body pt-2 pl-0">
+                      &lt;ul className="list-group list-group-horizontal">
+                        &lt;li className="pr-2 prevent-overflow">
+                          &lt;div className="song-name prevent-overflow">
+                            &lt;a id="song-name" href={this.state.albumLink}>
+                              
+                              {
+                              (!this.props.adsModeOn)?Tracks[this.state.trackNum]&amp;&amp;Tracks[this.state.trackNum].SongName:"Ad Audio"
+                                }
+                            &lt;/a>
+                          &lt;/div>
+
+                          &lt;div className="artist-name prevent-overflow">
+                            &lt;a
+                              id="artist-name"
+                              href={this.state.artistProfileLink}
+                            >
+                              {
+                                (!this.props.adsModeOn)?Tracks[this.state.trackNum]&amp;&amp;Tracks[this.state.trackNum].Artist:"Spotify"
+                                }
+                            &lt;/a>
+                          &lt;/div>
+                        &lt;/li>
+
+                        &lt;li className="d-flex p-2">
+                          &lt;button
+                            id="heart-button"
+                            className="far fa-heart"
+                            title="Save to your Liked Songs"
+                            onClick={this.likeSong}
+                          >&lt;/button>
+                          &lt;div>
+                            &lt;FacebookShareButton />
+                          &lt;/div>
+                          &lt;div>
+                            &lt;TwitterShareButton />
+                          &lt;/div>
+                          &lt;div style={space}>
+                            &lt;ShareBox />
+                          &lt;/div>
+                        &lt;/li>
+                      &lt;/ul>
+                    &lt;/div>
+                  &lt;/div>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+
+            {/* ----------------------------------------------------------------------------------------------------- */}
+
+            &lt;div className="music-bar-middle">
+              &lt;div className="d-flex justify-content-center">
+                &lt;button
+                  className="middle-icons fas fa-stop mr-2"
+                  title="Stop"
+                  onClick={this.stop}
+                >&lt;/button>
+                &lt;button
+                  className="middle-icons fas fa-step-backward"
+                  title="Previous"
+                  onClick={(!this.props.adsModeOn)&amp;&amp;this.playPrevious}
+                >&lt;/button>
+                &lt;button
+                  id="play-track-bar"
+                  className="play middle-icons far fa-play-circle mr-3 ml-3"
+                  onClick={this.playPause}
+                >&lt;/button>
+                &lt;button
+                  className="middle-icons fas fa-step-forward"
+                  title="Next"
+                  onClick={(!this.props.adsModeOn)&amp;&amp;this.playNext}
+                >&lt;/button>
+                &lt;button
+                  title="Play on Repeat"
+                  style={{
+                    color: this.props.playOnRepeat
+                      ? "#1db954"
+                      : "rgb(179,179,179)",
+                  }}
+                  className="middle-icons fas fa-sync-alt ml-2"
+                  onClick={() => {
+                    (!this.props.adsModeOn)&amp;&amp;this.props.onToggleLoop();
+                  }}
+                >&lt;/button>
+              &lt;/div>
+              &lt;div className="duration-bar d-flex">
+                &lt;div className="duration pr-1">{formatTime(currentTime)}&lt;/div>
+
+                &lt;div
+                  id="music-progress"
+                  className="progress"
+                  onClick={(!this.props.adsModeOn)&amp;&amp;this.handleProgress}
+                >
+                  &lt;div
+                    ref="progressRef"
+                    className="progress-bar bg-success"
+                    role="progressbar"
+                    style={{ width: this.props.progress + "%" }}
+                    aria-valuenow="25"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    {" "}
+                  &lt;/div>
+
+                  &lt;button
+                    style={{ left: this.props.progress - 3 + "%" }}
+                    className="fas fa-circle slider"
+                  >&lt;/button>
+                &lt;/div>
+
+                &lt;div className="duration pl-1">{formatTime(duration)}&lt;/div>
+              &lt;/div>
+            &lt;/div>
+
+            {/* ----------------------------------------------------------------------------------------------------- */}
+
+            &lt;div className="music-bar-right pr-0 d-flex align-items-center justify-content-end list-group-horizontal">
+              &lt;ul className="volume-bar list-group list-group-horizontal">
+                &lt;li>
+                  &lt;button
+                    className="middle-icons fas fa-list mr-2"
+                    title="Play Queue"
+                    onClick={this.playQueue}
+                    style={{
+                      color: this.state.playQueue
+                        ? "#1db954"
+                        : "rgb(179,179,179)",
+                    }}
+                  >&lt;/button>
+                &lt;/li>
+                &lt;li>
+                  &lt;button
+                    id="volume-button"
+                    className={"fas " + volumeIcon}
+                    onClick={this.muteVolume}
+                  >
+                    {" "}
+                  &lt;/button>
+                &lt;/li>
+
+                &lt;li>
+                  &lt;div
+                    className="progress volumebar"
+                    onClick={this.changeVolume}
+                  >
+                    &lt;div
+                      ref="volumeRef"
+                      id="volume"
+                      className="progress-bar bg-success"
+                      role="progressbar"
+                      style={{
+                        width: this.state.muted
+                          ? 0 + "%"
+                          : this.state.volume * 100 + "%",
+                      }}
+                      aria-valuenow="25"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      {" "}
+                    &lt;/div>
+                    &lt;button
+                      style={{
+                        left: this.state.muted
+                          ? "-15%"
+                          : this.state.volume * 100 - 15 + "%",
+                      }}
+                      className="fas fa-circle slider"
+                    >&lt;/button>
+                  &lt;/div>
+                &lt;/li>
+              &lt;/ul>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;audio ref="player" loop={this.props.playOnRepeat}>
+          &lt;source src={
+            (!this.props.adsModeOn)?Tracks[this.state.trackNum]&amp;&amp; Tracks[this.state.trackNum].songURL: AdsAudio
+            } autoplay/>
+        &lt;/audio>
+      &lt;/div>
+    );
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onPlayASong: (songID) => dispatch({ type: actionTypes.PLAY_SONG, value: songID }),
+    onPlayPause: () => dispatch({ type: actionTypes.PLAY_PAUSE }),
+    onToggleLoop: () => dispatch({ type: actionTypes.TOGGLE_SONG_LOOP }),
+    onChangeIndex: (songIndex) => dispatch({ type: actionTypes.CHANGE_SONG_INDEX, value: songIndex }),
+    onChangeProgress: (progressValue) => dispatch({ type: actionTypes.CHANGE_SONG_PROGRESS, value: progressValue }),
+    onSongEnded: () => dispatch({ type: actionTypes.INCREMENT_NUM_SONGS }),
+    onAdsEnded: () => dispatch({ type: actionTypes.EXIT_ADS_MODE }),
+    onLoadSong: (boolStatus) => dispatch({type:actionTypes.ENABLE_LOAD_AUDIO, value:boolStatus}),
+    changePlayingSongID:(songID)=>dispatch({type:actionTypes.CHANGE_SONG_ID, value:songID}),
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    playingSongID: state.playingSongID,
+    somethingIsPlaying: state.somethingIsPlaying,
+    playOnRepeat: state.playOnRepeat,
+    adsModeOn: state.adsModeOn,
+    // trackNum: state.trackNum,
+    progress: state.progress,
+    reload: state.reload,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(MusicBar);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AddAlbum.html">AddAlbum</a></li><li><a href="AddSong.html">AddSong</a></li><li><a href="AddToPlaylist.html">AddToPlaylist</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistAlbums.html">ArtistAlbums</a></li><li><a href="ArtistHomePage.html">ArtistHomePage</a></li><li><a href="ArtistInformation.html">ArtistInformation</a></li><li><a href="ArtistNavbar.html">ArtistNavbar</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="ArtistSideBar.html">ArtistSideBar</a></li><li><a href="ArtistSongs.html">ArtistSongs</a></li><li><a href="ArtistWebPlayer.html">ArtistWebPlayer</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="BrowseItem.html">BrowseItem</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditAlbum.html">EditAlbum</a></li><li><a href="EditArtistInformation.html">EditArtistInformation</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EditSong.html">EditSong</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="MusicBar.html">MusicBar</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchContent.html">SearchContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SeeAllMadeForYou.html">SeeAllMadeForYou</a></li><li><a href="SeeAllPlaylists.html">SeeAllPlaylists</a></li><li><a href="SeeAllRecentlyPlayed.html">SeeAllRecentlyPlayed</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongsByGenre.html">SongsByGenre</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="UserComponent.html">UserComponent</a></li><li><a href="UserFollowersFollowing.html">UserFollowersFollowing</a></li><li><a href="welcomePage.html">welcomePage</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AdsBar">AdsBar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#EditPictureModal">EditPictureModal</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#link">link</a></li><li><a href="global.html#ListOfUsers">ListOfUsers</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Jun 10 2020 23:40:19 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

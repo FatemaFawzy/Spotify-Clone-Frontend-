@@ -11,14 +11,18 @@ import {NavLink,Link} from "react-router-dom";
 
 
 
-/** Class ArtistHomePage
- * @category ArtistHomePage
+/** Class ArtistSongs
+ * @category ArtistSongs
  * @extends Component
  */
 export class ArtistSongs extends Component {
   constructor(props){
     super(props);
     this.state = {  
+         /** Array of songs
+   * @memberof ArtistSongs
+   * @type {Array<Songs>}
+   */ 
       SongInfo: [
          {id : 1, SongName : "High Hopes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},],
         // {id : 2, SongName : "Pigs", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "4:15"},
@@ -32,16 +36,41 @@ export class ArtistSongs extends Component {
         // {id : 10, SongName : "The Great Gig In The Sky", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "3:52"},
         // {id : 11, SongName : "Us And Them", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100",Duration : "4:15"},
         // {id : 12, SongName : "Echoes", Singer: "Pink Floyd", AlbumName: "The Wall",Likes: "100", Duration : "2:58"},
+                 /** Array of popular songs
+   * @memberof ArtistSongs
+   * @type {String}
+   */ 
         PopularSongs: [],
+            /**Boolean to indicate whether a song has been deleted
+   * @memberof ArtistSongs
+   * @type {boolean}
+   */ 
         Deleted: false,
+                   /**Boolean to indicate whether a song has been added
+   * @memberof ArtistSongs
+   * @type {boolean}
+   */ 
         Added:"",
-        showSnackBar: false,
-        snackBarMes: ""
+   /**Boolean to indicate if the snackbar should appear
+   * @memberof ArtistSongs
+   * @type {boolean}
+   */ 
+  showSnackBar: false,
+  /**String of snackbar message
+  * @memberof ArtistSongs
+  * @type {string}
+  */ 
+      snackBarMes: ""
+     
+     
     }
     
   }
   
-
+     /**A function that fires when the page loads
+   * @memberof ArtistSongs
+   * @func componentDidMount
+   */
   componentDidMount() {
   const requestOptions1={
     method:"GET",
@@ -80,6 +109,10 @@ export class ArtistSongs extends Component {
       })
  }
  ////////////////////////////////////////////////////////
+      /**A function that is called when a song is requested to be deleted
+   * @memberof ArtistSongs
+   * @func deleteSong
+   */
  deleteSong = () => {
 
   this.setState({Deleted:true});

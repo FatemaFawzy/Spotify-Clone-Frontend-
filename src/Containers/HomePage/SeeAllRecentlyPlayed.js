@@ -14,9 +14,9 @@ export class SeeAllRecentlyPlayed extends Component {
   constructor(props){
     super(props);
     this.state = {
-  /**Array of recently played to show up in the page.
+  /**Array of recently played songs to show up in the page.
    * @memberof SeeAllRecentlyPlayed
-   * @type {Array<recentlyplayed>}
+   * @type {Array<song>}
    */
   recentlyPlayed:[],
    /**Constant boolean to indicate that there is no need for see all to appear.
@@ -27,10 +27,14 @@ export class SeeAllRecentlyPlayed extends Component {
     }  
   }
  /**A function that's called when the page is brought up.
-   * @memberof ForgotPassword
+   * @memberof SeeAllRecentlyPlayed
    * @func componentDidMount
    */
   componentDidMount() {
+           /**URL for request.
+   * @memberof SeeAllRecentlyPlayed
+   * @type {string}
+   */
      const url = BASEURL + "homepage/recentlyplayed"; 
     fetch(url)
       .then((response) => {

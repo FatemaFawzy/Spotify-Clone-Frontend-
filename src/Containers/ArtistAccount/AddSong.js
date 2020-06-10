@@ -11,9 +11,25 @@ import {Link} from "react-router-dom";
 
 
 const initialState = {
+       /**Name input
+   * @memberof AddSong
+   * @type {String}
+   */
   Name:"",
+       /**NamImagee input
+   * @memberof AddSong
+   * @type {String}
+   */
   Image:"",
+       /**Name error 
+   * @memberof AddSong
+   * @type {String}
+   */
   nameerror:"",
+       /**Image error message
+   * @memberof AddSong
+   * @type {String}
+   */
   imageerror:"",
 };
 /** Class AddSong
@@ -25,10 +41,25 @@ export class AddSong extends Component {
     super(props);
     this.state = initialState
   }
-
+  /**A function that validates input song name
+   * @memberof AddSong
+   * @func validateSongName
+   */
   validateSongName = () => {
+          /**Name input
+   * @memberof AddSong
+   * @type {String}
+   */
     let Name = this.state.Name;
-    let nameerror=this.state.nameerror
+  /**Name error message
+   * @memberof AddSong
+   * @type {String}
+   */
+    let nameerror=this.state.nameerror;
+  /**Boolean to indicate whether validations have passed or not
+   * @memberof AddSong
+   * @type {String}
+   */
     let proceedname = true;
     if (Name.length === 0) {
       if (document.querySelector("#basic-url1")) {
@@ -47,9 +78,25 @@ export class AddSong extends Component {
     }
     return proceedname;
   };
+    /**A function that validates input image url
+   * @memberof AddSong
+   * @func validateImage
+   */
   validateImage = () => {
+              /**Image input
+   * @memberof AddSong
+   * @type {String}
+   */
     let Image = this.state.Image;
+      /**Image error message
+   * @memberof AddSong
+   * @type {String}
+   */
     let imageerror=this.state.imageerror;
+      /**Boolean to indicate whether validations have passed or not
+   * @memberof AddSong
+   * @type {String}
+   */
     let proceedimage = true;
     if (Image.length === 0) {
       if (document.querySelector("#basic-url2")) {
@@ -68,21 +115,30 @@ export class AddSong extends Component {
     }
     return proceedimage;
   };
-
+  /**A function that handles changes in name input
+   * @memberof AddSong
+   * @func handleName
+   */
   handleName = (event) => {
     let Name = this.state.Name;
     Name = event.target.value;
     this.state.Name = Name;
     this.validateSongName();
   };
-
+  /**A function that handles changes in image input
+   * @memberof AddSong
+   * @func handleImage
+   */
   handleImage = (event) => {
     let Image = this.state.Image;
     Image = event.target.value;
     this.state.Image = Image;
     this.validateImage();
   };
-
+  /**A function that fires when a user clicks on the button to add another song
+   * @memberof AddSong
+   * @func clickSubmit
+   */
   clickSubmit= (event) => {
     let Name=this.state.Name;
     let Image=this.state.Image;
@@ -122,6 +178,10 @@ export class AddSong extends Component {
      
     }
   };
+    /**A function that fires when a user clicks on the button to end the process
+   * @memberof AddSong
+   * @func clickDone
+   */
   clickDone = (event) => {
     let Name=this.state.Name;
     let Image=this.state.Image;

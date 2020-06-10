@@ -7,32 +7,57 @@ import {connect} from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
 import {NavLink,Link} from "react-router-dom";
 
+/** Class EditAlbum
+ * @category EditAlbum
+ * @extends Component
+ */
 export class EditAlbum extends Component {
   constructor(props){
     super(props);
     this.state = {
+               /** Album to be edited's info
+   * @memberof EditAlbum
+   * @type {object}
+   */ 
       info:{
         // name:"High Hopes",
         // image:"https://example.com/image/",
        },
+                      /** Album to be edited's name
+   * @memberof EditAlbum
+   * @type {String}
+   */ 
        Name:"",
+                      /** Album to be edited's image
+   * @memberof EditAlbum
+   * @type {String}
+   */ 
       Image:"",
       }
       }
  
-    
+      /**A function that handles changes in name input
+   * @memberof EditAlbum
+   * @func handleName
+   */
       handleName = (event) => {
         let Name = this.state.Name;
         Name = event.target.value;
         this.state.Name = Name;
       };
-    
+   /**A function that handles changes in image input
+   * @memberof EditAlbum
+   * @func handleImage
+   */
       handleImage = (event) => {
         let Image = this.state.Image;
         Image = event.target.value;
         this.state.Image = Image;
       };
-    
+      /**A function that fires when a user clicks on the button to edit the album
+   * @memberof AddSong
+   * @func clickSubmit
+   */
       clickSubmit= (event) => {
         if (event) {
           event.preventDefault();
@@ -81,6 +106,10 @@ export class EditAlbum extends Component {
     
       }
       }
+         /**A function that fires when the page loads
+   * @memberof EditAlbum
+   * @func componentDidMount
+   */
   componentDidMount()
   {
     const requestOptions2={

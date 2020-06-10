@@ -26,14 +26,22 @@ export class SeeAllPlaylists extends Component {
     }  
   }
  /**A function that's called when the page is brought up.
-   * @memberof ForgotPassword
+   * @memberof SeeAllPlaylists
    * @func componentDidMount
    */
   componentDidMount() {
+           /**Object needed for the request.
+   * @memberof SeeAllPlaylists
+   * @type {object}
+   */
     const requestOptions={
       method:"GET",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
+       /**URL for request.
+   * @memberof SeeAllPlaylists
+   * @type {string}
+   */
     const url = BASEURL + "homepage/popularplaylists"; 
   fetch(url,requestOptions)
     .then((response) => {
