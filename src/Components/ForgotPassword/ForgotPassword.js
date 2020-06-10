@@ -4,7 +4,7 @@ import Header from  "../WelcomeRelated/Header";
 import Footer from "../WelcomeRelated/Footer";
 import {BrowserRouter as Router, Redirect} from "react-router-dom";
 import {Link} from "react-router-dom";
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL,BASEURL2} from "../../Constants/baseURL";
 
 const initialState = {
   /**Input string for the email
@@ -102,52 +102,47 @@ export class ForgotPassword extends Component {
     }
     else if(this.validate())
     {
-      console.log("yaaaaaaaaaaaaaaaaaaaaaaay");
+      // console.log("yaaaaaaaaaaaaaaaaaaaaaaay");
       this.setState({initialState});
      const {email}=this.state;
      if (document.querySelector("#my-text"))
       {
       document.querySelector("#my-text").classList.remove("red-border");
       }
-  //  /**Prerequisites for fetch request
-  //  * @memberof ForgotPassword
-  //  * @type {object}
-  //  */
-  //     const requestOptions = {
-  //       method:"POST",
-  //       headers: {'Content-Type':  'application/json'},
-  //       body: JSON.stringify({ email: email })
-  //     }
-  //     console.log(requestOptions.body);
-  //  /**URL for fetch request
-  //  * @memberof ForgotPassword
-  //  * @type {string}
-  //  */
-  //     var url = BASEURL + '/users/forgot'; 
-  //     fetch(url,requestOptions)
-  //       .then((response) => {
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         console.log(data);
-  //         if (data.message === "Email Sent Successfully")
-  //         {
-  //           console.log(data);
-  //           this.props.history.push('/logIn/forgotpassword/success');
-  //         }
-  //         else if (data.message == "Email Cannot be sent a problem while sending email")
-  //         {
-  //           this.state.emailError = "Your request cannot be performed. Please try again later.";
-  //         }
-  //         else if (data.message == "Email not found")
-  //         {
-  //          this.state.emailError = "The email you entered does not exist in the Spotify server."  
-  //         }
-  //       })
-  //       .catch((error)=>{
-  //         console.log(error);
-  //       })
-
+   /**Prerequisites for fetch request
+   * @memberof ForgotPassword
+   * @type {object}
+   */
+      const requestOptions = {
+        method:"GET"
+      }
+   /**URL for fetch request
+   * @memberof ForgotPassword
+   * @type {string}
+   */
+      var url =BASEURL2+'user/email'; 
+      fetch(url,requestOptions)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          console.log(data.email);
+          console.log(this.state.email);
+          if (data.email == this.state.email)
+          {
+            console.log(data);
+            this.props.history.push('/logIn/forgotpassword/newpassword/');
+          }
+          else
+          {
+           this.setState({emailError:"The email you entered does not exist in the Spotify server."});
+          }
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
+console.log(this.state.emailError);
     }
   };
 
