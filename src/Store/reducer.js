@@ -187,7 +187,7 @@ const reducer = (state = initialState, action) => {
                 return {
                   ...state,
                   numberOfSongsPlayed:0,
-                  adsModeOn:true
+                  adsModeOn: state.premium?false:true
                   };
 
               }
