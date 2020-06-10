@@ -40,7 +40,6 @@
 .notification:hover .num {
   position: relative;
   background: black;
-  /* color: #ff2c74; */
   color: rgb(29, 185, 84);
   font-size: 20px;
   top: -4px;
@@ -51,7 +50,6 @@
   display: block;
 }
 .notification .seeAll{
-  /* background-color:121416; */
   background-color: transparent;
   color:transparent;
   left:50px;
@@ -78,7 +76,6 @@
     right: 15%;
     transform: translate(20%, 10%);
     background-color: transparent;
-    /* display: none; */
 
   }
 
