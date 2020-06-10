@@ -116,14 +116,17 @@ class MusicBar extends Component {
 
   //when the music progress bar is clicked the track is adjusted accordignly
   handleProgress = (e) => {
-    var progressRef = this.refs.progressRef;
-    var progress1 =
-      ((e.clientX - progressOffset(progressRef)) /
-        document.getElementById("music-progress").clientWidth) *
-      100;
-    // this.setState({ progress: progress1 });
-    this.props.onChangeProgress(progress1);
-    this.forcedProgress = true;
+    if(this.props.somethingIsPlaying) {
+      var progressRef = this.refs.progressRef;
+      var progress1 =
+        ((e.clientX - progressOffset(progressRef)) /
+          document.getElementById("music-progress").clientWidth) *
+        100;
+      // this.setState({ progress: progress1 });
+      this.props.onChangeProgress(progress1);
+      this.forcedProgress = true;
+    }
+
   };
 
   // update the music progress bar as the track keeps playing
@@ -195,7 +198,7 @@ class MusicBar extends Component {
 
   stop = (e) => {
     if (this.refs.player) this.refs.player.currentTime = 0;
-    this.props.onPlayPause();
+    if(this.props.somethingIsPlaying) this.props.onPlayPause();
   };
 
   render() {
@@ -209,7 +212,7 @@ class MusicBar extends Component {
       duration = this.refs.player.duration;
 
       // Check if the user wants to skip to a certain part of the track
-      if (this.forcedProgress) {
+      if (this.forcedProgress && this.refs.player.duration !=0) {
         this.forcedProgress = false;
 
         this.refs.player.currentTime =
@@ -304,11 +307,13 @@ class MusicBar extends Component {
                   <div className="col-2 ">
                     <img
                       className="card-img song-photo"
-                      src={!this.props.adsModeOn?
+                      src={
+                        // !this.props.adsModeOn?
                         
-                        ((this.state.playQueue)?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].imgURL:Tracks[1].imgURL):
-                        "https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
-                        }
+                        // ((this.state.playQueue)?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].imgURL:Tracks[1].imgURL):
+                        // "https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
+                        (!this.props.adsModeOn)?Tracks[this.props.trackNum].imgURL:"https://media-exp1.licdn.com/dms/image/C560BAQHpg-r-l1OuMw/company-logo_200_200/0?e=2159024400&v=beta&t=OpcQBP3_pWwy8srJcQHoDHxaUH9MRN1RPaV5ZzKoUEY"
+                      }
                     ></img>
                   </div>
 
@@ -318,11 +323,14 @@ class MusicBar extends Component {
                         <li className="pr-2 prevent-overflow">
                           <div className="song-name prevent-overflow">
                             <a id="song-name" href={this.state.albumLink}>
-                              {" "}
-                              {!this.props.adsModeOn?
+                              
+                              {
+                              // !this.props.adsModeOn?
                                 
-                                ((this.state.playQueue)?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].SongName:Tracks[1].SongName):
-                                "Ad Audio"}{" "}
+                              //   ((this.state.playQueue)?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].SongName:Tracks[1].SongName):
+                              //   "Ad Audio"
+                              (!this.props.adsModeOn)?Tracks[this.props.trackNum].SongName:"Ad Audio"
+                                }
                             </a>
                           </div>
 
@@ -332,9 +340,11 @@ class MusicBar extends Component {
                               href={this.state.artistProfileLink}
                             >
                               {
-                                !this.props.adsModeOn?
-                                ((this.state.playQueue)?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].Artist:Tracks[1].Artist):
-                                "Spotify"}
+                                // !this.props.adsModeOn?
+                                // ((this.state.playQueue)?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].Artist:Tracks[1].Artist):
+                                // "Spotify"
+                                (!this.props.adsModeOn)?Tracks[this.props.trackNum].Artist:"Spotify"
+                                }
                             </a>
                           </div>
                         </li>
@@ -498,9 +508,10 @@ class MusicBar extends Component {
         <audio ref="player" loop={this.props.playOnRepeat}>
           {/* <source src="https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/055.mp3" /> */}
           <source src={
-            !this.props.adsModeOn?
-            (this.state.playQueue)?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].songURL:Tracks[1].songURL:
-            AdsAudio
+            // !this.props.adsModeOn?
+            // (this.state.playQueue)?Tracks[this.props.trackNum]&&Tracks[this.props.trackNum].songURL:Tracks[1].songURL:
+            // AdsAudio
+            (!this.props.adsModeOn)? Tracks[this.props.trackNum].songURL: AdsAudio
             } autoplay/>
         </audio>
       </div>
