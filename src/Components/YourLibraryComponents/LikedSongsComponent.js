@@ -19,12 +19,21 @@ export class LikedSongsComponent extends Component {
    * @memberof LikedSongsComponent
    * @type {string}
    */
-      totalLiked: "",
+      totalLiked: "310",
    /**Array of recently liked songs
    * @memberof LikedSongsComponent
    * @type {Array<song>}
    */
-      recentlyLiked:[],
+      recentlyLiked:[
+        {artistName:"Kanye West",trackName:"FML"},
+        {artistName:"Drake",trackName:"Pain 1993"},
+        {artistName:"Wiz Khalifa",trackName:"Contact"},
+        {artistName:"Linkin Park",trackName:"In The End"},
+        {artistName:"Russ",trackName:"Act Now"},
+        {artistName:"Tyga",trackName:"Taste"},
+        {artistName:"Travis Scott",trackName:"SICKOMODE"},
+        {artistName:"Drake",trackName:"Finesse"},
+    ],
    /**String that concatenates the details as needed to preview
    * @memberof LikedSongsComponent
    * @type {string}

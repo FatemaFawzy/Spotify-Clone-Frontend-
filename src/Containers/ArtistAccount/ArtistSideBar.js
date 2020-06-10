@@ -7,7 +7,7 @@ import {withRouter} from "react-router-dom";
 import * as actionTypes from "../../Store/actions";
  
 /** Class ArtistSideBar 
- * @category HomePage
+ * @category ArtistSideBar
  * @extends Component
  */
 export class ArtistSideBar extends Component{
@@ -26,7 +26,10 @@ export class ArtistSideBar extends Component{
     total:"",
     }
   }
-
+     /**A function that indicated that the profile list in the sidebar was clicked and adds styles to it
+   * @memberof ArtistSideBar
+   * @func clickedProfile
+   */
   clickedProfile=()=>{
     document.querySelector("#profile").classList.add("gray");
     document.querySelector("#infor").classList.remove("gray");
@@ -34,6 +37,10 @@ export class ArtistSideBar extends Component{
     document.querySelector("#albums").classList.remove("gray");
      
   }
+       /**A function that indicated that the info list in the sidebar was clicked and adds styles to it
+   * @memberof ArtistSideBar
+   * @func clickedinfo
+   */
   clickedinfo=()=>{
     document.querySelector("#profile").classList.remove("gray");
     document.querySelector("#infor").classList.add("gray");
@@ -41,12 +48,20 @@ export class ArtistSideBar extends Component{
     document.querySelector("#albums").classList.remove("gray");
      
   }
+       /**A function that indicated that the songs list in the sidebar was clicked and adds styles to it
+   * @memberof ArtistSideBar
+   * @func clickedsongs
+   */
   clickedsongs=()=>{
     document.querySelector("#profile").classList.remove("gray");
     document.querySelector("#infor").classList.remove("gray");
     document.querySelector("#songs").classList.add("gray");
     document.querySelector("#albums").classList.remove("gray");
   }
+       /**A function that indicated that the albums list in the sidebar was clicked and adds styles to it
+   * @memberof ArtistSideBar
+   * @func clickedalbums
+   */
   clickedalbums=()=>{
     document.querySelector("#profile").classList.remove("gray");
     document.querySelector("#infor").classList.remove("gray");

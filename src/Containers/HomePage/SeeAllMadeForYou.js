@@ -16,7 +16,7 @@ export class SeeAllMadeForYou extends Component {
     this.state = {
   /**Array of made for you to show up in the page.
    * @memberof SeeAllMadeForYou
-   * @type {Array<Made for you>}
+   * @type {Array<Playlists>}
    */
   madeforyou:[],
    /**Constant boolean to indicate that there is no need for see all to appear.
@@ -27,15 +27,22 @@ export class SeeAllMadeForYou extends Component {
     }  
   }
  /**A function that's called when the page is brought up.
-   * @memberof ForgotPassword
+   * @memberof SeeAllMadeForYou
    * @func componentDidMount
    */
   componentDidMount() {
+       /**Object needed for the request.
+   * @memberof SeeAllMadeForYou
+   * @type {object}
+   */
     const requestOptions={
       method:"GET",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
-
+   /**URL for request.
+   * @memberof SeeAllMadeForYou
+   * @type {string}
+   */
     const url = BASEURL + "homepage/madeforyou"; 
     fetch(url,requestOptions)
       .then((response) => {

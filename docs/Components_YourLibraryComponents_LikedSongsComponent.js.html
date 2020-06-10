@@ -26,11 +26,11 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>
-import "./LikedSongsComponent.css";
+            <pre class="prettyprint source linenums"><code>import "./LikedSongsComponent.css";
 import {BrowserRouter as Router} from "react-router-dom";
 import {Link} from "react-router-dom";
 import React ,{ Component} from 'react';
+import {BASEURL} from "../../Constants/baseURL";
 
 
 /** Class LikedSongsComponent that creates the bluish component in the your library-playlist page.
@@ -47,19 +47,21 @@ export class LikedSongsComponent extends Component {
    * @memberof LikedSongsComponent
    * @type {string}
    */
-      totalLiked: "60",
+      totalLiked: "310",
    /**Array of recently liked songs
    * @memberof LikedSongsComponent
    * @type {Array&lt;song>}
    */
-      recentlyLiked:[{artist:"Drake", song:"God's Plan"},
-                     {artist:"Rihanna", song:"Work"},
-                     {artist:"21 Savage", song:"X Bitch"},
-                     {artist:"Saint JHN", song:"Roses"},
-                     {artist:"The Weeknd", song:"Blinding Lights"},
-                     {artist:"21 Savage", song:"asmr"},
-                     {artist:"Saint JHN", song:"I Heard You Got Too Lit Last Night"}
-                   ],
+      recentlyLiked:[
+        {artistName:"Kanye West",trackName:"FML"},
+        {artistName:"Drake",trackName:"Pain 1993"},
+        {artistName:"Wiz Khalifa",trackName:"Contact"},
+        {artistName:"Linkin Park",trackName:"In The End"},
+        {artistName:"Russ",trackName:"Act Now"},
+        {artistName:"Tyga",trackName:"Taste"},
+        {artistName:"Travis Scott",trackName:"SICKOMODE"},
+        {artistName:"Drake",trackName:"Finesse"},
+    ],
    /**String that concatenates the details as needed to preview
    * @memberof LikedSongsComponent
    * @type {string}
@@ -69,7 +71,7 @@ export class LikedSongsComponent extends Component {
    * @memberof LikedSongsComponent
    * @type {Array}
    */
-      arrayOfIDs:[]
+      arrayOfIDs:[],
     }
   }
   /**A function that gets called once this component is rendered
@@ -78,76 +80,53 @@ export class LikedSongsComponent extends Component {
    */
     componentDidMount(){
 
-     /**Prerequisites for fetch request
-     * @memberof LikedSongsComponent
-     * @type {object}
-     */
-      const requestOptions = {
-        method:"GET",
-        headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
-      }
-    /**URL for fetch request
-     * @memberof LikedSongsComponent
-     * @type {string}
-     */
-      const url = "http://52.14.190.202:8000/tracks/like/me"; 
-      fetch(url,requestOptions)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-         console.log(data);
-         this.setState({arrayOfIDs:data})
-         console.log(this.state.arrayOfIDs);
-        })
-        .catch((error)=>{
-          console.log(error);
-        })
+    //  /**Prerequisites for fetch request
+    //  * @memberof LikedSongsComponent
+    //  * @type {object}
+    //  */
+    //   const requestOptions = {
+    //     method:"GET",
+    //     headers:{'x-auth':this.props.userToken}
+    //   }
+    // /**URL for fetch request
+    //  * @memberof LikedSongsComponent
+    //  * @type {string}
+    //  */
+    //   const url = BASEURL + "/tracks/like/me"; 
+    //   fetch(url,requestOptions)
+    //     .then((response) => {
+    //       return response.json();
+    //     })
+    //     .then((data) => {
+    //      console.log(data);
+    //      this.setState({arrayOfIDs:data})
+    //      console.log(this.state.arrayOfIDs);
+    //     })
+    //     .catch((error)=>{
+    //       console.log(error);
+    //     })
 
 console.log(this.state.arrayOfIDs);
 
-        const requestOptions1 = {
-          method:"POST",
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({id: this.state.arrayOfIDs})
-        }
-        const url1 = "http://52.14.190.202:8000/tracks"; 
-        fetch(url1,requestOptions1)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            console.log("songs");
-            console.log(data.tracks);
-           this.setState({recentlyLiked:data.tracks})
-           console.log(this.state.recentlyLiked);
-          //  console.log(this.state.arrayOfIDs);
-          })
-          .catch((error)=>{
-            console.log(error);
-          })
-
-
-      //     const requestOptions2 = {
-      //       method:"POST",
-      //       headers:{'Content-Type':'application/json'},
-      //     }
-      //     const url2 = "http://52.14.190.202:8000/artists/"+ recentlyLiked.artistId;
-      //   fetch(url2,requestOptions2)
-      //     .then((response) => {
-      //       return response.json();
-      //     })
-      //     .then((data) => {
-      //       console.log("songs");
-      //       console.log(data.tracks);
-      //      this.setState({recentlyLiked:data.tracks})
-      //      console.log(this.state.recentlyLiked);
-      //     //  console.log(this.state.arrayOfIDs);
-      //     })
-      //     .catch((error)=>{
-      //       console.log(error);
-      //     })
-        
+        // const requestOptions1 = {
+        //   method:"POST",
+        //   headers:{'Content-Type':'application/json'},
+        //   body: JSON.stringify({id: this.state.arrayOfIDs})
+        // }
+        // const url1 = BASEURL + "/tracks"; 
+        // fetch(url1,requestOptions1)
+        //   .then((response) => {
+        //     return response.json();
+        //   })
+        //   .then((data) => {
+        //     console.log("songs");
+        //     console.log(data.tracks);
+        //    this.setState({recentlyLiked:data.tracks})
+        //    console.log(this.state.recentlyLiked);
+        //   })
+        //   .catch((error)=>{
+        //     console.log(error);
+        //   })
      /**Variable that concatenates the details of the songs
      * @memberof LikedSongsComponent
      * @type {string}
@@ -155,7 +134,7 @@ console.log(this.state.arrayOfIDs);
       var x = "";
       for (var i=0; i&lt; this.state.recentlyLiked.length; i++)
       {
-        x += this.state.recentlyLiked[i].artist + " ● " + this.state.recentlyLiked[i].song + " ";
+        x += this.state.recentlyLiked[i].artistName + " ● " + this.state.recentlyLiked[i].trackName + " ";
       }
        console.log(x);
       if (x.length > 150)
@@ -171,18 +150,19 @@ console.log(this.state.arrayOfIDs);
         return(
           &lt;span>
             &lt;span>
-              {item.artist + " "}
+              {item.artistName + " "}
             &lt;/span>
             &lt;span className="song-name">
             ● 
             &lt;/span>
             &lt;span className="song-name">
-              {" " +item.song  + " "}
+              {" " +item.trackName  + " "}
             &lt;/span>
           &lt;/span>
         )
       }) 
       this.setState({string:stringofsongs});
+      // this.setState({totalLiked:(this.recentlyLiked.length+1)})
     };
   /**A function that redirects the user to the liked songs page on click of the component.
    * @memberof LikedSongsComponent
@@ -210,6 +190,14 @@ return (
 );
 }
 }
+const mapStateToProps = state => {
+
+  return {
+    userToken:state.userToken
+  };
+
+};
+
 export default LikedSongsComponent;</code></pre>
         </article>
     </section>
@@ -220,17 +208,13 @@ export default LikedSongsComponent;</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AddToPlaylist.html">AddToPlaylist</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="welcomePage.html">welcomePage</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#BrowseItem">BrowseItem</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchContent">SearchContent</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AddAlbum.html">AddAlbum</a></li><li><a href="AddSong.html">AddSong</a></li><li><a href="AddToPlaylist.html">AddToPlaylist</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistAlbums.html">ArtistAlbums</a></li><li><a href="ArtistHomePage.html">ArtistHomePage</a></li><li><a href="ArtistInformation.html">ArtistInformation</a></li><li><a href="ArtistNavbar.html">ArtistNavbar</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="ArtistSideBar.html">ArtistSideBar</a></li><li><a href="ArtistSongs.html">ArtistSongs</a></li><li><a href="ArtistWebPlayer.html">ArtistWebPlayer</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="BrowseItem.html">BrowseItem</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditAlbum.html">EditAlbum</a></li><li><a href="EditArtistInformation.html">EditArtistInformation</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EditSong.html">EditSong</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="MusicBar.html">MusicBar</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchContent.html">SearchContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SeeAllMadeForYou.html">SeeAllMadeForYou</a></li><li><a href="SeeAllPlaylists.html">SeeAllPlaylists</a></li><li><a href="SeeAllRecentlyPlayed.html">SeeAllRecentlyPlayed</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongsByGenre.html">SongsByGenre</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="UserComponent.html">UserComponent</a></li><li><a href="UserFollowersFollowing.html">UserFollowersFollowing</a></li><li><a href="welcomePage.html">welcomePage</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AdsBar">AdsBar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#EditPictureModal">EditPictureModal</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#link">link</a></li><li><a href="global.html#ListOfUsers">ListOfUsers</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-<<<<<<< HEAD
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 23:35:20 GMT+0200 (Eastern European Standard Time)
-=======
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 23:47:58 GMT+0200 (Eastern European Standard Time)
->>>>>>> 83062f03b8280c13735065925f200a2c1a282900
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Jun 10 2020 23:40:19 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

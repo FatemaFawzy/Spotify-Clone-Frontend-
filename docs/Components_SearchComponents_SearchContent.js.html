@@ -26,44 +26,207 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from "react";
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
 import BrowseItem from "./BrowseItem";
 import "./SearchContent.css";
-import "./SongSearched"
-import SongSearched from "./SongSearched";
+import "./SongSearched";
+import { BASEURL } from "../../Constants/baseURL";
+import { connect } from "react-redux";
 
-
-/** Function component SearchContent that shows the content of the search page before typing anything in the search box.
- * @func SearchContent
+/** Class SearchContent. A page that displays all genres before the user types to search for something.
+ * @category SearchContent
+ * @extends Component
  */
+export class SearchContent extends Component {
 
-const SearchContent = () => (
+  state = {
+    /**variable that holds all the returned genres from the request
+     * @memberof SearchContent
+     * @type {Array&lt;string>}
+     */
+    genres: [
+      "Alternative Rock",
+      "Arabic",
+      "Blues",
+      "Electronic",
+      "Hip-Hop",
+      "Jazz",
+      "Pop",
+      "R&amp;B",
+      "Rap",
+      "Rock",
+      "Trap"
+    ],
+  }
+  componentDidMount() {
+    const url = BASEURL + "tracks/allgenres";
 
-    &lt;div className="before-typed-search">
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'x-auth': this.props.userToken },
+    };
+
+    try {
+      fetch(url, requestOptions)
+        .then((response) => {
+
+          return response.json();
+
+        })
+        .then((data) => {
+          this.setState({songs:data.songs})
+
+        })
+        .catch(function (error) {
+          console.log('There has been a problem with your fetch operation: ',
+            error.message);
+        })
+
+    }
+    catch (error) {
+      console(error);
+    }
+
+
+
+  }
+
+  render() {
+    return (
+
+      &lt;div className="before-typed-search">
         &lt;h2>Your top genres&lt;/h2>
 
-        &lt;BrowseItem 
-       header="Pop" 
-       color= "rgb(143,176,147)" 
-       image="https://t.scdn.co/images/d355f48a90b64c25b6e004179a596e51.jpeg"
-       special="true" />
+        {
+          //since I don't get back a top genre for a specific user I am putting it as the first genre  
+          this.state.genres.length &amp;&amp; &lt;BrowseItem
+            header={this.state.genres[0]}
+            color="rgb(139,120,155)"
+            image="https://i.scdn.co/image/ab67616d00001e02c3ddbe05f192eaf4c9294505"
+            special="true"
+            id={this.state.genres[0]} />
+
+        }
 
 
         &lt;h2>Browse all&lt;/h2>
-       &lt;BrowseItem 
-       header="Podcast" 
-       color= "rgb(188,119,27)" 
-       image="https://t.scdn.co/images/ad4d5c268a214f78920517e76e6ed107.jpeg" />
 
-       &lt;BrowseItem 
-       header="Made for you" 
-       color= "rgb(123,150,162)" 
-       image="https://t.scdn.co/images/68433b0ee5b5465b8e926c42b84cbcdb.jpeg" />
+        {this.state.genres.map((genre, index) => {
 
-        &lt;/div>
-);
+          //  I should get back an array of genres along with the image and color of each one, but since i only get back
+          //  the genre names from the request I am doing this switch case and if the returned genre is not one of these, I
+          //  set a default image and color
 
-export default SearchContent;</code></pre>
+          /**variable that holds all the gere color
+            * @memberof SearchContent
+            * @type {string}
+            */
+          var color;
+          /**variable that holds the genre image
+            * @memberof SearchContent
+            * @type {string}
+            */
+          var image;
+          switch (genre) {
+            case "Alternative Rock":
+              color = "rgb(139,120,155)";
+              image = "https://i.scdn.co/image/ab67616d00001e02c3ddbe05f192eaf4c9294505";
+
+              break;
+
+            case "Arabic":
+              color = "rgb(59,114,181)";
+              image = "https://t.scdn.co/images/47d9e28592b64a95a60bdbe9ae7fb2c8.jpeg";
+
+              break;
+
+            case "Blues":
+              color = "rgb(121,147,158)";
+              image = "https://t.scdn.co/images/a91f8b3da9da4ebcb12ee6ad8ac6d3c0.jpeg";
+
+              break;
+
+            case "Electronic":
+              color = "rgb(123,190,178)";
+              image = "https://t.scdn.co/images/3c419cbc46e5430795e056298c34702d.jpeg";
+
+              break;
+
+            case "Hip-Hop":
+              color = "rgb(195,123,28)";
+              image = "https://t.scdn.co/images/9676cef74ec147a48607c737c4f93943.jpeg";
+
+              break;
+
+            case "Jazz":
+              color = "rgb(122,149,160)";
+              image = "https://t.scdn.co/images/0f2f4c71c9714cc5b757f7bb3559fcdb.jpeg";
+
+              break;
+
+            case "Pop":
+              color = "rgb(122,149,160)";
+              image = "https://t.scdn.co/images/d355f48a90b64c25b6e004179a596e51.jpeg";
+
+              break;
+
+            case "R&amp;B":
+              color = "rgb(181,41,124)";
+              image = "https://t.scdn.co/images/92a6fd8aaffe403ba1967c70097f90f9.jpeg";
+
+              break;
+
+            case "Rap":
+              color = "rgb(139,120,155)";
+              image = "https://t.scdn.co/images/5174463a68e449bf8ee0ae85cd6d7b48.jpeg";
+
+              break;
+
+            case "Rock":
+              color = "rgb(185,24,40)";
+              image = "https://t.scdn.co/images/31c85ae6fec34a16927ef28a7a88e97b.jpeg";
+
+              break;
+
+            case "Trap":
+              color = "rgb(139,120,155)";
+              image = "https://t.scdn.co/images/d0fb2ab104dc4846bdc56d72b0b0d785.jpeg";
+
+              break;
+
+
+            default:
+              color = "rgb(78,78,78)";
+              image = "https://t.scdn.co/images/d7d44d00eb0542aeab69ed5c8654d104.jpeg";
+              break;
+          }
+
+          return (&lt;BrowseItem
+            image={image}
+            header={genre}
+            key={index}
+            color={color}
+            id={genre}
+          />)
+        })}
+
+      &lt;/div>
+    );
+
+  }
+}
+
+const mapStateToProps = state => {
+
+  return {
+    userToken: state.userToken
+    //now you have access to the userToken as this.props.userToken inside the class component.
+  };
+
+};
+
+
+export default connect(mapStateToProps)(SearchContent);</code></pre>
         </article>
     </section>
 
@@ -73,17 +236,13 @@ export default SearchContent;</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AddToPlaylist.html">AddToPlaylist</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="ComponentBlock.html">ComponentBlock</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="Login.html">Login</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="welcomePage.html">welcomePage</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#BrowseItem">BrowseItem</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchContent">SearchContent</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AddAlbum.html">AddAlbum</a></li><li><a href="AddSong.html">AddSong</a></li><li><a href="AddToPlaylist.html">AddToPlaylist</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistAlbums.html">ArtistAlbums</a></li><li><a href="ArtistHomePage.html">ArtistHomePage</a></li><li><a href="ArtistInformation.html">ArtistInformation</a></li><li><a href="ArtistNavbar.html">ArtistNavbar</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="ArtistSideBar.html">ArtistSideBar</a></li><li><a href="ArtistSongs.html">ArtistSongs</a></li><li><a href="ArtistWebPlayer.html">ArtistWebPlayer</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="BrowseItem.html">BrowseItem</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditAlbum.html">EditAlbum</a></li><li><a href="EditArtistInformation.html">EditArtistInformation</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EditSong.html">EditSong</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="MusicBar.html">MusicBar</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchContent.html">SearchContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SeeAllMadeForYou.html">SeeAllMadeForYou</a></li><li><a href="SeeAllPlaylists.html">SeeAllPlaylists</a></li><li><a href="SeeAllRecentlyPlayed.html">SeeAllRecentlyPlayed</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongsByGenre.html">SongsByGenre</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="UserComponent.html">UserComponent</a></li><li><a href="UserFollowersFollowing.html">UserFollowersFollowing</a></li><li><a href="welcomePage.html">welcomePage</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AdsBar">AdsBar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#EditPictureModal">EditPictureModal</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#link">link</a></li><li><a href="global.html#ListOfUsers">ListOfUsers</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-<<<<<<< HEAD
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 23:35:20 GMT+0200 (Eastern European Standard Time)
-=======
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 23:47:58 GMT+0200 (Eastern European Standard Time)
->>>>>>> 83062f03b8280c13735065925f200a2c1a282900
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Jun 10 2020 23:40:19 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

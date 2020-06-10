@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/ArtistAccount/ArtistSideBar.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/ArtistAccount/ArtistSideBar.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React ,{ Component} from 'react';
+import './ArtistSideBar.css';
+import { NavLink, Link } from "react-router-dom";
+import { addNewURL } from '../../HelperFunctions/History';
+import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
+import * as actionTypes from "../../Store/actions";
+ 
+/** Class ArtistSideBar 
+ * @category ArtistSideBar
+ * @extends Component
+ */
+export class ArtistSideBar extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+    /**Array of playlists in the bottom
+   * @memberof ArtistSideBar
+   * @type {Array&lt;playlist>}
+   */
+    playlistArray:[],
+     /**Array of playlists to be show cased
+   * @memberof ArtistSideBar
+   * @type {Array&lt;playlist>}
+   */
+    total:"",
+    }
+  }
+     /**A function that indicated that the profile list in the sidebar was clicked and adds styles to it
+   * @memberof ArtistSideBar
+   * @func clickedProfile
+   */
+  clickedProfile=()=>{
+    document.querySelector("#profile").classList.add("gray");
+    document.querySelector("#infor").classList.remove("gray");
+    document.querySelector("#songs").classList.remove("gray");
+    document.querySelector("#albums").classList.remove("gray");
+     
+  }
+       /**A function that indicated that the info list in the sidebar was clicked and adds styles to it
+   * @memberof ArtistSideBar
+   * @func clickedinfo
+   */
+  clickedinfo=()=>{
+    document.querySelector("#profile").classList.remove("gray");
+    document.querySelector("#infor").classList.add("gray");
+    document.querySelector("#songs").classList.remove("gray");
+    document.querySelector("#albums").classList.remove("gray");
+     
+  }
+       /**A function that indicated that the songs list in the sidebar was clicked and adds styles to it
+   * @memberof ArtistSideBar
+   * @func clickedsongs
+   */
+  clickedsongs=()=>{
+    document.querySelector("#profile").classList.remove("gray");
+    document.querySelector("#infor").classList.remove("gray");
+    document.querySelector("#songs").classList.add("gray");
+    document.querySelector("#albums").classList.remove("gray");
+  }
+       /**A function that indicated that the albums list in the sidebar was clicked and adds styles to it
+   * @memberof ArtistSideBar
+   * @func clickedalbums
+   */
+  clickedalbums=()=>{
+    document.querySelector("#profile").classList.remove("gray");
+    document.querySelector("#infor").classList.remove("gray");
+    document.querySelector("#songs").classList.remove("gray");
+    document.querySelector("#albums").classList.add("gray");
+  }
+
+  
+   
+  
+    /**A function that fires once the homepage sidebar is called in the web player
+   * @memberof ArtistSideBar
+   * @func componentDidMount
+   */
+  componentDidMount() {
+    
+    const requestOptions = {
+      method:"GET",
+      headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk'}
+    }
+    
+    // const url = "http://52.14.190.202:8000/playlists/me"; 
+    // fetch(url,requestOptions)
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data.playlist);
+    //     if(data.playlist)
+    //     {
+          
+    //     const list = data.playlist.map(item => {
+    //       return (
+    //         &lt;li onClick={()=>{
+    //           this.props.history.push("/webplayer/playlist/" + item._id );
+    //           this.props.onPlaylistClicked(item._id);
+    //           window.location.reload(true);
+    //         }} className="List2">{item.playlistName}&lt;/li>
+    //       )
+    //     }
+        
+    //     )
+    //     console.log(list);
+    //     this.setState({total:list});
+    //     console.log(this.state.total);
+    //   }
+    
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+      
+    }
+
+render() {
+ return (
+
+    &lt;div className="wrapper-Artist">
+      
+      &lt;div className="sidebar">
+        
+        &lt;Link to="/webplayer/HomePage">&lt;img className="logo"  src="https://i.ya-webdesign.com/images/itunes-logo-white-png-1.png" alt="logo"/>&lt;/Link>
+        
+          &lt;ul>
+              &lt;li>&lt;Link  onClick={this.clickedProfile} id="profile" className="List gray" to="/ArtistAccount/ArtistWebPlayer/">&lt;i class="fas fa-user">&lt;/i>Profile&lt;/Link>&lt;/li>
+              &lt;li>&lt;Link  onClick={this.clickedinfo} id="infor" className="List2" to="/ArtistAccount/ArtistWebPlayer/MyInfo/">&lt;i class="fas fa-info">&lt;/i>Info&lt;/Link>&lt;/li>
+              &lt;li>&lt;Link  onClick={this.clickedsongs} id="songs" className="List" to="/ArtistAccount/ArtistWebPlayer/MySongs/">&lt;i class="fas fa-music">&lt;/i>My Songs&lt;/Link>&lt;/li>
+              &lt;li>&lt;Link  onClick={this.clickedalbums} id="albums" className="List" to="/ArtistAccount/ArtistWebPlayer/MyAlbums">&lt;i class="fas fa-compact-disc">&lt;/i>My Albums&lt;/Link>&lt;/li>
+             
+              &lt;hr/>
+          &lt;/ul> 
+      &lt;/div>
+    
+    &lt;/div>
+
+);
+}
+} 
+const mapStateToProps = state => {
+
+  return {
+    userID:state.userID
+  };
+
+};
+
+const mapDispatchToProps = dispatch => {
+
+  return {
+
+    onPlaylistClicked : (itemID) => dispatch ({type: actionTypes.SELECT_PLAYLIST , value: itemID})
+  };
+
+};
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(ArtistSideBar));</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AddAlbum.html">AddAlbum</a></li><li><a href="AddSong.html">AddSong</a></li><li><a href="AddToPlaylist.html">AddToPlaylist</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistAlbums.html">ArtistAlbums</a></li><li><a href="ArtistHomePage.html">ArtistHomePage</a></li><li><a href="ArtistInformation.html">ArtistInformation</a></li><li><a href="ArtistNavbar.html">ArtistNavbar</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="ArtistSideBar.html">ArtistSideBar</a></li><li><a href="ArtistSongs.html">ArtistSongs</a></li><li><a href="ArtistWebPlayer.html">ArtistWebPlayer</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="BrowseItem.html">BrowseItem</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditAlbum.html">EditAlbum</a></li><li><a href="EditArtistInformation.html">EditArtistInformation</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EditSong.html">EditSong</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="MusicBar.html">MusicBar</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchContent.html">SearchContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SeeAllMadeForYou.html">SeeAllMadeForYou</a></li><li><a href="SeeAllPlaylists.html">SeeAllPlaylists</a></li><li><a href="SeeAllRecentlyPlayed.html">SeeAllRecentlyPlayed</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongsByGenre.html">SongsByGenre</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="UserComponent.html">UserComponent</a></li><li><a href="UserFollowersFollowing.html">UserFollowersFollowing</a></li><li><a href="welcomePage.html">welcomePage</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AdsBar">AdsBar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#EditPictureModal">EditPictureModal</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#link">link</a></li><li><a href="global.html#ListOfUsers">ListOfUsers</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Jun 10 2020 23:40:19 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

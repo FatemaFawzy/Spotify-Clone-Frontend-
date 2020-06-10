@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/ArtistAccount/EditAlbum.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/ArtistAccount/EditAlbum.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React,{Component} from 'react';
+ import './EditAlbum.css';
+import ArtistHomePageNavbar from "./ArtistNavbar";
+import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
+import * as itemType from "../../Constants/itemType";
+import {connect} from "react-redux";
+import {BASEURL} from "../../Constants/baseURL";
+import {NavLink,Link} from "react-router-dom";
+
+/** Class EditAlbum
+ * @category EditAlbum
+ * @extends Component
+ */
+export class EditAlbum extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+               /** Album to be edited's info
+   * @memberof EditAlbum
+   * @type {object}
+   */ 
+      info:{
+        // name:"High Hopes",
+        // image:"https://example.com/image/",
+       },
+                      /** Album to be edited's name
+   * @memberof EditAlbum
+   * @type {String}
+   */ 
+       Name:"",
+                      /** Album to be edited's image
+   * @memberof EditAlbum
+   * @type {String}
+   */ 
+      Image:"",
+      }
+      }
+ 
+      /**A function that handles changes in name input
+   * @memberof EditAlbum
+   * @func handleName
+   */
+      handleName = (event) => {
+        let Name = this.state.Name;
+        Name = event.target.value;
+        this.state.Name = Name;
+      };
+   /**A function that handles changes in image input
+   * @memberof EditAlbum
+   * @func handleImage
+   */
+      handleImage = (event) => {
+        let Image = this.state.Image;
+        Image = event.target.value;
+        this.state.Image = Image;
+      };
+      /**A function that fires when a user clicks on the button to edit the album
+   * @memberof AddSong
+   * @func clickSubmit
+   */
+      clickSubmit= (event) => {
+        if (event) {
+          event.preventDefault();
+        }
+        
+        console.log(this.state.info.name);
+        console.log(this.state.info.image);
+        
+        if(this.state.Name.length == 0)
+        {
+          this.state.Name=this.state.info.name
+          
+        }
+         if(this.state.Image.length == 0)
+        {
+          this.state.Image=this.state.info.image
+        }
+        console.log(this.state.Name);
+        console.log(this.state.Image);
+        if(this.state.Name != null &amp;&amp; this.state.Image != null)
+        {
+          console.log(this.state.Name);
+      console.log(this.state.Image);
+          var clr= document.querySelector(".add-info");
+         if (clr)
+         {
+         clr.reset();
+         }
+         const requestOptions2={
+          method:"POST",
+          headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+        }
+        const url2 = BASEURL + "albums/edit"; 
+        fetch(url2,requestOptions2)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            if(data.message == "album edited successfully")
+            {
+              this.props.history.push("/ArtistAccount/ArtistWebPlayer/MyAlbums");
+            }
+          })
+          .catch((error)=>{console.log(error);
+          })
+    
+      }
+      }
+         /**A function that fires when the page loads
+   * @memberof EditAlbum
+   * @func componentDidMount
+   */
+  componentDidMount()
+  {
+    const requestOptions2={
+      method:"GET",
+      headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
+    }
+    const url2 =BASEURL + "album/information"; 
+    fetch(url2,requestOptions2)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({
+        info: data.info});
+      })
+      .catch((error)=>{console.log(error);
+      })
+  }
+  render(){
+    return (
+      &lt;div className ="edit-album">
+         &lt;ArtistHomePageNavbar accountType="regular" name="Ali Halafawy" color="transparent"
+          image="https://scontent.fcai3-1.fna.fbcdn.net/v/t1.0-9/19397029_10210794027939033_5811382860033366804_n.jpg?_nc_cat=111&amp;_nc_sid=85a577&amp;_nc_eui2=AeHEhGNHMDc070CTQv4WD5FK-tEUbysbE-HFFkFOk7OxsfeTak6rLywRWjbRlCDjWmzjtl79NUg2XF9AsJX_0QE9j0LnqnOoo_ADLnnZUnidEA&amp;_nc_ohc=QgP5sx3F3dsAX-nzFSx&amp;_nc_ht=scontent.fcai3-1.fna&amp;oh=86cb020fb7ea1a4e8c69aaaf075680d5&amp;oe=5EA58791"/>
+            
+      &lt;div className="info-content">
+        &lt;h1 className="title">&lt;i class="fas fa-info-circle">&lt;/i> Edit Album &lt;/h1>
+        &lt;p id="error-message" className="d-none">Please fill all the required inputs&lt;/p>
+        &lt;table>
+            &lt;tr> 
+              &lt;td>&lt;li className="list-element">Album Name:&lt;/li>&lt;/td>
+              &lt;td>&lt;input className="general-input" id="basic-url1" onChange={this.handleName} placeholder={this.state.info.name} type="text"/>&lt;/td>
+            &lt;/tr>
+            &lt;tr> 
+              &lt;td>&lt;li className="list-element">Album Image:&lt;/li>&lt;/td>
+              &lt;td>&lt;input className="general-input" id="basic-url2" onChange={this.handleImage} placeholder={this.state.info.image} type="text"/>&lt;/td>
+            &lt;/tr>
+            &lt;tr> 
+              &lt;td> &lt;/td>
+              &lt;Link to="/ArtistAccount/ArtistWebPlayer/MyInfo/">&lt;td>&lt;button className="button" onClick={this.clickSubmit}>Done&lt;/button>&lt;/td>&lt;/Link>
+            &lt;/tr>
+      
+        &lt;/table>
+        &lt;/div>
+      &lt;/div>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+
+  return {
+    userID:state.userID,
+    selectedArtistID : state.selectedArtistID,
+  };
+
+};
+export default connect(mapStateToProps)(EditAlbum);
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AddAlbum.html">AddAlbum</a></li><li><a href="AddSong.html">AddSong</a></li><li><a href="AddToPlaylist.html">AddToPlaylist</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistAlbums.html">ArtistAlbums</a></li><li><a href="ArtistHomePage.html">ArtistHomePage</a></li><li><a href="ArtistInformation.html">ArtistInformation</a></li><li><a href="ArtistNavbar.html">ArtistNavbar</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="ArtistSideBar.html">ArtistSideBar</a></li><li><a href="ArtistSongs.html">ArtistSongs</a></li><li><a href="ArtistWebPlayer.html">ArtistWebPlayer</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="BrowseItem.html">BrowseItem</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditAlbum.html">EditAlbum</a></li><li><a href="EditArtistInformation.html">EditArtistInformation</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EditSong.html">EditSong</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="MusicBar.html">MusicBar</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchContent.html">SearchContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SeeAllMadeForYou.html">SeeAllMadeForYou</a></li><li><a href="SeeAllPlaylists.html">SeeAllPlaylists</a></li><li><a href="SeeAllRecentlyPlayed.html">SeeAllRecentlyPlayed</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongsByGenre.html">SongsByGenre</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="UserComponent.html">UserComponent</a></li><li><a href="UserFollowersFollowing.html">UserFollowersFollowing</a></li><li><a href="welcomePage.html">welcomePage</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AdsBar">AdsBar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#EditPictureModal">EditPictureModal</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#link">link</a></li><li><a href="global.html#ListOfUsers">ListOfUsers</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Jun 10 2020 23:40:19 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

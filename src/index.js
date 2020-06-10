@@ -9,6 +9,7 @@ import {createStore} from "redux";
 import reducer from "./Store/reducer";
 import {loadState , saveState } from "./Store/localStorage";
 
+
 const persistedState = loadState();
 
 const store = createStore(reducer, persistedState );

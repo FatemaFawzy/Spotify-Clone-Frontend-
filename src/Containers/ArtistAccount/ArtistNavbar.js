@@ -10,8 +10,8 @@ import COllapseDropDown from "../../Containers/GenericComponenets/CollapseDropDo
 import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
 
  
-/** Class HomepageSidebar 
- * @category HomePage
+/** Class ArtistNavbar 
+ * @category ArtistNavbar
  * @extends Component
  */
 export class ArtistNavbar extends Component{

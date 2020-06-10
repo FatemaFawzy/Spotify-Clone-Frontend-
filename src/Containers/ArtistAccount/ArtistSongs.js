@@ -11,8 +11,8 @@ import {NavLink,Link} from "react-router-dom";
 
 
 
-/** Class ArtistHomePage
- * @category ArtistHomePage
+/** Class ArtistSongs
+ * @category ArtistSongs
  * @extends Component
  */
 export class ArtistSongs extends Component {
@@ -21,15 +21,36 @@ export class ArtistSongs extends Component {
     this.state = {  
       SongInfo: [],
         PopularSongs: [],
+            /**Boolean to indicate whether a song has been deleted
+   * @memberof ArtistSongs
+   * @type {boolean}
+   */ 
         Deleted: false,
+                   /**Boolean to indicate whether a song has been added
+   * @memberof ArtistSongs
+   * @type {boolean}
+   */ 
         Added:"",
-        showSnackBar: false,
-        snackBarMes: ""
+   /**Boolean to indicate if the snackbar should appear
+   * @memberof ArtistSongs
+   * @type {boolean}
+   */ 
+  showSnackBar: false,
+  /**String of snackbar message
+  * @memberof ArtistSongs
+  * @type {string}
+  */ 
+      snackBarMes: ""
+     
+     
     }
     
   }
   
-
+     /**A function that fires when the page loads
+   * @memberof ArtistSongs
+   * @func componentDidMount
+   */
   componentDidMount() {
   const requestOptions1={
     method:"GET",
@@ -68,6 +89,10 @@ export class ArtistSongs extends Component {
       })
  }
  ////////////////////////////////////////////////////////
+      /**A function that is called when a song is requested to be deleted
+   * @memberof ArtistSongs
+   * @func deleteSong
+   */
  deleteSong = () => {
 
   this.setState({Deleted:true});

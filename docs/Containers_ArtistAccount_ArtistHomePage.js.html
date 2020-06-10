@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Containers/ArtistAccount/ArtistHomePage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Containers/ArtistAccount/ArtistHomePage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React,{Component} from 'react';
+ import './ArtistHomePage.css';
+import ArtistHomePageNavbar from "./ArtistNavbar";
+import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
+import * as itemType from "../../Constants/itemType";
+import {connect} from "react-redux";
+import {BASEURL} from "../../Constants/baseURL";
+import {NavLink,Link} from "react-router-dom";
+
+
+/** Class ArtistHomePage
+ * @category ArtistHomePage
+ * @extends Component
+ */
+export class ArtistHomePage extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+   }
+    
+  }
+
+
+  render(){
+    return (
+      &lt;div className ="home-navbar-artist" >
+        
+             
+            &lt;ArtistHomePageNavbar accountType="regular" name="Ali Halafawy" color="transparent"
+            image="https://scontent.fcai3-1.fna.fbcdn.net/v/t1.0-9/19397029_10210794027939033_5811382860033366804_n.jpg?_nc_cat=111&amp;_nc_sid=85a577&amp;_nc_eui2=AeHEhGNHMDc070CTQv4WD5FK-tEUbysbE-HFFkFOk7OxsfeTak6rLywRWjbRlCDjWmzjtl79NUg2XF9AsJX_0QE9j0LnqnOoo_ADLnnZUnidEA&amp;_nc_ohc=QgP5sx3F3dsAX-nzFSx&amp;_nc_ht=scontent.fcai3-1.fna&amp;oh=86cb020fb7ea1a4e8c69aaaf075680d5&amp;oe=5EA58791"/>
+           &lt;div className="container  artist-top-section " style={{ backgroundImage: `url(https://i.scdn.co/image/378cc874bb148ccd0db2596b1e6b3a7f38ad301a)` }}>
+
+&lt;div className="montly-listeners">
+  Average rating: 5/5
+&lt;/div>
+
+&lt;div>
+  &lt;h1 className="artist-name font-weight-bolder"> Pink Floyd &lt;/h1>
+&lt;/div>
+
+         &lt;div id="buttons">
+          
+         &lt;button id="follow-button" className="btn btn-success rounded-pill " onClick={this.followArtist}>
+            Followers: 100M
+          &lt;/button>
+
+          &lt;button id="follow-button" className="btn btn-success rounded-pill " onClick={this.followArtist}>
+            Following: 10
+          &lt;/button>
+        &lt;/div> 
+
+        &lt;div id="artist-profile-sections">
+
+          &lt;Link to="#" id="about" 
+          className="artist-profile-sections"> Biography &lt;/Link> 
+        &lt;/div>
+
+        
+          
+      &lt;/div>
+      &lt;p className="Bio">Pink Floyd were an English rock band formed in London in 1965. Gaining a following as a psychedelic rock group, they were distinguished for their extended compositions, sonic experimentation, philosophical lyrics and elaborate live shows, and became a leading band of the progressive rock genre. They are one of the most commercially successful and influential bands in popular music history.
+
+Pink Floyd were founded by students Syd Barrett (guitar, lead vocals), Nick Mason (drums), Roger Waters (bass guitar, vocals), and Richard Wright (keyboards, vocals). Under Barrett's leadership, they released two charting singles and a successful debut album, The Piper at the Gates of Dawn (1967). Guitarist and vocalist David Gilmour joined in December 1967; Barrett left in April 1968 due to deteriorating mental health. Waters became the primary lyricist and thematic leader, devising the concepts behind the albums The Dark Side of the Moon (1973), Wish You Were Here (1975), Animals (1977), The Wall (1979), and The Final Cut (1983). The band also composed several film scores.
+
+Following personal tensions, Wright left Pink Floyd in 1979, followed by Waters in 1985. Gilmour and Mason continued as Pink Floyd, rejoined later by Wright. The three produced two more albums—A Momentary Lapse of Reason (1987) and The Division Bell (1994)—and toured both albums before entering a long period of inactivity. In 2005, all but Barrett reunited for a one-off performance at the global awareness event Live 8. Barrett died in 2006, and Wright in 2008. The last Pink Floyd studio album, The Endless River (2014), was based on unreleased material from the Division Bell recording sessions.
+
+Pink Floyd were one of the first British psychedelia groups, and are credited with influencing genres such as progressive rock and ambient music. Four albums topped US or UK record charts; the songs "See Emily Play" (1967) and "Another Brick in the Wall, Part 2" (1979) were their only top 10 singles in either territory. The band were inducted into the US Rock and Roll Hall of Fame in 1996 and the UK Music Hall of Fame in 2005. By 2013, they had sold more than 250 million records worldwide, with The Dark Side of the Moon and The Wall two of the best-selling albums of all time.&lt;/p>
+&lt;/div>
+      
+    );
+
+
+  }
+  
+}
+
+const mapStateToProps = state => {
+
+  return {
+    userID:state.userID,
+    selectedArtistID : state.selectedArtistID,
+  };
+
+};
+export default connect(mapStateToProps)(ArtistHomePage);
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountLayout.html">AccountLayout</a></li><li><a href="AddAlbum.html">AddAlbum</a></li><li><a href="AddSong.html">AddSong</a></li><li><a href="AddToPlaylist.html">AddToPlaylist</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="ArtistAboutContent.html">ArtistAboutContent</a></li><li><a href="ArtistAlbums.html">ArtistAlbums</a></li><li><a href="ArtistHomePage.html">ArtistHomePage</a></li><li><a href="ArtistInformation.html">ArtistInformation</a></li><li><a href="ArtistNavbar.html">ArtistNavbar</a></li><li><a href="ArtistOverviewContent.html">ArtistOverviewContent</a></li><li><a href="ArtistProfile.html">ArtistProfile</a></li><li><a href="ArtistProfileContent.html">ArtistProfileContent</a></li><li><a href="ArtistSideBar.html">ArtistSideBar</a></li><li><a href="ArtistSongs.html">ArtistSongs</a></li><li><a href="ArtistWebPlayer.html">ArtistWebPlayer</a></li><li><a href="Bottom.html">Bottom</a></li><li><a href="BrowseItem.html">BrowseItem</a></li><li><a href="CardMedia.html">CardMedia</a></li><li><a href="CollapseDropDown.html">CollapseDropDown</a></li><li><a href="CreateNewPassword.html">CreateNewPassword</a></li><li><a href="CreatePlaylist.html">CreatePlaylist</a></li><li><a href="DeletePlaylist.html">DeletePlaylist</a></li><li><a href="DropDownMenu.html">DropDownMenu</a></li><li><a href="EditAlbum.html">EditAlbum</a></li><li><a href="EditArtistInformation.html">EditArtistInformation</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="EditSong.html">EditSong</a></li><li><a href="EmailSent.html">EmailSent</a></li><li><a href="ForgotPassword.html">ForgotPassword</a></li><li><a href="GeneralItem.html">GeneralItem</a></li><li><a href="HelpPage.html">HelpPage</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="HomePageNavbar.html">HomePageNavbar</a></li><li><a href="HomePageSidebar.html">HomePageSidebar</a></li><li><a href="LikedSongs.html">LikedSongs</a></li><li><a href="LikedSongsComponent.html">LikedSongsComponent</a></li><li><a href="MainNavbar.html">MainNavbar</a></li><li><a href="MediaObject.html">MediaObject</a></li><li><a href="MusicBar.html">MusicBar</a></li><li><a href="OtherUser.html">OtherUser</a></li><li><a href="PasswordIsNew.html">PasswordIsNew</a></li><li><a href="PlaylistPage.html">PlaylistPage</a></li><li><a href="Premium.html">Premium</a></li><li><a href="RelatedArtistsContent.html">RelatedArtistsContent</a></li><li><a href="SearchContent.html">SearchContent</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SeeAllArtists.html">SeeAllArtists</a></li><li><a href="SeeAllMadeForYou.html">SeeAllMadeForYou</a></li><li><a href="SeeAllPlaylists.html">SeeAllPlaylists</a></li><li><a href="SeeAllRecentlyPlayed.html">SeeAllRecentlyPlayed</a></li><li><a href="SetPasswordContent.html">SetPasswordContent</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SongsByGenre.html">SongsByGenre</a></li><li><a href="SongSearched.html">SongSearched</a></li><li><a href="Success.html">Success</a></li><li><a href="UserComponent.html">UserComponent</a></li><li><a href="UserFollowersFollowing.html">UserFollowersFollowing</a></li><li><a href="welcomePage.html">welcomePage</a></li><li><a href="YourLibrary.html">YourLibrary</a></li><li><a href="YourLibraryAlbum.html">YourLibraryAlbum</a></li><li><a href="YourLibraryArtist.html">YourLibraryArtist</a></li><li><a href="YourLibraryNavbar.html">YourLibraryNavbar</a></li><li><a href="YourLibraryPlaylist.html">YourLibraryPlaylist</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AccountContent">AccountContent</a></li><li><a href="global.html#AccountSidebar">AccountSidebar</a></li><li><a href="global.html#AdsBar">AdsBar</a></li><li><a href="global.html#AllSearchResults">AllSearchResults</a></li><li><a href="global.html#EditPictureModal">EditPictureModal</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoLine">InfoLine</a></li><li><a href="global.html#link">link</a></li><li><a href="global.html#ListOfUsers">ListOfUsers</a></li><li><a href="global.html#OverviewContent">OverviewContent</a></li><li><a href="global.html#Searchbar">Searchbar</a></li><li><a href="global.html#SearchedContent">SearchedContent</a></li><li><a href="global.html#TopResultItem">TopResultItem</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Jun 10 2020 23:40:19 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

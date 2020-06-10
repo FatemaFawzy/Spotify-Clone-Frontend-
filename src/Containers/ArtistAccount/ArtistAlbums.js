@@ -19,17 +19,37 @@ export class ArtistAlbums extends Component {
   constructor(props){
     super(props);
     this.state = {  
+               /**array of albums
+   * @memberof ArtistAlbums
+   * @type {Array<Albums>}
+   */ 
       AlbumInfo: [],
+          /**array of popular albums
+   * @memberof ArtistAlbums
+   * @type {Array<Albums>}
+   */ 
        PopularAlbums: [],
        Deleted:false,
        Added:"",
+   /**Boolean to indicate if the snackbar should appear
+   * @memberof ArtistAlbums
+   * @type {boolean}
+   */ 
        showSnackBar: false,
+   /**String of snackbar message
+   * @memberof ArtistAlbums
+   * @type {string}
+   */ 
        snackBarMes: ""
       
       
     }
     
   }
+     /**A function that fires when the page loads
+   * @memberof ArtistAlbums
+   * @func componentDidMount
+   */
   componentDidMount() {
     const requestOptions1={
       method:"GET",
@@ -67,7 +87,10 @@ export class ArtistAlbums extends Component {
         })
       
     }
-
+     /**A function that is called when an album is requested to be deleted
+   * @memberof ArtistAlbums
+   * @func deleteAlbum
+   */
 deleteAlbum = () => {
   this.setState({Deleted:true});
   const requestOptions2={

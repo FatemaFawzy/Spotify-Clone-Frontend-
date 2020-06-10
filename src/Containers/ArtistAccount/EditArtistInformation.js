@@ -7,14 +7,26 @@ import {connect} from "react-redux";
 import {BASEURL} from "../../Constants/baseURL";
 import {NavLink,Link} from "react-router-dom";
 
+/**Email format that must be entered by the user
+ * @memberof EditArtistInformation
+ * @type {expression}
+ */
 const emailFormat = RegExp(
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 );
+/** Class EditArtistInformation
+ * @group EditArtistInformation
+ * @extends Component
+ */
 export class EditArtistInformation extends Component {
   constructor(props)
   {
     super(props);
     this.state = {
+   /**Artist's information
+   * @memberof EditArtistInformation
+   * @type {object}
+   */ 
    info:{
     // email:"davidgilmour123@gmail.com",
     // username:"pink_floyd",
@@ -26,23 +38,79 @@ export class EditArtistInformation extends Component {
     //month:"05",
     //year:"1950"
    },
+      /**Artist's email
+   * @memberof EditArtistInformation
+   * @type {String}
+   */ 
    email:"",
+         /**Artist's email error
+   * @memberof EditArtistInformation
+   * @type {String}
+   */ 
    emailError:"",
+         /**Artist's day in dob
+   * @memberof EditArtistInformation
+   * @type {String}
+   */ 
    day:"",
+         /**Artist's day in dob error msg
+   * @memberof EditArtistInformation
+   * @type {String}
+   */ 
    dayError:"",
+         /**Artist's month in dob
+   * @memberof EditArtistInformation
+   * @type {String}
+   */ 
    month:"",
+         /**Artist's month in dob error msg
+   * @memberof EditArtistInformation
+   * @type {String}
+   */ 
    monthError:"",
+         /**Artist's year in dob
+   * @memberof EditArtistInformation
+   * @type {String}
+   */ 
    year:"",
+         /**Artist's year in dob error msg
+   * @memberof EditArtistInformation
+   * @type {String}
+   */ 
    yearError:"",
+         /**Artist's name
+   * @memberof EditArtistInformation
+   * @type {String}
+   */ 
    artistName:"",
+         /**Artist's cover img url
+   * @memberof EditArtistInformation
+   * @type {String}
+   */ 
    imageURL:"",
+         /**Artist's bio
+   * @memberof EditArtistInformation
+   * @type {String}
+   */ 
    bio:"",
+         /**Artist's dob
+   * @memberof EditArtistInformation
+   * @type {String}
+   */ 
    dateOfBirth:"",
+         /**Artist's username
+   * @memberof EditArtistInformation
+   * @type {String}
+   */ 
    username:"",
    artistName:""
 
     }   
   }
+   /**A function that validates user input(must be an email)
+   * @memberof EditArtistInformation
+   * @func validateEmail
+   */
   validateEmail = () => {
    if (!emailFormat.test(this.state.email) && this.state.email.length != 0) 
    {
@@ -55,6 +123,10 @@ export class EditArtistInformation extends Component {
     return true;
    }
   }
+     /**A function that validates user input day 
+   * @memberof EditArtistInformation
+   * @func validateDay
+   */
   validateDay = () => {
     if ((this.state.day <= 0 || this.state.day > 31) && this.state.day.length != 0)
     {
@@ -67,6 +139,10 @@ export class EditArtistInformation extends Component {
       return true;
      }
   }
+       /**A function that validates user input month 
+   * @memberof EditArtistInformation
+   * @func validateMonth
+   */
   validateMonth = () => {
     if ((this.state.month <= 0 || this.state.month > 12) && this.state.month.length != 0)
     {
@@ -78,6 +154,10 @@ export class EditArtistInformation extends Component {
       return true;
      }
   }
+         /**A function that validates user input year 
+   * @memberof EditArtistInformation
+   * @func validateYear
+   */
   validateYear = () => {
     if ((this.state.year <= 1901 || this.state.year > 1999) && this.state.year.length != 0)
     {
@@ -89,24 +169,40 @@ export class EditArtistInformation extends Component {
       return true;
      }
   }
+        /**A function that handles changes in email input
+   * @memberof EditArtistInformation
+   * @func handleEmailChange
+   */
   handleEmailChange = event => {
     let inp = this.state.email;
     inp = event.target.value;
     this.state.email = inp;
     this.validateEmail();
   };
+          /**A function that handles changes in day input
+   * @memberof EditArtistInformation
+   * @func handleDayChange
+   */
   handleDayChange = event => {
     let inp = this.state.day;
     inp = event.target.value;
     this.state.day = inp;
     this.validateDay();
   }
+            /**A function that handles changes in month input
+   * @memberof EditArtistInformation
+   * @func handleMonthChange
+   */
   handleMonthChange = event => {
     let inp = this.state.month;
     inp = event.target.value;
     this.state.month = inp;
     this.validateMonth();
   }
+              /**A function that handles changes in year input
+   * @memberof EditArtistInformation
+   * @func handleYearChange
+   */
   handleYearChange = event => {
     let inp = this.state.year;
     inp = event.target.value;
@@ -114,26 +210,46 @@ export class EditArtistInformation extends Component {
     console.log(this.validateYear());
     this.validateYear();
   }
+              /**A function that handles changes in name input
+   * @memberof EditArtistInformation
+   * @func handleNameChange
+   */
   handleNameChange = event => {
     let inp = this.state.artistName;
     inp = event.target.value;
     this.state.artistName = inp;
   }
+              /**A function that handles changes in username input
+   * @memberof EditArtistInformation
+   * @func handleUsernameChange
+   */
   handleUsernameChange = event => {
     let inp = this.state.username;
     inp = event.target.value;
     this.state.username = inp;
   }
+              /**A function that handles changes in image input
+   * @memberof EditArtistInformation
+   * @func handleImageChange
+   */
   handleImageChange = event => {
     let inp = this.state.imageURL;
     inp = event.target.value;
     this.state.imageURL = inp;
   }
+              /**A function that handles changes in bio input
+   * @memberof EditArtistInformation
+   * @func handleBioChange
+   */
   handleBioChange = event => {
     let inp = this.state.bio;
     inp = event.target.value;
     this.state.bio = inp;
   }
+             /**A function that fires when the page loads
+   * @memberof EditArtistInformation
+   * @func componentDidMount
+   */
   componentDidMount()
   {
     const requestOptions2={
@@ -153,6 +269,10 @@ export class EditArtistInformation extends Component {
       .catch((error)=>{console.log(error);
       })
   }
+        /**A function that fires when a user clicks on the button to edit the profile
+   * @memberof EditArtistInformation
+   * @func clickSubmit
+   */
   clickSubmit = () => {
     if (this.validateEmail() && this.validateDay() && this.validateMonth() && this.validateYear())
     {
@@ -248,7 +368,7 @@ export class EditArtistInformation extends Component {
                 <div className="row" id="birth-date">
 
                   <div className="col-3">
-                    <input id="day" name="day" className=" form-control birth-date-signup" type="number" placeholder={this.state.info.day} max="31" min="1" maxLength="2" onChange={this.handleDayChange}/>
+                    <input id="day-input" name="day" className=" form-control birth-date-signup" type="number" placeholder={this.state.info.day} max="31" min="1" maxLength="2" onChange={this.handleDayChange}/>
                   </div>
 
                   <div className="col-6">
