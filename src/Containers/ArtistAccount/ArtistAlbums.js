@@ -66,13 +66,13 @@ export class ArtistAlbums extends Component {
         headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
       }
   
-      const url2 =BASEURL2+"artist/myalbums/id"; 
+      const url2 =BASEURL2 + "artist/myalbums/id"; 
       fetch(url2,requestOptions2)
         .then((response) => {
           return response.json();
         })
         .then((data) => {
-         this.setState({PopularAlbums:data.albumInfo.slice(0,3)})
+         this.setState({PopularAlbums:data.albumInfo.slice(0,5)})
         })
         .catch((error)=>{
           console.log(error);
@@ -86,7 +86,7 @@ deleteAlbum = () => {
     method:'DELETE'
   }
 
-  const url2 =BASEURL2+"album/remove/id"; 
+  const url2 =BASEURL2 + "album/remove/id"; 
 
   fetch(url2,requestOptions2)
     .then((response) => { return response.json()})
