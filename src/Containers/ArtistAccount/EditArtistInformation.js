@@ -21,7 +21,10 @@ export class EditArtistInformation extends Component {
     // dateOfBirth:"31/05/1950",
     // bio:"",
     // imageURL:" ",
-    // artistName:"Pink Floyd"
+    // artistName:"Pink Floyd",
+    //day:"31",
+    //month:"05",
+    //year:"1950"
    },
    email:"",
    emailError:"",
@@ -47,16 +50,13 @@ export class EditArtistInformation extends Component {
     return false;
    }
    else{
+     console.log("db");
     this.setState({emailError:""});
     return true;
    }
   }
   validateDay = () => {
-    if (this.state.day.value == null)
-    {
-      return true;
-    }
-    if (this.state.day <= 0 || this.state.day > 31)
+    if ((this.state.day <= 0 || this.state.day > 31) && this.state.day.length != 0)
     {
       console.log(this.state.day);
       this.setState({dayError:"Please choose a valid day."});
@@ -68,11 +68,7 @@ export class EditArtistInformation extends Component {
      }
   }
   validateMonth = () => {
-    if (this.state.month.value == null)
-    {
-      return true;
-    }
-    if (this.state.month <= 0 || this.state.month > 12)
+    if ((this.state.month <= 0 || this.state.month > 12) && this.state.month.length != 0)
     {
       this.setState({monthError:"Please choose a valid month."});
       return false;
@@ -83,11 +79,7 @@ export class EditArtistInformation extends Component {
      }
   }
   validateYear = () => {
-    if (this.state.year.value == null)
-    {
-      return true;
-    }
-    if (this.state.year <= 1901 || this.state.year > 1999)
+    if ((this.state.year <= 1901 || this.state.year > 1999) && this.state.year.length != 0)
     {
       this.setState({yearError:"Please choose a valid year."});
       return false;
@@ -148,7 +140,7 @@ export class EditArtistInformation extends Component {
       method:"GET",
       headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
     }
-    const url2 =BASEURL2+"artist/information"; 
+    const url2 ="http://spotifyclonemock.mocklab.io/artist/information"; 
     fetch(url2,requestOptions2)
       .then((response) => {
         return response.json();
@@ -162,26 +154,6 @@ export class EditArtistInformation extends Component {
       })
   }
   clickSubmit = () => {
-    if (this.state.email.value == null)
-    {
-      this.setState({email:this.state.info.email});
-    }
-    if (this.state.username.value == null)
-    {
-      this.setState({username:this.state.info.username});
-    }
-    if (this.state.artistName.value == null)
-    {
-      this.setState({artistName:this.state.info.artistName});
-    }
-    if (this.state.bio.value == null)
-    {
-      this.setState({bio:this.state.info.bio});
-    }
-    if (this.state.imageURL.value == null)
-    {
-      this.setState({imageURL:this.state.info.imageURL});
-    }
     if (this.validateEmail() && this.validateDay() && this.validateMonth() && this.validateYear())
     {
       console.log("email val");
@@ -189,7 +161,7 @@ export class EditArtistInformation extends Component {
         method:"POST",
         headers:{'Content-Type':'authorizaion/json','x-auth':"x-auth"}
       }
-      const url3 =BASEURL2+"artist/information/edit"; 
+      const url3 ="http://spotifyclonemock.mocklab.io/artist/information/edit"; 
       fetch(url3,requestOptions3)
         .then((response) => {
           return response.json();
@@ -203,6 +175,41 @@ export class EditArtistInformation extends Component {
         })
         .catch((error)=>{console.log(error);
         })
+    }
+    else 
+    {
+      if (this.state.day.value == null)
+      {
+        this.setState({day:this.state.info.day});
+      }
+      if (this.state.month.value == null)
+      {
+        this.setState({month:this.state.info.month});
+      }
+      if (this.state.year.value == null)
+      {
+        this.setState({year:this.state.info.year});
+      }
+      if (this.state.email.value == null)
+      {
+        this.setState({email:this.state.info.email});
+      }
+      if (this.state.username.value == null)
+      {
+        this.setState({username:this.state.info.username});
+      }
+      if (this.state.artistName.value == null)
+      {
+        this.setState({artistName:this.state.info.artistName});
+      }
+      if (this.state.bio.value == null)
+      {
+        this.setState({bio:this.state.info.bio});
+      }
+      if (this.state.imageURL.value == null)
+      {
+        this.setState({imageURL:this.state.info.imageURL});
+      }
     }
   }
   render(){
@@ -236,15 +243,15 @@ export class EditArtistInformation extends Component {
                 <div className="row" id="birth-date">
 
                   <div className="col-3">
-                    <input name="day" className=" form-control birth-date-signup" type="number" placeholder="Day" max="31" min="1" maxLength="2" onChange={this.handleDayChange}/>
+                    <input name="day" className=" form-control birth-date-signup" type="number" placeholder={this.state.info.day} max="31" min="1" maxLength="2" onChange={this.handleDayChange}/>
                   </div>
 
                   <div className="col-6">
-                  <input name="month" className=" form-control birth-date-signup" type="number" placeholder="Month" max="12" min="1" maxLength="2" onChange={this.handleMonthChange}/>
+                  <input name="month" className=" form-control birth-date-signup" type="number" placeholder={this.state.info.month} max="12" min="1" maxLength="2" onChange={this.handleMonthChange}/>
                   </div>
 
                   <div className="col-3 ">
-                    <input name="year" className="form-control birth-date-signup" type="number" placeholder="Year" max="1999" min="1900" maxLength="4" onChange={this.handleYearChange}/>
+                    <input name="year" className="form-control birth-date-signup" type="number" placeholder={this.state.info.year} max="1999" min="1900" maxLength="4" onChange={this.handleYearChange}/>
                   </div>
                   
                   </div>

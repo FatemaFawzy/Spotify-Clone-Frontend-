@@ -14,7 +14,9 @@ export class ArtistInformation extends Component {
    info:{
     email:"davidgilmour123@gmail.com",
     username:"pink_floyd",
-    dateOfBirth:"31/05/1950",
+    day:"30",
+    month:"05",
+    year:"1950",
     bio:"",
     imageURL:" ",
     artistName:"Pink Floyd"
@@ -62,7 +64,7 @@ export class ArtistInformation extends Component {
             </tr>
             <tr> 
               <td><li className="list-element">Date Of Birth:</li></td>
-              <td><li className="response">{this.state.info.dateOfBirth}</li></td>
+              <td><li className="response">{this.state.info.day+"/"+this.state.info.month+"/"+this.state.info.year}</li></td>
             </tr>
             <tr> 
               <td><li className="list-element">Biography:</li></td>
