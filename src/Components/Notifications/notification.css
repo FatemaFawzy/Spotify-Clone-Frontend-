@@ -19,11 +19,11 @@
   display: flex;
 }
 
-ul li:last-child {
+.conTainer .bulletPoint:last-child {
   border-bottom: none;
 }
 
-ul li .text {
+.conTainer .bulletPoint .tEXT {
   color: white;
   position: relative;
   font-family: sans-serif;
@@ -32,7 +32,7 @@ ul li .text {
 
   cursor: pointer;
 }
-ul li:hover .text {
+.conTainer .bulletPoint:hover .tEXT {
   font-weight: bold;
   font-size: small;
   color: rgb(29, 185, 84);

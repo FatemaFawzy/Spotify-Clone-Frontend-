@@ -7,12 +7,9 @@ import './GeneratedPlaylistStyle.css'
 function MyNotification() {
     return (
       <div className='generatedPopUp'>
-        <div>
-            <h1 className='PopUpMessageGP'>Generated Playlist is l<span className='iconGPlaylist'><i class="fab fa-gratipay"></i> 
-              </span>ved
+            <h1 className='PopUpMessageGP'>L<span className='iconGPlaylist'><i class="fab fa-gratipay"></i></span>ve the generated playlist
               </h1>
         </div>
-      </div>
     )
   }
 function GeneratedPlaylist() {
@@ -46,7 +43,7 @@ onClick={() => {
   });
 }}
 >
-<span className='texT'>Love Generated Playlist</span>
+<span className='teXT'>Love Generated Playlist</span>
 </button>
 
 
