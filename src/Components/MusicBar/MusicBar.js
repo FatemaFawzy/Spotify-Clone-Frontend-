@@ -116,14 +116,17 @@ class MusicBar extends Component {
 
   //when the music progress bar is clicked the track is adjusted accordignly
   handleProgress = (e) => {
-    var progressRef = this.refs.progressRef;
-    var progress1 =
-      ((e.clientX - progressOffset(progressRef)) /
-        document.getElementById("music-progress").clientWidth) *
-      100;
-    // this.setState({ progress: progress1 });
-    this.props.onChangeProgress(progress1);
-    this.forcedProgress = true;
+    if(this.props.somethingIsPlaying) {
+      var progressRef = this.refs.progressRef;
+      var progress1 =
+        ((e.clientX - progressOffset(progressRef)) /
+          document.getElementById("music-progress").clientWidth) *
+        100;
+      // this.setState({ progress: progress1 });
+      this.props.onChangeProgress(progress1);
+      this.forcedProgress = true;
+    }
+
   };
 
   // update the music progress bar as the track keeps playing
@@ -209,7 +212,7 @@ class MusicBar extends Component {
       duration = this.refs.player.duration;
 
       // Check if the user wants to skip to a certain part of the track
-      if (this.forcedProgress) {
+      if (this.forcedProgress && this.refs.player.duration !=0) {
         this.forcedProgress = false;
 
         this.refs.player.currentTime =
