@@ -21,7 +21,10 @@ export class EditArtistInformation extends Component {
     // dateOfBirth:"31/05/1950",
     // bio:"",
     // imageURL:" ",
-    // artistName:"Pink Floyd"
+    // artistName:"Pink Floyd",
+    //day:"31",
+    //month:"05",
+    //year:"1950"
    },
    email:"",
    emailError:"",
@@ -47,16 +50,13 @@ export class EditArtistInformation extends Component {
     return false;
    }
    else{
+     console.log("db");
     this.setState({emailError:""});
     return true;
    }
   }
   validateDay = () => {
-    if (this.state.day.value == null)
-    {
-      return true;
-    }
-    if (this.state.day <= 0 || this.state.day > 31)
+    if ((this.state.day <= 0 || this.state.day > 31) && this.state.day.length != 0)
     {
       console.log(this.state.day);
       this.setState({dayError:"Please choose a valid day."});
@@ -68,11 +68,7 @@ export class EditArtistInformation extends Component {
      }
   }
   validateMonth = () => {
-    if (this.state.month.value == null)
-    {
-      return true;
-    }
-    if (this.state.month <= 0 || this.state.month > 12)
+    if ((this.state.month <= 0 || this.state.month > 12) && this.state.month.length != 0)
     {
       this.setState({monthError:"Please choose a valid month."});
       return false;
@@ -83,11 +79,7 @@ export class EditArtistInformation extends Component {
      }
   }
   validateYear = () => {
-    if (this.state.year.value == null)
-    {
-      return true;
-    }
-    if (this.state.year <= 1901 || this.state.year > 1999)
+    if ((this.state.year <= 1901 || this.state.year > 1999) && this.state.year.length != 0)
     {
       this.setState({yearError:"Please choose a valid year."});
       return false;
@@ -162,28 +154,48 @@ export class EditArtistInformation extends Component {
       })
   }
   clickSubmit = () => {
-    if (this.state.email.length == 0)
-    {
-      this.setState({email:this.state.info.email});
-    }
-    if (this.state.username.length == 0)
-    {
-      this.setState({username:this.state.info.username});
-    }
-    if (this.state.artistName == 0)
-    {
-      this.setState({artistName:this.state.info.artistName});
-    }
-    if (this.state.bio.length == 0)
-    {
-      this.setState({bio:this.state.info.bio});
-    }
-    if (this.state.imageURL.length == 0)
-    {
-      this.setState({imageURL:this.state.info.imageURL});
-    }
     if (this.validateEmail() && this.validateDay() && this.validateMonth() && this.validateYear())
     {
+      if (this.state.day.length == 0)
+      {
+        console.log("day is empty");
+        this.setState({day:this.state.info.day});
+      }
+      if (this.state.month.length == 0)
+      {
+        console.log("month is empty");
+        this.setState({month:this.state.info.month});
+      }
+      if (this.state.year.length == 0)
+      {
+        console.log("year is empty");
+        this.setState({year:this.state.info.year});
+      }
+      if (this.state.email.length == 0)
+      {
+        console.log("email is empty");
+        this.setState({email:this.state.info.email});
+      }
+      if (this.state.username.length == 0)
+      {
+        console.log("username is empty");
+        this.setState({username:this.state.info.username});
+      }
+      if (this.state.artistName.length == 0)
+      {
+        console.log("name is empty");
+        this.setState({artistName:this.state.info.artistName});
+      }
+       if (this.state.bio.length == 0)
+      {
+        console.log("bio is empty");
+        this.setState({bio:this.state.info.bio});
+      }
+     if (this.state.imageURL.length == 0)
+      {
+        console.log("image is empty");
+        this.setState({imageURL:this.state.info.imageURL});
+      }
       console.log("email val");
       const requestOptions3={
         method:"POST",
@@ -236,15 +248,15 @@ export class EditArtistInformation extends Component {
                 <div className="row" id="birth-date">
 
                   <div className="col-3">
-                    <input name="day" className=" form-control birth-date-signup" type="number" placeholder="Day" max="31" min="1" maxLength="2" onChange={this.handleDayChange}/>
+                    <input name="day" className=" form-control birth-date-signup" type="number" placeholder={this.state.info.day} max="31" min="1" maxLength="2" onChange={this.handleDayChange}/>
                   </div>
 
                   <div className="col-6">
-                  <input name="month" className=" form-control birth-date-signup" type="number" placeholder="Month" max="12" min="1" maxLength="2" onChange={this.handleMonthChange}/>
+                  <input name="month" className=" form-control birth-date-signup" type="number" placeholder={this.state.info.month} max="12" min="1" maxLength="2" onChange={this.handleMonthChange}/>
                   </div>
 
                   <div className="col-3 ">
-                    <input name="year" className="form-control birth-date-signup" type="number" placeholder="Year" max="1999" min="1900" maxLength="4" onChange={this.handleYearChange}/>
+                    <input name="year" className="form-control birth-date-signup" type="number" placeholder={this.state.info.year} max="1999" min="1900" maxLength="4" onChange={this.handleYearChange}/>
                   </div>
                   
                   </div>
