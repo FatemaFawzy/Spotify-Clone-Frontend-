@@ -12,6 +12,8 @@ import {Link} from "react-router-dom";
 const initialState = {
   Name:"",
   Image:"",
+  nameerror:"",
+  imageerror:"",
 };
 /** Class AddAlbum
  * @category AddAlbum
@@ -25,16 +27,18 @@ export class AddAlbum extends Component {
 
   validateAlbumName = () => {
     let Name = this.state.Name;
+    let nameerror= this.state.nameerror;
     let proceedname = true;
     if (Name.length === 0) {
-      if (document.querySelector("#basic-url1")) {
+      if (document.querySelector("#basic-url1") && document.querySelector("#error-message")) {
         document.querySelector("#basic-url1").classList.add("redbox");
-        document.querySelector("#error-message").classList.remove("d-none");
+        
       }
+      this.setState({nameerror:"Please enter the album's name"});
       proceedname = false;
     } else {
-     
-      if (document.querySelector("#basic-url1")) {
+        nameerror="";
+      if (document.querySelector("#basic-url1") && document.querySelector("#error-message")) {
         document.querySelector("#basic-url1").classList.remove("redbox");
         document.querySelector("#error-message").classList.add("d-none");
       }
@@ -44,20 +48,23 @@ export class AddAlbum extends Component {
   };
   validateImage = () => {
     let Image = this.state.Image;
+    let imageerror = this.state.imageerror;
     let proceedimage = true;
     if (Image.length === 0) {
-      if (document.querySelector("#basic-url2")) {
+      if (document.querySelector("#basic-url2") && document.querySelector("#error-message")) {
         document.querySelector("#basic-url2").classList.add("redbox");
         document.querySelector("#error-message").classList.remove("d-none");
       }
+      this.setState({imageerror:"Please enter the image's url"});
       proceedimage = false;
     } else {
      
-      if (document.querySelector("#basic-url2")) {
+      if (document.querySelector("#basic-url2") && document.querySelector("#error-message")) {
         document.querySelector("#basic-url2").classList.remove("redbox");
         document.querySelector("#error-message").classList.add("d-none");
       }
       proceedimage = true;
+      imageerror="";
     }
     return proceedimage;
   };
@@ -122,8 +129,8 @@ export class AddAlbum extends Component {
               <h1>Add Album Information</h1>
                 <div class="input-group mb-3">
                   <input type="text" onChange={this.handleName} name="Name" class="form-control" id="basic-url1" placeholder="Album Name"  aria-describedby="basic-addon2"/>
-                  
                 </div>
+                <p id="error-message1" >{this.state.nameerror}</p>
 
                 
                 <div class="input-group mb-3">
@@ -132,11 +139,12 @@ export class AddAlbum extends Component {
                   </div>
                   <input onChange={this.handleImage} name="Image" type="text" class="form-control" id="basic-url2" placeholder="Image Url" aria-describedby="basic-addon3"/>
                   </div>
-                  <p id="error-message" className="d-none">Please fill all the required inputs</p>
+                  <p id="error-message2" >{this.state.imageerror}</p>
+                  
                 </div>
         
                 <div className="Add-songs d-flex justify-content-center">
-                  <button onClick={this.clickSubmit}>Add album's songs</button>
+                  <button id="submit" onClick={this.clickSubmit}>Add album's songs</button>
                 </div>
         
         </div>
