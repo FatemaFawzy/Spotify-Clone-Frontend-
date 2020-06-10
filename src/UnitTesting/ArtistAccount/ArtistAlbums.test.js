@@ -49,15 +49,16 @@ describe("ArtistAlbums Render test", ()=>{
      expect(wrapper.state().Deleted).toEqual(true);
     });
 
-    describe("Artist Albums componentDidMount test", ()=>{
+    
+
+})
+describe("Artist Albums componentDidMount test", ()=>{
   
-      it('calls componentDidMount', () => {
-        jest.spyOn(ArtistAlbums.prototype, 'componentDidMount')
-        const wrapper = shallow(<ArtistAlbums />)
-        expect(ArtistAlbums.prototype.componentDidMount.mock.calls.length).toBe(1)
-      })
-  
-    })
+  it('calls componentDidMount', () => {
+    jest.spyOn(ArtistAlbums.prototype, 'componentDidMount')
+    const wrapper = shallow(<ArtistAlbums />)
+    expect(ArtistAlbums.prototype.componentDidMount.mock.calls.length).toBe(1)
+  })
 
 })
   
