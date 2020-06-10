@@ -26,7 +26,7 @@ describe("Edit Artist Information Render test", ()=>{
   
   it("Should have 1 info content", ()=>{
     const div=wrapper.find("div.info-content");
-    expect(div).toHaveLength(1);
+    expect(div.hasClass("info-content")).toEqual(true);
   })
 
   it("Should have 8 inputs", ()=>{
