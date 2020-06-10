@@ -24,7 +24,7 @@ describe("EditSong Render test", ()=>{
   });
 
   
-  it("Should have 2 button", ()=>{
+  it("Should have 1 button", ()=>{
     const buttons=wrapper.find("button");
     expect(buttons).toHaveLength(1);
   })
@@ -62,6 +62,18 @@ describe("EditSong handleImage function test", ()=>{
     input.simulate('change',event);
    expect(wrapper.state().Image).toContain("http://example.com/image");
   });
+
+
+  describe("Edit Songs componentDidMount test", ()=>{
+  
+    it('calls componentDidMount', () => {
+      jest.spyOn(EditSong.prototype, 'componentDidMount')
+      const wrapper = shallow(<EditSong />)
+      expect(EditSong.prototype.componentDidMount.mock.calls.length).toBe(1)
+    })
+
+  })
+
 })
    
     
