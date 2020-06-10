@@ -19,7 +19,7 @@ let space = {
  * @category MusicBar
  * @extends Component
  */
-class MusicBar extends Component {
+export class MusicBar extends Component {
   constructor(props) {
     super(props);
 
@@ -159,8 +159,11 @@ class MusicBar extends Component {
           });
       }
     }
-    heart.classList.toggle("far");
-    heart.classList.toggle("fas");
+    if(heart){
+      heart.classList.toggle("far");
+      heart.classList.toggle("fas");
+    }
+
   };
 
   /**Play or pause a song
@@ -528,6 +531,7 @@ class MusicBar extends Component {
               <div className="d-flex justify-content-center">
                 <button
                   className="middle-icons fas fa-stop mr-2"
+                  id="stop_btn"
                   title="Stop"
                   onClick={this.stop}
                 ></button>
@@ -560,7 +564,7 @@ class MusicBar extends Component {
                 ></button>
               </div>
               <div className="duration-bar d-flex">
-                <div className="duration pr-1">{formatTime(currentTime)}</div>
+                <div id="curr_time" className="duration pr-1">{formatTime(currentTime)}</div>
 
                 <div
                   id="music-progress"
@@ -597,6 +601,7 @@ class MusicBar extends Component {
                   <button
                     className="middle-icons fas fa-list mr-2"
                     title="Play Queue"
+                    id="play_Queue"
                     onClick={this.playQueue}
                     style={{
                       color: this.state.playQueue
@@ -618,6 +623,7 @@ class MusicBar extends Component {
                 <li>
                   <div
                     className="progress volumebar"
+                    id="progress_volumebar"
                     onClick={this.changeVolume}
                   >
                     <div

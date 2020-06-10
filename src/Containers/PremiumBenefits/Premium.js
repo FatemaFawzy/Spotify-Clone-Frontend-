@@ -30,6 +30,10 @@ export class Premium extends Component {
       snackBarMes: "",      
     };
   }
+  /**upgrade to premium user
+ * @memberof Premium
+ * @func premiumSwitch
+ */ 
   premiumSwitch = e => {
     const requestOptions = {
       method: "POST",
