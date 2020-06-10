@@ -5,7 +5,7 @@ import HomePageNavbar from '../HomePage/HomePageNavbar';
 import CardMedia from '../Media/CardMedia';
 import {BASEURL} from "../../Constants/baseURL";
 import {connect} from 'react-redux';
-  
+import {Tracks} from "../MusicBar/SongFiles"
 
 /** Class LikedSongs 
  * @category LikedSongs
@@ -39,13 +39,15 @@ export class LikedSongs extends Component
      * @memberof LikedSongs
      * @type {sring}
      */
-      LikedSongsImage: "https://uploads-ssl.webflow.com/5e36e6f21212670638c0d63c/5e39d85cee05be53d238681a_likedSongs.png",
+    LikedSongsImage: Tracks[0].imgURL,
+      // LikedSongsImage: "https://uploads-ssl.webflow.com/5e36e6f21212670638c0d63c/5e39d85cee05be53d238681a_likedSongs.png",
      
     /** Liked Songs Number
      * @memberof LikedSongs
      * @type {sring}
      */
-      songsNumber: "32 Songs",   
+      songsNumber: Tracks.length + " Songs", 
+      // songsNumber: "32 Songs",   
     
     /** show/remove snack bar
      * @memberof LikedSongs
@@ -83,49 +85,49 @@ export class LikedSongs extends Component
    */
   componentDidMount()
   {
-     const url = BASEURL +"tracks/like/me";
-     const requestOptions = {
-          method: 'GET',  
-          headers: {'x-auth': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk",
-        'Content-Type': 'application/json' },  
-        };
-        fetch(url,requestOptions)
-            .then((response) => {
-              return response.json();    
-            })
-            .then((data) => {
+    //  const url = BASEURL +"tracks/like/me";
+    //  const requestOptions = {
+    //       method: 'GET',  
+    //       headers: {'x-auth': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk",
+    //     'Content-Type': 'application/json' },  
+    //     };
+    //     fetch(url,requestOptions)
+    //         .then((response) => {
+    //           return response.json();    
+    //         })
+    //         .then((data) => {
 
-              this.setState({ TracksID: data});
-              console.log(this.state.TracksID)
-              this.getLikedTrackes()
-            })
-            .catch((error)=>{
-              console.log(error);
+    //           this.setState({ TracksID: data});
+    //           console.log(this.state.TracksID)
+    //           this.getLikedTrackes()
+    //         })
+    //         .catch((error)=>{
+    //           console.log(error);
     
-            })       
+    //         })       
   }
 /**Function to get liked tracks
    * @memberof LikedSongs
    * @func getLikedTrackes
    */
 getLikedTrackes () {
-    var url =BASEURL+ "tracks"; 
-      const requestOptions = {
-        method:"POST",
-        headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
-        'Content-Type': 'application/json'},
-        body: JSON.stringify({id: this.state.TracksID})
-    };
-      fetch(url,requestOptions)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) =>{ 
-          console.log(data);
-          this.setState({LikedSongs:data.tracks})
-          console.log(this.state.LikedSongs)
-        })
-        .catch((err)=>console.log(err))
+    // var url =BASEURL+ "tracks"; 
+    //   const requestOptions = {
+    //     method:"POST",
+    //     headers:{'x-auth':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThhNzAxOTU0ZmU3NTJjMTQ5OGY3MjEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTg2MTMxOTc0fQ.5CqQJG2E8n_1h8-_XC_tb1HbnVuIXstLQpTyjoWK-Dk', 
+    //     'Content-Type': 'application/json'},
+    //     body: JSON.stringify({id: this.state.TracksID})
+    // };
+    //   fetch(url,requestOptions)
+    //     .then((response) => {
+    //       return response.json();
+    //     })
+    //     .then((data) =>{ 
+    //       console.log(data);
+    //       this.setState({LikedSongs:data.tracks})
+    //       console.log(this.state.LikedSongs)
+    //     })
+    //     .catch((err)=>console.log(err))
   }
 
 /**Function to toggle add to playlist
@@ -206,13 +208,13 @@ show = e => {
         <table className="table table-borderless">
           <tbody>
                                              {/* Display likd songs */}
-           {this.state.SongInfo.map((song,index)=>(
+           {Tracks.map((song,index)=>(
             <tr key={index}>
               <th scope="row" className="music-sign d-flex justify-content-center">	 </th>
               <td className="song-content">
                 <ul className="list-unstyled">
                   <li>{song.SongName}</li>
-                  <li className="song-info"><a href='/webplayer/artistprofile/'>{song.Singer} </a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>{song.AlbumName} </a></li>
+                  <li className="song-info"><a href='/webplayer/artistprofile/'>{song.Artist} </a> <span className="font-weight-bold">.</span> <a href='/webplayer/album'>{song.AlbumName} </a></li>
                 </ul>
               </td>
               <td>
