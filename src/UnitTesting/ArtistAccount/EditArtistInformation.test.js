@@ -52,7 +52,7 @@ describe("Edit Artist Information Handle Change Test", ()=>{
   })
 
   it("Should handle change in day input field", ()=>{
-    const input = wrapper.find("input#day");
+    const input = wrapper.find("input#day-input");
     const event = {
       preventDefault() {},
       target: { value: '12' }
@@ -134,7 +134,7 @@ describe("Edit Artist Information Render test", ()=>{
     expect(wrapper.state().emailError).toEqual("Please enter a valid email.");
   })
   it("Should validate change in day input field", ()=>{
-    const input = wrapper.find("input#day");
+    const input = wrapper.find("input#day-input");
     const event = {
       preventDefault() {},
       target: { value: '1000' }

@@ -368,7 +368,7 @@ export class EditArtistInformation extends Component {
                 <div className="row" id="birth-date">
 
                   <div className="col-3">
-                    <input id="day" name="day" className=" form-control birth-date-signup" type="number" placeholder={this.state.info.day} max="31" min="1" maxLength="2" onChange={this.handleDayChange}/>
+                    <input id="day-input" name="day" className=" form-control birth-date-signup" type="number" placeholder={this.state.info.day} max="31" min="1" maxLength="2" onChange={this.handleDayChange}/>
                   </div>
 
                   <div className="col-6">
