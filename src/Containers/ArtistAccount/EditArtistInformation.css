@@ -118,10 +118,18 @@
   {
     width:300px;
   }
+  .edit-artist-information #birth-date
+  {
+    width:325px;
+  }
 }
 @media (max-width:850px)
 {
   .edit-artist-information .general-input
+  {
+    margin-left:15%;
+  }
+  .edit-artist-information #birth-date
   {
     margin-left:15%;
   }
@@ -132,6 +140,11 @@
   {
     margin-left:5%;
     width:250px;
+  }
+  .edit-artist-information #birth-date
+  {
+    margin-left:1%;
+    width:275px;
   }
 }
 @media (max-width:818px) and (min-with:500px)

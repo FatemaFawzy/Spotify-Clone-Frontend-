@@ -150,5 +150,10 @@
   }
   .liked-songs-component .liked-songs-title{
     font-size:20px;
+    margin-top:70px;
+  }
+  .liked-songs-component .bottom-right-button
+  {
+    margin-top:70px;
   }
 }
