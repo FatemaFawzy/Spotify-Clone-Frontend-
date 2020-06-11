@@ -1,10 +1,9 @@
 .notificationBox {
   position: fixed;
   top: -1.5%;
-  right: 10%;
+  right: 200px !important;
   transform: translate(20%, 10%);
   background-color: transparent;
-  
 }
 
 .notification:hover {
@@ -68,12 +67,12 @@
   width: 150px;
   height: 60px;
 } 
-@media screen and (max-width:1200px) and (min-width: 900px) {
+/* @media screen and (max-width:1200px) and (min-width: 900px) {
 
   .notificationBox {
     position: fixed;
     top: -1.5%;
-    right: 15%;
+    right: 200px;
     transform: translate(20%, 10%);
     background-color: transparent;
 
@@ -90,30 +89,30 @@
   .notificationBox {
     position: fixed;
     top: -1.5%;
-    right: 15%;
+    right: 200px;
     transform: translate(20%, 10%);
     background-color: transparent;
 
   }
 
-}
+} */
 
 
 
 
 
-@media screen and (max-width:700px) and (min-width: 300px) {
+/* @media screen and (max-width:700px) and (min-width: 300px) {
 
   .notificationBox {
     position: fixed;
     top: -1.5%;
-    right: 20%;
+    right: 200px;
     transform: translate(20%, 10%);
     background-color: transparent;
 
   }
 
-}
+} */
 
 
 
@@ -121,16 +120,27 @@
 
 @media screen and (max-width: 650px) and (min-width: 10px) {
 
-  .notificationBox {
+  /* .notificationBox {
     position: fixed;
     top: -1.5%;
-    right: 17%;
+    right: 200px;
     transform: translate(20%, 10%);
     background-color: transparent;
-  }
+  } */
 
   .notificationBox:hover {
     display: none;
   }
 
+}
+
+@media screen and (max-width: 800px) {
+
+  .notificationBox {
+    position: fixed;
+    top: -1.5%;
+    right: 80px !important;
+    transform: translate(20%, 10%);
+    background-color: transparent;
+  }
 }
