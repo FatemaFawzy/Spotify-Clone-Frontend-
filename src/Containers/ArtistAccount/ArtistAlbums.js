@@ -29,15 +29,7 @@ export class ArtistAlbums extends Component {
    * @type {Array<Albums>}
    */ 
        PopularAlbums: [],
-    /**Boolean to indicate whether an album has been deleted
-   * @memberof ArtistAlbums
-   * @type {boolean}
-   */ 
-       Deleted:"",
-    /**Boolean to indicate whether an album has been added
-   * @memberof ArtistAlbums
-   * @type {boolean}
-   */ 
+       Deleted:false,
        Added:"",
    /**Boolean to indicate if the snackbar should appear
    * @memberof ArtistAlbums
@@ -162,7 +154,7 @@ deleteAlbum = () => {
                 <a className="song-menu Menu" href="/account" id="Dropdown" data-toggle="dropdown">  ••• </a>
                   <div className="dropdown-menu song-dropdown-content dropdown-menu-right ">
                     <Link to="/ArtistAccount/ArtistWebPlayer/MySongs/EditAlbum"><a className="dropdown-item drop-class" id="REMOVE" value="ShowRemove" onClick={this.show}>Edit</a></Link>
-                    <a className="dropdown-item drop-class" id="delete" onClick={this.deleteAlbum} href="#">Remove</a>
+                    <a className="dropdown-item drop-class" id="deletes" onClick={this.deleteAlbum} href="#">Remove</a>
                   </div>
                 </div>
               </td>

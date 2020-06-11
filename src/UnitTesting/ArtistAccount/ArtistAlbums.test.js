@@ -40,18 +40,8 @@ describe("ArtistAlbums Render test", ()=>{
   })
 })
 
- 
-  describe("deleteAlbum function test", ()=>{
-    it('Delete Album state check', () => {
-      const wrapper = shallow(<ArtistAlbums /> );
-      const button =wrapper.find("a#delete");
-      button.simulate('click');
-     expect(wrapper.state().Deleted).toEqual(true);
-    });
 
-    
 
-})
 describe("Artist Albums componentDidMount test", ()=>{
   
   it('calls componentDidMount', () => {

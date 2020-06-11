@@ -41,17 +41,7 @@ describe("ArtistSongs Render test", ()=>{
 })
 
  
-  describe("deleteSongs function test", ()=>{
-    it('Delete Songs state check', () => {
-      const wrapper = shallow(<ArtistSongs /> );
-      const button =wrapper.find("a#delete");
-      button.simulate('click');
-     expect(wrapper.state().Deleted).toEqual(true);
-    });
 
-  
-
-})
 describe("Artist Songs componentDidMount test", ()=>{
 
   it('calls componentDidMount', () => {
