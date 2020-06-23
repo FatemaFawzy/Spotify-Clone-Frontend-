@@ -23,7 +23,7 @@ export class EditProfile extends Component {
    * @memberof EditProfile
    * @func year
    */
-    const year = (new Date()).getFullYear();
+    const year = (new Date()).getFullYear() -7;
     this.years = Array.from(new Array(121),(val, index) => year - index);
     
     this.state = {

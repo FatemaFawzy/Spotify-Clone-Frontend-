@@ -337,8 +337,8 @@ export class SignUp extends Component{
         if ( value.length === 0 ) {
           errorMessages.year = "Please choose a year.";
         }
-        else if ( value > 2020 || value < 1990 ) {
-          errorMessages.year = "Please choose a valid year (1990-2020).";
+        else if ( value > 2013 || value < 1990 ) {
+          errorMessages.year = "Please choose a valid year (2013-2020).";
         }
         else {
           errorMessages.year = "";
@@ -452,7 +452,7 @@ export class SignUp extends Component{
                   </div>
 
                   <div className="col-3 ">
-                    <input name="year" className="form-control birth-date-signup" type="number" placeholder="Year" max="1999" min="1900" maxLength="4" onChange={this.handleChange}/>
+                    <input name="year" className="form-control birth-date-signup" type="number" placeholder="Year" max="2013" min="1900" maxLength="4" onChange={this.handleChange}/>
                   </div>
 
                 </div>
