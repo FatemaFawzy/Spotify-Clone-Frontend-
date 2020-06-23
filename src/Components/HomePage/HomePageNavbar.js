@@ -59,7 +59,7 @@ export class HomePageNavbar extends Component{
                   <Link to="/premium"><button id="upgradebtn">
                     {this.props.premium? "DOWNGRADE" : "UPGRADE"}
                     </button></Link>
-                  <NotificationButton/>
+                  {/* <NotificationButton/> */}
                   </div>
                 
               </div>
@@ -69,10 +69,6 @@ export class HomePageNavbar extends Component{
                 <DropDownMenu/>
 
               </div>
-              {/* <div>
-                <NotificationButton/>
-              </div> */}
-
 
             </div>
                    
