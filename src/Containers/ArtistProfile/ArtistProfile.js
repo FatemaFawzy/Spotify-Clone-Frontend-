@@ -24,7 +24,22 @@ export class ArtistProfile extends Component{
    * @memberof ArtistProfile
    * @type {Array<artists>}
    */
-      artistInfo:{},
+      artistInfo:{
+        _id : "5e8902475501bd142cbeff13",
+        artistName : "Tom Odell",
+        about : "A British singer/songwriter with a keen sense for both atmosphere and melody, Tom Odell's piano-led odes to heartache and pain are emotional, raw, and often hushed affairs that invoke names like Leonard Cohen and Jeff Buckley. His acclaimed 2012 debut EP earned him a BRITs Critics' Choice award, and his first full-length outing, 2013's Long Way Down, reached number one on the U.K. albums chart. Uneasy with the idea of fame, Odell recorded his next two releases in New York and Los Angeles before returning home to London for 2018's intimate Jubilee Road.",
+        gender : "M",
+        birthDate : "2001-12-18T00:00:00.000Z",
+        imagePath : "https://i.scdn.co/image/f84e55c8589b0c8bc0eefab69e9cca5d924e758e",
+        isActive : false,
+        rating : 4.35,
+        genres : [
+            "Pop",
+            "R&B",
+            "Country"
+        ],
+        __v : 0
+      },
   /**state member to play artist's songs
    * @memberof ArtistProfile
    * @type {string}
@@ -65,11 +80,13 @@ export class ArtistProfile extends Component{
     fetch(url,requestOptions)
       .then((response) => { return response.json()})
       .then((data) => {
+        if(data.artistName){
         this.setState({
         artistInfo: data,
         coverLink: data.imagePath
         // coverLink: "http://52.14.190.202:8000/images/"+data.artist.imagePath
-      });
+      })
+    };
         console.log(this.state.artistInfo);
       })
       .catch((error)=>{console.log(error);
@@ -186,7 +203,7 @@ export class ArtistProfile extends Component{
 
        <HomePageNavbar color="rgba(77,67,61,0.4)"/>
      
-      <div className="container  artist-top-section " style={{ backgroundImage: `url(${this.state.coverLink})` }}>
+      <div className="container  artist-top-section " style={{ backgroundImage: `url(${this.state.artistInfo.imagePath})` }}>
 
         <div className="montly-listeners">
           Average rating: {this.state.artistInfo.rating}/5

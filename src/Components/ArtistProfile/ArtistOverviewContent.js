@@ -15,54 +15,51 @@ export class ArtistOverviewContent extends Component {
    * @memberof ArtistOverviewContent
    * @type {Array<songsInfo>}
    */
-    SongInfo:[],
-    // SongInfo: [
-    //   {id : 1, trackName : "Another Love (Zwette Edit)",Duration : "3:52", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-    //   {id : 2, trackName : "Heal", Duration : "4:15", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-    //   {id : 3, trackName : "True Colors", Duration : "2:58", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-    //   {id : 4, trackName : "Grow Old With Me", Duration : "3:52", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-    //   {id : 5, trackName : "Summer Day", Duration : "4:15", trackImage: "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
-    // ],
+    SongInfo:[
+      {id : 1, trackName : "Another Love (Zwette Edit)",Duration : "3:52", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+      {id : 2, trackName : "Heal", Duration : "4:15", trackImage : "https://i.scdn.co/image/ab67616d00001e021917a0f3f4152622a040913f"},
+      {id : 3, trackName : "True Colors", Duration : "2:58", trackImage : "https://i.scdn.co/image/ab67616d0000b27375cf479508ef858fbf62d425"},
+      {id : 4, trackName : "Grow Old With Me", Duration : "3:52", trackImage : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059"},
+      {id : 5, trackName : "Summer Day", Duration : "4:15", trackImage: "https://i.scdn.co/image/ab67616d00001e021917a0f3f4152622a040913f"}
+    ],
 
   /**Array of artist albums info 
    * @memberof ArtistOverviewContent
    * @type {Array<albumInfo>}
    */ 
-  albumInfo: [],   
-    // albumInfo: [
-    //   {id : 6, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
-    //   albumLink: "/webplayer/album/"},
-    //   {id : 7, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
-    //   albumLink: "/webplayer/album/"},
-    //   {id : 8, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
-    //   albumLink: "/webplayer/album/"},
-    //   {id : 9, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
-    //   albumLink: "/webplayer/album/"},
-    //   {id : 10, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
-    //   albumLink: "/webplayer/album/"},
-    //   {id : 11, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
-    //   albumLink: "/webplayer/album/"},
-    // ],
+  albumInfo: [
+    {id : 6, albumName : "Wrong Crowd (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b273dc53069e4f4d2ba5b6b707a8",
+      albumLink: "/webplayer/album/"},
+      {id : 7, albumName : "Jubilee Road (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d0000b27310491389a1996bbeb5076f60",
+      albumLink: "/webplayer/album/"},
+      {id : 8, albumName : "Long Way Down", albumPhoto : "https://i.scdn.co/image/ab67616d00001e021917a0f3f4152622a040913f",
+      albumLink: "/webplayer/album/"},
+      {id : 9, albumName : "Wrong Crowd (East 1st Street Piano)", albumPhoto : "https://i.scdn.co/image/ab67616d00001e028c55c43b2a162cec34630368",
+      albumLink: "/webplayer/album/"},
+      {id : 10, albumName : "Long Way Down (Deluxe)", albumPhoto : "https://i.scdn.co/image/ab67616d00001e021917a0f3f4152622a040913f",
+      albumLink: "/webplayer/album/"},
+      {id : 11, albumName : "Long Way Down - Commentary Album", albumPhoto : "https://i.scdn.co/image/ab67616d00001e021917a0f3f4152622a040913f",
+      albumLink: "/webplayer/album/"}
+  ],   
 
   /**Array of artist singles info 
    * @memberof ArtistOverviewContent
    * @type {Array<singlesInfo>}
    */
-  singlesInfo: [],
-    // singlesInfo: [
-    //   {id : 12, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
-    //   albumLink: "/webplayer/album/"},
-    //   {id : 13, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
-    //   albumLink: "/webplayer/album/"},
-    //   {id : 14, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
-    //   albumLink: "/webplayer/album/"},
-    //   {id : 15, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
-    //   albumLink: "/webplayer/album/"},
-    //   {id : 16, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
-    //   albumLink: "/webplayer/album/"},
-    //   {id : 17, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
-    //   albumLink: "/webplayer/album/"},
-    // ],
+  singlesInfo: [
+    {id : 12, singleName : "If you wanna love somebody (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27311d81682fdaaf388651f5ab9",
+      albumLink: "/webplayer/album/"},
+      {id : 13, singleName : "Another Love (Zwette Edit)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2733aeff37d3f480564f6e88059",
+      albumLink: "/webplayer/album/"},
+      {id : 14, singleName : "Go Tell Her Now (Acoustic)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b2732291adc492b78ba40088d2a9",
+      albumLink: "/webplayer/album/"},
+      {id : 15, singleName : "Here I Am (MOUNT Remix)", singlePhoto : "https://i.scdn.co/image/ab67616d0000b273db8e6a6db26e936c30921963",
+      albumLink: "/webplayer/album/"},
+      {id : 16, singleName : "True Colors", singlePhoto : "https://i.scdn.co/image/ab67616d0000b27375cf479508ef858fbf62d425",
+      albumLink: "/webplayer/album/"},
+      {id : 17, singleName : "Hold Me", singlePhoto : "https://i.scdn.co/image/ab67616d0000b273dfeebadaa8c0ee3b06e1eb37",
+      albumLink: "/webplayer/album/"}
+  ],
 
   /**state object for showing more or less albums 
    * @memberof ArtistOverviewContent
@@ -92,10 +89,12 @@ export class ArtistOverviewContent extends Component {
       fetch(urlPopular,requestOptions)
         .then((response) => { return response.json()})
         .then((data) => {
+          if(data.SongInfo){
           this.setState({
           SongInfo: data.SongInfo});
           console.log(this.state.SongInfo);
-        })
+        }
+      })
         .catch((error)=>{console.log(error);
 
         })
@@ -105,10 +104,11 @@ export class ArtistOverviewContent extends Component {
       fetch(urlAlbum,requestOptions)
         .then((response) => { return response.json()})
         .then((data) => {
+          if(data.albumInfo){
           this.setState({
           albumInfo: data.albumInfo});
           console.log(this.state.SongInfo);
-        })
+        }})
         .catch((error)=>{console.log(error);
         })
 
@@ -117,10 +117,11 @@ export class ArtistOverviewContent extends Component {
       fetch(urlSingle,requestOptions)
         .then((response) => { return response.json()})
         .then((data) => {
+          if(data.singlesInfo){
           this.setState({
           singlesInfo: data.singlesInfo});
           console.log(this.state.SongInfo);
-        })
+        }})
         .catch((error)=>{console.log(error);
         })
   }
