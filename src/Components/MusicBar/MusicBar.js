@@ -367,6 +367,7 @@ export class MusicBar extends Component {
     var icon = document.getElementById("play-track-bar");
 
     if (this.refs.player) {
+      console.log(Tracks[this.state.trackNum]);
       currentTime = this.refs.player.currentTime;
       duration = this.refs.player.duration;
 

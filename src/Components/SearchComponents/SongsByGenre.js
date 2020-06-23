@@ -60,13 +60,15 @@ export class SongsByGenre extends Component {
     try {
       fetch(url, requestOptions)
         .then((response) => {
-
+        
           return response.json();
+          
 
         })
         .then((data) => {
-
-          this.setState({ songs: data.songs })
+          console.log("entered")
+          if(data.songs) this.setState({ songs: data.songs })
+          
 
         })
         .catch(function (error) {
