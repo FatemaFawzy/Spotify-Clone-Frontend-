@@ -4,10 +4,10 @@ import {BrowserRouter,withRouter} from "react-router-dom";
 import {NavLink, Link} from "react-router-dom";
 import { render } from "@testing-library/react";
 import {useHistory} from "react-router-dom";
-import { goBackward, goForward } from "../../HelperFunctions/History";
-import * as History from "../../HelperFunctions/History";
-import DropDownMenu from '../../Containers/GenericComponenets/DropDownMenu';
-import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
+import { goBackward, goForward } from "@/HelperFunctions/History";
+import * as History from "@/HelperFunctions/History";
+import DropDownMenu from '@/Containers/GenericComponenets/DropDownMenu';
+import CollapseDropDown from "@/Containers/GenericComponenets/CollapseDropDown";
 
 
 /** Class YourLibraryNavbar specially designed for your library pages in the web player

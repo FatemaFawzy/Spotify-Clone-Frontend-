@@ -2,7 +2,7 @@ import React from "react";
 import {shallow, configure} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
-import {LikedSongs} from "../../Components/LikedSongs/LikedSongs"
+import {LikedSongs} from "@/Components/LikedSongs/LikedSongs"
 
 describe("Liked Songs test", ()=>{
   let wrapper;

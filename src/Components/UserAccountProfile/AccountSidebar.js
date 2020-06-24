@@ -1,9 +1,9 @@
 import React from "react";
 import "./AccountSidebar.css";
 import { NavLink } from "react-router-dom";
-import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
+import emptyprofilepic from "@/assets/emptyprofilepic.jpg";
 import EditPictureModal from "./EditPictureModal";
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "@/Constants/baseURL";
 
  /**A function Component that represents the sidebar of the user account page
    * @func AccountSidebar

@@ -1,8 +1,8 @@
 import React ,{ Component} from 'react';
 import './YourLibraryAlbum.css';
 import GeneralItem from "../GenericComponenets/GeneralItem";
-import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
-import {BASEURL} from "../../Constants/baseURL";
+import YourLibraryNavbar from "@/Components/YourLibraryComponents/YourLibraryNavbar";
+import {BASEURL} from "@/Constants/baseURL";
 
 /** Class YourLibraryAlbum
  * @extends Component

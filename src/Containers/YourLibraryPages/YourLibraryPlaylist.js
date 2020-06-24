@@ -1,10 +1,10 @@
 import React ,{ Component} from 'react';
 import './YourLibraryPlaylist.css';
-import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
+import YourLibraryNavbar from "@/Components/YourLibraryComponents/YourLibraryNavbar";
 import GeneralItem from "../GenericComponenets/GeneralItem";
-import LikedSongsComponent from '../../Components/YourLibraryComponents/LikedSongsComponent';
+import LikedSongsComponent from '@/Components/YourLibraryComponents/LikedSongsComponent';
 import {connect} from "react-redux";
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "@/Constants/baseURL";
 
 /** Class YourLibraryPlaylist
  * @extends Component

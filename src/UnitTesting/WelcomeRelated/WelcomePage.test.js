@@ -3,8 +3,8 @@ import {shallow, configure} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
 import {mount} from 'enzyme';
-import WelcomePgae from "../../Containers/WelcomePage/welcomePage"
-import { MainNavbar } from "../../Components/WelcomeRelated/MainNavbar";
+import WelcomePgae from "@/Containers/WelcomePage/welcomePage"
+import { MainNavbar } from "@/Components/WelcomeRelated/MainNavbar";
 
 describe("Welcome Page test", ()=>{
   let wrapper;

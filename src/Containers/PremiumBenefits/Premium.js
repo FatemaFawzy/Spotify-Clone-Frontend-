@@ -1,13 +1,13 @@
 import React ,{ Component} from 'react';
 import './Premium.css';
-import MainNavbar from "../../Components/WelcomeRelated/MainNavbar";
-import Footer from "../../Components/WelcomeRelated/Footer";
+import MainNavbar from "@/Components/WelcomeRelated/MainNavbar";
+import Footer from "@/Components/WelcomeRelated/Footer";
 import {Link, Router } from "react-router-dom";
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "@/Constants/baseURL";
 import { connect } from "react-redux";
-import * as actionTypes from "../../Store/actions";
+import * as actionTypes from "@/Store/actions";
 import ReactSnackBar from "react-js-snackbar";
-import "../../Components/PlaylistsComponent/SnackBar.css";
+import "@/Components/PlaylistsComponent/SnackBar.css";
 
 /** Class Premium that creates the premium benefits page.
  * @category Premium

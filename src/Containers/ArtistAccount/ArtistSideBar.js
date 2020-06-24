@@ -1,10 +1,10 @@
 import React ,{ Component} from 'react';
 import './ArtistSideBar.css';
 import { NavLink, Link } from "react-router-dom";
-import { addNewURL } from '../../HelperFunctions/History';
+import { addNewURL } from '@/HelperFunctions/History';
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import * as actionTypes from "../../Store/actions";
+import * as actionTypes from "@/Store/actions";
  
 /** Class ArtistSideBar 
  * @category ArtistSideBar

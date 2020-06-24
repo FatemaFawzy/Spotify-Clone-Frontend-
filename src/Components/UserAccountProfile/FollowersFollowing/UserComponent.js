@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./UserComponent.css"
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actionTypes from "../../../Store/actions";
+import * as actionTypes from "@/Store/actions";
 
 /** Class UserComponent that displays the image and name of a certain user and links to their profile.
  * @category UserComponent

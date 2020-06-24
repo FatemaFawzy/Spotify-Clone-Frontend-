@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-// import NotificationList from "../../Components/Notifications/NotificationList"
+// import NotificationList from "@/Components/Notifications/NotificationList"
 import NotificationList from "../NotificationList"
 import "./NotificationButton.css";
 import { Link } from "react-router-dom";
-import {BASEURL}  from '../../../Components/../Constants/baseURL'
+import {BASEURL}  from '@/Constants/baseURL'
 /** Class NotificationButton
  * @category NotificationButton
  * @extends Component

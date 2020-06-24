@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import  "./BrowseItem.css"
 import { connect } from "react-redux";
-import * as actionTypes from "../../Store/actions";
+import * as actionTypes from "@/Store/actions";
 import {withRouter} from "react-router-dom";
  /** Class BrowseItem displays the genre
  * @category BrowseItem

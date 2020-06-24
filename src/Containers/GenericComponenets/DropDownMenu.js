@@ -3,8 +3,8 @@ import './DropDownMenu.css';
 import { BrowserRouter, withRouter } from "react-router-dom";
 import { NavLink, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {BASEURL} from "../../Constants/baseURL";
-import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
+import {BASEURL} from "@/Constants/baseURL";
+import emptyprofilepic from "@/assets/emptyprofilepic.jpg";
 
 /** Class DropDownMenu for web player navbars
  * @category DropDownMenu

@@ -1,6 +1,6 @@
 import React from "react";
 import UserComponent from "./UserComponent";
-import { BASEURL } from "../../../Constants/baseURL";
+import { BASEURL } from "@/Constants/baseURL";
 
 /** Function component ListOfUsers to display alist of followers/following 
  * @func ListOfUsers

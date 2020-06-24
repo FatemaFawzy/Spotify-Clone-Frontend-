@@ -7,7 +7,7 @@ import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
 
 //IMPORT THE COMPONENT YOU WANNA TEST
-import {EditSong} from "../../Containers/ArtistAccount/EditSong";
+import {EditSong} from "@/Containers/ArtistAccount/EditSong";
 
  //CALL THE DESCRIBE FUNCTION 
 //IT TAKES TWO PARAMETERS 1ST: A TEXT DESCRIPTION

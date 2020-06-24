@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./GeneralItem.css";
-import * as itemType from "../../Constants/itemType";
+import * as itemType from "@/Constants/itemType";
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import * as actionTypes from "../../Store/actions";
+import * as actionTypes from "@/Store/actions";
 
 /** Class GeneralItem that holds the data of a certain song, playlist, album...etc.
  * @category GeneralItem

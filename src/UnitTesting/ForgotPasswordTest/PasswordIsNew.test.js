@@ -7,7 +7,7 @@ import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
 
 //IMPORT THE COMPONENT YOU WANNA TEST
-import {PasswordIsNew} from "../../Components/ForgotPassword/PasswordIsNew";
+import {PasswordIsNew} from "@/Components/ForgotPassword/PasswordIsNew";
 
 //CALL THE DESCRIBE FUNCTION 
 //IT TAKES TWO PARAMETERS 1ST: A TEXT DESCRIPTION

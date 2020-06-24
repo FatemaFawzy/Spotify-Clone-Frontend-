@@ -1,5 +1,5 @@
 import React from 'react';
-import Success from '../../Components/ForgotPassword/Success';
+import Success from '@/Components/ForgotPassword/Success';
 import { shallow } from 'enzyme';
 
 // 1. Test suite

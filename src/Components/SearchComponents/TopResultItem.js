@@ -2,8 +2,8 @@ import React from "react"
 import  "./TopResultItem.css"
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import * as actionTypes from "../../Store/actions";
-import * as itemType from "../../Constants/itemType";
+import * as actionTypes from "@/Store/actions";
+import * as itemType from "@/Constants/itemType";
 
 /** Function Component TopResultItem that displays the top result of the search
  * @func TopResultItem

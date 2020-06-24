@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from 'react-bootstrap/Modal'
 import "./EditPictureModal.css"
-import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
+import emptyprofilepic from "@/assets/emptyprofilepic.jpg";
 
 /** Function component EditPictureModal pops when the user clicks to change his/her profile picture
  * @func EditPictureModal

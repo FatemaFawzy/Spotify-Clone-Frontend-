@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import BrowseItem from "./BrowseItem";
 import "./SearchContent.css";
 import "./SongSearched";
-import { BASEURL } from "../../Constants/baseURL";
+import { BASEURL } from "@/Constants/baseURL";
 import { connect } from "react-redux";
 
 /** Class SearchContent. A page that displays all genres before the user types to search for something.

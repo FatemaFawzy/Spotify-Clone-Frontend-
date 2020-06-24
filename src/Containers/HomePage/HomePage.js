@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
  import './HomePage.css';
-import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
-import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
-import * as itemType from "../../Constants/itemType";
+import HomePageNavbar from "@/Components/HomePage/HomePageNavbar";
+import ComponentBlock from "@/Components/HomePageComponents/ComponentBlock"
+import * as itemType from "@/Constants/itemType";
 import {connect} from "react-redux";
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "@/Constants/baseURL";
 
 
 /** Class HomePage

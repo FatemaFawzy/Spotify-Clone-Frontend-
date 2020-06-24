@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
  import './AddAlbum.css';
 import ArtistNavbar from "./ArtistNavbar";
-import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
-import * as itemType from "../../Constants/itemType";
+import ComponentBlock from "@/Components/HomePageComponents/ComponentBlock"
+import * as itemType from "@/Constants/itemType";
 import {connect} from "react-redux";
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "@/Constants/baseURL";
 import {Link} from "react-router-dom";
 
 

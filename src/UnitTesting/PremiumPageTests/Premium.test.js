@@ -7,7 +7,7 @@ import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
 
 //IMPORT THE COMPONENT YOU WANNA TEST
-import {Premium} from "../../Containers/PremiumBenefits/Premium";
+import {Premium} from "@/Containers/PremiumBenefits/Premium";
 
 
 //CALL THE DESCRIBE FUNCTION 

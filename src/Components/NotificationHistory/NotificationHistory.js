@@ -6,7 +6,7 @@ import SearchBoxNotificationHist from './SearchBoxNotificationHist'
 import NotificationHistoryList from './NotificationHistoryList'
 import { Link } from "react-router-dom";
 
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "@/Constants/baseURL";
 /** Class NotificationHistory
  * @category NotificationHistory
  * @extends Component

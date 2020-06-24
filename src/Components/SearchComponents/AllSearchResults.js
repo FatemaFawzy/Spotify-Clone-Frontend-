@@ -1,8 +1,8 @@
 import React from "react";
 import "./AllSearchResults.css";
-import * as itemType from "../../Constants/itemType";
-import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
-import {BASEURL} from "../../Constants/baseURL";
+import * as itemType from "@/Constants/itemType";
+import GeneralItem from "@/Containers/GenericComponenets/GeneralItem";
+import {BASEURL} from "@/Constants/baseURL";
 
 /** Function Component AllSearchResults the page that appears after the user clicks to see all the results
  * @func AllSearchResults

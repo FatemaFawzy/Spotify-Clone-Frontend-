@@ -7,7 +7,7 @@ import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
 
 //IMPORT THE COMPONENT YOU WANNA TEST
-import { HomePageNavbar } from "../../Components/HomePage/HomePageNavbar";
+import { HomePageNavbar } from "@/Components/HomePage/HomePageNavbar";
 
 //CALL THE DESCRIBE FUNCTION 
 //IT TAKES TWO PARAMETERS 1ST: A TEXT DESCRIPTION

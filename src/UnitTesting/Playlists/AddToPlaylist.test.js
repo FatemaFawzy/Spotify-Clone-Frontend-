@@ -2,7 +2,7 @@ import React from "react";
 import {shallow, configure} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
-import {AddToPlaylist} from "../../Components/PlaylistsComponent/AddToPlaylist"
+import {AddToPlaylist} from "@/Components/PlaylistsComponent/AddToPlaylist"
 
 describe("CreatePlaylist test", ()=>{
   let wrapper;

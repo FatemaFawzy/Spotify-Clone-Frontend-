@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./EditProfile.css";
-import {BASEURL} from "../../../Constants/baseURL"
+import {BASEURL} from "@/Constants/baseURL"
 import {connect} from "react-redux"
 
 /** Class EditProfile 
