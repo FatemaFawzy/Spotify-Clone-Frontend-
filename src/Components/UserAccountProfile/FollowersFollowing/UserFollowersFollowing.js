@@ -3,7 +3,7 @@ import "./UserFollowersFollowing.css";
 import { NavLink } from "react-router-dom";
 import ListOfUsers from "./ListOfUsers";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { BASEURL } from "../../../Constants/baseURL";
+import { BASEURL } from "@/Constants/baseURL";
 
 /** Class UserFollowersFollowing. A page that displays the list of followers/following of a certain user
  * @category UserFollowersFollowing

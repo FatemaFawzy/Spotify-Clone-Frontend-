@@ -7,7 +7,7 @@ import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
 
 //IMPORT THE COMPONENT YOU WANNA TEST
-import OverviewContent from "../../Components/UserAccountProfile/Overview/OverviewContent"
+import OverviewContent from "@/Components/UserAccountProfile/Overview/OverviewContent"
 
 //CALL THE DESCRIBE FUNCTION 
 //IT TAKES TWO PARAMETERS 1ST: A TEXT DESCRIPTION

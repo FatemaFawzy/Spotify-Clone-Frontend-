@@ -1,10 +1,10 @@
 import React ,{ Component} from 'react';
 import "./ArtistProfile.css";
 import {NavLink } from "react-router-dom";
-import ArtistProfileContent from "../../Components/ArtistProfile/ArtistProfileContent";
-import HomePageNavbar from "../../Components/HomePage/HomePageNavbar";
+import ArtistProfileContent from "@/Components/ArtistProfile/ArtistProfileContent";
+import HomePageNavbar from "@/Components/HomePage/HomePageNavbar";
 import {connect} from "react-redux";
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "@/Constants/baseURL";
 import ReactNotifications from 'react-notifications-component';
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';

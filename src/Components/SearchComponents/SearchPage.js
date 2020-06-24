@@ -6,8 +6,8 @@ import Searchbar from "./Searchbar";
 import { Switch, Route, Redirect } from "react-router-dom";
 import AllSearchResults from "./AllSearchResults";
 import SongsByGenre from "./SongsByGenre";
-import * as itemType from "../../Constants/itemType";
-import { BASEURL } from "../../Constants/baseURL";
+import * as itemType from "@/Constants/itemType";
+import { BASEURL } from "@/Constants/baseURL";
 
 
 /** Class SearchPage that manages the state of all the other search components

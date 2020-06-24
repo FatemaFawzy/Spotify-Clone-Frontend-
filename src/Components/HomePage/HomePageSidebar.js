@@ -2,10 +2,10 @@ import React ,{ Component} from 'react';
 import './HomePageSidebar.css';
 import { NavLink, Link } from "react-router-dom";
 import CreatePlaylist from '../PlaylistsComponent/CreatePlaylist';
-import { addNewURL } from '../../HelperFunctions/History';
+import { addNewURL } from '@/HelperFunctions/History';
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import * as actionTypes from "../../Store/actions";
+import * as actionTypes from "@/Store/actions";
  
 /** Class HomepageSidebar 
  * @category HomePage

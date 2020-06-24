@@ -2,7 +2,7 @@ import "./LikedSongsComponent.css";
 import {BrowserRouter as Router} from "react-router-dom";
 import {Link} from "react-router-dom";
 import React ,{ Component} from 'react';
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "@/Constants/baseURL";
 
 
 /** Class LikedSongsComponent that creates the bluish component in the your library-playlist page.

@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import "./MusicBar.css";
 import { connect } from "react-redux";
-import * as actionTypes from "../../Store/actions";
-import { formatTime, progressOffset } from "../../HelperFunctions/History";
+import * as actionTypes from "@/Store/actions";
+import { formatTime, progressOffset } from "@/HelperFunctions/History";
 import ReactSnackBar from "react-js-snackbar";
 import "../PlaylistsComponent/SnackBar.css";
 import { Tracks } from "./SongFiles.js";
-import { BASEURL } from "../../Constants/baseURL";
-import AdsAudio from "../../assets/adsaudio.mp3";
-import FacebookShareButton from "../../Components/Share/FacebookShareButton";
-import TwitterShareButton from "../../Components/Share/TwitterShareButton";
-import ShareBox from "../../Components/Share/ShareBox";
+import { BASEURL } from "@/Constants/baseURL";
+import AdsAudio from "@/assets/adsaudio.mp3";
+import FacebookShareButton from "@/Components/Share/FacebookShareButton";
+import TwitterShareButton from "@/Components/Share/TwitterShareButton";
+import ShareBox from "@/Components/Share/ShareBox";
 let space = {
   right: "10%",
 };

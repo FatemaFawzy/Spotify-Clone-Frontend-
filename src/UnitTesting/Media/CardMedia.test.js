@@ -4,7 +4,7 @@ import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
 
 
-import CardMedia from "../../Components/Media/CardMedia";
+import CardMedia from "@/Components/Media/CardMedia";
 
 describe("Card Media test", ()=>{
 

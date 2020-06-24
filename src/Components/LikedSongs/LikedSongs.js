@@ -3,7 +3,7 @@ import './LikedSongs.css';
 import ReactSnackBar from "react-js-snackbar";
 import HomePageNavbar from '../HomePage/HomePageNavbar';
 import CardMedia from '../Media/CardMedia';
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "@/Constants/baseURL";
 import {connect} from 'react-redux';
 import {Tracks} from "../MusicBar/SongFiles"
 

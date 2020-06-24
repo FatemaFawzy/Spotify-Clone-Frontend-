@@ -8,7 +8,7 @@ configure({adapter: new Adapter()});
 import {withRouter} from "react-router-dom";
 
 //IMPORT THE COMPONENT YOU WANNA TEST
-import {CreateNewPassword} from "../../Components/ForgotPassword/CreateNewPassword";
+import {CreateNewPassword} from "@/Components/ForgotPassword/CreateNewPassword";
 
 //CALL THE DESCRIBE FUNCTION 
 //IT TAKES TWO PARAMETERS 1ST: A TEXT DESCRIPTION

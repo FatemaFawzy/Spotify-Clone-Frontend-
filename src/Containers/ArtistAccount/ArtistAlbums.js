@@ -1,12 +1,12 @@
 import React,{Component} from 'react';
  import './ArtistAlbums.css';
  import ReactSnackBar from "react-js-snackbar";
- import "../../Components/PlaylistsComponent/SnackBar.css";
+ import "@/Components/PlaylistsComponent/SnackBar.css";
 import ArtistAlbumsNavbar from "./ArtistNavbar";
-import ComponentBlock from "../../Components/HomePageComponents/ComponentBlock"
-import * as itemType from "../../Constants/itemType";
+import ComponentBlock from "@/Components/HomePageComponents/ComponentBlock"
+import * as itemType from "@/Constants/itemType";
 import {connect} from "react-redux";
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "@/Constants/baseURL";
 import {NavLink,Link} from "react-router-dom";
 
 

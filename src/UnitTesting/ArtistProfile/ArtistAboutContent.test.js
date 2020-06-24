@@ -1,5 +1,5 @@
 import React from 'react';
-import ArtistAboutContent from '../../Components/ArtistProfile/ArtistAboutContent';
+import ArtistAboutContent from '@/Components/ArtistProfile/ArtistAboutContent';
 import { shallow, configure } from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});

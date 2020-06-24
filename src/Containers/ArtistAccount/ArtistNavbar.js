@@ -4,10 +4,10 @@ import {BrowserRouter,withRouter} from "react-router-dom";
 import {NavLink, Link} from "react-router-dom";
 import { render } from "@testing-library/react";
 import {useHistory} from "react-router-dom";
-import * as History from "../../HelperFunctions/History";
-import DropDownMenu from "../../Containers/GenericComponenets/DropDownMenu";
-import COllapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
-import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown";
+import * as History from "@/HelperFunctions/History";
+import DropDownMenu from "@/Containers/GenericComponenets/DropDownMenu";
+import COllapseDropDown from "@/Containers/GenericComponenets/CollapseDropDown";
+import CollapseDropDown from "@/Containers/GenericComponenets/CollapseDropDown";
 
  
 /** Class ArtistNavbar 

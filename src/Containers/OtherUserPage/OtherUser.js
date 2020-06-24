@@ -1,9 +1,9 @@
 import React,{Component} from "react";
 import "./OtherUser.css";
 import {connect} from "react-redux";
-import emptyprofilepic from "../../assets/emptyprofilepic.jpg";
+import emptyprofilepic from "@/assets/emptyprofilepic.jpg";
 import GeneralItem from "../GenericComponenets/GeneralItem";
-import * as itemType from "../../Constants/itemType";
+import * as itemType from "@/Constants/itemType";
 
 /** Class OtherUser that represents the page og another profile
  * @category OtherUser

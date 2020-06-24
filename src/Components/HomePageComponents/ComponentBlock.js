@@ -1,8 +1,8 @@
 import "./ComponentBlock.css";
 import React ,{ Component} from 'react';
-import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
-// import * as itemType from "../../Constants/itemType";
-import {BASEURL} from "../../Constants/baseURL";
+import GeneralItem from "@/Containers/GenericComponenets/GeneralItem";
+// import * as itemType from "@/Constants/itemType";
+import {BASEURL} from "@/Constants/baseURL";
 
 import {Link, Router } from "react-router-dom";
 

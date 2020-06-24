@@ -5,7 +5,7 @@ import ReactDOM from "react-dom"
 import CardMedia from '../Media/CardMedia';
 import ReactSnackBar from "react-js-snackbar";
 import HomePageNavbar from '../HomePage/HomePageNavbar';
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "@/Constants/baseURL";
 import {connect} from 'react-redux';
 
 /** Class AlbumPage 

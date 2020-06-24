@@ -1,8 +1,8 @@
 import React ,{ Component} from 'react';
 import './SignUp.css';
 import {connect} from "react-redux";
-import * as actionTypes from "../../Store/actions";
-import {BASEURL} from "../../Constants/baseURL";
+import * as actionTypes from "@/Store/actions";
+import {BASEURL} from "@/Constants/baseURL";
 
   /**Function to test whether the email is in the correct form or not
    * @memberof SignUp

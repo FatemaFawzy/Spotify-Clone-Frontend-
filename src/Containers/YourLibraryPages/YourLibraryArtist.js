@@ -1,9 +1,9 @@
 import React ,{ Component} from 'react';
 import './YourLibraryArtist.css';
-import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
+import YourLibraryNavbar from "@/Components/YourLibraryComponents/YourLibraryNavbar";
 import GeneralItem from "../GenericComponenets/GeneralItem";
 import {connect} from "react-redux";
-import {BASEURL} from "../../Constants/baseURL"
+import {BASEURL} from "@/Constants/baseURL"
 
 /** Class YourLibraryArtist
  * @extends Component

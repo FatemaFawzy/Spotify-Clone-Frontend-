@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import "./RelatedArtistsContent.css";
-import "../../Containers/GenericComponenets/GeneralItem";
-import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
+import "@/Containers/GenericComponenets/GeneralItem";
+import GeneralItem from "@/Containers/GenericComponenets/GeneralItem";
 import {connect} from "react-redux";
-import {BASEURL} from "../../Constants/baseURL";
-import * as itemType from "../../Constants/itemType";
+import {BASEURL} from "@/Constants/baseURL";
+import * as itemType from "@/Constants/itemType";
 
 /** Class RelatedArtistsContent 
  * @category RelatedArtistsContent

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import './MainNavbar.css'
 import {Link } from "react-router-dom";
 import {connect} from 'react-redux';
-import * as actionTypes from "../../Store/actions";
-import {BASEURL} from "../../Constants/baseURL";
+import * as actionTypes from "@/Store/actions";
+import {BASEURL} from "@/Constants/baseURL";
 
 /** Class MainNavbar 
  * @category MainNavbar

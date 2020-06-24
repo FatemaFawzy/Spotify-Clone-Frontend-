@@ -4,9 +4,9 @@ import SearchContent from "./SearchContent";
 import { Link } from "react-router-dom";
 import SongSearched from "./SongSearched";
 import TopResultItem from "./TopResultItem";
-import GeneralItem from "../../Containers/GenericComponenets/GeneralItem";
-import * as itemType from "../../Constants/itemType";
-import { BASEURL } from "../../Constants/baseURL";
+import GeneralItem from "@/Containers/GenericComponenets/GeneralItem";
+import * as itemType from "@/Constants/itemType";
+import { BASEURL } from "@/Constants/baseURL";
 
 /** Function component SearchContent that shows the content of the search page after typing in the search box.
  * @func SearchedContent

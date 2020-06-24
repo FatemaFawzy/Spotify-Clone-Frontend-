@@ -1,7 +1,7 @@
 import React ,{ Component} from 'react';
 import './welcomePage.css';
-import Bottom from "../../Components/WelcomeRelated/Bottom";
-import MainNavbar from "../../Components/WelcomeRelated/MainNavbar";
+import Bottom from "@/Components/WelcomeRelated/Bottom";
+import MainNavbar from "@/Components/WelcomeRelated/MainNavbar";
 
 /** Class welcomePage 
  * @category welcomePage

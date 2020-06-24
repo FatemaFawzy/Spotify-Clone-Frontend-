@@ -2,28 +2,28 @@ import React,{Component} from 'react';
 import './WebPlayer.css';
 // import SearchPage from "./SearchPage";
 import {Switch, Route} from "react-router-dom";
-import HomePageSidebar from "../../Components/HomePage/HomePageSidebar";
-import SearchPage from "../../Components/SearchComponents/SearchPage";
+import HomePageSidebar from "@/Components/HomePage/HomePageSidebar";
+import SearchPage from "@/Components/SearchComponents/SearchPage";
 import YourLibrary  from '../YourLibraryPages/YourLibrary';
 import YourLibraryPlaylist  from '../YourLibraryPages/YourLibraryPlaylist';
 import ArtistProfile from '../ArtistProfile/ArtistProfile';
-import MusicBar from "../../Components/MusicBar/MusicBar"
+import MusicBar from "@/Components/MusicBar/MusicBar"
 import HomePage from '../HomePage/HomePage';
-import PlaylistPage from '../../Components/PlaylistsComponent/PlaylistPage';
-import CreatePlaylist from '../../Components/PlaylistsComponent/CreatePlaylist';
-import AlbumPage from '../../Components/AlbumComponent/AlbumPage';
+import PlaylistPage from '@/Components/PlaylistsComponent/PlaylistPage';
+import CreatePlaylist from '@/Components/PlaylistsComponent/CreatePlaylist';
+import AlbumPage from '@/Components/AlbumComponent/AlbumPage';
 import AccountLayout from '../UserAccountProfile/AccountLayout';
 import welcomePage from '../WelcomePage/welcomePage';
 import OtherUser from '../OtherUserPage/OtherUser';
-import LikedSongs from '../../Components/LikedSongs/LikedSongs';
-import AddToPlaylist from '../../Components/PlaylistsComponent/AddToPlaylist';
-import SeeAllArtists from '../../Containers/HomePage/SeeAllArtists';
-import SeeAllPlaylists from '../../Containers/HomePage/SeeAllPlaylists';
-import SeeAllMadeForYou from '../../Containers/HomePage/SeeAllMadeForYou';
-import SeeAllRecentlyPlayed from '../../Containers/HomePage/SeeAllRecentlyPlayed';
-import AdsBar from "../../Components/Ads/AdsBar";
-import NotificationHistory from '../../Components/NotificationHistory/NotificationHistory';
-import PopUpPage from '../../Components/PopUp/PopUpPage';
+import LikedSongs from '@/Components/LikedSongs/LikedSongs';
+import AddToPlaylist from '@/Components/PlaylistsComponent/AddToPlaylist';
+import SeeAllArtists from '@/Containers/HomePage/SeeAllArtists';
+import SeeAllPlaylists from '@/Containers/HomePage/SeeAllPlaylists';
+import SeeAllMadeForYou from '@/Containers/HomePage/SeeAllMadeForYou';
+import SeeAllRecentlyPlayed from '@/Containers/HomePage/SeeAllRecentlyPlayed';
+import AdsBar from "@/Components/Ads/AdsBar";
+import NotificationHistory from '@/Components/NotificationHistory/NotificationHistory';
+import PopUpPage from '@/Components/PopUp/PopUpPage';
 import { connect } from "react-redux";
 
 

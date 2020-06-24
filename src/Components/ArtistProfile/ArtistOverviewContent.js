@@ -3,7 +3,7 @@ import "./ArtistOverviewContent.css";
 import "./MediaObject";
 import MediaObject from './MediaObject';
 import {connect} from "react-redux";
-import { BASEURL } from '../../Constants/baseURL';
+import { BASEURL } from '@/Constants/baseURL';
 
 /** Class ArtistOverviewContent
  * @extends Component

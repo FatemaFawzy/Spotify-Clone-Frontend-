@@ -2,10 +2,10 @@ import React, { Component } from "react"
 import "./SongSearched.css"
 import ReactDOM from "react-dom"
 import ReactSnackBar from "react-js-snackbar";
-import '../../Components/PlaylistsComponent/SnackBar.css';
+import '@/Components/PlaylistsComponent/SnackBar.css';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actionTypes from "../../Store/actions";
+import * as actionTypes from "@/Store/actions";
 
 /** Class SongSearched that displays the searched song as an item component
  * @category SongSearched

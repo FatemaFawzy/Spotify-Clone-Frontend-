@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BASEURL } from "../../Constants/baseURL";
+import { BASEURL } from "@/Constants/baseURL";
 import SongSearched from "./SongSearched";
 import "./SongsByGenre.css"
 

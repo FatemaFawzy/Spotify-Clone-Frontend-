@@ -5,7 +5,7 @@ import CardMedia from '../Media/CardMedia';
 import ReactSnackBar from "react-js-snackbar";
 import './SnackBar.css';
 import HomePageNavbar from '../HomePage/HomePageNavbar';
-import {BASEURL} from "../../Constants/baseURL";
+import {BASEURL} from "@/Constants/baseURL";
 import {connect} from 'react-redux';
 
 /** Class PlaylistPage 

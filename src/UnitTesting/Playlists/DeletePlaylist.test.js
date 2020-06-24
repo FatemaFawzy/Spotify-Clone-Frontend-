@@ -2,7 +2,7 @@ import React from "react";
 import {shallow, configure} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 configure({adapter: new Adapter()});
-import {DeletePlaylist} from "../../Components/PlaylistsComponent/DeletePlaylist"
+import {DeletePlaylist} from "@/Components/PlaylistsComponent/DeletePlaylist"
 
 describe("Delete Playlist test", ()=>{
   let wrapper;

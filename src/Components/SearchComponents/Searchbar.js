@@ -1,7 +1,7 @@
 import React from "react";
 import "./Searchbar.css"
-import DropDownMenu from "../../Containers/GenericComponenets/DropDownMenu";
-import CollapseDropDown from "../../Containers/GenericComponenets/CollapseDropDown"
+import DropDownMenu from "@/Containers/GenericComponenets/DropDownMenu";
+import CollapseDropDown from "@/Containers/GenericComponenets/CollapseDropDown"
 
 /** Function component Searchbar that acts as an upper navbar for the search page
  * @func Searchbar

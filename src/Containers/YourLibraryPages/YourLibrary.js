@@ -4,11 +4,11 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import HomePageSidebar from "../../Components/HomePage/HomePageSidebar"
+import HomePageSidebar from "@/Components/HomePage/HomePageSidebar"
 import YourLibraryPlaylist from "./YourLibraryPlaylist";
 import YourLibraryArtist from "./YourLibraryArtist";
 import YourLibraryAlbum from "./YourLibraryAlbum";
-import YourLibraryNavbar from "../../Components/YourLibraryComponents/YourLibraryNavbar";
+import YourLibraryNavbar from "@/Components/YourLibraryComponents/YourLibraryNavbar";
 import "./YourLibrary.css";
 
 /** Class YourLibrary

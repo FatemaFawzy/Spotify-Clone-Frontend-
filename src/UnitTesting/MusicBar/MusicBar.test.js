@@ -1,5 +1,5 @@
 import React from 'react';
-import { MusicBar } from '../../Components/MusicBar/MusicBar';
+import { MusicBar } from '@/Components/MusicBar/MusicBar';
 import { shallow } from 'enzyme';
 
 describe("Testing MusicBar redering", () => {
